@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WITabBarController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (nonatomic, strong) TGTabBarController *tabBarController;
 @property (strong, nonatomic) UIWindow *window;
 
+- (void)showTabController;
 
 @end
 

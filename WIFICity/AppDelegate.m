@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SDKConfig.h"
 
 @interface AppDelegate ()
 
@@ -17,9 +18,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+     _tabBarController = [[TGTabBarController alloc]init];
+    if ([NavManager firstEnterApp]) {
+        [self showTabController]; // 补充轮播图逻辑
+    } else {
+        [self showTabController];
+    }
+    [[AccountManager shared]loadUserAccount];
+    [SDKConfig configMobShare];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
+- (void)showTabController {
+    self.window.rootViewController = _tabBarController;
+    [[UITextField appearance] setTintColor:[UIColor blackColor]];
+    
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
