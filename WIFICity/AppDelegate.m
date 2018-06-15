@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SDKConfig.h"
+#import "StaticGuideViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,22 +21,29 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
      _tabBarController = [[TGTabBarController alloc]init];
-    if ([NavManager firstEnterApp]) {
-        [self showTabController]; // 补充轮播图逻辑
-    } else {
-        [self showTabController];
-    }
     [[AccountManager shared]loadUserAccount];
     [SDKConfig configMobShare];
+    
+    [self setMainView];
     [self.window makeKeyAndVisible];
     
     return YES;
 }
 
+- (void)setMainView {
+    if ([NavManager firstEnterApp]) {
+        StaticGuideViewController *staticGuide = [[StaticGuideViewController alloc]init];
+        UINavigationController *staticNavi = [[UINavigationController alloc]initWithRootViewController:staticGuide];
+        self.window.rootViewController = staticNavi;
+    } else {
+        [self showTabController];
+    }
+
+}
+
 - (void)showTabController {
-    self.window.rootViewController = _tabBarController;
+    [NavManager setWindowRootController:_tabBarController];
     [[UITextField appearance] setTintColor:[UIColor blackColor]];
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

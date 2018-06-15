@@ -31,4 +31,16 @@
     
 }
 
++ (void)dismissLoginController:(UIViewController *)context {
+    if (context.navigationController ) {
+        UINavigationController *nav = context.navigationController;
+        [nav popToRootViewControllerAnimated:NO];
+        [nav dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
++ (void)setWindowRootController:(UIViewController *)context {
+    [UIApplication sharedApplication].delegate.window.rootViewController = context;
+}
+
 @end

@@ -20,6 +20,7 @@
 
 #import "WIConstant.h"
 #import "WINetResponse.h"
+#import "NetErrorHandle.h"
 #import "WIUser.h"
 #import "NavManager.h"
 #import "AccountManager.h"

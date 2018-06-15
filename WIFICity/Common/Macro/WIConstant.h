@@ -23,6 +23,7 @@
 
 #endif
 
-
+#import "WINotiConst.h"
+static NSString *const LoginVerfifyCodeNullError = @"验证码不能为空";
 
 #endif /* WIConstant_h */

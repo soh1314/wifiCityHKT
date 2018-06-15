@@ -66,21 +66,21 @@
     TGNavigationCotroller *homeNav = [[TGNavigationCotroller alloc]initWithRootViewController:home];
 //     home.jz_navigationBarBackgroundHidden = YES;
 //    home.jz_wantsNavigationBarVisible = NO;
-    homeNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_shouye image:[UIImage qsAutoImageNamed:@"home_1"] selectedImage:[UIImage qsAutoImageNamed:@"home"]];
+    homeNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_shouye image:[UIImage qsAutoImageNamed:@"home_default"] selectedImage:[UIImage qsAutoImageNamed:@"home"]];
     MovieController *movieController = [[MovieController alloc]init];
     TGNavigationCotroller *movieNav = [[TGNavigationCotroller alloc]initWithRootViewController:movieController];
-    movieNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_movie image:[UIImage qsAutoImageNamed:@"Shop"] selectedImage:[UIImage qsAutoImageNamed:@"shop_1"]  ];
+    movieNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_movie image:[UIImage qsAutoImageNamed:@"location_default"] selectedImage:[UIImage qsAutoImageNamed:@"location"]  ];
     CommunityController *communityController = [[CommunityController alloc]init];
 //    message.jz_wantsNavigationBarVisible = YES;
 //    message.jz_navigationBarBackgroundHidden = NO;
     TGNavigationCotroller *communityNav = [[TGNavigationCotroller alloc]initWithRootViewController:communityController];
-    communityNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_square image:[UIImage qsAutoImageNamed:@"news"]  selectedImage:[UIImage qsAutoImageNamed:@"news_1"]  ];
+    communityNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_square image:[UIImage qsAutoImageNamed:@"square_default"]  selectedImage:[UIImage qsAutoImageNamed:@"square"]  ];
     
     MyController *userCenter = [[MyController alloc]init];
 //    userCenter.jz_wantsNavigationBarVisible = NO;
 //    userCenter.jz_navigationBarBackgroundHidden = YES;
     TGNavigationCotroller *userCenterNav = [[TGNavigationCotroller alloc]initWithRootViewController:userCenter];
-    userCenterNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_userCenter image:[UIImage qsAutoImageNamed:@"own"]  selectedImage:[UIImage qsAutoImageNamed:@"own_1"] ];
+    userCenterNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_userCenter image:[UIImage qsAutoImageNamed:@"mine_default"]  selectedImage:[UIImage qsAutoImageNamed:@"mine"] ];
     self.viewControllers = @[homeNav,movieNav,communityNav,userCenterNav];
 
 }

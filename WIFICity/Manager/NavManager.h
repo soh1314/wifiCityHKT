@@ -14,4 +14,8 @@
 
 + (void)showLoginController;
 
++ (void)dismissLoginController:(UIViewController *)context;
+
++ (void)setWindowRootController:(UIViewController *)context;
+
 @end

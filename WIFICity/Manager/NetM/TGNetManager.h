@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 typedef void(^TGNetCallBack)(NSInteger code ,NSDictionary *returnData,NSString *msg);
 
 @interface TGNetManager : NSObject

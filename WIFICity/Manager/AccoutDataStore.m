@@ -53,6 +53,14 @@
     return account;
 }
 
+- (void)clearDataStore {
+    NSError *error;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:self.storePath]) {
+        [fileManager removeItemAtPath:self.storePath error:&error];
+    }
+}
+
 - (NSString *)loadUserID {
     WIUser *account = [self loadAccount];
     if (!account) {

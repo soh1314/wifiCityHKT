@@ -8,6 +8,8 @@
 
 #import "AccountManager.h"
 #import "AccoutDataStore.h"
+#import "WITabBarController.h"
+#import "SDKConfig.h"
 
 @interface AccountManager()
 
@@ -26,6 +28,35 @@
     });
     return manager;
 }
+
++ (WIUser *)currentUser {
+    AccountManager *manager = [AccountManager shared];
+    WIUser *user = [manager.dataStore loadAccount];
+    
+    return user;
+}
+
++ (APPLoginState)loginState {
+    WIUser *user = [self currentUser];
+    if (user) {
+        return (APPLoginState)user.loginState;
+    } else {
+        return APPLogoutState;
+    }
+}
+
++ (void)logout {
+    [MBProgressHUD showHUDAddedTo:KWINDOW animated:YES];
+    [AccountManager shared].user = [[WIUser alloc]init];
+    [[AccountManager shared].dataStore clearDataStore];
+    [[NSURLSession sharedSession] resetWithCompletionHandler:^{}];
+    [SDKConfig cancleThirdLoginAuthorize];
+    TGTabBarController *tabBarController = [[TGTabBarController alloc]init];
+    [NavManager setWindowRootController:tabBarController];
+    [NavManager showLoginController];
+    [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+}
+
 
 - (instancetype)init
 {
@@ -118,20 +149,5 @@
     [self.dataStore saveAccountWithAccount:user];
 }
 
-+ (WIUser *)currentUser {
-    AccountManager *manager = [AccountManager shared];
-    WIUser *user = [manager.dataStore loadAccount];
-    
-    return user;
-}
-
-+ (APPLoginState)loginState {
-    WIUser *user = [self currentUser];
-    if (user) {
-        return (APPLoginState)user.loginState;
-    } else {
-        return APPLogoutState;
-    }
-}
 
 @end

@@ -35,9 +35,9 @@
         [self addSubview:textField];
         self.textField = textField;
         self.autoHideKeyboard = YES;
-        self.elementBorderColor = [UIColor blackColor];
-        self.elementSelectBorderColor = [UIColor blackColor];
-        self.backgroundColor = [UIColor whiteColor];
+        self.elementBorderColor = [UIColor colorWithHexString:@"#BFBFBF"];
+        self.elementSelectBorderColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
         self.elementBorderWidth = 1;
     }
     return self;
@@ -65,10 +65,11 @@
         pwdTextField.enabled = NO;
         pwdTextField.textAlignment = NSTextAlignmentCenter;//居中
         pwdTextField.secureTextEntry = YES;//设置密码模式
+        pwdTextField.textColor = [UIColor colorWithHexString:@"#00A1E9"];
         pwdTextField.userInteractionEnabled = NO;
-        pwdTextField.layer.borderColor = [UIColor blackColor].CGColor;
+        pwdTextField.layer.borderColor = self.elementBorderColor.CGColor;
         pwdTextField.layer.borderWidth = 1.0;
-        pwdTextField.layer.cornerRadius = 2.0;
+        pwdTextField.layer.cornerRadius = 9.0;
         pwdTextField.clipsToBounds = YES;
         [self insertSubview:pwdTextField belowSubview:self.textField];
         [self.dataSource addObject:pwdTextField];
@@ -111,7 +112,7 @@
         } else {
             pwdTextField.text = nil;
         }
-        if (i == password.length - 1) {
+        if (i <= password.length - 1) {
             pwdTextField.layer.borderColor = self.elementSelectBorderColor.CGColor;
         } else {
             pwdTextField.layer.borderColor = self.elementBorderColor.CGColor;
@@ -159,60 +160,62 @@
     
     CGContextSetLineCap(context, kCGLineCapSquare);
     
-    CGContextSetLineWidth(context, self.elementBorderWidth);
+//    CGContextSetLineWidth(context, self.elementBorderWidth);
     
-//    CGContextSetStrokeColorWithColor(context, self.elementBorderColor.CGColor);
-    CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
+//    CGContextSetStrokeColorWithColor(context, self.elementSelectBorderColor.CGColor);
+//    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
     
-    CGContextBeginPath(context);
-    if (self.elementMargin != 0) {
-        for (UITextField *textField in self.dataSource) {
-            CGRect rect = CGRectInset(textField.frame, self.elementBorderWidth, self.elementBorderWidth);
-            CGFloat left = rect.origin.x;
-            CGFloat right = rect.origin.x + rect.size.width;
-            CGFloat top = rect.origin.y;
-            CGFloat bottom = rect.origin.y + rect.size.height;
-            CGContextMoveToPoint(context, left, top);
-            CGContextAddLineToPoint(context, right, top);
-            CGContextAddLineToPoint(context, right, bottom);
-            CGContextAddLineToPoint(context, left, bottom);
-            CGContextClosePath(context);
-        }
-    }else {
-        CGPoint leftTopPoint, rightTopPoint, leftBottomPoint, rightBottomPoint;
-        for (NSUInteger i = 0; i < self.dataSource.count; i++) {
-            UITextField *textField = [self.dataSource objectAtIndex:i];
-            CGRect rect = CGRectInset(textField.frame, self.elementBorderWidth, self.elementBorderWidth);
-            CGFloat left = rect.origin.x;
-            CGFloat right = rect.origin.x + rect.size.width;
-            CGFloat top = rect.origin.y;
-            CGFloat bottom = rect.origin.y + rect.size.height;
-            
-            CGContextMoveToPoint(context, left, top);
-            CGContextAddLineToPoint(context, left, bottom);
-            CGContextClosePath(context);
-            if (self.dataSource.count - 1 == i) {
-                CGContextMoveToPoint(context, right, top);
-                CGContextAddLineToPoint(context, right, bottom);
-                CGContextClosePath(context);
-                rightTopPoint = CGPointMake(right, top);
-                rightBottomPoint = CGPointMake(right, bottom);
-            }else if (0 == i) {
-                leftTopPoint = CGPointMake(left, top);
-                leftBottomPoint = CGPointMake(left, bottom);
-            }
-        }
-        
-        CGContextMoveToPoint(context, leftTopPoint.x, leftTopPoint.y);
-        CGContextAddLineToPoint(context, rightTopPoint.x, rightTopPoint.y);
-        CGContextClosePath(context);
-        
-        CGContextMoveToPoint(context, leftBottomPoint.x, leftBottomPoint.y);
-        CGContextAddLineToPoint(context, rightBottomPoint.x, rightBottomPoint.y);
-        CGContextClosePath(context);
-    }
-    
-    CGContextStrokePath(context);
+//    CGContextBeginPath(context);
+//    if (self.elementMargin != 0) {
+//
+//        for (UITextField *textField in self.dataSource) {
+//            CGRect rect = CGRectInset(textField.frame, self.elementBorderWidth, self.elementBorderWidth);
+//            CGFloat left = rect.origin.x;
+//            CGFloat right = rect.origin.x + rect.size.width;
+//            CGFloat top = rect.origin.y;
+//            CGFloat bottom = rect.origin.y + rect.size.height;
+//            CGContextMoveToPoint(context, left, top);
+//            CGContextAddLineToPoint(context, right, top);
+//            CGContextAddLineToPoint(context, right, bottom);
+//            CGContextAddLineToPoint(context, left, bottom);
+//            CGContextClosePath(context);
+//        }
+//    }else {
+//        CGPoint leftTopPoint, rightTopPoint, leftBottomPoint, rightBottomPoint;
+//
+//        for (NSUInteger i = 0; i < self.dataSource.count; i++) {
+//            UITextField *textField = [self.dataSource objectAtIndex:i];
+//            CGRect rect = CGRectInset(textField.frame, self.elementBorderWidth, self.elementBorderWidth);
+//            CGFloat left = rect.origin.x;
+//            CGFloat right = rect.origin.x + rect.size.width;
+//            CGFloat top = rect.origin.y;
+//            CGFloat bottom = rect.origin.y + rect.size.height;
+//
+//            CGContextMoveToPoint(context, left, top);
+//            CGContextAddLineToPoint(context, left, bottom);
+//            CGContextClosePath(context);
+//            if (self.dataSource.count - 1 == i) {
+//                CGContextMoveToPoint(context, right, top);
+//                CGContextAddLineToPoint(context, right, bottom);
+//                CGContextClosePath(context);
+//                rightTopPoint = CGPointMake(right, top);
+//                rightBottomPoint = CGPointMake(right, bottom);
+//            }else if (0 == i) {
+//                leftTopPoint = CGPointMake(left, top);
+//                leftBottomPoint = CGPointMake(left, bottom);
+//            }
+//        }
+//
+//        CGContextMoveToPoint(context, leftTopPoint.x, leftTopPoint.y);
+//        CGContextAddLineToPoint(context, rightTopPoint.x, rightTopPoint.y);
+//        CGContextClosePath(context);
+//
+//        CGContextMoveToPoint(context, leftBottomPoint.x, leftBottomPoint.y);
+//        CGContextAddLineToPoint(context, rightBottomPoint.x, rightBottomPoint.y);
+//        CGContextClosePath(context);
+//    }
+//
+//    CGContextStrokePath(context);
 }
 
 

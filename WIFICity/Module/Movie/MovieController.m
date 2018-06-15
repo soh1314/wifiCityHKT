@@ -9,13 +9,17 @@
 #import "MovieController.h"
 
 @interface MovieController ()
-
+@property (nonatomic,strong)UIImageView *imageView;
 @end
 
 @implementation MovieController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setWhiteTrasluntNavBar];
+    self.imageView = [[UIImageView alloc]initWithFrame:self.view.frame];
+    [self.view addSubview:self.imageView];
+    self.imageView.image = [UIImage qsImageNamed:@"expected_page"];
     // Do any additional setup after loading the view.
 }
 

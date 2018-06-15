@@ -9,11 +9,11 @@
 #ifndef ThirdSDK_h
 #define ThirdSDK_h
 
-#define WXAPPID @"wx8db6470697faac02"
-#define WXSECRET @"72a4e94fdc281aded302ded01bd5baba"
+#define WXAPPID @"wx462ec32ad2da969a"
+#define WXSECRET @"9703442cc1b3484be750eaab1f36f497"
 
-#define QQAPPID @""
-#define QQAPPKEY @""
+#define QQAPPID @"1106178641"
+#define QQAPPKEY @"7NBT9TBhzgrdwah8"
 
 //#import "WXApi.h"
 

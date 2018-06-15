@@ -25,4 +25,6 @@ typedef NS_ENUM(NSInteger,WILoginType) {
 
 - (void)wechatLogin:(WIUser *)user complete:(IAccountCompleteBlock)complete;
 
+- (void)MOBThirdLogin:(WILoginType)loginType complete:(IAccountCompleteBlock)complete;
+
 @end

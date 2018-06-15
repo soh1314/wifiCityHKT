@@ -12,6 +12,7 @@
 
 + (WIPasswordView *)pwdview {
     WIPasswordView *pwdView = [[WIPasswordView alloc] initWithFrame:CGRectMake(0, 0, 230, 48)];
+    pwdView.backgroundColor = [UIColor clearColor];
     pwdView.elementCount = 4;
     pwdView.center = CGPointMake(KSCREENW/2.0, 24);
     pwdView.elementBorderColor = [UIColor colorWithHexString:@"#BFBFBF"];

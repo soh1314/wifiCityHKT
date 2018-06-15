@@ -46,12 +46,15 @@
 
 - (IBAction)login:(id)sender {
     self.user.verifyCode = [self.pwdView.password copy];
+    
     [self.loginer registerUser:self.user complete:^(WINetResponse *response) {
         if (response.success) {
-            [self.navigationController popViewControllerAnimated:NO];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-            });
+            WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
+            [[AccountManager shared]saveUserInfo:user];
+            [AccountManager shared].user = user;
+            [[NSNotificationCenter defaultCenter]postNotificationName:WILoginSuccessNoti object:nil];
+            [NavManager dismissLoginController:self];
+
         } else {
             
         }
@@ -132,10 +135,6 @@
             self.verifyBtn.userInteractionEnabled = NO;
         }
 }
-
-
-
-
 
 
 - (void)didReceiveMemoryWarning {

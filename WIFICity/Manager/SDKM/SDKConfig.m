@@ -36,7 +36,7 @@
 }
 
 +(void)configMobShare {
-    NSArray *platforms = @[@(SSDKPlatformTypeWechat)];
+    NSArray *platforms = @[@(SSDKPlatformTypeWechat),@(SSDKPlatformTypeQQ)];
     [ShareSDK registerActivePlatforms:platforms
                              onImport:^(SSDKPlatformType platformType)
      {
@@ -70,6 +70,11 @@
                  break;
          }
      }];
+}
+
++ (void)cancleThirdLoginAuthorize {
+//    [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ];
+//    [ShareSDK cancelAuthorize:SSDKPlatformTypeWechat];
 }
 
 

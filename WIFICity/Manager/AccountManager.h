@@ -29,6 +29,8 @@ typedef NS_ENUM(NSUInteger, APPLoginState){
 
 + (APPLoginState)loginState;
 
++ (void)logout;
+
 - (void)handleWhenAppStart;
 
 - (void)loadUserAccount;

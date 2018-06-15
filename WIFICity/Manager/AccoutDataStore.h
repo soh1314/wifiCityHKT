@@ -13,5 +13,6 @@
 
 - (NSString *)loadUserID;
 -(void)saveAccountWithAccount:(id)accountObject;
+- (void)clearDataStore;
 
 @end

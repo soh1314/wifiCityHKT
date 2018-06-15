@@ -15,6 +15,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 - (void)showTabController;
+- (void)setMainView;
 
 @end
 

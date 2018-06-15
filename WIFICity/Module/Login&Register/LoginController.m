@@ -28,7 +28,9 @@
 }
 
 - (void)initUI {
-    self.seperatorLine.backgroundColor = [UIColor colorWithHexString:@"#9A9A9A"];
+    self.seperatorLine.backgroundColor = [UIColor whiteColor];
+    [self.phoneTtf setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    self.phoneTtf.tintColor = [UIColor whiteColor];
     self.loginBtn.backgroundColor = [UIColor colorWithHexString:@"#00A1E9"];
     self.loginBtn.titleLabel.textColor = [UIColor colorWithHexString:@"#222222"];
     self.loginBtn.clipsToBounds = YES;
@@ -39,7 +41,7 @@
     self.phoneTtf.delegate = self;
     [self.loginBtn addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     [self.wechatLogin addTarget:self action:@selector(wechatLogin:) forControlEvents:UIControlEventTouchUpInside];
-    [self.wechatLogin addTarget:self action:@selector(qqLogin:) forControlEvents:UIControlEventTouchUpInside];
+    [self.qqLoginBtn addTarget:self action:@selector(qqLogin:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)initWifiInfo {
@@ -97,13 +99,31 @@
 }
 
 - (void)wechatLogin:(id)sender {
-    [self.loginer wechatLogin:self.userInfo complete:^(WINetResponse *response) {
-        
+    [self.loginer MOBThirdLogin:WIWXLogin complete:^(WINetResponse *response) {
+        if (response.success) {
+            WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
+            [[AccountManager shared]saveUserInfo:user];
+            [AccountManager shared].user = user;
+            [[NSNotificationCenter defaultCenter]postNotificationName:WILoginSuccessNoti object:nil];
+            [NavManager dismissLoginController:self];
+        } else {
+            
+        }
     }];
 }
 
 - (void)qqLogin:(id)sender {
-    
+    [self.loginer MOBThirdLogin:WIQQLogin complete:^(WINetResponse *response) {
+        if (response.success) {
+            WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
+            [[AccountManager shared]saveUserInfo:user];
+            [AccountManager shared].user = user;
+            [[NSNotificationCenter defaultCenter]postNotificationName:WILoginSuccessNoti object:nil];
+            [NavManager dismissLoginController:self];
+        } else {
+            
+        }
+    }];
 }
 
 

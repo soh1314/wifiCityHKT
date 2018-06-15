@@ -29,4 +29,7 @@
 @property (nonatomic,assign)int loginState;
 @property (nonatomic,copy)NSString *loginType; // 0 wx 1 qq 2 其他
 
+@property (nonatomic,copy)NSDictionary *wxinfo;
+@property (nonatomic,copy)NSDictionary *qqinfo;
+
 @end
