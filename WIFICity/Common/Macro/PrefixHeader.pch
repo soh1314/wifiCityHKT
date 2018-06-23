@@ -15,6 +15,7 @@
 #import "WIConstant.h"
 #import "UIColor+Theme.h"
 #import "UIImage+base.h"
+#import "EaseTableView.h"
 #import "SysMacro.h"
 #import "NetAPI.h"
 

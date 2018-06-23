@@ -7,7 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WifiNetChangeProtocol.h"
+#import "WifiPanelProtocol.h"
+#import "WIFICloudInfo.h"
 
-@interface WIFISevice : NSObject
+@interface WIFISevice : NSObject<WifiNetChangeProtocol>
+
++ (instancetype)shared;
+
+@property (nonatomic,strong)WIFICloudInfo *wifiCloudInfo;
+@property (nonatomic,strong)dispatch_source_t timer;
+@property (nonatomic,weak)id <WifiNetChangeProtocol>delegate;
+@property (nonatomic,weak)id <WifiPanelProtocol>panelDelegate;
+
+- (void)setNetMonitor;
++(NSString *)getCurrentWifiName;
++(WINetStatus)netStatus;
++(BOOL)isHKTWifi;
+
+- (void)connectWifi;
+- (void)stopWifi;
 
 @end

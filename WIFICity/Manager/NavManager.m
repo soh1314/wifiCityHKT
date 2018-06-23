@@ -8,6 +8,7 @@
 
 #import "NavManager.h"
 #import "LoginController.h"
+#import "WebViewController.h"
 
 @implementation NavManager
 
@@ -41,6 +42,15 @@
 
 + (void)setWindowRootController:(UIViewController *)context {
     [UIApplication sharedApplication].delegate.window.rootViewController = context;
+}
+
++ (void)pushWebViewControllerWithHtmlWord:(NSString *)pTag controller:(UIViewController *)context {
+    WebViewController *web = [[WebViewController alloc]init];
+    web.htmlWord = [pTag copy];
+    if (context.navigationController) {
+        UINavigationController *nav = context.navigationController;
+        [nav pushViewController:web animated:YES];
+    }
 }
 
 @end

@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WifiManager : NSObject
+@interface WifiUtil : NSObject
 
 +(NSString *)getWifiName;
++(NSString *)getWifiMac;
 + (void)fetchSSIDInfo;
++(void)openWifiSetting;
++ (NSString *)getLocalIPAddressForCurrentWiFi;
++ (NSString *)getGprsWifiFlowIOBytes;
 
 @end

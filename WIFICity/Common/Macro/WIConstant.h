@@ -26,4 +26,12 @@
 #import "WINotiConst.h"
 static NSString *const LoginVerfifyCodeNullError = @"验证码不能为空";
 
+static NSString *const WIFIConnectToastWord = @"wifi已连接";
+
+typedef NS_ENUM(NSInteger,WINetStatus) {
+    WINetWifi = 0,
+    WINet4G = 1,
+    WINetFail = 2
+};
+
 #endif /* WIConstant_h */

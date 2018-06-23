@@ -8,14 +8,85 @@
 
 #import "WifiPanel.h"
 
+@interface WifiPanel()
+
+@property (nonatomic,assign)WINetStatus status;
+
+@end
+
 @implementation WifiPanel
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    
+    if (self = [super initWithFrame:frame]) {
+        self = [[[NSBundle mainBundle] loadNibNamed:@"WifiPanel" owner:self options:nil] lastObject];
+        [self initUI];
+    }
+    return self;
+}
+
+- (void)initUI {
+    self.backgroundColor = [UIColor colorWithHexString:@"#1E52BF"];
+    self.connectWifiBtn.clipsToBounds = YES;
+    self.connectWifiBtn.layer.cornerRadius = 12;
+    self.connectWifiBtn.backgroundColor = [UIColor colorWithHexString:@"#0078FF"];
+    [self.connectWifiBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.wifiNameLabel.textColor = [UIColor colorWithHexString:@"#FFFCA4"];
+    
+    self.flowView = [[WifiFlowView alloc]initWithFrame:CGRectZero];
+    [self.flowBgView addSubview:self.flowView];
+    [self.flowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.flowBgView);
+    }];
+    
+    self.bottomView = [[WifiPanelBottomView alloc]initWithFrame:CGRectZero];
+    [self.bottomBgView addSubview:self.bottomView];
+    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.bottomBgView);
+    }];
+    
+    self.topView = [[WifiPanelTopView alloc]initWithFrame:CGRectZero];
+    [self.topBgView addSubview:self.topView];
+    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.topBgView);
+    }];
+    
+    [self setNetStatus:[WIFISevice netStatus]];
+}
+
+- (void)setNetStatus:(WINetStatus)status {
+    _status = status;
+    if (status == WINetFail || status == WINet4G ) {
+        [self.connectWifiBtn setTitle:@"无线连接" forState:UIControlStateNormal];
+        self.wifiNameLabel.text = @"";
+    } else {
+        [self.connectWifiBtn setTitle:@"已连接" forState:UIControlStateNormal];
+        NSString *wifiName = [WifiUtil getWifiName];
+        self.wifiNameLabel.text = [NSString stringWithFormat:@"WIFI: %@",wifiName];
+    }
+}
+
+- (void)setWifiInfo:(WIFIInfo *)wifiInfo {
+    _wifiInfo = wifiInfo;
+    [self.bottomView setWifiInfo:self.wifiInfo];
+    [self.flowView setWifiInfo:self.wifiInfo];
+    
+}
+
+- (void)refreshUI:(WIFIInfo *)info {
+    [self setWifiInfo:info];
+}
+
+- (void)netChange:(WINetStatus)status wifiInfo:(WIFIInfo *)info {
+    [self setNetStatus:status];
+}
+
+- (IBAction)connectWifi:(id)sender {
+    if (self.status == WINetFail || self.status == WINet4G ) {
+        [WifiUtil openWifiSetting];
+    } else {
+        [Dialog simpleToast:WIFIConnectToastWord];
+    }
+}
 @end

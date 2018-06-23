@@ -77,34 +77,34 @@
 
 + (void)startMonitoring
 {
-    // 1.获得网络监控的管理者
-    AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];
-    // 2.设置网络状态改变后的处理
-    [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        // 当网络状态改变了, 就会调用这个block
-        switch (status)
-        {
-            case AFNetworkReachabilityStatusUnknown: // 未知网络
-                DTLog(@"未知网络");
-                [MHAsiNetworkHandler sharedInstance].networkError = YES;
-                break;
-            case AFNetworkReachabilityStatusNotReachable: // 没有网络(断网)
-                [MHAsiNetworkHandler sharedInstance].networkError = YES;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [Dialog simpleToast:@"网络连接断开,请检查网络!"];
-                });
-                break;
-            case AFNetworkReachabilityStatusReachableViaWWAN: // 手机自带网络
-                DTLog(@"手机自带网络");
-                [MHAsiNetworkHandler sharedInstance].networkError = NO;
-                break;
-            case AFNetworkReachabilityStatusReachableViaWiFi: // WIFI
-                DTLog(@"WIFI");
-                [MHAsiNetworkHandler sharedInstance].networkError = NO;
-                break;
-        }
-    }];
-    [mgr startMonitoring];
+//    // 1.获得网络监控的管理者
+//    AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];
+//    // 2.设置网络状态改变后的处理
+//    [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        // 当网络状态改变了, 就会调用这个block
+//        switch (status)
+//        {
+//            case AFNetworkReachabilityStatusUnknown: // 未知网络
+//                DTLog(@"未知网络");
+//                [MHAsiNetworkHandler sharedInstance].networkError = YES;
+//                break;
+//            case AFNetworkReachabilityStatusNotReachable: // 没有网络(断网)
+//                [MHAsiNetworkHandler sharedInstance].networkError = YES;
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [Dialog simpleToast:@"网络连接断开,请检查网络!"];
+//                });
+//                break;
+//            case AFNetworkReachabilityStatusReachableViaWWAN: // 手机自带网络
+//                DTLog(@"手机自带网络");
+//                [MHAsiNetworkHandler sharedInstance].networkError = NO;
+//                break;
+//            case AFNetworkReachabilityStatusReachableViaWiFi: // WIFI
+//                DTLog(@"WIFI");
+//                [MHAsiNetworkHandler sharedInstance].networkError = NO;
+//                break;
+//        }
+//    }];
+//    [mgr startMonitoring];
 }
 /**
  *   懒加载网络请求项的 items 数组

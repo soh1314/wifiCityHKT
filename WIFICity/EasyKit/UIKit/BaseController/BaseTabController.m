@@ -7,7 +7,7 @@
 //
 
 #import "BaseTabController.h"
-
+#import "UIViewController+EasyUtil.h"
 @interface BaseTabController ()
 
 @end
@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self easySetAutoInsets:NO];
     // Do any additional setup after loading the view.
 }
 

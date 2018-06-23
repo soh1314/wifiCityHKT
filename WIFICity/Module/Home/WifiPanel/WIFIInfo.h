@@ -10,4 +10,7 @@
 
 @interface WIFIInfo : WIModel
 
+@property (nonatomic,copy)NSString *sid;
+@property (nonatomic,copy)NSString *bsid;
+
 @end

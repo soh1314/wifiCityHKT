@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SDKConfig.h"
 #import "StaticGuideViewController.h"
+#import "WIFISevice.h"
 
 @interface AppDelegate ()
 

@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WIFICity/Module/Login&amp;Register/IAccountLogin.m"
-            timestampString = "550745882.50835"
+            timestampString = "551354564.5954601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
@@ -36,7 +36,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WIFICity/Module/Login&amp;Register/LoginController.m"
-            timestampString = "550745882.508459"
+            timestampString = "551354564.595909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "121"
@@ -52,7 +52,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WIFICity/Module/Login&amp;Register/IAccountLogin.m"
-            timestampString = "550745882.5085289"
+            timestampString = "551354564.596256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -68,12 +68,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WIFICity/EasyKit/GuidView/DHGuidePageHUD/DHGuidePageHUD.m"
-            timestampString = "550745882.508579"
+            timestampString = "551354564.596367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
             endingLineNumber = "113"
             landmarkName = "-scrollViewDidEndDecelerating:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WIFICity/Module/Home/WifiPanel/WIFISevice.m"
+            timestampString = "551433424.248737"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-setNetMonitor"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -32,7 +32,6 @@
 + (WIUser *)currentUser {
     AccountManager *manager = [AccountManager shared];
     WIUser *user = [manager.dataStore loadAccount];
-    
     return user;
 }
 
@@ -73,6 +72,8 @@
 
     if (!self.user || [self.user.userId isEqualToString:@""]) {
         [self showLoginView];
+    } else {
+        [[NSNotificationCenter defaultCenter]postNotificationName:WILoginSuccessNoti object:nil];
     }
 }
 

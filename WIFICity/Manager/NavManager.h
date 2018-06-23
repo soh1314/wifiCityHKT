@@ -18,4 +18,6 @@
 
 + (void)setWindowRootController:(UIViewController *)context;
 
++ (void)pushWebViewControllerWithHtmlWord:(NSString *)pTag controller:(UIViewController *)context;
+
 @end

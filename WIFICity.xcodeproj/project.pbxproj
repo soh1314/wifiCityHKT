@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1654A6E920DDD80800AFC322 /* WIFICloudInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */; };
+		1654A6EC20DDF6A000AFC322 /* UILabel+wordStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */; };
+		1654A6EF20DE2EB300AFC322 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6ED20DE2EB200AFC322 /* WebViewController.m */; };
 		1656771620D119C900EC3D5C /* TPPasswordTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656771420D119C900EC3D5C /* TPPasswordTextView.m */; };
 		1656771A20D11DB000EC3D5C /* LoginController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656771820D11DB000EC3D5C /* LoginController2.m */; };
 		1656771B20D11DB000EC3D5C /* LoginController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1656771920D11DB000EC3D5C /* LoginController2.xib */; };
@@ -79,6 +82,34 @@
 		169D83A620D3C4CE00AA590F /* HomeLbtResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83A520D3C4CE00AA590F /* HomeLbtResponse.m */; };
 		169D83A920D3C50000AA590F /* HomeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83A820D3C50000AA590F /* HomeNews.m */; };
 		169D83AC20D3C54C00AA590F /* HomeServiceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83AB20D3C54C00AA590F /* HomeServiceData.m */; };
+		169D83B320DC7DC000AA590F /* HomeNewsOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83B120DC7DC000AA590F /* HomeNewsOneCell.m */; };
+		169D83B420DC7DC000AA590F /* HomeNewsOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169D83B220DC7DC000AA590F /* HomeNewsOneCell.xib */; };
+		169D83B820DC7DE300AA590F /* HomeNewsTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83B620DC7DE300AA590F /* HomeNewsTwoCell.m */; };
+		169D83B920DC7DE300AA590F /* HomeNewsTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169D83B720DC7DE300AA590F /* HomeNewsTwoCell.xib */; };
+		169D83BF20DC828F00AA590F /* EasyTableViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83BB20DC828F00AA590F /* EasyTableViewFooter.m */; };
+		169D83C020DC828F00AA590F /* EaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83BC20DC828F00AA590F /* EaseTableView.m */; };
+		169D83C420DC844600AA590F /* EasyNormalRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83C220DC844600AA590F /* EasyNormalRefreshHeader.m */; };
+		169D83C820DC8C3000AA590F /* HomeBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83C620DC8C3000AA590F /* HomeBannerCell.m */; };
+		169D83C920DC8C3000AA590F /* HomeBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169D83C720DC8C3000AA590F /* HomeBannerCell.xib */; };
+		169D83CD20DC8C4A00AA590F /* HomeServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83CB20DC8C4A00AA590F /* HomeServiceCell.m */; };
+		169D83CE20DC8C4A00AA590F /* HomeServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169D83CC20DC8C4A00AA590F /* HomeServiceCell.xib */; };
+		169D83E020DC8CFD00AA590F /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83D420DC8CFC00AA590F /* SDCycleScrollView.m */; };
+		169D83E120DC8CFD00AA590F /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83D520DC8CFC00AA590F /* UIView+SDExtension.m */; };
+		169D83E220DC8CFD00AA590F /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83D620DC8CFC00AA590F /* SDCollectionViewCell.m */; };
+		169D83E320DC8CFD00AA590F /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83D920DC8CFC00AA590F /* TADotView.m */; };
+		169D83E420DC8CFD00AA590F /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83DA20DC8CFC00AA590F /* TAPageControl.m */; };
+		169D83E520DC8CFD00AA590F /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83DB20DC8CFC00AA590F /* TAAnimatedDotView.m */; };
+		169D83E620DC8CFD00AA590F /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83DC20DC8CFC00AA590F /* TAAbstractDotView.m */; };
+		169D83EA20DC933700AA590F /* HomeServiceItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83E820DC933700AA590F /* HomeServiceItemCell.m */; };
+		169D83EB20DC933700AA590F /* HomeServiceItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169D83E920DC933700AA590F /* HomeServiceItemCell.xib */; };
+		169D83EF20DC9B4100AA590F /* HomeNewsImageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83ED20DC9B4100AA590F /* HomeNewsImageItemCell.m */; };
+		169D83F020DC9B4100AA590F /* HomeNewsImageItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169D83EE20DC9B4100AA590F /* HomeNewsImageItemCell.xib */; };
+		169D83F320DCD28500AA590F /* WifiFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83F220DCD28500AA590F /* WifiFlowView.m */; };
+		169D83F620DCD2A200AA590F /* WifiPanelBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83F520DCD2A200AA590F /* WifiPanelBottomView.m */; };
+		169D83F920DCD2B500AA590F /* WifiPanelTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D83F820DCD2B500AA590F /* WifiPanelTopView.m */; };
+		169D83FB20DCD30100AA590F /* WifiPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169D83FA20DCD30100AA590F /* WifiPanel.xib */; };
+		169D83FF20DCE3F900AA590F /* WifiFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169D83FE20DCE3F900AA590F /* WifiFlowView.xib */; };
+		169D840120DCE4D100AA590F /* WifiPanelBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169D840020DCE4D100AA590F /* WifiPanelBottomView.xib */; };
 		16C79BCF20CE6B5E00A67DF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C79BCE20CE6B5E00A67DF6 /* AppDelegate.m */; };
 		16C79BD720CE6B6500A67DF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16C79BD620CE6B6500A67DF6 /* Assets.xcassets */; };
 		16C79BDD20CE6B6500A67DF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C79BDC20CE6B6500A67DF6 /* main.m */; };
@@ -150,7 +181,7 @@
 		16D64C0420CFB58300ED74C8 /* RNDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64C0020CFB58300ED74C8 /* RNDecryptor.m */; };
 		16D64C0520CFB58300ED74C8 /* RNEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64C0120CFB58300ED74C8 /* RNEncryptor.m */; };
 		16D64C0620CFB58300ED74C8 /* RNCryptorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64C0220CFB58300ED74C8 /* RNCryptorEngine.m */; };
-		16D64C0C20CFBB8F00ED74C8 /* WifiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64C0B20CFBB8F00ED74C8 /* WifiManager.m */; };
+		16D64C0C20CFBB8F00ED74C8 /* WifiUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64C0B20CFBB8F00ED74C8 /* WifiUtil.m */; };
 		16D64C2320D0AAB800ED74C8 /* TGNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64C1220D0AAB800ED74C8 /* TGNetManager.m */; };
 		16D64C2420D0AAB800ED74C8 /* TGNetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64C1420D0AAB800ED74C8 /* TGNetConfig.m */; };
 		16D64C2520D0AAB800ED74C8 /* MHUploadParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64C1A20D0AAB800ED74C8 /* MHUploadParam.m */; };
@@ -188,6 +219,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1654A6D620DDCEB900AFC322 /* WifiPanelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiPanelProtocol.h; sourceTree = "<group>"; };
+		1654A6E720DDD80800AFC322 /* WIFICloudInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFICloudInfo.h; sourceTree = "<group>"; };
+		1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFICloudInfo.m; sourceTree = "<group>"; };
+		1654A6EA20DDF6A000AFC322 /* UILabel+wordStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+wordStyle.h"; sourceTree = "<group>"; };
+		1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+wordStyle.m"; sourceTree = "<group>"; };
+		1654A6ED20DE2EB200AFC322 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		1654A6EE20DE2EB200AFC322 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		1656771420D119C900EC3D5C /* TPPasswordTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPasswordTextView.m; sourceTree = "<group>"; };
 		1656771520D119C900EC3D5C /* TPPasswordTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPPasswordTextView.h; sourceTree = "<group>"; };
 		1656771720D11DB000EC3D5C /* LoginController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginController2.h; sourceTree = "<group>"; };
@@ -281,6 +319,54 @@
 		169D83A820D3C50000AA590F /* HomeNews.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNews.m; sourceTree = "<group>"; };
 		169D83AA20D3C54C00AA590F /* HomeServiceData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeServiceData.h; sourceTree = "<group>"; };
 		169D83AB20D3C54C00AA590F /* HomeServiceData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeServiceData.m; sourceTree = "<group>"; };
+		169D83B020DC7DC000AA590F /* HomeNewsOneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNewsOneCell.h; sourceTree = "<group>"; };
+		169D83B120DC7DC000AA590F /* HomeNewsOneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNewsOneCell.m; sourceTree = "<group>"; };
+		169D83B220DC7DC000AA590F /* HomeNewsOneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNewsOneCell.xib; sourceTree = "<group>"; };
+		169D83B520DC7DE300AA590F /* HomeNewsTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNewsTwoCell.h; sourceTree = "<group>"; };
+		169D83B620DC7DE300AA590F /* HomeNewsTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNewsTwoCell.m; sourceTree = "<group>"; };
+		169D83B720DC7DE300AA590F /* HomeNewsTwoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNewsTwoCell.xib; sourceTree = "<group>"; };
+		169D83BB20DC828F00AA590F /* EasyTableViewFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyTableViewFooter.m; sourceTree = "<group>"; };
+		169D83BC20DC828F00AA590F /* EaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseTableView.m; sourceTree = "<group>"; };
+		169D83BD20DC828F00AA590F /* EasyTableViewFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTableViewFooter.h; sourceTree = "<group>"; };
+		169D83BE20DC828F00AA590F /* EaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseTableView.h; sourceTree = "<group>"; };
+		169D83C220DC844600AA590F /* EasyNormalRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyNormalRefreshHeader.m; sourceTree = "<group>"; };
+		169D83C320DC844600AA590F /* EasyNormalRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyNormalRefreshHeader.h; sourceTree = "<group>"; };
+		169D83C520DC8C3000AA590F /* HomeBannerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBannerCell.h; sourceTree = "<group>"; };
+		169D83C620DC8C3000AA590F /* HomeBannerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBannerCell.m; sourceTree = "<group>"; };
+		169D83C720DC8C3000AA590F /* HomeBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeBannerCell.xib; sourceTree = "<group>"; };
+		169D83CA20DC8C4A00AA590F /* HomeServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeServiceCell.h; sourceTree = "<group>"; };
+		169D83CB20DC8C4A00AA590F /* HomeServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeServiceCell.m; sourceTree = "<group>"; };
+		169D83CC20DC8C4A00AA590F /* HomeServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeServiceCell.xib; sourceTree = "<group>"; };
+		169D83D120DC8CFC00AA590F /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
+		169D83D220DC8CFC00AA590F /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
+		169D83D320DC8CFC00AA590F /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
+		169D83D420DC8CFC00AA590F /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
+		169D83D520DC8CFC00AA590F /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
+		169D83D620DC8CFC00AA590F /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
+		169D83D820DC8CFC00AA590F /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		169D83D920DC8CFC00AA590F /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		169D83DA20DC8CFC00AA590F /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		169D83DB20DC8CFC00AA590F /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		169D83DC20DC8CFC00AA590F /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		169D83DD20DC8CFC00AA590F /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		169D83DE20DC8CFC00AA590F /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		169D83DF20DC8CFC00AA590F /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		169D83E720DC933700AA590F /* HomeServiceItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeServiceItemCell.h; sourceTree = "<group>"; };
+		169D83E820DC933700AA590F /* HomeServiceItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeServiceItemCell.m; sourceTree = "<group>"; };
+		169D83E920DC933700AA590F /* HomeServiceItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeServiceItemCell.xib; sourceTree = "<group>"; };
+		169D83EC20DC9B4100AA590F /* HomeNewsImageItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNewsImageItemCell.h; sourceTree = "<group>"; };
+		169D83ED20DC9B4100AA590F /* HomeNewsImageItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNewsImageItemCell.m; sourceTree = "<group>"; };
+		169D83EE20DC9B4100AA590F /* HomeNewsImageItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNewsImageItemCell.xib; sourceTree = "<group>"; };
+		169D83F120DCD28500AA590F /* WifiFlowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiFlowView.h; sourceTree = "<group>"; };
+		169D83F220DCD28500AA590F /* WifiFlowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WifiFlowView.m; sourceTree = "<group>"; };
+		169D83F420DCD2A200AA590F /* WifiPanelBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiPanelBottomView.h; sourceTree = "<group>"; };
+		169D83F520DCD2A200AA590F /* WifiPanelBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WifiPanelBottomView.m; sourceTree = "<group>"; };
+		169D83F720DCD2B500AA590F /* WifiPanelTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiPanelTopView.h; sourceTree = "<group>"; };
+		169D83F820DCD2B500AA590F /* WifiPanelTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WifiPanelTopView.m; sourceTree = "<group>"; };
+		169D83FA20DCD30100AA590F /* WifiPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiPanel.xib; sourceTree = "<group>"; };
+		169D83FE20DCE3F900AA590F /* WifiFlowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiFlowView.xib; sourceTree = "<group>"; };
+		169D840020DCE4D100AA590F /* WifiPanelBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiPanelBottomView.xib; sourceTree = "<group>"; };
+		169D840220DCF4A200AA590F /* WifiNetChangeProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiNetChangeProtocol.h; sourceTree = "<group>"; };
 		16C79BCA20CE6B5E00A67DF6 /* WIFICity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WIFICity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C79BCD20CE6B5E00A67DF6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		16C79BCE20CE6B5E00A67DF6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -423,8 +509,8 @@
 		16D64C0020CFB58300ED74C8 /* RNDecryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNDecryptor.m; sourceTree = "<group>"; };
 		16D64C0120CFB58300ED74C8 /* RNEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNEncryptor.m; sourceTree = "<group>"; };
 		16D64C0220CFB58300ED74C8 /* RNCryptorEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCryptorEngine.m; sourceTree = "<group>"; };
-		16D64C0A20CFBB8F00ED74C8 /* WifiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiManager.h; sourceTree = "<group>"; };
-		16D64C0B20CFBB8F00ED74C8 /* WifiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WifiManager.m; sourceTree = "<group>"; };
+		16D64C0A20CFBB8F00ED74C8 /* WifiUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiUtil.h; sourceTree = "<group>"; };
+		16D64C0B20CFBB8F00ED74C8 /* WifiUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WifiUtil.m; sourceTree = "<group>"; };
 		16D64C1020D0AAB800ED74C8 /* TGNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGNetManager.h; sourceTree = "<group>"; };
 		16D64C1120D0AAB800ED74C8 /* TGNetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGNetConfig.h; sourceTree = "<group>"; };
 		16D64C1220D0AAB800ED74C8 /* TGNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGNetManager.m; sourceTree = "<group>"; };
@@ -675,10 +761,23 @@
 			children = (
 				169D839B20D3C21800AA590F /* WifiPanel.h */,
 				169D839C20D3C21800AA590F /* WifiPanel.m */,
+				169D83FA20DCD30100AA590F /* WifiPanel.xib */,
+				169D83F120DCD28500AA590F /* WifiFlowView.h */,
+				169D83F220DCD28500AA590F /* WifiFlowView.m */,
+				169D83FE20DCE3F900AA590F /* WifiFlowView.xib */,
+				169D83F420DCD2A200AA590F /* WifiPanelBottomView.h */,
+				169D83F520DCD2A200AA590F /* WifiPanelBottomView.m */,
+				169D840020DCE4D100AA590F /* WifiPanelBottomView.xib */,
+				169D83F720DCD2B500AA590F /* WifiPanelTopView.h */,
+				169D83F820DCD2B500AA590F /* WifiPanelTopView.m */,
 				169D839E20D3C23F00AA590F /* WIFIInfo.h */,
 				169D839F20D3C23F00AA590F /* WIFIInfo.m */,
+				1654A6E720DDD80800AFC322 /* WIFICloudInfo.h */,
+				1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */,
 				169D83A120D3C28000AA590F /* WIFISevice.h */,
 				169D83A220D3C28000AA590F /* WIFISevice.m */,
+				169D840220DCF4A200AA590F /* WifiNetChangeProtocol.h */,
+				1654A6D620DDCEB900AFC322 /* WifiPanelProtocol.h */,
 			);
 			path = WifiPanel;
 			sourceTree = "<group>";
@@ -699,8 +798,83 @@
 		169D83AF20D3C71E00AA590F /* HomeCell */ = {
 			isa = PBXGroup;
 			children = (
+				169D83B020DC7DC000AA590F /* HomeNewsOneCell.h */,
+				169D83B120DC7DC000AA590F /* HomeNewsOneCell.m */,
+				169D83B220DC7DC000AA590F /* HomeNewsOneCell.xib */,
+				169D83B520DC7DE300AA590F /* HomeNewsTwoCell.h */,
+				169D83B620DC7DE300AA590F /* HomeNewsTwoCell.m */,
+				169D83B720DC7DE300AA590F /* HomeNewsTwoCell.xib */,
+				169D83EC20DC9B4100AA590F /* HomeNewsImageItemCell.h */,
+				169D83ED20DC9B4100AA590F /* HomeNewsImageItemCell.m */,
+				169D83EE20DC9B4100AA590F /* HomeNewsImageItemCell.xib */,
+				169D83C520DC8C3000AA590F /* HomeBannerCell.h */,
+				169D83C620DC8C3000AA590F /* HomeBannerCell.m */,
+				169D83C720DC8C3000AA590F /* HomeBannerCell.xib */,
+				169D83CA20DC8C4A00AA590F /* HomeServiceCell.h */,
+				169D83CB20DC8C4A00AA590F /* HomeServiceCell.m */,
+				169D83CC20DC8C4A00AA590F /* HomeServiceCell.xib */,
+				169D83E720DC933700AA590F /* HomeServiceItemCell.h */,
+				169D83E820DC933700AA590F /* HomeServiceItemCell.m */,
+				169D83E920DC933700AA590F /* HomeServiceItemCell.xib */,
 			);
 			path = HomeCell;
+			sourceTree = "<group>";
+		};
+		169D83BA20DC828F00AA590F /* BaseTableView */ = {
+			isa = PBXGroup;
+			children = (
+				169D83BB20DC828F00AA590F /* EasyTableViewFooter.m */,
+				169D83BC20DC828F00AA590F /* EaseTableView.m */,
+				169D83BD20DC828F00AA590F /* EasyTableViewFooter.h */,
+				169D83BE20DC828F00AA590F /* EaseTableView.h */,
+			);
+			path = BaseTableView;
+			sourceTree = "<group>";
+		};
+		169D83C120DC844600AA590F /* EasyPull */ = {
+			isa = PBXGroup;
+			children = (
+				169D83C220DC844600AA590F /* EasyNormalRefreshHeader.m */,
+				169D83C320DC844600AA590F /* EasyNormalRefreshHeader.h */,
+			);
+			path = EasyPull;
+			sourceTree = "<group>";
+		};
+		169D83CF20DC8CFC00AA590F /* Cousal */ = {
+			isa = PBXGroup;
+			children = (
+				169D83D020DC8CFC00AA590F /* SDCycleScrollView */,
+			);
+			path = Cousal;
+			sourceTree = "<group>";
+		};
+		169D83D020DC8CFC00AA590F /* SDCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				169D83D120DC8CFC00AA590F /* UIView+SDExtension.h */,
+				169D83D220DC8CFC00AA590F /* SDCycleScrollView.h */,
+				169D83D320DC8CFC00AA590F /* SDCollectionViewCell.h */,
+				169D83D420DC8CFC00AA590F /* SDCycleScrollView.m */,
+				169D83D520DC8CFC00AA590F /* UIView+SDExtension.m */,
+				169D83D620DC8CFC00AA590F /* SDCollectionViewCell.m */,
+				169D83D720DC8CFC00AA590F /* PageControl */,
+			);
+			path = SDCycleScrollView;
+			sourceTree = "<group>";
+		};
+		169D83D720DC8CFC00AA590F /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				169D83D820DC8CFC00AA590F /* TAAbstractDotView.h */,
+				169D83D920DC8CFC00AA590F /* TADotView.m */,
+				169D83DA20DC8CFC00AA590F /* TAPageControl.m */,
+				169D83DB20DC8CFC00AA590F /* TAAnimatedDotView.m */,
+				169D83DC20DC8CFC00AA590F /* TAAbstractDotView.m */,
+				169D83DD20DC8CFC00AA590F /* TADotView.h */,
+				169D83DE20DC8CFC00AA590F /* TAAnimatedDotView.h */,
+				169D83DF20DC8CFC00AA590F /* TAPageControl.h */,
+			);
+			path = PageControl;
 			sourceTree = "<group>";
 		};
 		16C79BC120CE6B5E00A67DF6 = {
@@ -941,6 +1115,8 @@
 				16D64B7520CF7CE700ED74C8 /* UIView+borderLine.m */,
 				16D64B6A20CF7CE600ED74C8 /* UIViewController+EasyUtil.h */,
 				16D64B6920CF7CE600ED74C8 /* UIViewController+EasyUtil.m */,
+				1654A6EA20DDF6A000AFC322 /* UILabel+wordStyle.h */,
+				1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1002,6 +1178,9 @@
 		16D64B9E20CF9FCE00ED74C8 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				169D83CF20DC8CFC00AA590F /* Cousal */,
+				169D83C120DC844600AA590F /* EasyPull */,
+				169D83BA20DC828F00AA590F /* BaseTableView */,
 				1656771320D119C900EC3D5C /* SmallUIComponet */,
 				16D64B9F20CF9FCE00ED74C8 /* WebViewController */,
 				16D64BA020CF9FCE00ED74C8 /* NavBarController */,
@@ -1017,6 +1196,8 @@
 		16D64B9F20CF9FCE00ED74C8 /* WebViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1654A6EE20DE2EB200AFC322 /* WebViewController.h */,
+				1654A6ED20DE2EB200AFC322 /* WebViewController.m */,
 			);
 			path = WebViewController;
 			sourceTree = "<group>";
@@ -1183,8 +1364,8 @@
 		16D64C2220D0AAB800ED74C8 /* WifiManager */ = {
 			isa = PBXGroup;
 			children = (
-				16D64C0A20CFBB8F00ED74C8 /* WifiManager.h */,
-				16D64C0B20CFBB8F00ED74C8 /* WifiManager.m */,
+				16D64C0A20CFBB8F00ED74C8 /* WifiUtil.h */,
+				16D64C0B20CFBB8F00ED74C8 /* WifiUtil.m */,
 			);
 			path = WifiManager;
 			sourceTree = "<group>";
@@ -1415,25 +1596,34 @@
 				165678A820D3662A00EC3D5C /* square@3x.png in Resources */,
 				1656789420D3662A00EC3D5C /* home_default@3x.png in Resources */,
 				169D837820D3ACAE00AA590F /* GuideImage.bundle in Resources */,
+				169D83B420DC7DC000AA590F /* HomeNewsOneCell.xib in Resources */,
 				165678A520D3662A00EC3D5C /* home_default.png in Resources */,
+				169D83FB20DCD30100AA590F /* WifiPanel.xib in Resources */,
 				165678A320D3662A00EC3D5C /* mine_default@3x.png in Resources */,
 				169D836820D396FF00AA590F /* back@2x.png in Resources */,
+				169D83FF20DCE3F900AA590F /* WifiFlowView.xib in Resources */,
 				16D651B720D108B100ED74C8 /* wechat_login.png in Resources */,
 				16D64C5520D0C19500ED74C8 /* RegisterController.xib in Resources */,
 				16D64C5020D0C18000ED74C8 /* LoginController.xib in Resources */,
+				169D840120DCE4D100AA590F /* WifiPanelBottomView.xib in Resources */,
 				165678A120D3662A00EC3D5C /* mine.png in Resources */,
+				169D83EB20DC933700AA590F /* HomeServiceItemCell.xib in Resources */,
 				165678A420D3662A00EC3D5C /* square_default@2x.png in Resources */,
 				1656789720D3662A00EC3D5C /* square.png in Resources */,
 				165678A220D3662A00EC3D5C /* mine@2x.png in Resources */,
+				169D83C920DC8C3000AA590F /* HomeBannerCell.xib in Resources */,
 				1656789D20D3662A00EC3D5C /* location_default@2x.png in Resources */,
 				1656781D20D35AF700EC3D5C /* ShareSDK.bundle in Resources */,
+				169D83CE20DC8C4A00AA590F /* HomeServiceCell.xib in Resources */,
 				1656789820D3662A00EC3D5C /* location_default@3x.png in Resources */,
 				1656781E20D35AF700EC3D5C /* ShareSDKUI.bundle in Resources */,
 				165678A620D3662A00EC3D5C /* home_default@2x.png in Resources */,
 				1656789920D3662A00EC3D5C /* square@2x.png in Resources */,
 				16C79BD720CE6B6500A67DF6 /* Assets.xcassets in Resources */,
 				1656779720D24CD400EC3D5C /* qq_login.png in Resources */,
+				169D83F020DC9B4100AA590F /* HomeNewsImageItemCell.xib in Resources */,
 				169D838A20D3AECF00AA590F /* switch1@2x.png in Resources */,
+				169D83B920DC7DE300AA590F /* HomeNewsTwoCell.xib in Resources */,
 				169D838820D3AECF00AA590F /* 启动页2.jpg in Resources */,
 				16D64BE020CF9FCE00ED74C8 /* SVProgressHUD.bundle in Resources */,
 				165678A920D3662A00EC3D5C /* mine_default.png in Resources */,
@@ -1541,32 +1731,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				16D64B7E20CF7CE800ED74C8 /* UIButton+adapter.m in Sources */,
+				1654A6EF20DE2EB300AFC322 /* WebViewController.m in Sources */,
 				16D64C2520D0AAB800ED74C8 /* MHUploadParam.m in Sources */,
 				169D83A620D3C4CE00AA590F /* HomeLbtResponse.m in Sources */,
 				16D64BD420CF9FCE00ED74C8 /* EaseNoDataModel.m in Sources */,
 				16D64C4B20D0BEC300ED74C8 /* WIModel.m in Sources */,
+				169D83B820DC7DE300AA590F /* HomeNewsTwoCell.m in Sources */,
+				169D83F920DCD2B500AA590F /* WifiPanelTopView.m in Sources */,
 				16D64BE120CF9FCE00ED74C8 /* MBProgressHUD+MJ.m in Sources */,
 				16D64C0620CFB58300ED74C8 /* RNCryptorEngine.m in Sources */,
+				169D83E520DC8CFD00AA590F /* TAAnimatedDotView.m in Sources */,
 				16D64BD320CF9FCE00ED74C8 /* BaseViewController.m in Sources */,
 				16D64B8320CF7CE800ED74C8 /* UIColor+Theme.m in Sources */,
 				16D64B7F20CF7CE800ED74C8 /* NSDateFormatter+Category.m in Sources */,
+				169D83E620DC8CFD00AA590F /* TAAbstractDotView.m in Sources */,
 				16D64BDF20CF9FCE00ED74C8 /* SVIndefiniteAnimatedView.m in Sources */,
+				169D83CD20DC8C4A00AA590F /* HomeServiceCell.m in Sources */,
 				16D64B7720CF7CE800ED74C8 /* UIImage+ImageEffects.m in Sources */,
 				1656779C20D26E0800EC3D5C /* WINotiConst.m in Sources */,
 				16D64B5320CF7BA500ED74C8 /* GCDThrottle.m in Sources */,
 				16D64B7D20CF7CE800ED74C8 /* UIFont+Util.m in Sources */,
+				1654A6EC20DDF6A000AFC322 /* UILabel+wordStyle.m in Sources */,
+				169D83BF20DC828F00AA590F /* EasyTableViewFooter.m in Sources */,
 				16D64B7B20CF7CE800ED74C8 /* UILabel+Adapter.m in Sources */,
 				16D64B9A20CF980F00ED74C8 /* AccountManager.m in Sources */,
 				16D64B8020CF7CE800ED74C8 /* UIViewController+EasyUtil.m in Sources */,
 				16D64B9D20CF9B5900ED74C8 /* AccoutDataStore.m in Sources */,
 				16D64B7920CF7CE800ED74C8 /* UIImage+base.m in Sources */,
+				169D83B320DC7DC000AA590F /* HomeNewsOneCell.m in Sources */,
 				16D64BEF20CFA2A800ED74C8 /* HomeController.m in Sources */,
+				169D83F320DCD28500AA590F /* WifiFlowView.m in Sources */,
 				16D64B9620CF939000ED74C8 /* WIUser.m in Sources */,
 				169D83A320D3C28000AA590F /* WIFISevice.m in Sources */,
 				16D651AA20D0FBEF00ED74C8 /* IAccountLogin.m in Sources */,
+				169D83EF20DC9B4100AA590F /* HomeNewsImageItemCell.m in Sources */,
 				16D64BD820CF9FCE00ED74C8 /* WMScrollView.m in Sources */,
+				169D83E220DC8CFD00AA590F /* SDCollectionViewCell.m in Sources */,
 				16D64B8120CF7CE800ED74C8 /* NSDate+Category.m in Sources */,
 				16D64B8220CF7CE800ED74C8 /* NSDate+Additions.m in Sources */,
+				169D83E420DC8CFD00AA590F /* TAPageControl.m in Sources */,
 				16D64BE220CF9FCE00ED74C8 /* Dialog.m in Sources */,
 				16D64C5420D0C19500ED74C8 /* RegisterController.m in Sources */,
 				1656772320D214EA00EC3D5C /* SDKConfig.m in Sources */,
@@ -1575,10 +1778,13 @@
 				16D64BDB20CF9FCE00ED74C8 /* MBProgressHUD+Add.m in Sources */,
 				16D64BD220CF9FCE00ED74C8 /* UIScrollView+EmptyDataSet.m in Sources */,
 				16D64BD720CF9FCE00ED74C8 /* WMMenuItem.m in Sources */,
+				169D83E120DC8CFD00AA590F /* UIView+SDExtension.m in Sources */,
 				16D64BD920CF9FCE00ED74C8 /* WMMenuView.m in Sources */,
 				16D64B7A20CF7CE800ED74C8 /* NSString+Additions.m in Sources */,
 				16D64BDC20CF9FCE00ED74C8 /* SVRadialGradientLayer.m in Sources */,
 				16D64BDE20CF9FCE00ED74C8 /* SVProgressHUD.m in Sources */,
+				169D83E020DC8CFD00AA590F /* SDCycleScrollView.m in Sources */,
+				169D83C020DC828F00AA590F /* EaseTableView.m in Sources */,
 				16D64C2720D0AAB800ED74C8 /* MHNetworkManager.m in Sources */,
 				16D64BD120CF9FCE00ED74C8 /* WINavigationCotroller.m in Sources */,
 				16D651B020D1014800ED74C8 /* WINetResponse.m in Sources */,
@@ -1597,6 +1803,7 @@
 				16D64BF520CFA9BF00ED74C8 /* NavManager.m in Sources */,
 				16D64B4E20CF7BA500ED74C8 /* EasyCLLocationManager.m in Sources */,
 				16D64C2320D0AAB800ED74C8 /* TGNetManager.m in Sources */,
+				169D83E320DC8CFD00AA590F /* TADotView.m in Sources */,
 				16D64C2420D0AAB800ED74C8 /* TGNetConfig.m in Sources */,
 				169D836E20D39D1000AA590F /* WIQQInfo.m in Sources */,
 				169D83AC20D3C54C00AA590F /* HomeServiceData.m in Sources */,
@@ -1604,8 +1811,10 @@
 				16D64B8620CF7CE800ED74C8 /* UIView+borderLine.m in Sources */,
 				16C79BDD20CE6B6500A67DF6 /* main.m in Sources */,
 				16D64BDD20CF9FCE00ED74C8 /* SVProgressAnimatedView.m in Sources */,
+				1654A6E920DDD80800AFC322 /* WIFICloudInfo.m in Sources */,
 				16C79BCF20CE6B5E00A67DF6 /* AppDelegate.m in Sources */,
-				16D64C0C20CFBB8F00ED74C8 /* WifiManager.m in Sources */,
+				169D83F620DCD2A200AA590F /* WifiPanelBottomView.m in Sources */,
+				16D64C0C20CFBB8F00ED74C8 /* WifiUtil.m in Sources */,
 				16D64BD520CF9FCE00ED74C8 /* WITabBarController.m in Sources */,
 				16D64B9220CF868400ED74C8 /* GTMBase64.m in Sources */,
 				16D64C0420CFB58300ED74C8 /* RNDecryptor.m in Sources */,
@@ -1619,10 +1828,13 @@
 				16D64B4D20CF7BA500ED74C8 /* EasyAllertUtil.m in Sources */,
 				16D64BE920CFA28D00ED74C8 /* MyController.m in Sources */,
 				16D64B8520CF7CE800ED74C8 /* UIScreen+Additions.m in Sources */,
+				169D83C820DC8C3000AA590F /* HomeBannerCell.m in Sources */,
 				16D64B8420CF7CE800ED74C8 /* UITextView+ZWPlaceHolder.m in Sources */,
+				169D83EA20DC933700AA590F /* HomeServiceItemCell.m in Sources */,
 				169D839D20D3C21800AA590F /* WifiPanel.m in Sources */,
 				16D64B7620CF7CE800ED74C8 /* NSDictionary+utils.m in Sources */,
 				16D64C0520CFB58300ED74C8 /* RNEncryptor.m in Sources */,
+				169D83C420DC844600AA590F /* EasyNormalRefreshHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
