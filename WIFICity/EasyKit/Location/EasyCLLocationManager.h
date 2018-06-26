@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "WILocation.h"
+
 typedef void(^EasyCLLocateComplete)(NSString *province,NSString *city,NSString *area,NSString *detailAddress);
 
 @interface EasyCLLocationManager : NSObject
@@ -17,6 +19,8 @@ typedef void(^EasyCLLocateComplete)(NSString *province,NSString *city,NSString *
 @property (nonatomic,strong)CLLocationManager *locationManager;
 
 @property (nonatomic,strong)CLLocation *currentLocation;
+
+@property (nonatomic,strong)WILocation *location;
 
 @property (nonatomic,copy)EasyCLLocateComplete locateCompleteBlock;
 

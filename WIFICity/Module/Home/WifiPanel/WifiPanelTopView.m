@@ -10,12 +10,13 @@
 
 @implementation WifiPanelTopView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame {
+    
+    if (self = [super initWithFrame:frame]) {
+        self = [[[NSBundle mainBundle] loadNibNamed:@"WifiPanelTopView" owner:self options:nil] lastObject];
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
 }
-*/
 
 @end

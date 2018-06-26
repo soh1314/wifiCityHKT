@@ -10,4 +10,10 @@
 
 @interface WifiPanelTopView : UIView
 
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *weatherLabel;
+@property (weak, nonatomic) IBOutlet UILabel *PMLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *weatherImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *pmImageView;
+
 @end

@@ -31,8 +31,19 @@
     _wifiInfo = wifiInfo;
     if ([self.wifiInfo isKindOfClass:[WIFICloudInfo class]]) {
         WIFICloudInfo *info = (WIFICloudInfo *)self.wifiInfo;
-        self.totalFlowLabel.text = [NSString stringWithFormat:@"%.2f",info.flowNumber];
+        if (info.flowNumber >= 1024) {
+            self.totalFlowLabel.text = [NSString stringWithFormat:@"%.2f GB",info.flowNumber/1024.0f];
+        } else {
+           self.totalFlowLabel.text = [NSString stringWithFormat:@"%.2f MB",info.flowNumber];
+        }        
+        NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:self.totalFlowLabel.text];
+        [AttributedStr addAttribute:NSFontAttributeName
+         
+                              value:[UIFont systemFontOfSize:12.0]
+         
+                              range:NSMakeRange(self.totalFlowLabel.text.length-2, 2)];
         
+        self.totalFlowLabel.attributedText = AttributedStr;
     }
 }
 

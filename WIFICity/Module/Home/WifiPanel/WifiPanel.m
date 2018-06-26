@@ -67,6 +67,26 @@
     }
 }
 
+- (void)setLocation:(WILocation *)location {
+    _location = location;
+    self.topView.locationLabel.text = [NSString stringWithFormat:@"%@",location.city];
+    if (location.city) {
+        [WIWeatherService getWeatherInfoWithLocation:location.city complete:^(WIWeatherInfo *weatherInfo) {
+            if (weatherInfo) {
+                [self setWeatherInfo:weatherInfo];
+            }
+        }];
+    }
+}
+
+- (void)setWeatherInfo:(WIWeatherInfo *)info {
+    self.topView.PMLabel.text = [NSString stringWithFormat:@"PM: %@",[info.PM copy]] ;
+    self.topView.weatherLabel.text = [info.temperature copy];
+    [self.topView.weatherImageView sd_setImageWithURL:[NSURL URLWithString:info.dayPictureUrl]];
+    self.topView.pmImageView.hidden = NO;
+}
+
+
 - (void)setWifiInfo:(WIFIInfo *)wifiInfo {
     _wifiInfo = wifiInfo;
     [self.bottomView setWifiInfo:self.wifiInfo];

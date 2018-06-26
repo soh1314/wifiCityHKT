@@ -34,6 +34,7 @@
 //url 编码
 - (NSString *)URLEncode;
 - (NSString *)URLDecode;
+- (NSString *)hanziURLEncode;
 - (NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
 + (NSString*)ObjectTojsonString:(id)object;
 
@@ -50,5 +51,10 @@
 
 + (NSString *)numberDecimal:(id)number;
 + (NSString*)DataTOjsonString:(id)object;
+
+//时间戳
+
++ (NSString *)currentTimeStr;
++ (NSString *)unixTimeStamp;
 
 @end

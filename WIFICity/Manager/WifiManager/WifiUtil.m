@@ -13,6 +13,9 @@
 #import <ifaddrs.h>
 #include <sys/socket.h>
 #include <net/if.h>
+#include <arpa/inet.h>
+#include <net/if_dl.h>
+#import <NetworkExtension/NEHotspotConfigurationManager.h>
 
 @implementation WifiUtil
 
@@ -80,54 +83,7 @@
     return wifiName;
 }
 
-#pragma mark - 获取当前所连接WiFi的网关地址
 
-//+ (NSString *)getGatewayIpForCurrentWiFi {
-//    NSString *address = @"error";
-//    struct ifaddrs *interfaces = NULL;
-//    struct ifaddrs *temp_addr = NULL;
-//    int success = 0;
-//    // retrieve the current interfaces - returns 0 on success
-//    success = getifaddrs(&interfaces);
-//    if (success == 0) {
-//        // Loop through linked list of interfaces
-//        temp_addr = interfaces;
-//        //*/
-//        while(temp_addr != NULL) {
-//            /*/
-//             int i=255;
-//             while((i--)>0)
-//             //*/
-//            if(temp_addr->ifa_addr->sa_family == AF_INET) {
-//                // Check if interface is en0 which is the wifi connection on the iPhone
-//                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"])
-//                {
-//                    // Get NSString from C String //ifa_addr
-//                    //ifa->ifa_dstaddr is the broadcast address, which explains the "255's"
-//                    //                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_dstaddr)->sin_addr)];
-//                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
-//                    //routerIP----192.168.1.255 广播地址
-//                    NSLog(@"broadcast address--%@",[NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_dstaddr)->sin_addr)]);
-//                    //--192.168.1.106 本机地址
-//                    NSLog(@"local device ip--%@",[NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)]);
-//                    //--255.255.255.0 子网掩码地址
-//                    NSLog(@"netmask--%@",[NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_netmask)->sin_addr)]);
-//                    //--en0 端口地址
-//                    NSLog(@"interface--%@",[NSString stringWithUTF8String:temp_addr->ifa_name]);
-//                }
-//            }
-//            temp_addr = temp_addr->ifa_next;
-//        }
-//    }
-//    // Free memory
-//    freeifaddrs(interfaces);
-//    in_addr_t i = inet_addr([address cStringUsingEncoding:NSUTF8StringEncoding]);
-//    in_addr_t* x = &i;
-//    unsigned char *s = getdefaultgateway(x);
-//    NSString *ip=[NSString stringWithFormat:@"%d.%d.%d.%d",s[0],s[1],s[2],s[3]];
-//    free(s);
-//    return ip;
-//}
 
 + (NSString *)getLocalIPAddressForCurrentWiFi
 {
@@ -154,6 +110,23 @@
         freeifaddrs(interfaces);
     }
     return nil;
+}
+
+
++ (NSString *)getLocalRoutIpForCurrentWiFi
+{
+    NSString *wifiIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
+    NSLog(@"当前wifi的IP地址%@",wifiIp);
+    NSArray *ipArray = [wifiIp componentsSeparatedByString:@"."];
+    NSMutableString *routIP = [NSMutableString string];
+    for (int i = 0; i < ipArray.count ; i ++) {
+        if (i == ipArray.count - 1) {
+            [routIP appendString:@"254"];
+        } else {
+            [routIP appendString:[NSString stringWithFormat:@"%@.",ipArray[i]]];
+        }
+    }
+    return routIP;
 }
 
 + (NSMutableDictionary *)getLocalInfoForCurrentWiFi {
@@ -210,6 +183,102 @@
     return dict;
 }
 
++ (WIFIFlow *)checkNetworkflow {
+    
+    WIFIFlow *flow = [WIFIFlow new];
+    struct ifaddrs *ifa_list = 0, *ifa;
+    if (getifaddrs(&ifa_list) == -1)
+    {
+        return flow;
+    }
+    uint32_t iBytes     = 0;
+    uint32_t oBytes     = 0;
+    uint32_t allFlow    = 0;
+    uint32_t wifiIBytes = 0;
+    uint32_t wifiOBytes = 0;
+    uint32_t wifiFlow   = 0;
+    uint32_t wwanIBytes = 0;
+    uint32_t wwanOBytes = 0;
+    uint32_t wwanFlow   = 0;
+   
+    for (ifa = ifa_list; ifa; ifa = ifa->ifa_next)
+    {
+        if (AF_LINK != ifa->ifa_addr->sa_family)
+            continue;
+        if (!(ifa->ifa_flags & IFF_UP) && !(ifa->ifa_flags & IFF_RUNNING))
+            continue;
+        if (ifa->ifa_data == 0)
+            continue;
+        // Not a loopback device.
+        // network flow
+        if (strncmp(ifa->ifa_name, "lo", 2))
+        {
+            struct if_data *if_data = (struct if_data *)ifa->ifa_data;
+            iBytes += if_data->ifi_ibytes;
+            oBytes += if_data->ifi_obytes;
+            allFlow = iBytes + oBytes;
+        }
+        if (!strcmp(ifa->ifa_name, "en0"))
+        {
+            struct if_data *if_data = (struct if_data *)ifa->ifa_data;
+            wifiIBytes += if_data->ifi_ibytes;
+            wifiOBytes += if_data->ifi_obytes;
+            wifiFlow    = wifiIBytes + wifiOBytes;
+        }
+        if (!strcmp(ifa->ifa_name, "pdp_ip0"))
+        {
+            struct if_data *if_data = (struct if_data *)ifa->ifa_data;
+            wwanIBytes += if_data->ifi_ibytes;
+            wwanOBytes += if_data->ifi_obytes;
+            wwanFlow    = wwanIBytes + wwanOBytes;
+        }
+    }
+    freeifaddrs(ifa_list);
+    NSString *receivedBytes= [self bytesToAvaiUnit:iBytes];
+    NSLog(@"receivedBytes==%@",receivedBytes);
+    NSString *sentBytes       = [self bytesToAvaiUnit:oBytes];
+    NSLog(@"sentBytes==%@",sentBytes);
+    NSString *networkFlow      = [self bytesToAvaiUnit:allFlow];
+    NSLog(@"networkFlow==%@",networkFlow);
+    NSString *wifiReceived   = [self bytesToAvaiUnit:wifiIBytes];
+    NSLog(@"wifiReceived==%@",wifiReceived);
+    NSString *wifiSent       = [self bytesToAvaiUnit: wifiOBytes];
+    NSLog(@"wifiSent==%@",wifiSent);
+    NSString *wifiBytes      = [self bytesToAvaiUnit:wifiFlow];
+    NSLog(@"wifiBytes==%@",wifiBytes);
+    NSString *wwanReceived   = [self bytesToAvaiUnit:wwanIBytes];
+    NSLog(@"wwanReceived==%@",wwanReceived);
+    NSString *wwanSent       = [self bytesToAvaiUnit:wwanOBytes];
+    NSLog(@"wwanSent==%@",wwanSent);
+    NSString *wwanBytes      = [self bytesToAvaiUnit:wwanFlow];
+    NSLog(@"wwanBytes==%@",wwanBytes);
+    flow.wifiSent = [wifiSent copy];
+    flow.wifiReceived = [wifiReceived copy];
+    flow.wwanSent = [wwanSent copy];
+    flow.wwanReceived = [wwanReceived copy];
+    return flow;
+}
+
++ (NSString *)bytesToAvaiUnit:(int)bytes
+{
+    if(bytes < 1024)     // B
+    {
+        return [NSString stringWithFormat:@"%dB", bytes];
+    }
+    else if(bytes >= 1024 && bytes < 1024 * 1024) // KB
+    {
+        return [NSString stringWithFormat:@"%.1fKB", (double)bytes / 1024];
+    }
+    else if(bytes >= 1024 * 1024 && bytes < 1024 * 1024 * 1024)   // MB
+    {
+        return [NSString stringWithFormat:@"%.2fMB", (double)bytes / (1024 * 1024)];
+    }
+    else    // GB
+    {
+        return [NSString stringWithFormat:@"%.3fGB", (double)bytes / (1024 * 1024 * 1024)];
+    }
+}
+
 + (NSString *)getGprsWifiFlowIOBytes
 {
     struct ifaddrs *ifa_list = 0, *ifa;
@@ -241,8 +310,6 @@
     
     bytes = iBytes+oBytes;
     
-    NSLog(@"%d",bytes);
-    
     //将bytes单位转换
     if( bytes < 1024 )        // B
     {
@@ -269,6 +336,16 @@
     } else {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"App-Prefs:root=WIFI"]];
     }
+}
+
++(void)autoConnectWifi {
+    
+    NEHotspotConfiguration * hotspotConfig = [[NEHotspotConfiguration alloc] initWithSSID:@"TP-LINK_43CA" passphrase:@"" isWEP:NO];
+    // 开始连接 (调用此方法后系统会自动弹窗确认)
+    [[NEHotspotConfigurationManager sharedManager] applyConfiguration:hotspotConfig completionHandler:^(NSError * _Nullable error) {
+        NSLog(@"%@", error);
+    }];
+    
 }
 
 @end

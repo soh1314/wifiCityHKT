@@ -62,6 +62,7 @@
 		165678A920D3662A00EC3D5C /* mine_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1656789120D3662900EC3D5C /* mine_default.png */; };
 		165678AA20D3662A00EC3D5C /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1656789220D3662900EC3D5C /* location@2x.png */; };
 		165678AD20D368FC00EC3D5C /* expected_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 165678AC20D368FC00EC3D5C /* expected_page.png */; };
+		167620E620DE40DF00797371 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167620E520DE40DE00797371 /* NetworkExtension.framework */; };
 		169D836820D396FF00AA590F /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 169D836720D396FF00AA590F /* back@2x.png */; };
 		169D836B20D39C8B00AA590F /* WIWXInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D836A20D39C8B00AA590F /* WIWXInfo.m */; };
 		169D836E20D39D1000AA590F /* WIQQInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D836D20D39D1000AA590F /* WIQQInfo.m */; };
@@ -198,6 +199,20 @@
 		16D651B520D108B100ED74C8 /* wechat_login@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D651B220D108B100ED74C8 /* wechat_login@3x.png */; };
 		16D651B620D108B100ED74C8 /* wechat_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D651B320D108B100ED74C8 /* wechat_login@2x.png */; };
 		16D651B720D108B100ED74C8 /* wechat_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D651B420D108B100ED74C8 /* wechat_login.png */; };
+		16FD28EF20E07B1C0099A32B /* WIFIFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD28EE20E07B1C0099A32B /* WIFIFlow.m */; };
+		16FD290120E09C950099A32B /* WifiPanelTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290020E09C950099A32B /* WifiPanelTopView.xib */; };
+		16FD290620E09DF50099A32B /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290320E09DF50099A32B /* location.png */; };
+		16FD290720E09DF50099A32B /* location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290420E09DF50099A32B /* location@3x.png */; };
+		16FD290820E09DF50099A32B /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290520E09DF50099A32B /* location@2x.png */; };
+		16FD290C20E09E7B0099A32B /* pm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290920E09E7B0099A32B /* pm@2x.png */; };
+		16FD290D20E09E7B0099A32B /* pm.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290A20E09E7B0099A32B /* pm.png */; };
+		16FD290E20E09E7C0099A32B /* pm@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290B20E09E7B0099A32B /* pm@3x.png */; };
+		16FD291120E09FA80099A32B /* WILocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD291020E09FA80099A32B /* WILocation.m */; };
+		16FD291420E0BCC30099A32B /* WIWeatherInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD291320E0BCC30099A32B /* WIWeatherInfo.m */; };
+		16FD291720E0BD730099A32B /* WIWeatherService.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD291620E0BD730099A32B /* WIWeatherService.m */; };
+		16FD291A20E0CC3F0099A32B /* WIFIValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD291920E0CC3F0099A32B /* WIFIValidator.m */; };
+		16FD291D20E0E9AC0099A32B /* WifiValidatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD291C20E0E9AC0099A32B /* WifiValidatorController.m */; };
+		16FD292020E0EC550099A32B /* WIFIValidateInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD291F20E0EC550099A32B /* WIFIValidateInfo.m */; };
 		508E8CEF027B764E6F53D94F /* Pods_WIFICity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC52D6F4E86FDEA2F981248B /* Pods_WIFICity.framework */; };
 /* End PBXBuildFile section */
 
@@ -288,6 +303,8 @@
 		1656789120D3662900EC3D5C /* mine_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_default.png; sourceTree = "<group>"; };
 		1656789220D3662900EC3D5C /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
 		165678AC20D368FC00EC3D5C /* expected_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expected_page.png; sourceTree = "<group>"; };
+		167620E520DE40DE00797371 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		167620E720DE40FA00797371 /* WIFICity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WIFICity.entitlements; sourceTree = "<group>"; };
 		169D836720D396FF00AA590F /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		169D836920D39C8A00AA590F /* WIWXInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIWXInfo.h; sourceTree = "<group>"; };
 		169D836A20D39C8B00AA590F /* WIWXInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIWXInfo.m; sourceTree = "<group>"; };
@@ -543,6 +560,27 @@
 		16D651B220D108B100ED74C8 /* wechat_login@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat_login@3x.png"; sourceTree = "<group>"; };
 		16D651B320D108B100ED74C8 /* wechat_login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat_login@2x.png"; sourceTree = "<group>"; };
 		16D651B420D108B100ED74C8 /* wechat_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechat_login.png; sourceTree = "<group>"; };
+		16FD28ED20E07B1C0099A32B /* WIFIFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFIFlow.h; sourceTree = "<group>"; };
+		16FD28EE20E07B1C0099A32B /* WIFIFlow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFIFlow.m; sourceTree = "<group>"; };
+		16FD290020E09C950099A32B /* WifiPanelTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiPanelTopView.xib; sourceTree = "<group>"; };
+		16FD290320E09DF50099A32B /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		16FD290420E09DF50099A32B /* location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@3x.png"; sourceTree = "<group>"; };
+		16FD290520E09DF50099A32B /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
+		16FD290920E09E7B0099A32B /* pm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pm@2x.png"; sourceTree = "<group>"; };
+		16FD290A20E09E7B0099A32B /* pm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm.png; sourceTree = "<group>"; };
+		16FD290B20E09E7B0099A32B /* pm@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pm@3x.png"; sourceTree = "<group>"; };
+		16FD290F20E09FA80099A32B /* WILocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WILocation.h; sourceTree = "<group>"; };
+		16FD291020E09FA80099A32B /* WILocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WILocation.m; sourceTree = "<group>"; };
+		16FD291220E0BCC30099A32B /* WIWeatherInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIWeatherInfo.h; sourceTree = "<group>"; };
+		16FD291320E0BCC30099A32B /* WIWeatherInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIWeatherInfo.m; sourceTree = "<group>"; };
+		16FD291520E0BD730099A32B /* WIWeatherService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIWeatherService.h; sourceTree = "<group>"; };
+		16FD291620E0BD730099A32B /* WIWeatherService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIWeatherService.m; sourceTree = "<group>"; };
+		16FD291820E0CC3F0099A32B /* WIFIValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFIValidator.h; sourceTree = "<group>"; };
+		16FD291920E0CC3F0099A32B /* WIFIValidator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFIValidator.m; sourceTree = "<group>"; };
+		16FD291B20E0E9AC0099A32B /* WifiValidatorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiValidatorController.h; sourceTree = "<group>"; };
+		16FD291C20E0E9AC0099A32B /* WifiValidatorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WifiValidatorController.m; sourceTree = "<group>"; };
+		16FD291E20E0EC550099A32B /* WIFIValidateInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFIValidateInfo.h; sourceTree = "<group>"; };
+		16FD291F20E0EC550099A32B /* WIFIValidateInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFIValidateInfo.m; sourceTree = "<group>"; };
 		55027AAE2D4745FEB2B37BCD /* Pods-WIFICity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WIFICity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WIFICity/Pods-WIFICity.debug.xcconfig"; sourceTree = "<group>"; };
 		73F08AD5656D452D92E8D9B6 /* Pods-WIFICity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WIFICity.release.xcconfig"; path = "Pods/Target Support Files/Pods-WIFICity/Pods-WIFICity.release.xcconfig"; sourceTree = "<group>"; };
 		DC52D6F4E86FDEA2F981248B /* Pods_WIFICity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WIFICity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -553,6 +591,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16D64B1C20CF749F00ED74C8 /* CoreLocation.framework in Frameworks */,
+				167620E620DE40DF00797371 /* NetworkExtension.framework in Frameworks */,
 				1656775C20D23DFE00EC3D5C /* JavaScriptCore.framework in Frameworks */,
 				1656775A20D23DF700EC3D5C /* libstdc++.tbd in Frameworks */,
 				1656781A20D35AF700EC3D5C /* libWeChatSDK.a in Frameworks */,
@@ -577,7 +617,6 @@
 				16D64B2420CF74CE00ED74C8 /* libsqlite3.tbd in Frameworks */,
 				16D64B2020CF74BC00ED74C8 /* SystemConfiguration.framework in Frameworks */,
 				16D64B1E20CF74B400ED74C8 /* libsqlite3.0.tbd in Frameworks */,
-				16D64B1C20CF749F00ED74C8 /* CoreLocation.framework in Frameworks */,
 				508E8CEF027B764E6F53D94F /* Pods_WIFICity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,12 +809,23 @@
 				169D840020DCE4D100AA590F /* WifiPanelBottomView.xib */,
 				169D83F720DCD2B500AA590F /* WifiPanelTopView.h */,
 				169D83F820DCD2B500AA590F /* WifiPanelTopView.m */,
+				16FD290020E09C950099A32B /* WifiPanelTopView.xib */,
+				16FD291220E0BCC30099A32B /* WIWeatherInfo.h */,
+				16FD291320E0BCC30099A32B /* WIWeatherInfo.m */,
 				169D839E20D3C23F00AA590F /* WIFIInfo.h */,
 				169D839F20D3C23F00AA590F /* WIFIInfo.m */,
+				16FD28ED20E07B1C0099A32B /* WIFIFlow.h */,
+				16FD28EE20E07B1C0099A32B /* WIFIFlow.m */,
 				1654A6E720DDD80800AFC322 /* WIFICloudInfo.h */,
 				1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */,
 				169D83A120D3C28000AA590F /* WIFISevice.h */,
 				169D83A220D3C28000AA590F /* WIFISevice.m */,
+				16FD291820E0CC3F0099A32B /* WIFIValidator.h */,
+				16FD291920E0CC3F0099A32B /* WIFIValidator.m */,
+				16FD291E20E0EC550099A32B /* WIFIValidateInfo.h */,
+				16FD291F20E0EC550099A32B /* WIFIValidateInfo.m */,
+				16FD291520E0BD730099A32B /* WIWeatherService.h */,
+				16FD291620E0BD730099A32B /* WIWeatherService.m */,
 				169D840220DCF4A200AA590F /* WifiNetChangeProtocol.h */,
 				1654A6D620DDCEB900AFC322 /* WifiPanelProtocol.h */,
 			);
@@ -902,6 +952,7 @@
 		16C79BCC20CE6B5E00A67DF6 /* WIFICity */ = {
 			isa = PBXGroup;
 			children = (
+				167620E720DE40FA00797371 /* WIFICity.entitlements */,
 				16D64B9720CF93D500ED74C8 /* Manager */,
 				16D64B1820CF73D000ED74C8 /* EasyKit */,
 				16D64B0E20CF739A00ED74C8 /* Common */,
@@ -965,6 +1016,8 @@
 				169D83AD20D3C6DE00AA590F /* WifiPanel */,
 				16D64BED20CFA2A800ED74C8 /* HomeController.h */,
 				16D64BEE20CFA2A800ED74C8 /* HomeController.m */,
+				16FD291B20E0E9AC0099A32B /* WifiValidatorController.h */,
+				16FD291C20E0E9AC0099A32B /* WifiValidatorController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1135,6 +1188,8 @@
 			children = (
 				16D64B3C20CF7BA500ED74C8 /* EasyCLLocationManager.m */,
 				16D64B3D20CF7BA500ED74C8 /* EasyCLLocationManager.h */,
+				16FD290F20E09FA80099A32B /* WILocation.h */,
+				16FD291020E09FA80099A32B /* WILocation.m */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -1373,6 +1428,7 @@
 		16D64C5620D0CAC500ED74C8 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				16FD290220E09DF50099A32B /* 首页 */,
 				169D837C20D3AECF00AA590F /* 引导页 */,
 				169D836720D396FF00AA590F /* back@2x.png */,
 				165678AB20D368FC00EC3D5C /* 期待页 */,
@@ -1427,9 +1483,23 @@
 			path = "登录注册";
 			sourceTree = "<group>";
 		};
+		16FD290220E09DF50099A32B /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				16FD290A20E09E7B0099A32B /* pm.png */,
+				16FD290920E09E7B0099A32B /* pm@2x.png */,
+				16FD290B20E09E7B0099A32B /* pm@3x.png */,
+				16FD290320E09DF50099A32B /* location.png */,
+				16FD290420E09DF50099A32B /* location@3x.png */,
+				16FD290520E09DF50099A32B /* location@2x.png */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
 		D84E87834D0D16919591016A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				167620E520DE40DE00797371 /* NetworkExtension.framework */,
 				1656775B20D23DFE00EC3D5C /* JavaScriptCore.framework */,
 				1656775920D23DF700EC3D5C /* libstdc++.tbd */,
 				1656775720D23DEA00EC3D5C /* libicucore.tbd */,
@@ -1533,6 +1603,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 0;
 							};
+							com.apple.HotspotConfiguration = {
+								enabled = 1;
+							};
 							com.apple.NetworkExtensions.iOS = {
 								enabled = 0;
 							};
@@ -1576,9 +1649,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FD290D20E09E7B0099A32B /* pm.png in Resources */,
 				1656789C20D3662A00EC3D5C /* location_default.png in Resources */,
 				165678A720D3662A00EC3D5C /* square_default@3x.png in Resources */,
 				169D838520D3AECF00AA590F /* switch2@2x.png in Resources */,
+				16FD290C20E09E7B0099A32B /* pm@2x.png in Resources */,
 				169D838420D3AECF00AA590F /* 启动页3.jpg in Resources */,
 				169D838920D3AECF00AA590F /* switch1@3x.png in Resources */,
 				1656789B20D3662A00EC3D5C /* home@2x.png in Resources */,
@@ -1588,6 +1663,7 @@
 				1656789320D3662A00EC3D5C /* square_default.png in Resources */,
 				165678AD20D368FC00EC3D5C /* expected_page.png in Resources */,
 				1656789E20D3662A00EC3D5C /* location.png in Resources */,
+				16FD290720E09DF50099A32B /* location@3x.png in Resources */,
 				1656789A20D3662A00EC3D5C /* home@3x.png in Resources */,
 				1656789620D3662A00EC3D5C /* mine@3x.png in Resources */,
 				1656771B20D11DB000EC3D5C /* LoginController2.xib in Resources */,
@@ -1600,15 +1676,18 @@
 				165678A520D3662A00EC3D5C /* home_default.png in Resources */,
 				169D83FB20DCD30100AA590F /* WifiPanel.xib in Resources */,
 				165678A320D3662A00EC3D5C /* mine_default@3x.png in Resources */,
+				16FD290620E09DF50099A32B /* location.png in Resources */,
 				169D836820D396FF00AA590F /* back@2x.png in Resources */,
 				169D83FF20DCE3F900AA590F /* WifiFlowView.xib in Resources */,
 				16D651B720D108B100ED74C8 /* wechat_login.png in Resources */,
 				16D64C5520D0C19500ED74C8 /* RegisterController.xib in Resources */,
+				16FD290820E09DF50099A32B /* location@2x.png in Resources */,
 				16D64C5020D0C18000ED74C8 /* LoginController.xib in Resources */,
 				169D840120DCE4D100AA590F /* WifiPanelBottomView.xib in Resources */,
 				165678A120D3662A00EC3D5C /* mine.png in Resources */,
 				169D83EB20DC933700AA590F /* HomeServiceItemCell.xib in Resources */,
 				165678A420D3662A00EC3D5C /* square_default@2x.png in Resources */,
+				16FD290E20E09E7C0099A32B /* pm@3x.png in Resources */,
 				1656789720D3662A00EC3D5C /* square.png in Resources */,
 				165678A220D3662A00EC3D5C /* mine@2x.png in Resources */,
 				169D83C920DC8C3000AA590F /* HomeBannerCell.xib in Resources */,
@@ -1618,6 +1697,7 @@
 				1656789820D3662A00EC3D5C /* location_default@3x.png in Resources */,
 				1656781E20D35AF700EC3D5C /* ShareSDKUI.bundle in Resources */,
 				165678A620D3662A00EC3D5C /* home_default@2x.png in Resources */,
+				16FD290120E09C950099A32B /* WifiPanelTopView.xib in Resources */,
 				1656789920D3662A00EC3D5C /* square@2x.png in Resources */,
 				16C79BD720CE6B6500A67DF6 /* Assets.xcassets in Resources */,
 				1656779720D24CD400EC3D5C /* qq_login.png in Resources */,
@@ -1748,6 +1828,7 @@
 				16D64BDF20CF9FCE00ED74C8 /* SVIndefiniteAnimatedView.m in Sources */,
 				169D83CD20DC8C4A00AA590F /* HomeServiceCell.m in Sources */,
 				16D64B7720CF7CE800ED74C8 /* UIImage+ImageEffects.m in Sources */,
+				16FD291120E09FA80099A32B /* WILocation.m in Sources */,
 				1656779C20D26E0800EC3D5C /* WINotiConst.m in Sources */,
 				16D64B5320CF7BA500ED74C8 /* GCDThrottle.m in Sources */,
 				16D64B7D20CF7CE800ED74C8 /* UIFont+Util.m in Sources */,
@@ -1790,10 +1871,12 @@
 				16D651B020D1014800ED74C8 /* WINetResponse.m in Sources */,
 				16D64B7820CF7CE800ED74C8 /* FFBadgedBarButtonItem.m in Sources */,
 				169D83A920D3C50000AA590F /* HomeNews.m in Sources */,
+				16FD291A20E0CC3F0099A32B /* WIFIValidator.m in Sources */,
 				16D64C4F20D0C18000ED74C8 /* LoginController.m in Sources */,
 				16D64C2820D0AAB800ED74C8 /* MHAsiNetworkHandler.m in Sources */,
 				16D64B7C20CF7CE800ED74C8 /* UIButton+verifyBtn.m in Sources */,
 				1656771620D119C900EC3D5C /* TPPasswordTextView.m in Sources */,
+				16FD292020E0EC550099A32B /* WIFIValidateInfo.m in Sources */,
 				16D64BEC20CFA29A00ED74C8 /* MovieController.m in Sources */,
 				16D64BD620CF9FCE00ED74C8 /* WMPageController.m in Sources */,
 				169D837A20D3ACAE00AA590F /* StaticGuideViewController.m in Sources */,
@@ -1803,6 +1886,7 @@
 				16D64BF520CFA9BF00ED74C8 /* NavManager.m in Sources */,
 				16D64B4E20CF7BA500ED74C8 /* EasyCLLocationManager.m in Sources */,
 				16D64C2320D0AAB800ED74C8 /* TGNetManager.m in Sources */,
+				16FD291420E0BCC30099A32B /* WIWeatherInfo.m in Sources */,
 				169D83E320DC8CFD00AA590F /* TADotView.m in Sources */,
 				16D64C2420D0AAB800ED74C8 /* TGNetConfig.m in Sources */,
 				169D836E20D39D1000AA590F /* WIQQInfo.m in Sources */,
@@ -1815,6 +1899,7 @@
 				16C79BCF20CE6B5E00A67DF6 /* AppDelegate.m in Sources */,
 				169D83F620DCD2A200AA590F /* WifiPanelBottomView.m in Sources */,
 				16D64C0C20CFBB8F00ED74C8 /* WifiUtil.m in Sources */,
+				16FD291D20E0E9AC0099A32B /* WifiValidatorController.m in Sources */,
 				16D64BD520CF9FCE00ED74C8 /* WITabBarController.m in Sources */,
 				16D64B9220CF868400ED74C8 /* GTMBase64.m in Sources */,
 				16D64C0420CFB58300ED74C8 /* RNDecryptor.m in Sources */,
@@ -1824,10 +1909,12 @@
 				169D83A020D3C23F00AA590F /* WIFIInfo.m in Sources */,
 				1656779F20D2732D00EC3D5C /* NetErrorHandle.m in Sources */,
 				1656771E20D1F7CC00EC3D5C /* WIPasswordView.m in Sources */,
+				16FD291720E0BD730099A32B /* WIWeatherService.m in Sources */,
 				169D837B20D3ACAE00AA590F /* DHGuidePageHUD.m in Sources */,
 				16D64B4D20CF7BA500ED74C8 /* EasyAllertUtil.m in Sources */,
 				16D64BE920CFA28D00ED74C8 /* MyController.m in Sources */,
 				16D64B8520CF7CE800ED74C8 /* UIScreen+Additions.m in Sources */,
+				16FD28EF20E07B1C0099A32B /* WIFIFlow.m in Sources */,
 				169D83C820DC8C3000AA590F /* HomeBannerCell.m in Sources */,
 				16D64B8420CF7CE800ED74C8 /* UITextView+ZWPlaceHolder.m in Sources */,
 				169D83EA20DC933700AA590F /* HomeServiceItemCell.m in Sources */,
@@ -1986,6 +2073,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = WIFICity/WIFICity.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQC56X32GR;
@@ -2006,7 +2094,7 @@
 				);
 				GCC_PREFIX_HEADER = $SRCROOT/WIFICity/Common/Macro/PrefixHeader.pch;
 				INFOPLIST_FILE = WIFICity/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2070,6 +2158,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = WIFICity/WIFICity.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQC56X32GR;
@@ -2090,7 +2179,7 @@
 				);
 				GCC_PREFIX_HEADER = $SRCROOT/WIFICity/Common/Macro/PrefixHeader.pch;
 				INFOPLIST_FILE = WIFICity/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

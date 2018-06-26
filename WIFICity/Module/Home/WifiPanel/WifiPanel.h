@@ -13,6 +13,8 @@
 #import "WIFIInfo.h"
 #import "WifiUtil.h"
 #import "WIFISevice.h"
+#import "WILocation.h"
+#import "WIWeatherService.h"
 
 @interface WifiPanel : UIView
 
@@ -26,8 +28,10 @@
 @property (nonatomic,strong)WifiPanelBottomView *bottomView;
 @property (nonatomic,strong)WifiPanelTopView *topView;
 @property (nonatomic,strong)WIFIInfo *wifiInfo;
+@property (nonatomic,strong)WILocation *location;
 @property (weak, nonatomic) IBOutlet UIButton *connectWifiBtn;
 - (IBAction)connectWifi:(id)sender;
+
 - (void)refreshUI:(WIFIInfo *)info;
 - (void)netChange:(WINetStatus)status wifiInfo:(WIFIInfo *)info;
 

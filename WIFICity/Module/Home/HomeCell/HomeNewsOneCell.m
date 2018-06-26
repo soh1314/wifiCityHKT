@@ -34,16 +34,52 @@
     self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.abstracts];
     NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,self.news.img_src];
     [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:url]];
+    if (self.news.img_src) {
+
+        [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.newsImageView.mas_left).mas_offset(-12);
+            make.left.mas_equalTo(self.contentView).mas_offset(16);
+            make.top.mas_equalTo(self.contentView).mas_offset(22);
+        }];
+        [self.newsImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(self.newsImageView.mas_height).multipliedBy(38/25.0f).priorityHigh();
+            make.left.mas_equalTo(self.titleLabel.mas_right).mas_offset(12);
+            make.right.mas_equalTo(self.contentView).mas_offset(-16);
+            make.height.mas_equalTo(74.5);
+        }];
+    } else {
+        [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.contentView).mas_offset(-16);
+            make.top.mas_equalTo(self.contentView).mas_offset(22);
+            make.left.mas_equalTo(self.contentView).mas_offset(16);
+        }];
+        [self.newsImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(self.newsImageView.mas_height).multipliedBy(38/25.0f).priorityHigh();
+            make.right.mas_equalTo(self.contentView).mas_offset(-16);
+            make.height.mas_equalTo(74.5);
+        }];
+
+        
+    }
+
     if (news.is_hot) {
         self.tagView.hidden = NO;
         self.tagView.text = @"热点";
         [self.tagView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(25.0f);
         }];
+        [self.agencyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(12);
+            make.left.mas_equalTo(self.tagView.mas_right).mas_offset(8.0).priorityHigh();
+        }];
     } else {
         self.tagView.hidden = YES;
         [self.tagView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(0.0f);
+        }];
+        [self.agencyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(12);
+            make.left.mas_equalTo(self.tagView.mas_right).mas_offset(0);
         }];
     }
 }

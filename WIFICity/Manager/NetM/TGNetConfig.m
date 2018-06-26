@@ -41,7 +41,6 @@ static AFHTTPSessionManager *manager ;
          manager.requestSerializer.timeoutInterval = 10;
     } else if ([TGNetConfig shared].type == 1) {
          manager.requestSerializer=[AFHTTPRequestSerializer serializer];
-
          manager.requestSerializer.timeoutInterval = 10;
         
     } else {

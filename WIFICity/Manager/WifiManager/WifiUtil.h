@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "WIFIFlow.h"
 @interface WifiUtil : NSObject
 
 +(NSString *)getWifiName;
@@ -16,5 +16,7 @@
 +(void)openWifiSetting;
 + (NSString *)getLocalIPAddressForCurrentWiFi;
 + (NSString *)getGprsWifiFlowIOBytes;
-
++(void)autoConnectWifi;
++ (WIFIFlow *)checkNetworkflow;
++ (NSString *)getLocalRoutIpForCurrentWiFi;
 @end

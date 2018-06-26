@@ -7,7 +7,7 @@
 //
 
 #import "HomeController.h"
-
+#import "EasyCLLocationManager.h"
 #import "WIFISevice.h"
 #import "WifiPanel.h"
 
@@ -43,6 +43,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
+    [[EasyCLLocationManager shared]requestLocateService];
+    [[EasyCLLocationManager shared]startLocate:^(NSString *province, NSString *city, NSString *area, NSString *detailAddress) {
+        [self.panel setLocation:[EasyCLLocationManager shared].location];
+        [[EasyCLLocationManager shared]stopLocate];
+    }];
     [WIFISevice shared].panelDelegate = self;
 }
 

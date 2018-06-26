@@ -12,5 +12,7 @@
 
 @property (nonatomic,copy)NSString *sid;
 @property (nonatomic,copy)NSString *bsid;
+@property (nonatomic,copy)NSString *IP;
+@property (nonatomic,copy)NSString *routeIP;
 
 @end

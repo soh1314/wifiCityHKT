@@ -1,12 +1,12 @@
 
-#import "WebViewController.h"
+#import "WifiValidatorController.h"
 #import <WebKit/WebKit.h>
-@interface WebViewController ()
+@interface WifiValidatorController ()
 @property(nonatomic,strong)WKWebView *webView;
 @property (nonatomic, strong) UIProgressView *progressView;
 @end
 
-@implementation WebViewController
+@implementation WifiValidatorController
 
 - (id)init {
     if (self = [super init]) {
@@ -17,10 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"详情";
+    self.navigationItem.title = @"wifi认证";
     [self setBlackNavBar];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"←" style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
-
+    
     if(!self.URLString ){
         if (self.htmlWord) {
             UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
@@ -47,8 +47,8 @@
         [self.navigationController.view addSubview:self.progressView];
     }
     
-   
-
+    
+    
 }
 -(void)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -59,7 +59,7 @@
     [super viewWillDisappear:animated];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.progressView removeFromSuperview];
-
+        
     });
 }
 
@@ -73,7 +73,8 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
                 [self.progressView setProgress:0.0 animated:NO];
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+                
             });
         }
         

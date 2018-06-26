@@ -15,9 +15,7 @@
 + (NSDate *)dateWithString:(NSString *)string;
 + (NSDate *)dateWithString2:(NSString *)string;
 + (NSString *)minute15DistantWithStrng:(NSString *)string;
-
 + (NSString *)day15DistantWithStrng:(NSString *)string;
-
 + (NSTimeInterval)currentDistant:(NSString *)pastDate;
 
 @end
