@@ -20,4 +20,6 @@
 
 + (void)pushWebViewControllerWithHtmlWord:(NSString *)pTag controller:(UIViewController *)context;
 
++ (void)pushBlankViewController:(UIViewController *)context;
+
 @end

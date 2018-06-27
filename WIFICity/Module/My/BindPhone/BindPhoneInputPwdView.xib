@@ -15,13 +15,13 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMk-Tf-KK7">
-                    <rect key="frame" x="273" y="19.5" width="11" height="11"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMk-Tf-KK7">
+                    <rect key="frame" x="273" y="20" width="11" height="11"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="11" id="VrT-rc-Tde"/>
                         <constraint firstAttribute="height" constant="11" id="eRF-az-HZH"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Button" image="close.png"/>
                     <connections>
                         <action selector="close:" destination="iN0-l3-epB" eventType="touchUpInside" id="Wtg-24-Fnl"/>
                     </connections>
@@ -65,13 +65,13 @@
                         <action selector="checkProtocol:" destination="iN0-l3-epB" eventType="touchUpInside" id="JH1-gw-u1y"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcJ-0R-M3h">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcJ-0R-M3h">
                     <rect key="frame" x="53.5" y="211" width="16" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="16" id="RqV-7V-opU"/>
                         <constraint firstAttribute="height" constant="16" id="eTD-QI-nxn"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Button" image="after.png"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -98,9 +98,15 @@
                 <outlet property="closeBtn" destination="rMk-Tf-KK7" id="vOn-iv-kbm"/>
                 <outlet property="phoneLabel" destination="XWd-rc-Y2n" id="L3U-DQ-L79"/>
                 <outlet property="protocolBtn" destination="Jnz-fP-yG4" id="aen-WE-q8r"/>
+                <outlet property="pwdBgView" destination="aAO-nJ-e2H" id="Myw-c4-kts"/>
+                <outlet property="titleLabel" destination="0hh-uX-MoL" id="axL-DK-QHv"/>
                 <outlet property="verifyBtn" destination="OUh-RM-ztI" id="O2L-08-3JG"/>
             </connections>
-            <point key="canvasLocation" x="-47" y="44"/>
+            <point key="canvasLocation" x="-195" y="29"/>
         </view>
     </objects>
+    <resources>
+        <image name="after.png" width="24" height="24"/>
+        <image name="close.png" width="24" height="24"/>
+    </resources>
 </document>

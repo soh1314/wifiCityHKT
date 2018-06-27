@@ -44,6 +44,7 @@
             if (response.success) {
                 wself.inputPwdView.hidden = NO;
                 wself.inputPhoneView.hidden = YES;
+                [wself.inputPwdView showKeyBoard];
                 [wself openCountDown];
             }
         }];
@@ -54,6 +55,17 @@
     };
     self.inputPwdView.closeBlock = ^{
         wself.closeBlock();
+    };
+    self.inputPwdView.submitBindBlock = ^(BindPhoneModel *bindPhoneModel) {
+        WIUser *user = [WIUser new];
+        user.phone = [bindPhoneModel.phone copy];
+        user.verifyCode = [bindPhoneModel.verifyCode copy];
+        [wself.accountLogin bindPhone:user complete:^(WINetResponse *response) {
+            if (response.success) {
+                wself.closeBlock();
+                [Dialog simpleToast:response.msg];
+            }
+        }];
     };
     
 }

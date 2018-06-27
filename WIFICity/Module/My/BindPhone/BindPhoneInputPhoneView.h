@@ -14,6 +14,7 @@ typedef void(^NextActionBlock)(void);
 @interface BindPhoneInputPhoneView : UIView<UITextFieldDelegate>
 
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *closeBtn;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTtf;
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;

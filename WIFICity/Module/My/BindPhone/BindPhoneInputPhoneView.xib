@@ -51,9 +51,13 @@
                         <constraint firstAttribute="height" constant="0.5" id="wml-o1-sny"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3a-hQ-B6Y">
-                    <rect key="frame" x="244" y="10" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3a-hQ-B6Y">
+                    <rect key="frame" x="278" y="19" width="12" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="12" id="dJ2-bS-ln1"/>
+                        <constraint firstAttribute="width" constant="12" id="tyk-PI-MQh"/>
+                    </constraints>
+                    <state key="normal" image="close.png"/>
                     <connections>
                         <action selector="close:" destination="iN0-l3-epB" eventType="touchUpInside" id="CNJ-h2-zaK"/>
                     </connections>
@@ -64,13 +68,13 @@
                 <constraint firstItem="oqY-tu-zhQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="2Du-K7-l3i"/>
                 <constraint firstItem="NGx-7Y-0XW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4LZ-pn-vTY"/>
                 <constraint firstAttribute="trailing" secondItem="R3a-hQ-B6Y" secondAttribute="trailing" constant="10" id="EiZ-4h-l6g"/>
+                <constraint firstItem="R3a-hQ-B6Y" firstAttribute="centerY" secondItem="AxP-4T-hZt" secondAttribute="centerY" id="Fan-Fs-STT"/>
                 <constraint firstItem="AxP-4T-hZt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="HOZ-bM-PlZ"/>
                 <constraint firstItem="AxP-4T-hZt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KKn-Nx-HXV"/>
                 <constraint firstItem="tF7-02-Vr7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KxH-eg-CUE"/>
                 <constraint firstItem="oqY-tu-zhQ" firstAttribute="top" secondItem="NGx-7Y-0XW" secondAttribute="bottom" constant="5" id="eDz-7I-LqF"/>
                 <constraint firstItem="oqY-tu-zhQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hPM-vr-cp0"/>
                 <constraint firstAttribute="bottom" secondItem="tF7-02-Vr7" secondAttribute="bottom" constant="15" id="jb1-on-1X2"/>
-                <constraint firstItem="R3a-hQ-B6Y" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="lug-gI-b90"/>
                 <constraint firstItem="NGx-7Y-0XW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="nY8-x1-me1"/>
                 <constraint firstItem="NGx-7Y-0XW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vHr-1d-0f8"/>
             </constraints>
@@ -79,8 +83,12 @@
                 <outlet property="closeBtn" destination="R3a-hQ-B6Y" id="VLF-94-Pj7"/>
                 <outlet property="nextBtn" destination="tF7-02-Vr7" id="pvo-FY-H9i"/>
                 <outlet property="phoneTtf" destination="NGx-7Y-0XW" id="vFa-Hi-wq6"/>
+                <outlet property="titleLabel" destination="AxP-4T-hZt" id="FLH-E8-Ai2"/>
             </connections>
             <point key="canvasLocation" x="-6" y="57"/>
         </view>
     </objects>
+    <resources>
+        <image name="close.png" width="24" height="24"/>
+    </resources>
 </document>

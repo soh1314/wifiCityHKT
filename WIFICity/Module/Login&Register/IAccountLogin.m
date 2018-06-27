@@ -111,14 +111,14 @@
     NSDictionary *para = @{@"phone":user.phone};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, BindUserVerifyCodeAPI) params:para successBlock:^(NSDictionary *returnData) {
         WINetResponse *respone = [WINetResponse new];
-        BOOL success = [returnData objectForKey:@"success"];
+        BOOL success = [[returnData objectForKey:@"success"]boolValue];
         if (success) {
             respone.success = YES;
             respone.strObj = [returnData objectForKey:@"obj"];;
             complete(respone);
         } else {
             respone.success = NO;
-            [Dialog simpleToast:[returnData objectForKey:@"obj"]];
+            [Dialog simpleToast:[returnData objectForKey:@"msg"]];
         }
         
     } failureBlock:^(NSError *error) {

@@ -13,6 +13,7 @@
 + (void)popBindPhoneView:(UIViewController *)context {
     context.zh_popupController = [[zhPopupController alloc]init];
     BindPhoneView *phoneView = [[BindPhoneView alloc]initWithFrame:CGRectMake(0, 0, 300, 210)];
+    [phoneView.inputPhoneView.phoneTtf becomeFirstResponder];
     __weak typeof(context)wself = context;
     phoneView.closeBlock = ^{
         [wself.zh_popupController dismiss];

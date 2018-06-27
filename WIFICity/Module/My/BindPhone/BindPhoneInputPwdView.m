@@ -8,6 +8,12 @@
 
 #import "BindPhoneInputPwdView.h"
 
+@interface BindPhoneInputPwdView()
+
+@property (nonatomic,strong)WIPasswordView *pwdView;
+
+@end
+
 @implementation BindPhoneInputPwdView
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -20,8 +26,21 @@
 }
 
 - (void)initUI {
+    self.titleLabel.textColor = [UIColor colorWithHexString:@"#333333"];
     [self.verifyBtn setTitleColor:[UIColor colorWithHexString:@"#999999"] forState:UIControlStateNormal];
-
+    WIPasswordView *pwdView = [WIPasswordView pwdview];
+    self.pwdView = pwdView;
+    [self.pwdBgView addSubview:pwdView];
+    __weak typeof(self)wself = self;
+    __weak typeof(pwdView)weakPwd = pwdView;
+    pwdView.passwordDidChangeBlock = ^(NSString *password) {
+        if (password.length >= 4) {
+            wself.bindphoneModel.verifyCode = [weakPwd.password copy];
+            wself.submitBindBlock(wself.bindphoneModel);
+        }
+    };
+    pwdView.elementMargin = 18;
+    pwdView.frame = self.pwdBgView.bounds;
     
 }
 
@@ -62,5 +81,9 @@
     
 }
 
+- (void)showKeyBoard {
+    [self.pwdView clearPassword];
+    [self.pwdView showKeyboard];
+}
 
 @end

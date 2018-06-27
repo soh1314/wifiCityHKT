@@ -25,6 +25,7 @@
     self.nextBtn.layer.cornerRadius = 5;
     self.phoneTtf.delegate = self;
     self.phoneTtf.clearButtonMode=UITextFieldViewModeWhileEditing;
+    self.titleLabel.textColor = [UIColor colorWithHexString:@"#333333"];
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{

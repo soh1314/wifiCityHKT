@@ -9,6 +9,7 @@
 #import "NavManager.h"
 #import "LoginController.h"
 #import "WebViewController.h"
+#import "BlankViewController.h"
 
 @implementation NavManager
 
@@ -50,6 +51,14 @@
     if (context.navigationController) {
         UINavigationController *nav = context.navigationController;
         [nav pushViewController:web animated:YES];
+    }
+}
+
++ (void)pushBlankViewController:(UIViewController *)context {
+    BlankViewController *blankController = [[BlankViewController alloc]init];
+    if (context.navigationController) {
+        UINavigationController *nav = context.navigationController;
+        [nav pushViewController:blankController animated:YES];
     }
 }
 
