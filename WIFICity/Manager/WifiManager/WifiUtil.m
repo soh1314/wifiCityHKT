@@ -340,11 +340,11 @@
 
 +(void)autoConnectWifi {
     
-    NEHotspotConfiguration * hotspotConfig = [[NEHotspotConfiguration alloc] initWithSSID:@"TP-LINK_43CA" passphrase:@"" isWEP:NO];
-    // 开始连接 (调用此方法后系统会自动弹窗确认)
-    [[NEHotspotConfigurationManager sharedManager] applyConfiguration:hotspotConfig completionHandler:^(NSError * _Nullable error) {
-        NSLog(@"%@", error);
-    }];
+//    NEHotspotConfiguration * hotspotConfig = [[NEHotspotConfiguration alloc] initWithSSID:@"TP-LINK_43CA" passphrase:@"" isWEP:NO];
+//    // 开始连接 (调用此方法后系统会自动弹窗确认)
+//    [[NEHotspotConfigurationManager sharedManager] applyConfiguration:hotspotConfig completionHandler:^(NSError * _Nullable error) {
+//        NSLog(@"%@", error);
+//    }];
     
 }
 

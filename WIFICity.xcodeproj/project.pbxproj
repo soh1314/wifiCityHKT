@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		163A08A820E1D51800DAC894 /* BindPhoneInputPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08A720E1D51800DAC894 /* BindPhoneInputPhoneView.m */; };
+		163A08AB20E1D53300DAC894 /* BindPhoneInputPwdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08AA20E1D53300DAC894 /* BindPhoneInputPwdView.m */; };
+		163A08AD20E1D54700DAC894 /* BindPhoneInputPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 163A08AC20E1D54700DAC894 /* BindPhoneInputPhoneView.xib */; };
+		163A08AF20E1D55300DAC894 /* BindPhoneInputPwdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 163A08AE20E1D55300DAC894 /* BindPhoneInputPwdView.xib */; };
+		163A08B220E1DB7800DAC894 /* BindPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08B120E1DB7800DAC894 /* BindPhoneView.m */; };
+		163A08B520E1E38600DAC894 /* BindPhoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08B420E1E38600DAC894 /* BindPhoneModel.m */; };
+		163A08B920E1E6C500DAC894 /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08B820E1E6C500DAC894 /* UserInfoView.m */; };
+		163A08BB20E1E6DE00DAC894 /* UserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 163A08BA20E1E6DE00DAC894 /* UserInfoView.xib */; };
+		163A08CE20E2398400DAC894 /* NSDate+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08CC20E2398400DAC894 /* NSDate+Extend.m */; };
+		163A08D120E239E500DAC894 /* UIDevice+zhDeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08D020E239E400DAC894 /* UIDevice+zhDeviceType.m */; };
+		163A08D520E3180200DAC894 /* zhPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08D320E3180200DAC894 /* zhPopupController.m */; };
+		163A08D820E335E400DAC894 /* WIPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08D720E335E400DAC894 /* WIPopView.m */; };
 		1654A6E920DDD80800AFC322 /* WIFICloudInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */; };
 		1654A6EC20DDF6A000AFC322 /* UILabel+wordStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */; };
 		1654A6EF20DE2EB300AFC322 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6ED20DE2EB200AFC322 /* WebViewController.m */; };
@@ -143,7 +155,6 @@
 		16D64B7F20CF7CE800ED74C8 /* NSDateFormatter+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B6620CF7CE600ED74C8 /* NSDateFormatter+Category.m */; };
 		16D64B8020CF7CE800ED74C8 /* UIViewController+EasyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B6920CF7CE600ED74C8 /* UIViewController+EasyUtil.m */; };
 		16D64B8120CF7CE800ED74C8 /* NSDate+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B6C20CF7CE700ED74C8 /* NSDate+Category.m */; };
-		16D64B8220CF7CE800ED74C8 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B6E20CF7CE700ED74C8 /* NSDate+Additions.m */; };
 		16D64B8320CF7CE800ED74C8 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B6F20CF7CE700ED74C8 /* UIColor+Theme.m */; };
 		16D64B8420CF7CE800ED74C8 /* UITextView+ZWPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B7320CF7CE700ED74C8 /* UITextView+ZWPlaceHolder.m */; };
 		16D64B8520CF7CE800ED74C8 /* UIScreen+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B7420CF7CE700ED74C8 /* UIScreen+Additions.m */; };
@@ -234,6 +245,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		163A08A620E1D51800DAC894 /* BindPhoneInputPhoneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneInputPhoneView.h; sourceTree = "<group>"; };
+		163A08A720E1D51800DAC894 /* BindPhoneInputPhoneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindPhoneInputPhoneView.m; sourceTree = "<group>"; };
+		163A08A920E1D53300DAC894 /* BindPhoneInputPwdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneInputPwdView.h; sourceTree = "<group>"; };
+		163A08AA20E1D53300DAC894 /* BindPhoneInputPwdView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindPhoneInputPwdView.m; sourceTree = "<group>"; };
+		163A08AC20E1D54700DAC894 /* BindPhoneInputPhoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindPhoneInputPhoneView.xib; sourceTree = "<group>"; };
+		163A08AE20E1D55300DAC894 /* BindPhoneInputPwdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindPhoneInputPwdView.xib; sourceTree = "<group>"; };
+		163A08B020E1DB7800DAC894 /* BindPhoneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneView.h; sourceTree = "<group>"; };
+		163A08B120E1DB7800DAC894 /* BindPhoneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindPhoneView.m; sourceTree = "<group>"; };
+		163A08B320E1E38600DAC894 /* BindPhoneModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneModel.h; sourceTree = "<group>"; };
+		163A08B420E1E38600DAC894 /* BindPhoneModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindPhoneModel.m; sourceTree = "<group>"; };
+		163A08B720E1E6C500DAC894 /* UserInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoView.h; sourceTree = "<group>"; };
+		163A08B820E1E6C500DAC894 /* UserInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoView.m; sourceTree = "<group>"; };
+		163A08BA20E1E6DE00DAC894 /* UserInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoView.xib; sourceTree = "<group>"; };
+		163A08CC20E2398400DAC894 /* NSDate+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extend.m"; sourceTree = "<group>"; };
+		163A08CD20E2398400DAC894 /* NSDate+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extend.h"; sourceTree = "<group>"; };
+		163A08CF20E239E400DAC894 /* UIDevice+zhDeviceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+zhDeviceType.h"; sourceTree = "<group>"; };
+		163A08D020E239E400DAC894 /* UIDevice+zhDeviceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+zhDeviceType.m"; sourceTree = "<group>"; };
+		163A08D320E3180200DAC894 /* zhPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zhPopupController.m; sourceTree = "<group>"; };
+		163A08D420E3180200DAC894 /* zhPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zhPopupController.h; sourceTree = "<group>"; };
+		163A08D620E335E400DAC894 /* WIPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIPopView.h; sourceTree = "<group>"; };
+		163A08D720E335E400DAC894 /* WIPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIPopView.m; sourceTree = "<group>"; };
 		1654A6D620DDCEB900AFC322 /* WifiPanelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiPanelProtocol.h; sourceTree = "<group>"; };
 		1654A6E720DDD80800AFC322 /* WIFICloudInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFICloudInfo.h; sourceTree = "<group>"; };
 		1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFICloudInfo.m; sourceTree = "<group>"; };
@@ -442,11 +474,9 @@
 		16D64B6B20CF7CE600ED74C8 /* UIFont+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Util.h"; sourceTree = "<group>"; };
 		16D64B6C20CF7CE700ED74C8 /* NSDate+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Category.m"; sourceTree = "<group>"; };
 		16D64B6D20CF7CE700ED74C8 /* UIButton+adapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+adapter.h"; sourceTree = "<group>"; };
-		16D64B6E20CF7CE700ED74C8 /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
 		16D64B6F20CF7CE700ED74C8 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
 		16D64B7020CF7CE700ED74C8 /* UILabel+Adapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Adapter.h"; sourceTree = "<group>"; };
 		16D64B7120CF7CE700ED74C8 /* FFBadgedBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFBadgedBarButtonItem.h; sourceTree = "<group>"; };
-		16D64B7220CF7CE700ED74C8 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
 		16D64B7320CF7CE700ED74C8 /* UITextView+ZWPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+ZWPlaceHolder.m"; sourceTree = "<group>"; };
 		16D64B7420CF7CE700ED74C8 /* UIScreen+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+Additions.m"; sourceTree = "<group>"; };
 		16D64B7520CF7CE700ED74C8 /* UIView+borderLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+borderLine.m"; sourceTree = "<group>"; };
@@ -638,6 +668,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		163A08A520E1D4E400DAC894 /* BindPhone */ = {
+			isa = PBXGroup;
+			children = (
+				163A08A620E1D51800DAC894 /* BindPhoneInputPhoneView.h */,
+				163A08A720E1D51800DAC894 /* BindPhoneInputPhoneView.m */,
+				163A08AC20E1D54700DAC894 /* BindPhoneInputPhoneView.xib */,
+				163A08A920E1D53300DAC894 /* BindPhoneInputPwdView.h */,
+				163A08AA20E1D53300DAC894 /* BindPhoneInputPwdView.m */,
+				163A08AE20E1D55300DAC894 /* BindPhoneInputPwdView.xib */,
+				163A08B020E1DB7800DAC894 /* BindPhoneView.h */,
+				163A08B120E1DB7800DAC894 /* BindPhoneView.m */,
+				163A08B320E1E38600DAC894 /* BindPhoneModel.h */,
+				163A08B420E1E38600DAC894 /* BindPhoneModel.m */,
+			);
+			path = BindPhone;
+			sourceTree = "<group>";
+		};
+		163A08B620E1E6B500DAC894 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				163A08B720E1E6C500DAC894 /* UserInfoView.h */,
+				163A08B820E1E6C500DAC894 /* UserInfoView.m */,
+				163A08BA20E1E6DE00DAC894 /* UserInfoView.xib */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		163A08D220E3180200DAC894 /* PopView */ = {
+			isa = PBXGroup;
+			children = (
+				163A08D320E3180200DAC894 /* zhPopupController.m */,
+				163A08D420E3180200DAC894 /* zhPopupController.h */,
+			);
+			path = PopView;
+			sourceTree = "<group>";
+		};
 		1656771320D119C900EC3D5C /* SmallUIComponet */ = {
 			isa = PBXGroup;
 			children = (
@@ -798,6 +864,8 @@
 		169D83AD20D3C6DE00AA590F /* WifiPanel */ = {
 			isa = PBXGroup;
 			children = (
+				16FD291B20E0E9AC0099A32B /* WifiValidatorController.h */,
+				16FD291C20E0E9AC0099A32B /* WifiValidatorController.m */,
 				169D839B20D3C21800AA590F /* WifiPanel.h */,
 				169D839C20D3C21800AA590F /* WifiPanel.m */,
 				169D83FA20DCD30100AA590F /* WifiPanel.xib */,
@@ -992,6 +1060,8 @@
 			children = (
 				16D64B1A20CF740200ED74C8 /* Category */,
 				16D64B1920CF740200ED74C8 /* Macro */,
+				163A08D620E335E400DAC894 /* WIPopView.h */,
+				163A08D720E335E400DAC894 /* WIPopView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1016,8 +1086,6 @@
 				169D83AD20D3C6DE00AA590F /* WifiPanel */,
 				16D64BED20CFA2A800ED74C8 /* HomeController.h */,
 				16D64BEE20CFA2A800ED74C8 /* HomeController.m */,
-				16FD291B20E0E9AC0099A32B /* WifiValidatorController.h */,
-				16FD291C20E0E9AC0099A32B /* WifiValidatorController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1034,6 +1102,8 @@
 		16D64B1220CF739A00ED74C8 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				163A08B620E1E6B500DAC894 /* UserInfo */,
+				163A08A520E1D4E400DAC894 /* BindPhone */,
 				16D64BE720CFA28D00ED74C8 /* MyController.h */,
 				16D64BE820CFA28D00ED74C8 /* MyController.m */,
 			);
@@ -1106,6 +1176,7 @@
 		16D64B1820CF73D000ED74C8 /* EasyKit */ = {
 			isa = PBXGroup;
 			children = (
+				163A08D220E3180200DAC894 /* PopView */,
 				169D836F20D3ACAE00AA590F /* GuidView */,
 				16D64BF920CFB58300ED74C8 /* RNCryptor */,
 				16D64B9E20CF9FCE00ED74C8 /* UIKit */,
@@ -1134,10 +1205,12 @@
 		16D64B1A20CF740200ED74C8 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				163A08CF20E239E400DAC894 /* UIDevice+zhDeviceType.h */,
+				163A08D020E239E400DAC894 /* UIDevice+zhDeviceType.m */,
+				163A08CD20E2398400DAC894 /* NSDate+Extend.h */,
+				163A08CC20E2398400DAC894 /* NSDate+Extend.m */,
 				16D64B7120CF7CE700ED74C8 /* FFBadgedBarButtonItem.h */,
 				16D64B5920CF7CE500ED74C8 /* FFBadgedBarButtonItem.m */,
-				16D64B7220CF7CE700ED74C8 /* NSDate+Additions.h */,
-				16D64B6E20CF7CE700ED74C8 /* NSDate+Additions.m */,
 				16D64B6220CF7CE600ED74C8 /* NSDate+Category.h */,
 				16D64B6C20CF7CE700ED74C8 /* NSDate+Category.m */,
 				16D64B5D20CF7CE600ED74C8 /* NSDateFormatter+Category.h */,
@@ -1692,6 +1765,7 @@
 				165678A220D3662A00EC3D5C /* mine@2x.png in Resources */,
 				169D83C920DC8C3000AA590F /* HomeBannerCell.xib in Resources */,
 				1656789D20D3662A00EC3D5C /* location_default@2x.png in Resources */,
+				163A08AF20E1D55300DAC894 /* BindPhoneInputPwdView.xib in Resources */,
 				1656781D20D35AF700EC3D5C /* ShareSDK.bundle in Resources */,
 				169D83CE20DC8C4A00AA590F /* HomeServiceCell.xib in Resources */,
 				1656789820D3662A00EC3D5C /* location_default@3x.png in Resources */,
@@ -1701,6 +1775,8 @@
 				1656789920D3662A00EC3D5C /* square@2x.png in Resources */,
 				16C79BD720CE6B6500A67DF6 /* Assets.xcassets in Resources */,
 				1656779720D24CD400EC3D5C /* qq_login.png in Resources */,
+				163A08AD20E1D54700DAC894 /* BindPhoneInputPhoneView.xib in Resources */,
+				163A08BB20E1E6DE00DAC894 /* UserInfoView.xib in Resources */,
 				169D83F020DC9B4100AA590F /* HomeNewsImageItemCell.xib in Resources */,
 				169D838A20D3AECF00AA590F /* switch1@2x.png in Resources */,
 				169D83B920DC7DE300AA590F /* HomeNewsTwoCell.xib in Resources */,
@@ -1764,12 +1840,14 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaSecurity/CocoaSecurity.framework",
 				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/MLeaksFinder/MLeaksFinder.framework",
 				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SAMKeychain/SAMKeychain.framework",
@@ -1784,12 +1862,14 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaSecurity.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MLeaksFinder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMKeychain.framework",
@@ -1813,9 +1893,12 @@
 				16D64B7E20CF7CE800ED74C8 /* UIButton+adapter.m in Sources */,
 				1654A6EF20DE2EB300AFC322 /* WebViewController.m in Sources */,
 				16D64C2520D0AAB800ED74C8 /* MHUploadParam.m in Sources */,
+				163A08AB20E1D53300DAC894 /* BindPhoneInputPwdView.m in Sources */,
 				169D83A620D3C4CE00AA590F /* HomeLbtResponse.m in Sources */,
 				16D64BD420CF9FCE00ED74C8 /* EaseNoDataModel.m in Sources */,
 				16D64C4B20D0BEC300ED74C8 /* WIModel.m in Sources */,
+				163A08A820E1D51800DAC894 /* BindPhoneInputPhoneView.m in Sources */,
+				163A08D820E335E400DAC894 /* WIPopView.m in Sources */,
 				169D83B820DC7DE300AA590F /* HomeNewsTwoCell.m in Sources */,
 				169D83F920DCD2B500AA590F /* WifiPanelTopView.m in Sources */,
 				16D64BE120CF9FCE00ED74C8 /* MBProgressHUD+MJ.m in Sources */,
@@ -1835,6 +1918,7 @@
 				1654A6EC20DDF6A000AFC322 /* UILabel+wordStyle.m in Sources */,
 				169D83BF20DC828F00AA590F /* EasyTableViewFooter.m in Sources */,
 				16D64B7B20CF7CE800ED74C8 /* UILabel+Adapter.m in Sources */,
+				163A08B520E1E38600DAC894 /* BindPhoneModel.m in Sources */,
 				16D64B9A20CF980F00ED74C8 /* AccountManager.m in Sources */,
 				16D64B8020CF7CE800ED74C8 /* UIViewController+EasyUtil.m in Sources */,
 				16D64B9D20CF9B5900ED74C8 /* AccoutDataStore.m in Sources */,
@@ -1849,10 +1933,10 @@
 				16D64BD820CF9FCE00ED74C8 /* WMScrollView.m in Sources */,
 				169D83E220DC8CFD00AA590F /* SDCollectionViewCell.m in Sources */,
 				16D64B8120CF7CE800ED74C8 /* NSDate+Category.m in Sources */,
-				16D64B8220CF7CE800ED74C8 /* NSDate+Additions.m in Sources */,
 				169D83E420DC8CFD00AA590F /* TAPageControl.m in Sources */,
 				16D64BE220CF9FCE00ED74C8 /* Dialog.m in Sources */,
 				16D64C5420D0C19500ED74C8 /* RegisterController.m in Sources */,
+				163A08D520E3180200DAC894 /* zhPopupController.m in Sources */,
 				1656772320D214EA00EC3D5C /* SDKConfig.m in Sources */,
 				16D64BE620CFA27600ED74C8 /* BaseTabController.m in Sources */,
 				169D837920D3ACAE00AA590F /* DHGifImageOperation.m in Sources */,
@@ -1863,6 +1947,7 @@
 				16D64BD920CF9FCE00ED74C8 /* WMMenuView.m in Sources */,
 				16D64B7A20CF7CE800ED74C8 /* NSString+Additions.m in Sources */,
 				16D64BDC20CF9FCE00ED74C8 /* SVRadialGradientLayer.m in Sources */,
+				163A08D120E239E500DAC894 /* UIDevice+zhDeviceType.m in Sources */,
 				16D64BDE20CF9FCE00ED74C8 /* SVProgressHUD.m in Sources */,
 				169D83E020DC8CFD00AA590F /* SDCycleScrollView.m in Sources */,
 				169D83C020DC828F00AA590F /* EaseTableView.m in Sources */,
@@ -1897,8 +1982,10 @@
 				16D64BDD20CF9FCE00ED74C8 /* SVProgressAnimatedView.m in Sources */,
 				1654A6E920DDD80800AFC322 /* WIFICloudInfo.m in Sources */,
 				16C79BCF20CE6B5E00A67DF6 /* AppDelegate.m in Sources */,
+				163A08B920E1E6C500DAC894 /* UserInfoView.m in Sources */,
 				169D83F620DCD2A200AA590F /* WifiPanelBottomView.m in Sources */,
 				16D64C0C20CFBB8F00ED74C8 /* WifiUtil.m in Sources */,
+				163A08CE20E2398400DAC894 /* NSDate+Extend.m in Sources */,
 				16FD291D20E0E9AC0099A32B /* WifiValidatorController.m in Sources */,
 				16D64BD520CF9FCE00ED74C8 /* WITabBarController.m in Sources */,
 				16D64B9220CF868400ED74C8 /* GTMBase64.m in Sources */,
@@ -1918,6 +2005,7 @@
 				169D83C820DC8C3000AA590F /* HomeBannerCell.m in Sources */,
 				16D64B8420CF7CE800ED74C8 /* UITextView+ZWPlaceHolder.m in Sources */,
 				169D83EA20DC933700AA590F /* HomeServiceItemCell.m in Sources */,
+				163A08B220E1DB7800DAC894 /* BindPhoneView.m in Sources */,
 				169D839D20D3C21800AA590F /* WifiPanel.m in Sources */,
 				16D64B7620CF7CE800ED74C8 /* NSDictionary+utils.m in Sources */,
 				16D64C0520CFB58300ED74C8 /* RNEncryptor.m in Sources */,

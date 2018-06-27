@@ -27,4 +27,8 @@ typedef NS_ENUM(NSInteger,WILoginType) {
 
 - (void)MOBThirdLogin:(WILoginType)loginType complete:(IAccountCompleteBlock)complete;
 
+- (void)requestBindPhoneVerifyCode:(WIUser *)user complete:(IAccountCompleteBlock)complete;
+
+- (void)bindPhone:(WIUser *)user complete:(IAccountCompleteBlock)complete;
+
 @end

@@ -21,6 +21,7 @@
 @property (nonatomic,assign)WINetStatus net_status;
 @property (nonatomic,assign)float lastWifiSentFlow;
 @property (nonatomic,assign)BOOL validateSuccess;
+@property (nonatomic,copy)NSString *currentWifiMac;
 
 @end
 
@@ -73,7 +74,7 @@
         }
         else {
             self.net_status = WINetWifi;
-
+            self.currentWifiMac = [WifiUtil getWifiMac];
             if ([WIFISevice isHKTWifi] ) {
                 [[WIFIValidator shared]validator];
             }
@@ -118,6 +119,17 @@
 #pragma mark - notification
 
 - (void)wiApplicationWillEnterForeground:(NSNotification *)noti {
+    NSString *wifiMac = [WIFISevice getCurrentWifiMac];
+    if (wifiMac &&![self.currentWifiMac isEqualToString:wifiMac]) {
+        if ([WIFISevice isHKTWifi] ) {
+            [[WIFIValidator shared]validator];
+        }
+    }
+    [self handleWhenNetChange:WINetWifi];
+    if (self.panelDelegate && [self.panelDelegate respondsToSelector:@selector(handleWhenNetChange:wifiInfo:)]) {
+        [self.panelDelegate handleWhenNetChange:WINetWifi wifiInfo:self.wifiCloudInfo];
+    }
+    
     
 }
 

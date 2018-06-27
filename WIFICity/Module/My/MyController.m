@@ -7,8 +7,12 @@
 //
 
 #import "MyController.h"
+#import "UserInfoView.h"
+#import "WIPopView.h"
 
 @interface MyController ()
+
+
 
 @end
 
@@ -16,12 +20,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [AccountManager logout];
+    [WIPopView popBindPhoneView:self];
+
+//    [AccountManager logout];
 }
 
 - (void)didReceiveMemoryWarning {

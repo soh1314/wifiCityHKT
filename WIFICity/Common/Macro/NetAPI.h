@@ -24,9 +24,9 @@
 #define GetGPSOrgIdImageAPI @"/ws/wifi/getOrgIdByGps.do?posx="
 #define GetMacOrgId @"/ws/wifi/getOrgId.do?mac="
 #define GetCarouseDataAPI @"/ws/wifi/findLbtByOrgId.do?orgId="
-#define GetNewsDataAPI @""
-#define getLoginUrlTailAPI @":2060/wifidog/auth?token=123&mod=1&authway=app&ot="
 
+static NSString *const BindUserAPI = @"/ws/user/bingUser.do";
+static NSString *const BindUserVerifyCodeAPI = @"/ws/user/bingPhone.do";
 
 #define kNetError @"哎呀，网络走丢了 请检查手机网络或稍后重试"
 #define kNetErrorCode 404

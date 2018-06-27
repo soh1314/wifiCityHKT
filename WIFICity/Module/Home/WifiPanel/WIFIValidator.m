@@ -43,7 +43,7 @@
         WIFIValidateInfo *m_info = self.validatArray[i];
         if ([m_info.routIp isEqualToString:info.routIp]) {
             float timestr = [[NSString currentTimeStr]floatValue];
-            if (timestr > m_info.expireTime - 1000) {
+            if (timestr > m_info.expireTime - 300) {
                 needValidator = YES;
                 [self.validatArray removeObject:m_info];
                 [self.validatArray addObject:info];
@@ -79,7 +79,7 @@
             [routIP appendString:[NSString stringWithFormat:@"%@.",ipArray[i]]];
         }
     }
-    float expireTime = [[NSString unixTimeStamp]floatValue]+10*60;
+    float expireTime = [[NSString unixTimeStamp]floatValue]+30*60;
     NSString *expireStr = [NSString stringWithFormat:@"%.f",expireTime];
     NSLog(@"验证wifi过期时间%@",expireStr);
     NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routIP,expireStr];

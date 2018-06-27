@@ -107,4 +107,33 @@
     } showHUD:NO];
 }
 
+- (void)requestBindPhoneVerifyCode:(WIUser *)user complete:(IAccountCompleteBlock)complete {
+    NSDictionary *para = @{@"phone":user.phone};
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, BindUserVerifyCodeAPI) params:para successBlock:^(NSDictionary *returnData) {
+        WINetResponse *respone = [WINetResponse new];
+        BOOL success = [returnData objectForKey:@"success"];
+        if (success) {
+            respone.success = YES;
+            respone.strObj = [returnData objectForKey:@"obj"];;
+            complete(respone);
+        } else {
+            respone.success = NO;
+            [Dialog simpleToast:[returnData objectForKey:@"obj"]];
+        }
+        
+    } failureBlock:^(NSError *error) {
+        kHudNetError;
+    } showHUD:NO];
+}
+
+- (void)bindPhone:(WIUser *)user complete:(IAccountCompleteBlock)complete {
+    NSDictionary *para = @{@"phone":user.phone,@"verifyCode":user.verifyCode,@"bingType":@"sj",@"id":[AccountManager shared].user.userId};
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, BindUserAPI) params:para successBlock:^(NSDictionary *returnData) {
+        WINetResponse *respone = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+        complete([respone copy]);
+    } failureBlock:^(NSError *error) {
+        kHudNetError;
+    } showHUD:NO];
+}
+
 @end

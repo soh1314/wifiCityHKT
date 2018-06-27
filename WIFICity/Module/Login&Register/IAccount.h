@@ -19,4 +19,8 @@ typedef void(^IAccountCompleteBlock)(WINetResponse *response);
 
 - (void)requestVerifyCode:(WIUser *)user complete:(IAccountCompleteBlock)complete;
 
+- (void)requestBindPhoneVerifyCode:(WIUser *)user complete:(IAccountCompleteBlock)complete;
+
+- (void)bindPhone:(WIUser *)user complete:(IAccountCompleteBlock)complete;
+
 @end

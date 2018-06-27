@@ -21,7 +21,6 @@
 @property (nonatomic,weak)id <WifiPanelProtocol>panelDelegate;
 
 - (void)setNetMonitor;
-+(NSString *)getCurrentWifiName;
 +(WINetStatus)netStatus;
 +(BOOL)isHKTWifi;
 
