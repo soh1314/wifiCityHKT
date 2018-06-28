@@ -62,6 +62,8 @@
         user.verifyCode = [bindPhoneModel.verifyCode copy];
         [wself.accountLogin bindPhone:user complete:^(WINetResponse *response) {
             if (response.success) {
+                [AccountManager shared].user.phone = [user.phone copy];
+                [[AccountManager shared]saveUserInfo:[AccountManager shared].user];
                 wself.closeBlock();
                 [Dialog simpleToast:response.msg];
             }

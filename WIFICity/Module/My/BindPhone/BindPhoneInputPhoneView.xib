@@ -51,7 +51,7 @@
                         <constraint firstAttribute="height" constant="0.5" id="wml-o1-sny"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3a-hQ-B6Y">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3a-hQ-B6Y" customClass="WIButton">
                     <rect key="frame" x="278" y="19" width="12" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="12" id="dJ2-bS-ln1"/>

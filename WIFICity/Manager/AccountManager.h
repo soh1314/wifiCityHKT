@@ -25,6 +25,8 @@ typedef NS_ENUM(NSUInteger, APPLoginState){
 
 @property (nonatomic,assign)NSInteger verifyCodeSecond;
 
+@property (nonatomic,assign)BOOL closeCountDown;
+
 + (WIUser *)currentUser;
 
 + (APPLoginState)loginState;

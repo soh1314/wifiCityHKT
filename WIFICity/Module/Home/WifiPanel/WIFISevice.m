@@ -13,9 +13,6 @@
 #import "WIFIValidator.h"
 #import <AFNetworking/AFNetworking.h>
 
-#define SaveUserFlowAPI @"/ws/third/saveFlow.do"
-#define FindUserFLowAPI @"/ws/third/findBandByUserId.do"
-
 @interface WIFISevice()
 
 @property (nonatomic,assign)WINetStatus net_status;
@@ -129,7 +126,6 @@
     if (self.panelDelegate && [self.panelDelegate respondsToSelector:@selector(handleWhenNetChange:wifiInfo:)]) {
         [self.panelDelegate handleWhenNetChange:WINetWifi wifiInfo:self.wifiCloudInfo];
     }
-    
     
 }
 

@@ -49,9 +49,10 @@
     __weak typeof(self)wself = self;
     [self.loginer registerUser:self.user complete:^(WINetResponse *response) {
         if (response.success) {
-            if (self.timer) {
-                dispatch_cancel(self.timer);
+            if (wself.timer) {
+                dispatch_cancel(wself.timer);
             }
+            [AccountManager shared].closeCountDown = YES;
             WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
             [[AccountManager shared]saveUserInfo:user];
             [AccountManager shared].user = user;
@@ -88,8 +89,10 @@
         [self.loginer requestVerifyCode:self.user complete:^(WINetResponse *response) {
             if (response.success) {
                 [[AccountManager shared]countDown:^(NSInteger timeout) {
-                    __weak typeof(self)wself = self;
-                    [wself updateVerfiyBtnUI:timeout];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        __weak typeof(self)wself = self;
+                        [wself updateVerfiyBtnUI:timeout];
+                    });
                 }];
             } else {
                 
@@ -98,7 +101,6 @@
      } else {
          [self openCountDown:[AccountManager shared].verifyCodeSecond];
      }
-    
 }
 
 #pragma mark -- 验证码按钮倒计时逻辑
@@ -141,6 +143,9 @@
 
 - (void)dealloc {
     
+    if (self.timer) {
+        dispatch_source_cancel(_timer);
+    }
 }
 
 - (void)didReceiveMemoryWarning {

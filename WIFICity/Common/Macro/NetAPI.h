@@ -25,6 +25,8 @@
 #define GetMacOrgId @"/ws/wifi/getOrgId.do?mac="
 #define GetCarouseDataAPI @"/ws/wifi/findLbtByOrgId.do?orgId="
 
+static NSString *const SaveUserFlowAPI = @"/ws/third/saveFlow.do";
+static NSString *const FindUserFLowAPI = @"/ws/third/findBandByUserId.do";
 static NSString *const BindUserAPI = @"/ws/user/bingUser.do";
 static NSString *const BindUserVerifyCodeAPI = @"/ws/user/bingPhone.do";
 

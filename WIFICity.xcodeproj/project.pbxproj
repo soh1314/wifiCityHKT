@@ -29,6 +29,7 @@
 		163A08EB20E3707100DAC894 /* after@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163A08E220E3707100DAC894 /* after@3x.png */; };
 		163A08EC20E3707100DAC894 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 163A08E320E3707100DAC894 /* close.png */; };
 		163A08EF20E3717A00DAC894 /* BlankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08EE20E3717A00DAC894 /* BlankViewController.m */; };
+		163A08F220E3752A00DAC894 /* WIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08F120E3752A00DAC894 /* WIButton.m */; };
 		1654A6E920DDD80800AFC322 /* WIFICloudInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */; };
 		1654A6EC20DDF6A000AFC322 /* UILabel+wordStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */; };
 		1654A6EF20DE2EB300AFC322 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6ED20DE2EB200AFC322 /* WebViewController.m */; };
@@ -287,6 +288,8 @@
 		163A08E320E3707100DAC894 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		163A08ED20E3717A00DAC894 /* BlankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlankViewController.h; sourceTree = "<group>"; };
 		163A08EE20E3717A00DAC894 /* BlankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlankViewController.m; sourceTree = "<group>"; };
+		163A08F020E3752A00DAC894 /* WIButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIButton.h; sourceTree = "<group>"; };
+		163A08F120E3752A00DAC894 /* WIButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIButton.m; sourceTree = "<group>"; };
 		1654A6D620DDCEB900AFC322 /* WifiPanelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiPanelProtocol.h; sourceTree = "<group>"; };
 		1654A6E720DDD80800AFC322 /* WIFICloudInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFICloudInfo.h; sourceTree = "<group>"; };
 		1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFICloudInfo.m; sourceTree = "<group>"; };
@@ -1270,6 +1273,8 @@
 				16D64B6520CF7CE600ED74C8 /* UIButton+adapter.m */,
 				16D64B5520CF7CE500ED74C8 /* UIButton+verifyBtn.h */,
 				16D64B6320CF7CE600ED74C8 /* UIButton+verifyBtn.m */,
+				163A08F020E3752A00DAC894 /* WIButton.h */,
+				163A08F120E3752A00DAC894 /* WIButton.m */,
 				16D64B5E20CF7CE600ED74C8 /* UIColor+Theme.h */,
 				16D64B6F20CF7CE700ED74C8 /* UIColor+Theme.m */,
 				16D64B6B20CF7CE600ED74C8 /* UIFont+Util.h */,
@@ -2000,6 +2005,7 @@
 				16D64BDB20CF9FCE00ED74C8 /* MBProgressHUD+Add.m in Sources */,
 				16D64BD220CF9FCE00ED74C8 /* UIScrollView+EmptyDataSet.m in Sources */,
 				16D64BD720CF9FCE00ED74C8 /* WMMenuItem.m in Sources */,
+				163A08F220E3752A00DAC894 /* WIButton.m in Sources */,
 				169D83E120DC8CFD00AA590F /* UIView+SDExtension.m in Sources */,
 				16D64BD920CF9FCE00ED74C8 /* WMMenuView.m in Sources */,
 				16D64B7A20CF7CE800ED74C8 /* NSString+Additions.m in Sources */,
