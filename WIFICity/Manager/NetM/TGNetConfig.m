@@ -39,15 +39,12 @@ static AFHTTPSessionManager *manager ;
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html",@"text/javascript",nil];
 //        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
          manager.requestSerializer.timeoutInterval = 10;
-    } else if ([TGNetConfig shared].type == 1) {
+    } else  {
          manager.requestSerializer=[AFHTTPRequestSerializer serializer];
-         manager.requestSerializer.timeoutInterval = 10;
-        
-    } else {
-        manager.requestSerializer=[AFHTTPRequestSerializer serializer];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html",@"text/javascript",nil];
-        manager.requestSerializer.timeoutInterval = 10;
+         manager.requestSerializer.timeoutInterval = 10;
+        
     }
     return manager;
 }

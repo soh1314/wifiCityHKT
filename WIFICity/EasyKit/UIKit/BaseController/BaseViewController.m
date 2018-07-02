@@ -29,7 +29,7 @@
 
     [super didReceiveMemoryWarning];
     [[SDImageCache sharedImageCache]clearMemory];
-    NSLog(@"内存不足");
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated

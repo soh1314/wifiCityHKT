@@ -17,6 +17,7 @@
 @property (nonatomic,copy)NSString *msg;
 @property (nonatomic,copy)NSDictionary *obj;
 @property (nonatomic,copy)NSString *strObj;
-@property (nonatomic,copy)NSString *attributes;
+@property (nonatomic,copy)NSDictionary *attributes;
+
 
 @end

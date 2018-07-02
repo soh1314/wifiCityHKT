@@ -30,6 +30,9 @@
 		163A08EC20E3707100DAC894 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 163A08E320E3707100DAC894 /* close.png */; };
 		163A08EF20E3717A00DAC894 /* BlankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08EE20E3717A00DAC894 /* BlankViewController.m */; };
 		163A08F220E3752A00DAC894 /* WIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08F120E3752A00DAC894 /* WIButton.m */; };
+		163A08F520E48C5A00DAC894 /* WIFIAnimationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08F420E48C5A00DAC894 /* WIFIAnimationLayer.m */; };
+		163A08FB20E5C82000DAC894 /* WIAreaInfoCach.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08FA20E5C82000DAC894 /* WIAreaInfoCach.m */; };
+		163A08FF20E5CCD600DAC894 /* EasyCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08FE20E5CCD600DAC894 /* EasyCacheHelper.m */; };
 		1654A6E920DDD80800AFC322 /* WIFICloudInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */; };
 		1654A6EC20DDF6A000AFC322 /* UILabel+wordStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */; };
 		1654A6EF20DE2EB300AFC322 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6ED20DE2EB200AFC322 /* WebViewController.m */; };
@@ -86,6 +89,7 @@
 		165678AA20D3662A00EC3D5C /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1656789220D3662900EC3D5C /* location@2x.png */; };
 		165678AD20D368FC00EC3D5C /* expected_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 165678AC20D368FC00EC3D5C /* expected_page.png */; };
 		167620E620DE40DF00797371 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167620E520DE40DE00797371 /* NetworkExtension.framework */; };
+		1691DD1720EA0832008AF2BE /* LoginRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = 1691DD1620EA0832008AF2BE /* LoginRegex.m */; };
 		169D836820D396FF00AA590F /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 169D836720D396FF00AA590F /* back@2x.png */; };
 		169D836B20D39C8B00AA590F /* WIWXInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D836A20D39C8B00AA590F /* WIWXInfo.m */; };
 		169D836E20D39D1000AA590F /* WIQQInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D836D20D39D1000AA590F /* WIQQInfo.m */; };
@@ -290,6 +294,12 @@
 		163A08EE20E3717A00DAC894 /* BlankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlankViewController.m; sourceTree = "<group>"; };
 		163A08F020E3752A00DAC894 /* WIButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIButton.h; sourceTree = "<group>"; };
 		163A08F120E3752A00DAC894 /* WIButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIButton.m; sourceTree = "<group>"; };
+		163A08F320E48C5A00DAC894 /* WIFIAnimationLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFIAnimationLayer.h; sourceTree = "<group>"; };
+		163A08F420E48C5A00DAC894 /* WIFIAnimationLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFIAnimationLayer.m; sourceTree = "<group>"; };
+		163A08F920E5C82000DAC894 /* WIAreaInfoCach.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIAreaInfoCach.h; sourceTree = "<group>"; };
+		163A08FA20E5C82000DAC894 /* WIAreaInfoCach.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIAreaInfoCach.m; sourceTree = "<group>"; };
+		163A08FD20E5CCD600DAC894 /* EasyCacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyCacheHelper.h; sourceTree = "<group>"; };
+		163A08FE20E5CCD600DAC894 /* EasyCacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyCacheHelper.m; sourceTree = "<group>"; };
 		1654A6D620DDCEB900AFC322 /* WifiPanelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiPanelProtocol.h; sourceTree = "<group>"; };
 		1654A6E720DDD80800AFC322 /* WIFICloudInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFICloudInfo.h; sourceTree = "<group>"; };
 		1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFICloudInfo.m; sourceTree = "<group>"; };
@@ -361,6 +371,8 @@
 		165678AC20D368FC00EC3D5C /* expected_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expected_page.png; sourceTree = "<group>"; };
 		167620E520DE40DE00797371 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		167620E720DE40FA00797371 /* WIFICity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WIFICity.entitlements; sourceTree = "<group>"; };
+		1691DD1520EA0832008AF2BE /* LoginRegex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginRegex.h; sourceTree = "<group>"; };
+		1691DD1620EA0832008AF2BE /* LoginRegex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginRegex.m; sourceTree = "<group>"; };
 		169D836720D396FF00AA590F /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		169D836920D39C8A00AA590F /* WIWXInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIWXInfo.h; sourceTree = "<group>"; };
 		169D836A20D39C8B00AA590F /* WIWXInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIWXInfo.m; sourceTree = "<group>"; };
@@ -733,6 +745,8 @@
 			children = (
 				163A08D620E335E400DAC894 /* WIPopView.h */,
 				163A08D720E335E400DAC894 /* WIPopView.m */,
+				163A08F320E48C5A00DAC894 /* WIFIAnimationLayer.h */,
+				163A08F420E48C5A00DAC894 /* WIFIAnimationLayer.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -751,6 +765,15 @@
 				163A08E320E3707100DAC894 /* close.png */,
 			);
 			path = "绑定手机";
+			sourceTree = "<group>";
+		};
+		163A08FC20E5CCD600DAC894 /* Cach */ = {
+			isa = PBXGroup;
+			children = (
+				163A08FD20E5CCD600DAC894 /* EasyCacheHelper.h */,
+				163A08FE20E5CCD600DAC894 /* EasyCacheHelper.m */,
+			);
+			path = Cach;
 			sourceTree = "<group>";
 		};
 		1656771320D119C900EC3D5C /* SmallUIComponet */ = {
@@ -1118,7 +1141,7 @@
 			isa = PBXGroup;
 			children = (
 				16D64B1020CF739A00ED74C8 /* Home */,
-				16D64B1120CF739A00ED74C8 /* Movie */,
+				16D64B1120CF739A00ED74C8 /* Wifi */,
 				16D64B1220CF739A00ED74C8 /* My */,
 				16D64B1320CF739A00ED74C8 /* Login&Register */,
 				16D64B1420CF739A00ED74C8 /* Community */,
@@ -1134,19 +1157,21 @@
 				169D83AD20D3C6DE00AA590F /* WifiPanel */,
 				16D64BED20CFA2A800ED74C8 /* HomeController.h */,
 				16D64BEE20CFA2A800ED74C8 /* HomeController.m */,
+				163A08F920E5C82000DAC894 /* WIAreaInfoCach.h */,
+				163A08FA20E5C82000DAC894 /* WIAreaInfoCach.m */,
 				163A08ED20E3717A00DAC894 /* BlankViewController.h */,
 				163A08EE20E3717A00DAC894 /* BlankViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		16D64B1120CF739A00ED74C8 /* Movie */ = {
+		16D64B1120CF739A00ED74C8 /* Wifi */ = {
 			isa = PBXGroup;
 			children = (
 				16D64BEA20CFA29A00ED74C8 /* MovieController.h */,
 				16D64BEB20CFA29A00ED74C8 /* MovieController.m */,
 			);
-			path = Movie;
+			path = Wifi;
 			sourceTree = "<group>";
 		};
 		16D64B1220CF739A00ED74C8 /* My */ = {
@@ -1175,6 +1200,8 @@
 				16D651A720D0FB2F00ED74C8 /* IAccount.h */,
 				16D651A820D0FBEF00ED74C8 /* IAccountLogin.h */,
 				16D651A920D0FBEF00ED74C8 /* IAccountLogin.m */,
+				1691DD1520EA0832008AF2BE /* LoginRegex.h */,
+				1691DD1620EA0832008AF2BE /* LoginRegex.m */,
 				1656771C20D1F7CC00EC3D5C /* WIPasswordView.h */,
 				1656771D20D1F7CC00EC3D5C /* WIPasswordView.m */,
 			);
@@ -1226,6 +1253,7 @@
 		16D64B1820CF73D000ED74C8 /* EasyKit */ = {
 			isa = PBXGroup;
 			children = (
+				163A08FC20E5CCD600DAC894 /* Cach */,
 				163A08D220E3180200DAC894 /* PopView */,
 				169D836F20D3ACAE00AA590F /* GuidView */,
 				16D64BF920CFB58300ED74C8 /* RNCryptor */,
@@ -1727,7 +1755,7 @@
 						CreatedOnToolsVersion = 9.3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.HotspotConfiguration = {
 								enabled = 1;
@@ -1917,6 +1945,7 @@
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
 				"${BUILT_PRODUCTS_DIR}/XHLaunchAd/XHLaunchAd.framework",
+				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1939,6 +1968,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XHLaunchAd.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1955,6 +1985,7 @@
 				16D64B7E20CF7CE800ED74C8 /* UIButton+adapter.m in Sources */,
 				1654A6EF20DE2EB300AFC322 /* WebViewController.m in Sources */,
 				16D64C2520D0AAB800ED74C8 /* MHUploadParam.m in Sources */,
+				163A08FB20E5C82000DAC894 /* WIAreaInfoCach.m in Sources */,
 				163A08AB20E1D53300DAC894 /* BindPhoneInputPwdView.m in Sources */,
 				169D83A620D3C4CE00AA590F /* HomeLbtResponse.m in Sources */,
 				16D64BD420CF9FCE00ED74C8 /* EaseNoDataModel.m in Sources */,
@@ -1986,6 +2017,7 @@
 				16D64B9D20CF9B5900ED74C8 /* AccoutDataStore.m in Sources */,
 				16D64B7920CF7CE800ED74C8 /* UIImage+base.m in Sources */,
 				169D83B320DC7DC000AA590F /* HomeNewsOneCell.m in Sources */,
+				1691DD1720EA0832008AF2BE /* LoginRegex.m in Sources */,
 				16D64BEF20CFA2A800ED74C8 /* HomeController.m in Sources */,
 				169D83F320DCD28500AA590F /* WifiFlowView.m in Sources */,
 				16D64B9620CF939000ED74C8 /* WIUser.m in Sources */,
@@ -2013,6 +2045,7 @@
 				163A08D120E239E500DAC894 /* UIDevice+zhDeviceType.m in Sources */,
 				16D64BDE20CF9FCE00ED74C8 /* SVProgressHUD.m in Sources */,
 				169D83E020DC8CFD00AA590F /* SDCycleScrollView.m in Sources */,
+				163A08FF20E5CCD600DAC894 /* EasyCacheHelper.m in Sources */,
 				169D83C020DC828F00AA590F /* EaseTableView.m in Sources */,
 				16D64C2720D0AAB800ED74C8 /* MHNetworkManager.m in Sources */,
 				16D64BD120CF9FCE00ED74C8 /* WINavigationCotroller.m in Sources */,
@@ -2022,6 +2055,7 @@
 				16FD291A20E0CC3F0099A32B /* WIFIValidator.m in Sources */,
 				16D64C4F20D0C18000ED74C8 /* LoginController.m in Sources */,
 				16D64C2820D0AAB800ED74C8 /* MHAsiNetworkHandler.m in Sources */,
+				163A08F520E48C5A00DAC894 /* WIFIAnimationLayer.m in Sources */,
 				16D64B7C20CF7CE800ED74C8 /* UIButton+verifyBtn.m in Sources */,
 				1656771620D119C900EC3D5C /* TPPasswordTextView.m in Sources */,
 				16FD292020E0EC550099A32B /* WIFIValidateInfo.m in Sources */,

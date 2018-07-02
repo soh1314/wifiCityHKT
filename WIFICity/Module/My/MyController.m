@@ -26,7 +26,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+    [AccountManager logout];
 
 //    [AccountManager logout];
 }

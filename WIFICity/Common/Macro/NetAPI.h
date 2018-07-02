@@ -22,9 +22,9 @@
 #define ComListAPI @"/ws/company/getCompanyList.do?"
 #define FindUserByKeyAPI @"/ws/user/findUserByKey.do?"
 #define GetGPSOrgIdImageAPI @"/ws/wifi/getOrgIdByGps.do?posx="
-#define GetMacOrgId @"/ws/wifi/getOrgId.do?mac="
 #define GetCarouseDataAPI @"/ws/wifi/findLbtByOrgId.do?orgId="
 
+static NSString *const GetMacOrgId = @"/ws/wifi/getOrgId.do";
 static NSString *const SaveUserFlowAPI = @"/ws/third/saveFlow.do";
 static NSString *const FindUserFLowAPI = @"/ws/third/findBandByUserId.do";
 static NSString *const BindUserAPI = @"/ws/user/bingUser.do";

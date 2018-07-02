@@ -79,10 +79,26 @@
     }
     
     CFRelease(wifiInterfaces);
-    
     return wifiName;
 }
 
++(NSString *)getRegularMac {
+    NSString *wifiName = [self getWifiMac];
+    NSArray *array = [wifiName componentsSeparatedByString:@":"];
+    NSMutableString *regularMac = [NSMutableString string];
+    for (int i = 0; i < array.count; i++) {
+        NSString *t_ip = array[i];
+        if (t_ip.length < 2) {
+            [regularMac appendString:[NSString stringWithFormat:@"0%@",t_ip]];
+        } else {
+            [regularMac appendString:[NSString stringWithFormat:@"%@",t_ip]];
+        }
+        if (i != array.count - 1) {
+            [regularMac appendString:@":"];
+        }
+    }
+    return regularMac;
+}
 
 
 + (NSString *)getLocalIPAddressForCurrentWiFi
@@ -339,6 +355,20 @@
 //    [[NEHotspotConfigurationManager sharedManager] applyConfiguration:hotspotConfig completionHandler:^(NSError * _Nullable error) {
 //        NSLog(@"%@", error);
 //    }];
+    
+}
+
++ (void)registerNetwork:(NSString *)ssid
+{
+    NSString *values[] = {ssid};
+    CFArrayRef arrayRef = CFArrayCreate(kCFAllocatorDefault,(void *)values,
+                                        (CFIndex)1, &kCFTypeArrayCallBacks);
+    if( CNSetSupportedSSIDs(arrayRef)) {
+        NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();
+        CNMarkPortalOnline((__bridge CFStringRef)(ifs[0]));
+        NSLog(@"%@", ifs);
+    }
+    
     
 }
 

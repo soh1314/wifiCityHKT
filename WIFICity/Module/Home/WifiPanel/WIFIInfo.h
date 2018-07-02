@@ -15,4 +15,7 @@
 @property (nonatomic,copy)NSString *IP;
 @property (nonatomic,copy)NSString *routeIP;
 
+@property (nonatomic,copy)NSString *orgId;
+@property (nonatomic,copy)NSString *endTime;
+
 @end

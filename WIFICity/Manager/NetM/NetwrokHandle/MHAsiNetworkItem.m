@@ -59,8 +59,8 @@
             [MBProgressHUD showHUDAddedTo:KWINDOW animated:YES];
         }
         __weak typeof(self)weakSelf = self;
-        DTLog(@"--请求url地址--%@\n",url);
-        DTLog(@"----请求参数%@\n",params);
+//        DTLog(@"--请求url地址--%@\n",url);
+//        DTLog(@"----请求参数%@\n",params);
         [params setValue:[[AccountManager shared].user.userId copy] forKey:@"userId"];
         AFHTTPSessionManager *manager = [TGNetConfig httpManager];
         if (networkType==MHAsiNetWorkGET)

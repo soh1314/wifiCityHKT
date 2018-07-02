@@ -9,6 +9,8 @@
 #import "LoginController.h"
 #import "IAccountLogin.h"
 #import "LoginController2.h"
+#import "GCDThrottle.h"
+#import "LoginRegex.h"
 
 @interface LoginController ()<UITextFieldDelegate>
 
@@ -89,18 +91,34 @@
 #pragma mark - btn method
 
 - (void)login:(id)sender {
-    WIUser *user = [self inputUser];
-    if (user.phone.length >= 11) {
-        LoginController2 *controller = [[LoginController2 alloc]init];
-        controller.user = user;
-        [self.navigationController pushViewController:controller animated:YES];
+    if (![LoginRegex checkoutPhoneNum:self.phoneTtf.text]) {
+        return;
     }
+    [self.loginer requestVerifyCode:[self inputUser] complete:^(WINetResponse *response) {
+        if (response.success) {
+            [[AccountManager shared]countDown:nil];
+            [GCDThrottle throttle:0.5 block:^{
+                WIUser *user = [self inputUser];
+                if (user.phone.length >= 11) {
+                    LoginController2 *controller = [[LoginController2 alloc]init];
+                    controller.user = user;
+                    [self.navigationController pushViewController:controller animated:YES];
+                }
+            }];
+            
+        } else {
+            [Dialog simpleToast:response.msg];
+        }
+    }];
+
 
 }
 
 - (void)wechatLogin:(id)sender {
+    [Dialog showWindowToast];
     [self.loginer MOBThirdLogin:WIWXLogin complete:^(WINetResponse *response) {
-        if (response.success) {
+        [Dialog hideWindowToast];
+        if (response && response.success) {
             WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
             [[AccountManager shared]saveUserInfo:user];
             [AccountManager shared].user = user;
@@ -113,8 +131,10 @@
 }
 
 - (void)qqLogin:(id)sender {
+    [Dialog showWindowToast];
     [self.loginer MOBThirdLogin:WIQQLogin complete:^(WINetResponse *response) {
-        if (response.success) {
+        [Dialog hideWindowToast];
+        if (response && response.success) {
             WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
             [[AccountManager shared]saveUserInfo:user];
             [AccountManager shared].user = user;

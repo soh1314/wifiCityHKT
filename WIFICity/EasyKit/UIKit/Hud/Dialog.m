@@ -154,6 +154,14 @@ static Dialog *instance = nil;
     [HUD showWhileExecuting:method onTarget:controller withObject:nil animated:YES];
 }
 
++ (void)showWindowToast {
+    [MBProgressHUD showHUDAddedTo:KWINDOW animated:YES];
+}
+
++ (void)hideWindowToast {
+    [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+}
+
 #pragma mark -
 #pragma mark Execution code
 

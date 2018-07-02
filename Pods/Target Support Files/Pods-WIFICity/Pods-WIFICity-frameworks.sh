@@ -162,6 +162,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/XHLaunchAd/XHLaunchAd.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ACAlertController/ACAlertController.framework"
@@ -183,6 +184,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/XHLaunchAd/XHLaunchAd.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

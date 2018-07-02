@@ -9,12 +9,27 @@
 #import <Foundation/Foundation.h>
 #import "WifiUtil.h"
 #import "WIFIValidateInfo.h"
-//http://192.168.99.254:2060/wifidog/auth?token=123&mod=1&authway=app&ot=1529894758
+
+typedef NS_ENUM(NSInteger,WIFIValidateStatus){
+    WIFIValidateFail = 0,
+    WIFIValidateSuccess,
+    WIFIValidateProcess
+    
+};
+
 @interface WIFIValidator : NSObject
 
 + (instancetype)shared;
 
+@property (nonatomic,copy,readonly)NSString *lastHktWifiMac;
+@property (nonatomic,assign)WIFIValidateStatus validateStatus;
+
 - (BOOL)needValidator:(WIFIValidateInfo *)info;
 - (void)validator;
+
+
+
+- (void)validatorWhenAppTerminate;
+- (void)backGroundValidator;
 
 @end

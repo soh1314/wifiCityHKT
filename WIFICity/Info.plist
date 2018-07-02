@@ -95,11 +95,13 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>App需要您的同意,才能在使用期间访问位置,让您有新的体验</string>
+	<string>有了地理位置，才可以搜索你附近的免费Wi-Fi~</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>App需要您的同意,才能始终访问位置</string>
+	<string>有了地理位置，才可以搜索你附近的免费Wi-Fi~</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>我们需要通过您的地理位置信息获取不同的数据,能够带来全新体验</string>
+	<string>有了地理位置，才可以搜索你附近的免费Wi-Fi~</string>
+	<key>UIBackgroundModes</key>
+	<array/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

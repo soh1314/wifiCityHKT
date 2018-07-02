@@ -8,7 +8,8 @@
 
 #import "IAccountLogin.h"
 #import <ShareSDKExtension/SSEThirdPartyLoginHelper.h>
-
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "WXApi.h"
 #define APPLoginAPI @"/ws/user/verifyLogin.do"
 #define RegisterVerifyCodeAPI @"/ws/user/verifyPhone.do"
 #define ThirdLoginAPI @"/ws/user/thirdLogin.do"
@@ -43,10 +44,13 @@
 
 - (void)requestVerifyCode:(WIUser *)user complete:(IAccountCompleteBlock)complete {
     NSDictionary *para = @{@"phone":[user.phone copy]};
+    [Dialog showWindowToast];
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, RegisterVerifyCodeAPI) params:para successBlock:^(NSDictionary *returnData) {
+        [Dialog hideWindowToast];
         WINetResponse *respone = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         complete([respone copy]);
     } failureBlock:^(NSError *error) {
+        [Dialog hideWindowToast];
         kHudNetError;
     } showHUD:NO];
 }
@@ -73,9 +77,18 @@
              [self WIThirdLogin:newUser complete:^(WINetResponse *response) {
                  complete(response);
              }];
-         }
-         else
+         } else if (state == SSDKResponseStateCancel) {
+             complete(nil);
+             [Dialog simpleToast:@"取消第三方登录"];
+         } else
          {
+             complete(nil);
+             if (![QQApiInterface isQQInstalled] && loginType == WIQQLogin) {
+                 [Dialog simpleToast:LoginQQUninstallError];
+             }
+             if (![WXApi isWXAppInstalled] && loginType == WIWXLogin) {
+                 [Dialog simpleToast:LoginWXUninstallError];
+             }
              NSLog(@"%@",error);
          }
          

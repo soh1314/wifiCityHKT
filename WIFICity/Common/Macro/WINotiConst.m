@@ -10,6 +10,11 @@
 
 NSString *const WILoginSuccessNoti = @"WILoginSuccessNoti";
 NSString *const WILogoutSuccessNoti = @"WILogoutSuccessNoti";
+
+NSString *const WIOrgIDChangeNoti = @"WIOrgIDChangeNoti";
+NSString *const WIFIValidatorSuccessNoti = @"WIFIValidatorSuccessNoti";
+NSString *const WIFIValidatorFailNoti = @"WIFIValidatorFailNoti";
+
 @implementation WINotiConst
 
 @end

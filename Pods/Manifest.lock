@@ -41,6 +41,7 @@ PODS:
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - XHLaunchAd (3.9.7):
     - FLAnimatedImage (~> 1.0.12)
+  - YYCache (1.0.4)
 
 DEPENDENCIES:
   - ACAlertController
@@ -59,6 +60,7 @@ DEPENDENCIES:
   - TZImagePickerController (~> 1.7.9)
   - "UITableView+FDTemplateLayoutCell (~> 1.6)"
   - XHLaunchAd
+  - YYCache
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -81,6 +83,7 @@ SPEC REPOS:
     - TZImagePickerController
     - "UITableView+FDTemplateLayoutCell"
     - XHLaunchAd
+    - YYCache
 
 SPEC CHECKSUMS:
   ACAlertController: 10f0455c3e1691a6197b5cd0d96d6f9a03c82763
@@ -102,7 +105,8 @@ SPEC CHECKSUMS:
   TZImagePickerController: 0a8ff228d287ebdd7d485e8c42a2a932894f1fba
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   XHLaunchAd: 0dc50c5af00ee5d9e734b9dce6eece7acaa71122
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: e4f443b8bb02a4b9277331c2724e5abbf108ac51
+PODFILE CHECKSUM: 1ba44cd417968d9b88b65a9839a96d836c02f301
 
 COCOAPODS: 1.5.3

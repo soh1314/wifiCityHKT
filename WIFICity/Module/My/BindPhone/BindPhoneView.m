@@ -66,6 +66,8 @@
                 [[AccountManager shared]saveUserInfo:[AccountManager shared].user];
                 wself.closeBlock();
                 [Dialog simpleToast:response.msg];
+            } else {
+                [Dialog simpleToast:response.msg];
             }
         }];
     };

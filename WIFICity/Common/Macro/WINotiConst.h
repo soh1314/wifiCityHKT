@@ -10,7 +10,9 @@
 
 FOUNDATION_EXTERN NSString *const WILoginSuccessNoti;
 FOUNDATION_EXTERN NSString *const WILogoutSuccessNoti;
-
+FOUNDATION_EXTERN NSString *const WIOrgIDChangeNoti;
+FOUNDATION_EXTERN NSString *const WIFIValidatorSuccessNoti;
+FOUNDATION_EXTERN NSString *const WIFIValidatorFailNoti;
 @interface WINotiConst : NSObject
 
 @end

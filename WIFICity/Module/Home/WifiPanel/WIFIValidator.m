@@ -13,7 +13,7 @@
 
 @interface WIFIValidator()
 
-
+@property (nonatomic,readwrite,copy)NSString *lastHktWifiMac;
 @property (nonatomic,strong)NSMutableArray *validatArray;
 
 @end
@@ -25,6 +25,7 @@
     static dispatch_once_t once_tokn;
     dispatch_once(&once_tokn, ^{
         manager = [[self alloc]init];
+        
     });
     return manager;
 }
@@ -32,6 +33,7 @@
 - (id)init {
     if (self = [super init]) {
         self.validatArray = [NSMutableArray array];
+       _lastHktWifiMac = [[NSUserDefaults standardUserDefaults]objectForKey:LASTHKTWIFIMACKEY];
     }
     return self;
 }
@@ -79,22 +81,72 @@
             [routIP appendString:[NSString stringWithFormat:@"%@.",ipArray[i]]];
         }
     }
-    float expireTime = [[NSString unixTimeStamp]floatValue]+30*60;
+    float expireTime = [[NSString unixTimeStamp]floatValue]+20*60;
     NSString *expireStr = [NSString stringWithFormat:@"%.f",expireTime];
     NSLog(@"验证wifi过期时间%@",expireStr);
     NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routIP,expireStr];
-    WifiValidatorController *vc = [[WifiValidatorController alloc]init];
-    vc.URLString = [validatorUrl copy];
-    UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
-    if (root && [root isKindOfClass:[TGTabBarController class]]) {
-        TGTabBarController *tabbarController = (TGTabBarController*)root;
-        UIViewController *selectVc =  tabbarController.selectedViewController;
-        if ([selectVc isKindOfClass:[UINavigationController class]]) {
-            UINavigationController *nav = (UINavigationController *)selectVc;
-            [nav pushViewController:vc animated:YES];
-        }
-    }
+    [self inerValidateRequest:validatorUrl];
+    
+//    WifiValidatorController *vc = [[WifiValidatorController alloc]init];
+//    vc.URLString = [validatorUrl copy];
+//    UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
+//    if (root && [root isKindOfClass:[TGTabBarController class]]) {
+//        TGTabBarController *tabbarController = (TGTabBarController*)root;
+//        UIViewController *selectVc =  tabbarController.selectedViewController;
+//        if ([selectVc isKindOfClass:[UINavigationController class]]) {
+//            UINavigationController *nav = (UINavigationController *)selectVc;
+//            [nav pushViewController:vc animated:YES];
+//        }
+//    }
     
 }
+
+- (void)inerValidateRequest:(NSString *)validatorUrl {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    AFSecurityPolicy *policy = [AFSecurityPolicy new];
+    [policy setAllowInvalidCertificates:YES];
+    manager.securityPolicy = policy;
+    NSLog(@"%@",validatorUrl);
+    NSString *url = [validatorUrl copy];
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        if ([str containsString:@"go to internat ok!"]) {
+            self.lastHktWifiMac = [WifiUtil getWifiMac];
+            [[NSUserDefaults standardUserDefaults]setObject:self.lastHktWifiMac forKey:LASTHKTWIFIMACKEY];
+            [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorSuccessNoti object:nil];
+            NSLog(@"认证成功");
+        } else {
+            [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
+            NSLog(@"认证失败");
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"认证网络问题");
+        [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
+    }];
+   
+}
+
+- (void)validatorWhenAppTerminate {
+    
+}
+
+- (void)backGroundValidator {
+    
+}
+
+- (BOOL)isHKTWifi {
+    NSString *wifiName = [WifiUtil getWifiMac];
+    if ([wifiName hasPrefix:@"dc:37"]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 
 @end

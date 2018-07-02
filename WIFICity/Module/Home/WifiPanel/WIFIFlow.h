@@ -14,5 +14,6 @@
 @property (nonatomic,copy)NSString* wifiSent;
 @property (nonatomic,copy)NSString* wifiReceived;
 @property (nonatomic,copy)NSString* wwanSent;
+@property (nonatomic,copy)NSString* wifiLastSent;
 
 @end

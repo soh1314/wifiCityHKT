@@ -43,4 +43,9 @@
 - (void)showProgress:(UIViewController *)controller withLabel:(NSString *)labelText;
 - (void)showCenterProgressWithLabel:(NSString *)labelText;
 
+//显示菊花图
+
++ (void)showWindowToast;
++ (void)hideWindowToast;
+
 @end

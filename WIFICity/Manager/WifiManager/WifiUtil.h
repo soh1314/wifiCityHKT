@@ -12,6 +12,7 @@
 
 +(NSString *)getWifiName;
 +(NSString *)getWifiMac;
++(NSString *)getRegularMac;
 + (void)fetchSSIDInfo;
 +(void)openWifiSetting;
 + (NSString *)getLocalIPAddressForCurrentWiFi;
@@ -19,4 +20,5 @@
 +(void)autoConnectWifi;
 + (WIFIFlow *)checkNetworkflow;
 + (NSString *)getLocalRoutIpForCurrentWiFi;
++ (void)registerNetwork:(NSString *)ssid;
 @end

@@ -73,8 +73,8 @@
 }
 
 + (void)cancleThirdLoginAuthorize {
-//    [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ];
-//    [ShareSDK cancelAuthorize:SSDKPlatformTypeWechat];
+    [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ];
+    [ShareSDK cancelAuthorize:SSDKPlatformTypeWechat];
 }
 
 

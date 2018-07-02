@@ -10,7 +10,7 @@
 #import "SDKConfig.h"
 #import "StaticGuideViewController.h"
 #import "WIFISevice.h"
-
+#import "WIFIValidator.h"
 @interface AppDelegate ()
 
 @end
@@ -70,6 +70,9 @@
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    [[WIFIValidator shared]validator];
+    NSLog(@"应用退出后台");
+    
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

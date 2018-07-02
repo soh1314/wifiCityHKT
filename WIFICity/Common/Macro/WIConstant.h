@@ -25,13 +25,18 @@
 
 #import "WINotiConst.h"
 static NSString *const LoginVerfifyCodeNullError = @"验证码不能为空";
-
+static NSString *const LoginQQUninstallError = @"您未安装QQ，请先安装最新QQ手机版";
+static NSString *const LoginWXUninstallError = @"您未安装微信，请先安装微信";
 static NSString *const WIFIConnectToastWord = @"wifi已连接";
-
 typedef NS_ENUM(NSInteger,WINetStatus) {
     WINetWifi = 0,
     WINet4G = 1,
     WINetFail = 2
 };
+static NSString *const LASTHKTWIFIMACKEY = @"LastHKTWifiMacKey";
+static NSString *const LASTHKTWIFIORGIDKEY = @"LastHKTWifiOrgIdKey";
+static NSString *const HOMEAPSERVICEKEY = @"HomeAPServiceKey";
+
+
 
 #endif /* WIConstant_h */

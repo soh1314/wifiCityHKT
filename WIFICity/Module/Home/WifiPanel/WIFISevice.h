@@ -16,14 +16,15 @@
 + (instancetype)shared;
 
 @property (nonatomic,strong)WIFICloudInfo *wifiCloudInfo;
+@property (nonatomic,strong)WIFIInfo *wifiInfo;
 @property (nonatomic,strong)dispatch_source_t timer;
 @property (nonatomic,weak)id <WifiNetChangeProtocol>delegate;
 @property (nonatomic,weak)id <WifiPanelProtocol>panelDelegate;
+@property (nonatomic,copy)NSString *orgID;
 
 - (void)setNetMonitor;
 +(WINetStatus)netStatus;
 +(BOOL)isHKTWifi;
-
 - (void)connectWifi;
 - (void)stopWifi;
 

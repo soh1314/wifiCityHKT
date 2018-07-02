@@ -19,9 +19,7 @@
 #import "EasyNormalRefreshHeader.h"
 #import "WIPopView.h"
 
-#define SaveUserFlowAPI @"/ws/third/saveFlow.do"
 #define FindUserFLowAPI @"/ws/third/findBandByUserId.do"
-
 #define LbtInfoAPI  @"/ws/wifi/findLbtByOrgId.do"
 #define HomeNewsApi @"/ws/wifi/findDeliveryByOrgId.do" //8a8ab0b246dc81120146dc8180ba0017
 #define HomeThirdAPI @"/ws/third/findAllThirdIcon.do"
@@ -48,6 +46,27 @@
         [[EasyCLLocationManager shared]stopLocate];
     }];
     [WIFISevice shared].panelDelegate = self;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(orgIDChange:) name:WIOrgIDChangeNoti object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidateSuccess:) name:WIFIValidatorSuccessNoti object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidateFail:) name:WIFIValidatorFailNoti object:nil];
+}
+
+- (void)wifiValidateSuccess:(NSNotification *)noti {
+    [self loadHomeData];
+}
+
+- (void)wifiValidateFail:(NSNotification *)noti {
+    [self loadHomeData];
+}
+
+- (void)orgIDChange:(NSNotification *)noti {
+    [self loadHomeData];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:WIOrgIDChangeNoti object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:WIFIValidatorSuccessNoti object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:WIFIValidatorFailNoti object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -101,7 +120,7 @@
 }
 
 - (void)requestLbtData {
-    NSDictionary *para = @{@"orgId":@"8a8ab0b246dc81120146dc8180ba0017"};
+    NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, LbtInfoAPI) params:para successBlock:^(NSDictionary *returnData) {
         NSArray *lbtArray = [HomeLbtResponse arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         self.lbtArray = [lbtArray copy];
@@ -112,7 +131,7 @@
 }
 
 - (void)requestHomeNews {
-    NSDictionary *para = @{@"orgId":@"8a8ab0b246dc81120146dc8180ba0017"};
+    NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, HomeNewsApi) params:para successBlock:^(NSDictionary *returnData) {
         NSArray *newsArray = [HomeNews arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         [self.dataArray removeAllObjects];
@@ -120,6 +139,7 @@
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     } failureBlock:^(NSError *error) {
+        [self.tableView.mj_header endRefreshing];
         kHudNetError;
     } showHUD:NO];
 }
@@ -129,7 +149,6 @@
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, HomeThirdAPI) params:para successBlock:^(NSDictionary *returnData) {
         NSArray *serviceArray = [HomeServiceData arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         self.serviceArray = [serviceArray copy];
-        
         [self.tableView reloadData];
     } failureBlock:^(NSError *error) {
         
@@ -271,10 +290,8 @@
     }
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

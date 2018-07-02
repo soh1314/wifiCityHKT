@@ -131,6 +131,10 @@
                         // 6
                         city = placemark.administrativeArea;
                     }
+                    self.location.province = [province copy];
+                    NSString *city1 = [city replace:@"市" withString:@""];
+                    self.location.city = [city1 copy];
+                    self.location.area = [placemark.subLocality copy];
                     self.locateCompleteBlock(province, city, area, detailAddress);
                     [self stopLocate];
                     

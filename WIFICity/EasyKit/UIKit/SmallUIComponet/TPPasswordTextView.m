@@ -64,7 +64,7 @@
         UITextField *pwdTextField = [[UITextField alloc] init];
         pwdTextField.enabled = NO;
         pwdTextField.textAlignment = NSTextAlignmentCenter;//居中
-        pwdTextField.secureTextEntry = YES;//设置密码模式
+        pwdTextField.secureTextEntry = NO;//设置密码模式
         pwdTextField.textColor = [UIColor colorWithHexString:@"#00A1E9"];
         pwdTextField.userInteractionEnabled = NO;
         pwdTextField.layer.borderColor = self.elementBorderColor.CGColor;

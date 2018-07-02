@@ -34,7 +34,7 @@
         if (info.flowNumber >= 1024) {
             self.totalFlowLabel.text = [NSString stringWithFormat:@"%.2f GB",info.flowNumber/1024.0f];
         } else {
-           self.totalFlowLabel.text = [NSString stringWithFormat:@"%.2f MB",info.flowNumber];
+           self.totalFlowLabel.text = [NSString stringWithFormat:@"%.f MB",info.flowNumber];
         }        
         NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:self.totalFlowLabel.text];
         [AttributedStr addAttribute:NSFontAttributeName

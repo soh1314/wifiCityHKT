@@ -25,7 +25,6 @@
     [super viewDidLoad];
     [self initUI];
     self.loginer = [[IAccountLogin alloc]init];
-    [self innerRequestVerifyCode];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -67,7 +66,6 @@
 }
 
 - (IBAction)requestVerfiyCode:(id)sender {
-    
     [self.loginer requestVerifyCode:self.user complete:^(WINetResponse *response) {
         if (response.success) {
             [[AccountManager shared]countDown:^(NSInteger timeout) {
@@ -99,8 +97,12 @@
             }
         }];
      } else {
+         
          [self openCountDown:[AccountManager shared].verifyCodeSecond];
      }
+    if ([AccountManager shared].verifyCodeSecond > 10) {
+        [self openCountDown:[AccountManager shared].verifyCodeSecond];
+    }
 }
 
 #pragma mark -- 验证码按钮倒计时逻辑
