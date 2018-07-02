@@ -94,24 +94,30 @@
     if (![LoginRegex checkoutPhoneNum:self.phoneTtf.text]) {
         return;
     }
-    [self.loginer requestVerifyCode:[self inputUser] complete:^(WINetResponse *response) {
-        if (response.success) {
-            [[AccountManager shared]countDown:nil];
-            [GCDThrottle throttle:0.5 block:^{
-                WIUser *user = [self inputUser];
-                if (user.phone.length >= 11) {
-                    LoginController2 *controller = [[LoginController2 alloc]init];
-                    controller.user = user;
-                    [self.navigationController pushViewController:controller animated:YES];
-                }
-            }];
-            
-        } else {
-            [Dialog simpleToast:response.msg];
+    __weak typeof(self)welf = self;
+    if ([AccountManager shared].verifyCodeSecond <= 0) {
+        [self.loginer requestVerifyCode:[self inputUser] complete:^(WINetResponse *response) {
+            if (response.success) {
+                [[AccountManager shared]countDown:nil];
+                [welf pushToLogin2Controller];
+            } else {
+                [Dialog simpleToast:response.msg];
+            }
+        }];
+    } else {
+        [self pushToLogin2Controller];
+    }
+}
+
+- (void)pushToLogin2Controller {
+    [GCDThrottle throttle:0.5 block:^{
+        WIUser *user = [self inputUser];
+        if (user.phone.length >= 11) {
+            LoginController2 *controller = [[LoginController2 alloc]init];
+            controller.user = user;
+            [self.navigationController pushViewController:controller animated:YES];
         }
     }];
-
-
 }
 
 - (void)wechatLogin:(id)sender {

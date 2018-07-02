@@ -11,6 +11,9 @@
 #import "WIPasswordView.h"
 #import "IAccountLogin.h"
 
+static NSString *const LoginVerifySendSuccess = @"验证码发送成功";
+static NSString *const LoginVerifySendFail = @"验证码发送失败";
+
 @interface LoginController2 ()
 
 @property (nonatomic,strong)WIPasswordView *pwdView;
@@ -25,6 +28,7 @@
     [super viewDidLoad];
     [self initUI];
     self.loginer = [[IAccountLogin alloc]init];
+    [self innerRequestVerifyCode];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -59,21 +63,21 @@
             [NavManager dismissLoginController:wself];
 
         } else {
-            
+           
         }
-
     }];
 }
 
 - (IBAction)requestVerfiyCode:(id)sender {
     [self.loginer requestVerifyCode:self.user complete:^(WINetResponse *response) {
         if (response.success) {
+            [Dialog simpleToast:LoginVerifySendSuccess];
             [[AccountManager shared]countDown:^(NSInteger timeout) {
                 __weak typeof(self)wself = self;
                 [wself updateVerfiyBtnUI:timeout];
             }];
         } else {
-            
+            [Dialog simpleToast:response.msg];
         }
     }];
 }
@@ -83,23 +87,6 @@
 }
 
 - (void)innerRequestVerifyCode {
-     if ([AccountManager shared].reverifyEnabled) {
-        [self.loginer requestVerifyCode:self.user complete:^(WINetResponse *response) {
-            if (response.success) {
-                [[AccountManager shared]countDown:^(NSInteger timeout) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        __weak typeof(self)wself = self;
-                        [wself updateVerfiyBtnUI:timeout];
-                    });
-                }];
-            } else {
-                
-            }
-        }];
-     } else {
-         
-         [self openCountDown:[AccountManager shared].verifyCodeSecond];
-     }
     if ([AccountManager shared].verifyCodeSecond > 10) {
         [self openCountDown:[AccountManager shared].verifyCodeSecond];
     }
@@ -144,8 +131,9 @@
 }
 
 - (void)dealloc {
-    
     if (self.timer) {
+        dispatch_source_set_event_handler(self.timer, ^{
+        });
         dispatch_source_cancel(_timer);
     }
 }

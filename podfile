@@ -15,7 +15,7 @@ pod 'UITableView+FDTemplateLayoutCell', '~> 1.6'
 pod 'TZImagePickerController' , '~> 1.7.9'
 pod 'MWPhotoBrowser' , '~> 2.1.2'
 pod 'ACAlertController'
-pod 'MLeaksFinder'
+#pod 'MLeaksFinder'
 pod 'YYCache'
 
 use_frameworks!

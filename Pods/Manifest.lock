@@ -17,7 +17,6 @@ PODS:
     - AFNetworking/NSURLSession
   - CocoaSecurity (1.2.4)
   - DACircularProgress (2.3.1)
-  - FBRetainCycleDetector (0.1.4)
   - FLAnimatedImage (1.0.12)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
@@ -27,8 +26,6 @@ PODS:
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.15.3)
-  - MLeaksFinder (1.0.0):
-    - FBRetainCycleDetector
   - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
@@ -53,7 +50,6 @@ DEPENDENCIES:
   - Masonry (~> 0.6.4)
   - MBProgressHUD (~> 0.9.2)
   - MJRefresh
-  - MLeaksFinder
   - MWPhotoBrowser (~> 2.1.2)
   - SAMKeychain
   - SDWebImage
@@ -68,7 +64,6 @@ SPEC REPOS:
     - AFNetworking
     - CocoaSecurity
     - DACircularProgress
-    - FBRetainCycleDetector
     - FLAnimatedImage
     - FMDB
     - IQKeyboardManager
@@ -76,7 +71,6 @@ SPEC REPOS:
     - Masonry
     - MBProgressHUD
     - MJRefresh
-    - MLeaksFinder
     - MWPhotoBrowser
     - SAMKeychain
     - SDWebImage
@@ -90,7 +84,6 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
-  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   IQKeyboardManager: c390e612f4b98c8fd748016470138537dc163ead
@@ -98,7 +91,6 @@ SPEC CHECKSUMS:
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
-  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
@@ -107,6 +99,6 @@ SPEC CHECKSUMS:
   XHLaunchAd: 0dc50c5af00ee5d9e734b9dce6eece7acaa71122
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 1ba44cd417968d9b88b65a9839a96d836c02f301
+PODFILE CHECKSUM: 7f4db8cedc32534f8d2cc68ba134e3d30983034e
 
 COCOAPODS: 1.5.3

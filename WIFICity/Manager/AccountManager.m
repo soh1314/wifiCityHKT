@@ -109,8 +109,8 @@
             dispatch_source_cancel(_timer);
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.reverifyEnabled = YES;
-                if (!self.closeCountDown) {
-                    block(seconds);
+                if (!self.closeCountDown && block) {
+                        block(seconds);
                 }
             });
             
@@ -118,8 +118,8 @@
             NSInteger seconds = (time-1) % 60;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.reverifyEnabled = NO;
-                if (!self.closeCountDown) {
-                    block(seconds);
+                if (!self.closeCountDown && block) {
+                        block(seconds);
                 }
             });
             time--;
