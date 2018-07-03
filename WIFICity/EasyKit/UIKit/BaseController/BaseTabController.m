@@ -8,6 +8,7 @@
 
 #import "BaseTabController.h"
 #import "UIViewController+EasyUtil.h"
+
 @interface BaseTabController ()
 
 @end
@@ -18,6 +19,12 @@
     [super viewDidLoad];
     [self easySetAutoInsets:NO];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self setWhiteTrasluntNavBar];
 }
 
 - (void)didReceiveMemoryWarning {

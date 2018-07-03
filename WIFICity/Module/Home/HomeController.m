@@ -24,6 +24,8 @@
 #define HomeNewsApi @"/ws/wifi/findDeliveryByOrgId.do" //8a8ab0b246dc81120146dc8180ba0017
 #define HomeThirdAPI @"/ws/third/findAllThirdIcon.do"
 
+static NSString *const WIFIHomeNewsDetailAPI = @"/hktInformationDeliveryController.do?findById&id=";
+
 @interface HomeController ()<UITableViewDelegate,UITableViewDataSource,WifiPanelProtocol>
 
 @property (nonatomic,strong)EaseTableView *tableView;
@@ -270,9 +272,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 2) {
         HomeNews *news = [self.dataArray objectAtIndex:indexPath.row];
-        [NavManager pushWebViewControllerWithHtmlWord:news.details controller:self];
+        NSString *detailUrl = [NSString stringWithFormat:@"%@%@%@",kUrlHost,WIFIHomeNewsDetailAPI,news.ID];
+        [NavManager pushWebViewControllerWithHtmlWord:detailUrl controller:self];
     }
-
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {

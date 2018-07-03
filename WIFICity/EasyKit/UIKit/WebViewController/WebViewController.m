@@ -20,7 +20,6 @@
     self.navigationItem.title = @"详情";
     [self setBlackNavBar];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"←" style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
-
     if(!self.URLString ){
         if (self.htmlWord) {
             UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
@@ -35,7 +34,8 @@
         }
         
     } else {
-        self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        CGFloat navHeight = kStatusBarHeight + 44;
+        self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-navHeight)];
         self.webView.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.view addSubview:self.webView];
         [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
@@ -47,9 +47,8 @@
         [self.navigationController.view addSubview:self.progressView];
     }
     
-   
-
 }
+
 -(void)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -81,10 +80,12 @@
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
+
 - (void)dealloc{
     
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

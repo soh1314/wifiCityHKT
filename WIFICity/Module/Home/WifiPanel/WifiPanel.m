@@ -69,7 +69,7 @@
 
 - (void)setLocation:(WILocation *)location {
     _location = location;
-    self.topView.locationLabel.text = [NSString stringWithFormat:@"%@",location.city];
+    self.topView.locationLabel.text = [NSString stringWithFormat:@"%@%@",location.city,location.area];
     if (location.city) {
         [WIWeatherService getWeatherInfoWithLocation:location.city complete:^(WIWeatherInfo *weatherInfo) {
             if (weatherInfo) {

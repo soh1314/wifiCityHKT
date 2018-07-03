@@ -97,6 +97,9 @@
 
 - (void)countDown:(void(^)(NSInteger timeout))block {
     self.closeCountDown = NO;
+    if (self.timer) {
+        dispatch_cancel(self.timer);
+    }
     __block NSInteger time = 60; //倒计时时间
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
