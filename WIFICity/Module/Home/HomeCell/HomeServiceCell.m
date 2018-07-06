@@ -59,7 +59,7 @@
     return _collectionView;
 }
 
-#pragma mark - delegate
+#pragma mark -collect delegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"选择了哪个答案:%ld",indexPath.row);

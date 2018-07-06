@@ -28,9 +28,10 @@
 - (instancetype)dh_initWithFrame:(CGRect)frame imageNameArray:(NSArray<NSString *> *)imageNameArray buttonIsHidden:(BOOL)isHidden {
     if ([super initWithFrame:frame]) {
         self.slideInto = YES;
-        if (isHidden == YES) {
-            self.imageArray = imageNameArray;
-        }
+        self.imageArray = [imageNameArray copy];
+//        if (isHidden == YES) {
+//            
+//        }
         
         // 设置引导视图的scrollview
         UIScrollView *guidePageView = [[UIScrollView alloc]initWithFrame:frame];
@@ -42,7 +43,7 @@
         [guidePageView setDelegate:self];
         [self addSubview:guidePageView];
 //
-//        // 设置引导页上的跳过按钮
+        // 设置引导页上的跳过按钮
 //        UIButton *skipButton = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.8, DDScreenW*0.1, 50, 25)];
 //        [skipButton setTitle:@"跳过" forState:UIControlStateNormal];
 //        [skipButton.titleLabel setFont:[UIFont systemFontOfSize:14.0]];

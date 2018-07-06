@@ -63,7 +63,9 @@
     } else {
         [self.connectWifiBtn setTitle:@"已连接" forState:UIControlStateNormal];
         NSString *wifiName = [WifiUtil getWifiName];
-        self.wifiNameLabel.text = [NSString stringWithFormat:@"WIFI: %@",wifiName];
+        if (wifiName) {
+            self.wifiNameLabel.text = [NSString stringWithFormat:@"WIFI: %@",wifiName];
+        }
     }
 }
 

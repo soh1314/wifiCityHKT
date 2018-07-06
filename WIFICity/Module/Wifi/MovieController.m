@@ -20,13 +20,13 @@
     self.imageView = [[UIImageView alloc]initWithFrame:self.view.frame];
     [self.view addSubview:self.imageView];
     self.imageView.image = [UIImage qsImageNamed:@"expected_page"];
+
     // Do any additional setup after loading the view.
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    WifiMapController *mapController = [WifiMapController new];
-    [self.navigationController pushViewController:mapController animated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {

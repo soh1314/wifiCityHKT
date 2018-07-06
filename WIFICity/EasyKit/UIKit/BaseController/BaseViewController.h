@@ -10,7 +10,15 @@
 #import "EaseNoDataModel.h"
 #import "UIViewController+EasyUtil.h"
 
-@interface BaseViewController : UIViewController
+@protocol BaseViewControllerBaseProtocol<NSObject>
+
+@optional
+- (void)initUI;
+- (void)loadData;
+
+@end
+
+@interface BaseViewController : UIViewController <BaseViewControllerBaseProtocol>
 
 @property (nonatomic,strong)EaseNoDataModel *nodataModel;
 @property (nonatomic,strong)UIScrollView *noDataSuperView;

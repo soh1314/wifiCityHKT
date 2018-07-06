@@ -170,6 +170,7 @@ static NSString *const WIFIHomeNewsDetailAPI = @"/hktInformationDeliveryControll
         __weak typeof(self)wself = self;
         _tableView.mj_header = [EasyNormalRefreshHeader headerWithRefreshingBlock:^{
             [wself loadHomeData];
+            
         }];
         _tableView.estimatedRowHeight = 200;
     }

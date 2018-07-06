@@ -6,7 +6,7 @@
 //  Copyright © 2017年 trgf. All rights reserved.
 //
 
-#import "WINavigationCotroller.H"
+#import "WINavigationCotroller.h"
 
 
 @interface TGNavigationCotroller ()
@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [[UINavigationBar appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont boldFont5]}];
-    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:17]};
+    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#111111"],NSFontAttributeName:[UIFont systemFontOfSize:18]};
     self.navigationBar.translucent = NO;
     self.navigationBar.tintColor = [UIColor blackColor];
    

@@ -27,13 +27,13 @@
 
 @implementation WifiMapController
 
-- (id)init {
-    if (self = [super init]) {
-        self.hidesBottomBarWhenPushed = YES;
-
-    }
-    return self;
-}
+//- (id)init {
+//    if (self = [super init]) {
+//        self.hidesBottomBarWhenPushed = YES;
+//
+//    }
+//    return self;
+//}
 
 - (void)dealloc {
     if (_mapView) {
@@ -49,7 +49,6 @@
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
     [_locService startUserLocationService];
-
 }
 
 
@@ -66,7 +65,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"WIFI地图";
-    [self setBlackNavBar];
+    [self setWhiteTrasluntNavBar];
     _mapManager = [[BMKMapManager alloc]init];
     BOOL ret = [_mapManager start:@"NAjg8KLy6H3sotqy7Qa1UQRoVwvnXagz"  generalDelegate:nil];
     if (!ret) {
@@ -78,12 +77,12 @@
     mapView.userTrackingMode = BMKUserTrackingModeFollow;
     mapView.showsUserLocation = YES;
     [mapView setZoomLevel:18];
-    mapView.minZoomLevel = 10;
+//    mapView.minZoomLevel = 10;
     self.mapView = mapView;
     self.view = mapView;
 
     BMKLocationViewDisplayParam *displayParam = [[BMKLocationViewDisplayParam alloc]init];
-    displayParam.isAccuracyCircleShow=YES;//精度圈是否显示
+    displayParam.isAccuracyCircleShow=NO;//精度圈是否显示
     displayParam.locationViewImgName=@"icon_center_point";//定位图标名称去除蓝色的圈
     [_mapView updateLocationViewWithParam:displayParam];
     

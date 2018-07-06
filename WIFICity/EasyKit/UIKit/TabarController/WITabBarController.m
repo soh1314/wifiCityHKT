@@ -10,6 +10,7 @@
 #import "WITabBarSubViewController.h"
 #import "WINavigationCotroller.h"
 //#import "JZNavigationExtension.h"
+#import "WifiMapController.h"
 
 @interface TGTabBarController ()<UITabBarControllerDelegate>
 
@@ -67,7 +68,7 @@
 //     home.jz_navigationBarBackgroundHidden = YES;
 //    home.jz_wantsNavigationBarVisible = NO;
     homeNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_shouye image:[UIImage qsAutoImageNamed:@"home_default"] selectedImage:[UIImage qsAutoImageNamed:@"home"]];
-    MovieController *movieController = [[MovieController alloc]init];
+    WifiMapController *movieController = [[WifiMapController alloc]init];
     TGNavigationCotroller *movieNav = [[TGNavigationCotroller alloc]initWithRootViewController:movieController];
     movieNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_movie image:[UIImage qsAutoImageNamed:@"location_default"] selectedImage:[UIImage qsAutoImageNamed:@"location"]  ];
     CommunityController *communityController = [[CommunityController alloc]init];

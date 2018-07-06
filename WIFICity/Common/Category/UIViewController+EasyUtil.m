@@ -28,7 +28,7 @@
 
 - (void)setWhiteTrasluntNavBar {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
-    [self.navigationController.navigationBar setShadowImage:[self imageWithColor:[UIColor blackColor]]];
+//    [self.navigationController.navigationBar setShadowImage:[self imageWithColor:[UIColor blackColor]]];
     self.navigationController.navigationBar.translucent=YES;
     self.navigationController.navigationBar.hidden = YES;
     
@@ -36,7 +36,7 @@
 
 - (UIImage *)imageWithColor:(UIColor *)color
 {
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 0.1f);
+    CGRect rect = CGRectMake(0.0f, 0.0f, 0.25f, 0.25f);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [color CGColor]);

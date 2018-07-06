@@ -27,7 +27,7 @@
 }
 
 + (UIColor *)themeTableEdgeColor {
-    return [UIColor colorWithHexString:@"#F6F6F6"];
+    return [UIColor colorWithHexString:@"#F9F9F9"];
 }
 
 + (UIColor *)themeblackColor {

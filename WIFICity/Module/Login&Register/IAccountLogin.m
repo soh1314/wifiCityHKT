@@ -10,9 +10,12 @@
 #import <ShareSDKExtension/SSEThirdPartyLoginHelper.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "WXApi.h"
+#import "EasyCacheHelper.h"
 #define APPLoginAPI @"/ws/user/verifyLogin.do"
 #define RegisterVerifyCodeAPI @"/ws/user/verifyPhone.do"
 #define ThirdLoginAPI @"/ws/user/thirdLogin.do"
+
+
 
 @implementation IAccountLogin
 
@@ -69,6 +72,7 @@
          if (state == SSDKResponseStateSuccess)
          {
              WIUser *newUser = [self associateThirdUser:user];
+             [EasyCacheHelper saveResponseCache:user.icon forKey:MobThirdLoginAvartarKey];
              if (loginType == WIQQLogin) {
                  newUser.loginType = @"qq";
              } else {
@@ -101,6 +105,7 @@
     user.nickname = sdkUser.nickname;
     user.wxOpenid = [sdkUser.uid copy];
     user.qqOpenid = [sdkUser.uid copy];
+    user.avartar = [sdkUser.icon copy];
     return user;
 }
 

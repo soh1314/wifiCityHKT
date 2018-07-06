@@ -7,6 +7,7 @@
 //
 
 #import "UserInfoView.h"
+#import "UIImageView+EaseEffect.h"
 
 @implementation UserInfoView
 
@@ -20,7 +21,8 @@
 }
 
 - (void)initUI {
-    
+
+    [self.avartar cornerEffect];
 }
 
 @end

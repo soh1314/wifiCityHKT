@@ -10,4 +10,9 @@
 
 @interface UserInfoView : UIView
 
+@property (weak, nonatomic) IBOutlet UIImageView *avartar;
+@property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *yuanjiaoView;
+
+
 @end

@@ -22,7 +22,11 @@
     [self addBackItem];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self checkNet];
-    // Do any additional setup after loading the view.
+    if (!KSys11Up) {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }  else {
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {

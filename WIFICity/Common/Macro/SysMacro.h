@@ -65,6 +65,12 @@ invocation.selector = @selector(setContentInsetAdjustmentBehavior:);\
 _Pragma("clang diagnostic pop")\
 } while (0)
 
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#define NSLog(...)
+#endif
+
 #define kAppUrl(host,path) [NSString stringWithFormat:@"%@%@",host,path]
 #define KINT2STR(a)  [NSString stringWithFormat:@"%ld",a]
 #define kHomeDir NSHomeDirectory()

@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.5</string>
+	<string>1.1.9</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -62,7 +62,9 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.1.5</string>
+	<string>201807041055</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>comgooglemaps</string>
@@ -94,14 +96,16 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>此 App 需要您的同意才能使用您的相机</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>有了地理位置，才可以搜索你附近的免费Wi-Fi~</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>有了地理位置，才可以搜索你附近的免费Wi-Fi~</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>有了地理位置，才可以搜索你附近的免费Wi-Fi~</string>
-	<key>UIBackgroundModes</key>
-	<array/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>此 App 需要您的同意才能读取媒体资料库</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

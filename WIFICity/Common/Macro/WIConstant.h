@@ -13,7 +13,7 @@
 
 //tabbar
 #define tabbar_shouye           @"首页"
-#define tabbar_movie             @"电影"
+#define tabbar_movie             @"wifi地图"
 #define tabbar_square          @"企业广场"
 #define tabbar_promoteHelper    @"推广助手"
 #define tabbar_userCenter       @"个人中心"
@@ -28,6 +28,8 @@ static NSString *const LoginVerfifyCodeNullError = @"验证码不能为空";
 static NSString *const LoginQQUninstallError = @"您未安装QQ，请先安装最新QQ手机版";
 static NSString *const LoginWXUninstallError = @"您未安装微信，请先安装微信";
 static NSString *const WIFIConnectToastWord = @"wifi已连接";
+static NSString *const MobThirdLoginAvartarKey = @"ThridLoginAvatarKey";
+
 typedef NS_ENUM(NSInteger,WINetStatus) {
     WINetWifi = 0,
     WINet4G = 1,
