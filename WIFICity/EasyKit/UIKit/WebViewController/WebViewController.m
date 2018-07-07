@@ -39,7 +39,7 @@
         self.webView.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.view addSubview:self.webView];
         [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:(self.URLString)]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]];
         [self.webView loadRequest:request];
         self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 5)];
         self.progressView.progressViewStyle = UIProgressViewStyleBar;
@@ -58,7 +58,6 @@
     [super viewWillDisappear:animated];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.progressView removeFromSuperview];
-
     });
 }
 
@@ -66,13 +65,16 @@
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
         
         CGFloat progress = [change[NSKeyValueChangeNewKey] floatValue];
-        [self.progressView setProgress:progress animated:YES];
+        if (progress < 0.3) {
+            [self.progressView setProgress:0.3 animated:YES];
+        } else {
+            [self.progressView setProgress:progress animated:YES];
+        }
         if(progress == 1.0)
         {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
                 [self.progressView setProgress:0.0 animated:NO];
-                [self dismissViewControllerAnimated:YES completion:nil];
             });
         }
         

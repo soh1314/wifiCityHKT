@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CompanyHomeSearchBar.h"
 @interface EnterpriseSquareHomeHeader : UIView
+
+
+@property (nonatomic,strong)CompanyHomeSearchBar *searchBar;
 
 @end

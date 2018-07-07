@@ -1,19 +1,14 @@
 //
-//  WIModel.m
+//  WICompanyCategory.m
 //  WIFICity
 //
-//  Created by WifiProjectPC on 2018/6/13.
+//  Created by WifiProjectPC on 2018/7/7.
 //  Copyright © 2018年 HKT. All rights reserved.
 //
 
-#import "WIModel.h"
+#import "WICompanyCategory.h"
 
-@implementation WIModel
-
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    return YES;
-}
+@implementation WICompanyCategory
 
 +(JSONKeyMapper *)keyMapper{
     return [[JSONKeyMapper alloc]initWithModelToJSONDictionary:@{@"id":@"ID"}];

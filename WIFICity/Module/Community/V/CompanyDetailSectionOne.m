@@ -7,6 +7,7 @@
 //
 
 #import "CompanyDetailSectionOne.h"
+#import "WIUtil.h"
 
 @implementation CompanyDetailSectionOne
 
@@ -33,7 +34,21 @@
     // Configure the view for the selected state
 }
 
+- (void)setInfo:(WICompanyInfo *)info {
+    _info = info;
+    self.companyNameLabel.text = [info.com_name copy];
+    self.phoneValueLabel.text = [info.com_tel copy];
+    self.addressValueLabel.text = [info.com_address copy];
+    NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,self.info.com_logo];
+    [self.companyIcon sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+    }];
+    
+}
+
 - (IBAction)callCompany:(id)sender {
+    
+    [WIUtil callPhone:self.info.phoneNumber];
 }
 
 - (IBAction)locateCompany:(id)sender {

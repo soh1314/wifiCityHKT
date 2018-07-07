@@ -24,6 +24,15 @@
     bgIcon.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:bgIcon];
     
+    self.searchBar = [[CompanyHomeSearchBar alloc]initWithFrame:CGRectZero];
+    [self addSubview:self.searchBar];
+    [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self).mas_offset(-20);
+        make.centerX.mas_equalTo(self);
+        make.left.mas_equalTo(self).mas_offset(16);
+        make.height.mas_equalTo(44);
+    }];
+    
     
 }
 

@@ -10,6 +10,7 @@
 #import "CompanyDetailSectionOne.h"
 #import "CompanyDetailSectionTwo.h"
 #import "CompanyDetailSectionFour.h"
+#import "WebViewController.h"
 
 @interface CompanyDetailController ()
 
@@ -86,23 +87,39 @@
     if (section == 0) {
         CompanyDetailSectionOne *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailSectionOneID" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        cell.info = self.info;
         return cell;
     } else if (section == 1) {
         CompanyDetailSectionTwo *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailSectionTwoID" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        cell.info = self.info;
+        
         return cell;
     } else {
         CompanyDetailSectionFour *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailSectionFourID" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        cell.info = self.info;
+        __weak typeof(self)wself = self;
+        cell.actionBlock = ^(NSString *url) {
+            if (url) {
+               [wself jumpToWebViewController:url];
+            }
+        };
         return cell;
     }
 }
 
+- (void)jumpToWebViewController:(NSString *)url {
+    WebViewController *web = [WebViewController new];
+    web.URLString = [url copy];
+    [self.navigationController pushViewController:web animated:YES];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 1) {
+        [self jumpToWebViewController:self.info.com_website];
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {

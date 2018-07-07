@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WICompanyInfo.h"
 @interface CompanyDetailSectionTwo : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *abstractLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icon;
+@property (weak, nonatomic) IBOutlet UILabel *notiLabel;
+@property (weak, nonatomic) IBOutlet UIView *edgeView;
+
+@property (nonatomic,strong)WICompanyInfo *info;
 
 @end

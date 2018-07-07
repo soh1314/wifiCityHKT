@@ -66,8 +66,12 @@
 
     if (self.navigationController&&self.navigationController.viewControllers && self.navigationController.viewControllers.count >=2) {
         UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(popAction)];
+//        [item setWidth:40];
         self.navigationItem.hidesBackButton = YES;
         self.navigationItem.leftBarButtonItem = item;
+        
+        
+        
         self.navigationItem.backBarButtonItem = nil;
     }
 }

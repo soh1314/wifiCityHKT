@@ -18,6 +18,14 @@
 
 - (void)initUI {
     self.abstractLabel.textColor = [UIColor colorWithHexString:@"#141414"];
+    self.edgeView.backgroundColor = [UIColor colorWithHexString:@"#0078FF"];
+    self.notiLabel.textColor = [UIColor colorWithHexString:@"#0078FF"];
+}
+
+- (void)setInfo:(WICompanyInfo *)info {
+    _info = info;
+    self.abstractLabel.text = [info.com_range copy];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

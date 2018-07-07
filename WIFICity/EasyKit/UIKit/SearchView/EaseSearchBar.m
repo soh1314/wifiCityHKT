@@ -26,6 +26,7 @@
         self.searchTtf.placeholder = [self.textfieldPlaceHolderName copy];
     }
     self.searchTtf.userInteractionEnabled = NO;
+    self.searchTtf.returnKeyType = UIReturnKeySearch;
     self.clipsToBounds = YES;
     self.layer.cornerRadius = 6;
     self.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
@@ -60,12 +61,19 @@
 }
 
 - (void)tap:(UITapGestureRecognizer *)tap {
-    [self.searchTtf becomeFirstResponder];
     if (self.actionblock) {
         self.actionblock();
 
     }
     
+}
+
+- (void)invokeSearch {
+   [self.searchTtf becomeFirstResponder];
+}
+
+- (void)cancleSearch {
+    [self.searchTtf resignFirstResponder];
 }
 
 #pragma mark -- get

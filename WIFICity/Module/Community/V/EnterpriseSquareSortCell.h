@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WICompanyCategory.h"
+
 typedef void(^itemPick)(NSInteger idx);
 
 @interface EnterpriseSquareSortCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -15,6 +17,7 @@ typedef void(^itemPick)(NSInteger idx);
 @property (nonatomic,copy)NSArray *dataArray;
 @property (nonatomic,copy)NSArray *titleArray;
 @property (nonatomic,copy)NSArray *imageArray;
+@property (nonatomic,copy)NSArray *categoryModelArray;
 @property (nonatomic, copy) itemPick pick;
 
 @end

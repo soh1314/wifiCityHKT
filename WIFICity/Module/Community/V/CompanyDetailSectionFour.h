@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WICompanyInfo.h"
+
+typedef void(^JumpWebSiteActionBlock)(NSString *url);
 
 @interface CompanyDetailSectionFour : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIView *recruimentView;
@@ -19,5 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *egdeView1;
 @property (weak, nonatomic) IBOutlet UIView *edgeView2;
+@property (nonatomic,strong)WICompanyInfo *info;
+@property (nonatomic,copy)JumpWebSiteActionBlock actionBlock;
+
 
 @end

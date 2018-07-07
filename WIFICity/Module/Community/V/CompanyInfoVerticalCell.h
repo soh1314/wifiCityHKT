@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WICompanyInfo.h"
 @interface CompanyInfoVerticalCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *companyLogo;
@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *likeNum;
 @property (weak, nonatomic) IBOutlet UILabel *commentNumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *collectLabel;
+@property (weak, nonatomic) IBOutlet UIView *bgIconView;
 
+@property (nonatomic,strong)WICompanyInfo *info;
 
 @end

@@ -24,8 +24,35 @@
     self.contentView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
     self.edgeView2.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
     self.egdeView1.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
-
     
+    UITapGestureRecognizer *tapRecruitMent = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapRecruitMent:)];
+    [self.recruimentView addGestureRecognizer:tapRecruitMent];
+    UITapGestureRecognizer *tapProductInfo = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapProductInfo:)];
+    [self.productInfoView addGestureRecognizer:tapProductInfo];
+    UITapGestureRecognizer *tapWebsite = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapWebsite:)];
+    [self.websiteView addGestureRecognizer:tapWebsite];
+}
+
+- (void)tapRecruitMent:(id)sender {
+    if (self.actionBlock) {
+        self.actionBlock(self.info.com_website);
+    }
+}
+
+- (void)tapProductInfo:(id)sender {
+    if (self.actionBlock) {
+        self.actionBlock(self.info.com_website);
+    }
+}
+
+- (void)tapWebsite:(id)sender {
+    if (self.actionBlock) {
+        self.actionBlock(self.info.com_website);
+    }
+}
+
+- (void)setInfo:(WICompanyInfo *)info {
+    _info = info;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

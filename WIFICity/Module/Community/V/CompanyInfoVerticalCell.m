@@ -27,4 +27,16 @@
     
 }
 
+- (void)setInfo:(WICompanyInfo *)info {
+    _info = info;
+    self.nameLabel.text = [info.com_name copy];
+    self.desLabel.text = [info.com_range copy];
+    self.likeNum.text  = [NSString stringWithFormat:@"%ld",info.likes];
+    NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,info.com_logo];
+    [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+    }];
+    
+}
+
 @end

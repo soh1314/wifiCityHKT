@@ -16,4 +16,8 @@ typedef void(^TapSearchBarAction)(void);
 @property (nonatomic,copy)NSString *textfieldPlaceHolderName;
 @property (nonatomic,copy)TapSearchBarAction actionblock;
 
+- (void)invokeSearch;
+
+- (void)cancleSearch;
+
 @end

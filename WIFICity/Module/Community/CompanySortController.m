@@ -14,6 +14,10 @@
 
 #import "CompanyDetailController.h"
 #import "CompanySearchController.h"
+#import "EnterpriseSquareNetAPI.h"
+#import "WICompanyInfo.h"
+#import "WICompanyCategory.h"
+
 @interface CompanySortController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic,strong)UICollectionView *collectionView;
@@ -21,6 +25,7 @@
 @property (nonatomic,assign)NSInteger showType;
 @property (nonatomic,strong)EaseSearchBar *searchBar;
 @property (nonatomic,strong)CompanySortTopView *sortTopView;
+@property (nonatomic,assign)NSInteger page;
 
 @end
 
@@ -38,16 +43,51 @@
     [self setBlackNavBar];
     self.showType = 0;
     [self initUI];
-    [self loadData];
+    if (!self.categoryID) {
+        self.categoryID = @"402883b260d36c5f0160d4c0d7f70017";
+    }
+    [self loadData:YES];
+    self.dataArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
 }
 
-- (void)loadData {
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.searchBar cancleSearch];
+}
+
+- (void)loadData:(BOOL)refresh {
+    if (refresh) {
+        self.page = 0;
+    } else {
+        self.page++;
+    }
     
+    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entID":[self.categoryID copy]};
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCategoryListAPI) params:para successBlock:^(NSDictionary *returnData) {
+        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+        if (response && response.success) {
+            NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
+            if (refresh) {
+                [self.dataArray removeAllObjects];
+                [self.dataArray addObjectsFromArray:dataArray];
+            } else {
+                [self.dataArray addObjectsFromArray:dataArray];
+            }
+            [self.collectionView reloadData];
+        }
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:NO];
 }
 
 - (void)initUI {
     self.sortTopView = [CompanySortTopView topViewWithTitleArray:@[@"类别",@"距离"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
+    self.sortTopView.tapBlock = ^(NSInteger index, CompanySortItemView *view) {
+        if (index == 0) {
+            
+        }
+    };
     [self.view addSubview:self.sortTopView];
     [self.view addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -61,10 +101,12 @@
     self.searchBar = [[EaseSearchBar alloc]initWithFrame:CGRectMake(0, 0, 278/375.0f*KSCREENW, 36)];
     self.searchBar.textfieldPlaceHolderName = @"";
     self.navigationItem.titleView = self.searchBar;
-    [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(278);
-        make.height.mas_equalTo(36);
-    }];
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 11.0) {
+        [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(278);
+            make.height.mas_equalTo(36);
+        }];
+    }
     __weak typeof(self)wself = self;
     self.searchBar.actionblock = ^{
         CompanySearchController *searchCtrl = [CompanySearchController new];
@@ -90,23 +132,26 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"选择了哪个答案:%ld",indexPath.row);
+    WICompanyInfo *info = self.dataArray[indexPath.row];
     CompanyDetailController *detailCtrl = [CompanyDetailController new];
+    detailCtrl.info = info;
     [self.navigationController pushViewController:detailCtrl animated:YES];
     
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.dataArray.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    WICompanyInfo *info = self.dataArray[indexPath.row];
     if (self.showType == 0) {
         CompanyInfoVerticalCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CompanyInfoVerticalCellID" forIndexPath:indexPath];
-        
+        [cell setInfo:info];
         return cell;
     } else {
         CompanyInfoHorizonCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CompanyInfoHorizonCellID" forIndexPath:indexPath];
-        
+        [cell setInfo:info];
         return cell;
     }
 
@@ -138,11 +183,17 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 
 {
+    if (self.showType == 1 && section == 0) {
+        return CGFLOAT_MIN;
+    }
     return 8.0f;
     
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    if (self.showType == 1 && section == 0) {
+        return CGFLOAT_MIN;
+    }
     return 8.0;
 }
 

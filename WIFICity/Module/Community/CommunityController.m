@@ -14,11 +14,17 @@
 #import "EnterpriseSquareHomeHeader.h"
 #import "ParallaxHeaderView.h"
 #import "CompanySortController.h"
+#import "CompanySearchController.h"
+
+#import "EnterpriseSquareNetAPI.h"
+#import "WICompanyCategory.h"
+#import "WICompanyInfo.h"
 
 @interface CommunityController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)EaseTableView *tableView;
 @property (nonatomic,strong)NSMutableArray *dataArray;
+@property (nonatomic,strong)NSMutableArray *categoryArray;
 
 @end
 
@@ -29,6 +35,8 @@
     [self setWhiteTrasluntNavBar];
     [self initUI];
     [self loadData];
+    self.categoryArray = [NSMutableArray array];
+    self.dataArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
 }
 
@@ -41,13 +49,53 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"EnterPriseSquareHomeInfoCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"EnterPriseSquareHomeInfoCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"EnterpriseSquareSortCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"EnterpriseSquareSortCellID"];
     EnterpriseSquareHomeHeader *header = [[EnterpriseSquareHomeHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 175/375.0f * KSCREENW)];
+    header.searchBar.tapBlock = ^{
+        CompanySearchController *vc = [CompanySearchController new];
+        [self.navigationController pushViewController:vc animated:YES];
+    };
     ParallaxHeaderView *headerView = [ParallaxHeaderView parallaxHeaderViewWithSubView:header];
     [self.tableView setTableHeaderView:headerView];
 
 }
 
 - (void)loadData {
+
+    [self requestCompanyCategoryInfo];
+    [self requestCompanyList];
+    //http://wifi.hktfi.com/ws/company/getEntList.do?企业分类
+    //
+    //http://wifi.hktfi.com/ws/company/getCompanyList.do?entId=从上个接口获取的id&useId=用户id&pageNum=加载页数
+    //
+    //http://wifi.hktfi.com/ws/company/getCompanyList.do?&useId=&comName=
+}
+
+- (void)requestCompanyList {
     
+    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":@"0"};
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCategoryListAPI) params:para successBlock:^(NSDictionary *returnData) {
+        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+        if (response && response.success) {
+            NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
+            [self.dataArray addObjectsFromArray:dataArray];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:NO];
+}
+
+- (void)requestCompanyCategoryInfo {
+    
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, CompanyCategoryAPI) params:nil successBlock:^(NSDictionary *returnData) {
+        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+        if (response) {
+            
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:NO];
 }
 
 
@@ -87,7 +135,7 @@
         return 1;
         
     } else {
-        return 4;
+        return self.dataArray.count;
         
     }
 }
@@ -95,8 +143,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         EnterpriseSquareSortCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterpriseSquareSortCellID" forIndexPath:indexPath];
-        
-        
+        __weak typeof(self)wself = self;
+        cell.pick = ^(NSInteger idx) {
+            CompanySortController *sortCtrl = [CompanySortController new];
+            [wself.navigationController pushViewController:sortCtrl animated:YES];
+        };
         return cell;
     } else if (indexPath.section == 1) {
         EnterPriseSquareHomeInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterPriseSquareHomeInfoCellID" forIndexPath:indexPath];
@@ -105,7 +156,8 @@
         
     } else {
         CompanyRecommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyRecommentCellID" forIndexPath:indexPath];
-        
+        WICompanyInfo *info = self.dataArray[indexPath.row];
+        [cell setCompanyInfo:info];
         return cell;
     }
     return nil;

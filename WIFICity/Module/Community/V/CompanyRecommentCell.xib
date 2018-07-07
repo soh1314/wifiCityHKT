@@ -18,36 +18,50 @@
                 <rect key="frame" x="0.0" y="0.0" width="463" height="206.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="JiF-U3-YRZ">
-                        <rect key="frame" x="16" y="12" width="194" height="60"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="湖南华宽通科技股份有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGD-LE-EhZ">
-                        <rect key="frame" x="222" y="17" width="225" height="17"/>
+                        <rect key="frame" x="136" y="17" width="311" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ws3-fk-ORo">
-                        <rect key="frame" x="222" y="45" width="225" height="150.5"/>
-                        <string key="text">经营范围：电子产品、通信设备、监控设备、网络系统、计算机软件...</string>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="      " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ws3-fk-ORo">
+                        <rect key="frame" x="136" y="45" width="311" height="150.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7l-Cv-gZq">
+                        <rect key="frame" x="16" y="12" width="105" height="60"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="JiF-U3-YRZ">
+                                <rect key="frame" x="5" y="10" width="95" height="40"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JiF-U3-YRZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="M7l-Cv-gZq" secondAttribute="top" constant="10" id="EPv-Kt-2Zq"/>
+                            <constraint firstItem="JiF-U3-YRZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="M7l-Cv-gZq" secondAttribute="leading" constant="5" id="Jfp-oG-wiF"/>
+                            <constraint firstAttribute="height" constant="60" id="LSE-Sr-WE9"/>
+                            <constraint firstItem="JiF-U3-YRZ" firstAttribute="centerY" secondItem="M7l-Cv-gZq" secondAttribute="centerY" id="XlW-Rs-AGe"/>
+                            <constraint firstAttribute="width" constant="105" id="hea-xp-dN1"/>
+                            <constraint firstItem="JiF-U3-YRZ" firstAttribute="centerX" secondItem="M7l-Cv-gZq" secondAttribute="centerX" id="iKR-T1-hho"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="gGD-LE-EhZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="44Y-Ib-cCd"/>
+                    <constraint firstItem="gGD-LE-EhZ" firstAttribute="leading" secondItem="M7l-Cv-gZq" secondAttribute="trailing" constant="15" id="Dnn-aj-qc1"/>
                     <constraint firstItem="ws3-fk-ORo" firstAttribute="top" secondItem="gGD-LE-EhZ" secondAttribute="bottom" constant="11" id="HbO-Ec-qRW"/>
                     <constraint firstItem="ws3-fk-ORo" firstAttribute="trailing" secondItem="gGD-LE-EhZ" secondAttribute="trailing" id="PD6-XM-rCE"/>
-                    <constraint firstItem="JiF-U3-YRZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="PX2-o8-cCK"/>
-                    <constraint firstItem="JiF-U3-YRZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="RFE-gw-9EE"/>
+                    <constraint firstItem="M7l-Cv-gZq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Pp0-oB-Nry"/>
                     <constraint firstAttribute="trailing" secondItem="gGD-LE-EhZ" secondAttribute="trailing" constant="16" id="Rkm-YT-hYC"/>
-                    <constraint firstItem="gGD-LE-EhZ" firstAttribute="leading" secondItem="JiF-U3-YRZ" secondAttribute="trailing" constant="12" id="TcH-ae-74k"/>
+                    <constraint firstItem="M7l-Cv-gZq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="e5M-Tk-nWb"/>
                     <constraint firstAttribute="bottom" secondItem="ws3-fk-ORo" secondAttribute="bottom" constant="11" id="eYu-qH-4ut"/>
                     <constraint firstItem="ws3-fk-ORo" firstAttribute="leading" secondItem="gGD-LE-EhZ" secondAttribute="leading" id="hdK-FY-dKr"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bgIconView" destination="M7l-Cv-gZq" id="yNG-hf-RQL"/>
                 <outlet property="desLabel" destination="ws3-fk-ORo" id="NGA-oR-lQD"/>
                 <outlet property="logoIcon" destination="JiF-U3-YRZ" id="SHV-ZP-pzL"/>
                 <outlet property="nameLabel" destination="gGD-LE-EhZ" id="Ix9-vq-cjc"/>

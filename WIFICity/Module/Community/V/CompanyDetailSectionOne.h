@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WICompanyInfo.h"
 
 @interface CompanyDetailSectionOne : UITableViewCell
 
@@ -22,6 +23,7 @@
 - (IBAction)callCompany:(id)sender;
 - (IBAction)locateCompany:(id)sender;
 
+@property (nonatomic,strong)WICompanyInfo *info;
 
 
 @end

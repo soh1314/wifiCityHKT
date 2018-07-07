@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CompanyHomeSearchBar">
+            <rect key="frame" x="0.0" y="0.0" width="566" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search.png" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-ob-H2u">
+                    <rect key="frame" x="16" y="27" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="53m-U6-yGk"/>
+                        <constraint firstAttribute="height" constant="16" id="vEu-pD-KyR"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜企业名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6e-yV-uIF">
+                    <rect key="frame" x="44" y="27" width="54" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdh-es-wwm">
+                    <rect key="frame" x="534" y="24" width="16" height="22"/>
+                    <state key="normal" image="sweep.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foe-fS-1lf">
+                    <rect key="frame" x="498" y="24" width="16" height="22"/>
+                    <state key="normal" image="position.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="E6e-yV-uIF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3Q3-kK-zvu"/>
+                <constraint firstItem="4S3-ob-H2u" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KPJ-Ka-6IN"/>
+                <constraint firstItem="4S3-ob-H2u" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KUf-Js-16Y"/>
+                <constraint firstItem="foe-fS-1lf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Qdt-JZ-wrx"/>
+                <constraint firstAttribute="trailing" secondItem="jdh-es-wwm" secondAttribute="trailing" constant="16" id="Zeh-Ns-JUh"/>
+                <constraint firstItem="jdh-es-wwm" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="bVM-Rr-Qaq"/>
+                <constraint firstItem="jdh-es-wwm" firstAttribute="leading" secondItem="foe-fS-1lf" secondAttribute="trailing" constant="20" id="ffp-Fm-pSF"/>
+                <constraint firstItem="4S3-ob-H2u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="tqw-ur-WuX"/>
+                <constraint firstItem="E6e-yV-uIF" firstAttribute="leading" secondItem="4S3-ob-H2u" secondAttribute="trailing" constant="12" id="x3a-Ke-Kqq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="locationBtn" destination="foe-fS-1lf" id="2wC-iF-2Fb"/>
+                <outlet property="sweepBtn" destination="jdh-es-wwm" id="agN-ou-R1K"/>
+            </connections>
+            <point key="canvasLocation" x="75" y="27"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="position.png" width="16" height="16"/>
+        <image name="search.png" width="16" height="16"/>
+        <image name="sweep.png" width="16" height="16"/>
+    </resources>
+</document>
