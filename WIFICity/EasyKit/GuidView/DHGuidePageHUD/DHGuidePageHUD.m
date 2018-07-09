@@ -70,16 +70,16 @@
             // 设置在最后一张图片上显示进入体验按钮
             if (i == imageNameArray.count-1 && isHidden == NO) {
                 [imageView setUserInteractionEnabled:YES];
-                UIButton *startButton = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.3, DDScreenH*0.8, DDScreenW*0.4, 40)];
+                UIButton *startButton = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.3, DDScreenH*0.6, DDScreenW*0.4, 40)];
                 [startButton setTitle:@"开始体验" forState:UIControlStateNormal];
-                [startButton setTitleColor:UIColorFromHexadecimalRGB(0x000000) forState:UIControlStateNormal];
-                [startButton.titleLabel setFont:[UIFont systemFontOfSize:18]];
-//                [startButton setBackgroundImage:[UIImage imageNamed:@"GuideImage.bundle/guideImage_button_backgound"] forState:UIControlStateNormal];
+                [startButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                [startButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
+                [startButton setBackgroundImage:[UIImage imageNamed:@"GuideImage.bundle/guideImage_button_backgound"] forState:UIControlStateNormal];
                 [startButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-                startButton.layer.masksToBounds = YES;
-                startButton.layer.cornerRadius = 1.0f;
-                startButton.layer.borderColor = UIColorFromHexadecimalRGB(0x000000).CGColor;
-                startButton.layer.borderWidth = 1.0f;
+//                startButton.layer.masksToBounds = YES;
+//                startButton.layer.cornerRadius = 5.0f;
+//                startButton.layer.borderColor = [UIColor whiteColor].CGColor;
+//                startButton.layer.borderWidth = 1.0f;
                 [imageView addSubview:startButton];
             }
         }

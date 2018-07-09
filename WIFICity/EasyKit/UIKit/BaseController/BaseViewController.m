@@ -27,6 +27,7 @@
     }  else {
         
     }
+    [[IQKeyboardManager sharedManager]setEnableAutoToolbar:NO];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -37,7 +37,7 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.searchBar invokeSearch];
 }
@@ -66,6 +66,7 @@
     self.searchBar = [[EaseSearchBar alloc]initWithFrame:CGRectMake(0, 0, 278/375.0f*KSCREENW, 36)];
     self.searchBar.searchTtf.userInteractionEnabled = YES;
     self.searchBar.textfieldPlaceHolderName = @"搜企业名、老板...";
+    self.searchBar.searchTtf.delegate = self;
     __weak typeof(self)wself = self;
     self.searchBar.actionblock = ^{
         [wself.searchBar.searchTtf becomeFirstResponder];
@@ -81,11 +82,25 @@
 
 }
 
+#pragma mark - search delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+   [self requestCompanySearch:textField.text];
+    [textField resignFirstResponder];
+    return YES;
+}
+
 - (void)cancelSearch:(id)sender {
+   
     [self.searchBar cancleSearch];
 }
 
 - (void)requestCompanySearch:(NSString *)companyName {
+    if (!companyName || [companyName isEqualToString:@""]) {
+        [self.searchResultArray removeAllObjects];
+        [self.tableView reloadData];
+        return;
+    }
     NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"comName":[companyName copy]};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanySearchAPI) params:para successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
@@ -129,7 +144,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CompanyRecommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyRecommentCellID" forIndexPath:indexPath];
-    
+    WICompanyInfo *info = self.searchResultArray[indexPath.row];
+    cell.companyInfo = info;
     return cell;
 }
 

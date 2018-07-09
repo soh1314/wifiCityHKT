@@ -35,8 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    self.UserCenterItemTitleArray = @[@[@"系统消息",@"推荐给好友"],@[@"关于我们",@"服务协议"],@[@"设备管理"]];
-    self.UserCenterItemImageNameArray = @[@[@"message",@"share"],@[@"about",@"deal"],@[@"equipment"]];
+    self.UserCenterItemTitleArray = @[@[@"系统消息",@"推荐给好友"],@[@"关于我们",@"服务协议"],@[@"设备管理",@"退出登录"]];
+    self.UserCenterItemImageNameArray = @[@[@"message",@"share"],@[@"about",@"deal"],@[@"equipment",@""]];
     // Do any additional setup after loading the view.
 }
 
@@ -109,6 +109,9 @@
     if (indexPath.section == 2 && indexPath.row == 0) {
         DeviceInfoController *deviceInfoCtrl = [DeviceInfoController new];
         [self.navigationController pushViewController:deviceInfoCtrl animated:YES];
+    }
+    if (indexPath.section == 2 && indexPath.row == 1) {
+        [AccountManager logout];
     }
     
 }

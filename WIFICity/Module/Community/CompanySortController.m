@@ -10,21 +10,22 @@
 #import "CompanyInfoVerticalCell.h"
 #import "CompanyInfoHorizonCell.h"
 #import "EaseSearchBar.h"
-#import "CompanySortTopView.h"
+#import "EaseDropMenu.h"
 
 #import "CompanyDetailController.h"
 #import "CompanySearchController.h"
 #import "EnterpriseSquareNetAPI.h"
 #import "WICompanyInfo.h"
 #import "WICompanyCategory.h"
+#import "WICompanyCategroyView.h"
 
-@interface CompanySortController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface CompanySortController ()<UICollectionViewDelegate,UICollectionViewDataSource,EaseDropMenuDelegate>
 
 @property (nonatomic,strong)UICollectionView *collectionView;
 @property (nonatomic,strong)NSMutableArray *dataArray;
 @property (nonatomic,assign)NSInteger showType;
 @property (nonatomic,strong)EaseSearchBar *searchBar;
-@property (nonatomic,strong)CompanySortTopView *sortTopView;
+@property (nonatomic,strong)EaseDropMenu *sortTopView;
 @property (nonatomic,assign)NSInteger page;
 
 @end
@@ -82,8 +83,9 @@
 }
 
 - (void)initUI {
-    self.sortTopView = [CompanySortTopView topViewWithTitleArray:@[@"类别",@"距离"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
-    self.sortTopView.tapBlock = ^(NSInteger index, CompanySortItemView *view) {
+    self.sortTopView = [EaseDropMenu topViewWithTitleArray:@[@"类别",@"距离"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
+    self.sortTopView.delegate = self;
+    self.sortTopView.tapBlock = ^(NSInteger index, EaseSortItemView *view) {
         if (index == 0) {
             
         }
@@ -109,6 +111,7 @@
     }
     __weak typeof(self)wself = self;
     self.searchBar.actionblock = ^{
+        [wself.view endEditing:YES];
         CompanySearchController *searchCtrl = [CompanySearchController new];
         [wself.navigationController pushViewController:searchCtrl animated:YES];
     };
@@ -126,6 +129,42 @@
     }
     [self.collectionView reloadData];
     
+}
+
+#pragma mark - dropmenu delegate
+
+-(UIView *)dropContentViewForItem:(NSInteger)index {
+    UIView *view = [UIView new];
+    if (index == 0) {
+        WICompanyCategroyView *categoryView  = [[WICompanyCategroyView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 156)];
+        categoryView.backgroundColor = [UIColor redColor];
+        categoryView.categoryArray = @[@"app",@"AI",@"区块链",@"手机支付",@"小程序",@"智慧医疗",@"VR",@"物联网",@"智能制造",@"大数据",@"数字教育",@"北斗导航"];
+        return categoryView;
+    } else {
+        return view;
+    }
+   
+    
+}
+
+- (void)dropContentTapActionForItem:(NSInteger)index {
+    [self.sortTopView hideDropView];
+}
+
+- (void)reloadContentView:(NSInteger)index {
+    if (index == 0) {
+        UIView *view = [self dropContentViewForItem:index];
+        if ([view isKindOfClass:[WICompanyCategroyView class]]) {
+            WICompanyCategroyView *categoryView = (WICompanyCategroyView *)view;
+            view.backgroundColor = [UIColor redColor];
+            [categoryView.collectionView reloadData];
+            __weak typeof(self)wself = self;
+            categoryView.pick = ^(NSInteger idx) {
+                [wself dropContentViewForItem:0];
+                [wself loadData:YES];
+            };
+        }
+    }
 }
 
 #pragma mark -collect delegate

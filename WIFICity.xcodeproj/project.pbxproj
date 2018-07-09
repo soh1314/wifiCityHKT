@@ -36,7 +36,7 @@
 		1654A6E920DDD80800AFC322 /* WIFICloudInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */; };
 		1654A6EC20DDF6A000AFC322 /* UILabel+wordStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */; };
 		1654A6EF20DE2EB300AFC322 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6ED20DE2EB200AFC322 /* WebViewController.m */; };
-		1656641F20EF627300063D0C /* CompanySortItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656641E20EF627300063D0C /* CompanySortItemView.m */; };
+		1656641F20EF627300063D0C /* EaseSortItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656641E20EF627300063D0C /* EaseSortItemView.m */; };
 		1656642220EF6D9E00063D0C /* CompanySearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656642120EF6D9E00063D0C /* CompanySearchController.m */; };
 		1656642620EF702700063D0C /* EasyAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656642520EF702700063D0C /* EasyAnimation.m */; };
 		1656771620D119C900EC3D5C /* TPPasswordTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656771420D119C900EC3D5C /* TPPasswordTextView.m */; };
@@ -99,6 +99,9 @@
 		166CA57E20F06E9000E4CBE3 /* WICompanyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 166CA57D20F06E9000E4CBE3 /* WICompanyInfo.m */; };
 		166CA58120F06EA100E4CBE3 /* WICompanyCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 166CA58020F06EA100E4CBE3 /* WICompanyCategory.m */; };
 		166CA58420F0ADD500E4CBE3 /* WIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 166CA58320F0ADD500E4CBE3 /* WIUtil.m */; };
+		166CA58720F33BCE00E4CBE3 /* WICompanyCategroyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 166CA58620F33BCD00E4CBE3 /* WICompanyCategroyView.m */; };
+		166CA58B20F33D9B00E4CBE3 /* WICompanyCategroyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166CA58920F33D9B00E4CBE3 /* WICompanyCategroyCell.m */; };
+		166CA58C20F33D9B00E4CBE3 /* WICompanyCategroyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166CA58A20F33D9B00E4CBE3 /* WICompanyCategroyCell.xib */; };
 		1691DD1720EA0832008AF2BE /* LoginRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = 1691DD1620EA0832008AF2BE /* LoginRegex.m */; };
 		1691DD2620EB07B6008AF2BE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1691DD2520EB07B6008AF2BE /* AdSupport.framework */; };
 		1691DD2820EB07D1008AF2BE /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1691DD2720EB07D1008AF2BE /* libstdc++.6.0.9.tbd */; };
@@ -425,7 +428,7 @@
 		16F76FE520EEFDAB00950127 /* square_lg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F76FE220EEFDAB00950127 /* square_lg@2x.png */; };
 		16F76FE620EEFDAB00950127 /* square_lg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F76FE320EEFDAB00950127 /* square_lg@3x.png */; };
 		16F76FEA20EF4D5400950127 /* EaseSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F76FE920EF4D5400950127 /* EaseSearchBar.m */; };
-		16F76FED20EF4EEE00950127 /* CompanySortTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F76FEC20EF4EEE00950127 /* CompanySortTopView.m */; };
+		16F76FED20EF4EEE00950127 /* EaseDropMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F76FEC20EF4EEE00950127 /* EaseDropMenu.m */; };
 		16FD28EF20E07B1C0099A32B /* WIFIFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD28EE20E07B1C0099A32B /* WIFIFlow.m */; };
 		16FD290120E09C950099A32B /* WifiPanelTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290020E09C950099A32B /* WifiPanelTopView.xib */; };
 		16FD290620E09DF50099A32B /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290320E09DF50099A32B /* location.png */; };
@@ -508,8 +511,8 @@
 		1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+wordStyle.m"; sourceTree = "<group>"; };
 		1654A6ED20DE2EB200AFC322 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		1654A6EE20DE2EB200AFC322 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
-		1656641D20EF627300063D0C /* CompanySortItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanySortItemView.h; sourceTree = "<group>"; };
-		1656641E20EF627300063D0C /* CompanySortItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanySortItemView.m; sourceTree = "<group>"; };
+		1656641D20EF627300063D0C /* EaseSortItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseSortItemView.h; sourceTree = "<group>"; };
+		1656641E20EF627300063D0C /* EaseSortItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseSortItemView.m; sourceTree = "<group>"; };
 		1656642020EF6D9E00063D0C /* CompanySearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanySearchController.h; sourceTree = "<group>"; };
 		1656642120EF6D9E00063D0C /* CompanySearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanySearchController.m; sourceTree = "<group>"; };
 		1656642420EF702700063D0C /* EasyAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyAnimation.h; sourceTree = "<group>"; };
@@ -589,6 +592,11 @@
 		166CA58020F06EA100E4CBE3 /* WICompanyCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WICompanyCategory.m; sourceTree = "<group>"; };
 		166CA58220F0ADD500E4CBE3 /* WIUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIUtil.h; sourceTree = "<group>"; };
 		166CA58320F0ADD500E4CBE3 /* WIUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIUtil.m; sourceTree = "<group>"; };
+		166CA58520F33BCD00E4CBE3 /* WICompanyCategroyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WICompanyCategroyView.h; sourceTree = "<group>"; };
+		166CA58620F33BCD00E4CBE3 /* WICompanyCategroyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WICompanyCategroyView.m; sourceTree = "<group>"; };
+		166CA58820F33D9B00E4CBE3 /* WICompanyCategroyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WICompanyCategroyCell.h; sourceTree = "<group>"; };
+		166CA58920F33D9B00E4CBE3 /* WICompanyCategroyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WICompanyCategroyCell.m; sourceTree = "<group>"; };
+		166CA58A20F33D9B00E4CBE3 /* WICompanyCategroyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WICompanyCategroyCell.xib; sourceTree = "<group>"; };
 		1691DD1520EA0832008AF2BE /* LoginRegex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginRegex.h; sourceTree = "<group>"; };
 		1691DD1620EA0832008AF2BE /* LoginRegex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginRegex.m; sourceTree = "<group>"; };
 		1691DD2520EB07B6008AF2BE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -1066,8 +1074,8 @@
 		16F76FE320EEFDAB00950127 /* square_lg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "square_lg@3x.png"; sourceTree = "<group>"; };
 		16F76FE820EF4D5400950127 /* EaseSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseSearchBar.h; sourceTree = "<group>"; };
 		16F76FE920EF4D5400950127 /* EaseSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseSearchBar.m; sourceTree = "<group>"; };
-		16F76FEB20EF4EEE00950127 /* CompanySortTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanySortTopView.h; sourceTree = "<group>"; };
-		16F76FEC20EF4EEE00950127 /* CompanySortTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanySortTopView.m; sourceTree = "<group>"; };
+		16F76FEB20EF4EEE00950127 /* EaseDropMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseDropMenu.h; sourceTree = "<group>"; };
+		16F76FEC20EF4EEE00950127 /* EaseDropMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseDropMenu.m; sourceTree = "<group>"; };
 		16FD28ED20E07B1C0099A32B /* WIFIFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFIFlow.h; sourceTree = "<group>"; };
 		16FD28EE20E07B1C0099A32B /* WIFIFlow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFIFlow.m; sourceTree = "<group>"; };
 		16FD290020E09C950099A32B /* WifiPanelTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiPanelTopView.xib; sourceTree = "<group>"; };
@@ -1529,10 +1537,15 @@
 				16F76FD520EE091100950127 /* EnterpriseSquareSortCell.xib */,
 				16F76FDE20EEFC9300950127 /* EnterpriseSquareHomeHeader.h */,
 				16F76FDF20EEFC9300950127 /* EnterpriseSquareHomeHeader.m */,
-				16F76FEB20EF4EEE00950127 /* CompanySortTopView.h */,
-				16F76FEC20EF4EEE00950127 /* CompanySortTopView.m */,
-				1656641D20EF627300063D0C /* CompanySortItemView.h */,
-				1656641E20EF627300063D0C /* CompanySortItemView.m */,
+				16F76FEB20EF4EEE00950127 /* EaseDropMenu.h */,
+				16F76FEC20EF4EEE00950127 /* EaseDropMenu.m */,
+				1656641D20EF627300063D0C /* EaseSortItemView.h */,
+				1656641E20EF627300063D0C /* EaseSortItemView.m */,
+				166CA58520F33BCD00E4CBE3 /* WICompanyCategroyView.h */,
+				166CA58620F33BCD00E4CBE3 /* WICompanyCategroyView.m */,
+				166CA58820F33D9B00E4CBE3 /* WICompanyCategroyCell.h */,
+				166CA58920F33D9B00E4CBE3 /* WICompanyCategroyCell.m */,
+				166CA58A20F33D9B00E4CBE3 /* WICompanyCategroyCell.xib */,
 				166CA56A20F05C0600E4CBE3 /* CompanyHomeSearchBar.h */,
 				166CA56B20F05C0600E4CBE3 /* CompanyHomeSearchBar.m */,
 				166CA56D20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib */,
@@ -2622,6 +2635,7 @@
 				1656789C20D3662A00EC3D5C /* location_default.png in Resources */,
 				16F76FA220EDCB1F00950127 /* manufacturing.png in Resources */,
 				1691DD9D20EC79A7008AF2BE /* message@2x.png in Resources */,
+				166CA58C20F33D9B00E4CBE3 /* WICompanyCategroyCell.xib in Resources */,
 				1691DDF120ECB485008AF2BE /* phone.png in Resources */,
 				165678A720D3662A00EC3D5C /* square_default@3x.png in Resources */,
 				169D838520D3AECF00AA590F /* switch2@2x.png in Resources */,
@@ -2967,6 +2981,7 @@
 				16F76FC220EDFEF400950127 /* CompanyInfoVerticalCell.m in Sources */,
 				16D64B8320CF7CE800ED74C8 /* UIColor+Theme.m in Sources */,
 				16D64B7F20CF7CE800ED74C8 /* NSDateFormatter+Category.m in Sources */,
+				166CA58720F33BCE00E4CBE3 /* WICompanyCategroyView.m in Sources */,
 				169D83E620DC8CFD00AA590F /* TAAbstractDotView.m in Sources */,
 				16D64BDF20CF9FCE00ED74C8 /* SVIndefiniteAnimatedView.m in Sources */,
 				166CA56C20F05C0600E4CBE3 /* CompanyHomeSearchBar.m in Sources */,
@@ -2981,15 +2996,16 @@
 				16D64B7B20CF7CE800ED74C8 /* UILabel+Adapter.m in Sources */,
 				163A08B520E1E38600DAC894 /* BindPhoneModel.m in Sources */,
 				16D64B9A20CF980F00ED74C8 /* AccountManager.m in Sources */,
+				166CA58B20F33D9B00E4CBE3 /* WICompanyCategroyCell.m in Sources */,
 				16D64B8020CF7CE800ED74C8 /* UIViewController+EasyUtil.m in Sources */,
 				16D64B9D20CF9B5900ED74C8 /* AccoutDataStore.m in Sources */,
 				16D64B7920CF7CE800ED74C8 /* UIImage+base.m in Sources */,
-				16F76FED20EF4EEE00950127 /* CompanySortTopView.m in Sources */,
+				16F76FED20EF4EEE00950127 /* EaseDropMenu.m in Sources */,
 				169D83B320DC7DC000AA590F /* HomeNewsOneCell.m in Sources */,
 				1691DD1720EA0832008AF2BE /* LoginRegex.m in Sources */,
 				16D64BEF20CFA2A800ED74C8 /* HomeController.m in Sources */,
 				1691DD2B20EB08B1008AF2BE /* WifiMapController.m in Sources */,
-				1656641F20EF627300063D0C /* CompanySortItemView.m in Sources */,
+				1656641F20EF627300063D0C /* EaseSortItemView.m in Sources */,
 				169D83F320DCD28500AA590F /* WifiFlowView.m in Sources */,
 				16D64B9620CF939000ED74C8 /* WIUser.m in Sources */,
 				169D83A320D3C28000AA590F /* WIFISevice.m in Sources */,

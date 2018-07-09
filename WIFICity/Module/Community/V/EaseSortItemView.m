@@ -6,9 +6,9 @@
 //  Copyright © 2018年 HKT. All rights reserved.
 //
 
-#import "CompanySortItemView.h"
+#import "EaseSortItemView.h"
 
-@implementation CompanySortItemView
+@implementation EaseSortItemView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {

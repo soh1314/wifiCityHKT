@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CompanySortItemView : UIView
+@interface EaseSortItemView : UIView
 
 @property (nonatomic,strong)UILabel *titleLabel;
 @property (nonatomic,strong)UIImageView *icon;
 @property (nonatomic,assign)NSInteger index;
-@property (nonatomic,assign)BOOL secondClick;
+@property (nonatomic,assign)BOOL forward;
 
 - (void)iconRotateDown;
 - (void)iconRotateUp;

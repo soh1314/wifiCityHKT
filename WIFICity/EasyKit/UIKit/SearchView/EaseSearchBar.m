@@ -73,6 +73,7 @@
 }
 
 - (void)cancleSearch {
+     self.searchTtf.text = @"";
     [self.searchTtf resignFirstResponder];
 }
 

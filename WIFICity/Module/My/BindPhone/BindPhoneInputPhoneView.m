@@ -7,7 +7,7 @@
 //
 
 #import "BindPhoneInputPhoneView.h"
-
+#import "LoginRegex.h"
 @implementation BindPhoneInputPhoneView
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -53,6 +53,9 @@
 
 
 - (IBAction)next:(id)sender {
+    if (![LoginRegex checkoutPhoneNum:self.phoneTtf.text]) {
+        return;
+    }
     if (self.nextAction) {
         self.nextAction();
     }

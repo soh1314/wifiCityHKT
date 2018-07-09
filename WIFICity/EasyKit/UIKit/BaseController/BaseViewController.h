@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EaseNoDataModel.h"
 #import "UIViewController+EasyUtil.h"
-
+#import <IQKeyboardManager/IQKeyboardManager.h>
 @protocol BaseViewControllerBaseProtocol<NSObject>
 
 @optional
