@@ -33,6 +33,7 @@ static NSString *const LoginVerifySendFail = @"验证码发送失败";
 }
 
 - (void)initUI {
+    [self.view bringSubviewToFront:self.backbtn];
     self.verifycodeNotiLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF"];
     self.verifycodeNotiLabel.text = [NSString stringWithFormat:@"已发送验证码至 %@",self.user.phone];
     self.loginBtn.backgroundColor = WISubmitBtnBgColor;

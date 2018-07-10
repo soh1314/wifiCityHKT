@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginController2">
             <connections>
+                <outlet property="backbtn" destination="Zk8-fZ-Jhh" id="TPg-NX-XfQ"/>
                 <outlet property="loginBtn" destination="vdW-uA-g15" id="cwg-M7-8mF"/>
                 <outlet property="verifyBtn" destination="TCA-Fx-YOJ" id="dat-aD-oM1"/>
                 <outlet property="verifyCodeTtf" destination="27L-Bs-btt" id="m2B-a0-BBI"/>
@@ -27,12 +28,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zk8-fZ-Jhh">
-                    <rect key="frame" x="11" y="32" width="30" height="22"/>
+                    <rect key="frame" x="11" y="44" width="30" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="EvC-Ph-WJq"/>
                         <constraint firstAttribute="height" constant="22" id="ayy-B8-m7f"/>
                     </constraints>
-                    <state key="normal" image="back.png"/>
+                    <state key="normal" title="&lt;"/>
                     <connections>
                         <action selector="back:" destination="-1" eventType="touchUpInside" id="Qr1-8S-I3A"/>
                     </connections>
@@ -114,17 +115,16 @@
                 <constraint firstItem="27L-Bs-btt" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ZBA-7q-yc8"/>
                 <constraint firstItem="TCA-Fx-YOJ" firstAttribute="trailing" secondItem="27L-Bs-btt" secondAttribute="trailing" id="bl8-JD-9pk"/>
                 <constraint firstItem="27L-Bs-btt" firstAttribute="top" secondItem="xT8-lA-JRI" secondAttribute="bottom" constant="28" id="bxJ-Qf-BnJ"/>
-                <constraint firstItem="Zk8-fZ-Jhh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="32" id="cOG-6p-X2s"/>
+                <constraint firstItem="Zk8-fZ-Jhh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="cOG-6p-X2s"/>
                 <constraint firstItem="27L-Bs-btt" firstAttribute="leading" secondItem="xT8-lA-JRI" secondAttribute="leading" id="nJa-dF-kSo"/>
                 <constraint firstItem="3OI-sS-WdR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ym3-YE-wMI"/>
                 <constraint firstItem="91q-o3-n8g" firstAttribute="top" secondItem="vdW-uA-g15" secondAttribute="bottom" constant="20" id="yn9-ny-Lm7"/>
                 <constraint firstAttribute="trailing" secondItem="3OI-sS-WdR" secondAttribute="trailing" id="zk9-lJ-2Cs"/>
             </constraints>
-            <point key="canvasLocation" x="-118" y="-258"/>
+            <point key="canvasLocation" x="-118.5" y="-258.5"/>
         </view>
     </objects>
     <resources>
-        <image name="back.png" width="16" height="15"/>
         <image name="login_bg.png" width="750" height="1334"/>
     </resources>
 </document>

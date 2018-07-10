@@ -48,8 +48,8 @@
                 [wself openCountDown];
             }
         }];
-        
     };
+    
     self.inputPhoneView.closeBlock = ^{
         wself.closeBlock();
     };
@@ -60,6 +60,10 @@
         WIUser *user = [WIUser new];
         user.phone = [bindPhoneModel.phone copy];
         user.verifyCode = [bindPhoneModel.verifyCode copy];
+        if (![[bindPhoneModel.verifyCode copy]isEqualToString:[AccountManager shared].bindCode]) {
+            [Dialog simpleToast:@"验证码错误"];
+            return ;
+        }
         [wself.accountLogin bindPhone:user complete:^(WINetResponse *response) {
             if (response.success) {
                 [AccountManager shared].user.phone = [user.phone copy];

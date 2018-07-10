@@ -208,7 +208,7 @@ static NSString *const WIFIHomeNewsDetailAPI = @"/hktInformationDeliveryControll
         [cell setDataArray:self.serviceArray];
         __weak typeof(self)wself = self;
         cell.pick = ^(NSInteger idx) {
-            if (![AccountManager shared].user.phone) {
+            if ([AccountManager shared].user.phone) {
                 [WIPopView popBindPhoneView:wself];
             } else {
                 [NavManager pushBlankViewController:wself];

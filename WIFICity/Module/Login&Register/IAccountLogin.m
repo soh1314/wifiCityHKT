@@ -128,14 +128,14 @@
 - (void)requestBindPhoneVerifyCode:(WIUser *)user complete:(IAccountCompleteBlock)complete {
     NSDictionary *para = @{@"phone":user.phone};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, BindUserVerifyCodeAPI) params:para successBlock:^(NSDictionary *returnData) {
-        WINetResponse *respone = [WINetResponse new];
-        BOOL success = [[returnData objectForKey:@"success"]boolValue];
-        if (success) {
-            respone.success = YES;
-            respone.strObj = [returnData objectForKey:@"obj"];;
-            complete(respone);
+        WINetResponse *response = [WINetResponse new];
+        if (returnData && [returnData objectForKey:@"obj"]) {
+            NSInteger code = [[returnData objectForKey:@"obj"]integerValue];
+            [AccountManager shared].bindCode = [NSString stringWithFormat:@"%ld",code];
+            response.success = YES;
+            complete(response);
         } else {
-            respone.success = NO;
+            response.success = NO;
             [Dialog simpleToast:[returnData objectForKey:@"msg"]];
         }
         

@@ -27,6 +27,8 @@ typedef NS_ENUM(NSUInteger, APPLoginState){
 
 @property (nonatomic,assign)BOOL closeCountDown;
 
+@property (nonatomic,copy)NSString *bindCode;
+
 + (WIUser *)currentUser;
 
 + (APPLoginState)loginState;

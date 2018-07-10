@@ -33,6 +33,7 @@
 		163A08F520E48C5A00DAC894 /* WIFIAnimationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08F420E48C5A00DAC894 /* WIFIAnimationLayer.m */; };
 		163A08FB20E5C82000DAC894 /* WIAreaInfoCach.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08FA20E5C82000DAC894 /* WIAreaInfoCach.m */; };
 		163A08FF20E5CCD600DAC894 /* EasyCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08FE20E5CCD600DAC894 /* EasyCacheHelper.m */; };
+		1640E44720F45509007F7D0C /* AILoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640E44620F45509007F7D0C /* AILoadingView.m */; };
 		1654A6E920DDD80800AFC322 /* WIFICloudInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */; };
 		1654A6EC20DDF6A000AFC322 /* UILabel+wordStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */; };
 		1654A6EF20DE2EB300AFC322 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6ED20DE2EB200AFC322 /* WebViewController.m */; };
@@ -519,6 +520,8 @@
 		163A08FA20E5C82000DAC894 /* WIAreaInfoCach.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIAreaInfoCach.m; sourceTree = "<group>"; };
 		163A08FD20E5CCD600DAC894 /* EasyCacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyCacheHelper.h; sourceTree = "<group>"; };
 		163A08FE20E5CCD600DAC894 /* EasyCacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyCacheHelper.m; sourceTree = "<group>"; };
+		1640E44520F45509007F7D0C /* AILoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AILoadingView.h; sourceTree = "<group>"; };
+		1640E44620F45509007F7D0C /* AILoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AILoadingView.m; sourceTree = "<group>"; };
 		1654A6D620DDCEB900AFC322 /* WifiPanelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiPanelProtocol.h; sourceTree = "<group>"; };
 		1654A6E720DDD80800AFC322 /* WIFICloudInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFICloudInfo.h; sourceTree = "<group>"; };
 		1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFICloudInfo.m; sourceTree = "<group>"; };
@@ -1278,6 +1281,8 @@
 		1656642320EF701400063D0C /* EaseAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				1640E44520F45509007F7D0C /* AILoadingView.h */,
+				1640E44620F45509007F7D0C /* AILoadingView.m */,
 				1656642420EF702700063D0C /* EasyAnimation.h */,
 				1656642520EF702700063D0C /* EasyAnimation.m */,
 			);
@@ -3150,6 +3155,7 @@
 				16D64BDD20CF9FCE00ED74C8 /* SVProgressAnimatedView.m in Sources */,
 				1654A6E920DDD80800AFC322 /* WIFICloudInfo.m in Sources */,
 				16C79BCF20CE6B5E00A67DF6 /* AppDelegate.m in Sources */,
+				1640E44720F45509007F7D0C /* AILoadingView.m in Sources */,
 				163A08B920E1E6C500DAC894 /* UserInfoView.m in Sources */,
 				1691DDFC20ECBB95008AF2BE /* TableViewCellHeader.m in Sources */,
 				1691DDA620EC7A3F008AF2BE /* UserCenterItemCell.m in Sources */,

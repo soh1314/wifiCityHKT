@@ -11,6 +11,7 @@
 
 @interface LoginController2 : BaseViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *backbtn;
 @property (nonatomic,strong)WIUser *user;
 @property (weak, nonatomic) IBOutlet UIButton *verifyBtn;
 @property (weak, nonatomic) IBOutlet UIView *verifyCodeTtf;

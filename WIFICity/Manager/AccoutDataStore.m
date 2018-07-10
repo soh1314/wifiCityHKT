@@ -59,6 +59,7 @@
     if ([fileManager fileExistsAtPath:self.storePath]) {
         [fileManager removeItemAtPath:self.storePath error:&error];
     }
+    
 }
 
 - (NSString *)loadUserID {
@@ -69,6 +70,7 @@
     else {
         return account.userId;
     }
+    
 }
 
 @end
