@@ -16,7 +16,6 @@
 //提示对话框
 + (void)alert:(NSString *)message;
 + (void)alertWithTitle:(NSString *)title andMessage:(NSString *)message;
-
 //类似于Android一个显示框效果
 + (void)toast:(UIViewController *)controller withMessage:(NSString *) message;
 + (void)toast:(NSString *)message;
@@ -24,6 +23,10 @@
 + (void)hideSimpleToast;
 //显示在屏幕中间
 + (void)toastCenter:(NSString *)message;
+//显示气泡旋转图
++ (void)showBubbleLoadingView:(UIView *)view;
+//显示环形旋转图
++ (void)showRingLoadingView:(UIView *)view;
 //带进度条
 + (void)progressToast:(NSString *)message;
 

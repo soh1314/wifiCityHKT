@@ -2,6 +2,10 @@
 #import "Dialog.h"
 #import "MBProgressHUD.h"
 #import <unistd.h>
+#import "AILoadingView.h"
+#import "BQActivityView.h"
+#import "XLLoadingHUD.h"
+
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 @implementation Dialog
@@ -42,14 +46,33 @@ static Dialog *instance = nil;
     [alertView show];
 }
 
++ (void)showBubbleLoadingView:(UIView *)view {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.removeFromSuperViewOnHide = YES;
+    hud.color  = [UIColor clearColor];
+    BQActivityView *activityView = [BQActivityView showActiviTy:view];
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.customView = activityView;
+}
+
++ (void)showRingLoadingView:(UIView *)view {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.removeFromSuperViewOnHide = YES;
+    hud.color  = [UIColor clearColor];
+    hud.mode = MBProgressHUDModeCustomView;
+    XLLoadingHUD *ringHud = [[XLLoadingHUD alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [ringHud start];
+    hud.customView = ringHud;
+}
+
 + (void)toast:(UIViewController *)controller withMessage:(NSString *)message {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:controller.view animated:YES];
-	hud.mode = MBProgressHUDModeText;
-	hud.labelText = message;
-	hud.margin = 10.f;
-	hud.yOffset = 150.f;
-	hud.removeFromSuperViewOnHide = YES;
-	[hud hide:YES afterDelay:2];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    hud.removeFromSuperViewOnHide = YES;
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = message;
+    hud.margin = 10.f;
+    hud.yOffset = 150.f;
+    [hud hide:YES afterDelay:2];
 }
 
 + (void)toast:(NSString *)message {
@@ -65,19 +88,11 @@ static Dialog *instance = nil;
 
 + (void)simpleToast:(NSString *)message
 {
-    if ([message isKindOfClass:[NSString class]]) {
-        if (message.length < 1) {
-            return;
-        } else {
-            [SVProgressHUD showImage:nil status:message];
-            [SVProgressHUD setCornerRadius:5];
-             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-            [SVProgressHUD dismissWithDelay:1.5];
-        }
-    }
-
-    
+    [SVProgressHUD showImage:[UIImage qsImageNamed:@""] status:message];
+    [SVProgressHUD setCornerRadius:5];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD dismissWithDelay:1.5];
 }
 
 + (void)hideSimpleToast

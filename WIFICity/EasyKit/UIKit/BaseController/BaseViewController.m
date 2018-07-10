@@ -45,12 +45,12 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [self hiddenKeyboard];
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     [super touchesEnded:touches withEvent:event];
-    
     [self hiddenKeyboard];
 }
 

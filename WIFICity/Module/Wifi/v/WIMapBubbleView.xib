@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WIMapBubbleView">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="107"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popup_box_wifi.png" translatesAutoresizingMaskIntoConstraints="NO" id="1ML-5I-dGk">
+                    <rect key="frame" x="16" y="18" width="36" height="36"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="华宽通已为您解锁，可一键连接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcz-l0-NQb">
+                    <rect key="frame" x="64" y="40" width="158" height="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离76m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMD-LU-lh9">
+                    <rect key="frame" x="341.5" y="69.5" width="49.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popup_box_location.png" translatesAutoresizingMaskIntoConstraints="NO" id="8td-CL-jb7">
+                    <rect key="frame" x="15" y="69" width="13" height="16"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HKT511" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7q-aE-zVE">
+                    <rect key="frame" x="65" y="18" width="53" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无地理位置信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnK-Gn-yQA">
+                    <rect key="frame" x="39" y="70" width="90" height="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8td-CL-jb7" firstAttribute="top" secondItem="1ML-5I-dGk" secondAttribute="bottom" constant="15" id="4jE-MJ-GqG"/>
+                <constraint firstAttribute="bottom" secondItem="aMD-LU-lh9" secondAttribute="bottom" constant="23" id="FN0-lW-u4I"/>
+                <constraint firstItem="JnK-Gn-yQA" firstAttribute="leading" secondItem="8td-CL-jb7" secondAttribute="trailing" constant="11" id="KMt-F8-dth"/>
+                <constraint firstItem="Tcz-l0-NQb" firstAttribute="bottom" secondItem="1ML-5I-dGk" secondAttribute="bottom" id="Qsc-2f-sn5"/>
+                <constraint firstItem="S7q-aE-zVE" firstAttribute="top" secondItem="1ML-5I-dGk" secondAttribute="top" id="WpE-dx-1Gs"/>
+                <constraint firstAttribute="trailing" secondItem="aMD-LU-lh9" secondAttribute="trailing" constant="15" id="Xpm-eV-IF8"/>
+                <constraint firstItem="S7q-aE-zVE" firstAttribute="leading" secondItem="1ML-5I-dGk" secondAttribute="trailing" constant="13" id="ZQS-kJ-ORm"/>
+                <constraint firstItem="aMD-LU-lh9" firstAttribute="centerY" secondItem="8td-CL-jb7" secondAttribute="centerY" id="hAX-87-Zyz"/>
+                <constraint firstItem="8td-CL-jb7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="iO4-f6-Z6I"/>
+                <constraint firstItem="Tcz-l0-NQb" firstAttribute="leading" secondItem="1ML-5I-dGk" secondAttribute="trailing" constant="12" id="jGd-Ob-ehW"/>
+                <constraint firstItem="JnK-Gn-yQA" firstAttribute="centerY" secondItem="8td-CL-jb7" secondAttribute="centerY" id="t2L-6M-lNY"/>
+                <constraint firstItem="1ML-5I-dGk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="uby-L3-gEF"/>
+                <constraint firstItem="1ML-5I-dGk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="x31-2s-Nf5"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="16" y="98"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="popup_box_location.png" width="13" height="16"/>
+        <image name="popup_box_wifi.png" width="36" height="36"/>
+    </resources>
+</document>

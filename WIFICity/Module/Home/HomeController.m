@@ -81,6 +81,7 @@ static NSString *const WIFIHomeNewsDetailAPI = @"/hktInformationDeliveryControll
     [[WIFISevice shared]setNetMonitor];
     [self setWhiteTrasluntNavBar];
     [self loadHomeData];
+   
     
 }
 

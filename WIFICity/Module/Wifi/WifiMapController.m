@@ -15,7 +15,7 @@
 
 //x +23.979 y -21.313 z -26.714
 
-@interface WifiMapController ()
+@interface WifiMapController ()<BMKMapViewDelegate,BMKLocationServiceDelegate>
 
 @property (nonatomic,strong)BMKMapManager *mapManager;
 @property (nonatomic,strong)BMKMapView* mapView;
@@ -44,13 +44,14 @@
     
 }
 
-
 -(void)viewWillAppear:(BOOL)animated
 {
     [_mapView viewWillAppear];
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
     [_locService startUserLocationService];
+   
+    
 }
 
 
@@ -61,6 +62,7 @@
     _mapView.delegate = nil; // 不用时，置nil
     _locService.delegate = nil;
     [_locService stopUserLocationService];
+    
 }
 
 
