@@ -85,11 +85,11 @@
         }
         
         // 设置引导页上的页面控制器
-        self.imagePageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(DDScreenW*0.0, DDScreenH*0.9, DDScreenW*1.0, DDScreenH*0.1)];
+        self.imagePageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(DDScreenW*0.0, DDScreenH*0.75, DDScreenW*1.0, DDScreenH*0.1)];
         self.imagePageControl.currentPage = 0;
         self.imagePageControl.numberOfPages = imageNameArray.count;
         self.imagePageControl.pageIndicatorTintColor = [UIColor grayColor];
-        self.imagePageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+        self.imagePageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
         [self.imagePageControl setValue:[UIImage imageNamed:@"switch1"] forKeyPath:@"_currentPageImage"];
         [self.imagePageControl setValue:[UIImage imageNamed:@"switch2"] forKeyPath:@"_pageImage"];
         [self addSubview:self.imagePageControl];

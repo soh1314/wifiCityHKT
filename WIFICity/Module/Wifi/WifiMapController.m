@@ -22,6 +22,8 @@
 @property (nonatomic,strong)BMKLocationService* locService;
 @property(nonatomic,strong) BMKUserLocation *userLocation;//用户的位置
 @property (nonatomic, strong) NSMutableArray * annotationArray;//标注数组
+@property (nonatomic,strong)UIButton *refreshBtn;
+@property (nonatomic,strong)UIButton *relocateBtn;
 
 @end
 
@@ -83,14 +85,44 @@
 
     BMKLocationViewDisplayParam *displayParam = [[BMKLocationViewDisplayParam alloc]init];
     displayParam.isAccuracyCircleShow=NO;//精度圈是否显示
-    displayParam.locationViewImgName=@"icon_center_point";//定位图标名称去除蓝色的圈
+    displayParam.locationViewImgName=@"current_location";//定位图标名称去除蓝色的圈
     [_mapView updateLocationViewWithParam:displayParam];
     
     _locService = [[BMKLocationService alloc]init];
     _locService.desiredAccuracy=kCLLocationAccuracyBest;
-    _locService.distanceFilter = 20;//设定定位的最小更新距离，这里设置 200m 定位一次，频繁定位
+    _locService.distanceFilter = 200;//设定定位的最小更新距离，这里设置 200m 定位一次，频繁定位
     _locService.desiredAccuracy = kCLLocationAccuracyBest;//设定定位精度
     
+    [self initButton];
+}
+
+- (void)initButton {
+    self.relocateBtn = [UIButton new];
+    [self.view addSubview:self.relocateBtn];
+    [self.relocateBtn setImage:[UIImage qsImageNamed:@"location_top_right"] forState:UIControlStateNormal];
+    [self.relocateBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.view).mas_offset(-10);
+        make.top.mas_equalTo(self.view).mas_offset(30);
+    }];
+    [self.relocateBtn addTarget:self action:@selector(relocate:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.refreshBtn = [UIButton new];
+    [self.view addSubview:self.refreshBtn];
+    [self.refreshBtn setImage:[UIImage qsImageNamed:@"refurbish_top_right"] forState:UIControlStateNormal];
+    [self.refreshBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.view).mas_offset(-10);
+        make.top.mas_equalTo(self.view).mas_offset(83);
+    }];
+    [self.refreshBtn addTarget:self action:@selector(refreshNearWifi:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)refreshNearWifi:(id)sender {
+    [self getNearWifi];
+}
+
+- (void)relocate:(id)sender {
+    [_locService stopUserLocationService];
+   [_locService startUserLocationService];
 }
 
 - (void)getNearWifi {
@@ -140,6 +172,7 @@
     NSLog(@"%.3f %.3f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     /*******************************设置定位中心************************************************/
     [_mapView updateLocationData:userLocation];
+    _mapView.centerCoordinate = userLocation.location.coordinate;
     
 }
 
@@ -188,7 +221,7 @@
     }
     
     WIFIAnnotation *myAnnotation = (id)annotation;
-    annotationView.image = [UIImage imageNamed:@"gps_me"];
+    annotationView.image = [UIImage imageNamed:@"hkt_wifi"];
     annotationView.canShowCallout = YES;
     
     UIView *popView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 150, 45)];
@@ -236,7 +269,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 /*

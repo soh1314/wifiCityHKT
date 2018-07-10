@@ -102,6 +102,21 @@
 		166CA58720F33BCE00E4CBE3 /* WICompanyCategroyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 166CA58620F33BCD00E4CBE3 /* WICompanyCategroyView.m */; };
 		166CA58B20F33D9B00E4CBE3 /* WICompanyCategroyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166CA58920F33D9B00E4CBE3 /* WICompanyCategroyCell.m */; };
 		166CA58C20F33D9B00E4CBE3 /* WICompanyCategroyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166CA58A20F33D9B00E4CBE3 /* WICompanyCategroyCell.xib */; };
+		166CA59A20F3633B00E4CBE3 /* refurbish_top_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA58E20F3633A00E4CBE3 /* refurbish_top_right@2x.png */; };
+		166CA59B20F3633B00E4CBE3 /* refurbish_top_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA58F20F3633A00E4CBE3 /* refurbish_top_right@3x.png */; };
+		166CA59C20F3633B00E4CBE3 /* location_top_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA59020F3633A00E4CBE3 /* location_top_right@3x.png */; };
+		166CA59D20F3633B00E4CBE3 /* qita_wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA59120F3633A00E4CBE3 /* qita_wifi.png */; };
+		166CA59E20F3633B00E4CBE3 /* location_top_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA59220F3633A00E4CBE3 /* location_top_right@2x.png */; };
+		166CA59F20F3633B00E4CBE3 /* refurbish_top_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA59320F3633A00E4CBE3 /* refurbish_top_right.png */; };
+		166CA5A020F3633B00E4CBE3 /* qita_wifi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA59420F3633A00E4CBE3 /* qita_wifi@2x.png */; };
+		166CA5A120F3633B00E4CBE3 /* hkt_wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA59520F3633A00E4CBE3 /* hkt_wifi.png */; };
+		166CA5A220F3633B00E4CBE3 /* qita_wifi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA59620F3633A00E4CBE3 /* qita_wifi@3x.png */; };
+		166CA5A320F3633B00E4CBE3 /* location_top_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA59720F3633A00E4CBE3 /* location_top_right.png */; };
+		166CA5A420F3633B00E4CBE3 /* hkt_wifi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA59820F3633A00E4CBE3 /* hkt_wifi@2x.png */; };
+		166CA5A520F3633B00E4CBE3 /* hkt_wifi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA59920F3633A00E4CBE3 /* hkt_wifi@3x.png */; };
+		166CA5A920F363A300E4CBE3 /* current_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA5A620F363A200E4CBE3 /* current_location.png */; };
+		166CA5AA20F363A300E4CBE3 /* current_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA5A720F363A300E4CBE3 /* current_location@2x.png */; };
+		166CA5AB20F363A300E4CBE3 /* current_location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA5A820F363A300E4CBE3 /* current_location@3x.png */; };
 		1691DD1720EA0832008AF2BE /* LoginRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = 1691DD1620EA0832008AF2BE /* LoginRegex.m */; };
 		1691DD2620EB07B6008AF2BE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1691DD2520EB07B6008AF2BE /* AdSupport.framework */; };
 		1691DD2820EB07D1008AF2BE /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1691DD2720EB07D1008AF2BE /* libstdc++.6.0.9.tbd */; };
@@ -431,9 +446,9 @@
 		16F76FED20EF4EEE00950127 /* EaseDropMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F76FEC20EF4EEE00950127 /* EaseDropMenu.m */; };
 		16FD28EF20E07B1C0099A32B /* WIFIFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD28EE20E07B1C0099A32B /* WIFIFlow.m */; };
 		16FD290120E09C950099A32B /* WifiPanelTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290020E09C950099A32B /* WifiPanelTopView.xib */; };
-		16FD290620E09DF50099A32B /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290320E09DF50099A32B /* location.png */; };
-		16FD290720E09DF50099A32B /* location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290420E09DF50099A32B /* location@3x.png */; };
-		16FD290820E09DF50099A32B /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290520E09DF50099A32B /* location@2x.png */; };
+		16FD290620E09DF50099A32B /* location_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290320E09DF50099A32B /* location_home.png */; };
+		16FD290720E09DF50099A32B /* location_home@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290420E09DF50099A32B /* location_home@3x.png */; };
+		16FD290820E09DF50099A32B /* location_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290520E09DF50099A32B /* location_home@2x.png */; };
 		16FD290C20E09E7B0099A32B /* pm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290920E09E7B0099A32B /* pm@2x.png */; };
 		16FD290D20E09E7B0099A32B /* pm.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290A20E09E7B0099A32B /* pm.png */; };
 		16FD290E20E09E7C0099A32B /* pm@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290B20E09E7B0099A32B /* pm@3x.png */; };
@@ -597,6 +612,21 @@
 		166CA58820F33D9B00E4CBE3 /* WICompanyCategroyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WICompanyCategroyCell.h; sourceTree = "<group>"; };
 		166CA58920F33D9B00E4CBE3 /* WICompanyCategroyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WICompanyCategroyCell.m; sourceTree = "<group>"; };
 		166CA58A20F33D9B00E4CBE3 /* WICompanyCategroyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WICompanyCategroyCell.xib; sourceTree = "<group>"; };
+		166CA58E20F3633A00E4CBE3 /* refurbish_top_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refurbish_top_right@2x.png"; sourceTree = "<group>"; };
+		166CA58F20F3633A00E4CBE3 /* refurbish_top_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refurbish_top_right@3x.png"; sourceTree = "<group>"; };
+		166CA59020F3633A00E4CBE3 /* location_top_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_top_right@3x.png"; sourceTree = "<group>"; };
+		166CA59120F3633A00E4CBE3 /* qita_wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qita_wifi.png; sourceTree = "<group>"; };
+		166CA59220F3633A00E4CBE3 /* location_top_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_top_right@2x.png"; sourceTree = "<group>"; };
+		166CA59320F3633A00E4CBE3 /* refurbish_top_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refurbish_top_right.png; sourceTree = "<group>"; };
+		166CA59420F3633A00E4CBE3 /* qita_wifi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qita_wifi@2x.png"; sourceTree = "<group>"; };
+		166CA59520F3633A00E4CBE3 /* hkt_wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hkt_wifi.png; sourceTree = "<group>"; };
+		166CA59620F3633A00E4CBE3 /* qita_wifi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qita_wifi@3x.png"; sourceTree = "<group>"; };
+		166CA59720F3633A00E4CBE3 /* location_top_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_top_right.png; sourceTree = "<group>"; };
+		166CA59820F3633A00E4CBE3 /* hkt_wifi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hkt_wifi@2x.png"; sourceTree = "<group>"; };
+		166CA59920F3633A00E4CBE3 /* hkt_wifi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hkt_wifi@3x.png"; sourceTree = "<group>"; };
+		166CA5A620F363A200E4CBE3 /* current_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = current_location.png; sourceTree = "<group>"; };
+		166CA5A720F363A300E4CBE3 /* current_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "current_location@2x.png"; sourceTree = "<group>"; };
+		166CA5A820F363A300E4CBE3 /* current_location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "current_location@3x.png"; sourceTree = "<group>"; };
 		1691DD1520EA0832008AF2BE /* LoginRegex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginRegex.h; sourceTree = "<group>"; };
 		1691DD1620EA0832008AF2BE /* LoginRegex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginRegex.m; sourceTree = "<group>"; };
 		1691DD2520EB07B6008AF2BE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -1079,9 +1109,9 @@
 		16FD28ED20E07B1C0099A32B /* WIFIFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFIFlow.h; sourceTree = "<group>"; };
 		16FD28EE20E07B1C0099A32B /* WIFIFlow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFIFlow.m; sourceTree = "<group>"; };
 		16FD290020E09C950099A32B /* WifiPanelTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiPanelTopView.xib; sourceTree = "<group>"; };
-		16FD290320E09DF50099A32B /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
-		16FD290420E09DF50099A32B /* location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@3x.png"; sourceTree = "<group>"; };
-		16FD290520E09DF50099A32B /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
+		16FD290320E09DF50099A32B /* location_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_home.png; sourceTree = "<group>"; };
+		16FD290420E09DF50099A32B /* location_home@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_home@3x.png"; sourceTree = "<group>"; };
+		16FD290520E09DF50099A32B /* location_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_home@2x.png"; sourceTree = "<group>"; };
 		16FD290920E09E7B0099A32B /* pm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pm@2x.png"; sourceTree = "<group>"; };
 		16FD290A20E09E7B0099A32B /* pm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm.png; sourceTree = "<group>"; };
 		16FD290B20E09E7B0099A32B /* pm@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pm@3x.png"; sourceTree = "<group>"; };
@@ -1395,6 +1425,28 @@
 				166CA58020F06EA100E4CBE3 /* WICompanyCategory.m */,
 			);
 			path = M;
+			sourceTree = "<group>";
+		};
+		166CA58D20F3633A00E4CBE3 /* wifi地图 */ = {
+			isa = PBXGroup;
+			children = (
+				166CA5A620F363A200E4CBE3 /* current_location.png */,
+				166CA5A720F363A300E4CBE3 /* current_location@2x.png */,
+				166CA5A820F363A300E4CBE3 /* current_location@3x.png */,
+				166CA58E20F3633A00E4CBE3 /* refurbish_top_right@2x.png */,
+				166CA58F20F3633A00E4CBE3 /* refurbish_top_right@3x.png */,
+				166CA59020F3633A00E4CBE3 /* location_top_right@3x.png */,
+				166CA59120F3633A00E4CBE3 /* qita_wifi.png */,
+				166CA59220F3633A00E4CBE3 /* location_top_right@2x.png */,
+				166CA59320F3633A00E4CBE3 /* refurbish_top_right.png */,
+				166CA59420F3633A00E4CBE3 /* qita_wifi@2x.png */,
+				166CA59520F3633A00E4CBE3 /* hkt_wifi.png */,
+				166CA59620F3633A00E4CBE3 /* qita_wifi@3x.png */,
+				166CA59720F3633A00E4CBE3 /* location_top_right.png */,
+				166CA59820F3633A00E4CBE3 /* hkt_wifi@2x.png */,
+				166CA59920F3633A00E4CBE3 /* hkt_wifi@3x.png */,
+			);
+			path = "wifi地图";
 			sourceTree = "<group>";
 		};
 		1691DD2E20EB0A24008AF2BE /* BaiduMap */ = {
@@ -2265,6 +2317,7 @@
 		16D64C5620D0CAC500ED74C8 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				166CA58D20F3633A00E4CBE3 /* wifi地图 */,
 				166CA56F20F0644300E4CBE3 /* 导航栏 */,
 				16F76EFC20EDCB1E00950127 /* 企业广场 */,
 				1691DD7720EC6FC2008AF2BE /* 个人中心 */,
@@ -2465,9 +2518,9 @@
 				16FD290A20E09E7B0099A32B /* pm.png */,
 				16FD290920E09E7B0099A32B /* pm@2x.png */,
 				16FD290B20E09E7B0099A32B /* pm@3x.png */,
-				16FD290320E09DF50099A32B /* location.png */,
-				16FD290420E09DF50099A32B /* location@3x.png */,
-				16FD290520E09DF50099A32B /* location@2x.png */,
+				16FD290320E09DF50099A32B /* location_home.png */,
+				16FD290420E09DF50099A32B /* location_home@3x.png */,
+				16FD290520E09DF50099A32B /* location_home@2x.png */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -2631,6 +2684,7 @@
 				16FD290D20E09E7B0099A32B /* pm.png in Resources */,
 				1691DD7B20EC6FC2008AF2BE /* head@3x.png in Resources */,
 				16F76FD720EE091100950127 /* EnterpriseSquareSortCell.xib in Resources */,
+				166CA5A420F3633B00E4CBE3 /* hkt_wifi@2x.png in Resources */,
 				16F76F6720EDCB1F00950127 /* collect_default.png in Resources */,
 				1656789C20D3662A00EC3D5C /* location_default.png in Resources */,
 				16F76FA220EDCB1F00950127 /* manufacturing.png in Resources */,
@@ -2655,6 +2709,7 @@
 				16F76FE420EEFDAB00950127 /* square_lg.png in Resources */,
 				1691DDF420ECB485008AF2BE /* email@2x.png in Resources */,
 				16F76FB120EDCB1F00950127 /* product@2x.png in Resources */,
+				166CA5A020F3633B00E4CBE3 /* qita_wifi@2x.png in Resources */,
 				1691DDE920ECB485008AF2BE /* phone@3x.png in Resources */,
 				16F76F6E20EDCB1F00950127 /* search.png in Resources */,
 				1656789F20D3662A00EC3D5C /* mine_default@2x.png in Resources */,
@@ -2680,11 +2735,12 @@
 				16F76F8020EDCB1F00950127 /* manufacturing@3x.png in Resources */,
 				1656789E20D3662A00EC3D5C /* location.png in Resources */,
 				16F76FAD20EDCB1F00950127 /* write@2x.png in Resources */,
-				16FD290720E09DF50099A32B /* location@3x.png in Resources */,
+				16FD290720E09DF50099A32B /* location_home@3x.png in Resources */,
 				1656789A20D3662A00EC3D5C /* home@3x.png in Resources */,
 				16F76FDC20EE22FD00950127 /* default_img@2x.png in Resources */,
 				16F76F9520EDCB1F00950127 /* iot.png in Resources */,
 				16F76FA420EDCB1F00950127 /* education_services.png in Resources */,
+				166CA59B20F3633B00E4CBE3 /* refurbish_top_right@3x.png in Resources */,
 				1691DDEF20ECB485008AF2BE /* link@3x.png in Resources */,
 				1691DD4B20EB2305008AF2BE /* mapapi.bundle in Resources */,
 				1691DDE620ECB485008AF2BE /* apply@2x.png in Resources */,
@@ -2706,12 +2762,16 @@
 				165678A520D3662A00EC3D5C /* home_default.png in Resources */,
 				16F76FA120EDCB1F00950127 /* VR.png in Resources */,
 				169D83FB20DCD30100AA590F /* WifiPanel.xib in Resources */,
+				166CA5A220F3633B00E4CBE3 /* qita_wifi@3x.png in Resources */,
+				166CA59C20F3633B00E4CBE3 /* location_top_right@3x.png in Resources */,
 				16F76F7320EDCB1F00950127 /* snap@2x.png in Resources */,
+				166CA5A320F3633B00E4CBE3 /* location_top_right.png in Resources */,
 				16F76F9220EDCB1F00950127 /* education_services@3x.png in Resources */,
 				165678A320D3662A00EC3D5C /* mine_default@3x.png in Resources */,
 				16F76F8920EDCB1F00950127 /* medical@3x.png in Resources */,
 				16F76FA620EDCB1F00950127 /* position@3x.png in Resources */,
-				16FD290620E09DF50099A32B /* location.png in Resources */,
+				166CA5AA20F363A300E4CBE3 /* current_location@2x.png in Resources */,
+				16FD290620E09DF50099A32B /* location_home.png in Resources */,
 				1691DDED20ECB485008AF2BE /* wireless city@3x.png in Resources */,
 				16F76FA920EDCB1F00950127 /* qy_details_position.png in Resources */,
 				16F76F9420EDCB1F00950127 /* navigation@3x.png in Resources */,
@@ -2719,13 +2779,17 @@
 				16F76F6A20EDCB1F00950127 /* heng@3x.png in Resources */,
 				1691DDE520ECB485008AF2BE /* email.png in Resources */,
 				16F76F8F20EDCB1F00950127 /* block_chain.png in Resources */,
+				166CA59E20F3633B00E4CBE3 /* location_top_right@2x.png in Resources */,
+				166CA59D20F3633B00E4CBE3 /* qita_wifi.png in Resources */,
 				16D651B720D108B100ED74C8 /* wechat_login.png in Resources */,
 				16F76F9120EDCB1F00950127 /* phone_pay@2x.png in Resources */,
 				16F76FDD20EE22FD00950127 /* default_img@3x.png in Resources */,
+				166CA5A520F3633B00E4CBE3 /* hkt_wifi@3x.png in Resources */,
 				16D64C5520D0C19500ED74C8 /* RegisterController.xib in Resources */,
 				1691DDA720EC7A3F008AF2BE /* UserCenterItemCell.xib in Resources */,
+				166CA5AB20F363A300E4CBE3 /* current_location@3x.png in Resources */,
 				166CA57520F0644300E4CBE3 /* back.png in Resources */,
-				16FD290820E09DF50099A32B /* location@2x.png in Resources */,
+				16FD290820E09DF50099A32B /* location_home@2x.png in Resources */,
 				16F76F6B20EDCB1F00950127 /* heng@2x.png in Resources */,
 				16D64C5020D0C18000ED74C8 /* LoginController.xib in Resources */,
 				163A08E420E3707100DAC894 /* before.png in Resources */,
@@ -2807,6 +2871,7 @@
 				1691DD9020EC7930008AF2BE /* deal@3x.png in Resources */,
 				163A08E520E3707100DAC894 /* after.png in Resources */,
 				169D83B920DC7DE300AA590F /* HomeNewsTwoCell.xib in Resources */,
+				166CA59A20F3633B00E4CBE3 /* refurbish_top_right@2x.png in Resources */,
 				16F76F9D20EDCB1F00950127 /* phone_pay.png in Resources */,
 				16F76F6820EDCB1F00950127 /* shu@2x.png in Resources */,
 				1691DDEE20ECB485008AF2BE /* phone@2x.png in Resources */,
@@ -2834,6 +2899,7 @@
 				169D838720D3AECF00AA590F /* switch2@3x.png in Resources */,
 				163A08EC20E3707100DAC894 /* close.png in Resources */,
 				1691DE0A20ECCAFD008AF2BE /* CompanyDetailSectionOne.xib in Resources */,
+				166CA5A120F3633B00E4CBE3 /* hkt_wifi.png in Resources */,
 				16F76FB620EDCB1F00950127 /* recruitment@2x.png in Resources */,
 				16F76F7920EDCB1F00950127 /* triangle@2x.png in Resources */,
 				16F76F7020EDCB1F00950127 /* snap.png in Resources */,
@@ -2856,8 +2922,10 @@
 				1691DDD320ECAF86008AF2BE /* MobShrare.png in Resources */,
 				1656779520D24CD400EC3D5C /* qq_login@2x.png in Resources */,
 				16F76FAA20EDCB1F00950127 /* product.png in Resources */,
+				166CA5A920F363A300E4CBE3 /* current_location.png in Resources */,
 				16F76F6920EDCB1F00950127 /* heng.png in Resources */,
 				16D651B520D108B100ED74C8 /* wechat_login@3x.png in Resources */,
+				166CA59F20F3633B00E4CBE3 /* refurbish_top_right.png in Resources */,
 				16F76F8820EDCB1F00950127 /* big_data@3x.png in Resources */,
 				16F76F6420EDCB1F00950127 /* search@3x.png in Resources */,
 			);

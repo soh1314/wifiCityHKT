@@ -3,6 +3,7 @@
 #import <WebKit/WebKit.h>
 @interface WebViewController ()
 @property(nonatomic,strong)WKWebView *webView;
+@property (nonatomic,strong)UIWebView *uiwebView;
 @property (nonatomic, strong) UIProgressView *progressView;
 @end
 
@@ -19,7 +20,9 @@
     [super viewDidLoad];
     self.navigationItem.title = @"详情";
     [self setBlackNavBar];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"←" style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"←" style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+  
     if(!self.URLString ){
         if (self.htmlWord) {
             UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
@@ -41,10 +44,21 @@
         [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]];
         [self.webView loadRequest:request];
+        
         self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 5)];
         self.progressView.progressViewStyle = UIProgressViewStyleBar;
         self.progressView.progressTintColor = [UIColor blackColor];
         [self.navigationController.view addSubview:self.progressView];
+        
+//         UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+//        webView.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+//        self.uiwebView = webView;
+//
+//        [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+//        [self.view addSubview:webView];
+//        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]];
+//        [webView loadRequest:request];
+        
     }
     
 }

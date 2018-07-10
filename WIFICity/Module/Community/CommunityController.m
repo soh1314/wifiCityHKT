@@ -84,6 +84,7 @@
     } failureBlock:^(NSError *error) {
         
     } showHUD:NO];
+    
 }
 
 - (void)requestCompanyCategoryInfo {

@@ -184,9 +184,9 @@ static NSInteger flowRequestNum = 0;
             [[WIFIValidator shared]validator];
         }
     }
-    [self handleWhenNetChange:WINetWifi];
+    [self handleWhenNetChange:[WIFISevice netStatus]];
     if (self.panelDelegate && [self.panelDelegate respondsToSelector:@selector(handleWhenNetChange:wifiInfo:)]) {
-        [self.panelDelegate handleWhenNetChange:WINetWifi wifiInfo:self.wifiCloudInfo];
+        [self.panelDelegate handleWhenNetChange:[WIFISevice netStatus] wifiInfo:self.wifiCloudInfo];
     }
     
 }
