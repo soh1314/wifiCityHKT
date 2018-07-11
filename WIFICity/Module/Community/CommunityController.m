@@ -20,7 +20,8 @@
 #import "WICompanyCategory.h"
 #import "WICompanyInfo.h"
 
-#import "EasyNormalRefreshHeader.h"
+#import "EasySpringRefreshHeader.h"
+#import "UIScrollView+SpringRefreshHeader.h"
 
 @interface CommunityController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -64,11 +65,7 @@
 
     [self requestCompanyCategoryInfo];
     [self requestCompanyList];
-    //http://wifi.hktfi.com/ws/company/getEntList.do?企业分类
-    //
-    //http://wifi.hktfi.com/ws/company/getCompanyList.do?entId=从上个接口获取的id&useId=用户id&pageNum=加载页数
-    //
-    //http://wifi.hktfi.com/ws/company/getCompanyList.do?&useId=&comName=
+
 }
 
 - (void)requestCompanyList {
@@ -79,14 +76,14 @@
         if (response && response.success) {
             NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
             [self.dataArray addObjectsFromArray:dataArray];
-//            [self.tableView reloadData];
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadData];
+//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
         }
-        [self.tableView.mj_header endRefreshing];
+        [self.tableView.es_header endRefreshing];
         
     } failureBlock:^(NSError *error) {
         
-        [self.tableView.mj_header endRefreshing];
+        [self.tableView.es_header endRefreshing];
         
     } showHUD:NO];
     
@@ -112,7 +109,6 @@
 {
     if (scrollView == self.tableView)
     {
-        // pass the current offset of the UITableView so that the ParallaxHeaderView layouts the subViews.
         [(ParallaxHeaderView *)self.tableView.tableHeaderView layoutHeaderViewForScrollViewOffset:scrollView.contentOffset];
     }
 }
@@ -217,7 +213,7 @@
         _tableView.tableFooterView = [[UIView alloc]init];
         _tableView.estimatedRowHeight = 200;
         __weak typeof(self)wself = self;
-        _tableView.mj_header = [EasyNormalRefreshHeader headerWithRefreshingBlock:^{
+        _tableView.es_header =  [EasySpringRefreshHeader headerWithRefreshingBlock:^{
             [wself loadData];
         }];
     }

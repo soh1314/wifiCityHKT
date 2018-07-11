@@ -32,7 +32,7 @@
 #import "AFNetworking/AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "Masonry.h"
-#import "MJRefresh.h"
+//#import "MJRefresh.h"
 #import "Dialog.h"
 #import "MHNetworkManager.h"
 // sys
