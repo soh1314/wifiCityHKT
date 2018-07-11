@@ -26,7 +26,6 @@
     self.arrowView.hidden = YES;
     //隐藏时间
     self.lastUpdatedTimeLabel.hidden = YES;
-    self.stateLabel.textColor = [UIColor whiteColor];
     
     //设置文字颜色
 //    self.stateLabel.textColor = [UIColor redColor];
@@ -37,7 +36,6 @@
 
 - (void)beginRefreshing {
     [super beginRefreshing];
-    
     [self.scrollView bringSubviewToFront:self];
 }
 

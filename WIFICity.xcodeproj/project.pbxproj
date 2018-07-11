@@ -218,6 +218,7 @@
 		1695B1C520F5A29300DFFCCE /* LThree.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1BC20F5A29300DFFCCE /* LThree.png */; };
 		1695B1C820F5A9F300DFFCCE /* EasySpringRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695B1C720F5A9F300DFFCCE /* EasySpringRefreshHeader.m */; };
 		1695B1CB20F5ADAF00DFFCCE /* UIScrollView+SpringRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695B1CA20F5ADAF00DFFCCE /* UIScrollView+SpringRefreshHeader.m */; };
+		1695B1CE20F5E10600DFFCCE /* EaseWebViewProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695B1CD20F5E10600DFFCCE /* EaseWebViewProgressBar.m */; };
 		169D836B20D39C8B00AA590F /* WIWXInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D836A20D39C8B00AA590F /* WIWXInfo.m */; };
 		169D836E20D39D1000AA590F /* WIQQInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D836D20D39D1000AA590F /* WIQQInfo.m */; };
 		169D837820D3ACAE00AA590F /* GuideImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 169D837120D3ACAE00AA590F /* GuideImage.bundle */; };
@@ -776,6 +777,8 @@
 		1695B1C720F5A9F300DFFCCE /* EasySpringRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasySpringRefreshHeader.m; sourceTree = "<group>"; };
 		1695B1C920F5ADAF00DFFCCE /* UIScrollView+SpringRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SpringRefreshHeader.h"; sourceTree = "<group>"; };
 		1695B1CA20F5ADAF00DFFCCE /* UIScrollView+SpringRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SpringRefreshHeader.m"; sourceTree = "<group>"; };
+		1695B1CC20F5E10600DFFCCE /* EaseWebViewProgressBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseWebViewProgressBar.h; sourceTree = "<group>"; };
+		1695B1CD20F5E10600DFFCCE /* EaseWebViewProgressBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseWebViewProgressBar.m; sourceTree = "<group>"; };
 		169D836920D39C8A00AA590F /* WIWXInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIWXInfo.h; sourceTree = "<group>"; };
 		169D836A20D39C8B00AA590F /* WIWXInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIWXInfo.m; sourceTree = "<group>"; };
 		169D836C20D39D1000AA590F /* WIQQInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIQQInfo.h; sourceTree = "<group>"; };
@@ -2213,6 +2216,8 @@
 			children = (
 				1654A6EE20DE2EB200AFC322 /* WebViewController.h */,
 				1654A6ED20DE2EB200AFC322 /* WebViewController.m */,
+				1695B1CC20F5E10600DFFCCE /* EaseWebViewProgressBar.h */,
+				1695B1CD20F5E10600DFFCCE /* EaseWebViewProgressBar.m */,
 			);
 			path = WebViewController;
 			sourceTree = "<group>";
@@ -3267,6 +3272,7 @@
 				16D64B4D20CF7BA500ED74C8 /* EasyAllertUtil.m in Sources */,
 				16D64BE920CFA28D00ED74C8 /* MyController.m in Sources */,
 				16D64B8520CF7CE800ED74C8 /* UIScreen+Additions.m in Sources */,
+				1695B1CE20F5E10600DFFCCE /* EaseWebViewProgressBar.m in Sources */,
 				16FD28EF20E07B1C0099A32B /* WIFIFlow.m in Sources */,
 				169D83C820DC8C3000AA590F /* HomeBannerCell.m in Sources */,
 				1691DDF820ECB610008AF2BE /* HKTProtocolController.m in Sources */,

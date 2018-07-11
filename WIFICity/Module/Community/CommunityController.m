@@ -138,6 +138,9 @@
         return 1;
         
     } else {
+        if (self.dataArray.count > 0) {
+            return 4;
+        }
         return self.dataArray.count;
         
     }

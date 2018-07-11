@@ -1,10 +1,15 @@
 
 #import "WebViewController.h"
 #import <WebKit/WebKit.h>
+#import "EaseWebViewProgressBar.h"
+
 @interface WebViewController ()
+
 @property(nonatomic,strong)WKWebView *webView;
 @property (nonatomic,strong)UIWebView *uiwebView;
-@property (nonatomic, strong) UIProgressView *progressView;
+@property (nonatomic,strong) UIProgressView *progressView;
+@property (nonatomic,strong)EaseWebViewProgressBar *progressBar;
+
 @end
 
 @implementation WebViewController
@@ -45,22 +50,17 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]];
         [self.webView loadRequest:request];
         
-        self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 5)];
-        self.progressView.progressViewStyle = UIProgressViewStyleBar;
-        self.progressView.progressTintColor = [UIColor blackColor];
-        [self.navigationController.view addSubview:self.progressView];
+//        self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 5)];
+//        self.progressView.progressViewStyle = UIProgressViewStyleBar;
+//        self.progressView.progressTintColor = [UIColor blackColor];
+//        [self.navigationController.view addSubview:self.progressView];
         
-//         UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-//        webView.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-//        self.uiwebView = webView;
-//
-//        [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
-//        [self.view addSubview:webView];
-//        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]];
-//        [webView loadRequest:request];
-        
+        self.progressBar = [[EaseWebViewProgressBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 4) lineWidth:4];
+        if (!self.progressBar.superview) {
+            [self.view addSubview:self.progressBar];
+            [self.progressBar setProgress:0.3];
+        }
     }
-    
 }
 
 -(void)back:(id)sender {
@@ -79,18 +79,24 @@
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
         
         CGFloat progress = [change[NSKeyValueChangeNewKey] floatValue];
+        [self.progressBar setProgress:progress];
         if (progress < 0.3) {
-            [self.progressView setProgress:0.3 animated:YES];
+            [self.progressBar setProgress:0.3];
+//            [self.progressView setProgress:0.3 animated:YES];
         } else {
-            [self.progressView setProgress:progress animated:YES];
+            if(progress == 1.0)
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.progressBar setProgress:0];
+                    //                [self.progressView setProgress:0.0 animated:NO];
+                });
+            } else {
+                [self.progressBar setProgress:progress];
+            }
+            
+//            [self.progressView setProgress:progress animated:YES];
         }
-        if(progress == 1.0)
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                [self.progressView setProgress:0.0 animated:NO];
-            });
-        }
+
         
     }else{
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
