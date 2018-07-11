@@ -20,6 +20,8 @@
 #import "WICompanyCategory.h"
 #import "WICompanyInfo.h"
 
+#import "EasyNormalRefreshHeader.h"
+
 @interface CommunityController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)EaseTableView *tableView;
@@ -78,10 +80,13 @@
             NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
             [self.dataArray addObjectsFromArray:dataArray];
 //            [self.tableView reloadData];
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
         }
+        [self.tableView.mj_header endRefreshing];
         
     } failureBlock:^(NSError *error) {
+        
+        [self.tableView.mj_header endRefreshing];
         
     } showHUD:NO];
     
@@ -211,6 +216,10 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.tableFooterView = [[UIView alloc]init];
         _tableView.estimatedRowHeight = 200;
+        __weak typeof(self)wself = self;
+        _tableView.mj_header = [EasyNormalRefreshHeader headerWithRefreshingBlock:^{
+            [wself loadData];
+        }];
     }
     return _tableView;
 }

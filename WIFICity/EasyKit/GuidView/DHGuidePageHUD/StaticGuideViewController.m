@@ -22,7 +22,7 @@
     self.navigationController.navigationBarHidden = YES;
 }
 - (void)setStaticGuidePage {
-    NSArray *imageNameArray = @[@"启动页1.jpg",@"启动页2.jpg",@"启动页3.jpg"];
+    NSArray *imageNameArray = @[@"LOne",@"LTwo",@"LThree"];
     DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:self.view.frame imageNameArray:[imageNameArray copy] buttonIsHidden:NO];
     guidePage.slideInto = YES;
     [self.navigationController.view addSubview:guidePage];

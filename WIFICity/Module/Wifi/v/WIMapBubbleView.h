@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WIGeometryInfo.h"
 
 @interface WIMapBubbleView : UIView
+
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *wifiNameLabel;
+@property (nonatomic,strong)WIGeometryInfo *info;
 
 @end

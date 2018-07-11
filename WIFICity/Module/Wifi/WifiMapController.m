@@ -12,7 +12,7 @@
 #import <BaiduMapAPI_Location/BMKLocationComponent.h>
 #import "CustomPinAnnotationView.h"
 #import "WIFIAnnotation.h"
-
+#import "WIMapBubbleView.h"
 //x +23.979 y -21.313 z -26.714
 
 @interface WifiMapController ()<BMKMapViewDelegate,BMKLocationServiceDelegate>
@@ -41,7 +41,6 @@
     if (_mapView) {
         _mapView = nil;
     }
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -50,11 +49,7 @@
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
     [_locService startUserLocationService];
-   
-    
 }
-
-
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -62,7 +57,6 @@
     _mapView.delegate = nil; // 不用时，置nil
     _locService.delegate = nil;
     [_locService stopUserLocationService];
-    
 }
 
 
@@ -71,7 +65,7 @@
     self.title = @"WIFI地图";
     [self setWhiteTrasluntNavBar];
     _mapManager = [[BMKMapManager alloc]init];
-    BOOL ret = [_mapManager start:@"NAjg8KLy6H3sotqy7Qa1UQRoVwvnXagz"  generalDelegate:nil];
+    BOOL ret = [_mapManager start:@"NAjg8KLy6H3sotqy7Qa1UQRoVwvnXagz" generalDelegate:nil];
     if (!ret) {
         NSLog(@"manager start failed!");
     }
@@ -123,7 +117,7 @@
 }
 
 - (void)relocate:(id)sender {
-    [_locService stopUserLocationService];
+   [_locService stopUserLocationService];
    [_locService startUserLocationService];
 }
 
@@ -134,13 +128,31 @@
     model.mac = @"sdfdsLsdfsdf";
     model.longitude = @"112.863" ;
     model.latitude = @"28.248";
+    
+    WIGeometryInfo *model1 = [[WIGeometryInfo alloc]init];
+    model1.wifiName = @"hkt2";
+    model1.mac = @"sdfdsLsdfsdfs";
+    model1.longitude = @"112.864" ;
+    model1.latitude = @"28.245";
+    
     WIFIAnnotation* annotation = [[WIFIAnnotation alloc]init];
     CLLocationCoordinate2D coor;
     coor = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
 //    annotation.title = model.wifiName;
     annotation.coordinate = coor;
     annotation.model = model;
+    
+    WIFIAnnotation* annotation1 = [[WIFIAnnotation alloc]init];
+    CLLocationCoordinate2D coor1;
+    coor1 = CLLocationCoordinate2DMake([model1.latitude doubleValue], [model1.longitude doubleValue]);
+    //    annotation.title = model.wifiName;
+    annotation1.coordinate = coor1;
+    annotation1.model = model1;
+    
     [self.annotationArray addObject:annotation];
+    [self.annotationArray addObject:annotation1];
+    
+    
     [_mapView addAnnotations:self.annotationArray];
 }
 
@@ -169,7 +181,6 @@
 
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
-    //    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     self.userLocation = userLocation;
     NSLog(@"%.3f %.3f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     /*******************************设置定位中心************************************************/
@@ -226,46 +237,12 @@
     annotationView.image = [UIImage imageNamed:@"hkt_wifi"];
     annotationView.canShowCallout = YES;
     
-    UIView *popView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 150, 45)];
-    popView.backgroundColor = [UIColor whiteColor];
-    [popView.layer setMasksToBounds:YES];
-    [popView.layer setCornerRadius:3.0];
-    popView.alpha = 0.9;
-    //        //设置弹出气泡图片
-    //        UIImageView *image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:tt.imgPath]];
-    //        image.frame = CGRectMake(0, 160, 50, 60);
-    //        [popView addSubview:image];
-    
-    //自定义气泡的内容，添加子控件在popView上
-    UILabel *driverName = [[UILabel alloc]initWithFrame:CGRectMake(8, 4, 160, 30)];
-    driverName.text = annotation.title;
-    driverName.numberOfLines = 0;
-    driverName.backgroundColor = [UIColor clearColor];
-    driverName.font = [UIFont systemFontOfSize:15];
-    driverName.textColor = [UIColor blackColor];
-    driverName.textAlignment = NSTextAlignmentLeft;
-    [popView addSubview:driverName];
-    
-    UILabel *carName = [[UILabel alloc]initWithFrame:CGRectMake(8, 30, 180, 30)];
-    carName.text = annotation.subtitle;
-    carName.backgroundColor = [UIColor clearColor];
-    carName.font = [UIFont systemFontOfSize:11];
-    carName.textColor = [UIColor lightGrayColor];
-    carName.textAlignment = NSTextAlignmentLeft;
-    [popView addSubview:carName];
-    
-    if (annotation.subtitle != nil) {
-        UIButton *searchBn = [[UIButton alloc]initWithFrame:CGRectMake(170, 0, 50, 60)];
-        [searchBn setTitle:@"查看路线" forState:UIControlStateNormal];
-        searchBn.titleLabel.numberOfLines = 0;
-        [popView addSubview:searchBn];
-    }
-    
-    BMKActionPaopaoView *pView = [[BMKActionPaopaoView alloc]initWithCustomView:popView];
-    pView.frame = CGRectMake(0, 0,150, 45);
+    WIMapBubbleView *bubbleView = [[WIMapBubbleView alloc]initWithFrame:CGRectMake(0, 0, 252, 106)];
+    [bubbleView setInfo:myAnnotation.model];
+    BMKActionPaopaoView *pView = [[BMKActionPaopaoView alloc]initWithCustomView:bubbleView];
+    pView.frame = CGRectMake(0, 0,252, 106);
     ((BMKPinAnnotationView*)annotationView).paopaoView = nil;
     ((BMKPinAnnotationView*)annotationView).paopaoView = pView;
-    
     return annotationView;
 }
 

@@ -23,9 +23,10 @@
     
     //根据拖拽的情况自动切换透明度
     self.automaticallyChangeAlpha = YES;
-    
+    self.arrowView.hidden = YES;
     //隐藏时间
     self.lastUpdatedTimeLabel.hidden = YES;
+    self.stateLabel.textColor = [UIColor whiteColor];
     
     //设置文字颜色
 //    self.stateLabel.textColor = [UIColor redColor];
@@ -34,14 +35,17 @@
  *  摆放子控件
  */
 
+- (void)beginRefreshing {
+    [super beginRefreshing];
+    
+    [self.scrollView bringSubviewToFront:self];
+}
+
+
 - (void)placeSubviews
 {
     [super placeSubviews];
     
-    self.logoView.mj_x = 0;
-    self.logoView.mj_w = self.mj_w;
-    self.logoView.mj_h = self.mj_h;
-    self.logoView.mj_y=  0;
 }
 
 
