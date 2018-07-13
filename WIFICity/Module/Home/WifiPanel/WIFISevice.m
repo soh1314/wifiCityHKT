@@ -179,10 +179,11 @@ static NSInteger flowRequestNum = 0;
     NSString *wifiMac = [WifiUtil getWifiMac];
     self.wifiInfo.sid = [WifiUtil getWifiName];
     self.wifiInfo.bsid = [wifiMac copy];
-    if (wifiMac &&![self.currentWifiMac isEqualToString:wifiMac]) {
-        if ([WIFISevice isHKTWifi] ) {
-            [[WIFIValidator shared]validator];
-        }
+//    if (wifiMac &&![self.currentWifiMac isEqualToString:wifiMac]) {
+//
+//    }
+    if ([WIFISevice isHKTWifi] ) {
+        [[WIFIValidator shared]validator];
     }
     [self handleWhenNetChange:[WIFISevice netStatus]];
     if (self.panelDelegate && [self.panelDelegate respondsToSelector:@selector(handleWhenNetChange:wifiInfo:)]) {

@@ -66,7 +66,7 @@
     
     WIFIValidateInfo *info = [WIFIValidateInfo new];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
-    info.expireTime = [[NSString currentTimeStr]floatValue] + 30 * 60;
+    info.expireTime = [[NSString currentTimeStr]floatValue] + 10 * 60;
     if (![self needValidator:info]) {
         return;
     }
@@ -86,18 +86,6 @@
     NSLog(@"验证wifi过期时间%@",expireStr);
     NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routIP,expireStr];
     [self inerValidateRequest:validatorUrl];
-    
-//    WifiValidatorController *vc = [[WifiValidatorController alloc]init];
-//    vc.URLString = [validatorUrl copy];
-//    UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
-//    if (root && [root isKindOfClass:[TGTabBarController class]]) {
-//        TGTabBarController *tabbarController = (TGTabBarController*)root;
-//        UIViewController *selectVc =  tabbarController.selectedViewController;
-//        if ([selectVc isKindOfClass:[UINavigationController class]]) {
-//            UINavigationController *nav = (UINavigationController *)selectVc;
-//            [nav pushViewController:vc animated:YES];
-//        }
-//    }
     
 }
 

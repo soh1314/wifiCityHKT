@@ -11,7 +11,7 @@
 #import "CompanyRecommentCell.h"
 #import "EnterpriseSquareNetAPI.h"
 
-@interface CompanySearchController ()<UITableViewDelegate,UITableViewDataSource>
+@interface CompanySearchController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (nonatomic,strong)NSMutableArray *searchResultArray;
 @property (nonatomic,strong)EaseTableView *tableView;
@@ -90,18 +90,29 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self performSelector:@selector(requestCompanySearch:) withObject:self.searchBar.searchTtf.text afterDelay:0.3];
+    return YES;
+    
+}
+
 - (void)cancelSearch:(id)sender {
    
     [self.searchBar cancleSearch];
 }
 
 - (void)requestCompanySearch:(NSString *)companyName {
-    if (!companyName || [companyName isEqualToString:@""]) {
+    if (self.searchBar.searchTtf.markedTextRange) {
+        return;
+    }
+    NSString *searchWord = [self.searchBar.searchTtf.text copy];
+    if (!searchWord || [searchWord isEqualToString:@""]) {
         [self.searchResultArray removeAllObjects];
         [self.tableView reloadData];
         return;
     }
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"comName":[companyName copy]};
+    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"comName":[searchWord copy]};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanySearchAPI) params:para successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         if (response && response.success) {
