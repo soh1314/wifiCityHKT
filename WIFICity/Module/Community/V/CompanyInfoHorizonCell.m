@@ -24,8 +24,8 @@
     self.commentNumLabel.textColor = [UIColor colorWithHexString:@"#999999"];
     self.edgeView.backgroundColor = [UIColor colorWithHexString:@"#E3E3E3"];
     self.topEdgeView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
-     self.contentView.backgroundColor = [UIColor whiteColor];
-
+    self.contentView.backgroundColor = [UIColor whiteColor];
+    self.companyLogo.contentMode =UIViewContentModeScaleAspectFit;
 }
 
 - (void)setInfo:(WICompanyInfo *)info {

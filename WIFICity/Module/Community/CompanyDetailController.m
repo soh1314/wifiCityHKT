@@ -11,10 +11,12 @@
 #import "CompanyDetailSectionTwo.h"
 #import "CompanyDetailSectionFour.h"
 #import "WebViewController.h"
-
+#import "WICommentBottomBar.h"
 @interface CompanyDetailController ()
 
 @property (nonatomic,strong)EaseTableView *tableView;
+
+@property (nonatomic,strong)WICommentBottomBar *commentBottomBar;
 
 @end
 
@@ -39,6 +41,13 @@
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
+    }];
+    self.commentBottomBar = [[WICommentBottomBar alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 40)];
+    [self.view addSubview:self.commentBottomBar];
+    [self.commentBottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.mas_equalTo(self.view);
+        make.height.mas_equalTo(40);
+        
     }];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionFour" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionFourID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionTwo" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionTwoID"];

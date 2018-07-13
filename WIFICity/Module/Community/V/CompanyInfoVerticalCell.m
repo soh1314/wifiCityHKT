@@ -24,6 +24,7 @@
     self.likeNum.textColor = [UIColor colorWithHexString:@"#999999"];
     self.edgeView.backgroundColor = [UIColor colorWithHexString:@"#E3E3E3"];
     self.contentView.backgroundColor = [UIColor whiteColor];
+    self.companyLogo.contentMode =UIViewContentModeScaleAspectFit;
     
 }
 
