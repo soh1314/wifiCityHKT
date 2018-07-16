@@ -13,6 +13,8 @@
 #import "CustomPinAnnotationView.h"
 #import "WIFIAnnotation.h"
 #import "WIMapBubbleView.h"
+#import <NetworkExtension/NetworkExtension.h>
+
 //x +23.979 y -21.313 z -26.714
 
 @interface WifiMapController ()<BMKMapViewDelegate,BMKLocationServiceDelegate>
@@ -49,6 +51,7 @@
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
     [_locService startUserLocationService];
+    [self startWifi];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -59,6 +62,42 @@
     [_locService stopUserLocationService];
 }
 
+- (void)startWifi {
+    NSLog(@"1.Start");
+    
+    NSMutableDictionary* options = [[NSMutableDictionary alloc] init];
+    [options setObject:@"华宽通无线城市😄wifi" forKey: kNEHotspotHelperOptionDisplayName];
+    dispatch_queue_t queue = dispatch_queue_create("WIHKTWIFISEARCHQUEUE", NULL);
+    
+    NSLog(@"2.Try");
+    BOOL returnType = [NEHotspotHelper registerWithOptions: options queue: queue handler: ^(NEHotspotHelperCommand * cmd) {
+        
+        NSLog(@"4.Finish");
+        NEHotspotNetwork* network;
+        if (cmd.commandType == kNEHotspotHelperCommandTypeEvaluate || cmd.commandType == kNEHotspotHelperCommandTypeFilterScanList) {
+            // 遍历 WiFi 列表，打印基本信息
+            for (network in cmd.networkList) {
+                NSString* wifiInfoString = [[NSString alloc] initWithFormat: @"---------------------------\nSSID: %@\nMac地址: %@\n信号强度: %f\nCommandType:%ld\n---------------------------\n\n", network.SSID, network.BSSID, network.signalStrength, (long)cmd.commandType];
+                NSLog(@"附近wifi信息%@", wifiInfoString);
+                // 检测到指定 WiFi 可设定密码直接连接
+                if ([network.SSID isEqualToString: @"test2"]) {
+                    [network setConfidence: kNEHotspotHelperConfidenceHigh];
+                    [network setPassword: @""];
+                    NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
+                    NSLog(@"Response CMD: %@", response);
+                    [response setNetworkList: @[network]];
+                    [response setNetwork: network];
+                    [response deliver];
+                }
+            }
+        } else {
+            NSLog(@"其他");
+        }
+    }];
+    
+    // 注册成功 returnType 会返回一个 Yes 值，否则 No
+    NSLog(@"3.Result: %@", returnType == YES ? @"Yes" : @"No");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

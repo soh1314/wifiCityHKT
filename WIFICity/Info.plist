@@ -106,6 +106,8 @@
 	<string>有了地理位置，才可以搜索你附近的免费Wi-Fi~</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>此 App 需要您的同意才能读取媒体资料库</string>
+	<key>UIBackgroundModes</key>
+	<array/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -122,5 +124,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>network-authentication</string>
+    </array>
 </dict>
 </plist>
