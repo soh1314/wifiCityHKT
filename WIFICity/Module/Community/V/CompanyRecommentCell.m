@@ -40,7 +40,7 @@
     }
     self.nameLabel.text = [_companyInfo.com_name copy];
     self.desLabel.text = [_companyInfo.com_range copy];
-    self.logoIcon.contentMode = UIViewContentModeScaleAspectFill;
+    self.logoIcon.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

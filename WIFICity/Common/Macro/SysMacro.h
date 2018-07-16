@@ -40,7 +40,7 @@
 #define IPHONE6OR6S FOURSCREEN
 
 #define kNavBarHeight  44.0f
-#define kStatusBarHeight  isIPhoneX ? 44.0f : 20.0f
+#define kStatusBarHeight  (isIPhoneX ? 44.0f : 20.0f)
 #define KTabbarHeight  49
 
 // 颜色

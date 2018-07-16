@@ -35,7 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    [Dialog showRingLoadingView:self.view];
     self.UserCenterItemTitleArray = @[@[@"系统消息",@"推荐给好友"],@[@"关于我们",@"服务协议"],@[@"设备管理",@"退出登录"]];
     self.UserCenterItemImageNameArray = @[@[@"message",@"share"],@[@"about",@"deal"],@[@"equipment",@""]];
     // Do any additional setup after loading the view.

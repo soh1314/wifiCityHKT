@@ -128,36 +128,27 @@
                                     <constraint firstItem="m9A-1E-wzq" firstAttribute="leading" secondItem="0BG-TP-ek6" secondAttribute="trailing" id="zKr-LB-XUu"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZA-J8-GO1">
-                                <rect key="frame" x="15" y="15" width="105" height="55"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="EC1-e3-wFo">
-                                        <rect key="frame" x="5" y="5" width="95" height="45"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="JWS-Es-cfy">
+                                <rect key="frame" x="16" y="15" width="105" height="55"/>
                                 <constraints>
-                                    <constraint firstItem="EC1-e3-wFo" firstAttribute="top" secondItem="4ZA-J8-GO1" secondAttribute="top" constant="5" id="8QC-Ku-3E0"/>
-                                    <constraint firstItem="EC1-e3-wFo" firstAttribute="centerX" secondItem="4ZA-J8-GO1" secondAttribute="centerX" id="Jin-xV-h50"/>
-                                    <constraint firstAttribute="height" constant="55" id="fip-0e-pvL"/>
-                                    <constraint firstItem="EC1-e3-wFo" firstAttribute="leading" secondItem="4ZA-J8-GO1" secondAttribute="leading" constant="5" id="hla-Xx-IdC"/>
-                                    <constraint firstItem="EC1-e3-wFo" firstAttribute="centerY" secondItem="4ZA-J8-GO1" secondAttribute="centerY" id="vIs-Hz-RF0"/>
+                                    <constraint firstAttribute="width" constant="105" id="P0s-id-WaM"/>
+                                    <constraint firstAttribute="height" constant="55" id="dai-at-WTh"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YAn-g0-5Pp" firstAttribute="leading" secondItem="kRT-lC-TwA" secondAttribute="leading" id="4JZ-ix-DoD"/>
-                            <constraint firstItem="bZx-cW-L6p" firstAttribute="leading" secondItem="4ZA-J8-GO1" secondAttribute="trailing" constant="15" id="6tc-ra-BkI"/>
                             <constraint firstItem="ROP-Ke-qhO" firstAttribute="top" secondItem="bZx-cW-L6p" secondAttribute="bottom" constant="10" id="A6R-cN-gEA"/>
-                            <constraint firstItem="4ZA-J8-GO1" firstAttribute="top" secondItem="kRT-lC-TwA" secondAttribute="top" constant="15" id="Aol-Rk-ULF"/>
-                            <constraint firstItem="4ZA-J8-GO1" firstAttribute="leading" secondItem="kRT-lC-TwA" secondAttribute="leading" constant="15" id="BmL-5d-2lb"/>
+                            <constraint firstItem="JWS-Es-cfy" firstAttribute="top" secondItem="kRT-lC-TwA" secondAttribute="top" constant="15" id="KNg-2y-w0m"/>
                             <constraint firstAttribute="bottom" secondItem="YAn-g0-5Pp" secondAttribute="bottom" id="OXX-e0-Zab"/>
-                            <constraint firstItem="bZx-cW-L6p" firstAttribute="top" secondItem="4ZA-J8-GO1" secondAttribute="top" id="SAf-bF-ldE"/>
+                            <constraint firstItem="JWS-Es-cfy" firstAttribute="leading" secondItem="kRT-lC-TwA" secondAttribute="leading" constant="16" id="QNI-tY-hXp"/>
+                            <constraint firstItem="YAn-g0-5Pp" firstAttribute="top" secondItem="JWS-Es-cfy" secondAttribute="bottom" constant="15" id="Sb8-mk-qHS"/>
                             <constraint firstAttribute="trailing" secondItem="YAn-g0-5Pp" secondAttribute="trailing" id="Tti-ZY-ggn"/>
                             <constraint firstItem="ROP-Ke-qhO" firstAttribute="leading" secondItem="bZx-cW-L6p" secondAttribute="leading" id="ZPm-K2-RaB"/>
                             <constraint firstItem="bZx-cW-L6p" firstAttribute="leading" secondItem="kRT-lC-TwA" secondAttribute="leading" constant="135" id="ZdH-UF-7yJ"/>
-                            <constraint firstItem="YAn-g0-5Pp" firstAttribute="top" secondItem="4ZA-J8-GO1" secondAttribute="bottom" constant="15" id="u2s-kd-ukU"/>
+                            <constraint firstItem="bZx-cW-L6p" firstAttribute="top" secondItem="JWS-Es-cfy" secondAttribute="top" id="hHV-cC-qk1"/>
+                            <constraint firstItem="bZx-cW-L6p" firstAttribute="leading" secondItem="JWS-Es-cfy" secondAttribute="trailing" constant="14" id="jO9-oS-sMi"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="My4-x3-IHj">
@@ -253,7 +244,7 @@
             <connections>
                 <outlet property="addressValueLabel" destination="FVp-H0-ruD" id="dOT-IC-6KL"/>
                 <outlet property="bossNameLabel" destination="rfJ-3e-22g" id="66o-WJ-EU8"/>
-                <outlet property="companyIcon" destination="EC1-e3-wFo" id="Uu1-tc-3kb"/>
+                <outlet property="companyIcon" destination="JWS-Es-cfy" id="TCx-Ox-ETA"/>
                 <outlet property="companyNameLabel" destination="bZx-cW-L6p" id="PZL-Xy-kKZ"/>
                 <outlet property="phoneValueLabel" destination="6Qb-Cr-zhF" id="9bH-8E-zhM"/>
                 <outlet property="registerMoneyLabel" destination="kAc-mI-ZM4" id="mbV-pF-yzG"/>

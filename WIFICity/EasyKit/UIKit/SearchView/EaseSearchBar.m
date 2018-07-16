@@ -25,6 +25,7 @@
     if (self.textfieldPlaceHolderName) {
         self.searchTtf.placeholder = [self.textfieldPlaceHolderName copy];
     }
+    self.searchTtf.font = [UIFont systemFontOfSize:13];
     self.searchTtf.userInteractionEnabled = NO;
     self.searchTtf.returnKeyType = UIReturnKeySearch;
     self.clipsToBounds = YES;

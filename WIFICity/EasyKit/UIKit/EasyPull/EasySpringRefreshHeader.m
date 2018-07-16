@@ -179,7 +179,8 @@
         self.loadingView.alpha = 1.0;
         [self.loadingView startAnimating];
     } else if (state == MJRefreshStatePulling) {
-        [self.loadingView stopAnimating];
+;
+        [self.loadingView startAnimating];
     } 
 }
 

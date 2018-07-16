@@ -43,6 +43,7 @@
     [super viewDidLoad];
     [self setBlackNavBar];
     self.showType = 0;
+    self.page = 1;
     [self initUI];
     if (!self.categoryID) {
         self.categoryID = @"402883b260d36c5f0160d4c0d7f70017";
@@ -59,7 +60,7 @@
 
 - (void)loadData:(BOOL)refresh {
     if (refresh) {
-        self.page = 0;
+        self.page = 1;
     } else {
         self.page++;
     }
@@ -77,8 +78,9 @@
             }
             [self.collectionView reloadData];
         }
+        [self.collectionView.mj_footer endRefreshing];
     } failureBlock:^(NSError *error) {
-        
+       [self.collectionView.mj_footer endRefreshing];
     } showHUD:NO];
 }
 
@@ -98,6 +100,10 @@
     }];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoVerticalCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoVerticalCellID"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoHorizonCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoHorizonCellID"];
+    __weak typeof(self)wself = self;
+    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [wself loadData:NO];
+    }];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithImage:[UIImage qsImageNamed:@"heng"] style:UIBarButtonItemStylePlain target:self action:@selector(changeCollectionViewStyle:)];
     self.navigationItem.rightBarButtonItem = rightBarItem;
     self.searchBar = [[EaseSearchBar alloc]initWithFrame:CGRectMake(0, 0, 278/375.0f*KSCREENW, 36)];
@@ -109,7 +115,6 @@
             make.height.mas_equalTo(36);
         }];
     }
-    __weak typeof(self)wself = self;
     self.searchBar.actionblock = ^{
         [wself.view endEditing:YES];
         CompanySearchController *searchCtrl = [CompanySearchController new];

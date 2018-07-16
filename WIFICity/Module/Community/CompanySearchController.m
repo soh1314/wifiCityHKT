@@ -10,6 +10,7 @@
 #import "EaseSearchBar.h"
 #import "CompanyRecommentCell.h"
 #import "EnterpriseSquareNetAPI.h"
+#import "CompanyDetailController.h"
 
 @interface CompanySearchController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
@@ -162,6 +163,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    WICompanyInfo *info = self.searchResultArray[indexPath.row];
+    CompanyDetailController *detailCtrl = [CompanyDetailController new];
+    detailCtrl.info = info;
+    [self.navigationController pushViewController:detailCtrl animated:YES];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {

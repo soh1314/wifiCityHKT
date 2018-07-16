@@ -7,10 +7,12 @@
 //
 
 #import "HKTProtocolController.h"
-
+#import <WebKit/WebKit.h>
 @interface HKTProtocolController ()
 
 @property (nonatomic,strong)UIWebView *uiwebView;
+@property (nonatomic,strong)WKWebView *webView;
+
 @end
 
 @implementation HKTProtocolController
@@ -33,15 +35,14 @@
 - (void)initUI {
     [self setBlackNavBar];
     self.title = @"服务协议";
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, KSCREENW, KSCREENH-kNavBarHeight-kStatusBarHeight)];
     webView.backgroundColor = [UIColor whiteColor];
-    self.uiwebView = webView;
+    self.webView = webView;
     [self.view addSubview:webView];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"protocol" ofType:@"html"];
     NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    NSURL *url = [[NSURL alloc] initWithString:filePath];
-    self.uiwebView.scalesPageToFit = YES;
-    [self.uiwebView loadHTMLString:htmlString baseURL:url];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://720yun.com/t/946jezwnuv5?scene_id=17042939&from=groupmessage"]]];
+    [self.webView loadHTMLString:htmlString baseURL:[NSURL fileURLWithPath:htmlString]];
 }
 
 - (void)loadData {
