@@ -93,8 +93,12 @@
     
     [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, CompanyCategoryAPI) params:nil successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
-        if (response) {
-            
+        if (response && response.success) {
+            NSArray *obj = (NSArray *)response.obj;
+            NSArray *categoryArray = [WICompanyCategory arrayOfModelsFromDictionaries:obj error:nil];
+            [self.categoryArray removeAllObjects];
+            [self.categoryArray addObjectsFromArray:categoryArray];
+            [self.tableView reloadData];
         }
         
     } failureBlock:^(NSError *error) {
@@ -146,13 +150,21 @@
     }
 }
 
+- (void)jumpToSortController:(NSInteger)index {
+    CompanySortController *sortCtrl = [CompanySortController new];
+    WICompanyCategory *category = self.categoryArray[index];
+    sortCtrl.categoryID = [category.ID copy];
+    sortCtrl.categoryArray = [self.categoryArray copy];
+    [self.navigationController pushViewController:sortCtrl animated:YES];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         EnterpriseSquareSortCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterpriseSquareSortCellID" forIndexPath:indexPath];
         __weak typeof(self)wself = self;
-        cell.pick = ^(NSInteger idx) {
-            CompanySortController *sortCtrl = [CompanySortController new];
-            [wself.navigationController pushViewController:sortCtrl animated:YES];
+        [cell setCategoryModelArray: [self.categoryArray copy]];
+        cell.pick = ^(NSInteger idx ,WICompanyCategory *category) {
+            [wself jumpToSortController:idx];
         };
         return cell;
     } else if (indexPath.section == 1) {
@@ -173,14 +185,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 2) {
-        [self jumpToSortController];
+        [self jumpToSortController:indexPath.section];
     }
 }
 
-- (void)jumpToSortController {
-    CompanySortController *sortCtrl = [CompanySortController new];
-    [self.navigationController pushViewController:sortCtrl animated:YES];
-}
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     return [UIView new];
@@ -189,8 +197,9 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 2) {
         CompanyRecommentHeader *header = [[CompanyRecommentHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 41)];
+        __weak typeof(self)wself = self;
         header.moreBlock = ^{
-             [self jumpToSortController];
+            [wself jumpToSortController:section];
         };
         return header;
     } else {

@@ -12,7 +12,9 @@
 #import "CompanyDetailSectionFour.h"
 #import "WebViewController.h"
 #import "WICommentBottomBar.h"
-@interface CompanyDetailController ()
+#import "WIPopView.h"
+
+@interface CompanyDetailController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)EaseTableView *tableView;
 
@@ -49,6 +51,10 @@
         make.height.mas_equalTo(40);
         
     }];
+    __weak typeof(self)wself = self;
+    self.commentBottomBar.tapBlock = ^{
+        [WIPopView popCommentView:wself];
+    };
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionFour" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionFourID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionTwo" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionTwoID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionOne" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionOneID"];

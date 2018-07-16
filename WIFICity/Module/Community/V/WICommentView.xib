@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WICommentView">
+            <rect key="frame" x="0.0" y="0.0" width="559" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="  " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xvd-GP-X7z">
+                    <rect key="frame" x="15" y="15" width="529" height="80"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="Yj9-Ju-ulc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlG-Ej-uNB">
+                    <rect key="frame" x="464" y="110" width="80" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="sWI-jr-GGB"/>
+                        <constraint firstAttribute="width" constant="80" id="sXy-5j-TbO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="发表"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ZlG-Ej-uNB" secondAttribute="trailing" constant="15" id="3ts-Cs-Lkb"/>
+                <constraint firstItem="ZlG-Ej-uNB" firstAttribute="top" secondItem="xvd-GP-X7z" secondAttribute="bottom" constant="15" id="4Rg-Bk-0sn"/>
+                <constraint firstItem="xvd-GP-X7z" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4fC-fK-S1V"/>
+                <constraint firstItem="xvd-GP-X7z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Erq-LE-Oi0"/>
+                <constraint firstItem="xvd-GP-X7z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="zDW-Rn-mvi"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="commentBtn" destination="ZlG-Ej-uNB" id="QCs-Bq-Der"/>
+                <outlet property="commentTextView" destination="xvd-GP-X7z" id="h3e-xm-5PH"/>
+            </connections>
+            <point key="canvasLocation" x="102" y="-57"/>
+        </view>
+    </objects>
+</document>

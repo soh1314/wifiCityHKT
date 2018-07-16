@@ -23,4 +23,19 @@
     [context.zh_popupController presentContentView:phoneView duration:0.5 springAnimated:YES];
 }
 
++ (void)popCommentView:(UIViewController *)context {
+    context.zh_popupController = [[zhPopupController alloc]init];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 160)];
+    WICommentView *commentView = [[WICommentView alloc]initWithFrame:CGRectZero];
+    [view addSubview:commentView];
+    [commentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(view);
+    }];
+    context.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
+    [context.zh_popupController presentContentView:view duration:0.35 springAnimated:NO];
+    context.zh_popupController.willDismiss = ^(zhPopupController * _Nonnull popupController) {
+        [commentView.commentTextView resignFirstResponder];
+    };
+}
+
 @end

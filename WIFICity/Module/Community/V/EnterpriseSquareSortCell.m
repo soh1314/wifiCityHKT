@@ -28,6 +28,11 @@
     self.collectionView.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)setCategoryModelArray:(NSArray *)categoryModelArray {
+    _categoryModelArray = categoryModelArray;
+    [self.collectionView reloadData];
+}
+
 - (UICollectionView *)collectionView
 {
     if(!_collectionView)
@@ -57,18 +62,20 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"选择了哪个答案:%ld",indexPath.row);
     if (_pick) {
-        _pick(indexPath.row);
+        _pick(indexPath.row,self.categoryModelArray[indexPath.row]);
     }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.titleArray.count;
+    return self.categoryModelArray.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HomeServiceItemCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeServiceItemCellID" forIndexPath:indexPath];
-    colCell.serviceImageView.image = [UIImage qsImageNamed:self.imageArray[indexPath.row]];
-    colCell.serviceNameLabel.text = self.titleArray[indexPath.row];
+//    colCell.serviceImageView.image = [UIImage qsImageNamed:self.imageArray[indexPath.row]];
+//    colCell.serviceNameLabel.text = self.titleArray[indexPath.row];
+    WICompanyCategory *category = self.categoryModelArray[indexPath.row];
+    colCell.serviceNameLabel.text  = [category.entName copy];
     colCell.serviceNameLabel.textColor = [UIColor colorWithHexString:@"#666666"];
     return colCell;
 }
@@ -78,7 +85,7 @@
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((KSCREENW-5.0)/5.0f,82);
+    return CGSizeMake((KSCREENW-5.0)/4.0f,82);
 }
 
 //调节每个item的edgeInsets代理方法

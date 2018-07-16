@@ -7,6 +7,7 @@
 //
 
 #import "WICommentBottomBar.h"
+#import "WIPopView.h"
 
 @implementation WICommentBottomBar
 
@@ -30,12 +31,15 @@
 }
 
 - (void)tapCommentBgView:(UITapGestureRecognizer *)gesture {
-    
+    if (self.tapBlock) {
+        self.tapBlock();
+    }
 }
 
 - (IBAction)collect:(id)sender {
 }
 
 - (IBAction)like:(id)sender {
+    
 }
 @end

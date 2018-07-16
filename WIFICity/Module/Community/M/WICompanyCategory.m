@@ -11,7 +11,9 @@
 @implementation WICompanyCategory
 
 +(JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc]initWithModelToJSONDictionary:@{@"id":@"ID"}];
+    return [[JSONKeyMapper alloc]initWithDictionary:@{@"id":@"ID"}];
 }
+
+
 
 @end

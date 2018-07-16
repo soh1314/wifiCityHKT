@@ -8,8 +8,8 @@
 
 #import "BaseViewController.h"
 #import "WICompanyInfo.h"
-@interface CompanyDetailController : BaseViewController
 
+@interface CompanyDetailController : BaseViewController
 @property (nonatomic,strong)WICompanyInfo *info;
 
 @end

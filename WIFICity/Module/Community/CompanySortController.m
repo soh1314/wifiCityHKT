@@ -87,10 +87,11 @@
 - (void)initUI {
     self.sortTopView = [EaseDropMenu topViewWithTitleArray:@[@"类别",@"距离"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
     self.sortTopView.delegate = self;
+    __weak typeof(self)wself = self;
     self.sortTopView.tapBlock = ^(NSInteger index, EaseSortItemView *view) {
-        if (index == 0) {
-            
-        }
+        
+
+ 
     };
     [self.view addSubview:self.sortTopView];
     [self.view addSubview:self.collectionView];
@@ -100,7 +101,6 @@
     }];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoVerticalCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoVerticalCellID"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoHorizonCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoHorizonCellID"];
-    __weak typeof(self)wself = self;
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [wself loadData:NO];
     }];
@@ -142,8 +142,15 @@
     UIView *view = [UIView new];
     if (index == 0) {
         WICompanyCategroyView *categoryView  = [[WICompanyCategroyView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 156)];
+        __weak typeof(self)wself = self;
+        categoryView.pick = ^(NSInteger idx) {
+            WICompanyCategory *category = wself.categoryArray[index];
+            wself.categoryID = [category.ID copy];
+            [wself loadData:YES];
+            [wself.sortTopView hideDropView];
+        };
         categoryView.backgroundColor = [UIColor redColor];
-        categoryView.categoryArray = @[@"app",@"AI",@"区块链",@"手机支付",@"小程序",@"智慧医疗",@"VR",@"物联网",@"智能制造",@"大数据",@"数字教育",@"北斗导航"];
+        categoryView.categoryArray = [self.categoryArray copy];;
         return categoryView;
     } else {
         return view;

@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "zhPopupController.h"
 #import "BindPhoneView.h"
+#import "WICommentView.h"
+
 @interface WIPopView : NSObject
 
 + (void)popBindPhoneView:(UIViewController *)context;
+
++ (void)popCommentView:(UIViewController *)context;
 
 @end

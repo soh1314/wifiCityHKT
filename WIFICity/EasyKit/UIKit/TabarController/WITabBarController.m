@@ -70,7 +70,7 @@
     homeNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_shouye image:[UIImage qsAutoImageNamed:@"home_default"] selectedImage:[UIImage qsAutoImageNamed:@"home"]];
     WifiMapController *movieController = [[WifiMapController alloc]init];
     TGNavigationCotroller *movieNav = [[TGNavigationCotroller alloc]initWithRootViewController:movieController];
-    movieNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_movie image:[UIImage qsAutoImageNamed:@"location_default"] selectedImage:[UIImage qsAutoImageNamed:@"location"]  ];
+    movieNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_wifi image:[UIImage qsAutoImageNamed:@"location_default"] selectedImage:[UIImage qsAutoImageNamed:@"location"]  ];
     CommunityController *communityController = [[CommunityController alloc]init];
 //    message.jz_wantsNavigationBarVisible = YES;
 //    message.jz_navigationBarBackgroundHidden = NO;

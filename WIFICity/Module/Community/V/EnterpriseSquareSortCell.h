@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WICompanyCategory.h"
 
-typedef void(^itemPick)(NSInteger idx);
+typedef void(^itemPick)(NSInteger idx ,WICompanyCategory *category);
 
 @interface EnterpriseSquareSortCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
 

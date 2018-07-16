@@ -11,5 +11,6 @@
 @interface CompanySortController : BaseViewController
 
 @property (nonatomic,copy)NSString *categoryID;
+@property (nonatomic,copy)NSArray *categoryArray;
 
 @end

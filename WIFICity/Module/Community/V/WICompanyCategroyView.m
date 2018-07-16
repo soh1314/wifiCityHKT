@@ -63,7 +63,8 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     WICompanyCategroyCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"WICompanyCategroyCellID" forIndexPath:indexPath];
-    colCell.companyNameLabel.text = self.categoryArray[indexPath.row];
+    WICompanyCategory *category = self.categoryArray[indexPath.row];
+    colCell.companyNameLabel.text = [category.entName copy];
     return colCell;
 }
 
