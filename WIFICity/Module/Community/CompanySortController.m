@@ -90,8 +90,6 @@
     __weak typeof(self)wself = self;
     self.sortTopView.tapBlock = ^(NSInteger index, EaseSortItemView *view) {
         
-
- 
     };
     [self.view addSubview:self.sortTopView];
     [self.view addSubview:self.collectionView];

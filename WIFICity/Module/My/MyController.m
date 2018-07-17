@@ -36,7 +36,7 @@
     [super viewDidLoad];
     [self initUI];
     self.UserCenterItemTitleArray = @[@[@"系统消息",@"推荐给好友"],@[@"关于我们",@"服务协议"],@[@"设备管理",@"退出登录"]];
-    self.UserCenterItemImageNameArray = @[@[@"message",@"share"],@[@"about",@"deal"],@[@"equipment",@""]];
+    self.UserCenterItemImageNameArray = @[@[@"message",@"share"],@[@"about",@"deal"],@[@"equipment",@"quit"]];
     // Do any additional setup after loading the view.
 }
 

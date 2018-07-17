@@ -226,6 +226,10 @@
 		1695B1E020FC40B400DFFCCE /* WICommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695B1DF20FC40B400DFFCCE /* WICommentView.m */; };
 		1695B1E220FC40C400DFFCCE /* WICommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1E120FC40C400DFFCCE /* WICommentView.xib */; };
 		1695B1E420FC76EC00DFFCCE /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1695B1E320FC76EC00DFFCCE /* ExternalAccessory.framework */; };
+		1695B1E820FD9DF000DFFCCE /* WifiCheckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695B1E720FD9DF000DFFCCE /* WifiCheckController.m */; };
+		1695B1EC20FDA08200DFFCCE /* quit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1E920FDA08100DFFCCE /* quit.png */; };
+		1695B1ED20FDA08200DFFCCE /* quit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1EA20FDA08100DFFCCE /* quit@2x.png */; };
+		1695B1EE20FDA08200DFFCCE /* quit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1EB20FDA08200DFFCCE /* quit@3x.png */; };
 		169D836B20D39C8B00AA590F /* WIWXInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D836A20D39C8B00AA590F /* WIWXInfo.m */; };
 		169D836E20D39D1000AA590F /* WIQQInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D836D20D39D1000AA590F /* WIQQInfo.m */; };
 		169D837820D3ACAE00AA590F /* GuideImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 169D837120D3ACAE00AA590F /* GuideImage.bundle */; };
@@ -796,6 +800,11 @@
 		1695B1E120FC40C400DFFCCE /* WICommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WICommentView.xib; sourceTree = "<group>"; };
 		1695B1E320FC76EC00DFFCCE /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		1695B1E520FC76EC00DFFCCE /* WIFICity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WIFICity.entitlements; sourceTree = "<group>"; };
+		1695B1E620FD9DF000DFFCCE /* WifiCheckController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiCheckController.h; sourceTree = "<group>"; };
+		1695B1E720FD9DF000DFFCCE /* WifiCheckController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WifiCheckController.m; sourceTree = "<group>"; };
+		1695B1E920FDA08100DFFCCE /* quit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quit.png; sourceTree = "<group>"; };
+		1695B1EA20FDA08100DFFCCE /* quit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quit@2x.png"; sourceTree = "<group>"; };
+		1695B1EB20FDA08200DFFCCE /* quit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quit@3x.png"; sourceTree = "<group>"; };
 		169D836920D39C8A00AA590F /* WIWXInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIWXInfo.h; sourceTree = "<group>"; };
 		169D836A20D39C8B00AA590F /* WIWXInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIWXInfo.m; sourceTree = "<group>"; };
 		169D836C20D39D1000AA590F /* WIQQInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIQQInfo.h; sourceTree = "<group>"; };
@@ -1571,6 +1580,9 @@
 				1691DD7820EC6FC2008AF2BE /* head@3x.png */,
 				1691DD7920EC6FC2008AF2BE /* head@2x.png */,
 				1691DD7A20EC6FC2008AF2BE /* head.png */,
+				1695B1E920FDA08100DFFCCE /* quit.png */,
+				1695B1EA20FDA08100DFFCCE /* quit@2x.png */,
+				1695B1EB20FDA08200DFFCCE /* quit@3x.png */,
 			);
 			path = "个人中心";
 			sourceTree = "<group>";
@@ -1981,6 +1993,8 @@
 				1695B1A220F4B3DD00DFFCCE /* v */,
 				16D64BEA20CFA29A00ED74C8 /* MovieController.h */,
 				16D64BEB20CFA29A00ED74C8 /* MovieController.m */,
+				1695B1E620FD9DF000DFFCCE /* WifiCheckController.h */,
+				1695B1E720FD9DF000DFFCCE /* WifiCheckController.m */,
 				1691DD2920EB08B1008AF2BE /* WifiMapController.h */,
 				1691DD2A20EB08B1008AF2BE /* WifiMapController.m */,
 				1691DD4C20EB4683008AF2BE /* WIGeometryInfo.h */,
@@ -2790,6 +2804,7 @@
 				1695B1C320F5A29300DFFCCE /* LTwo.png in Resources */,
 				1691DD7B20EC6FC2008AF2BE /* head@3x.png in Resources */,
 				16F76FD720EE091100950127 /* EnterpriseSquareSortCell.xib in Resources */,
+				1695B1EC20FDA08200DFFCCE /* quit.png in Resources */,
 				166CA5A420F3633B00E4CBE3 /* hkt_wifi@2x.png in Resources */,
 				16F76F6720EDCB1F00950127 /* collect_default.png in Resources */,
 				1656789C20D3662A00EC3D5C /* location_default.png in Resources */,
@@ -2883,6 +2898,7 @@
 				16F76FA620EDCB1F00950127 /* position@3x.png in Resources */,
 				166CA5AA20F363A300E4CBE3 /* current_location@2x.png in Resources */,
 				16FD290620E09DF50099A32B /* location_home.png in Resources */,
+				1695B1ED20FDA08200DFFCCE /* quit@2x.png in Resources */,
 				1691DDED20ECB485008AF2BE /* wireless city@3x.png in Resources */,
 				16F76FA920EDCB1F00950127 /* qy_details_position.png in Resources */,
 				16F76F9420EDCB1F00950127 /* navigation@3x.png in Resources */,
@@ -2932,6 +2948,7 @@
 				1691DDBD20EC9F55008AF2BE /* AboutUsController.xib in Resources */,
 				1695B1C020F5A29300DFFCCE /* LOne@3x.png in Resources */,
 				1656789720D3662A00EC3D5C /* square.png in Resources */,
+				1695B1EE20FDA08200DFFCCE /* quit@3x.png in Resources */,
 				165678A220D3662A00EC3D5C /* mine@2x.png in Resources */,
 				16F76F7620EDCB1F00950127 /* triangle@3x.png in Resources */,
 				169D83C920DC8C3000AA590F /* HomeBannerCell.xib in Resources */,
@@ -3215,6 +3232,7 @@
 				16D64BE620CFA27600ED74C8 /* BaseTabController.m in Sources */,
 				169D837920D3ACAE00AA590F /* DHGifImageOperation.m in Sources */,
 				16D64BDB20CF9FCE00ED74C8 /* MBProgressHUD+Add.m in Sources */,
+				1695B1E820FD9DF000DFFCCE /* WifiCheckController.m in Sources */,
 				16D64BD220CF9FCE00ED74C8 /* UIScrollView+EmptyDataSet.m in Sources */,
 				1695B1E020FC40B400DFFCCE /* WICommentView.m in Sources */,
 				16D64BD720CF9FCE00ED74C8 /* WMMenuItem.m in Sources */,
@@ -3561,7 +3579,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = WIFICity/WIFICity.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = QQC56X32GR;
 				ENABLE_BITCODE = NO;
@@ -3637,8 +3655,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hkt.smartwifi.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "74480071-72bc-40ef-8900-703e05236b93";
-				PROVISIONING_PROFILE_SPECIFIER = ios_dev_hotspot;
+				PROVISIONING_PROFILE = "74ac70ad-5496-45a0-bdf2-f6d6eed9dabd";
+				PROVISIONING_PROFILE_SPECIFIER = ios_dis_hotspot;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
