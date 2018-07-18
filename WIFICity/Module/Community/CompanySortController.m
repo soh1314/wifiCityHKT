@@ -65,7 +65,7 @@
         self.page++;
     }
     
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entID":[self.categoryID copy]};
+    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entId":[self.categoryID copy]};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCategoryListAPI) params:para successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         if (response && response.success) {
@@ -85,12 +85,10 @@
 }
 
 - (void)initUI {
-    self.sortTopView = [EaseDropMenu topViewWithTitleArray:@[@"类别",@"距离"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
+    weakself;
+    self.sortTopView = [EaseDropMenu topViewWithTitleArray:@[@"产业布局",@"技术类别"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
+    [self.sortTopView setHideArrow:YES];
     self.sortTopView.delegate = self;
-    __weak typeof(self)wself = self;
-    self.sortTopView.tapBlock = ^(NSInteger index, EaseSortItemView *view) {
-        
-    };
     [self.view addSubview:self.sortTopView];
     [self.view addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -99,7 +97,7 @@
     }];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoVerticalCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoVerticalCellID"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoHorizonCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoHorizonCellID"];
-    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [wself loadData:NO];
     }];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithImage:[UIImage qsImageNamed:@"heng"] style:UIBarButtonItemStylePlain target:self action:@selector(changeCollectionViewStyle:)];
@@ -139,16 +137,17 @@
 -(UIView *)dropContentViewForItem:(NSInteger)index {
     UIView *view = [UIView new];
     if (index == 0) {
-        WICompanyCategroyView *categoryView  = [[WICompanyCategroyView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 156)];
-        __weak typeof(self)wself = self;
+        WICompanyCategroyView *categoryView  = [[WICompanyCategroyView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, EaseDropItemContentViewHeight)];
+        weakself;
         categoryView.pick = ^(NSInteger idx) {
-            WICompanyCategory *category = wself.categoryArray[index];
+            WICompanyCategory *category = wself.categoryArray[idx];
             wself.categoryID = [category.ID copy];
+            wself.sortTopView.selectItemBlock(index, category.entName);
             [wself loadData:YES];
             [wself.sortTopView hideDropView];
         };
-        categoryView.backgroundColor = [UIColor redColor];
-        categoryView.categoryArray = [self.categoryArray copy];;
+        categoryView.categoryArray = [self.categoryArray copy];
+        categoryView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
         return categoryView;
     } else {
         return view;

@@ -20,7 +20,7 @@
 - (void)initUI {
     self.titleLabel = [UILabel new];
     [self addSubview:self.titleLabel];
-    self.titleLabel.font = [UIFont systemFontOfSize:12];
+    self.titleLabel.font = [UIFont systemFontOfSize:13];
     self.titleLabel.textColor = [UIColor colorWithHexString:@"#777777"];
     self.icon = [UIImageView new];
     [self addSubview:self.icon];

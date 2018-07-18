@@ -81,4 +81,6 @@ _Pragma("clang diagnostic pop")\
 #define KHudHideInView   [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 #define kHudNetError     [Dialog simpleToast:kNetError];
 
+#define weakself  __weak typeof(self)wself = self
+
 #endif /* SysMacro_h */

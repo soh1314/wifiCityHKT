@@ -38,6 +38,14 @@
     return sortView;
 }
 
+- (void)setHideArrow:(BOOL)hideArrow {
+    _hideArrow = hideArrow;
+    for (int i = 0; i < self.titleArray.count; i++) {
+        EaseSortItemView *item = self.itemArray[i];
+        item.icon.hidden = hideArrow;
+    }
+}
+
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -48,7 +56,7 @@
 - (void)initUI {
     _dropDownViewWidth = [UIScreen mainScreen].bounds.size.width;
     _menuBarHeight = 44;
-    _contentViewHeight = 156;
+    _contentViewHeight = EaseDropItemContentViewHeight;
     _selectIndex = 0;
     _menuCount = self.titleArray.count;
     CGSize dropDownViewSize = CGSizeMake(_dropDownViewWidth, [UIScreen mainScreen].bounds.size.height);
@@ -57,6 +65,9 @@
     CGFloat itemWidth = KSCREENW / self.titleArray.count;
     for (int i = 0; i < self.titleArray.count; i++) {
         EaseSortItemView *item = [[EaseSortItemView alloc]initWithFrame:CGRectZero];
+        if (self.hideArrow) {
+            item.icon.hidden = YES;
+        }
         item.titleLabel.text = self.titleArray[i];
         item.icon.image = [UIImage qsImageNamed:self.imageArray[i]];
         item.icon.tag = i;
@@ -94,6 +105,11 @@
     self.dropContainerView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
     self.dropContainerView.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.menuBarHeight, dropDownViewSize.width, CGFLOAT_MIN);
     
+    weakself;
+    self.selectItemBlock = ^(NSInteger index,NSString *title) {
+        EaseSortItemView *itemView = wself.itemArray[wself.selectIndex];
+        itemView.titleLabel.text = [title copy];
+    };
 }
 
 #pragma mark - showhide contentView
@@ -175,6 +191,8 @@
 }
 
 - (void)backgroundTapped:(UITapGestureRecognizer *)tap {
+    EaseSortItemView *iteview = self.itemArray[self.selectIndex];
+    iteview.backgroundColor = [UIColor whiteColor];
     if (self.popContentView) {
         [self animateIdicator:self.currentIndicator background:self.backGroundView popView:self.dropContainerView forward:NO complete:^{
             self.popContentView = NO;
@@ -198,6 +216,7 @@
 
 - (void)tap:(UITapGestureRecognizer *)tap {
     EaseSortItemView *view = (EaseSortItemView *)tap.view;
+    view.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
     self.currentIndicator = view.icon;
     NSInteger tapIndex = view.index;
     self.tapIndex = tapIndex;
@@ -205,6 +224,7 @@
     
     if (self.selectIndex != tapIndex) {
         EaseSortItemView *itemView = self.itemArray[self.selectIndex];
+        itemView.backgroundColor = [UIColor whiteColor];
         if (itemView.forward) {
             [self animateIndicator:itemView.icon Forward:NO complete:^{
                 itemView.forward = NO;
@@ -215,10 +235,12 @@
     }
 
     if (tapIndex == self.selectIndex && self.popContentView) {
+        view.backgroundColor = [UIColor whiteColor];
         [self animateIdicator:view.icon background:self.backGroundView popView:self.dropContainerView forward:NO complete:^{
             self.popContentView = NO;
         }];
     } else {
+        view.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
         [self animateIdicator:view.icon background:self.backGroundView popView:self.dropContainerView forward:YES complete:^{
             self.popContentView = YES;
         }];

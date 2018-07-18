@@ -17,7 +17,8 @@
 }
 
 - (void)initUI {
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor colorWithHexString:@"F9F9F9"];
+    self.companyNameLabel.textColor = [UIColor colorWithHexString:@"#666666"];
 }
 
 - (void)setCategory:(WICompanyCategory *)category {

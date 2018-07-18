@@ -44,6 +44,7 @@
         _collectionView.pagingEnabled = NO;
         _collectionView.scrollEnabled = YES;
         [_collectionView registerNib:[UINib nibWithNibName:@"WICompanyCategroyCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"WICompanyCategroyCellID"];
+        
     }
     return _collectionView;
 }
@@ -65,6 +66,7 @@
     WICompanyCategroyCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"WICompanyCategroyCellID" forIndexPath:indexPath];
     WICompanyCategory *category = self.categoryArray[indexPath.row];
     colCell.companyNameLabel.text = [category.entName copy];
+    
     return colCell;
 }
 

@@ -37,7 +37,6 @@
 		1654A6E920DDD80800AFC322 /* WIFICloudInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6E820DDD80800AFC322 /* WIFICloudInfo.m */; };
 		1654A6EC20DDF6A000AFC322 /* UILabel+wordStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */; };
 		1654A6EF20DE2EB300AFC322 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6ED20DE2EB200AFC322 /* WebViewController.m */; };
-		1656641F20EF627300063D0C /* EaseSortItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656641E20EF627300063D0C /* EaseSortItemView.m */; };
 		1656642220EF6D9E00063D0C /* CompanySearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656642120EF6D9E00063D0C /* CompanySearchController.m */; };
 		1656642620EF702700063D0C /* EasyAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656642520EF702700063D0C /* EasyAnimation.m */; };
 		1656771620D119C900EC3D5C /* TPPasswordTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656771420D119C900EC3D5C /* TPPasswordTextView.m */; };
@@ -230,6 +229,15 @@
 		1695B1EC20FDA08200DFFCCE /* quit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1E920FDA08100DFFCCE /* quit.png */; };
 		1695B1ED20FDA08200DFFCCE /* quit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1EA20FDA08100DFFCCE /* quit@2x.png */; };
 		1695B1EE20FDA08200DFFCCE /* quit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1EB20FDA08200DFFCCE /* quit@3x.png */; };
+		1695B1F720FED57900DFFCCE /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695B1F520FED57900DFFCCE /* iCarousel.m */; };
+		1695B1FD20FEDC5A00DFFCCE /* EaseSortItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695B1F920FEDC5A00DFFCCE /* EaseSortItemView.m */; };
+		1695B1FE20FEDC5A00DFFCCE /* EaseDropMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695B1FA20FEDC5A00DFFCCE /* EaseDropMenu.m */; };
+		1695B20120FEDCD000DFFCCE /* EnterPriseSquareAreaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695B20020FEDCD000DFFCCE /* EnterPriseSquareAreaCell.m */; };
+		1695B20420FEE33900DFFCCE /* EaseNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695B20320FEE33900DFFCCE /* EaseNavBar.m */; };
+		1695B20720FEE3CC00DFFCCE /* WICousalItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695B20620FEE3CC00DFFCCE /* WICousalItemView.m */; };
+		1695B20B20FEF14500DFFCCE /* new_material@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B20820FEF14400DFFCCE /* new_material@2x.png */; };
+		1695B20C20FEF14500DFFCCE /* new_material@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B20920FEF14500DFFCCE /* new_material@3x.png */; };
+		1695B20D20FEF14500DFFCCE /* new_material.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B20A20FEF14500DFFCCE /* new_material.png */; };
 		169D836B20D39C8B00AA590F /* WIWXInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D836A20D39C8B00AA590F /* WIWXInfo.m */; };
 		169D836E20D39D1000AA590F /* WIQQInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 169D836D20D39D1000AA590F /* WIQQInfo.m */; };
 		169D837820D3ACAE00AA590F /* GuideImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 169D837120D3ACAE00AA590F /* GuideImage.bundle */; };
@@ -472,7 +480,6 @@
 		16F76FE520EEFDAB00950127 /* square_lg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F76FE220EEFDAB00950127 /* square_lg@2x.png */; };
 		16F76FE620EEFDAB00950127 /* square_lg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F76FE320EEFDAB00950127 /* square_lg@3x.png */; };
 		16F76FEA20EF4D5400950127 /* EaseSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F76FE920EF4D5400950127 /* EaseSearchBar.m */; };
-		16F76FED20EF4EEE00950127 /* EaseDropMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F76FEC20EF4EEE00950127 /* EaseDropMenu.m */; };
 		16FD28EF20E07B1C0099A32B /* WIFIFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD28EE20E07B1C0099A32B /* WIFIFlow.m */; };
 		16FD290120E09C950099A32B /* WifiPanelTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290020E09C950099A32B /* WifiPanelTopView.xib */; };
 		16FD290620E09DF50099A32B /* location_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290320E09DF50099A32B /* location_home.png */; };
@@ -557,8 +564,6 @@
 		1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+wordStyle.m"; sourceTree = "<group>"; };
 		1654A6ED20DE2EB200AFC322 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		1654A6EE20DE2EB200AFC322 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
-		1656641D20EF627300063D0C /* EaseSortItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseSortItemView.h; sourceTree = "<group>"; };
-		1656641E20EF627300063D0C /* EaseSortItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseSortItemView.m; sourceTree = "<group>"; };
 		1656642020EF6D9E00063D0C /* CompanySearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanySearchController.h; sourceTree = "<group>"; };
 		1656642120EF6D9E00063D0C /* CompanySearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanySearchController.m; sourceTree = "<group>"; };
 		1656642420EF702700063D0C /* EasyAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyAnimation.h; sourceTree = "<group>"; };
@@ -805,6 +810,21 @@
 		1695B1E920FDA08100DFFCCE /* quit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quit.png; sourceTree = "<group>"; };
 		1695B1EA20FDA08100DFFCCE /* quit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quit@2x.png"; sourceTree = "<group>"; };
 		1695B1EB20FDA08200DFFCCE /* quit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quit@3x.png"; sourceTree = "<group>"; };
+		1695B1F520FED57900DFFCCE /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		1695B1F620FED57900DFFCCE /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		1695B1F920FEDC5A00DFFCCE /* EaseSortItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseSortItemView.m; sourceTree = "<group>"; };
+		1695B1FA20FEDC5A00DFFCCE /* EaseDropMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseDropMenu.m; sourceTree = "<group>"; };
+		1695B1FB20FEDC5A00DFFCCE /* EaseSortItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseSortItemView.h; sourceTree = "<group>"; };
+		1695B1FC20FEDC5A00DFFCCE /* EaseDropMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseDropMenu.h; sourceTree = "<group>"; };
+		1695B1FF20FEDCD000DFFCCE /* EnterPriseSquareAreaCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterPriseSquareAreaCell.h; sourceTree = "<group>"; };
+		1695B20020FEDCD000DFFCCE /* EnterPriseSquareAreaCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterPriseSquareAreaCell.m; sourceTree = "<group>"; };
+		1695B20220FEE33900DFFCCE /* EaseNavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseNavBar.h; sourceTree = "<group>"; };
+		1695B20320FEE33900DFFCCE /* EaseNavBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseNavBar.m; sourceTree = "<group>"; };
+		1695B20520FEE3CC00DFFCCE /* WICousalItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WICousalItemView.h; sourceTree = "<group>"; };
+		1695B20620FEE3CC00DFFCCE /* WICousalItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WICousalItemView.m; sourceTree = "<group>"; };
+		1695B20820FEF14400DFFCCE /* new_material@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_material@2x.png"; sourceTree = "<group>"; };
+		1695B20920FEF14500DFFCCE /* new_material@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_material@3x.png"; sourceTree = "<group>"; };
+		1695B20A20FEF14500DFFCCE /* new_material.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_material.png; sourceTree = "<group>"; };
 		169D836920D39C8A00AA590F /* WIWXInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIWXInfo.h; sourceTree = "<group>"; };
 		169D836A20D39C8B00AA590F /* WIWXInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIWXInfo.m; sourceTree = "<group>"; };
 		169D836C20D39D1000AA590F /* WIQQInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIQQInfo.h; sourceTree = "<group>"; };
@@ -1173,8 +1193,6 @@
 		16F76FE320EEFDAB00950127 /* square_lg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "square_lg@3x.png"; sourceTree = "<group>"; };
 		16F76FE820EF4D5400950127 /* EaseSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseSearchBar.h; sourceTree = "<group>"; };
 		16F76FE920EF4D5400950127 /* EaseSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseSearchBar.m; sourceTree = "<group>"; };
-		16F76FEB20EF4EEE00950127 /* EaseDropMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseDropMenu.h; sourceTree = "<group>"; };
-		16F76FEC20EF4EEE00950127 /* EaseDropMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseDropMenu.m; sourceTree = "<group>"; };
 		16FD28ED20E07B1C0099A32B /* WIFIFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFIFlow.h; sourceTree = "<group>"; };
 		16FD28EE20E07B1C0099A32B /* WIFIFlow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFIFlow.m; sourceTree = "<group>"; };
 		16FD290020E09C950099A32B /* WifiPanelTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiPanelTopView.xib; sourceTree = "<group>"; };
@@ -1674,10 +1692,6 @@
 				16F76FD520EE091100950127 /* EnterpriseSquareSortCell.xib */,
 				16F76FDE20EEFC9300950127 /* EnterpriseSquareHomeHeader.h */,
 				16F76FDF20EEFC9300950127 /* EnterpriseSquareHomeHeader.m */,
-				16F76FEB20EF4EEE00950127 /* EaseDropMenu.h */,
-				16F76FEC20EF4EEE00950127 /* EaseDropMenu.m */,
-				1656641D20EF627300063D0C /* EaseSortItemView.h */,
-				1656641E20EF627300063D0C /* EaseSortItemView.m */,
 				166CA58520F33BCD00E4CBE3 /* WICompanyCategroyView.h */,
 				166CA58620F33BCD00E4CBE3 /* WICompanyCategroyView.m */,
 				166CA58820F33D9B00E4CBE3 /* WICompanyCategroyCell.h */,
@@ -1692,6 +1706,12 @@
 				1695B1DE20FC40B400DFFCCE /* WICommentView.h */,
 				1695B1DF20FC40B400DFFCCE /* WICommentView.m */,
 				1695B1E120FC40C400DFFCCE /* WICommentView.xib */,
+				1695B1FF20FEDCD000DFFCCE /* EnterPriseSquareAreaCell.h */,
+				1695B20020FEDCD000DFFCCE /* EnterPriseSquareAreaCell.m */,
+				1695B20520FEE3CC00DFFCCE /* WICousalItemView.h */,
+				1695B20620FEE3CC00DFFCCE /* WICousalItemView.m */,
+				1695B20220FEE33900DFFCCE /* EaseNavBar.h */,
+				1695B20320FEE33900DFFCCE /* EaseNavBar.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1704,6 +1724,26 @@
 				1695B1A620F4B9A700DFFCCE /* WIMapBubbleView.xib */,
 			);
 			path = v;
+			sourceTree = "<group>";
+		};
+		1695B1F420FED57900DFFCCE /* icousal */ = {
+			isa = PBXGroup;
+			children = (
+				1695B1F620FED57900DFFCCE /* iCarousel.h */,
+				1695B1F520FED57900DFFCCE /* iCarousel.m */,
+			);
+			path = icousal;
+			sourceTree = "<group>";
+		};
+		1695B1F820FEDC5A00DFFCCE /* DropView */ = {
+			isa = PBXGroup;
+			children = (
+				1695B1F920FEDC5A00DFFCCE /* EaseSortItemView.m */,
+				1695B1FA20FEDC5A00DFFCCE /* EaseDropMenu.m */,
+				1695B1FB20FEDC5A00DFFCCE /* EaseSortItemView.h */,
+				1695B1FC20FEDC5A00DFFCCE /* EaseDropMenu.h */,
+			);
+			path = DropView;
 			sourceTree = "<group>";
 		};
 		169D836F20D3ACAE00AA590F /* GuidView */ = {
@@ -1853,6 +1893,7 @@
 		169D83CF20DC8CFC00AA590F /* Cousal */ = {
 			isa = PBXGroup;
 			children = (
+				1695B1F420FED57900DFFCCE /* icousal */,
 				169D83D020DC8CFC00AA590F /* SDCycleScrollView */,
 			);
 			path = Cousal;
@@ -2235,6 +2276,7 @@
 		16D64B9E20CF9FCE00ED74C8 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				1695B1F820FEDC5A00DFFCCE /* DropView */,
 				1656642320EF701400063D0C /* EaseAnimation */,
 				16F76FE720EF4A7700950127 /* SearchView */,
 				169D83CF20DC8CFC00AA590F /* Cousal */,
@@ -2496,6 +2538,9 @@
 		16F76EFC20EDCB1E00950127 /* 企业广场 */ = {
 			isa = PBXGroup;
 			children = (
+				1695B20A20FEF14500DFFCCE /* new_material.png */,
+				1695B20820FEF14400DFFCCE /* new_material@2x.png */,
+				1695B20920FEF14500DFFCCE /* new_material@3x.png */,
 				16F76FD820EE22FD00950127 /* default_img.png */,
 				16F76FD920EE22FD00950127 /* default_img@2x.png */,
 				16F76FDA20EE22FD00950127 /* default_img@3x.png */,
@@ -2847,6 +2892,7 @@
 				1691DD8B20EC7930008AF2BE /* about@2x.png in Resources */,
 				16F76F9A20EDCB1F00950127 /* navigation@2x.png in Resources */,
 				169D838620D3AECF00AA590F /* 启动页1.jpg in Resources */,
+				1695B20D20FEF14500DFFCCE /* new_material.png in Resources */,
 				1691DD9E20EC79A7008AF2BE /* message@3x.png in Resources */,
 				16D64B8D20CF85CC00ED74C8 /* EaseUIResource.bundle in Resources */,
 				1656789320D3662A00EC3D5C /* square_default.png in Resources */,
@@ -2920,6 +2966,7 @@
 				16FD290820E09DF50099A32B /* location_home@2x.png in Resources */,
 				16F76F6B20EDCB1F00950127 /* heng@2x.png in Resources */,
 				1695B1BE20F5A29300DFFCCE /* LThree@3x.png in Resources */,
+				1695B20B20FEF14500DFFCCE /* new_material@2x.png in Resources */,
 				16D64C5020D0C18000ED74C8 /* LoginController.xib in Resources */,
 				163A08E420E3707100DAC894 /* before.png in Resources */,
 				16F76F8A20EDCB1F00950127 /* medical.png in Resources */,
@@ -2932,6 +2979,7 @@
 				165678A120D3662A00EC3D5C /* mine.png in Resources */,
 				1695B1B020F4B9FF00DFFCCE /* popup_box_location@2x.png in Resources */,
 				16F76F8D20EDCB1F00950127 /* small_program@3x.png in Resources */,
+				1695B20C20FEF14500DFFCCE /* new_material@3x.png in Resources */,
 				169D83EB20DC933700AA590F /* HomeServiceItemCell.xib in Resources */,
 				1691DD7C20EC6FC2008AF2BE /* head@2x.png in Resources */,
 				165678A420D3662A00EC3D5C /* square_default@2x.png in Resources */,
@@ -3185,6 +3233,7 @@
 				16F76FC220EDFEF400950127 /* CompanyInfoVerticalCell.m in Sources */,
 				16D64B8320CF7CE800ED74C8 /* UIColor+Theme.m in Sources */,
 				16D64B7F20CF7CE800ED74C8 /* NSDateFormatter+Category.m in Sources */,
+				1695B20120FEDCD000DFFCCE /* EnterPriseSquareAreaCell.m in Sources */,
 				166CA58720F33BCE00E4CBE3 /* WICompanyCategroyView.m in Sources */,
 				169D83E620DC8CFD00AA590F /* TAAbstractDotView.m in Sources */,
 				16D64BDF20CF9FCE00ED74C8 /* SVIndefiniteAnimatedView.m in Sources */,
@@ -3204,13 +3253,11 @@
 				16D64B8020CF7CE800ED74C8 /* UIViewController+EasyUtil.m in Sources */,
 				16D64B9D20CF9B5900ED74C8 /* AccoutDataStore.m in Sources */,
 				16D64B7920CF7CE800ED74C8 /* UIImage+base.m in Sources */,
-				16F76FED20EF4EEE00950127 /* EaseDropMenu.m in Sources */,
 				169D83B320DC7DC000AA590F /* HomeNewsOneCell.m in Sources */,
 				1691DD1720EA0832008AF2BE /* LoginRegex.m in Sources */,
 				16D64BEF20CFA2A800ED74C8 /* HomeController.m in Sources */,
 				1695B1CB20F5ADAF00DFFCCE /* UIScrollView+SpringRefreshHeader.m in Sources */,
 				1691DD2B20EB08B1008AF2BE /* WifiMapController.m in Sources */,
-				1656641F20EF627300063D0C /* EaseSortItemView.m in Sources */,
 				169D83F320DCD28500AA590F /* WifiFlowView.m in Sources */,
 				16D64B9620CF939000ED74C8 /* WIUser.m in Sources */,
 				169D83A320D3C28000AA590F /* WIFISevice.m in Sources */,
@@ -3244,6 +3291,8 @@
 				1691DDC420ECA03F008AF2BE /* DeviceInfoController.m in Sources */,
 				16D64BDC20CF9FCE00ED74C8 /* SVRadialGradientLayer.m in Sources */,
 				163A08D120E239E500DAC894 /* UIDevice+zhDeviceType.m in Sources */,
+				1695B1F720FED57900DFFCCE /* iCarousel.m in Sources */,
+				1695B1FD20FEDC5A00DFFCCE /* EaseSortItemView.m in Sources */,
 				16D64BDE20CF9FCE00ED74C8 /* SVProgressHUD.m in Sources */,
 				1691DE0E20ECCB0F008AF2BE /* CompanyDetailSectionTwo.m in Sources */,
 				169D83E020DC8CFD00AA590F /* SDCycleScrollView.m in Sources */,
@@ -3259,6 +3308,7 @@
 				16D64C2820D0AAB800ED74C8 /* MHAsiNetworkHandler.m in Sources */,
 				1695B1A120F4ACC800DFFCCE /* XLLoadingHUD.m in Sources */,
 				1691DDBC20EC9F55008AF2BE /* AboutUsController.m in Sources */,
+				1695B20420FEE33900DFFCCE /* EaseNavBar.m in Sources */,
 				1695B1A520F4B40900DFFCCE /* WIMapBubbleView.m in Sources */,
 				163A08F520E48C5A00DAC894 /* WIFIAnimationLayer.m in Sources */,
 				16D64B7C20CF7CE800ED74C8 /* UIButton+verifyBtn.m in Sources */,
@@ -3320,6 +3370,7 @@
 				16F76FD120EE08E400950127 /* EnterPriseSquareHomeInfoCell.m in Sources */,
 				1691DD7320EC60FF008AF2BE /* EaseStretchHeaderView.m in Sources */,
 				169D837B20D3ACAE00AA590F /* DHGuidePageHUD.m in Sources */,
+				1695B1FE20FEDC5A00DFFCCE /* EaseDropMenu.m in Sources */,
 				16D64B4D20CF7BA500ED74C8 /* EasyAllertUtil.m in Sources */,
 				16D64BE920CFA28D00ED74C8 /* MyController.m in Sources */,
 				16D64B8520CF7CE800ED74C8 /* UIScreen+Additions.m in Sources */,
@@ -3330,6 +3381,7 @@
 				1691DD5420EB4D8F008AF2BE /* CustomPinAnnotationView.m in Sources */,
 				16D64B8420CF7CE800ED74C8 /* UITextView+ZWPlaceHolder.m in Sources */,
 				169D83EA20DC933700AA590F /* HomeServiceItemCell.m in Sources */,
+				1695B20720FEE3CC00DFFCCE /* WICousalItemView.m in Sources */,
 				1695B1D120F84D8900DFFCCE /* WICommentBottomBar.m in Sources */,
 				163A08B220E1DB7800DAC894 /* BindPhoneView.m in Sources */,
 				1695B19D20F4A30100DFFCCE /* BQActivityView.m in Sources */,

@@ -7,14 +7,16 @@
 //
 
 #import "CommunityController.h"
+#import "CompanySortController.h"
+#import "CompanySearchController.h"
+
 #import "CompanyRecommentCell.h"
 #import "EnterPriseSquareHomeInfoCell.h"
 #import "EnterpriseSquareSortCell.h"
 #import "CompanyRecommentHeader.h"
 #import "EnterpriseSquareHomeHeader.h"
 #import "ParallaxHeaderView.h"
-#import "CompanySortController.h"
-#import "CompanySearchController.h"
+#import "EnterPriseSquareAreaCell.h"
 
 #import "EnterpriseSquareNetAPI.h"
 #import "WICompanyCategory.h"
@@ -22,12 +24,16 @@
 
 #import "EasySpringRefreshHeader.h"
 #import "UIScrollView+SpringRefreshHeader.h"
+#import "EaseNavBar.h"
+
+static int EnterPriseRecommentSection = 3;
 
 @interface CommunityController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)EaseTableView *tableView;
 @property (nonatomic,strong)NSMutableArray *dataArray;
 @property (nonatomic,strong)NSMutableArray *categoryArray;
+@property (nonatomic,strong)EaseNavBar *navBar;
 
 @end
 
@@ -51,6 +57,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyRecommentCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyRecommentCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"EnterPriseSquareHomeInfoCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"EnterPriseSquareHomeInfoCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"EnterpriseSquareSortCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"EnterpriseSquareSortCellID"];
+    [self.tableView registerClass:[EnterPriseSquareAreaCell class] forCellReuseIdentifier:@"EnterPriseSquareAreaCellID"];
     EnterpriseSquareHomeHeader *header = [[EnterpriseSquareHomeHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 175/375.0f * KSCREENW)];
     header.searchBar.tapBlock = ^{
         CompanySearchController *vc = [CompanySearchController new];
@@ -119,9 +126,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 164;
+        return 120;
     } else if (indexPath.section == 1) {
         return 85;
+        
+    } else if (indexPath.section == 2) {
+        return 164;
         
     } else {
         return UITableViewAutomaticDimension;
@@ -131,17 +141,14 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (section == 0) {
+    if (section == 0 || section == 1 || section == 2) {
         return 1;
-    } else if (section == 1) {
-        return 1;
-        
-    } else {
+    }  else {
         if (self.dataArray.count > 0) {
             return 4;
         }
@@ -159,17 +166,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.section == 0) {
+        EnterPriseSquareAreaCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterPriseSquareAreaCellID" forIndexPath:indexPath];
+        
+        return cell;
+    } else if (indexPath.section == 1) {
+        EnterPriseSquareHomeInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterPriseSquareHomeInfoCellID" forIndexPath:indexPath];
+        
+        return cell;
+        
+    } else if (indexPath.section == 2) {
         EnterpriseSquareSortCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterpriseSquareSortCellID" forIndexPath:indexPath];
         __weak typeof(self)wself = self;
         [cell setCategoryModelArray: [self.categoryArray copy]];
         cell.pick = ^(NSInteger idx ,WICompanyCategory *category) {
             [wself jumpToSortController:idx];
         };
-        return cell;
-    } else if (indexPath.section == 1) {
-        EnterPriseSquareHomeInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterPriseSquareHomeInfoCellID" forIndexPath:indexPath];
-        
         return cell;
         
     } else {
@@ -179,12 +192,11 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 2) {
+    if (indexPath.section == EnterPriseRecommentSection) {
         [self jumpToSortController:indexPath.section];
     }
 }
@@ -195,7 +207,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (section == 2) {
+    if (section == EnterPriseRecommentSection) {
         CompanyRecommentHeader *header = [[CompanyRecommentHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 41)];
         __weak typeof(self)wself = self;
         header.moreBlock = ^{
@@ -213,7 +225,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 2) {
+    if (section == EnterPriseRecommentSection) {
         return 41;
     } else {
         return CGFLOAT_MIN;
@@ -238,6 +250,14 @@
         }];
     }
     return _tableView;
+}
+
+- (EaseNavBar *)navBar {
+    if (!_navBar) {
+        _navBar = [[EaseNavBar alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 64)];
+        _navBar.scrollView = self.tableView;
+    }
+    return _navBar;
 }
 
 - (NSMutableArray *)dataArray {

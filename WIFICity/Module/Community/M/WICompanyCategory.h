@@ -25,5 +25,4 @@
 @property(nonatomic,copy)NSString *entName;
 @property(nonatomic,copy)NSString *entSort;
 @property(nonatomic,copy)NSString *ID;
-
 @end
