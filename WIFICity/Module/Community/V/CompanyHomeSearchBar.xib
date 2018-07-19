@@ -18,7 +18,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6y-dV-OhT">
                     <rect key="frame" x="16" y="0.0" width="498" height="70"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search.png" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-ob-H2u">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_sq.png" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-ob-H2u">
                             <rect key="frame" x="16" y="27" width="16" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="16" id="53m-U6-yGk"/>
@@ -26,7 +26,7 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foe-fS-1lf">
-                            <rect key="frame" x="470" y="24" width="16" height="22"/>
+                            <rect key="frame" x="474" y="24" width="12" height="22"/>
                             <state key="normal" image="position.png"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜企业名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6e-yV-uIF">
@@ -75,7 +75,7 @@
     </objects>
     <resources>
         <image name="panorama.png" width="22" height="22"/>
-        <image name="position.png" width="16" height="16"/>
-        <image name="search.png" width="16" height="16"/>
+        <image name="position.png" width="12" height="16"/>
+        <image name="search_sq.png" width="16" height="16"/>
     </resources>
 </document>

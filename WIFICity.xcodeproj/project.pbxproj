@@ -494,6 +494,10 @@
 		16F88779210065C000136C7F /* EasePageSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F88778210065C000136C7F /* EasePageSubViewController.m */; };
 		16F8877C210066FD00136C7F /* EaseDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F8877B210066FD00136C7F /* EaseDataLoader.m */; };
 		16F8877F2100910000136C7F /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F8877E2100910000136C7F /* UIImage+ImageEffects.m */; };
+		16F887832100940400136C7F /* search_sq.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F887802100940300136C7F /* search_sq.png */; };
+		16F887842100940400136C7F /* search_sq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F887812100940300136C7F /* search_sq@2x.png */; };
+		16F887852100940400136C7F /* search_sq@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F887822100940400136C7F /* search_sq@3x.png */; };
+		16F88788210096EF00136C7F /* EnterPriseTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F88787210096EF00136C7F /* EnterPriseTagCell.m */; };
 		16FD28EF20E07B1C0099A32B /* WIFIFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD28EE20E07B1C0099A32B /* WIFIFlow.m */; };
 		16FD290120E09C950099A32B /* WifiPanelTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290020E09C950099A32B /* WifiPanelTopView.xib */; };
 		16FD290620E09DF50099A32B /* location_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290320E09DF50099A32B /* location_home.png */; };
@@ -1230,6 +1234,11 @@
 		16F8877B210066FD00136C7F /* EaseDataLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseDataLoader.m; sourceTree = "<group>"; };
 		16F8877D2100910000136C7F /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		16F8877E2100910000136C7F /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		16F887802100940300136C7F /* search_sq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_sq.png; sourceTree = "<group>"; };
+		16F887812100940300136C7F /* search_sq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_sq@2x.png"; sourceTree = "<group>"; };
+		16F887822100940400136C7F /* search_sq@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_sq@3x.png"; sourceTree = "<group>"; };
+		16F88786210096EF00136C7F /* EnterPriseTagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterPriseTagCell.h; sourceTree = "<group>"; };
+		16F88787210096EF00136C7F /* EnterPriseTagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterPriseTagCell.m; sourceTree = "<group>"; };
 		16FD28ED20E07B1C0099A32B /* WIFIFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFIFlow.h; sourceTree = "<group>"; };
 		16FD28EE20E07B1C0099A32B /* WIFIFlow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFIFlow.m; sourceTree = "<group>"; };
 		16FD290020E09C950099A32B /* WifiPanelTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiPanelTopView.xib; sourceTree = "<group>"; };
@@ -1733,6 +1742,8 @@
 				16F76FD320EE091100950127 /* EnterpriseSquareSortCell.h */,
 				16F76FD420EE091100950127 /* EnterpriseSquareSortCell.m */,
 				16F76FD520EE091100950127 /* EnterpriseSquareSortCell.xib */,
+				16F88786210096EF00136C7F /* EnterPriseTagCell.h */,
+				16F88787210096EF00136C7F /* EnterPriseTagCell.m */,
 				16F76FDE20EEFC9300950127 /* EnterpriseSquareHomeHeader.h */,
 				16F76FDF20EEFC9300950127 /* EnterpriseSquareHomeHeader.m */,
 				166CA58520F33BCD00E4CBE3 /* WICompanyCategroyView.h */,
@@ -2637,6 +2648,9 @@
 		16F76F1C20EDCB1E00950127 /* 企业广场首页 */ = {
 			isa = PBXGroup;
 			children = (
+				16F887802100940300136C7F /* search_sq.png */,
+				16F887812100940300136C7F /* search_sq@2x.png */,
+				16F887822100940400136C7F /* search_sq@3x.png */,
 				16F8876321003CF200136C7F /* panorama.png */,
 				16F8876221003CF200136C7F /* panorama@2x.png */,
 				16F8876121003CF200136C7F /* panorama@3x.png */,
@@ -2992,6 +3006,7 @@
 				1695B1DD20FC31A400DFFCCE /* protocol.html in Resources */,
 				1691DDA020EC79A7008AF2BE /* message.png in Resources */,
 				1691DD9520EC7984008AF2BE /* equipment@3x.png in Resources */,
+				16F887852100940400136C7F /* search_sq@3x.png in Resources */,
 				1691DD9F20EC79A7008AF2BE /* share@3x.png in Resources */,
 				1656789520D3662A00EC3D5C /* location@3x.png in Resources */,
 				16F76F7D20EDCB1F00950127 /* VR@3x.png in Resources */,
@@ -3065,6 +3080,7 @@
 				16F76F6620EDCB1F00950127 /* triangle_default@2x.png in Resources */,
 				16FD290E20E09E7C0099A32B /* pm@3x.png in Resources */,
 				1695B1BD20F5A29300DFFCCE /* LThree@2x.png in Resources */,
+				16F887842100940400136C7F /* search_sq@2x.png in Resources */,
 				1691DDBD20EC9F55008AF2BE /* AboutUsController.xib in Resources */,
 				1695B1C020F5A29300DFFCCE /* LOne@3x.png in Resources */,
 				1656789720D3662A00EC3D5C /* square.png in Resources */,
@@ -3078,6 +3094,7 @@
 				163A08E920E3707100DAC894 /* close@3x.png in Resources */,
 				16F76F9F20EDCB1F00950127 /* position@2x.png in Resources */,
 				163A08AF20E1D55300DAC894 /* BindPhoneInputPwdView.xib in Resources */,
+				16F887832100940400136C7F /* search_sq.png in Resources */,
 				163A08EA20E3707100DAC894 /* close@2x.png in Resources */,
 				1691DE0F20ECCB0F008AF2BE /* CompanyDetailSectionTwo.xib in Resources */,
 				16F76F9E20EDCB1F00950127 /* ai@3x.png in Resources */,
@@ -3460,6 +3477,7 @@
 				169D83C820DC8C3000AA590F /* HomeBannerCell.m in Sources */,
 				1691DDF820ECB610008AF2BE /* HKTProtocolController.m in Sources */,
 				1691DD5420EB4D8F008AF2BE /* CustomPinAnnotationView.m in Sources */,
+				16F88788210096EF00136C7F /* EnterPriseTagCell.m in Sources */,
 				16D64B8420CF7CE800ED74C8 /* UITextView+ZWPlaceHolder.m in Sources */,
 				169D83EA20DC933700AA590F /* HomeServiceItemCell.m in Sources */,
 				1695B20720FEE3CC00DFFCCE /* WICousalItemView.m in Sources */,

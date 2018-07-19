@@ -144,7 +144,7 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
     if (indexPath.section == 0) {
         return 120;
     } else if (indexPath.section == 1) {
-        return 85;
+        return 69;
         
     }  else {
         return UITableViewAutomaticDimension;
