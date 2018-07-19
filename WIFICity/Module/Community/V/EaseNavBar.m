@@ -26,6 +26,7 @@
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self);
     }];
+    self.bgImageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 - (void)setContentView:(UIView *)contentView {
@@ -61,7 +62,7 @@
     }
     
     if (y >= 36) {
-        self.bgImageView.image = [UIImage qsImageNamed:@"square_lg.png"];
+        self.bgImageView.image = [UIImage qsImageNamed:@"square_lg.png"] ;
         
     } else {
         self.bgImageView.image = [UIImage qsImageNamed:@""];

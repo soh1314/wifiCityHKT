@@ -23,7 +23,7 @@
     self.backgroundColor = [UIColor colorWithHexString:@"#FFFFFF"];
     self.searchBgView.clipsToBounds = YES;
     self.searchBgView.layer.cornerRadius = 5;
-    self.searchBgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+    self.searchBgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     self.backgroundColor = [UIColor clearColor];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
     [self.searchBgView addGestureRecognizer:tap];

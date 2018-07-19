@@ -21,7 +21,7 @@
 
 - (void)initUI {
     [self.moreBtn setTitleColor:[UIColor colorWithHexString:@"#999999"] forState:UIControlStateNormal];
-    self.titleLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+    self.titleLabel.textColor = [UIColor colorWithHexString:@"#666666"];
     self.edgeView.backgroundColor = [UIColor colorWithHexString:@"#E3E3E3"];
 }
 

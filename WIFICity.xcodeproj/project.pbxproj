@@ -308,7 +308,6 @@
 		16D64B4E20CF7BA500ED74C8 /* EasyCLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B3C20CF7BA500ED74C8 /* EasyCLLocationManager.m */; };
 		16D64B5320CF7BA500ED74C8 /* GCDThrottle.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B4B20CF7BA500ED74C8 /* GCDThrottle.m */; };
 		16D64B7620CF7CE800ED74C8 /* NSDictionary+utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B5620CF7CE500ED74C8 /* NSDictionary+utils.m */; };
-		16D64B7720CF7CE800ED74C8 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B5720CF7CE500ED74C8 /* UIImage+ImageEffects.m */; };
 		16D64B7820CF7CE800ED74C8 /* FFBadgedBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B5920CF7CE500ED74C8 /* FFBadgedBarButtonItem.m */; };
 		16D64B7920CF7CE800ED74C8 /* UIImage+base.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B5A20CF7CE500ED74C8 /* UIImage+base.m */; };
 		16D64B7A20CF7CE800ED74C8 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B5B20CF7CE500ED74C8 /* NSString+Additions.m */; };
@@ -494,6 +493,7 @@
 		16F887762100648D00136C7F /* WINewsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F887752100648D00136C7F /* WINewsInfoViewController.m */; };
 		16F88779210065C000136C7F /* EasePageSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F88778210065C000136C7F /* EasePageSubViewController.m */; };
 		16F8877C210066FD00136C7F /* EaseDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F8877B210066FD00136C7F /* EaseDataLoader.m */; };
+		16F8877F2100910000136C7F /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F8877E2100910000136C7F /* UIImage+ImageEffects.m */; };
 		16FD28EF20E07B1C0099A32B /* WIFIFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD28EE20E07B1C0099A32B /* WIFIFlow.m */; };
 		16FD290120E09C950099A32B /* WifiPanelTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290020E09C950099A32B /* WifiPanelTopView.xib */; };
 		16FD290620E09DF50099A32B /* location_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FD290320E09DF50099A32B /* location_home.png */; };
@@ -956,7 +956,6 @@
 		16D64B5420CF7CE500ED74C8 /* NSDictionary+utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+utils.h"; sourceTree = "<group>"; };
 		16D64B5520CF7CE500ED74C8 /* UIButton+verifyBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+verifyBtn.h"; sourceTree = "<group>"; };
 		16D64B5620CF7CE500ED74C8 /* NSDictionary+utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+utils.m"; sourceTree = "<group>"; };
-		16D64B5720CF7CE500ED74C8 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		16D64B5820CF7CE500ED74C8 /* UITextView+ZWPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+ZWPlaceHolder.h"; sourceTree = "<group>"; };
 		16D64B5920CF7CE500ED74C8 /* FFBadgedBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFBadgedBarButtonItem.m; sourceTree = "<group>"; };
 		16D64B5A20CF7CE500ED74C8 /* UIImage+base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+base.m"; sourceTree = "<group>"; };
@@ -966,7 +965,6 @@
 		16D64B5E20CF7CE600ED74C8 /* UIColor+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Theme.h"; sourceTree = "<group>"; };
 		16D64B5F20CF7CE600ED74C8 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		16D64B6020CF7CE600ED74C8 /* UILabel+Adapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Adapter.m"; sourceTree = "<group>"; };
-		16D64B6120CF7CE600ED74C8 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		16D64B6220CF7CE600ED74C8 /* NSDate+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Category.h"; sourceTree = "<group>"; };
 		16D64B6320CF7CE600ED74C8 /* UIButton+verifyBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+verifyBtn.m"; sourceTree = "<group>"; };
 		16D64B6420CF7CE600ED74C8 /* UIFont+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Util.m"; sourceTree = "<group>"; };
@@ -1230,6 +1228,8 @@
 		16F88778210065C000136C7F /* EasePageSubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasePageSubViewController.m; sourceTree = "<group>"; };
 		16F8877A210066FD00136C7F /* EaseDataLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseDataLoader.h; sourceTree = "<group>"; };
 		16F8877B210066FD00136C7F /* EaseDataLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseDataLoader.m; sourceTree = "<group>"; };
+		16F8877D2100910000136C7F /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		16F8877E2100910000136C7F /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		16FD28ED20E07B1C0099A32B /* WIFIFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIFIFlow.h; sourceTree = "<group>"; };
 		16FD28EE20E07B1C0099A32B /* WIFIFlow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIFIFlow.m; sourceTree = "<group>"; };
 		16FD290020E09C950099A32B /* WifiPanelTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiPanelTopView.xib; sourceTree = "<group>"; };
@@ -2215,6 +2215,8 @@
 		16D64B1A20CF740200ED74C8 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				16F8877D2100910000136C7F /* UIImage+ImageEffects.h */,
+				16F8877E2100910000136C7F /* UIImage+ImageEffects.m */,
 				163A08CF20E239E400DAC894 /* UIDevice+zhDeviceType.h */,
 				163A08D020E239E400DAC894 /* UIDevice+zhDeviceType.m */,
 				163A08CD20E2398400DAC894 /* NSDate+Extend.h */,
@@ -2241,8 +2243,6 @@
 				16D64B6420CF7CE600ED74C8 /* UIFont+Util.m */,
 				16D64B5C20CF7CE500ED74C8 /* UIImage+base.h */,
 				16D64B5A20CF7CE500ED74C8 /* UIImage+base.m */,
-				16D64B6120CF7CE600ED74C8 /* UIImage+ImageEffects.h */,
-				16D64B5720CF7CE500ED74C8 /* UIImage+ImageEffects.m */,
 				1691DD8120EC75FF008AF2BE /* UIImageView+EaseEffect.h */,
 				1691DD8220EC75FF008AF2BE /* UIImageView+EaseEffect.m */,
 				16D64B7020CF7CE700ED74C8 /* UILabel+Adapter.h */,
@@ -3313,7 +3313,6 @@
 				16D64BDF20CF9FCE00ED74C8 /* SVIndefiniteAnimatedView.m in Sources */,
 				166CA56C20F05C0600E4CBE3 /* CompanyHomeSearchBar.m in Sources */,
 				169D83CD20DC8C4A00AA590F /* HomeServiceCell.m in Sources */,
-				16D64B7720CF7CE800ED74C8 /* UIImage+ImageEffects.m in Sources */,
 				16F8877C210066FD00136C7F /* EaseDataLoader.m in Sources */,
 				16FD291120E09FA80099A32B /* WILocation.m in Sources */,
 				1656779C20D26E0800EC3D5C /* WINotiConst.m in Sources */,
@@ -3399,6 +3398,7 @@
 				1656642620EF702700063D0C /* EasyAnimation.m in Sources */,
 				16D64C2620D0AAB800ED74C8 /* MHAsiNetworkItem.m in Sources */,
 				16D64BE320CF9FCE00ED74C8 /* UIViewController+MBProgressHUD.m in Sources */,
+				16F8877F2100910000136C7F /* UIImage+ImageEffects.m in Sources */,
 				16D64BF520CFA9BF00ED74C8 /* NavManager.m in Sources */,
 				16D64B4E20CF7BA500ED74C8 /* EasyCLLocationManager.m in Sources */,
 				16D64C2320D0AAB800ED74C8 /* TGNetManager.m in Sources */,
