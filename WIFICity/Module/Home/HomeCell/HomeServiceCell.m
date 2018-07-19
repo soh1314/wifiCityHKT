@@ -11,6 +11,24 @@
 
 @implementation HomeServiceCell
 
++ (void)pickCellItem:(NSInteger)index dataArray:(NSArray *)dataArray {
+//    EasePageController *pageController = [EasePageController new];
+//    HomeServiceData *data = self.serviceArray[idx];
+//    pageController.title = [data.thirdName copy];
+//    pageController.count = 2;
+//    EasePageModel *model0 = [EasePageModel new];
+//    model0.title = @"国家政策";
+//    model0.index = 0;
+//    EasePageModel *model1 = [EasePageModel new];
+//    model1.title = @"省市政策";
+//    model1.index = 1;
+//    NSMutableArray *array = [NSMutableArray array];
+//    [array addObject:model0];
+//    [array addObject:model1];
+//    pageController.itemModel = [array copy];
+//    [self.navigationController pushViewController:pageController animated:YES];
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

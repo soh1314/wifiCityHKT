@@ -1,32 +1,22 @@
 //
-//  MovieController.m
+//  WINewsInfoViewController.m
 //  WIFICity
 //
-//  Created by WifiProjectPC on 2018/6/12.
+//  Created by WifiProjectPC on 2018/7/19.
 //  Copyright © 2018年 HKT. All rights reserved.
 //
 
-#import "MovieController.h"
-#import "WifiMapController.h"
-@interface MovieController ()
-@property (nonatomic,strong)UIImageView *imageView;
+#import "WINewsInfoViewController.h"
+
+@interface WINewsInfoViewController ()
+
 @end
 
-@implementation MovieController
+@implementation WINewsInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.imageView = [[UIImageView alloc]initWithFrame:self.view.frame];
-    [self.view addSubview:self.imageView];
-    self.imageView.image = [UIImage qsImageNamed:@"expected_page"];
-
     // Do any additional setup after loading the view.
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self setWhiteTrasluntNavBar];
-
 }
 
 - (void)didReceiveMemoryWarning {

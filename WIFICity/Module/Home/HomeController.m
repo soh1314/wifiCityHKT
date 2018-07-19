@@ -19,12 +19,11 @@
 #import "EasyNormalRefreshHeader.h"
 #import "WIPopView.h"
 
+#import "EasePageController.h"
+
 #define FindUserFLowAPI @"/ws/third/findBandByUserId.do"
 #define LbtInfoAPI  @"/ws/wifi/findLbtByOrgId.do"
-#define HomeNewsApi @"/ws/wifi/findDeliveryByOrgId.do" //8a8ab0b246dc81120146dc8180ba0017
 #define HomeThirdAPI @"/ws/third/findAllThirdIcon.do"
-
-static NSString *const WIFIHomeNewsDetailAPI = @"/hktInformationDeliveryController.do?findById&id=";
 
 @interface HomeController ()<UITableViewDelegate,UITableViewDataSource,WifiPanelProtocol>
 
@@ -135,7 +134,7 @@ static NSString *const WIFIHomeNewsDetailAPI = @"/hktInformationDeliveryControll
 
 - (void)requestHomeNews {
     NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, HomeNewsApi) params:para successBlock:^(NSDictionary *returnData) {
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, WIFIHomeNewsAPI) params:para successBlock:^(NSDictionary *returnData) {
         NSArray *newsArray = [HomeNews arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         [self.dataArray removeAllObjects];
         [self.dataArray addObjectsFromArray:newsArray];
@@ -209,11 +208,14 @@ static NSString *const WIFIHomeNewsDetailAPI = @"/hktInformationDeliveryControll
         [cell setDataArray:self.serviceArray];
         __weak typeof(self)wself = self;
         cell.pick = ^(NSInteger idx) {
-            if ([AccountManager shared].user.phone) {
-                [WIPopView popBindPhoneView:wself];
-            } else {
-                [NavManager pushBlankViewController:wself];
-            }
+//            if ([AccountManager shared].user.phone) {
+//                [WIPopView popBindPhoneView:wself];
+//            } else {
+//                [NavManager pushBlankViewController:wself];
+//            }
+            [HomeServiceCell pickCellItem:idx dataArray:[self.serviceArray copy]];
+            
+            
         };
         return cell;
     }

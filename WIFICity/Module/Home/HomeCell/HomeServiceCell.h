@@ -16,4 +16,6 @@ typedef void(^itemPick)(NSInteger idx);
 @property (nonatomic,copy)NSArray *dataArray;
 @property (nonatomic, copy) itemPick pick;
 
++ (void)pickCellItem:(NSInteger)index dataArray:(NSArray *)dataArray;
+
 @end
