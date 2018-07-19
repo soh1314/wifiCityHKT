@@ -15,51 +15,67 @@
             <rect key="frame" x="0.0" y="0.0" width="566" height="70"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search.png" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-ob-H2u">
-                    <rect key="frame" x="16" y="27" width="16" height="16"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6y-dV-OhT">
+                    <rect key="frame" x="16" y="0.0" width="498" height="70"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search.png" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-ob-H2u">
+                            <rect key="frame" x="16" y="27" width="16" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="53m-U6-yGk"/>
+                                <constraint firstAttribute="height" constant="16" id="vEu-pD-KyR"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foe-fS-1lf">
+                            <rect key="frame" x="470" y="24" width="16" height="22"/>
+                            <state key="normal" image="position.png"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜企业名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6e-yV-uIF">
+                            <rect key="frame" x="44" y="27" width="54" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="16" id="53m-U6-yGk"/>
-                        <constraint firstAttribute="height" constant="16" id="vEu-pD-KyR"/>
+                        <constraint firstItem="E6e-yV-uIF" firstAttribute="centerY" secondItem="C6y-dV-OhT" secondAttribute="centerY" id="1Be-wv-kyU"/>
+                        <constraint firstItem="E6e-yV-uIF" firstAttribute="leading" secondItem="4S3-ob-H2u" secondAttribute="trailing" constant="12" id="5rU-vV-WYM"/>
+                        <constraint firstItem="foe-fS-1lf" firstAttribute="centerY" secondItem="C6y-dV-OhT" secondAttribute="centerY" id="EeF-le-lf1"/>
+                        <constraint firstAttribute="trailing" secondItem="foe-fS-1lf" secondAttribute="trailing" constant="12" id="FdJ-F3-dpd"/>
+                        <constraint firstItem="4S3-ob-H2u" firstAttribute="centerY" secondItem="C6y-dV-OhT" secondAttribute="centerY" id="d55-mt-fGF"/>
+                        <constraint firstItem="4S3-ob-H2u" firstAttribute="leading" secondItem="C6y-dV-OhT" secondAttribute="leading" constant="16" id="hPr-re-FK1"/>
+                        <constraint firstItem="foe-fS-1lf" firstAttribute="centerY" secondItem="C6y-dV-OhT" secondAttribute="centerY" id="jTw-XH-Ue7"/>
                     </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜企业名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6e-yV-uIF">
-                    <rect key="frame" x="44" y="27" width="54" height="16"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdh-es-wwm">
-                    <rect key="frame" x="534" y="24" width="16" height="22"/>
-                    <state key="normal" image="sweep.png"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foe-fS-1lf">
-                    <rect key="frame" x="498" y="24" width="16" height="22"/>
-                    <state key="normal" image="position.png"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7T-VV-PGC">
+                    <rect key="frame" x="524" y="24" width="22" height="22"/>
+                    <state key="normal" image="panorama.png"/>
+                    <connections>
+                        <action selector="seePanorama:" destination="iN0-l3-epB" eventType="touchUpInside" id="COa-F9-5ft"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="E6e-yV-uIF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3Q3-kK-zvu"/>
-                <constraint firstItem="4S3-ob-H2u" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KPJ-Ka-6IN"/>
-                <constraint firstItem="4S3-ob-H2u" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KUf-Js-16Y"/>
-                <constraint firstItem="foe-fS-1lf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Qdt-JZ-wrx"/>
-                <constraint firstAttribute="trailing" secondItem="jdh-es-wwm" secondAttribute="trailing" constant="16" id="Zeh-Ns-JUh"/>
-                <constraint firstItem="jdh-es-wwm" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="bVM-Rr-Qaq"/>
-                <constraint firstItem="jdh-es-wwm" firstAttribute="leading" secondItem="foe-fS-1lf" secondAttribute="trailing" constant="20" id="ffp-Fm-pSF"/>
-                <constraint firstItem="4S3-ob-H2u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="tqw-ur-WuX"/>
-                <constraint firstItem="E6e-yV-uIF" firstAttribute="leading" secondItem="4S3-ob-H2u" secondAttribute="trailing" constant="12" id="x3a-Ke-Kqq"/>
+                <constraint firstItem="C6y-dV-OhT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="0up-u1-ltI"/>
+                <constraint firstItem="C6y-dV-OhT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8LE-Rs-3rP"/>
+                <constraint firstAttribute="bottom" secondItem="C6y-dV-OhT" secondAttribute="bottom" id="oqw-ra-LsF"/>
+                <constraint firstItem="Q7T-VV-PGC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="pGg-ue-UFf"/>
+                <constraint firstAttribute="trailing" secondItem="Q7T-VV-PGC" secondAttribute="trailing" constant="20" id="qY4-oc-bpW"/>
+                <constraint firstItem="Q7T-VV-PGC" firstAttribute="leading" secondItem="C6y-dV-OhT" secondAttribute="trailing" constant="10" id="ynm-eZ-eyu"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="locationBtn" destination="foe-fS-1lf" id="2wC-iF-2Fb"/>
-                <outlet property="sweepBtn" destination="jdh-es-wwm" id="agN-ou-R1K"/>
+                <outlet property="panoramaBtn" destination="Q7T-VV-PGC" id="3Bd-uW-xCI"/>
+                <outlet property="searchBgView" destination="C6y-dV-OhT" id="YZm-M8-TfV"/>
             </connections>
             <point key="canvasLocation" x="75" y="27"/>
         </view>
     </objects>
     <resources>
+        <image name="panorama.png" width="22" height="22"/>
         <image name="position.png" width="16" height="16"/>
         <image name="search.png" width="16" height="16"/>
-        <image name="sweep.png" width="16" height="16"/>
     </resources>
 </document>

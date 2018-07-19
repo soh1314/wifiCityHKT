@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^TapActionBlock)(void);
+typedef void(^SeePanoramaActionBlock)(void);
 @interface CompanyHomeSearchBar : UIView
 
 @property (weak, nonatomic) IBOutlet UIButton *locationBtn;
-@property (weak, nonatomic) IBOutlet UIButton *sweepBtn;
+@property (weak, nonatomic) IBOutlet UIView *searchBgView;
+@property (weak, nonatomic) IBOutlet UIButton *panoramaBtn;
 @property (nonatomic,copy)TapActionBlock tapBlock;
+@property (nonatomic,copy)SeePanoramaActionBlock seePanoramaBlock;
+- (IBAction)seePanorama:(id)sender;
 
 
 @end

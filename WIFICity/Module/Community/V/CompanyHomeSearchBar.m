@@ -21,10 +21,12 @@
 
 - (void)initUI {
     self.backgroundColor = [UIColor colorWithHexString:@"#FFFFFF"];
-    self.clipsToBounds = YES;
-    self.layer.cornerRadius = 5;
+    self.searchBgView.clipsToBounds = YES;
+    self.searchBgView.layer.cornerRadius = 5;
+    self.searchBgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+    self.backgroundColor = [UIColor clearColor];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
-    [self addGestureRecognizer:tap];
+    [self.searchBgView addGestureRecognizer:tap];
 }
 
 - (void)tap:(UIGestureRecognizer *)tap {
@@ -33,4 +35,9 @@
     }
 }
 
+- (IBAction)seePanorama:(id)sender {
+    if (self.seePanoramaBlock) {
+        self.seePanoramaBlock();
+    }
+}
 @end

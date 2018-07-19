@@ -9,6 +9,7 @@
 #import "CommunityController.h"
 #import "CompanySortController.h"
 #import "CompanySearchController.h"
+#import "WebViewController.h"
 
 #import "CompanyRecommentCell.h"
 #import "EnterPriseSquareHomeInfoCell.h"
@@ -26,7 +27,8 @@
 #import "UIScrollView+SpringRefreshHeader.h"
 #import "EaseNavBar.h"
 
-static int EnterPriseRecommentSection = 3;
+static int EnterPriseRecommentSection = 2;
+static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_id=17042939&from=groupmessage";
 
 @interface CommunityController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -58,14 +60,29 @@ static int EnterPriseRecommentSection = 3;
     [self.tableView registerNib:[UINib nibWithNibName:@"EnterPriseSquareHomeInfoCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"EnterPriseSquareHomeInfoCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"EnterpriseSquareSortCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"EnterpriseSquareSortCellID"];
     [self.tableView registerClass:[EnterPriseSquareAreaCell class] forCellReuseIdentifier:@"EnterPriseSquareAreaCellID"];
-    EnterpriseSquareHomeHeader *header = [[EnterpriseSquareHomeHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 175/375.0f * KSCREENW)];
-    header.searchBar.tapBlock = ^{
-        CompanySearchController *vc = [CompanySearchController new];
-        [self.navigationController pushViewController:vc animated:YES];
-    };
+    EnterpriseSquareHomeHeader *header = [[EnterpriseSquareHomeHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 100)];
     ParallaxHeaderView *headerView = [ParallaxHeaderView parallaxHeaderViewWithSubView:header];
     [self.tableView setTableHeaderView:headerView];
+    
+    [self.view addSubview:self.navBar];
+    weakself;
+    CompanyHomeSearchBar *searchBar = [[CompanyHomeSearchBar alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 100)];
+    searchBar.tapBlock = ^{
+        CompanySearchController *vc = [CompanySearchController new];
+        [wself.navigationController pushViewController:vc animated:YES];
+    };
+    searchBar.seePanoramaBlock = ^{
+        WebViewController *webview = [[WebViewController alloc]init];
+        webview.URLString = WIPanoramaUrl;
+        [wself.navigationController pushViewController:webview animated:YES];
+    };
+     self.navBar.context = self;
+    self.navBar.contentView = searchBar;
+   
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)loadData {
@@ -130,10 +147,7 @@ static int EnterPriseRecommentSection = 3;
     } else if (indexPath.section == 1) {
         return 85;
         
-    } else if (indexPath.section == 2) {
-        return 164;
-        
-    } else {
+    }  else {
         return UITableViewAutomaticDimension;
 
     }
@@ -141,12 +155,12 @@ static int EnterPriseRecommentSection = 3;
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (section == 0 || section == 1 || section == 2) {
+    if (section == 0 || section == 1 ) {
         return 1;
     }  else {
         if (self.dataArray.count > 0) {
@@ -171,12 +185,7 @@ static int EnterPriseRecommentSection = 3;
         EnterPriseSquareAreaCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterPriseSquareAreaCellID" forIndexPath:indexPath];
         
         return cell;
-    } else if (indexPath.section == 1) {
-        EnterPriseSquareHomeInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterPriseSquareHomeInfoCellID" forIndexPath:indexPath];
-        
-        return cell;
-        
-    } else if (indexPath.section == 2) {
+    }  else if (indexPath.section == 1) {
         EnterpriseSquareSortCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterpriseSquareSortCellID" forIndexPath:indexPath];
         __weak typeof(self)wself = self;
         [cell setCategoryModelArray: [self.categoryArray copy]];
@@ -221,7 +230,7 @@ static int EnterPriseRecommentSection = 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return CGFLOAT_MIN;
+    return 5.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -254,7 +263,7 @@ static int EnterPriseRecommentSection = 3;
 
 - (EaseNavBar *)navBar {
     if (!_navBar) {
-        _navBar = [[EaseNavBar alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 64)];
+        _navBar = [[EaseNavBar alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 100)];
         _navBar.scrollView = self.tableView;
     }
     return _navBar;

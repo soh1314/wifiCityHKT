@@ -23,8 +23,21 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+     [self setWhiteTrasluntNavBar];
     [super viewWillAppear:animated];
-    [self setWhiteTrasluntNavBar];
+    
+   
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+   
+    [super viewDidAppear:animated];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self setBlackNavBar];    
 }
 
 - (void)didReceiveMemoryWarning {

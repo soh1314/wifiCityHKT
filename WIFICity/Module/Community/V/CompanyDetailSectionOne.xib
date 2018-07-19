@@ -22,13 +22,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="151"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="华宽通科技有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZx-cW-L6p">
-                                <rect key="frame" x="135" y="15" width="138" height="18"/>
+                                <rect key="frame" x="135" y="20" width="138" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更新时间 2018.7.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROP-Ke-qhO">
-                                <rect key="frame" x="135" y="43" width="98" height="15"/>
+                                <rect key="frame" x="135" y="48" width="98" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -128,27 +128,36 @@
                                     <constraint firstItem="m9A-1E-wzq" firstAttribute="leading" secondItem="0BG-TP-ek6" secondAttribute="trailing" id="zKr-LB-XUu"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="JWS-Es-cfy">
-                                <rect key="frame" x="16" y="15" width="105" height="55"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7P-3R-cKU">
+                                <rect key="frame" x="16" y="16" width="105" height="60"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="JWS-Es-cfy">
+                                        <rect key="frame" x="0.0" y="0.0" width="105" height="60"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="105" id="P0s-id-WaM"/>
-                                    <constraint firstAttribute="height" constant="55" id="dai-at-WTh"/>
+                                    <constraint firstAttribute="width" constant="105" id="2Ga-XJ-Bp8"/>
+                                    <constraint firstItem="JWS-Es-cfy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="d7P-3R-cKU" secondAttribute="leading" id="J7m-KR-bqp"/>
+                                    <constraint firstItem="JWS-Es-cfy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="d7P-3R-cKU" secondAttribute="top" id="KcF-Ec-bkh"/>
+                                    <constraint firstAttribute="height" constant="60" id="MxA-5M-Ltj"/>
+                                    <constraint firstItem="JWS-Es-cfy" firstAttribute="centerY" secondItem="d7P-3R-cKU" secondAttribute="centerY" id="fDr-Jc-47n"/>
+                                    <constraint firstItem="JWS-Es-cfy" firstAttribute="centerX" secondItem="d7P-3R-cKU" secondAttribute="centerX" id="iH3-Oq-woB"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YAn-g0-5Pp" firstAttribute="leading" secondItem="kRT-lC-TwA" secondAttribute="leading" id="4JZ-ix-DoD"/>
                             <constraint firstItem="ROP-Ke-qhO" firstAttribute="top" secondItem="bZx-cW-L6p" secondAttribute="bottom" constant="10" id="A6R-cN-gEA"/>
-                            <constraint firstItem="JWS-Es-cfy" firstAttribute="top" secondItem="kRT-lC-TwA" secondAttribute="top" constant="15" id="KNg-2y-w0m"/>
+                            <constraint firstItem="YAn-g0-5Pp" firstAttribute="top" secondItem="d7P-3R-cKU" secondAttribute="bottom" constant="9" id="AaH-bn-7Gp"/>
                             <constraint firstAttribute="bottom" secondItem="YAn-g0-5Pp" secondAttribute="bottom" id="OXX-e0-Zab"/>
-                            <constraint firstItem="JWS-Es-cfy" firstAttribute="leading" secondItem="kRT-lC-TwA" secondAttribute="leading" constant="16" id="QNI-tY-hXp"/>
-                            <constraint firstItem="YAn-g0-5Pp" firstAttribute="top" secondItem="JWS-Es-cfy" secondAttribute="bottom" constant="15" id="Sb8-mk-qHS"/>
                             <constraint firstAttribute="trailing" secondItem="YAn-g0-5Pp" secondAttribute="trailing" id="Tti-ZY-ggn"/>
                             <constraint firstItem="ROP-Ke-qhO" firstAttribute="leading" secondItem="bZx-cW-L6p" secondAttribute="leading" id="ZPm-K2-RaB"/>
                             <constraint firstItem="bZx-cW-L6p" firstAttribute="leading" secondItem="kRT-lC-TwA" secondAttribute="leading" constant="135" id="ZdH-UF-7yJ"/>
-                            <constraint firstItem="bZx-cW-L6p" firstAttribute="top" secondItem="JWS-Es-cfy" secondAttribute="top" id="hHV-cC-qk1"/>
-                            <constraint firstItem="bZx-cW-L6p" firstAttribute="leading" secondItem="JWS-Es-cfy" secondAttribute="trailing" constant="14" id="jO9-oS-sMi"/>
+                            <constraint firstItem="d7P-3R-cKU" firstAttribute="top" secondItem="kRT-lC-TwA" secondAttribute="top" constant="16" id="a59-Tj-qAC"/>
+                            <constraint firstItem="bZx-cW-L6p" firstAttribute="top" secondItem="kRT-lC-TwA" secondAttribute="top" constant="20" id="vos-It-WjP"/>
+                            <constraint firstItem="d7P-3R-cKU" firstAttribute="leading" secondItem="kRT-lC-TwA" secondAttribute="leading" constant="16" id="xvT-K9-YbJ"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="My4-x3-IHj">
@@ -244,7 +253,7 @@
             <connections>
                 <outlet property="addressValueLabel" destination="FVp-H0-ruD" id="dOT-IC-6KL"/>
                 <outlet property="bossNameLabel" destination="rfJ-3e-22g" id="66o-WJ-EU8"/>
-                <outlet property="companyIcon" destination="JWS-Es-cfy" id="TCx-Ox-ETA"/>
+                <outlet property="companyIcon" destination="JWS-Es-cfy" id="N5V-DI-3Ne"/>
                 <outlet property="companyNameLabel" destination="bZx-cW-L6p" id="PZL-Xy-kKZ"/>
                 <outlet property="phoneValueLabel" destination="6Qb-Cr-zhF" id="9bH-8E-zhM"/>
                 <outlet property="registerMoneyLabel" destination="kAc-mI-ZM4" id="mbV-pF-yzG"/>

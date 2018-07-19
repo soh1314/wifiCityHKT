@@ -27,6 +27,7 @@
     self.searchBar = [[CompanyHomeSearchBar alloc]initWithFrame:CGRectZero];
     [self addSubview:self.searchBar];
     self.searchBar.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin   ;
+    self.searchBar.hidden = YES;
     
 }
 

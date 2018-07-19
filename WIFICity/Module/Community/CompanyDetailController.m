@@ -9,6 +9,7 @@
 #import "CompanyDetailController.h"
 #import "CompanyDetailSectionOne.h"
 #import "CompanyDetailSectionTwo.h"
+#import "CompanyDeatailSectionThree.h"
 #import "CompanyDetailSectionFour.h"
 #import "WebViewController.h"
 #import "WICommentBottomBar.h"
@@ -41,15 +42,16 @@
 
 - (void)initUI {
     [self.view addSubview:self.tableView];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.view);
-    }];
     self.commentBottomBar = [[WICommentBottomBar alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 40)];
     [self.view addSubview:self.commentBottomBar];
     [self.commentBottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.mas_equalTo(self.view);
         make.height.mas_equalTo(40);
         
+    }];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.commentBottomBar.mas_top).mas_offset(-5);
     }];
     __weak typeof(self)wself = self;
     self.commentBottomBar.tapBlock = ^{
@@ -58,6 +60,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionFour" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionFourID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionTwo" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionTwoID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionOne" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionOneID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDeatailSectionThree" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDeatailSectionThreeID"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -89,7 +92,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -109,6 +112,10 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.info = self.info;
         
+        return cell;
+    } else if (section == 2) {
+        CompanyDeatailSectionThree *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDeatailSectionThreeID" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else {
         CompanyDetailSectionFour *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailSectionFourID" forIndexPath:indexPath];

@@ -13,5 +13,8 @@
 @property (nonatomic,weak)UIScrollView *scrollView;
 @property (nonatomic,strong)UIView *bgView;
 @property (nonatomic,strong)UIView *contentView;
+@property (nonatomic,strong)UIImageView *bgImageView;
+@property (nonatomic,weak)UIViewController *context;
+@property (nonatomic,assign)float fazhi;
 
 @end

@@ -61,8 +61,8 @@
     CAGradientLayer *gradientLayer =  [CAGradientLayer layer];
     gradientLayer.frame = self.bounds;
     [gradientLayer setColors:[NSArray arrayWithObjects:(id)[RGB(0,60, 97) CGColor],(id)[RGB(0, 180, 197) CGColor], nil]];
-    gradientLayer.startPoint = CGPointMake(0, 0);
-    gradientLayer.endPoint = CGPointMake(1, 0);
+    gradientLayer.startPoint = CGPointMake(0.7, 0);
+    gradientLayer.endPoint = CGPointMake(0.2, 0);
     [gradientLayer setMask:_progressLayer];
     [self.layer addSublayer:gradientLayer];
     

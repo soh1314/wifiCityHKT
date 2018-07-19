@@ -46,7 +46,6 @@
 }
 
 - (void)initUI {
-    
     UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 110)];
     infoView.backgroundColor = [UIColor darkTextColor];
     NSString *avatarString = [EasyCacheHelper getResponseCacheForKey:MobThirdLoginAvartarKey];

@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+EasyUtil.h"
+#import "UIViewController+Cloudox.h"
 
 @implementation UIViewController (EasyUtil)
 
@@ -26,14 +27,6 @@
     return [tytDic objectForKey:controllerName];
 }
 
-- (void)setWhiteTrasluntNavBar {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
-//    [self.navigationController.navigationBar setShadowImage:[self imageWithColor:[UIColor blackColor]]];
-    self.navigationController.navigationBar.translucent=YES;
-    self.navigationController.navigationBar.hidden = YES;
-    
-}
-
 - (UIImage *)imageWithColor:(UIColor *)color
 {
     CGRect rect = CGRectMake(0.0f, 0.0f, 0.25f, 0.25f);
@@ -47,10 +40,27 @@
     return theImage;
 }
 
+- (void)setWhiteTrasluntNavBar {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+//    //    [self.navigationController.navigationBar setShadowImage:[self imageWithColor:[UIColor blackColor]]];
+//    self.navigationController.navigationBar.translucent=NO;
+    
+    self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBar.alpha = 1;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+
+
+}
+
 - (void)setBlackNavBar {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     self.navigationController.navigationBar.hidden = NO;
-    self.navigationController.navigationBar.translucent= NO;
+//    self.navigationController.navigationBar.translucent= NO;
+     self.navigationController.navigationBar.alpha = 1;
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
+
 }
 
 
