@@ -43,7 +43,6 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setWhiteTrasluntNavBar];
     [self initUI];
     [self loadData];
     self.categoryArray = [NSMutableArray array];

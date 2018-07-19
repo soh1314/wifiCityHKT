@@ -9,6 +9,7 @@
 #import "WITabBarController.h"
 #import "WITabBarSubViewController.h"
 #import "WINavigationCotroller.h"
+#import "BaseNavController.h"
 //#import "JZNavigationExtension.h"
 #import "WifiMapController.h"
 
@@ -64,23 +65,23 @@
 
 - (void)setSubControllers {
     HomeController *home = [[HomeController alloc]init];
-    TGNavigationCotroller *homeNav = [[TGNavigationCotroller alloc]initWithRootViewController:home];
+    BaseNavController *homeNav = [[BaseNavController alloc]initWithRootViewController:home];
 //     home.jz_navigationBarBackgroundHidden = YES;
 //    home.jz_wantsNavigationBarVisible = NO;
     homeNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_shouye image:[UIImage qsAutoImageNamed:@"home_default"] selectedImage:[UIImage qsAutoImageNamed:@"home"]];
     WifiMapController *movieController = [[WifiMapController alloc]init];
-    TGNavigationCotroller *movieNav = [[TGNavigationCotroller alloc]initWithRootViewController:movieController];
+    BaseNavController *movieNav = [[BaseNavController alloc]initWithRootViewController:movieController];
     movieNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_wifi image:[UIImage qsAutoImageNamed:@"location_default"] selectedImage:[UIImage qsAutoImageNamed:@"location"]  ];
     CommunityController *communityController = [[CommunityController alloc]init];
 //    message.jz_wantsNavigationBarVisible = YES;
 //    message.jz_navigationBarBackgroundHidden = NO;
-    TGNavigationCotroller *communityNav = [[TGNavigationCotroller alloc]initWithRootViewController:communityController];
+    BaseNavController *communityNav = [[BaseNavController alloc]initWithRootViewController:communityController];
     communityNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_square image:[UIImage qsAutoImageNamed:@"square_default"]  selectedImage:[UIImage qsAutoImageNamed:@"square"]  ];
     
     MyController *userCenter = [[MyController alloc]init];
 //    userCenter.jz_wantsNavigationBarVisible = NO;
 //    userCenter.jz_navigationBarBackgroundHidden = YES;
-    TGNavigationCotroller *userCenterNav = [[TGNavigationCotroller alloc]initWithRootViewController:userCenter];
+    BaseNavController *userCenterNav = [[BaseNavController alloc]initWithRootViewController:userCenter];
     userCenterNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_userCenter image:[UIImage qsAutoImageNamed:@"mine_default"]  selectedImage:[UIImage qsAutoImageNamed:@"mine"] ];
     self.viewControllers = @[homeNav,movieNav,communityNav,userCenterNav];
 

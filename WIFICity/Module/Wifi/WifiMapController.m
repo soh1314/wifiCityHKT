@@ -102,7 +102,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = tabbar_wifi;
-    [self setWhiteTrasluntNavBar];
     _mapManager = [[BMKMapManager alloc]init];
     BOOL ret = [_mapManager start:@"NAjg8KLy6H3sotqy7Qa1UQRoVwvnXagz" generalDelegate:nil];
     if (!ret) {

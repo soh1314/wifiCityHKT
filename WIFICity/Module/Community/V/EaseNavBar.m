@@ -9,6 +9,7 @@
 #import "EaseNavBar.h"
 #import "UIViewController+EasyUtil.h"
 #import "CompanyHomeSearchBar.h"
+#import "UIImage+ImageEffects.h"
 
 @implementation EaseNavBar
 
