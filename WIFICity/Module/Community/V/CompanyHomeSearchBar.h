@@ -20,4 +20,5 @@ typedef void(^SeePanoramaActionBlock)(void);
 - (IBAction)seePanorama:(id)sender;
 
 
+
 @end

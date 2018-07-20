@@ -42,6 +42,7 @@
 #define kNavBarHeight  44.0f
 #define kStatusBarHeight  (isIPhoneX ? 44.0f : 20.0f)
 #define KTabbarHeight  49
+#define KBottomBarPadding (isIPhoneX ?  20.0f : 0)
 
 // 颜色
 #define UIColorFromHexadecimalRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]

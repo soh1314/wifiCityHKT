@@ -70,6 +70,7 @@
 }
 
 - (void)invokeSearch {
+    
    [self.searchTtf becomeFirstResponder];
 }
 

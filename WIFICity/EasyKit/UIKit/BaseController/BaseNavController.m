@@ -31,8 +31,9 @@
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [self setNavigationBarHidden:NO animated:NO];
     [super pushViewController:viewController animated:animated];
-    [self setNavigationBarHidden:NO animated:YES];
+    
 }
 /*
 #pragma mark - Navigation

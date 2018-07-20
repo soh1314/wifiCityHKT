@@ -12,7 +12,7 @@
 #import "EnterpriseSquareNetAPI.h"
 #import "CompanyDetailController.h"
 
-@interface CompanySearchController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+@interface CompanySearchController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong)NSMutableArray *searchResultArray;
 @property (nonatomic,strong)EaseTableView *tableView;
@@ -35,12 +35,27 @@
     [super viewDidLoad];
     [self initUI];
     [self initArray];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.searchBar invokeSearch];
+        
+    });
+
     // Do any additional setup after loading the view.
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.searchBar invokeSearch];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.searchBar cancleSearch];
 }
 
 - (void)initArray {
@@ -51,6 +66,7 @@
 
 - (void)initUI {
     [self setBlackNavBar];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
@@ -82,6 +98,7 @@
     }
 
 }
+
 
 #pragma mark - search delegate
 
@@ -120,7 +137,9 @@
             NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
             [self.searchResultArray removeAllObjects];
             [self.searchResultArray addObjectsFromArray:dataArray];
-            [self.tableView reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
         }
         
     } failureBlock:^(NSError *error) {
@@ -164,6 +183,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.searchBar.searchTtf.isFirstResponder) {
+        [self.searchBar.searchTtf resignFirstResponder];
+        return;
+    }
     WICompanyInfo *info = self.searchResultArray[indexPath.row];
     CompanyDetailController *detailCtrl = [CompanyDetailController new];
     detailCtrl.info = info;

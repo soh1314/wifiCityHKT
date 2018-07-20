@@ -84,6 +84,10 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
     [super viewWillAppear:animated];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
 - (void)loadData {
 
     [self requestCompanyCategoryInfo];
@@ -142,7 +146,7 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 120;
+        return 188;
     } else if (indexPath.section == 1) {
         return 69;
         
@@ -181,11 +185,20 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
-        EnterPriseSquareAreaCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterPriseSquareAreaCellID" forIndexPath:indexPath];
-        
+//        EnterPriseSquareAreaCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterPriseSquareAreaCellID" forIndexPath:indexPath];
+//
+//        return cell;
+        EnterpriseSquareSortCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterpriseSquareSortCellID" forIndexPath:indexPath];
+        __weak typeof(self)wself = self;
+        cell.cellType = SquareSortCellImageTextType;
+        [cell setCategoryModelArray: [self.categoryArray copy]];
+        cell.pick = ^(NSInteger idx ,WICompanyCategory *category) {
+            [wself jumpToSortController:idx];
+        };
         return cell;
     }  else if (indexPath.section == 1) {
         EnterpriseSquareSortCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterpriseSquareSortCellID" forIndexPath:indexPath];
+        cell.cellType = SquareSortCellTextType;
         __weak typeof(self)wself = self;
         [cell setCategoryModelArray: [self.categoryArray copy]];
         cell.pick = ^(NSInteger idx ,WICompanyCategory *category) {

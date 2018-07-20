@@ -35,6 +35,8 @@
     }
 }
 
+
+
 - (IBAction)seePanorama:(id)sender {
     if (self.seePanoramaBlock) {
         self.seePanoramaBlock();

@@ -46,17 +46,8 @@
 {
     [super viewWillDisappear:animated];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    [self hiddenKeyboard];
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    [super touchesEnded:touches withEvent:event];
-    [self hiddenKeyboard];
-}
-
--(void)hiddenKeyboard{
-    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
-}
 
 #pragma mark - 网络恢复重新加载数据
 

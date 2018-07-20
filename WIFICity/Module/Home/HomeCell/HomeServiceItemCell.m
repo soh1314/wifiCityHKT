@@ -30,6 +30,7 @@
 
 - (void)initUI {
     self.serviceNameLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+    self.serviceImageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 @end

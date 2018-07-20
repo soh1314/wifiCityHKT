@@ -48,8 +48,12 @@
 }
 
 - (void)addScrollviewKVO {
-    [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+//    [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
    
+}
+
+- (void)dealloc {
+//    [self.scrollView removeObserver:self forKeyPath:@"contentOffset"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {

@@ -12,21 +12,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeServiceItemCell">
-            <rect key="frame" x="0.0" y="0.0" width="133" height="116"/>
+            <rect key="frame" x="0.0" y="0.0" width="135" height="92"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="133" height="116"/>
+                <rect key="frame" x="0.0" y="0.0" width="135" height="92"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app.png" translatesAutoresizingMaskIntoConstraints="NO" id="TIt-hk-gSw">
-                        <rect key="frame" x="52.5" y="16" width="28" height="28"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="28" id="5mG-Ah-3kn"/>
-                            <constraint firstAttribute="width" constant="28" id="d7a-We-rbO"/>
-                        </constraints>
+                        <rect key="frame" x="53.5" y="16" width="28" height="28"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="           " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEe-1E-vPI">
-                        <rect key="frame" x="46.5" y="56" width="40" height="16"/>
+                        <rect key="frame" x="5" y="56" width="125" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="a9A-bV-rkh"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -34,17 +33,20 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="cEe-1E-vPI" secondAttribute="trailing" constant="5" id="Ade-gK-wTX"/>
                 <constraint firstItem="cEe-1E-vPI" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="LeA-yi-bDl"/>
+                <constraint firstItem="cEe-1E-vPI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="PSD-wW-M8A"/>
                 <constraint firstItem="TIt-hk-gSw" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="TZZ-90-9aa"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cEe-1E-vPI" secondAttribute="bottom" constant="10" id="qSG-MP-luQ"/>
                 <constraint firstItem="TIt-hk-gSw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="rAb-S9-te6"/>
                 <constraint firstItem="cEe-1E-vPI" firstAttribute="top" secondItem="TIt-hk-gSw" secondAttribute="bottom" constant="12" id="y9i-99-zGY"/>
             </constraints>
-            <size key="customSize" width="133" height="116"/>
+            <size key="customSize" width="135" height="92"/>
             <connections>
                 <outlet property="serviceImageView" destination="TIt-hk-gSw" id="Zo3-0E-m4D"/>
                 <outlet property="serviceNameLabel" destination="cEe-1E-vPI" id="3wx-PR-gu4"/>
             </connections>
-            <point key="canvasLocation" x="-129" y="37"/>
+            <point key="canvasLocation" x="-128.5" y="25"/>
         </collectionViewCell>
     </objects>
     <resources>

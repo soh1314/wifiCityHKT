@@ -45,17 +45,9 @@
     self.showType = 0;
     self.page = 1;
     [self initUI];
-    if (!self.categoryID) {
-        self.categoryID = @"402883b260d36c5f0160d4c0d7f70017";
-    }
     [self loadData:YES];
     self.dataArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.searchBar cancleSearch];
 }
 
 - (void)loadData:(BOOL)refresh {
@@ -64,8 +56,13 @@
     } else {
         self.page++;
     }
+    NSDictionary *para = nil;
+    if (!self.categoryID ) {
+        para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entId":[self.categoryID copy]};
+    } else {
+        para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page]};
+    }
     
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entId":[self.categoryID copy]};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCategoryListAPI) params:para successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         if (response && response.success) {
@@ -97,7 +94,7 @@
     }];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoVerticalCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoVerticalCellID"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoHorizonCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoHorizonCellID"];
-    self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [wself loadData:NO];
     }];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithImage:[UIImage qsImageNamed:@"heng"] style:UIBarButtonItemStylePlain target:self action:@selector(changeCollectionViewStyle:)];
@@ -112,7 +109,6 @@
         }];
     }
     self.searchBar.actionblock = ^{
-        [wself.view endEditing:YES];
         CompanySearchController *searchCtrl = [CompanySearchController new];
         [wself.navigationController pushViewController:searchCtrl animated:YES];
     };

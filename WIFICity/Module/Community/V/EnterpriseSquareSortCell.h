@@ -10,6 +10,11 @@
 #import "WICompanyCategory.h"
 
 typedef void(^itemPick)(NSInteger idx ,WICompanyCategory *category);
+typedef NS_ENUM(NSInteger,SquareSortCellType) {
+    SquareSortCellImageTextType,
+    SquareSortCellTextType
+};
+
 
 @interface EnterpriseSquareSortCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -18,6 +23,7 @@ typedef void(^itemPick)(NSInteger idx ,WICompanyCategory *category);
 @property (nonatomic,copy)NSArray *titleArray;
 @property (nonatomic,copy)NSArray *imageArray;
 @property (nonatomic,copy)NSArray *categoryModelArray;
+@property (nonatomic,assign)SquareSortCellType cellType;
 @property (nonatomic, copy) itemPick pick;
 
 @end

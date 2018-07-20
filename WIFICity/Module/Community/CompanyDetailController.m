@@ -45,7 +45,8 @@
     self.commentBottomBar = [[WICommentBottomBar alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 40)];
     [self.view addSubview:self.commentBottomBar];
     [self.commentBottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.left.right.mas_equalTo(self.view);
+        make.left.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view).mas_offset(-1*KBottomBarPadding);
         make.height.mas_equalTo(40);
         
     }];
