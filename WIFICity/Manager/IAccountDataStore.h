@@ -14,6 +14,8 @@
 
 -(id)loadAccount;
 
+@optional;
+
 -(BOOL)saveAccountPhotoWithImage:(UIImage *)photoImage withImageName:(NSString *)imgName;
 
 -(UIImage *)loadAccountPhotoWithImageName:(NSString *)imgName;

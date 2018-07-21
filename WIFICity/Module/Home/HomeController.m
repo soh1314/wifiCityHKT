@@ -20,6 +20,7 @@
 #import "WIPopView.h"
 
 #import "EasePageController.h"
+#import "HomeServicePageController.h"
 
 #define FindUserFLowAPI @"/ws/third/findBandByUserId.do"
 #define LbtInfoAPI  @"/ws/wifi/findLbtByOrgId.do"
@@ -206,7 +207,6 @@
     if (indexPath.section == 0) {
         HomeServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeServiceCellID" forIndexPath:indexPath];
         [cell setDataArray:self.serviceArray];
-        __weak typeof(self)wself = self;
         cell.pick = ^(NSInteger idx) {
 //            if ([AccountManager shared].user.phone) {
 //                [WIPopView popBindPhoneView:wself];
@@ -214,7 +214,7 @@
 //                [NavManager pushBlankViewController:wself];
 //            }
             [HomeServiceCell pickCellItem:idx dataArray:[self.serviceArray copy]];
-                EasePageController *pageController = [EasePageController new];
+                HomeServicePageController *pageController = [HomeServicePageController new];
                 HomeServiceData *data = self.serviceArray[idx];
                 pageController.title = [data.thirdName copy];
                 pageController.count = 2;

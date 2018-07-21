@@ -28,13 +28,7 @@
 
 - (void)addBackItem;
 
-- (void)addShareNavItem;
-
-- (void)addMoreItem;
-
 - (void)popAction;
-
-- (void)seeMore:(id)sender ;
 
 - (void)goToHomeView;
 

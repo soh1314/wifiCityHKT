@@ -50,16 +50,14 @@
 
 - (void)requestLoateServiceTimeOutLocate:(NSInteger)timeOut complete:(EasyCLLocateComplete)complete {
     int status = [CLLocationManager authorizationStatus];
-//    if (status < 3) {
-        if ([[UIDevice currentDevice].systemVersion floatValue] >= 8)
-        {
-            self.locationManager = [[CLLocationManager alloc] init];
-            self.locationManager.delegate = self;
-            self.locationManager.distanceFilter = kCLDistanceFilterNone;
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-            [self.locationManager requestWhenInUseAuthorization];
-        }
-        __weak typeof(self)wself = self;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8)
+    {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        self.locationManager.distanceFilter = kCLDistanceFilterNone;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        [self.locationManager requestWhenInUseAuthorization];
+    }
     if (status < 3) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeOut * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             complete(nil,nil,nil,nil);

@@ -7,8 +7,12 @@
 //
 
 #import "WINewsInfoViewController.h"
+#import "WIFISevice.h"
+#import "HomeNews.h"
+#import "HomeNewsOneCell.h"
+#import "HomeNewsTwoCell.h"
 
-@interface WINewsInfoViewController ()
+@interface WINewsInfoViewController ()<UITableViewDataSource,UITableViewDataSource>
 
 @end
 
@@ -16,7 +20,76 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeNewsTwoCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HomeNewsTwoCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeNewsOneCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HomeNewsOneCellID"];
+    
     // Do any additional setup after loading the view.
+}
+
+- (void)loadData:(NSInteger)index refresh:(BOOL)refresh{
+    NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, WIFIHomeNewsAPI) params:para successBlock:^(NSDictionary *returnData) {
+        if (refresh) {
+            [self.dataArray removeAllObjects];
+        }
+        Class modelCls = NSClassFromString(self.pageModel.modelName);
+        NSArray *newsArray = [modelCls arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
+        [self.dataArray addObjectsFromArray:newsArray];
+        [self.tableView reloadData];
+        
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:NO];
+}
+
+#pragma mark - delegate and datasource
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    HomeNews *news = self.dataArray[indexPath.row];
+    if (news.is_hot) {
+        HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
+        return cell;
+    } else {
+        HomeNewsTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsTwoCellID" forIndexPath:indexPath];
+        cell.news = news;
+        return cell;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return [UIView new];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [UIView new];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return CGFLOAT_MIN;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return CGFLOAT_MIN;
 }
 
 - (void)didReceiveMemoryWarning {

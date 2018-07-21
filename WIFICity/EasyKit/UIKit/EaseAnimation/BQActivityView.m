@@ -113,7 +113,7 @@
         //子图层的仿射变换是基于repelicator图层的锚点，因此这里将子图层的位置摆放到此
         CGPoint point = [repelicator convertPoint:repelicator.position fromLayer:self.layer];
         layer.position = CGPointMake(point.x, point.y - 20);
-#warning 修改等待提示颜色
+
         layer.backgroundColor = [UIColor redColor].CGColor;
         
         layer.cornerRadius = 5;

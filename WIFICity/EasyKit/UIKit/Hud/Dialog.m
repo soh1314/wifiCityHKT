@@ -60,6 +60,7 @@ static Dialog *instance = nil;
     hud.removeFromSuperViewOnHide = YES;
     hud.color  = [UIColor clearColor];
     hud.mode = MBProgressHUDModeCustomView;
+    hud.yOffset = -80.f;
     XLLoadingHUD *ringHud = [[XLLoadingHUD alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
     [ringHud start];
     hud.customView = ringHud;
@@ -78,12 +79,12 @@ static Dialog *instance = nil;
 + (void)toast:(NSString *)message {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
 	hud.mode = MBProgressHUDModeText;
-    hud.animationType = MBProgressHUDAnimationZoomOut;
+    hud.animationType = MBProgressHUDAnimationFade;
 	hud.labelText = message;
 	hud.margin = 10.f;
 	hud.yOffset = 150.f;
 	hud.removeFromSuperViewOnHide = YES;
-	[hud hide:YES afterDelay:2];
+	[hud hide:YES afterDelay:1];
 }
 
 + (void)simpleToast:(NSString *)message
@@ -175,6 +176,11 @@ static Dialog *instance = nil;
 
 + (void)hideWindowToast {
     [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+}
+
++ (void)hideToastView:(UIView *)view {
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];
+    
 }
 
 #pragma mark -

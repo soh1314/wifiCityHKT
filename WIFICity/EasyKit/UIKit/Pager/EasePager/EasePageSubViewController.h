@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EasePageModel.h"
-#import "HomeNews.h"
-#import "HomeNewsOneCell.h"
+
 
 @interface EasePageSubViewController : UIViewController
 

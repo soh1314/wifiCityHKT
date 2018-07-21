@@ -11,6 +11,8 @@
 #import "StaticGuideViewController.h"
 #import "WIFISevice.h"
 #import "WIFIValidator.h"
+#import "WIFIPusher.h"
+
 @interface AppDelegate ()
 
 @end
@@ -24,9 +26,9 @@
      _tabBarController = [[TGTabBarController alloc]init];
     [[AccountManager shared]loadUserAccount];
     [SDKConfig configMobShare];
-    
     [self setMainView];
     [self.window makeKeyAndVisible];
+    [WIFIPusher requestAuthor];
     
     return YES;
 }

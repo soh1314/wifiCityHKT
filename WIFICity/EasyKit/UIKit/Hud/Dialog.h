@@ -20,7 +20,6 @@
 + (void)toast:(UIViewController *)controller withMessage:(NSString *) message;
 + (void)toast:(NSString *)message;
 + (void)simpleToast:(NSString *)message;
-+ (void)hideSimpleToast;
 //显示在屏幕中间
 + (void)toastCenter:(NSString *)message;
 //显示气泡旋转图
@@ -29,6 +28,7 @@
 + (void)showRingLoadingView:(UIView *)view;
 //带进度条
 + (void)progressToast:(NSString *)message;
+
 
 //带遮罩效果的进度条
 - (void)gradient:(UIViewController *)controller seletor:(SEL)method;
@@ -47,8 +47,11 @@
 - (void)showCenterProgressWithLabel:(NSString *)labelText;
 
 //显示菊花图
-
 + (void)showWindowToast;
+
+//隐藏toast
++ (void)hideToastView:(UIView *)view;
 + (void)hideWindowToast;
++ (void)hideSimpleToast;
 
 @end

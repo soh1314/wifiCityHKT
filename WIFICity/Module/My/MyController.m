@@ -165,7 +165,6 @@
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.backgroundColor = [UIColor themeTableEdgeColor];
         _tableView.tableFooterView = [[UIView alloc]init];
-        __weak typeof(self)wself = self;
         _tableView.estimatedRowHeight = 200;
     }
     return _tableView;

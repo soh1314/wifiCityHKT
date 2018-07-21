@@ -57,7 +57,7 @@
         self.page++;
     }
     NSDictionary *para = nil;
-    if (!self.categoryID ) {
+    if (self.categoryID && ![self.categoryID isEqualToString:@""]) {
         para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entId":[self.categoryID copy]};
     } else {
         para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page]};
@@ -72,6 +72,11 @@
                 [self.dataArray addObjectsFromArray:dataArray];
             } else {
                 [self.dataArray addObjectsFromArray:dataArray];
+            }
+            if (!refresh && dataArray.count == 0 ) {
+                [Dialog toast:@"没有更多数据了"];
+                 [self.collectionView.mj_footer endRefreshing];
+                return ;
             }
             [self.collectionView reloadData];
         }
@@ -94,7 +99,7 @@
     }];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoVerticalCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoVerticalCellID"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoHorizonCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoHorizonCellID"];
-    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.collectionView.mj_footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
         [wself loadData:NO];
     }];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithImage:[UIImage qsImageNamed:@"heng"] style:UIBarButtonItemStylePlain target:self action:@selector(changeCollectionViewStyle:)];

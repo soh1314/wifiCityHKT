@@ -108,7 +108,7 @@
     CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)font1.fontName,font1.pointSize,NULL);
     CTLineBreakMode lineBreakMode = kCTLineBreakByWordWrapping;
     //Apply paragraph settings
-    CTTextAlignment alignment = kCTLeftTextAlignment;
+    CTTextAlignment alignment = kCTTextAlignmentLeft;
     CTParagraphStyleRef style = CTParagraphStyleCreate((CTParagraphStyleSetting[6]){
         {kCTParagraphStyleSpecifierAlignment, sizeof(alignment), &alignment},
         {kCTParagraphStyleSpecifierMinimumLineHeight,sizeof(minimumLineHeight),&minimumLineHeight},
@@ -144,7 +144,7 @@
     //Apply paragraph settings
     CGFloat minimumLineHeight = font.pointSize,maximumLineHeight = minimumLineHeight+10, linespace = 5;
     CTLineBreakMode lineBreakMode = kCTLineBreakByTruncatingTail;
-    CTTextAlignment alignment = kCTLeftTextAlignment;
+    CTTextAlignment alignment = kCTTextAlignmentLeft;
     //Apply paragraph settings
     CTParagraphStyleRef style = CTParagraphStyleCreate((CTParagraphStyleSetting[6]){
         {kCTParagraphStyleSpecifierAlignment, sizeof(alignment), &alignment},

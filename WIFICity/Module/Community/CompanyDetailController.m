@@ -15,6 +15,8 @@
 #import "WICommentBottomBar.h"
 #import "WIPopView.h"
 
+static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyById.do";
+
 @interface CompanyDetailController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)EaseTableView *tableView;
@@ -37,7 +39,18 @@
     self.title = @"企业详情";
     [self setBlackNavBar];
     [self initUI];
+    [self loadCompanyDetailData];
     // Do any additional setup after loading the view.
+}
+
+- (void)loadCompanyDetailData {
+    [Dialog showRingLoadingView:self.view];
+    NSDictionary *para = @{@"comId":self.info.ent_id,@"useId":[AccountManager shared].user.userId};
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, EnterPriseCompanyDetailAPI) params:para successBlock:^(NSDictionary *returnData) {
+        [Dialog hideToastView:self.view];
+    } failureBlock:^(NSError *error) {
+        [Dialog hideToastView:self.view];
+    } showHUD:NO];
 }
 
 - (void)initUI {

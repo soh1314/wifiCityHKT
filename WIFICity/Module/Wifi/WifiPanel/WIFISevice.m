@@ -118,6 +118,10 @@ static NSInteger flowRequestNum = 0;
     } showHUD:NO];
 }
 
+- (void)handleWhenNetChange:(WINetStatus)status wifiInfo:(WIFIInfo*)info {
+    
+}
+
 - (void)saveUserFlow {
     WIFIFlow *flow =  [WifiUtil checkNetworkflow];
     if (flowRequestNum == 0) {
@@ -173,6 +177,7 @@ static NSInteger flowRequestNum = 0;
 - (void)validateFail:(NSNotification *)noti {
     NSLog(@"认证失败了");
     [[WIFIValidator shared]validator];
+    [self requestOrgId:[WifiUtil getWifiMac]];
 }
 
 - (void)wiApplicationWillEnterForeground:(NSNotification *)noti {

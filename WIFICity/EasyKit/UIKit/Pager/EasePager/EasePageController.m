@@ -31,6 +31,7 @@
         self.titleSizeNormal = [UIFont systemFontOfSize:14.0].pointSize;
         self.helper = [[EasePageDelegateHelper alloc]init];
         self.helper.sourceType = EasePageSourceNewsType;
+        self.delegate = self;
     }
     return self;
 }
@@ -42,7 +43,6 @@
 
 - (void)initUI {
 
-    [self addMoreItem];
     [self setBlackNavBar];
 }
 
@@ -58,9 +58,13 @@
     return model.title;
 }
 
+- (UIViewController *)easePageController:(EasePageController *)viewController AtIndex:(NSInteger)index {
+    return [self.helper easePageController:self viewControllerAtIndex:index];
+}
+
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
 
-    return [self.helper easePageController:self viewControllerAtIndex:index];
+    return [self easePageController:self AtIndex:index];
 }
 
 - (CGFloat)menuView:(WMMenuView *)menu widthForItemAtIndex:(NSInteger)index {

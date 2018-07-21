@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EasePageSubViewController.h"
+
 @interface WINewsInfoViewController : EasePageSubViewController
 
 

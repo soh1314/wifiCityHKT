@@ -41,6 +41,11 @@ static CGFloat lineWidth = 4.0f;
     return hud;
 }
 
+- (void)dealloc {
+    _link.paused = true;
+    _progress = 0;
+}
+
 -(void)start{
     _link.paused = false;
 }

@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
+    self.dataArray = [NSMutableArray array];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.view);
@@ -64,13 +65,6 @@
     return _tableView;
 }
 
-- (NSMutableArray *)dataArray {
-    if (!_dataArray) {
-        _dataArray = [NSMutableArray array];
-    }
-    return _dataArray;
-}
-
 #pragma mark - tableview delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,10 +87,6 @@
     Class cls = NSClassFromString(self.pageModel.cellClass);
     id obj = [[cls alloc] init];
     obj = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"%@ID",self.pageModel.cellClass] forIndexPath:indexPath];
-    if ([obj isKindOfClass:[HomeNewsOneCell class]]) {
-        HomeNewsOneCell *cell = (HomeNewsOneCell *)obj;
-        cell.news = self.dataArray[indexPath.row];
-    }
     return obj;
 }
 

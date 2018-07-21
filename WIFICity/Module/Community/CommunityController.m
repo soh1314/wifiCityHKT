@@ -175,11 +175,18 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
 }
 
 - (void)jumpToSortController:(NSInteger)index {
-    CompanySortController *sortCtrl = [CompanySortController new];
-    WICompanyCategory *category = self.categoryArray[index];
-    sortCtrl.categoryID = [category.ID copy];
-    sortCtrl.categoryArray = [self.categoryArray copy];
-    [self.navigationController pushViewController:sortCtrl animated:YES];
+    if (index != 444) {
+        CompanySortController *sortCtrl = [CompanySortController new];
+        WICompanyCategory *category = self.categoryArray[index];
+        sortCtrl.categoryID = [category.ID copy];
+        sortCtrl.categoryArray = [self.categoryArray copy];
+        [self.navigationController pushViewController:sortCtrl animated:YES];
+    } else {
+        CompanySortController *sortCtrl = [CompanySortController new];
+        [self.navigationController pushViewController:sortCtrl animated:YES];
+
+    }
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -218,7 +225,7 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == EnterPriseRecommentSection) {
-        [self jumpToSortController:indexPath.section];
+        [self jumpToSortController:444];
     }
 }
 

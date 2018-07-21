@@ -14,6 +14,7 @@
 #import "WIFIAnnotation.h"
 #import "WIMapBubbleView.h"
 #import <NetworkExtension/NetworkExtension.h>
+#import "WIFIPusher.h"
 
 //x +23.979 y -21.313 z -26.714
 
@@ -81,16 +82,17 @@
                 NSString* wifiInfoString = [[NSString alloc] initWithFormat: @"---------------------------\nSSID: %@\nMac地址: %@\n信号强度: %f\nCommandType:%ld\n---------------------------\n\n", network.SSID, network.BSSID, network.signalStrength, (long)cmd.commandType];
                 NSLog(@"附近wifi信息%@", wifiInfoString);
                 // 检测到指定 WiFi 可设定密码直接连接
-                if ([network.SSID isEqualToString: @"test2"]) {
-                    [network setConfidence: kNEHotspotHelperConfidenceHigh];
-                    [network setPassword: @""];
-                    NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
-                    NSLog(@"Response CMD: %@", response);
-                    [response setNetworkList: @[network]];
-                    [response setNetwork: network];
-                    [response deliver];
-                }
+//                if ([network.SSID isEqualToString: @"test1"]) {
+//                    [network setConfidence: kNEHotspotHelperConfidenceHigh];
+//                    [network setPassword: @""];
+//                    NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
+//                    NSLog(@"Response CMD: %@", response);
+//                    [response setNetworkList: @[network]];
+//                    [response setNetwork: network];
+//                    [response deliver];
+//                }
             }
+            [WIFIPusher sendWIFINoti];
         } else {
             NSLog(@"其他");
         }
