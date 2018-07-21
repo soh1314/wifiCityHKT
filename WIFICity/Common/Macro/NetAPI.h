@@ -24,7 +24,6 @@
 #define GetGPSOrgIdImageAPI @"/ws/wifi/getOrgIdByGps.do?posx="
 #define GetCarouseDataAPI @"/ws/wifi/findLbtByOrgId.do?orgId="
 
-
 static NSString *const WIFIHomeNewsAPI = @"/ws/wifi/findDeliveryByOrgId.do";
 static NSString *const WIFIHomeNewsDetailAPI = @"/hktInformationDeliveryController.do?findById&id=";
 static NSString *const GetMacOrgId = @"/ws/wifi/getOrgId.do";

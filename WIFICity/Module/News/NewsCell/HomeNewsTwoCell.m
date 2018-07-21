@@ -22,14 +22,22 @@
     self.titleLabel.textColor = [UIColor colorWithHexString:@"#111111"];
     self.agencyLabel.textColor = [UIColor colorWithHexString:@"#888888"];
     self.additionLabel.textColor = [UIColor colorWithHexString:@"#888888"];
+    self.tabLabel.clipsToBounds = YES;
+    self.tabLabel.layer.cornerRadius = 2;
+    self.tabLabel.layer.borderWidth = 1.0f;
+    self.tabLabel.layer.borderColor = [UIColor colorWithHexString:@"#F9595B"].CGColor;
+    self.tabLabel.textColor = [UIColor colorWithHexString:@"#F9595B"];
+    
     [self.imageGroupView addSubview:self.imageGroupCollectionView];
     CGFloat imageHeight = (KSCREENW-40)/3.0f*74/112.0f;
     [self.imageGroupView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(imageHeight);
+        make.height.mas_equalTo(imageHeight+16);
+        
     }];
     [self.imageGroupCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.imageGroupCollectionView);
+        make.edges.mas_equalTo(self.imageGroupView);
     }];
+    
     
 }
 
@@ -38,6 +46,26 @@
     self.titleLabel.text = [NSString stringWithFormat:@"%@",news.title];
     self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.abstracts];
     
+    if (news.is_hot) {
+        self.tabLabel.hidden = NO;
+        self.tabLabel.text = @"热点";
+        [self.tabLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(25.0f);
+        }];
+        [self.agencyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(12);
+            make.left.mas_equalTo(self.tabLabel.mas_right).mas_offset(8.0).priorityHigh();
+        }];
+    } else {
+        self.tabLabel.hidden = YES;
+        [self.tabLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(0.0f);
+        }];
+        [self.agencyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(12);
+            make.left.mas_equalTo(self.tabLabel.mas_right).mas_offset(0);
+        }];
+    }
 }
 
 - (UICollectionView *)imageGroupCollectionView
@@ -59,6 +87,7 @@
         _imageGroupCollectionView.bounces = NO;
         _imageGroupCollectionView.pagingEnabled = NO;
         _imageGroupCollectionView.scrollEnabled = NO;
+        _imageGroupCollectionView.backgroundColor = [UIColor whiteColor];
         [_imageGroupCollectionView registerNib:[UINib nibWithNibName:@"HomeNewsImageItemCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"HomeNewsImageItemCellID"];
     }
     return _imageGroupCollectionView;
@@ -77,7 +106,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HomeNewsImageItemCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeNewsImageItemCellID" forIndexPath:indexPath];
-
+    [colCell.HomeNewsImageView sd_setImageWithURL:[NSURL URLWithString:self.imageGroupArray[indexPath.row]]];
     return colCell;
 }
 
@@ -86,13 +115,13 @@
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((KSCREENW-40)/3.0f,82);
+    return CGSizeMake((KSCREENW-40)/3.0f,(KSCREENW-40)/3.0f*74/112);
 }
 
 //调节每个item的edgeInsets代理方法
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(0, 16, 0, 16);
+    return UIEdgeInsetsMake(8, 16, 8, 16);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section

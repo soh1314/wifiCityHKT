@@ -12,7 +12,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self initUI];
     // Initialization code
+}
+
+- (void)initUI {
+    
 }
 
 @end

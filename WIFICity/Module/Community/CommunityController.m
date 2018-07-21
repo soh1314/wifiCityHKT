@@ -10,6 +10,7 @@
 #import "CompanySortController.h"
 #import "CompanySearchController.h"
 #import "WebViewController.h"
+#import "CompanyDetailController.h"
 
 #import "CompanyRecommentCell.h"
 #import "EnterPriseSquareHomeInfoCell.h"
@@ -225,7 +226,9 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == EnterPriseRecommentSection) {
-        [self jumpToSortController:444];
+        CompanyDetailController *detailController = [[CompanyDetailController alloc]init];
+        detailController.info = self.dataArray[indexPath.row];
+        [self.navigationController pushViewController:detailController animated:YES];
     }
 }
 
@@ -239,7 +242,7 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
         CompanyRecommentHeader *header = [[CompanyRecommentHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 41)];
         __weak typeof(self)wself = self;
         header.moreBlock = ^{
-            [wself jumpToSortController:section];
+            [wself jumpToSortController:444];
         };
         return header;
     } else {

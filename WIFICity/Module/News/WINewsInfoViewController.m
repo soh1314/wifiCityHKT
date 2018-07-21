@@ -64,10 +64,12 @@
     HomeNews *news = self.dataArray[indexPath.row];
     if (news.is_hot) {
         HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
+        cell.news = news;
         return cell;
     } else {
         HomeNewsTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsTwoCellID" forIndexPath:indexPath];
         cell.news = news;
+        cell.imageGroupArray = @[@"http://wifi.hktfi.com/thirdImg/information/2/images/index_1530150498708.jpg",@"http://wifi.hktfi.com/thirdImg/information/2/images/index_1530150498708.jpg",@"http://wifi.hktfi.com/thirdImg/information/2/images/index_1530150498708.jpg"];
         return cell;
     }
 }
