@@ -51,6 +51,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(orgIDChange:) name:WIOrgIDChangeNoti object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidateSuccess:) name:WIFIValidatorSuccessNoti object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidateFail:) name:WIFIValidatorFailNoti object:nil];
+    [[WIFISevice shared]setNetMonitor];
 }
 
 - (void)wifiValidateSuccess:(NSNotification *)noti {
@@ -78,9 +79,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[WIFISevice shared]setNetMonitor];
     [self setWhiteTrasluntNavBar];
-    [self loadHomeData];
+//    [self loadHomeData];
    
     
 }
@@ -115,6 +115,10 @@
 }
 
 #pragma mark - load data
+
+- (void)loadData:(BOOL)refresh {
+    [self loadHomeData];
+}
 
 - (void)loadHomeData {
     [self requestLbtData];
@@ -241,15 +245,10 @@
     }
     else {
         HomeNews *news = [self.dataArray objectAtIndex:indexPath.row];
-//        if ([news.information_type isEqualToString:@"1"]) {
-            HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
-            [cell setNews:news];
-            return cell;
-//        } else {
-//            HomeNewsTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsTwoCellID" forIndexPath:indexPath];
-//            [cell setNews:news];
-//            return cell;
-//        }
+        HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
+        [cell setNews:news];
+        return cell;
+
 
     }
     return nil;
@@ -272,11 +271,17 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (self.dataArray.count == 0) {
+        return 0;
+    }
     return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0 || section == 1 ) {
+        if (self.dataArray.count == 0) {
+            return 0;
+        }
         return 1;
     } else {
         return self.dataArray.count;

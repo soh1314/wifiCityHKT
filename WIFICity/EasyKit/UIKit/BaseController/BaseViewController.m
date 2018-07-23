@@ -8,9 +8,11 @@
 
 #import "BaseViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "WIFISevice.h"
 
-@interface BaseViewController ()
+@interface BaseViewController ()<WifiNetChangeProtocol,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
+@property (nonatomic,assign)BOOL recoverNet;
 @end
 
 @implementation BaseViewController
@@ -21,13 +23,17 @@
 //    self.title = [self easyTittle:kBundleId];
     [self addBackItem];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    [self checkNet];
     if (!KSys11Up) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }  else {
         
     }
     [[IQKeyboardManager sharedManager]setEnableAutoToolbar:NO];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(netStatuschange:) name:@"WINETSTATUSCHANGE" object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WINETSTATUSCHANGE" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,22 +55,39 @@
 }
 
 
-#pragma mark - 网络恢复重新加载数据
-
-- (void)reloadDataWhenNetRecover {
-    NSLog(@"baseviewcontroller 重新加载数据");
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    [super touchesEnded:touches withEvent:event];
+    [self hiddenKeyboard];
 }
 
-- (void)checkNet
-{
-    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
-    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if (status == AFNetworkReachabilityStatusNotReachable) {
-            self.noNet = YES;
-        } else {
-            self.noNet = NO;
-        }
-    }];
+-(void)hiddenKeyboard{
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+
+#pragma mark - 网络恢复重新加载数据
+
+- (void)netStatuschange:(NSNotification *)noti {
+    if ([WIFISevice netStatus] == WINetFail) {
+        self.noNet = YES;
+    } else {
+        self.recoverNet = YES;
+        self.noNet = NO;
+    }
+}
+
+- (void)setRecoverNet:(BOOL)recoverNet {
+    _recoverNet = recoverNet;
+    if (_recoverNet) {
+        [self reloadDataWhenNetRecover];
+    }
+}
+
+- (void)loadData:(BOOL)refresh {
+    
+}
+
+- (void)reloadDataWhenNetRecover {
+    [self loadData:YES];
 }
 
 #pragma mark - 空视图
@@ -78,23 +101,10 @@
 }
 
 - (void)setNoDataViewWithBaseView:(UIView *)view {
-    if ([view isKindOfClass:[UIScrollView class]] ) {
-        UIScrollView *scrollView = (UIScrollView *)view;
-        _noDataSuperView = view;
-        __weak typeof(self)wself = self;
-        scrollView.emptyDataSetDelegate = wself;
-        scrollView.emptyDataSetSource = wself;
-        
-    } else if ( [view isKindOfClass:[UITableView class]] ) {
-        UITableView *tableview = (UITableView *)view;
-        _noDataSuperView = view;
-        __weak typeof(self)wself = self;
-        tableview.emptyDataSetDelegate = wself;
-        tableview.emptyDataSetDelegate = wself;
-        
-    } else {
-        
-    }
+    _noDataSuperView = (UIScrollView *)view;
+    _noDataSuperView.emptyDataSetDelegate = self;
+    _noDataSuperView.emptyDataSetSource = self;
+
 }
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view {
@@ -116,7 +126,12 @@
     if (self.nodataModel) {
         return [[NSAttributedString alloc]initWithString:self.nodataModel.titile attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
     }
-    return [[NSAttributedString alloc]initWithString:@"当前视图无数据" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
+    if ([WIFISevice netStatus] == WINetFail) {
+           return [[NSAttributedString alloc]initWithString:@"当前网络无法连接" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
+    } else {
+            return [[NSAttributedString alloc]initWithString:@"当前视图无数据" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
+    }
+
 }
 
 - (nullable NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {

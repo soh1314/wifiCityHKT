@@ -28,7 +28,7 @@
     [SDKConfig configMobShare];
     [self setMainView];
     [self.window makeKeyAndVisible];
-    [WIFIPusher requestAuthor];
+    [WIFISevice shared];
     
     return YES;
 }

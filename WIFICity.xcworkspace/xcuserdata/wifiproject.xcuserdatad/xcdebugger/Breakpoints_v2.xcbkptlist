@@ -67,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WIFICity/Module/Community/CompanySortController.m"
-            timestampString = "553773116.781109"
+            filePath = "WIFICity/EasyKit/UIKit/NoDataView/UIScrollView+EmptyDataSet.m"
+            timestampString = "554007234.318079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "-loadData:"
+            startingLineNumber = "560"
+            endingLineNumber = "560"
+            landmarkName = "-dzn_reloadEmptyDataSet"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,13 +83,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WIFICity/Module/Community/CompanySortController.m"
-            timestampString = "553773116.781153"
+            filePath = "WIFICity/EasyKit/UIKit/NoDataView/UIScrollView+EmptyDataSet.m"
+            timestampString = "554007234.31814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "-loadData:"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
+            landmarkName = "-dzn_reloadEmptyDataSet"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WIFICity/EasyKit/UIKit/NoDataView/UIScrollView+EmptyDataSet.m"
+            timestampString = "554007234.318186"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
+            landmarkName = "-dzn_reloadEmptyDataSet"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WIFICity/EasyKit/UIKit/NoDataView/UIScrollView+EmptyDataSet.m"
+            timestampString = "554007234.318228"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
+            landmarkName = "-dzn_reloadEmptyDataSet"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WIFICity/EasyKit/UIKit/NoDataView/UIScrollView+EmptyDataSet.m"
+            timestampString = "554007234.318339"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
+            landmarkName = "-dzn_reloadEmptyDataSet"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

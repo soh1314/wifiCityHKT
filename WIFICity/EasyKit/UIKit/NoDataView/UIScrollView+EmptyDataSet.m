@@ -519,6 +519,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
             }
         }
         
+        [view.superview bringSubviewToFront:view];
         // Configure offset
         view.verticalOffset = [self dzn_verticalOffset];
         

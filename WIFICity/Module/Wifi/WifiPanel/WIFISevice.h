@@ -21,6 +21,7 @@
 @property (nonatomic,weak)id <WifiNetChangeProtocol>delegate;
 @property (nonatomic,weak)id <WifiPanelProtocol>panelDelegate;
 @property (nonatomic,copy)NSString *orgID;
+@property (nonatomic,assign)BOOL recoveryNet;
 
 - (void)setNetMonitor;
 +(WINetStatus)netStatus;

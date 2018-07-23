@@ -14,7 +14,7 @@
 
 @optional
 - (void)initUI;
-- (void)loadData;
+- (void)loadData:(BOOL)refresh;
 
 @end
 
@@ -24,8 +24,8 @@
 @property (nonatomic,strong)UIScrollView *noDataSuperView;
 @property (nonatomic,assign)BOOL noNet;
 
+- (void)loadData:(BOOL)refresh;
 - (void)reloadDataWhenNetRecover;
-
 - (void)setNoDataViewWithBaseView:(UIView *)view; // 目前支持scrollview 和 tableview
 
 @end

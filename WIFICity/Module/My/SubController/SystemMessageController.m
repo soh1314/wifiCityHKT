@@ -30,7 +30,7 @@ static NSString *const SystemNoticeAPI = @"http://wifi.hktfi.com/ws/notice/findN
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    [self loadData];
+    [self loadData:YES];
     // Do any additional setup after loading the view.
 }
 
@@ -43,9 +43,10 @@ static NSString *const SystemNoticeAPI = @"http://wifi.hktfi.com/ws/notice/findN
     }];
     self.tableView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"SystemMessageCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SystemMessageCellID"];
+     [self setNoDataViewWithBaseView:self.tableView];
 }
 
-- (void)loadData {
+- (void)loadData:(BOOL)refresh {
     
     [MHNetworkManager getRequstWithURL:SystemNoticeAPI params:nil successBlock:^(NSDictionary *returnData) {
         if ([returnData objectForKey:@"obj"]) {

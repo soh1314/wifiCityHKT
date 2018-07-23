@@ -58,6 +58,7 @@ static Dialog *instance = nil;
 + (void)showRingLoadingView:(UIView *)view {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.removeFromSuperViewOnHide = YES;
+    hud.minShowTime = 0.5;
     hud.color  = [UIColor clearColor];
     hud.mode = MBProgressHUDModeCustomView;
     hud.yOffset = -80.f;

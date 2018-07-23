@@ -93,7 +93,7 @@
              if (![WXApi isWXAppInstalled] && loginType == WIWXLogin) {
                  [Dialog simpleToast:LoginWXUninstallError];
              }
-             NSLog(@"%@",error);
+             kHudNetError;
          }
          
      }];
