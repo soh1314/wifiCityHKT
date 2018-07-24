@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentNumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *collectLabel;
 @property (weak, nonatomic) IBOutlet UIView *bgIconView;
+@property (weak, nonatomic) IBOutlet UIView *btnEdgeView;
 
 @property (nonatomic,strong)WICompanyInfo *info;
 

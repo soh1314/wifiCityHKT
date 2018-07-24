@@ -7,16 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DGThumbUpButton.h"
+
 typedef void(^WICommentBottomBarTapAction)(void);
 @interface WICommentBottomBar : UIView
 
 @property (weak, nonatomic) IBOutlet UIView *commentBgView;
 
 @property (weak, nonatomic) IBOutlet UIButton *collectBtn;
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
+@property (weak, nonatomic) IBOutlet DGThumbUpButton *likeBtn;
 @property (nonatomic,copy)WICommentBottomBarTapAction tapBlock;
-- (IBAction)collect:(id)sender;
-- (IBAction)like:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIView *lineView;
 
 
 @end

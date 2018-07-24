@@ -16,7 +16,7 @@
 #import "HomeBannerCell.h"
 #import "HomeServiceCell.h"
 
-#import "EasyNormalRefreshHeader.h"
+#import "EaseRefreshHeader.h"
 #import "WIPopView.h"
 
 #import "EasePageController.h"
@@ -173,7 +173,7 @@
         _tableView.backgroundColor = [UIColor themeTableEdgeColor];
         _tableView.tableFooterView = [[UIView alloc]init];
         __weak typeof(self)wself = self;
-        _tableView.mj_header = [EasyNormalRefreshHeader headerWithRefreshingBlock:^{
+        _tableView.mj_header = [EaseRefreshHeader headerWithRefreshingBlock:^{
             [wself loadHomeData];
             
         }];
@@ -271,7 +271,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (self.dataArray.count == 0) {
+    if (self.dataArray.count == 0 && !self.lbtArray.count &&!self.serviceArray.count ) {
         return 0;
     }
     return 3;
@@ -279,7 +279,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0 || section == 1 ) {
-        if (self.dataArray.count == 0) {
+        if (self.dataArray.count == 0 && !self.lbtArray.count &&!self.serviceArray.count) {
             return 0;
         }
         return 1;

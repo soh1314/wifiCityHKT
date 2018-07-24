@@ -11,6 +11,7 @@
 #import "CompanyInfoHorizonCell.h"
 #import "EaseSearchBar.h"
 #import "EaseDropMenu.h"
+#import "EaseRefreshFooter.h"
 
 #import "CompanyDetailController.h"
 #import "CompanySearchController.h"
@@ -76,6 +77,7 @@
             if (!refresh && dataArray.count == 0 ) {
                 [Dialog toast:@"没有更多数据了"];
                  [self.collectionView.mj_footer endRefreshing];
+                
                 return ;
             }
             [self.collectionView reloadData];
@@ -88,7 +90,7 @@
 
 - (void)initUI {
     weakself;
-    self.sortTopView = [EaseDropMenu topViewWithTitleArray:@[@"产业布局",@"技术类别"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
+    self.sortTopView = [EaseDropMenu topViewWithTitleArray:@[@"产业分类",@"产品分类"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
     [self.sortTopView setHideArrow:YES];
     self.sortTopView.delegate = self;
     [self.view addSubview:self.sortTopView];
@@ -99,7 +101,7 @@
     }];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoVerticalCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoVerticalCellID"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoHorizonCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoHorizonCellID"];
-    self.collectionView.mj_footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
+    self.collectionView.mj_footer = [EaseRefreshFooter footerWithRefreshingBlock:^{
         [wself loadData:NO];
     }];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithImage:[UIImage qsImageNamed:@"heng"] style:UIBarButtonItemStylePlain target:self action:@selector(changeCollectionViewStyle:)];
@@ -154,7 +156,6 @@
         return view;
     }
    
-    
 }
 
 - (void)dropContentTapActionForItem:(NSInteger)index {
@@ -214,7 +215,7 @@
     if (self.showType == 0) {
         return CGSizeMake((KSCREENW-24)/2.0f,166);
     } else {
-        return CGSizeMake(KSCREENW,123);
+        return CGSizeMake(KSCREENW,133);
     }
 }
 

@@ -11,9 +11,13 @@
 #import "CompanyDetailSectionTwo.h"
 #import "CompanyDeatailSectionThree.h"
 #import "CompanyDetailSectionFour.h"
+#import "CompanyDetailRecruitCell.h"
+#import "CompanyDetailCommentCell.h"
+#import "CompanyDetailNoCommentCell.h"
 #import "WebViewController.h"
 #import "WICommentBottomBar.h"
 #import "WIPopView.h"
+#import "WINormalCellHeader.h"
 
 static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyById.do";
 
@@ -22,6 +26,10 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 @property (nonatomic,strong)EaseTableView *tableView;
 
 @property (nonatomic,strong)WICommentBottomBar *commentBottomBar;
+
+@property (nonatomic,strong)NSMutableArray *commentArray;
+
+@property (nonatomic,assign)BOOL collected;
 
 @end
 
@@ -40,6 +48,7 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
     [self setBlackNavBar];
     [self initUI];
     [self loadCompanyDetailData];
+    self.commentArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
 }
 
@@ -60,12 +69,12 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
     [self.commentBottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.view).mas_offset(-1*KBottomBarPadding);
-        make.height.mas_equalTo(40);
+        make.height.mas_equalTo(40+KBottomBarPadding);
         
     }];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(self.view);
-        make.bottom.mas_equalTo(self.commentBottomBar.mas_top).mas_offset(-5);
+        make.bottom.mas_equalTo(self.commentBottomBar.mas_top);
     }];
     __weak typeof(self)wself = self;
     self.commentBottomBar.tapBlock = ^{
@@ -75,6 +84,22 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionTwo" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionTwoID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionOne" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionOneID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDeatailSectionThree" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDeatailSectionThreeID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailRecruitCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailRecruitCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailCommentCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailCommentCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailNoCommentCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailNoCommentCellID"];
+    
+    UIBarButtonItem *collectItem = [[UIBarButtonItem alloc]initWithImage:[UIImage qsImageNamed:@"collect_default"] style:UIBarButtonItemStylePlain target:self action:@selector(collectCompanyInfo:)];
+    self.navigationItem.rightBarButtonItem = collectItem;
+    
+}
+
+- (void)collectCompanyInfo:(id)sender {
+    self.collected = self.collected ? NO : YES ;
+    if (self.collected) {
+        [self.navigationItem.rightBarButtonItem setImage:[UIImage qsImageNamed:@"collect"]];
+    } else {
+        [self.navigationItem.rightBarButtonItem setImage:[UIImage qsImageNamed:@"collect_default"]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,17 +135,41 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 3) {
+        if (!self.commentArray.count) {
+            return 3;
+        } else {
+            return 1;
+        }
+    }
     return 1;
+}
+
+- (void)jumpToWebViewController:(NSString *)url {
+    WebViewController *webView = [WebViewController new];
+    webView.URLString = [url copy];
+    [self.navigationController pushViewController:webView animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger section = indexPath.section;
-    
+    weakself;
     if (section == 0) {
         CompanyDetailSectionOne *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailSectionOneID" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.webSiteBlock = ^{
+            [wself jumpToWebViewController:wself.info.com_website];
+        };
+        cell.SeeQuanjinBlock = ^{
+            [wself jumpToWebViewController:@"https://720yun.com/t/946jezwnuv5?scene_id=17042939&from=groupmessage"];
+        };
+        cell.locateBlock = ^{
+            
+        };
         cell.info = self.info;
         return cell;
+        
     } else if (section == 1) {
         CompanyDetailSectionTwo *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailSectionTwoID" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -128,33 +177,27 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
         
         return cell;
     } else if (section == 2) {
-        CompanyDeatailSectionThree *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDeatailSectionThreeID" forIndexPath:indexPath];
+        CompanyDetailRecruitCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailRecruitCellID" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else {
-        CompanyDetailSectionFour *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailSectionFourID" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.info = self.info;
-        __weak typeof(self)wself = self;
-        cell.actionBlock = ^(NSString *url) {
-            if (url) {
-               [wself jumpToWebViewController:url];
-            }
-        };
-        return cell;
-    }
-}
+        if (!self.commentArray.count) {
+            CompanyDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailCommentCellID" forIndexPath:indexPath];
+            
+            return cell;
+        } else {
+            CompanyDetailNoCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailNoCommentCellID" forIndexPath:indexPath];
+            
+            return cell;
+        }
 
-- (void)jumpToWebViewController:(NSString *)url {
-    WebViewController *web = [WebViewController new];
-    web.URLString = [url copy];
-    [self.navigationController pushViewController:web animated:YES];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 1) {
-        [self jumpToWebViewController:self.info.com_website];
+    if (indexPath.section == 2) {
+        [self jumpToWebViewController:@""];
     }
 }
 
@@ -163,7 +206,9 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [UIView new];
+    WINormalCellHeader *header = [[WINormalCellHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 40)];
+    header.titleLabel.text = @"最新评论";
+    return header;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -171,6 +216,9 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 3) {
+        return 40;
+    }
     return CGFLOAT_MIN;
 }
 

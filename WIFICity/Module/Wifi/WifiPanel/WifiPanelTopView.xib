@@ -15,15 +15,15 @@
             <rect key="frame" x="0.0" y="0.0" width="401" height="205"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.png" translatesAutoresizingMaskIntoConstraints="NO" id="tO5-DK-xyA">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_home.png" translatesAutoresizingMaskIntoConstraints="NO" id="tO5-DK-xyA">
                     <rect key="frame" x="18" y="34" width="16" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="16" id="35U-Hn-qeh"/>
                         <constraint firstAttribute="height" constant="16" id="TUh-GO-hC8"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkG-Tl-jX9">
-                    <rect key="frame" x="42" y="42" width="0.0" height="0.0"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位中" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkG-Tl-jX9">
+                    <rect key="frame" x="42" y="34" width="40" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -82,7 +82,7 @@
         </view>
     </objects>
     <resources>
-        <image name="location.png" width="17" height="20"/>
+        <image name="location_home.png" width="16" height="16"/>
         <image name="pm.png" width="16" height="16"/>
     </resources>
 </document>

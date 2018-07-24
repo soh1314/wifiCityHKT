@@ -104,7 +104,7 @@ static CGFloat lineWidth = 4.0f;
 
 -(CGFloat)speed{
     if (_endAngle > M_PI) {
-        return 0.3/60.0f;
+        return 0.5/60.0f;
     }
     return 2/60.0f;
 }

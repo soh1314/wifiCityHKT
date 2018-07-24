@@ -16,6 +16,7 @@
 
 
 //x +23.979 y -21.313 z -26.714
+static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap/getPosition";
 
 @interface WifiMapController ()<BMKMapViewDelegate,BMKLocationServiceDelegate>
 
@@ -52,7 +53,6 @@
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
     [_locService startUserLocationService];
-    [self startWifi];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -63,9 +63,7 @@
     [_locService stopUserLocationService];
 }
 
-- (void)startWifi {
-    
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -96,6 +94,16 @@
     _locService.desiredAccuracy = kCLLocationAccuracyBest;//设定定位精度
     
     [self initButton];
+    [self loadData:YES];
+}
+
+- (void)loadData:(BOOL)refresh {
+    
+    [MHNetworkManager postReqeustWithURL:WIFIPositionAPI params:nil successBlock:^(NSDictionary *returnData) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:NO];
 }
 
 - (void)initButton {

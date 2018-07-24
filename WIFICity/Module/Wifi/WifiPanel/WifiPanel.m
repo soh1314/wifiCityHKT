@@ -71,6 +71,9 @@
 
 - (void)setLocation:(WILocation *)location {
     _location = location;
+    if (!location.city || [location.city isEqualToString:@""]) {
+        self.topView.locationLabel.text = @"定位失败";
+    }
     self.topView.locationLabel.text = [NSString stringWithFormat:@"%@%@",location.city,location.area];
     if (location.city) {
         [WIWeatherService getWeatherInfoWithLocation:location.city complete:^(WIWeatherInfo *weatherInfo) {

@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "WICompanyInfo.h"
 
+typedef void(^CompanySeeQuanjinBlock)(void);
+typedef void(^CompanyGotoWebSiteBlock)(void);
+typedef void(^CompanyLocateBlock)(void);
+
 @interface CompanyDetailSectionOne : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *companyNameLabel;
@@ -20,8 +24,25 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressValueLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *registerNotiLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startTimeNotiLabel;
+@property (weak, nonatomic) IBOutlet UILabel *websiteLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *bossNameNotiLabel;
+@property (weak, nonatomic) IBOutlet UILabel *quanjingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *websiteTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *quanjinTitleLabel;
+@property (nonatomic,copy)CompanyLocateBlock locateBlock;
+@property (nonatomic,copy)CompanyGotoWebSiteBlock webSiteBlock;
+@property (nonatomic,copy)CompanySeeQuanjinBlock SeeQuanjinBlock;
+
 - (IBAction)callCompany:(id)sender;
 - (IBAction)locateCompany:(id)sender;
+- (IBAction)seeQuanJin:(id)sender;
+- (IBAction)goToHomeWebSite:(id)sender;
+
 
 @property (nonatomic,strong)WICompanyInfo *info;
 

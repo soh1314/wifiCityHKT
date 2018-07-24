@@ -48,7 +48,7 @@
                 <outlet property="gaoguanCollectionBgView" destination="3tF-hv-aZT" id="fIX-vA-bGm"/>
                 <outlet property="sectionTitleLabel" destination="aXh-f9-H6r" id="l3T-7g-91Y"/>
             </connections>
-            <point key="canvasLocation" x="20.5" y="49"/>
+            <point key="canvasLocation" x="-147" y="37"/>
         </tableViewCell>
     </objects>
 </document>

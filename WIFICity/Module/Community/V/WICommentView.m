@@ -24,6 +24,13 @@
     [self.commentTextView becomeFirstResponder];
     [self unActiveBtn];
     self.commentTextView.delegate = self;
+    [self.commentBtn addTarget:self action:@selector(commit:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)commit:(id)sender {
+    if (self.commit) {
+        self.commit();
+    }
 }
 
 - (void)activeBtn {

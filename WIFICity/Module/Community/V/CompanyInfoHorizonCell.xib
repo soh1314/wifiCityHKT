@@ -19,20 +19,20 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="湖南华宽通科技股份有限公司" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9N-IU-gg8">
-                        <rect key="frame" x="137" y="16" width="327" height="14.5"/>
+                        <rect key="frame" x="137" y="26" width="327" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kC4-Hi-6kO">
-                        <rect key="frame" x="137" y="42.5" width="327" height="66"/>
+                        <rect key="frame" x="137" y="52.5" width="327" height="56"/>
                         <string key="text">经营范围：电子产品、通信设备、监控设备、网络
 系统、计算机软件...</string>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eqh-L6-0Dc">
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eqh-L6-0Dc">
                         <rect key="frame" x="16" y="123.5" width="448" height="0.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -42,7 +42,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjs-8U-jdX">
                         <rect key="frame" x="0.0" y="124" width="480" height="35"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Nt-t9-iWG">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Nt-t9-iWG">
                                 <rect key="frame" x="285" y="9.5" width="16" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" image="collect.png">
@@ -59,7 +59,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIA-lc-HuX">
                                 <rect key="frame" x="423" y="10" width="16" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" image="snap.png">
+                                <state key="normal" image="snap_default.png">
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
@@ -75,7 +75,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已收藏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18W-oG-Wv1">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已收藏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18W-oG-Wv1">
                                 <rect key="frame" x="305" y="10.5" width="37" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -107,10 +107,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uu5-WQ-QkK">
-                        <rect key="frame" x="16" y="20" width="105" height="60"/>
+                        <rect key="frame" x="16" y="20" width="105" height="80"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="8K9-dp-rcZ">
-                                <rect key="frame" x="5" y="5" width="95" height="50"/>
+                                <rect key="frame" x="5" y="10" width="95" height="60"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -119,7 +119,7 @@
                             <constraint firstAttribute="width" constant="105" id="2MW-ro-WDO"/>
                             <constraint firstItem="8K9-dp-rcZ" firstAttribute="centerY" secondItem="Uu5-WQ-QkK" secondAttribute="centerY" id="7fT-EK-i33"/>
                             <constraint firstItem="8K9-dp-rcZ" firstAttribute="centerX" secondItem="Uu5-WQ-QkK" secondAttribute="centerX" id="Z89-Hj-dWj"/>
-                            <constraint firstAttribute="height" constant="60" id="fQK-k3-zug"/>
+                            <constraint firstAttribute="height" constant="80" id="fQK-k3-zug"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="8K9-dp-rcZ" secondAttribute="bottom" constant="5" id="ujX-7L-m6d"/>
                         </constraints>
                     </view>
@@ -133,7 +133,7 @@
                 <constraint firstItem="Uu5-WQ-QkK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="IXP-bY-COO"/>
                 <constraint firstItem="Uu5-WQ-QkK" firstAttribute="top" secondItem="S4z-Yu-NiH" secondAttribute="bottom" constant="12" id="KHo-g1-fIQ"/>
                 <constraint firstItem="fjs-8U-jdX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="LGL-Oy-EiR"/>
-                <constraint firstItem="e9N-IU-gg8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="MT1-jN-OY5"/>
+                <constraint firstItem="e9N-IU-gg8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="26" id="MT1-jN-OY5"/>
                 <constraint firstItem="S4z-Yu-NiH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MZ3-vW-gM9"/>
                 <constraint firstAttribute="trailing" secondItem="Eqh-L6-0Dc" secondAttribute="trailing" constant="16" id="X0z-N7-Gaf"/>
                 <constraint firstItem="fjs-8U-jdX" firstAttribute="top" secondItem="Eqh-L6-0Dc" secondAttribute="bottom" id="dPT-JI-MrG"/>
@@ -167,6 +167,6 @@
         <image name="collect.png" width="16" height="16"/>
         <image name="comment_default.png" width="16" height="14"/>
         <image name="default_img.png" width="105" height="60"/>
-        <image name="snap.png" width="16" height="14"/>
+        <image name="snap_default.png" width="16" height="15"/>
     </resources>
 </document>

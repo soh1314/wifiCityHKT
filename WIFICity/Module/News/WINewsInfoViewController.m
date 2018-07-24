@@ -11,6 +11,7 @@
 #import "HomeNews.h"
 #import "HomeNewsOneCell.h"
 #import "HomeNewsTwoCell.h"
+#import "EaseRefreshHeader.h"
 
 @interface WINewsInfoViewController ()<UITableViewDataSource,UITableViewDataSource>
 
@@ -24,11 +25,14 @@
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeNewsTwoCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HomeNewsTwoCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeNewsOneCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HomeNewsOneCellID"];
+    weakself;
+    self.tableView.mj_header = [EaseRefreshHeader headerWithRefreshingBlock:^{
+        [wself loadData:YES];
+    }];
     
-    // Do any additional setup after loading the view.
 }
 
-- (void)loadData:(NSInteger)index refresh:(BOOL)refresh{
+- (void)loadData:(BOOL)refresh{
     NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, WIFIHomeNewsAPI) params:para successBlock:^(NSDictionary *returnData) {
         if (refresh) {
@@ -38,9 +42,10 @@
         NSArray *newsArray = [modelCls arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         [self.dataArray addObjectsFromArray:newsArray];
         [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
         
     } failureBlock:^(NSError *error) {
-        
+        [self.tableView.mj_header endRefreshing];
     } showHUD:NO];
 }
 

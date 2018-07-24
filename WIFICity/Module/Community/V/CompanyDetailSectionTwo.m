@@ -17,14 +17,20 @@
 }
 
 - (void)initUI {
-    self.abstractLabel.textColor = [UIColor colorWithHexString:@"#141414"];
-    self.edgeView.backgroundColor = [UIColor colorWithHexString:@"#0078FF"];
-    self.notiLabel.textColor = [UIColor colorWithHexString:@"#0078FF"];
+    self.abstractLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+    self.notiLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+    self.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
 }
 
 - (void)setInfo:(WICompanyInfo *)info {
     _info = info;
     self.abstractLabel.text = [info.com_range copy];
+    NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString:self.abstractLabel.text];
+    NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle1 setLineSpacing:8];
+    [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [self.abstractLabel.text length])];
+    [self.abstractLabel setAttributedText:attributedString1];
+
     
 }
 

@@ -32,7 +32,7 @@ static NSString *const FindUserFLowAPI = @"/ws/third/findBandByUserId.do";
 static NSString *const BindUserAPI = @"/ws/user/bingUser.do";
 static NSString *const BindUserVerifyCodeAPI = @"/ws/user/bingPhone.do";
 
-#define kNetError @"哎呀，网络走丢了 请检查手机网络或稍后重试"
+#define kNetError @"网络正忙请检查手机网络"
 #define kNetErrorCode 404
 #define kNetAllSuc 0
 

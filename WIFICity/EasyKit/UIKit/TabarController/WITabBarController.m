@@ -48,12 +48,12 @@
 
 - (void)setUI {
     self.view.backgroundColor = [UIColor whiteColor];
-    self.tabBar.tintColor = [UIColor blackColor];
+    self.tabBar.tintColor = [UIColor colorWithHexString:@"#0078FF"];
     self.tabBar.translucent = NO;
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        [UIColor lightGrayColor], NSForegroundColorAttributeName,
                                                        nil] forState:UIControlStateNormal];
-    UIColor *titleHighlightedColor = [UIColor blackColor];
+    UIColor *titleHighlightedColor = [UIColor colorWithHexString:@"#0078FF"];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        titleHighlightedColor, NSForegroundColorAttributeName,
                                                        nil] forState:UIControlStateSelected];
@@ -68,21 +68,21 @@
     BaseNavController *homeNav = [[BaseNavController alloc]initWithRootViewController:home];
 //     home.jz_navigationBarBackgroundHidden = YES;
 //    home.jz_wantsNavigationBarVisible = NO;
-    homeNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_shouye image:[UIImage qsAutoImageNamed:@"home_default"] selectedImage:[UIImage qsAutoImageNamed:@"home"]];
+    homeNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_shouye image:[UIImage qsImageNamed:@"home_default"] selectedImage:[UIImage qsImageNamed:@"home"]];
     WifiMapController *movieController = [[WifiMapController alloc]init];
     BaseNavController *movieNav = [[BaseNavController alloc]initWithRootViewController:movieController];
-    movieNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_wifi image:[UIImage qsAutoImageNamed:@"location_default"] selectedImage:[UIImage qsAutoImageNamed:@"location"]  ];
+    movieNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_wifi image:[UIImage qsImageNamed:@"location_default"] selectedImage:[UIImage qsImageNamed:@"location"]  ];
     CommunityController *communityController = [[CommunityController alloc]init];
 //    message.jz_wantsNavigationBarVisible = YES;
 //    message.jz_navigationBarBackgroundHidden = NO;
     BaseNavController *communityNav = [[BaseNavController alloc]initWithRootViewController:communityController];
-    communityNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_square image:[UIImage qsAutoImageNamed:@"square_default"]  selectedImage:[UIImage qsAutoImageNamed:@"square"]  ];
+    communityNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_square image:[UIImage qsImageNamed:@"square_default"]  selectedImage:[UIImage qsImageNamed:@"square"]  ];
     
     MyController *userCenter = [[MyController alloc]init];
 //    userCenter.jz_wantsNavigationBarVisible = NO;
 //    userCenter.jz_navigationBarBackgroundHidden = YES;
     BaseNavController *userCenterNav = [[BaseNavController alloc]initWithRootViewController:userCenter];
-    userCenterNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_userCenter image:[UIImage qsAutoImageNamed:@"mine_default"]  selectedImage:[UIImage qsAutoImageNamed:@"mine"] ];
+    userCenterNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_userCenter image:[UIImage qsImageNamed:@"mine_default"]  selectedImage:[UIImage qsImageNamed:@"mine"] ];
     self.viewControllers = @[homeNav,movieNav,communityNav,userCenterNav];
 
 }

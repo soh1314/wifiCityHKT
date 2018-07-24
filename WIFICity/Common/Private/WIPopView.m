@@ -31,6 +31,9 @@
     [commentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(view);
     }];
+    commentView.commit = ^{
+        [context.zh_popupController dismiss];
+    };
     context.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
     [context.zh_popupController presentContentView:view duration:0.35 springAnimated:NO];
     context.zh_popupController.willDismiss = ^(zhPopupController * _Nonnull popupController) {

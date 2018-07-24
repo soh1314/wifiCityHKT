@@ -28,6 +28,10 @@
     self.commentBgView.layer.borderColor = [UIColor colorWithHexString:@"#E3E3E3"].CGColor;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapCommentBgView:)];
     [self.commentBgView addGestureRecognizer:tap];
+    self.lineView.backgroundColor = [UIColor colorWithHexString:@"#E3E3E3"];
+    [self.likeBtn setUnPressImageName:@"snap_default"];
+    [self.likeBtn setPressImageName:@"snap"];
+    self.likeBtn.selected = NO;
 }
 
 - (void)tapCommentBgView:(UITapGestureRecognizer *)gesture {
@@ -36,10 +40,7 @@
     }
 }
 
-- (IBAction)collect:(id)sender {
-}
 
-- (IBAction)like:(id)sender {
-    
-}
+
+
 @end
