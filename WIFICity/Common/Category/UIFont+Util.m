@@ -29,7 +29,7 @@ static float scale = 1;
     }
     else
     {
-       scale = (KRATIO-0.05);
+       scale = (KRATIO+0.1);
     }
     
     

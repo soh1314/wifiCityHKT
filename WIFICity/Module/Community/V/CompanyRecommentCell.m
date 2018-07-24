@@ -8,7 +8,7 @@
 
 #import "CompanyRecommentCell.h"
 #import "EasyCacheHelper.h"
-
+#import "UILabel+Util.h"
 @implementation CompanyRecommentCell
 
 - (void)awakeFromNib {
@@ -20,6 +20,7 @@
 - (void)initUI {
     self.nameLabel.textColor = [UIColor colorWithHexString:@"#141414"];
     self.desLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+    
 }
 
 - (void)setCompanyInfo:(WICompanyInfo *)companyInfo {
@@ -41,6 +42,7 @@
     self.nameLabel.text = [_companyInfo.com_name copy];
     self.desLabel.text = [_companyInfo.com_range copy];
     self.logoIcon.contentMode = UIViewContentModeScaleAspectFit;
+    [UILabel changeLineSpaceForLabel:self.desLabel WithSpace:6];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

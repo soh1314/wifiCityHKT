@@ -18,6 +18,7 @@
 
 - (void)initUI {
     self.contentView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

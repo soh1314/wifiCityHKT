@@ -7,7 +7,7 @@
 //
 
 #import "CompanyDetailCommentCell.h"
-
+#import "UILabel+Util.h"
 @implementation CompanyDetailCommentCell
 
 - (void)awakeFromNib {
@@ -25,6 +25,7 @@
     self.avartar.layer.cornerRadius = 16;
     self.nameLabel.textColor = [UIColor colorWithHexString:@"#141414"];
     self.avartar.backgroundColor = randomColor;
+    [UILabel changeLineSpaceForLabel:self.commentContentLabel WithSpace:6];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

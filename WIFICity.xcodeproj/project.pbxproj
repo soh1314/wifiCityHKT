@@ -36,7 +36,6 @@
 		163A08F520E48C5A00DAC894 /* WIFIAnimationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08F420E48C5A00DAC894 /* WIFIAnimationLayer.m */; };
 		163A08FF20E5CCD600DAC894 /* EasyCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08FE20E5CCD600DAC894 /* EasyCacheHelper.m */; };
 		1640E44A20F49B73007F7D0C /* AILoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640E44920F49B73007F7D0C /* AILoadingView.m */; };
-		1654A6EC20DDF6A000AFC322 /* UILabel+wordStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */; };
 		1654A6EF20DE2EB300AFC322 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1654A6ED20DE2EB200AFC322 /* WebViewController.m */; };
 		1656642220EF6D9E00063D0C /* CompanySearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656642120EF6D9E00063D0C /* CompanySearchController.m */; };
 		1656642620EF702700063D0C /* EasyAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656642520EF702700063D0C /* EasyAnimation.m */; };
@@ -317,7 +316,7 @@
 		16D64B7820CF7CE800ED74C8 /* FFBadgedBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B5920CF7CE500ED74C8 /* FFBadgedBarButtonItem.m */; };
 		16D64B7920CF7CE800ED74C8 /* UIImage+base.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B5A20CF7CE500ED74C8 /* UIImage+base.m */; };
 		16D64B7A20CF7CE800ED74C8 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B5B20CF7CE500ED74C8 /* NSString+Additions.m */; };
-		16D64B7B20CF7CE800ED74C8 /* UILabel+Adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B6020CF7CE600ED74C8 /* UILabel+Adapter.m */; };
+		16D64B7B20CF7CE800ED74C8 /* UILabel+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B6020CF7CE600ED74C8 /* UILabel+Util.m */; };
 		16D64B7C20CF7CE800ED74C8 /* UIButton+verifyBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B6320CF7CE600ED74C8 /* UIButton+verifyBtn.m */; };
 		16D64B7D20CF7CE800ED74C8 /* UIFont+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B6420CF7CE600ED74C8 /* UIFont+Util.m */; };
 		16D64B7E20CF7CE800ED74C8 /* UIButton+adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D64B6520CF7CE600ED74C8 /* UIButton+adapter.m */; };
@@ -621,8 +620,6 @@
 		163A08FE20E5CCD600DAC894 /* EasyCacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyCacheHelper.m; sourceTree = "<group>"; };
 		1640E44820F49B72007F7D0C /* AILoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AILoadingView.h; sourceTree = "<group>"; };
 		1640E44920F49B73007F7D0C /* AILoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AILoadingView.m; sourceTree = "<group>"; };
-		1654A6EA20DDF6A000AFC322 /* UILabel+wordStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+wordStyle.h"; sourceTree = "<group>"; };
-		1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+wordStyle.m"; sourceTree = "<group>"; };
 		1654A6ED20DE2EB200AFC322 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		1654A6EE20DE2EB200AFC322 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		1656642020EF6D9E00063D0C /* CompanySearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanySearchController.h; sourceTree = "<group>"; };
@@ -1011,7 +1008,7 @@
 		16D64B5D20CF7CE600ED74C8 /* NSDateFormatter+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Category.h"; sourceTree = "<group>"; };
 		16D64B5E20CF7CE600ED74C8 /* UIColor+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Theme.h"; sourceTree = "<group>"; };
 		16D64B5F20CF7CE600ED74C8 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
-		16D64B6020CF7CE600ED74C8 /* UILabel+Adapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Adapter.m"; sourceTree = "<group>"; };
+		16D64B6020CF7CE600ED74C8 /* UILabel+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Util.m"; sourceTree = "<group>"; };
 		16D64B6220CF7CE600ED74C8 /* NSDate+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Category.h"; sourceTree = "<group>"; };
 		16D64B6320CF7CE600ED74C8 /* UIButton+verifyBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+verifyBtn.m"; sourceTree = "<group>"; };
 		16D64B6420CF7CE600ED74C8 /* UIFont+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Util.m"; sourceTree = "<group>"; };
@@ -1025,7 +1022,7 @@
 		16D64B6C20CF7CE700ED74C8 /* NSDate+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Category.m"; sourceTree = "<group>"; };
 		16D64B6D20CF7CE700ED74C8 /* UIButton+adapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+adapter.h"; sourceTree = "<group>"; };
 		16D64B6F20CF7CE700ED74C8 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
-		16D64B7020CF7CE700ED74C8 /* UILabel+Adapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Adapter.h"; sourceTree = "<group>"; };
+		16D64B7020CF7CE700ED74C8 /* UILabel+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Util.h"; sourceTree = "<group>"; };
 		16D64B7120CF7CE700ED74C8 /* FFBadgedBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFBadgedBarButtonItem.h; sourceTree = "<group>"; };
 		16D64B7320CF7CE700ED74C8 /* UITextView+ZWPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+ZWPlaceHolder.m"; sourceTree = "<group>"; };
 		16D64B7420CF7CE700ED74C8 /* UIScreen+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+Additions.m"; sourceTree = "<group>"; };
@@ -2342,8 +2339,8 @@
 				16D64B5A20CF7CE500ED74C8 /* UIImage+base.m */,
 				1691DD8120EC75FF008AF2BE /* UIImageView+EaseEffect.h */,
 				1691DD8220EC75FF008AF2BE /* UIImageView+EaseEffect.m */,
-				16D64B7020CF7CE700ED74C8 /* UILabel+Adapter.h */,
-				16D64B6020CF7CE600ED74C8 /* UILabel+Adapter.m */,
+				16D64B7020CF7CE700ED74C8 /* UILabel+Util.h */,
+				16D64B6020CF7CE600ED74C8 /* UILabel+Util.m */,
 				16D64B6820CF7CE600ED74C8 /* UIScreen+Additions.h */,
 				16D64B7420CF7CE700ED74C8 /* UIScreen+Additions.m */,
 				16D64B5820CF7CE500ED74C8 /* UITextView+ZWPlaceHolder.h */,
@@ -2352,8 +2349,6 @@
 				16D64B7520CF7CE700ED74C8 /* UIView+borderLine.m */,
 				16D64B6A20CF7CE600ED74C8 /* UIViewController+EasyUtil.h */,
 				16D64B6920CF7CE600ED74C8 /* UIViewController+EasyUtil.m */,
-				1654A6EA20DDF6A000AFC322 /* UILabel+wordStyle.h */,
-				1654A6EB20DDF6A000AFC322 /* UILabel+wordStyle.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -3564,9 +3559,8 @@
 				16D64B5320CF7BA500ED74C8 /* GCDThrottle.m in Sources */,
 				16F8876921005A2A00136C7F /* BaseNavController.m in Sources */,
 				16D64B7D20CF7CE800ED74C8 /* UIFont+Util.m in Sources */,
-				1654A6EC20DDF6A000AFC322 /* UILabel+wordStyle.m in Sources */,
 				169D83BF20DC828F00AA590F /* EasyTableViewFooter.m in Sources */,
-				16D64B7B20CF7CE800ED74C8 /* UILabel+Adapter.m in Sources */,
+				16D64B7B20CF7CE800ED74C8 /* UILabel+Util.m in Sources */,
 				163A08B520E1E38600DAC894 /* BindPhoneModel.m in Sources */,
 				16D64B9A20CF980F00ED74C8 /* AccountManager.m in Sources */,
 				166CA58B20F33D9B00E4CBE3 /* WICompanyCategroyCell.m in Sources */,
