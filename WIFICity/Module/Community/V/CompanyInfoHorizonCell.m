@@ -7,6 +7,7 @@
 //
 
 #import "CompanyInfoHorizonCell.h"
+#import "UILabel+Util.h"
 
 @implementation CompanyInfoHorizonCell
 
@@ -37,6 +38,7 @@
     [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
     }];
+//    [UILabel changeLineSpaceForLabel:self.companyDesLabel WithSpace:1.5];
 }
 
 @end

@@ -371,7 +371,7 @@
 
 + (NSString *)unixTimeStamp {
     NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
-    long long dTime = [[NSNumber numberWithDouble:timeInterval] longLongValue]; // 将double转为long long型
+    long long dTime = [[NSNumber numberWithDouble:timeInterval] longLongValue]*1000; // 将double转为long long型
     NSString *tempTime = [NSString stringWithFormat:@"%llu",dTime];
     return tempTime;
 }

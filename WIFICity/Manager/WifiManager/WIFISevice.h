@@ -22,11 +22,14 @@
 @property (nonatomic,weak)id <WifiPanelProtocol>panelDelegate;
 @property (nonatomic,copy)NSString *orgID;
 @property (nonatomic,assign)BOOL recoveryNet;
+@property (nonatomic,strong)NSMutableArray *m_wifiArray;
 
 - (void)setNetMonitor;
 +(WINetStatus)netStatus;
 +(BOOL)isHKTWifi;
 - (void)connectWifi;
 - (void)stopWifi;
+- (void)scanWifiList;
+- (void)applicationConnectWifi:(WIFIInfo *)info;
 
 @end

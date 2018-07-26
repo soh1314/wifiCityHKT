@@ -15,6 +15,8 @@
 
 @property (nonatomic,readwrite,copy)NSString *lastHktWifiMac;
 @property (nonatomic,strong)NSMutableArray *validatArray;
+@property (nonatomic,assign)NSInteger validateTime;
+@property (nonatomic,strong)NSLock *lock;
 
 @end
 
@@ -71,6 +73,9 @@
         return;
     }
     NSString *wifiIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
+    if (!wifiIp) {
+        return;
+    }
     NSLog(@"当前wifi的IP地址%@",wifiIp);
     NSArray *ipArray = [wifiIp componentsSeparatedByString:@"."];
     NSMutableString *routIP = [NSMutableString string];
@@ -107,14 +112,17 @@
             [[NSUserDefaults standardUserDefaults]setObject:self.lastHktWifiMac forKey:LASTHKTWIFIMACKEY];
             [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorSuccessNoti object:nil];
             NSLog(@"认证成功");
-        } else {
-            [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
-            NSLog(@"认证失败");
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"认证网络问题");
-        [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
+        self.validateTime ++;
+        if (self.validateTime >= 10) {
+            self.validateTime = 0;
+        } else {
+//             [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
+        }
+       
     }];
    
 }

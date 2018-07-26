@@ -7,7 +7,7 @@
 //
 
 #import "CompanyInfoVerticalCell.h"
-
+#import "UILabel+Util.h"
 @implementation CompanyInfoVerticalCell
 
 - (void)awakeFromNib {
@@ -40,6 +40,7 @@
     [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
     }];
+//    [UILabel changeLineSpaceForLabel:self.desLabel WithSpace:1.5];
     
 }
 

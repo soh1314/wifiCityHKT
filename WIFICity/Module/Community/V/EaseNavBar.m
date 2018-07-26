@@ -68,7 +68,7 @@
         self.bgImageView.image = [UIImage qsImageNamed:@"square_lg.png"] ;
         
     } else {
-        self.bgImageView.image = [UIImage qsImageNamed:@""];
+        self.bgImageView.image = nil;
     }
     
     if (y >= 0 && y <= 40) {

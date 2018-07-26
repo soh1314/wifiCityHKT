@@ -29,6 +29,9 @@
 }
 
 - (void)initUI {
+    [self.serviceImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(40);
+    }];
     self.serviceNameLabel.textColor = [UIColor colorWithHexString:@"#666666"];
     self.serviceImageView.contentMode = UIViewContentModeScaleAspectFit;
 }

@@ -12,5 +12,6 @@
 
 @property (nonatomic,copy)NSString *categoryID;
 @property (nonatomic,copy)NSArray *categoryArray;
+@property (nonatomic,copy)NSArray *productArray;
 
 @end

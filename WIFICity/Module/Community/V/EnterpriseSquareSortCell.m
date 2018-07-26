@@ -118,7 +118,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.cellType == 0) {
-        return CGSizeMake((KSCREENW-4*16)/3.0f, 68);
+        return CGSizeMake((KSCREENW-4*16)/3.0f, 72);
     } else {
         return CGSizeMake(49,20);
     }

@@ -147,7 +147,7 @@
         [self.tableView.mj_header endRefreshing];
     } failureBlock:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
-        kHudNetError;
+//        kHudNetError;
     } showHUD:NO];
 }
 

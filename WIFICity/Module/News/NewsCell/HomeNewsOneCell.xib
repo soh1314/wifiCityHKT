@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,57 +19,50 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中方保持中立？若美国反击朝鲜导弹打击是标题…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOH-dW-8iJ">
-                        <rect key="frame" x="16" y="22" width="229.5" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="fsP-uM-XxV"/>
-                        </constraints>
+                        <rect key="frame" x="16" y="16" width="229" height="38.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vJe-JI-Uz2">
-                        <rect key="frame" x="257.5" y="22" width="113.5" height="74.5"/>
+                        <rect key="frame" x="257" y="16" width="114" height="75"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="74.5" id="5dp-kw-ari"/>
-                            <constraint firstAttribute="width" secondItem="vJe-JI-Uz2" secondAttribute="height" multiplier="38:25" id="LKK-OQ-Lig"/>
+                            <constraint firstAttribute="width" constant="114" id="AtG-HY-KcR"/>
+                            <constraint firstAttribute="height" constant="75" id="fua-uD-ROV"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAW-6m-GBf">
-                        <rect key="frame" x="16" y="83" width="0.0" height="13.5"/>
+                        <rect key="frame" x="16" y="84.5" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网易新闻" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM3-Hb-Uvu">
-                        <rect key="frame" x="24" y="83" width="45" height="13.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="网易新闻" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM3-Hb-Uvu">
+                        <rect key="frame" x="24" y="66.5" width="45" height="36"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2小时前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sc1-Hg-MMw">
-                        <rect key="frame" x="77" y="83" width="41" height="14"/>
+                        <rect key="frame" x="77" y="77.5" width="41" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="vJe-JI-Uz2" firstAttribute="bottom" secondItem="yAW-6m-GBf" secondAttribute="bottom" id="70G-Wk-qJ1"/>
-                    <constraint firstItem="eM3-Hb-Uvu" firstAttribute="centerY" secondItem="yAW-6m-GBf" secondAttribute="centerY" id="B2C-ZK-Vdg"/>
+                    <constraint firstItem="eM3-Hb-Uvu" firstAttribute="top" secondItem="eOH-dW-8iJ" secondAttribute="bottom" constant="12" id="1UM-yj-Ksn"/>
                     <constraint firstAttribute="trailing" secondItem="vJe-JI-Uz2" secondAttribute="trailing" constant="16" id="Dqn-BE-tgQ"/>
+                    <constraint firstItem="vJe-JI-Uz2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="H2z-z9-wBx"/>
                     <constraint firstItem="Sc1-Hg-MMw" firstAttribute="leading" secondItem="eM3-Hb-Uvu" secondAttribute="trailing" constant="8" id="Hif-jJ-x3H"/>
-                    <constraint firstItem="Sc1-Hg-MMw" firstAttribute="centerY" secondItem="yAW-6m-GBf" secondAttribute="centerY" id="JJ1-Nn-48r"/>
-                    <constraint firstAttribute="bottom" secondItem="yAW-6m-GBf" secondAttribute="bottom" constant="22" id="TA7-Yv-acK"/>
-                    <constraint firstItem="eM3-Hb-Uvu" firstAttribute="bottom" secondItem="yAW-6m-GBf" secondAttribute="bottom" id="Wqp-be-mLa"/>
                     <constraint firstItem="vJe-JI-Uz2" firstAttribute="top" secondItem="eOH-dW-8iJ" secondAttribute="top" id="XCu-vT-CWT"/>
                     <constraint firstItem="eOH-dW-8iJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="XcK-m6-Goy"/>
-                    <constraint firstItem="vJe-JI-Uz2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XmL-hK-HmE"/>
                     <constraint firstItem="eM3-Hb-Uvu" firstAttribute="leading" secondItem="yAW-6m-GBf" secondAttribute="trailing" constant="8" id="XpD-hV-Laz"/>
-                    <constraint firstItem="vJe-JI-Uz2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="c79-aG-Tyy"/>
                     <constraint firstItem="yAW-6m-GBf" firstAttribute="leading" secondItem="eOH-dW-8iJ" secondAttribute="leading" id="dx9-3q-3ql"/>
-                    <constraint firstItem="eOH-dW-8iJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="eeK-Wc-ttg"/>
-                    <constraint firstItem="yAW-6m-GBf" firstAttribute="top" secondItem="eOH-dW-8iJ" secondAttribute="bottom" constant="21" id="iEZ-c0-fDB"/>
+                    <constraint firstAttribute="bottom" secondItem="eM3-Hb-Uvu" secondAttribute="bottom" constant="16" id="eN7-po-Wba"/>
+                    <constraint firstItem="yAW-6m-GBf" firstAttribute="centerY" secondItem="eM3-Hb-Uvu" secondAttribute="centerY" id="hwZ-ou-8cz"/>
                     <constraint firstItem="vJe-JI-Uz2" firstAttribute="leading" secondItem="eOH-dW-8iJ" secondAttribute="trailing" constant="12" id="lM8-yx-WCr"/>
+                    <constraint firstItem="Sc1-Hg-MMw" firstAttribute="centerY" secondItem="eM3-Hb-Uvu" secondAttribute="centerY" id="pDA-Cb-0wH"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

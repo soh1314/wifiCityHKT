@@ -19,9 +19,7 @@
 - (instancetype)qsAdapterinitWithCoder:(NSCoder *)aDecoder {
     [self qsAdapterinitWithCoder:aDecoder];
     if (self) {
-        if (!IPHONE4OR4S || !IPHONE5OR5S) {
-            self.font = [UIFont fontWithName:self.font.fontName size:self.font.pointSize];
-        }
+        self.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:self.font.pointSize];
     }
     return self;
 }
@@ -35,7 +33,7 @@
     [paragraphStyle setLineSpacing:space];
     [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [labelText length])];
     label.attributedText = attributedString;
-    [label sizeToFit];
+//    [label sizeToFit];
     
 }
 
@@ -46,7 +44,7 @@
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [labelText length])];
     label.attributedText = attributedString;
-    [label sizeToFit];
+//    [label sizeToFit];
     
 }
 
@@ -58,7 +56,7 @@
     [paragraphStyle setLineSpacing:lineSpace];
     [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [labelText length])];
     label.attributedText = attributedString;
-    [label sizeToFit];
+//    [label sizeToFit];
     
 }
 

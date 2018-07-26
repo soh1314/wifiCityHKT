@@ -12,6 +12,7 @@
 #import "EaseSearchBar.h"
 #import "EaseDropMenu.h"
 #import "EaseRefreshFooter.h"
+#import "EaseRefreshHeader.h"
 
 #import "CompanyDetailController.h"
 #import "CompanySearchController.h"
@@ -43,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setBlackNavBar];
-    self.showType = 0;
+    self.showType = 1;
     self.page = 1;
     [self initUI];
     [self loadData:YES];
@@ -83,8 +84,10 @@
             [self.collectionView reloadData];
         }
         [self.collectionView.mj_footer endRefreshing];
+        [self.collectionView.mj_header endRefreshing];
     } failureBlock:^(NSError *error) {
        [self.collectionView.mj_footer endRefreshing];
+       [self.collectionView.mj_header endRefreshing];
     } showHUD:NO];
 }
 
@@ -103,6 +106,9 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"CompanyInfoHorizonCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CompanyInfoHorizonCellID"];
     self.collectionView.mj_footer = [EaseRefreshFooter footerWithRefreshingBlock:^{
         [wself loadData:NO];
+    }];
+    self.collectionView.mj_header = [EaseRefreshHeader headerWithRefreshingBlock:^{
+        [wself loadData:YES];
     }];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithImage:[UIImage qsImageNamed:@"heng"] style:UIBarButtonItemStylePlain target:self action:@selector(changeCollectionViewStyle:)];
     self.navigationItem.rightBarButtonItem = rightBarItem;
@@ -153,9 +159,22 @@
         categoryView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
         return categoryView;
     } else {
-        return view;
+        
+        WICompanyCategroyView *categoryView  = [[WICompanyCategroyView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, EaseDropItemContentViewHeight)];
+        weakself;
+        categoryView.pick = ^(NSInteger idx) {
+            WICompanyCategory *category = wself.categoryArray[idx];
+            wself.categoryID = [category.ID copy];
+            wself.sortTopView.selectItemBlock(index, category.entName);
+            [wself loadData:YES];
+            [wself.sortTopView hideDropView];
+        };
+        categoryView.categoryArray = [self.categoryArray copy];
+        categoryView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
+        return categoryView;
     }
    
+    
 }
 
 - (void)dropContentTapActionForItem:(NSInteger)index {
@@ -167,7 +186,6 @@
         UIView *view = [self dropContentViewForItem:index];
         if ([view isKindOfClass:[WICompanyCategroyView class]]) {
             WICompanyCategroyView *categoryView = (WICompanyCategroyView *)view;
-            view.backgroundColor = [UIColor redColor];
             [categoryView.collectionView reloadData];
             __weak typeof(self)wself = self;
             categoryView.pick = ^(NSInteger idx) {
@@ -176,6 +194,7 @@
             };
         }
     }
+
 }
 
 #pragma mark -collect delegate
@@ -213,9 +232,9 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.showType == 0) {
-        return CGSizeMake((KSCREENW-24)/2.0f,166);
+        return CGSizeMake((KSCREENW-24)/2.0f,182);
     } else {
-        return CGSizeMake(KSCREENW,133);
+        return CGSizeMake(KSCREENW,120);
     }
 }
 

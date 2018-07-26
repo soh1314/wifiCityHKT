@@ -15,11 +15,11 @@
 }
 
 + (UIColor *)themeColor {
-    return [UIColor colorWithHexString:@"#80BD01"];
+    return [UIColor colorWithHexString:@"#0078FF"];
 }
 
 + (UIColor *)themeRedColor {
-    return [UIColor colorWithHexString:@"#FF3939"];
+    return [UIColor colorWithHexString:@"#149eff"];
 }
 
 + (UIColor *)themelightGrayColr {

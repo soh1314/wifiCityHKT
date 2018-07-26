@@ -16,5 +16,6 @@
 @property (nonatomic,copy) NSString * mac;
 @property (nonatomic,copy) NSString * wifiName;
 @property (nonatomic,copy) NSString * distance;
+@property (nonatomic,copy) NSString * gw_id;
 
 @end

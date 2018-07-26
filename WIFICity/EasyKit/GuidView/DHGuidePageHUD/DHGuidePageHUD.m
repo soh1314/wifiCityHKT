@@ -70,11 +70,14 @@
             // 设置在最后一张图片上显示进入体验按钮
             if (i == imageNameArray.count-1 && isHidden == NO) {
                 [imageView setUserInteractionEnabled:YES];
-                UIButton *startButton = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.3, DDScreenH*0.6, DDScreenW*0.4, 40)];
-                [startButton setTitle:@"开始体验" forState:UIControlStateNormal];
-                [startButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                UIButton *startButton = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.3, DDScreenH*0.8, DDScreenW*0.4, 40)];
+                [startButton setTitle:@"进入无线城市" forState:UIControlStateNormal];
+                [startButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 [startButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
-                [startButton setBackgroundImage:[UIImage imageNamed:@"GuideImage.bundle/guideImage_button_backgound"] forState:UIControlStateNormal];
+                startButton.clipsToBounds = YES;
+                startButton.layer.cornerRadius = 5;
+//                [startButton setBackgroundImage:[UIImage imageNamed:@"GuideImage.bundle/guideImage_button_backgound"] forState:UIControlStateNormal];
+                [startButton setBackgroundColor:[UIColor themeColor]];
                 [startButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
 //                startButton.layer.masksToBounds = YES;
 //                startButton.layer.cornerRadius = 5.0f;
@@ -85,7 +88,7 @@
         }
         
         // 设置引导页上的页面控制器
-        self.imagePageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(DDScreenW*0.0, DDScreenH*0.75, DDScreenW*1.0, DDScreenH*0.1)];
+        self.imagePageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(DDScreenW*0.0, DDScreenH*0.82, DDScreenW*1.0, DDScreenH*0.1)];
         self.imagePageControl.currentPage = 0;
         self.imagePageControl.numberOfPages = imageNameArray.count;
         self.imagePageControl.pageIndicatorTintColor = [UIColor grayColor];
@@ -98,9 +101,25 @@
     return self;
 }
 
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    int page = scrollView.contentOffset.x / scrollView.frame.size.width;
+    
+    if (page >= self.imageArray.count-2) {
+        self.imagePageControl.hidden = YES;
+    } else {
+        self.imagePageControl.hidden = NO;
+    }
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollview {
     int page = scrollview.contentOffset.x / scrollview.frame.size.width;
-    [self.imagePageControl setCurrentPage:page];
+    
+    if (page >= self.imageArray.count-1) {
+        self.imagePageControl.hidden = YES;
+    } else {
+        [self.imagePageControl setCurrentPage:page];
+        self.imagePageControl.hidden = NO;
+    }
     if (self.imageArray && page == self.imageArray.count-1 && self.slideInto == NO) {
         [self buttonClick:nil];
     }

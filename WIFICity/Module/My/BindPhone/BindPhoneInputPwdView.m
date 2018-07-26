@@ -62,11 +62,11 @@
 
 - (IBAction)checkProtocol:(id)sender {
     self.bindphoneModel.checkProtocol = self.checkBtn.selected;
-    if (self.checkBtn.selected) {
-        [self.checkBtn setImage:[UIImage qsImageNamed:@""] forState:UIControlStateNormal];
-    } else {
-        [self.checkBtn setImage:[UIImage qsImageNamed:@""] forState:UIControlStateNormal];
-    }
+//    if (self.checkBtn.selected) {
+//        [self.checkBtn setImage:[UIImage qsImageNamed:@""] forState:UIControlStateNormal];
+//    } else {
+//        [self.checkBtn setImage:[UIImage qsImageNamed:@""] forState:UIControlStateNormal];
+//    }
     
 }
 

@@ -90,11 +90,21 @@ static Dialog *instance = nil;
 
 + (void)simpleToast:(NSString *)message
 {
-    [SVProgressHUD showImage:[UIImage qsImageNamed:@""] status:message];
-    [SVProgressHUD setCornerRadius:5];
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    [SVProgressHUD dismissWithDelay:1.5];
+//    [SVProgressHUD showImage:[UIImage qsImageNamed:@""] status:message];
+//    [SVProgressHUD setCornerRadius:5];
+//    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+//    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+//    [SVProgressHUD dismissWithDelay:1.5];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.animationType = MBProgressHUDAnimationZoomOut;
+    hud.minShowTime = 0.5;
+    hud.labelText = message;
+    hud.labelFont = [UIFont systemFontOfSize:12];
+    hud.margin = 10.f;
+    hud.yOffset = -20.f;
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:2];
 }
 
 + (void)hideSimpleToast

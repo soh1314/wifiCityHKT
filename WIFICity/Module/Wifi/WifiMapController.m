@@ -32,13 +32,13 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 
 @implementation WifiMapController
 
-//- (id)init {
-//    if (self = [super init]) {
-//        self.hidesBottomBarWhenPushed = YES;
-//
-//    }
-//    return self;
-//}
+- (id)init {
+    if (self = [super init]) {
+        self.hidesBottomBarWhenPushed = YES;
+
+    }
+    return self;
+}
 
 - (void)dealloc {
     if (_mapView) {
@@ -49,7 +49,7 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 -(void)viewWillAppear:(BOOL)animated
 {
     [_mapView viewWillAppear];
-    [self setWhiteTrasluntNavBar];
+//    [self setWhiteTrasluntNavBar];
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
     [_locService startUserLocationService];
@@ -67,7 +67,8 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = tabbar_wifi;
+    [self setBlackNavBar];
+    self.title = @"WIFI地图";
     _mapManager = [[BMKMapManager alloc]init];
     BOOL ret = [_mapManager start:@"NAjg8KLy6H3sotqy7Qa1UQRoVwvnXagz" generalDelegate:nil];
     if (!ret) {
@@ -92,7 +93,6 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
     _locService.desiredAccuracy=kCLLocationAccuracyBest;
     _locService.distanceFilter = 200;//设定定位的最小更新距离，这里设置 200m 定位一次，频繁定位
     _locService.desiredAccuracy = kCLLocationAccuracyBest;//设定定位精度
-    
     [self initButton];
     [self loadData:YES];
 }
@@ -100,6 +100,9 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 - (void)loadData:(BOOL)refresh {
     
     [MHNetworkManager postReqeustWithURL:WIFIPositionAPI params:nil successBlock:^(NSDictionary *returnData) {
+        NSArray *data = (NSArray *)returnData;
+        NSArray *wifiArray = [WIGeometryInfo arrayOfModelsFromDictionaries:data error:nil];
+        [self getNearWifi:wifiArray];
         
     } failureBlock:^(NSError *error) {
         
@@ -127,7 +130,7 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 }
 
 - (void)refreshNearWifi:(id)sender {
-    [self getNearWifi];
+    
 }
 
 - (void)relocate:(id)sender {
@@ -135,38 +138,31 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
    [_locService startUserLocationService];
 }
 
-- (void)getNearWifi {
+- (void)getNearWifi:(NSArray *)wifiArray {
     
-    WIGeometryInfo *model = [[WIGeometryInfo alloc]init];
-    model.wifiName = @"hkt1";
-    model.mac = @"sdfdsLsdfsdf";
-    model.longitude = @"112.863" ;
-    model.latitude = @"28.248";
-    
-    WIGeometryInfo *model1 = [[WIGeometryInfo alloc]init];
-    model1.wifiName = @"hkt2";
-    model1.mac = @"sdfdsLsdfsdfs";
-    model1.longitude = @"112.864" ;
-    model1.latitude = @"28.245";
-    
-    WIFIAnnotation* annotation = [[WIFIAnnotation alloc]init];
-    CLLocationCoordinate2D coor;
-    coor = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
-//    annotation.title = model.wifiName;
-    annotation.coordinate = coor;
-    annotation.model = model;
-    
-    WIFIAnnotation* annotation1 = [[WIFIAnnotation alloc]init];
-    CLLocationCoordinate2D coor1;
-    coor1 = CLLocationCoordinate2DMake([model1.latitude doubleValue], [model1.longitude doubleValue]);
-    //    annotation.title = model.wifiName;
-    annotation1.coordinate = coor1;
-    annotation1.model = model1;
-    
-    [self.annotationArray addObject:annotation];
-    [self.annotationArray addObject:annotation1];
-    
-    
+//    WIGeometryInfo *model = [[WIGeometryInfo alloc]init];
+//    model.wifiName = @"hkt1";
+//    model.mac = @"sdfdsLsdfsdf";
+//    model.longitude = @"112.863" ;
+//    model.latitude = @"28.248";
+//
+//    WIGeometryInfo *model1 = [[WIGeometryInfo alloc]init];
+//    model1.wifiName = @"hkt2";
+//    model1.mac = @"sdfdsLsdfsdfs";
+//    model1.longitude = @"112.864" ;
+//    model1.latitude = @"28.245";
+//
+    [self.annotationArray removeAllObjects];
+    for (int i = 0 ; i < wifiArray.count; i++) {
+        WIGeometryInfo *model = wifiArray[i];
+        WIFIAnnotation* annotation = [[WIFIAnnotation alloc]init];
+        CLLocationCoordinate2D coor;
+        coor = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
+        //    annotation.title = model.wifiName;
+        annotation.coordinate = coor;
+        annotation.model = model;
+        [self.annotationArray addObject:annotation];
+    }
     [_mapView addAnnotations:self.annotationArray];
 }
 

@@ -20,6 +20,7 @@
     self.abstractLabel.textColor = [UIColor colorWithHexString:@"#666666"];
     self.notiLabel.textColor = [UIColor colorWithHexString:@"#666666"];
     self.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
+
 }
 
 - (void)setInfo:(WICompanyInfo *)info {

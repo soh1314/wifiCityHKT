@@ -12,6 +12,7 @@
 #import "BaseNavController.h"
 //#import "JZNavigationExtension.h"
 #import "WifiMapController.h"
+#import "WifiCheckController.h"
 
 @interface TGTabBarController ()<UITabBarControllerDelegate>
 
@@ -53,7 +54,7 @@
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        [UIColor lightGrayColor], NSForegroundColorAttributeName,
                                                        nil] forState:UIControlStateNormal];
-    UIColor *titleHighlightedColor = [UIColor colorWithHexString:@"#0078FF"];
+    UIColor *titleHighlightedColor = [UIColor colorWithHexString:@"#0078FF"]; //0078FF
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        titleHighlightedColor, NSForegroundColorAttributeName,
                                                        nil] forState:UIControlStateSelected];
@@ -69,9 +70,9 @@
 //     home.jz_navigationBarBackgroundHidden = YES;
 //    home.jz_wantsNavigationBarVisible = NO;
     homeNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_shouye image:[UIImage qsImageNamed:@"home_default"] selectedImage:[UIImage qsImageNamed:@"home"]];
-    WifiMapController *movieController = [[WifiMapController alloc]init];
+    WifiCheckController *movieController = [[WifiCheckController alloc]init];
     BaseNavController *movieNav = [[BaseNavController alloc]initWithRootViewController:movieController];
-    movieNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_wifi image:[UIImage qsImageNamed:@"location_default"] selectedImage:[UIImage qsImageNamed:@"location"]  ];
+    movieNav.tabBarItem = [[UITabBarItem alloc]initWithTitle:tabbar_wifi image:[UIImage qsImageNamed:@"detection_default"] selectedImage:[UIImage qsImageNamed:@"detection"]  ];
     CommunityController *communityController = [[CommunityController alloc]init];
 //    message.jz_wantsNavigationBarVisible = YES;
 //    message.jz_navigationBarBackgroundHidden = NO;

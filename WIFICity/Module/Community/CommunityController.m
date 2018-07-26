@@ -11,6 +11,7 @@
 #import "CompanySearchController.h"
 #import "WebViewController.h"
 #import "CompanyDetailController.h"
+#import "CompanyRecommendController.h"
 
 #import "CompanyRecommentCell.h"
 #import "EnterPriseSquareHomeInfoCell.h"
@@ -147,7 +148,7 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 188;
+        return 196;
     } else if (indexPath.section == 1) {
         return 69;
         
@@ -242,7 +243,8 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
         CompanyRecommentHeader *header = [[CompanyRecommentHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 41)];
         __weak typeof(self)wself = self;
         header.moreBlock = ^{
-            [wself jumpToSortController:444];
+            CompanyRecommendController *ctrl = [CompanyRecommendController new];
+            [wself.navigationController pushViewController:ctrl animated:YES];
         };
         return header;
     } else {

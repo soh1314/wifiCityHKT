@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -79,7 +79,7 @@
                 <outlet property="topBgView" destination="1jr-BX-cC6" id="g5i-M7-ZI7"/>
                 <outlet property="wifiNameLabel" destination="7hF-42-AoU" id="IW2-pv-BiO"/>
             </connections>
-            <point key="canvasLocation" x="40" y="355"/>
+            <point key="canvasLocation" x="-27" y="39"/>
         </view>
     </objects>
 </document>
