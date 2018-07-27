@@ -22,7 +22,6 @@ static NSInteger flowRequestNum = 0;
 @property (nonatomic,assign)WINetStatus net_status;
 @property (nonatomic,assign)float lastWifiSentFlow;
 @property (nonatomic,assign)BOOL validateSuccess;
-@property (nonatomic,copy)NSString *currentWifiMac;
 @property (nonatomic,strong)dispatch_queue_t validateQueque;
 
 
@@ -59,7 +58,7 @@ static NSInteger flowRequestNum = 0;
             self.wifiInfo.orgId = @"8a8ab0b246dc81120146dc8180ba0017";
         }
         [WIFIPusher requestAuthor];
-        [self scanWifiList];
+//        [self scanWifiList];
        
     }
     return self;
@@ -93,18 +92,23 @@ static NSInteger flowRequestNum = 0;
         
         NSLog(@"4.Finish");
         NEHotspotNetwork* network;
-        if (cmd.commandType == kNEHotspotHelperCommandTypeEvaluate || cmd.commandType == kNEHotspotHelperCommandTypeFilterScanList) {
+        if ( cmd.commandType == kNEHotspotHelperCommandTypeFilterScanList) {
+            NSLog(@"-------华宽通wifi正在烧苗------");
             for (network in cmd.networkList) {
                 NSString* wifiInfoString = [[NSString alloc] initWithFormat: @"---------------------------\nSSID: %@\nMac地址: %@\n信号强度: %f\nCommandType:%ld\n---------------------------\n\n", network.SSID, network.BSSID, network.signalStrength, (long)cmd.commandType];
                 NSLog(@"附近wifi信息%@", wifiInfoString);
+                BOOL wifiAdded = NO;
                 for (int i = 0; i < self.m_wifiArray.count; i++) {
                     WIFIInfo *info = self.m_wifiArray[i];
                     if ([info.sid isEqualToString:network.SSID]) {
-                        [self.m_wifiArray removeObject:info];
+                        wifiAdded = YES;
                         break;
                     }
                 }
-                if ([network.BSSID  hasPrefix:@"dc:37"] || [network.SSID isEqualToString:@"TP-LINK_43CA"]) {
+                if (wifiAdded == YES) {
+                    continue;
+                }
+                if ([network.BSSID  hasPrefix:@"dc:37"]) {
                     WIFIInfo *info = [WIFIInfo new];
                     info.bsid = [network.BSSID copy];
                     info.signalStrength = [NSString stringWithFormat:@"%.2f",network.signalStrength];
@@ -113,19 +117,19 @@ static NSInteger flowRequestNum = 0;
                     [network setConfidence: kNEHotspotHelperConfidenceHigh];
                     [network setPassword: @""];
                     NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
-                    NSLog(@"Response CMD: %@", response);
                     [response setNetworkList: @[network]];
                     [response setNetwork: network];
                     [response deliver];
                 }
             }
            
+        } else if (cmd.commandType == 2) {
+            [WIFIPusher sendWIFINoti];
+            NSLog(@"-------华宽通wifi正在认证------");
         } else {
-            NSLog(@"其他");
+            NSLog(@"-------华宽通wifi其他状态------");
         }
-        if (cmd.commandType == kNEHotspotHelperCommandTypeAuthenticate) {
-             [WIFIPusher sendWIFINoti];
-        }
+
         
     }];
     NSLog(@"3.Result: %@", returnType == YES ? @"Yes" : @"No");
@@ -134,8 +138,18 @@ static NSInteger flowRequestNum = 0;
 - (void)applicationConnectWifi:(WIFIInfo *)info {
     if (@available(iOS 11.0, *)) {
         NEHotspotConfiguration * hotspotConfig = [[NEHotspotConfiguration alloc] initWithSSID:info.sid];
+        [MBProgressHUD showHUDAddedTo:KWINDOW animated:YES];
         [[NEHotspotConfigurationManager sharedManager] applyConfiguration:hotspotConfig completionHandler:^(NSError * _Nullable error) {
-            [[WIFIValidator shared]validator];
+            [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
+            if ([error.localizedDescription isEqualToString:@"failed to get user's approval."]) {
+                return ;
+            }
+            if ([error.localizedDescription isEqualToString:@"already associated."]) {
+                [Dialog simpleToast:@"当前wifi已连接"];
+                [[WIFIValidator shared]validator];
+            } else {
+                [[WIFIValidator shared]validator];
+            }
             NSLog(@"%@", error.localizedDescription);
         }];
     }
@@ -148,16 +162,14 @@ static NSInteger flowRequestNum = 0;
         NSLog(@"%ld",status);
         if (status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) {
             self.net_status = WINetFail;
-//            kHudNetError;
-           
+            [Dialog simpleToast:kNetError];
         } else if ( status == AFNetworkReachabilityStatusReachableViaWWAN ) {
             self.net_status = WINet4G;
         }
         else {
             self.net_status = WINetWifi;
-            self.currentWifiMac = [WifiUtil getWifiMac];
             self.wifiInfo.sid = [WifiUtil getWifiName];
-            self.wifiInfo.bsid = [self.currentWifiMac copy];
+            self.wifiInfo.bsid = [WifiUtil getWifiMac];
             if ([WIFISevice isHKTWifi] ) {
                 [[WIFIValidator shared]validator];
             }
@@ -188,7 +200,9 @@ static NSInteger flowRequestNum = 0;
 }
 
 - (void)handleWhenNetChange:(WINetStatus)status wifiInfo:(WIFIInfo*)info {
-    
+    if (status == WINetFail) {
+        [Dialog simpleToast:@"网络连接失败"];
+    }
 }
 
 - (void)saveUserFlow {
@@ -240,16 +254,11 @@ static NSInteger flowRequestNum = 0;
 #pragma mark - notification
 
 - (void)validateSuccess:(NSNotification *)noti {
-    [Dialog simpleToast:@"华宽通WIFI认证成功"];
     [self requestOrgId:[WifiUtil getWifiMac]];
 }
 
 - (void)validateFail:(NSNotification *)noti {
-    dispatch_async(self.validateQueque, ^{
-        NSLog(@"认证失败了");
-        [[WIFIValidator shared]validator];
-        [self requestOrgId:[WifiUtil getWifiMac]];
-    });
+
 
 }
 
@@ -257,9 +266,10 @@ static NSInteger flowRequestNum = 0;
     NSString *wifiMac = [WifiUtil getWifiMac];
     self.wifiInfo.sid = [WifiUtil getWifiName];
     self.wifiInfo.bsid = [wifiMac copy];
-    if (wifiMac && [WIFISevice isHKTWifi] ) {
+    if (wifiMac && [WIFISevice isHKTWifi]) {
         [[WIFIValidator shared]validator];
     }
+
     if (self.panelDelegate && [self.panelDelegate respondsToSelector:@selector(handleWhenNetChange:wifiInfo:)]) {
         [self.panelDelegate handleWhenNetChange:[WIFISevice netStatus] wifiInfo:self.wifiCloudInfo];
     }
@@ -302,10 +312,13 @@ static NSInteger flowRequestNum = 0;
 #pragma mark - get
 + (WINetStatus)netStatus {
     if ( [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusUnknown || [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
+        NSLog(@"网络连接失败");
+        
         return WINetFail;
     } else if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusReachableViaWWAN) {
         return WINet4G;
     } else {
+        NSLog(@"网络连接wifi");
         return WINetWifi;
     }
     

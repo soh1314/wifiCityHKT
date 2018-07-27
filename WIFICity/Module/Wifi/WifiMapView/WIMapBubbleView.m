@@ -28,6 +28,28 @@
 - (void)setInfo:(WIGeometryInfo *)info {
     _info = info;
     self.wifiNameLabel.text = [self.info.wifiName copy];
+    if (self.location) {
+        self.distanceLabel.text = [NSString stringWithFormat:@"距您%.fm",[self calulateDistance:info]];
+    } else {
+        self.distanceLabel.text = @"未知";
+    }
+    
+    
+}
+
+- (void)setLocation:(CLLocation *)location {
+    _location = location;
+}
+
+- (float)calulateDistance:(WIGeometryInfo *)model {
+
+    if (self.location) {
+        CLLocation *before=[[CLLocation alloc] initWithLatitude:[model.latitude doubleValue] longitude:[model.longitude doubleValue]];
+        CLLocationDistance meters=[self.location distanceFromLocation:before];
+        return meters;
+    }
+
+    return 0;
 
 }
 

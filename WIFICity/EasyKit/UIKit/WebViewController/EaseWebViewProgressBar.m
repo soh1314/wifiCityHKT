@@ -13,6 +13,7 @@
 
 @property (nonatomic,strong)CAShapeLayer *trackLayer;
 @property (nonatomic,strong)CAShapeLayer *progressLayer;
+@property (nonatomic,strong)CAGradientLayer *gradientLayer;
 
 @end
 
@@ -59,8 +60,11 @@
     
     //设置渐变颜色
     CAGradientLayer *gradientLayer =  [CAGradientLayer layer];
+    self.gradientLayer = gradientLayer;
     gradientLayer.frame = self.bounds;
-    [gradientLayer setColors:[NSArray arrayWithObjects:(id)[RGB(0,60, 97) CGColor],(id)[RGB(0, 180, 197) CGColor], nil]];
+    UIColor *start = [UIColor colorWithRed:1/255.0f green:182/255.0f blue:253/255.0f alpha:0.1];
+    UIColor *end = [UIColor colorWithRed:29/255.0f green:150/255.0f blue:255/255.0f alpha:1];
+    [gradientLayer setColors:[NSArray arrayWithObjects:(id)[start CGColor],(id)[end CGColor], nil]];
     gradientLayer.startPoint = CGPointMake(0, 0);
     gradientLayer.endPoint = CGPointMake(1, 0);
     [gradientLayer setMask:_progressLayer];
@@ -71,6 +75,9 @@
 -(void)setProgress:(float)progress
 {
     _progress = progress;
+    float opacity = progress*progress <= 0.8 ? 0.8 : progress*progress;
+    self.gradientLayer.opacity = opacity;
+    
     _progressLayer.strokeEnd = progress;
     [_progressLayer removeAllAnimations];
 }

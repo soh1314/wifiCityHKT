@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6y-dV-OhT">
-                    <rect key="frame" x="16" y="0.0" width="498" height="70"/>
+                    <rect key="frame" x="16" y="0.0" width="494" height="70"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_sq.png" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-ob-H2u">
                             <rect key="frame" x="16" y="27" width="16" height="16"/>
@@ -26,7 +26,7 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foe-fS-1lf">
-                            <rect key="frame" x="474" y="24" width="12" height="22"/>
+                            <rect key="frame" x="470" y="24" width="12" height="22"/>
                             <state key="normal" image="position.png"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜企业名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6e-yV-uIF">
@@ -47,9 +47,13 @@
                         <constraint firstItem="foe-fS-1lf" firstAttribute="centerY" secondItem="C6y-dV-OhT" secondAttribute="centerY" id="jTw-XH-Ue7"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7T-VV-PGC">
-                    <rect key="frame" x="524" y="24" width="22" height="22"/>
-                    <state key="normal" image="panorama.png"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7T-VV-PGC" customClass="ML_Button">
+                    <rect key="frame" x="510" y="24" width="56" height="22"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="-10" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="全景VR" image="panorama.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="seePanorama:" destination="iN0-l3-epB" eventType="touchUpInside" id="COa-F9-5ft"/>
                     </connections>
@@ -61,16 +65,16 @@
                 <constraint firstItem="C6y-dV-OhT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8LE-Rs-3rP"/>
                 <constraint firstAttribute="bottom" secondItem="C6y-dV-OhT" secondAttribute="bottom" id="oqw-ra-LsF"/>
                 <constraint firstItem="Q7T-VV-PGC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="pGg-ue-UFf"/>
-                <constraint firstAttribute="trailing" secondItem="Q7T-VV-PGC" secondAttribute="trailing" constant="20" id="qY4-oc-bpW"/>
-                <constraint firstItem="Q7T-VV-PGC" firstAttribute="leading" secondItem="C6y-dV-OhT" secondAttribute="trailing" constant="10" id="ynm-eZ-eyu"/>
+                <constraint firstAttribute="trailing" secondItem="Q7T-VV-PGC" secondAttribute="trailing" id="qY4-oc-bpW"/>
+                <constraint firstItem="Q7T-VV-PGC" firstAttribute="leading" secondItem="C6y-dV-OhT" secondAttribute="trailing" id="ynm-eZ-eyu"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="locationBtn" destination="foe-fS-1lf" id="2wC-iF-2Fb"/>
-                <outlet property="panoramaBtn" destination="Q7T-VV-PGC" id="3Bd-uW-xCI"/>
+                <outlet property="panoramaBtn" destination="Q7T-VV-PGC" id="OMF-v8-HcA"/>
                 <outlet property="searchBgView" destination="C6y-dV-OhT" id="YZm-M8-TfV"/>
             </connections>
-            <point key="canvasLocation" x="75" y="27"/>
+            <point key="canvasLocation" x="-13" y="24"/>
         </view>
     </objects>
     <resources>

@@ -22,14 +22,14 @@
     [self addSubview:self.nameLabel];
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(self);
-        make.width.mas_equalTo(49.0);
-        make.height.mas_equalTo(20.0);
+        make.width.mas_equalTo(52.0);
+        make.height.mas_equalTo(24.0);
     }];
     self.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
     self.clipsToBounds = YES;
     self.layer.cornerRadius = 5;
     self.nameLabel.textColor = [UIColor colorWithHexString:@"#666666"];
-    self.nameLabel.font = [UIFont systemFontOfSize:11];
+    self.nameLabel.font = [UIFont systemFontOfSize:12];
     self.nameLabel.textAlignment = NSTextAlignmentCenter;
 }
 

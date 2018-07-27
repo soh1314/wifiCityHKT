@@ -98,14 +98,16 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 }
 
 - (void)loadData:(BOOL)refresh {
-    
+    [Dialog showRingLoadingView:self.view];
     [MHNetworkManager postReqeustWithURL:WIFIPositionAPI params:nil successBlock:^(NSDictionary *returnData) {
+         [Dialog hideToastView:self.view];
         NSArray *data = (NSArray *)returnData;
         NSArray *wifiArray = [WIGeometryInfo arrayOfModelsFromDictionaries:data error:nil];
         [self getNearWifi:wifiArray];
+        [self relocate:nil];
         
     } failureBlock:^(NSError *error) {
-        
+         [Dialog hideToastView:self.view];
     } showHUD:NO];
 }
 
@@ -130,7 +132,7 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 }
 
 - (void)refreshNearWifi:(id)sender {
-    
+    [self loadData:YES];
 }
 
 - (void)relocate:(id)sender {
@@ -140,18 +142,7 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 
 - (void)getNearWifi:(NSArray *)wifiArray {
     
-//    WIGeometryInfo *model = [[WIGeometryInfo alloc]init];
-//    model.wifiName = @"hkt1";
-//    model.mac = @"sdfdsLsdfsdf";
-//    model.longitude = @"112.863" ;
-//    model.latitude = @"28.248";
-//
-//    WIGeometryInfo *model1 = [[WIGeometryInfo alloc]init];
-//    model1.wifiName = @"hkt2";
-//    model1.mac = @"sdfdsLsdfsdfs";
-//    model1.longitude = @"112.864" ;
-//    model1.latitude = @"28.245";
-//
+    [self.mapView removeAnnotations:self.annotationArray];
     [self.annotationArray removeAllObjects];
     for (int i = 0 ; i < wifiArray.count; i++) {
         WIGeometryInfo *model = wifiArray[i];
@@ -165,6 +156,8 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
     }
     [_mapView addAnnotations:self.annotationArray];
 }
+
+
 
 //标注数组
 - (NSMutableArray *)annotationArray {
@@ -248,7 +241,11 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
     annotationView.canShowCallout = YES;
     
     WIMapBubbleView *bubbleView = [[WIMapBubbleView alloc]initWithFrame:CGRectMake(0, 0, 252, 106)];
+    if (self.userLocation.location) {
+        [bubbleView setLocation:self.userLocation.location];
+    }
     [bubbleView setInfo:myAnnotation.model];
+    
     BMKActionPaopaoView *pView = [[BMKActionPaopaoView alloc]initWithCustomView:bubbleView];
     pView.frame = CGRectMake(0, 0,252, 106);
     ((BMKPinAnnotationView*)annotationView).paopaoView = nil;

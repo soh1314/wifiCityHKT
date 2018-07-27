@@ -20,6 +20,17 @@
 }
 
 - (void)initUI {
+    
+    self.panoramaBtn.status = MLAlignmentStatusTop;
+    self.panoramaBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.panoramaBtn.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(40);
+    }];
+    [self.panoramaBtn.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(22);
+        make.height.mas_equalTo(22);
+    }];
+    self.panoramaBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
     self.backgroundColor = [UIColor colorWithHexString:@"#FFFFFF"];
     self.searchBgView.clipsToBounds = YES;
     self.searchBgView.layer.cornerRadius = 5;

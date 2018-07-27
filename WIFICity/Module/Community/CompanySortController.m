@@ -232,9 +232,9 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.showType == 0) {
-        return CGSizeMake((KSCREENW-24)/2.0f,182);
+        return CGSizeMake((KSCREENW-24)/2.0f,202);
     } else {
-        return CGSizeMake(KSCREENW,120);
+        return CGSizeMake(KSCREENW,128);
     }
 }
 
@@ -287,6 +287,9 @@
         _collectionView.pagingEnabled = NO;
         _collectionView.scrollEnabled = YES;
         _collectionView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
+        if (@available(iOS 11.0, *)) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
 
     }
     return _collectionView;

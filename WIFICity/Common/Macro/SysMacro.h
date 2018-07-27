@@ -19,7 +19,6 @@
 #define KSys11Up    ([[UIDevice currentDevice].systemVersion floatValue] >= 11.0)
 #define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
-//UI
 #define KWINDOW [UIApplication sharedApplication].delegate.window
 #define KSCREENW [UIScreen mainScreen].bounds.size.width
 #define KSCREENH [UIScreen mainScreen].bounds.size.height
@@ -34,15 +33,17 @@
 #define THREESCREEN ([UIScreen mainScreen].bounds.size.height == 667)
 /**  *  4 判断是否为5.5inch   414*1104   1242*2208  */
 #define FOURSCREEN ([UIScreen mainScreen].bounds.size.height == 1104)
-#define isIPhoneX     (KSCREENW == 375.f && KSCREENH == 812.f)
+
+#define ISIPhoneX     (KSCREENW == 375.f && KSCREENH == 812.f)
 #define IPHONE4OR4S ONESCREEN
 #define IPHONE5OR5S TWOSCREEN
-#define IPHONE6OR6S FOURSCREEN
+#define IPHONE6PLUS FOURSCREEN
+#define IPHONE6OR6S THREESCREEN
 
 #define kNavBarHeight  44.0f
-#define kStatusBarHeight  (isIPhoneX ? 44.0f : 20.0f)
+#define kStatusBarHeight  (ISIPhoneX ? 44.0f : 20.0f)
 #define KTabbarHeight  49
-#define KBottomBarPadding (isIPhoneX ?  20.0f : 0)
+#define KBottomBarPadding (ISIPhoneX ?  20.0f : 0)
 
 // 颜色
 #define UIColorFromHexadecimalRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]

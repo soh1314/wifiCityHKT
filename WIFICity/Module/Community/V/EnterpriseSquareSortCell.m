@@ -27,19 +27,20 @@
 }
 
 - (void)layoutSubviews {
-    if (self.cellType == 0) {
+//    if (self.cellType == 0) {
         [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self.contentView);
         }];
-    } else {
-        [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            
-            make.left.mas_equalTo(self.contentView).mas_offset(28);
-            make.centerX.mas_equalTo(self);
-            make.height.mas_equalTo(45.0f);
-            make.top.mas_equalTo(self.contentView).mas_offset(12);
-        }];
-    }
+//    }
+//    else {
+//        [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//            make.left.mas_equalTo(self.contentView).mas_offset(28);
+//            make.centerX.mas_equalTo(self);
+//            make.height.mas_equalTo(45.0f);
+//            make.top.mas_equalTo(self.contentView).mas_offset(12);
+//        }];
+//    }
 }
 
 - (void)setCategoryModelArray:(NSArray *)categoryModelArray {
@@ -81,7 +82,9 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"选择了哪个答案:%ld",indexPath.row);
     if (_pick) {
-        _pick(indexPath.row,self.categoryModelArray[indexPath.row]);
+        if (self.categoryModelArray.count > 0) {
+            _pick(indexPath.row,self.categoryModelArray[indexPath.row]);
+        }
     }
 }
 
@@ -118,9 +121,9 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.cellType == 0) {
-        return CGSizeMake((KSCREENW-4*16)/3.0f, 72);
+        return CGSizeMake((KSCREENW-2*12-2*15)/3.0f, 80);
     } else {
-        return CGSizeMake(49,20);
+        return CGSizeMake(52,24);
     }
     
 }
@@ -129,9 +132,9 @@
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     if (self.cellType == 0) {
-        return UIEdgeInsetsMake(16, 16, 16, 16);
+        return UIEdgeInsetsMake(12, 15, 12, 15);
     } else {
-        return UIEdgeInsetsMake(0, 0, 0, 0);
+        return UIEdgeInsetsMake(8, 12, 8, 12);
     }
     
 }
@@ -139,9 +142,9 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
     if (self.cellType == 0) {
-        return 16.0f;
+        return 8.0f;
     } else {
-       return 5.0f;
+       return 8.0f;
     }
     
     
@@ -149,7 +152,7 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     if (self.cellType == 0) {
-        return 16.0f;
+        return 12.0f;
     } else {
         return 5.0f;
     }

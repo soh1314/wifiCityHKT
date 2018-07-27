@@ -19,7 +19,17 @@
 - (instancetype)qsAdapterinitWithCoder:(NSCoder *)aDecoder {
     [self qsAdapterinitWithCoder:aDecoder];
     if (self) {
-        self.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:self.font.pointSize];
+        if (IPHONE4OR4S || IPHONE5OR5S) {
+            self.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:self.font.pointSize*0.95];
+        } else {
+            if (IPHONE6PLUS) {
+                self.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:self.font.pointSize+1];
+            } else {
+                self.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:self.font.pointSize];
+            }
+            
+        }
+       
     }
     return self;
 }

@@ -24,15 +24,29 @@ static float scale = 1;
 
 + (void)load {
     
-    if (IPHONE4OR4S || IPHONE5OR5S) {
-         scale = 1;
-    }
-    else
-    {
-       scale = (KRATIO+0.1);
-    }
-    
-    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = [self class];
+        //拿到系统方法
+        Method orignalMethod = class_getClassMethod(class, @selector(systemFontOfSize:));
+        //拿到自己定义的方法
+        Method myMethod = class_getClassMethod(class, @selector(HKTSystemFontOfSize:));
+        //交换方法
+        method_exchangeImplementations(orignalMethod, myMethod);
+        if (IPHONE4OR4S || IPHONE5OR5S) {
+            scale = 1;
+        }
+        else
+        {
+            scale = (KRATIO+0.1);
+        }
+    });
+}
+
++ (UIFont *)HKTSystemFontOfSize:(CGFloat)fontSize{
+   
+    UIFont *font =  [UIFont fontWithName:@"PingFang-SC-Regular" size:fontSize];
+    return font;
 }
 
 + (UIFont *)convertFontSize:(NSString *)size {

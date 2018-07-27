@@ -46,9 +46,11 @@
         self.webView.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.view addSubview:self.webView];
         [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+         [self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]];
         [self.webView loadRequest:request];
-        
+        self.webView.UIDelegate = self;
+       
 //        self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 5)];
 //        self.progressView.progressViewStyle = UIProgressViewStyleBar;
 //        self.progressView.progressTintColor = [UIColor blackColor];
@@ -97,14 +99,30 @@
         }
 
         
-    }else{
+    } else if ([keyPath isEqualToString:@"title"]) {
+        if ([keyPath isEqualToString:@"title"]) {
+            if (object == self.webView) {
+                if ([self.webView.title isEqualToString:@"信息发布表"]) {
+                    
+                } else {
+                    self.title = self.webView.title;
+                }
+                
+            } else {
+                [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+            }
+        }
+    }
+    else{
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
+
 }
 
 - (void)dealloc{
     
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
+    [self.webView removeObserver:self forKeyPath:@"title"];
 }
 
 - (void)didReceiveMemoryWarning {

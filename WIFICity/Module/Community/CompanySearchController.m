@@ -12,6 +12,8 @@
 #import "EnterpriseSquareNetAPI.h"
 #import "CompanyDetailController.h"
 
+NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
+
 @interface CompanySearchController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong)NSMutableArray *searchResultArray;
@@ -39,6 +41,11 @@
         [self.searchBar invokeSearch];
         
     });
+    self.nodataModel = [EaseNoDataModel new];
+    self.nodataModel.noDataImageName = @"search_noresults";
+    self.nodataModel.verticalOffset = -60;
+    self.nodataModel.titile = @"没有搜索到相关信息~";
+    
 
     // Do any additional setup after loading the view.
 }
@@ -132,6 +139,7 @@
     }
     NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"comName":[searchWord copy]};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanySearchAPI) params:para successBlock:^(NSDictionary *returnData) {
+        [self setNoDataViewWithBaseView:self.tableView];
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         if (response && response.success) {
             NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
@@ -166,6 +174,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return 1;
 }
 

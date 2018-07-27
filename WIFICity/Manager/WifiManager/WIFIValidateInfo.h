@@ -11,6 +11,6 @@
 @interface WIFIValidateInfo : WIModel
 
 @property (nonatomic,copy)NSString *routIp;
-@property (nonatomic,assign)float expireTime;
+@property (nonatomic,assign)NSInteger expireTime;
 
 @end

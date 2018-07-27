@@ -50,15 +50,10 @@
     [WIFISevice shared].panelDelegate = self;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(orgIDChange:) name:WIOrgIDChangeNoti object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidateSuccess:) name:WIFIValidatorSuccessNoti object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidateFail:) name:WIFIValidatorFailNoti object:nil];
     [[WIFISevice shared]setNetMonitor];
 }
 
 - (void)wifiValidateSuccess:(NSNotification *)noti {
-    [self loadHomeData];
-}
-
-- (void)wifiValidateFail:(NSNotification *)noti {
     [self loadHomeData];
 }
 
@@ -69,7 +64,6 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self name:WIOrgIDChangeNoti object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:WIFIValidatorSuccessNoti object:nil];
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:WIFIValidatorFailNoti object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

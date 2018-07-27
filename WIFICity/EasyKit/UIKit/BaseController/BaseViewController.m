@@ -30,6 +30,7 @@
     }
     [[IQKeyboardManager sharedManager]setEnableAutoToolbar:NO];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(netStatuschange:) name:@"WINETSTATUSCHANGE" object:nil];
+    self.nodataModel = [EaseNoDataModel new];
 }
 
 - (void)dealloc {
@@ -108,7 +109,7 @@
 }
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view {
-    if (self.nodataModel) {
+    if (self.nodataModel && self.nodataModel.tapViewBlock) {
         self.nodataModel.tapViewBlock();
     }
     NSLog(@"点击视图");
@@ -140,6 +141,7 @@
         return [[NSAttributedString alloc]initWithString:self.nodataModel.buttonTitle attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
     } else {
         return nil;
+        
     }
 }
 

@@ -24,7 +24,7 @@
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     // 2.设置通知的必选参数
     // 设置通知显示的内容
-    localNotification.alertBody = @"华宽通wifi后台监听";
+    localNotification.alertBody = @"华宽通wifi已经帮你验证";
     // 设置通知的发送时间,单位秒
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
     //解锁滑动时的事件

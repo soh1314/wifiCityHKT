@@ -252,12 +252,12 @@
     freeifaddrs(ifa_list);
 //    NSString *receivedBytes= [self bytesToAvaiUnit:iBytes];
 //    NSString *sentBytes       = [self bytesToAvaiUnit:oBytes];
-    NSString *networkFlow      = [self bytesToAvaiUnit:allFlow];
-    NSLog(@"networkFlow==%@",networkFlow);
+//    NSString *networkFlow      = [self bytesToAvaiUnit:allFlow];
+//    NSLog(@"networkFlow==%@",networkFlow);
     NSString *wifiReceived   = [self bytesToAvaiUnit:wifiIBytes];
-    NSLog(@"wifiReceived==%@",wifiReceived);
+//    NSLog(@"wifiReceived==%@",wifiReceived);
     NSString *wifiSent       = [self bytesToAvaiUnit: wifiOBytes];
-    NSLog(@"wifiSent==%@",wifiSent);
+//    NSLog(@"wifiSent==%@",wifiSent);
 //    NSString *wifiBytes      = [self bytesToAvaiUnit:wifiFlow];
     NSString *wwanReceived   = [self bytesToAvaiUnit:wwanIBytes];
     NSString *wwanSent       = [self bytesToAvaiUnit:wwanOBytes];

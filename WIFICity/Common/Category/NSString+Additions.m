@@ -365,15 +365,20 @@
 + (NSString *)currentTimeStr{
     NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0];//获取当前时间0秒后的时间
     NSTimeInterval time=[date timeIntervalSince1970]*1000;// *1000 是精确到毫秒，不乘就是精确到秒
-    NSString *timeString = [NSString stringWithFormat:@"%.0f", time];
+    NSString *timeString = [NSString stringWithFormat:@"%.f", time];
     return timeString;
 }
 
 + (NSString *)unixTimeStamp {
-    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
-    long long dTime = [[NSNumber numberWithDouble:timeInterval] longLongValue]*1000; // 将double转为long long型
-    NSString *tempTime = [NSString stringWithFormat:@"%llu",dTime];
-    return tempTime;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:(@"YYYY-MM-dd hh:mm:ss")];
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+    [formatter setTimeZone:timeZone];
+    NSDate *datenow = [NSDate date];//现在时间
+    NSInteger timeSp = [[NSNumber numberWithDouble:[datenow timeIntervalSince1970]] integerValue];
+    return [NSString stringWithFormat:@"%ld",timeSp];
 }
 
 

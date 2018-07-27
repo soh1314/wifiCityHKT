@@ -19,16 +19,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="湖南华宽通科技股份有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGD-LE-EhZ">
-                        <rect key="frame" x="136" y="15" width="310" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="wSf-9V-kLh"/>
-                        </constraints>
+                        <rect key="frame" x="136" y="15" width="310" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="  " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ws3-fk-ORo">
-                        <rect key="frame" x="136" y="46" width="310" height="54.5"/>
+                        <rect key="frame" x="136" y="38" width="310" height="62.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -54,7 +51,7 @@
                 <constraints>
                     <constraint firstItem="gGD-LE-EhZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="44Y-Ib-cCd"/>
                     <constraint firstItem="gGD-LE-EhZ" firstAttribute="leading" secondItem="M7l-Cv-gZq" secondAttribute="trailing" constant="15" id="Dnn-aj-qc1"/>
-                    <constraint firstItem="ws3-fk-ORo" firstAttribute="top" secondItem="gGD-LE-EhZ" secondAttribute="bottom" priority="750" constant="11" id="HbO-Ec-qRW"/>
+                    <constraint firstItem="ws3-fk-ORo" firstAttribute="top" secondItem="gGD-LE-EhZ" secondAttribute="bottom" constant="5" id="HbO-Ec-qRW"/>
                     <constraint firstItem="ws3-fk-ORo" firstAttribute="trailing" secondItem="gGD-LE-EhZ" secondAttribute="trailing" id="PD6-XM-rCE"/>
                     <constraint firstAttribute="trailing" secondItem="gGD-LE-EhZ" secondAttribute="trailing" constant="16" id="Rkm-YT-hYC"/>
                     <constraint firstAttribute="bottom" secondItem="ws3-fk-ORo" secondAttribute="bottom" constant="15" id="bdc-UO-k6a"/>

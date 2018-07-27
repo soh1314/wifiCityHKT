@@ -148,9 +148,9 @@ static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 196;
+        return 194;
     } else if (indexPath.section == 1) {
-        return 69;
+        return 73;
         
     }  else {
         return UITableViewAutomaticDimension;

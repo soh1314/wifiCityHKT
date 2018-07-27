@@ -46,7 +46,7 @@
     for ( int i = 0; i < self.validatArray.count; i++) {
         WIFIValidateInfo *m_info = self.validatArray[i];
         if ([m_info.routIp isEqualToString:info.routIp]) {
-            float timestr = [[NSString currentTimeStr]floatValue];
+            float timestr = [[NSString unixTimeStamp]floatValue];
             if (timestr > m_info.expireTime - 300) {
                 needValidator = YES;
                 [self.validatArray removeObject:m_info];
@@ -68,12 +68,14 @@
     
     WIFIValidateInfo *info = [WIFIValidateInfo new];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
-    info.expireTime = [[NSString currentTimeStr]floatValue] + 10 * 60;
-    if (![self needValidator:info]) {
-        return;
-    }
-    NSString *wifiIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
-    if (!wifiIp) {
+    info.expireTime = [[NSString unixTimeStamp]integerValue] + 10 * 60;
+//    if (![self needValidator:info]) {
+//
+//        return;
+//    }
+    NSString *wifiIp = [WifiUtil getLocalRoutIpForCurrentWiFi];
+    if (!wifiIp || [wifiIp isEqualToString:@""] ) {
+        NSLog(@"wifi ip 为空 无法认证");
         return;
     }
     NSLog(@"当前wifi的IP地址%@",wifiIp);
@@ -82,14 +84,18 @@
     for (int i = 0; i < ipArray.count ; i ++) {
         if (i == ipArray.count - 1) {
             [routIP appendString:@"254"];
-        } else {
+        } else if (i == ipArray.count - 2) {
+            [routIP appendString:@"99."];
+        }
+         else {
             [routIP appendString:[NSString stringWithFormat:@"%@.",ipArray[i]]];
         }
     }
-    float expireTime = [[NSString unixTimeStamp]floatValue]+20*60;
-    NSString *expireStr = [NSString stringWithFormat:@"%.f",expireTime];
+    NSInteger expireTime = [[NSString unixTimeStamp]integerValue]+20*60;
+    NSString *expireStr = [NSString stringWithFormat:@"%ld",expireTime];
     NSLog(@"验证wifi过期时间%@",expireStr);
     NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routIP,expireStr];
+    NSLog(@"认证url%@",validatorUrl);
     [self inerValidateRequest:validatorUrl];
     
 }
@@ -116,12 +122,9 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"认证网络问题");
-        self.validateTime ++;
-        if (self.validateTime >= 10) {
-            self.validateTime = 0;
-        } else {
-//             [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
-        }
+        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
+
        
     }];
    
