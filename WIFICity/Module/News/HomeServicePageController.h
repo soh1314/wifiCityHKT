@@ -7,7 +7,9 @@
 //
 
 #import "EasePageController.h"
-
+#import "HomeServiceData.h"
 @interface HomeServicePageController : EasePageController
+
+@property (nonatomic,strong)HomeServiceData *serviceData;
 
 @end

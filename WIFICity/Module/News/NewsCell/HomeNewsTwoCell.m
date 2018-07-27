@@ -8,6 +8,7 @@
 
 #import "HomeNewsTwoCell.h"
 #import "HomeNewsImageItemCell.h"
+#import "GaoXinNewS.h"
 
 @implementation HomeNewsTwoCell
 
@@ -41,10 +42,30 @@
     
 }
 
-- (void)setNews:(HomeNews *)news {
-    _news = news;
+- (void)updateGaoXinNews:(GaoXinNewS *)news {
+    self.titleLabel.text = [NSString stringWithFormat:@"%@",news.gxq_title];
+    self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.gxq_agency];
+    self.additionLabel.text = [NSString stringWithFormat:@"%@",news.gxq_create_date];
+
+}
+
+- (void)updateHomeNews:(HomeNews *)news {
     self.titleLabel.text = [NSString stringWithFormat:@"%@",news.title];
     self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.abstracts];
+
+}
+
+
+- (void)setNews:(HomeNews *)news {
+    
+    _news = news;
+    BOOL isGaoxinNews = NO;
+    if ([news isKindOfClass:[GaoXinNewS class]]) {
+        [self updateGaoXinNews:(GaoXinNewS *)self.news];
+        isGaoxinNews = YES;
+    } else {
+        [self updateHomeNews:news];
+    }
     
     if (news.is_hot) {
         self.tabLabel.hidden = NO;
@@ -66,6 +87,11 @@
             make.left.mas_equalTo(self.tabLabel.mas_right).mas_offset(0);
         }];
     }
+}
+
+- (void)setImageGroupArray:(NSArray *)imageGroupArray {
+    _imageGroupArray = imageGroupArray;
+    [self.imageGroupCollectionView reloadData];
 }
 
 - (UICollectionView *)imageGroupCollectionView

@@ -8,6 +8,8 @@
 
 #import "HomeServicePageController.h"
 #import "WINewsInfoViewController.h"
+#import "WINewsPageModel.h"
+
 
 @interface HomeServicePageController ()
 
@@ -18,15 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.delegate = self;
     // Do any additional setup after loading the view.
 }
 
 - (UIViewController *)easePageController:(EasePageController *)viewController AtIndex:(NSInteger)index {
     WINewsInfoViewController *sub = [[WINewsInfoViewController alloc]init];
-    EasePageModel *model = [EasePageModel new];
+    WINewsPageModel *model = [WINewsPageModel new];
     model.index = index;
+    model.gxqType = index +1;
     model.title = [NSString stringWithFormat:@"标题%ld",index];
-    model.modelName = @"HomeNews";
+    model.modelName = @"GaoXinNewS";
     model.cellClass = @"HomeNewsOneCell";
     sub.pageModel = model;
     return sub;
@@ -37,14 +41,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

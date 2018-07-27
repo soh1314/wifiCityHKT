@@ -10,6 +10,8 @@
 		160118AA210AFCAF002B9058 /* search_noresults@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 160118A7210AFCAF002B9058 /* search_noresults@3x.png */; };
 		160118AB210AFCAF002B9058 /* search_noresults@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 160118A8210AFCAF002B9058 /* search_noresults@2x.png */; };
 		160118AC210AFCAF002B9058 /* search_noresults.png in Resources */ = {isa = PBXBuildFile; fileRef = 160118A9210AFCAF002B9058 /* search_noresults.png */; };
+		160118AF210B04F1002B9058 /* GaoXinNewS.m in Sources */ = {isa = PBXBuildFile; fileRef = 160118AE210B04F1002B9058 /* GaoXinNewS.m */; };
+		160118B2210B0A96002B9058 /* WINewsPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160118B1210B0A96002B9058 /* WINewsPageModel.m */; };
 		1606142D21002B5A007A90A8 /* CompanyDeatailSectionThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 1606142B21002B5A007A90A8 /* CompanyDeatailSectionThree.m */; };
 		1606142E21002B5A007A90A8 /* CompanyDeatailSectionThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1606142C21002B5A007A90A8 /* CompanyDeatailSectionThree.xib */; };
 		1606143221002D3B007A90A8 /* CompanyGaoguanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1606143021002D3B007A90A8 /* CompanyGaoguanCell.m */; };
@@ -635,6 +637,10 @@
 		160118A7210AFCAF002B9058 /* search_noresults@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_noresults@3x.png"; sourceTree = "<group>"; };
 		160118A8210AFCAF002B9058 /* search_noresults@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_noresults@2x.png"; sourceTree = "<group>"; };
 		160118A9210AFCAF002B9058 /* search_noresults.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_noresults.png; sourceTree = "<group>"; };
+		160118AD210B04F1002B9058 /* GaoXinNewS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaoXinNewS.h; sourceTree = "<group>"; };
+		160118AE210B04F1002B9058 /* GaoXinNewS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaoXinNewS.m; sourceTree = "<group>"; };
+		160118B0210B0A96002B9058 /* WINewsPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WINewsPageModel.h; sourceTree = "<group>"; };
+		160118B1210B0A96002B9058 /* WINewsPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WINewsPageModel.m; sourceTree = "<group>"; };
 		1606142A21002B5A007A90A8 /* CompanyDeatailSectionThree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanyDeatailSectionThree.h; sourceTree = "<group>"; };
 		1606142B21002B5A007A90A8 /* CompanyDeatailSectionThree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanyDeatailSectionThree.m; sourceTree = "<group>"; };
 		1606142C21002B5A007A90A8 /* CompanyDeatailSectionThree.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyDeatailSectionThree.xib; sourceTree = "<group>"; };
@@ -3089,13 +3095,16 @@
 		16F8876A2100607600136C7F /* News */ = {
 			isa = PBXGroup;
 			children = (
+				160118AD210B04F1002B9058 /* GaoXinNewS.h */,
+				160118AE210B04F1002B9058 /* GaoXinNewS.m */,
 				16F888172102D6D600136C7F /* HomeNews.h */,
 				16F888162102D6D500136C7F /* HomeNews.m */,
 				16F888062102D5F800136C7F /* NewsCell */,
 				16F887EA2102D2F500136C7F /* HomeServicePageController.h */,
-				16F887EB2102D2F500136C7F /* HomeServicePageController.m */,
 				16F887742100648D00136C7F /* WINewsInfoViewController.h */,
 				16F887752100648D00136C7F /* WINewsInfoViewController.m */,
+				160118B0210B0A96002B9058 /* WINewsPageModel.h */,
+				160118B1210B0A96002B9058 /* WINewsPageModel.m */,
 				16F887E42102C9B300136C7F /* FsTableView.h */,
 				16F887E52102C9B300136C7F /* FsTableView.m */,
 			);
@@ -3147,6 +3156,7 @@
 		16F888062102D5F800136C7F /* NewsCell */ = {
 			isa = PBXGroup;
 			children = (
+				16F887EB2102D2F500136C7F /* HomeServicePageController.m */,
 				16F888072102D5F800136C7F /* HomeNewsOneCell.h */,
 				16F8880E2102D5F800136C7F /* HomeNewsOneCell.m */,
 				16F8880B2102D5F800136C7F /* HomeNewsOneCell.xib */,
@@ -3897,6 +3907,7 @@
 				163A08FF20E5CCD600DAC894 /* EasyCacheHelper.m in Sources */,
 				169D83C020DC828F00AA590F /* EaseTableView.m in Sources */,
 				16D64C2720D0AAB800ED74C8 /* MHNetworkManager.m in Sources */,
+				160118B2210B0A96002B9058 /* WINewsPageModel.m in Sources */,
 				16F887D82101C8E600136C7F /* WifiFlowView.m in Sources */,
 				16D64BD120CF9FCE00ED74C8 /* WINavigationCotroller.m in Sources */,
 				16CDD0302105AD8000DA619F /* EaseRefreshHeader.m in Sources */,
@@ -3996,6 +4007,7 @@
 				16D64B8420CF7CE800ED74C8 /* UITextView+ZWPlaceHolder.m in Sources */,
 				169D83EA20DC933700AA590F /* HomeServiceItemCell.m in Sources */,
 				1695B20720FEE3CC00DFFCCE /* WICousalItemView.m in Sources */,
+				160118AF210B04F1002B9058 /* GaoXinNewS.m in Sources */,
 				169D8F4021087388006776D8 /* WIFIFlow.m in Sources */,
 				1695B1D120F84D8900DFFCCE /* WICommentBottomBar.m in Sources */,
 				163A08B220E1DB7800DAC894 /* BindPhoneView.m in Sources */,

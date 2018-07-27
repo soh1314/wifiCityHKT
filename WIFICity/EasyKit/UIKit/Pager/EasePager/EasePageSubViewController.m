@@ -32,23 +32,6 @@
         
     }];
     [self.tableView registerNib:[UINib nibWithNibName:self.pageModel.cellClass bundle:[NSBundle mainBundle]] forCellReuseIdentifier:[NSString stringWithFormat:@"%@ID",self.pageModel.cellClass]];
-    [self loadData:self.pageModel.index refresh:YES];
-}
-
-- (void)loadData:(NSInteger)index refresh:(BOOL)refresh{
-    NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, WIFIHomeNewsAPI) params:para successBlock:^(NSDictionary *returnData) {
-        if (refresh) {
-            [self.dataArray removeAllObjects];
-        }
-        Class modelCls = NSClassFromString(self.pageModel.modelName);
-        NSArray *newsArray = [modelCls arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
-        [self.dataArray addObjectsFromArray:newsArray];
-        [self.tableView reloadData];
-        
-    } failureBlock:^(NSError *error) {
-        
-    } showHUD:NO];
 }
 
 #pragma mark - get and set

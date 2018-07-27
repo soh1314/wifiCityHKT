@@ -17,7 +17,7 @@
 }
 
 - (void)initUI {
-    
+    self.HomeNewsImageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 @end

@@ -12,8 +12,15 @@
 #import "HomeNewsOneCell.h"
 #import "HomeNewsTwoCell.h"
 #import "EaseRefreshHeader.h"
+#import "EaseRefreshFooter.h"
+#import "WINewsPageModel.h"
+#import "GaoXinNewS.h"
 
-@interface WINewsInfoViewController ()<UITableViewDataSource,UITableViewDataSource>
+static NSString *const WIGaoXinNewsListAPI = @"/ws/wifi/findNewsByTypeId.do";
+
+@interface WINewsInfoViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic,assign)NSInteger page;
 
 @end
 
@@ -29,23 +36,35 @@
     self.tableView.mj_header = [EaseRefreshHeader headerWithRefreshingBlock:^{
         [wself loadData:YES];
     }];
+    self.tableView.mj_footer = [EaseRefreshFooter footerWithRefreshingBlock:^{
+        [wself loadData:NO];
+    }];
+    [self loadData:YES];
     
 }
 
 - (void)loadData:(BOOL)refresh{
-    NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, WIFIHomeNewsAPI) params:para successBlock:^(NSDictionary *returnData) {
+    if (refresh) {
+        self.page = 1;
+    } else {
+        self.page ++;
+    }
+    WINewsPageModel *model = (WINewsPageModel*)self.pageModel;
+    NSDictionary *para = @{@"number":@(self.page),@"gxqType":@(model.gxqType)};
+    [MHNetworkManager getRequstWithURL:kAppUrl(@"http://192.168.1.188/wificity", WIGaoXinNewsListAPI) params:para successBlock:^(NSDictionary *returnData) {
         if (refresh) {
             [self.dataArray removeAllObjects];
         }
         Class modelCls = NSClassFromString(self.pageModel.modelName);
-        NSArray *newsArray = [modelCls arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
+        NSArray *newsArray = [GaoXinNewS arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         [self.dataArray addObjectsFromArray:newsArray];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
         
     } failureBlock:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
     } showHUD:NO];
 }
 
@@ -66,15 +85,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    HomeNews *news = self.dataArray[indexPath.row];
-    if (news.is_hot) {
+    GaoXinNewS *news = self.dataArray[indexPath.row];
+    if ([news.gxq_img_type isEqualToString:@"0"] || [news.gxq_img_type isEqualToString:@"1"] ) {
         HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
         cell.news = news;
         return cell;
     } else {
         HomeNewsTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsTwoCellID" forIndexPath:indexPath];
         cell.news = news;
-        cell.imageGroupArray = @[@"http://wifi.hktfi.com/thirdImg/information/2/images/index_1530150498708.jpg",@"http://wifi.hktfi.com/thirdImg/information/2/images/index_1530150498708.jpg",@"http://wifi.hktfi.com/thirdImg/information/2/images/index_1530150498708.jpg"];
+        if (news.gxq_img_type && news.gxq_image_array) {
+            cell.imageGroupArray = [news.gxq_image_array copy];
+        }
+        
         return cell;
     }
 }

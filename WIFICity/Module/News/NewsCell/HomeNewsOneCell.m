@@ -7,7 +7,7 @@
 //
 
 #import "HomeNewsOneCell.h"
-
+#import "GaoXinNewS.h"
 @implementation HomeNewsOneCell
 
 - (void)awakeFromNib {
@@ -28,14 +28,47 @@
     
 }
 
-- (void)setNews:(HomeNews *)news {
-    _news = news;
+- (void)updateGaoXinNews:(GaoXinNewS *)news {
+    self.titleLabel.text = [NSString stringWithFormat:@"%@",news.gxq_title];
+    self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.gxq_agency];
+    if (news.danTu) {
+        NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,news.gxq_img_src];
+        [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:url]];
+    }
+}
+
+- (void)updateHomeNews:(HomeNews *)news {
     self.titleLabel.text = [NSString stringWithFormat:@"%@",news.title];
     self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.abstracts];
     NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,self.news.img_src];
     [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:url]];
-    if (self.news.img_src) {
+}
 
+
+
+- (void)setNews:(HomeNews *)news {
+    _news = news;
+    BOOL isGaoxinNews = NO;
+    if ([news isKindOfClass:[GaoXinNewS class]]) {
+        [self updateGaoXinNews:(GaoXinNewS *)self.news];
+        isGaoxinNews = YES;
+    } else {
+        [self updateHomeNews:news];
+    }
+    [self updateLayout:news];
+}
+
+- (void)updateLayout:(HomeNews *)news {
+    BOOL haveImage;
+    if ([news isKindOfClass:[GaoXinNewS class]]) {
+        GaoXinNewS *gaoxinNews = (GaoXinNewS *)news;
+        if (gaoxinNews.gxq_img_src) {
+             haveImage = YES;
+        } else {
+            haveImage = NO;
+        }
+    }
+    if (self.news.img_src || haveImage) {
         [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.newsImageView.mas_left).mas_offset(-12);
             make.left.mas_equalTo(self.contentView).mas_offset(16);
@@ -58,10 +91,8 @@
             make.right.mas_equalTo(self.contentView).mas_offset(-16);
             make.height.mas_equalTo(74.5);
         }];
-
-        
     }
-
+    
     if (news.is_hot) {
         self.tagView.hidden = NO;
         self.tagView.text = @"热点";
