@@ -10,6 +10,7 @@
 #import "LoginController.h"
 #import "WebViewController.h"
 #import "BlankViewController.h"
+#import "WIPopView.h"
 
 @implementation NavManager
 
@@ -45,9 +46,19 @@
     [UIApplication sharedApplication].delegate.window.rootViewController = context;
 }
 
-+ (void)pushWebViewControllerWithHtmlWord:(NSString *)pTag controller:(UIViewController *)context {
++ (void)pushWebViewControllerWithUrlString:(NSString *)pTag controller:(UIViewController *)context {
     WebViewController *web = [[WebViewController alloc]init];
     web.URLString = [pTag copy];
+    if (context.navigationController) {
+        UINavigationController *nav = context.navigationController;
+        [nav pushViewController:web animated:YES];
+    }
+}
+
++ (void)pushWebViewControllerWithHtmlWord:(NSString *)html title:(NSString *)title controller:(UIViewController *)context {
+    WebViewController *web = [[WebViewController alloc]init];
+    web.htmlWord = [html copy];
+    web.title = [title copy];
     if (context.navigationController) {
         UINavigationController *nav = context.navigationController;
         [nav pushViewController:web animated:YES];
@@ -59,6 +70,21 @@
     if (context.navigationController) {
         UINavigationController *nav = context.navigationController;
         [nav pushViewController:blankController animated:YES];
+    }
+}
+
++ (void)pushParoWebViewController:(UIViewController *)context {
+    WebViewController *webview = [[WebViewController alloc]init];
+    webview.URLString = WIPanoramaUrl;
+    [context.navigationController pushViewController:webview animated:YES];
+}
+
++ (void)pushBindView:(UIViewController *)context {
+    
+    if ([AccountManager shared].user.phone) {
+        [WIPopView popBindPhoneView:context];
+    } else {
+        [NavManager pushBlankViewController:context];
     }
 }
 

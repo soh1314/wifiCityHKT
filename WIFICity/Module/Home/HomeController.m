@@ -21,6 +21,7 @@
 
 #import "EasePageController.h"
 #import "HomeServicePageController.h"
+#import "WebViewController.h"
 
 #define FindUserFLowAPI @"/ws/third/findBandByUserId.do"
 #define LbtInfoAPI  @"/ws/wifi/findLbtByOrgId.do"
@@ -206,29 +207,14 @@
         HomeServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeServiceCellID" forIndexPath:indexPath];
         [cell setDataArray:self.serviceArray];
         cell.pick = ^(NSInteger idx) {
-//            if ([AccountManager shared].user.phone) {
-//                [WIPopView popBindPhoneView:wself];
-//            } else {
-//                [NavManager pushBlankViewController:wself];
-//            }
             [HomeServiceCell pickCellItem:idx dataArray:[self.serviceArray copy]];
-                HomeServicePageController *pageController = [HomeServicePageController new];
-                HomeServiceData *data = self.serviceArray[idx];
-                pageController.title = [data.thirdName copy];
-                pageController.count = 2;
-                EasePageModel *model0 = [EasePageModel new];
-                model0.title = @"国家政策";
-                model0.index = 0;
-                EasePageModel *model1 = [EasePageModel new];
-                model1.title = @"省市政策";
-                model1.index = 1;
-                NSMutableArray *array = [NSMutableArray array];
-                [array addObject:model0];
-                [array addObject:model1];
-                pageController.itemModel = [array copy];
+            if (idx == 0) {
+                weakself;
+                [NavManager pushParoWebViewController:wself];
+            } else {
+                HomeServicePageController *pageController = [[HomeServicePageController alloc]initWithServiceData:self.serviceArray[idx]];
                 [self.navigationController pushViewController:pageController animated:YES];
-            
-            
+            }
         };
         return cell;
     }
@@ -291,7 +277,7 @@
     if (indexPath.section == 2) {
         HomeNews *news = [self.dataArray objectAtIndex:indexPath.row];
         NSString *detailUrl = [NSString stringWithFormat:@"%@%@%@",kUrlHost,WIFIHomeNewsDetailAPI,news.ID];
-        [NavManager pushWebViewControllerWithHtmlWord:detailUrl controller:self];
+        [NavManager pushWebViewControllerWithUrlString:detailUrl controller:self];
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

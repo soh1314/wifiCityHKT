@@ -32,7 +32,12 @@
     self.titleLabel.text = [NSString stringWithFormat:@"%@",news.gxq_title];
     self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.gxq_agency];
     if (news.danTu) {
-        NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,news.gxq_img_src];
+        NSString *urlString = nil;
+        if ([news.gxq_img_src hasPrefix:@"["]) {
+            urlString = [news.gxq_img_src stringByReplacingOccurrencesOfString:@"[" withString:@""];
+            urlString = [urlString stringByReplacingOccurrencesOfString:@"]" withString:@""];
+        }
+        NSString *url = [NSString stringWithFormat:@"%@",urlString];
         [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:url]];
     }
 }
@@ -78,7 +83,7 @@
             make.width.mas_equalTo(self.newsImageView.mas_height).multipliedBy(38/25.0f).priorityHigh();
             make.left.mas_equalTo(self.titleLabel.mas_right).mas_offset(12);
             make.right.mas_equalTo(self.contentView).mas_offset(-16);
-            make.height.mas_equalTo(74.5);
+            make.height.mas_equalTo(75);
         }];
     } else {
         [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -87,9 +92,9 @@
             make.left.mas_equalTo(self.contentView).mas_offset(16);
         }];
         [self.newsImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(self.newsImageView.mas_height).multipliedBy(38/25.0f).priorityHigh();
+            make.width.mas_equalTo(0).priorityHigh();
             make.right.mas_equalTo(self.contentView).mas_offset(-16);
-            make.height.mas_equalTo(74.5);
+            make.height.mas_equalTo(75);
         }];
     }
     

@@ -3101,6 +3101,7 @@
 				16F888162102D6D500136C7F /* HomeNews.m */,
 				16F888062102D5F800136C7F /* NewsCell */,
 				16F887EA2102D2F500136C7F /* HomeServicePageController.h */,
+				16F887EB2102D2F500136C7F /* HomeServicePageController.m */,
 				16F887742100648D00136C7F /* WINewsInfoViewController.h */,
 				16F887752100648D00136C7F /* WINewsInfoViewController.m */,
 				160118B0210B0A96002B9058 /* WINewsPageModel.h */,
@@ -3156,7 +3157,6 @@
 		16F888062102D5F800136C7F /* NewsCell */ = {
 			isa = PBXGroup;
 			children = (
-				16F887EB2102D2F500136C7F /* HomeServicePageController.m */,
 				16F888072102D5F800136C7F /* HomeNewsOneCell.h */,
 				16F8880E2102D5F800136C7F /* HomeNewsOneCell.m */,
 				16F8880B2102D5F800136C7F /* HomeNewsOneCell.xib */,

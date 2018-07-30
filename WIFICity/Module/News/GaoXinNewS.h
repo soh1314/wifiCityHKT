@@ -63,4 +63,6 @@ typedef NS_ENUM(NSInteger,GapXinNewsType) {
 
 - (BOOL)danTu;
 
++ (NSArray *)gaoxinNewsTitleArray;
+
 @end

@@ -15,6 +15,8 @@
 #import "EaseRefreshFooter.h"
 #import "WINewsPageModel.h"
 #import "GaoXinNewS.h"
+#import "WebViewController.h"
+#import "NavManager.h"
 
 static NSString *const WIGaoXinNewsListAPI = @"/ws/wifi/findNewsByTypeId.do";
 
@@ -103,6 +105,9 @@ static NSString *const WIGaoXinNewsListAPI = @"/ws/wifi/findNewsByTypeId.do";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    GaoXinNewS *news = self.dataArray[indexPath.row];
+    weakself;
+    [NavManager pushWebViewControllerWithHtmlWord:news.gxq_details title:news.gxq_title controller:wself];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {

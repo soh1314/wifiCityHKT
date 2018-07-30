@@ -30,7 +30,6 @@
 #import "EaseNavBar.h"
 
 static int EnterPriseRecommentSection = 2;
-static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_id=17042939&from=groupmessage";
 
 @interface CommunityController ()<UITableViewDelegate,UITableViewDataSource>
 

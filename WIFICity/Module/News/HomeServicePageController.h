@@ -12,4 +12,6 @@
 
 @property (nonatomic,strong)HomeServiceData *serviceData;
 
+- (id)initWithServiceData:(HomeServiceData *)data;
+
 @end

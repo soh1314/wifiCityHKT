@@ -45,7 +45,12 @@
 - (void)updateGaoXinNews:(GaoXinNewS *)news {
     self.titleLabel.text = [NSString stringWithFormat:@"%@",news.gxq_title];
     self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.gxq_agency];
-    self.additionLabel.text = [NSString stringWithFormat:@"%@",news.gxq_create_date];
+    if (news.gxq_create_date) {
+        self.additionLabel.text = [NSString stringWithFormat:@"%@",news.gxq_create_date];
+    } else {
+        self.additionLabel.text = @"";
+    }
+    
 
 }
 

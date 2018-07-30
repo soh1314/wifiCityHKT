@@ -30,13 +30,17 @@
     [super viewDidLoad];
     [self setWhiteTrasluntNavBar];
     [self initUI];
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setWhiteTrasluntNavBar];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+
+}
+
+- (void)applicationEnterForeground:(NSNotification *)noti {
     self.wifiArray = [[WIFISevice shared].m_wifiArray copy];
     [self.tableView reloadData];
 }
@@ -58,11 +62,13 @@
         WifiGuideController *ctrl = [WifiGuideController new];
         [wself.navigationController pushViewController:ctrl animated:YES];
     };
-    [self.view addSubview:self.panel];
+//    [self.view addSubview:self.panel];
+    self.tableView.tableHeaderView = self.panel;
     [self.panel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(260);
-        make.left.right.top.mas_equalTo(self.view);
+        make.left.right.mas_equalTo(self.view);
     }];
+   
     
 }
 
@@ -79,7 +85,7 @@
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAlways;
         }
-        _tableView.contentInset  = UIEdgeInsetsMake(260, 0, 0, 0);
+//        _tableView.contentInset  = UIEdgeInsetsMake(260, 0, 0, 0);
     }
     return _tableView;
 }

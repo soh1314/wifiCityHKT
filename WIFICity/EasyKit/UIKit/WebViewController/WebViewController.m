@@ -29,7 +29,8 @@
   
     if(!self.URLString ){
         if (self.htmlWord) {
-            UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+            CGFloat navHeight = kStatusBarHeight + 44;
+            UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-navHeight)];
             webView.backgroundColor = [UIColor whiteColor];
             [self.view addSubview:webView];
             CGFloat width = [UIScreen mainScreen].bounds.size.width-16;

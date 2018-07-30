@@ -18,8 +18,14 @@
 
 + (void)setWindowRootController:(UIViewController *)context;
 
-+ (void)pushWebViewControllerWithHtmlWord:(NSString *)pTag controller:(UIViewController *)context;
++ (void)pushWebViewControllerWithUrlString:(NSString *)pTag controller:(UIViewController *)context;
 
 + (void)pushBlankViewController:(UIViewController *)context;
+
++ (void)pushParoWebViewController:(UIViewController *)context;
+
++ (void)pushBindView:(UIViewController *)context;
+
++ (void)pushWebViewControllerWithHtmlWord:(NSString *)html title:(NSString *)title controller:(UIViewController *)context;
 
 @end

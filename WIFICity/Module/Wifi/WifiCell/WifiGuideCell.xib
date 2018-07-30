@@ -18,15 +18,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="390" height="183.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="step_one.png" translatesAutoresizingMaskIntoConstraints="NO" id="YAr-QB-lNB">
+                        <rect key="frame" x="214" y="64.5" width="176" height="119"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1、进入“无线局域网”" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDh-r2-NYi">
                         <rect key="frame" x="16" y="83" width="135" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="step_one.png" translatesAutoresizingMaskIntoConstraints="NO" id="YAr-QB-lNB">
-                        <rect key="frame" x="214" y="64.5" width="176" height="119"/>
-                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="YAr-QB-lNB" secondAttribute="trailing" id="aVW-Up-3Zw"/>
