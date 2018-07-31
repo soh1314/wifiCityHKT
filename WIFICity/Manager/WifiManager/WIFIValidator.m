@@ -10,6 +10,7 @@
 #import "WifiValidatorController.h"
 #import "WITabBarController.h"
 #import "NSString+Additions.h"
+#import "WIFISevice.h"
 
 @interface WIFIValidator()
 
@@ -65,7 +66,7 @@
 }
 
 - (void)validator {
-    
+    [WIFISevice shared].validating = YES;
     WIFIValidateInfo *info = [WIFIValidateInfo new];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
     info.expireTime = [[NSString unixTimeStamp]integerValue] + 10 * 60;
@@ -73,9 +74,11 @@
 //
 //        return;
 //    }
+    
     NSString *wifiIp = [WifiUtil getLocalRoutIpForCurrentWiFi];
     if (!wifiIp || [wifiIp isEqualToString:@""] ) {
         NSLog(@"wifi ip 为空 无法认证");
+        [WIFISevice shared].validating = NO;
         return;
     }
     NSLog(@"当前wifi的IP地址%@",wifiIp);
@@ -113,16 +116,24 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [WIFISevice shared].validating = NO;
+        });
         if ([str containsString:@"go to internat ok!"]) {
             self.lastHktWifiMac = [WifiUtil getWifiMac];
             [[NSUserDefaults standardUserDefaults]setObject:self.lastHktWifiMac forKey:LASTHKTWIFIMACKEY];
             [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorSuccessNoti object:nil];
             NSLog(@"认证成功");
         }
+       
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"认证网络问题");
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [WIFISevice shared].validating = NO;
+        });
+        
         [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
 
        
@@ -140,7 +151,7 @@
 
 - (BOOL)isHKTWifi {
     NSString *wifiName = [WifiUtil getWifiMac];
-    if ([wifiName hasPrefix:@"dc:37"]) {
+    if ([wifiName hasPrefix:HKTWIFIMACPREFIX]) {
         return YES;
     } else {
         return NO;

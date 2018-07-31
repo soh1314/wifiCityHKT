@@ -28,4 +28,6 @@
 
 + (void)pushWebViewControllerWithHtmlWord:(NSString *)html title:(NSString *)title controller:(UIViewController *)context;
 
++ (void)showWifiGuideController:(UIViewController *)context;
+
 @end

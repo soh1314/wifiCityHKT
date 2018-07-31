@@ -25,7 +25,7 @@
     self.avartar.layer.cornerRadius = 16;
     self.nameLabel.textColor = [UIColor colorWithHexString:@"#141414"];
     self.avartar.backgroundColor = randomColor;
-    [UILabel changeLineSpaceForLabel:self.commentContentLabel WithSpace:6];
+    [UILabel changeLineSpaceForLabel:self.commentContentLabel WithSpace:1.5];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

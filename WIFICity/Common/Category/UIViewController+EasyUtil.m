@@ -11,6 +11,17 @@
 
 @implementation UIViewController (EasyUtil)
 
++(UIViewController *)getCurrentVCWithCurrentView:(UIView *)currentView
+{
+    for (UIView *next = currentView ; next ; next = next.superview) {
+        UIResponder *nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)nextResponder;
+        }
+    }
+    return nil;
+}
+
 - (NSString *)easyTittle:(NSString *)project {
     NSDictionary *tytDic = @{@"TicketController":@"奖券",
                              @"CouponController":@"优惠劵",

@@ -15,6 +15,8 @@
 #import "WIFIPusher.h"
 #import "WifiUtil.h"
 #import "WIFIValidator.h"
+#import "EasyCacheHelper.h"
+
 static NSInteger flowRequestNum = 0;
 
 @interface WIFISevice()
@@ -58,7 +60,7 @@ static NSInteger flowRequestNum = 0;
             self.wifiInfo.orgId = @"8a8ab0b246dc81120146dc8180ba0017";
         }
         [WIFIPusher requestAuthor];
-//        [self scanWifiList];
+        [self scanWifiList];
        
     }
     return self;
@@ -108,7 +110,7 @@ static NSInteger flowRequestNum = 0;
                 if (wifiAdded == YES) {
                     continue;
                 }
-                if ([network.BSSID  hasPrefix:@"dc:37"]) {
+                if ([network.BSSID  hasPrefix:HKTWIFIMACPREFIX]) {
                     WIFIInfo *info = [WIFIInfo new];
                     info.bsid = [network.BSSID copy];
                     info.signalStrength = [NSString stringWithFormat:@"%.2f",network.signalStrength];
@@ -122,6 +124,7 @@ static NSInteger flowRequestNum = 0;
                     [response deliver];
                 }
             }
+            [EasyCacheHelper saveResponseCache:[self.m_wifiArray copy] forKey:HKTWIFIARRAYKEY];
            
         } else if (cmd.commandType == 2) {
             [WIFIPusher sendWIFINoti];
@@ -160,13 +163,17 @@ static NSInteger flowRequestNum = 0;
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         NSLog(@"%ld",status);
-        if (status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) {
+        if (status == AFNetworkReachabilityStatusNotReachable) {
             self.net_status = WINetFail;
-            [Dialog simpleToast:kNetError];
+            if (!self.validating && [WIFISevice netStatus] == WINetFail) {
+                [Dialog simpleToast:kNetError];
+            }
+
         } else if ( status == AFNetworkReachabilityStatusReachableViaWWAN ) {
             self.net_status = WINet4G;
-        }
-        else {
+        } else if ( status == AFNetworkReachabilityStatusUnknown) {
+            self.net_status = WINet4G;
+        } else {
             self.net_status = WINetWifi;
             self.wifiInfo.sid = [WifiUtil getWifiName];
             self.wifiInfo.bsid = [WifiUtil getWifiMac];
@@ -200,7 +207,7 @@ static NSInteger flowRequestNum = 0;
 }
 
 - (void)handleWhenNetChange:(WINetStatus)status wifiInfo:(WIFIInfo*)info {
-    if (status == WINetFail) {
+    if (status == WINetFail && !self.validating) {
         [Dialog simpleToast:@"网络连接失败"];
     }
 }
@@ -313,7 +320,6 @@ static NSInteger flowRequestNum = 0;
 + (WINetStatus)netStatus {
     if ( [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusUnknown || [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
         NSLog(@"网络连接失败");
-        
         return WINetFail;
     } else if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusReachableViaWWAN) {
         return WINet4G;
@@ -326,7 +332,7 @@ static NSInteger flowRequestNum = 0;
 
 +(BOOL)isHKTWifi {
     NSString *wifiName = [WifiUtil getWifiMac];
-    if ([wifiName hasPrefix:@"dc:37"]) {
+    if ([wifiName hasPrefix:HKTWIFIMACPREFIX]) {
         return YES;
     } else {
         return NO;

@@ -123,7 +123,7 @@
     if (self.cellType == 0) {
         return CGSizeMake((KSCREENW-2*12-2*15)/3.0f, 80);
     } else {
-        return CGSizeMake(52,24);
+        return CGSizeMake((KSCREENW-5*5 -2* 12)/6.0f,24);
     }
     
 }

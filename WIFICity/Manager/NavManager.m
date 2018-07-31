@@ -10,6 +10,7 @@
 #import "LoginController.h"
 #import "WebViewController.h"
 #import "BlankViewController.h"
+#import "WifiGuideController.h"
 #import "WIPopView.h"
 
 @implementation NavManager
@@ -86,6 +87,11 @@
     } else {
         [NavManager pushBlankViewController:context];
     }
+}
+
++ (void)showWifiGuideController:(UIViewController *)context {
+    WifiGuideController *guideCtrl = [WifiGuideController new];
+    [context.navigationController pushViewController:guideCtrl animated:YES];
 }
 
 @end

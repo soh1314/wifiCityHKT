@@ -46,8 +46,8 @@
     NSArray *titleArray = nil;
     NSArray *gqxType = nil;
     if ([serviceData.thirdName isEqualToString:@"高新头条"]) {
-        titleArray = @[@"部门动态",@"麓谷新闻",@"媒体聚焦"];
-        self.gxqTypeArray = @[@(2),@(19),@(20)];
+        titleArray = @[@"高新头条"];
+        self.gxqTypeArray = @[@(21)];
     }
     if ([serviceData.thirdName isEqualToString:@"麓谷新闻"]) {
         titleArray = @[@"麓谷新闻"];
@@ -66,20 +66,20 @@
         self.gxqTypeArray  = @[@(2)];
     }
     if ([serviceData.thirdName isEqualToString:@"政府采购"]) {
-        titleArray = @[@"政府采购",@"采购目录",@"采购公告",@"中标公告",@"废标公告"];
-        self.gxqTypeArray  = @[@(8),@(9),@(10),@(11),@(12)];
+        titleArray = @[@"采购目录",@"采购公告",@"中标公告",@"废标公告"];
+        self.gxqTypeArray  = @[@(9),@(10),@(11),@(12)];
     }
     if ([serviceData.thirdName isEqualToString:@"党风廉政"]) {
         titleArray = @[@"党风廉政"];
         self.gxqTypeArray  = @[@(4)];
     }
     if ([serviceData.thirdName isEqualToString:@"法规公文"]) {
-        titleArray = @[@"法规公文",@"国家政策",@"省市政策"];
-        self.gxqTypeArray  = @[@(5),@(6),@(7)];
+        titleArray = @[@"国家政策",@"省市政策"];
+        self.gxqTypeArray  = @[@(6),@(7)];
     }
     if ([serviceData.thirdName isEqualToString:@"征地拆迁"]) {
-        titleArray = @[@"征地拆迁",@"征地公告",@"拆迁补偿公示"];
-        self.gxqTypeArray = @[@(16),@(17),@(18)];
+        titleArray = @[@"征地公告",@"拆迁补偿"];
+        self.gxqTypeArray = @[@(17),@(18)];
     }
     NSMutableArray *itemArray = [NSMutableArray array];
     for (int i = 0; i < titleArray.count; i++) {
@@ -99,6 +99,9 @@
     model.gxqType = [self.gxqTypeArray[index] integerValue];
     model.modelName = @"GaoXinNewS";
     model.cellClass = @"HomeNewsOneCell";
+    if (self.gxqTypeArray && [self.gxqTypeArray[0] integerValue] == 21 ) {
+        model.modelName = @"HomeNews";
+    }
     sub.pageModel = model;
     return sub;
 }

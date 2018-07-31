@@ -177,11 +177,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIa-4J-dYK">
-                                <rect key="frame" x="396" y="12" width="16" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="FT0-k6-Elq"/>
-                                    <constraint firstAttribute="height" constant="16" id="brH-X4-Ehr"/>
-                                </constraints>
+                                <rect key="frame" x="396" y="9" width="16" height="22"/>
                                 <state key="normal" image="qy_phone.png"/>
                                 <connections>
                                     <action selector="callCompany:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="76P-7b-uH1"/>
@@ -211,19 +207,19 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="湖南省长沙市望城坡交易所" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVp-H0-ruD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="湖南省长沙市望城坡交易所" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVp-H0-ruD">
                                 <rect key="frame" x="60" y="12.5" width="328" height="52"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvH-Ey-a7B">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvH-Ey-a7B">
                                 <rect key="frame" x="398" y="30" width="14" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="5CA-lo-aTx"/>
-                                    <constraint firstAttribute="width" constant="14" id="K4y-fo-MTf"/>
+                                    <constraint firstAttribute="width" constant="14" id="3sF-WC-hnE"/>
+                                    <constraint firstAttribute="height" constant="16" id="c7f-LS-FjA"/>
                                 </constraints>
-                                <state key="normal" image="location.png"/>
+                                <state key="normal" image="qy_details_position.png"/>
                                 <connections>
                                     <action selector="locateCompany:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GeC-ZB-5CL"/>
                                 </connections>
@@ -359,9 +355,9 @@
     </objects>
     <resources>
         <image name="default_img.png" width="105" height="60"/>
-        <image name="location.png" width="17" height="20"/>
         <image name="panorama_detail.png" width="16" height="16"/>
-        <image name="qy_phone.png" width="16" height="15"/>
-        <image name="website.png" width="22" height="22"/>
+        <image name="qy_details_position.png" width="13" height="16"/>
+        <image name="qy_phone.png" width="16" height="16"/>
+        <image name="website.png" width="16" height="16"/>
     </resources>
 </document>

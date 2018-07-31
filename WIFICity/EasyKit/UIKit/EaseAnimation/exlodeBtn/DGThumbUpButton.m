@@ -112,7 +112,7 @@
                                 relativeDuration: 1 / 3.0
                                       animations: ^{
                                           typeof(self) strongSelf = weakSelf;
-                                          strongSelf.transform = CGAffineTransformMakeScale(1.5, 1.5);
+                                          strongSelf.transform = CGAffineTransformMakeScale(1.2, 1.2);
                                       }];
         [UIView addKeyframeWithRelativeStartTime: 1 / 3.0
                                 relativeDuration: 1 / 3.0

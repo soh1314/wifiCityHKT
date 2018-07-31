@@ -32,6 +32,11 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+}
+
 - (void)initUI {
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -41,7 +46,7 @@
     }];
     [self.tableView registerNib:[UINib nibWithNibName:@"WifiGuideCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"WifiGuideCellID"];
     self.imageArray = @[@"step_one",@"step_two",@"step_thr"];
-    self.titleArray = @[@"1、进入“无线局域网”",@"2、等待WiFi列表刷新",@"3、返回无线城市， 点击连接"];
+    self.titleArray = @[@"1、进入“无线局域网”",@"2、等待WiFi列表刷新",@"3、点击WiFi开始上网"];
     self.title = @"连接教程";
     
 }
@@ -107,15 +112,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

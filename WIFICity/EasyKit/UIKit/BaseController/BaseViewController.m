@@ -124,7 +124,7 @@
 }
 
 - (nullable NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    if (self.nodataModel) {
+    if (self.nodataModel && self.nodataModel.titile) {
         return [[NSAttributedString alloc]initWithString:self.nodataModel.titile attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
     }
     if ([WIFISevice netStatus] == WINetFail) {

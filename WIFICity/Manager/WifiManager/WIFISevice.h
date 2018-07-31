@@ -23,6 +23,7 @@
 @property (nonatomic,copy)NSString *orgID;
 @property (nonatomic,assign)BOOL recoveryNet;
 @property (nonatomic,strong)NSMutableArray *m_wifiArray;
+@property (nonatomic,assign)BOOL validating;
 
 - (void)setNetMonitor;
 +(WINetStatus)netStatus;

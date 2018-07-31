@@ -79,7 +79,14 @@
 }
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
-    return CGRectMake(0, 44, self.view.frame.size.width, KSCREENH-kNavBarHeight-kStatusBarHeight-44);
+    if (self.itemModel.count == 1) {
+        self.menuView.hidden = YES;
+        return CGRectMake(0, 0, self.view.frame.size.width, KSCREENH-kNavBarHeight-kStatusBarHeight);
+    } else {
+        self.menuView.hidden = NO;
+        return CGRectMake(0, 44, self.view.frame.size.width, KSCREENH-kNavBarHeight-kStatusBarHeight-44);
+    }
+
 }
 
 - (void)viewDidLoad {

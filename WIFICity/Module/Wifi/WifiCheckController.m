@@ -14,6 +14,8 @@
 #import "WifiMapController.h"
 #import "WifiGuideController.h"
 #import "WIFISevice.h"
+#import "EasyCacheHelper.h"
+
 @interface WifiCheckController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)WifiDectectPanel *panel;
@@ -26,23 +28,56 @@
 
 @implementation WifiCheckController
 
+- (id)init {
+    if (self = [super init]) {
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setWhiteTrasluntNavBar];
     [self initUI];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+    [self getWifiListCach];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiStatusChange:) name:@"WINETSTATUSCHANGE" object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WINETSTATUSCHANGE" object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setWhiteTrasluntNavBar];
+    [self setPanelData];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 
 }
 
+- (void)getWifiListCach {
+    NSArray *wifiCachArray = [EasyCacheHelper getResponseCacheForKey:HKTWIFIARRAYKEY];
+    if (wifiCachArray && wifiCachArray.count > 0) {
+        self.wifiArray = [wifiCachArray copy];
+        [self.tableView reloadData];
+    }
+}
+
+- (void)setPanelData {
+    WIFIInfo *info = [WIFISevice shared].wifiInfo;
+    [self.panel setInfo:info];
+}
+
+#pragma  mark - noti
 - (void)applicationEnterForeground:(NSNotification *)noti {
+    
     self.wifiArray = [[WIFISevice shared].m_wifiArray copy];
     [self.tableView reloadData];
+}
+
+- (void)wifiStatusChange:(NSNotification *)noti {
+    [self setPanelData];
 }
 
 - (void)initUI {
@@ -57,7 +92,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"WifiListCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"WifiListCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WIFIListFunctionCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"WIFIListFunctionCellID"];
     
-    self.panel = [[WifiDectectPanel alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 280)];
+    self.panel = [[WifiDectectPanel alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 220)];
     self.panel.wifiGuideBlock = ^{
         WifiGuideController *ctrl = [WifiGuideController new];
         [wself.navigationController pushViewController:ctrl animated:YES];
@@ -65,7 +100,7 @@
 //    [self.view addSubview:self.panel];
     self.tableView.tableHeaderView = self.panel;
     [self.panel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(260);
+//        make.height.mas_equalTo(220);
         make.left.right.mas_equalTo(self.view);
     }];
    
@@ -82,9 +117,6 @@
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.tableFooterView = [[UIView alloc]init];
         _tableView.estimatedRowHeight = 200;
-        if (@available(iOS 11.0, *)) {
-            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAlways;
-        }
 //        _tableView.contentInset  = UIEdgeInsetsMake(260, 0, 0, 0);
     }
     return _tableView;

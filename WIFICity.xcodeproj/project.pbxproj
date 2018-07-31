@@ -192,9 +192,7 @@
 		1695B1A720F4B9A700DFFCCE /* WIMapBubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1A620F4B9A700DFFCCE /* WIMapBubbleView.xib */; };
 		1695B1BD20F5A29300DFFCCE /* LThree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1B420F5A29200DFFCCE /* LThree@2x.png */; };
 		1695B1BE20F5A29300DFFCCE /* LThree@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1B520F5A29300DFFCCE /* LThree@3x.png */; };
-		1695B1BF20F5A29300DFFCCE /* LTwo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1B620F5A29300DFFCCE /* LTwo@2x.png */; };
 		1695B1C020F5A29300DFFCCE /* LOne@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1B720F5A29300DFFCCE /* LOne@3x.png */; };
-		1695B1C120F5A29300DFFCCE /* LTwo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1B820F5A29300DFFCCE /* LTwo@3x.png */; };
 		1695B1C220F5A29300DFFCCE /* LOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1B920F5A29300DFFCCE /* LOne.png */; };
 		1695B1C320F5A29300DFFCCE /* LTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1BA20F5A29300DFFCCE /* LTwo.png */; };
 		1695B1C420F5A29300DFFCCE /* LOne@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1695B1BB20F5A29300DFFCCE /* LOne@2x.png */; };
@@ -885,9 +883,7 @@
 		1695B1A620F4B9A700DFFCCE /* WIMapBubbleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WIMapBubbleView.xib; sourceTree = "<group>"; };
 		1695B1B420F5A29200DFFCCE /* LThree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LThree@2x.png"; sourceTree = "<group>"; };
 		1695B1B520F5A29300DFFCCE /* LThree@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LThree@3x.png"; sourceTree = "<group>"; };
-		1695B1B620F5A29300DFFCCE /* LTwo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LTwo@2x.png"; sourceTree = "<group>"; };
 		1695B1B720F5A29300DFFCCE /* LOne@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LOne@3x.png"; sourceTree = "<group>"; };
-		1695B1B820F5A29300DFFCCE /* LTwo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LTwo@3x.png"; sourceTree = "<group>"; };
 		1695B1B920F5A29300DFFCCE /* LOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LOne.png; sourceTree = "<group>"; };
 		1695B1BA20F5A29300DFFCCE /* LTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LTwo.png; sourceTree = "<group>"; };
 		1695B1BB20F5A29300DFFCCE /* LOne@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LOne@2x.png"; sourceTree = "<group>"; };
@@ -1994,6 +1990,8 @@
 				1695B20620FEE3CC00DFFCCE /* WICousalItemView.m */,
 				1695B20220FEE33900DFFCCE /* EaseNavBar.h */,
 				1695B20320FEE33900DFFCCE /* EaseNavBar.m */,
+				168C1BBE210AB8BE00041958 /* ML_Button.h */,
+				168C1BBF210AB8BF00041958 /* ML_Button.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -2069,8 +2067,6 @@
 				1695B1B420F5A29200DFFCCE /* LThree@2x.png */,
 				1695B1B520F5A29300DFFCCE /* LThree@3x.png */,
 				1695B1BA20F5A29300DFFCCE /* LTwo.png */,
-				1695B1B620F5A29300DFFCCE /* LTwo@2x.png */,
-				1695B1B820F5A29300DFFCCE /* LTwo@3x.png */,
 				169D837E20D3AECF00AA590F /* switch2@2x.png */,
 				169D837F20D3AECF00AA590F /* 启动页1.jpg */,
 				169D838020D3AECF00AA590F /* switch2@3x.png */,
@@ -2450,8 +2446,6 @@
 				1691DE0520ECCACC008AF2BE /* V */,
 				16D64BF020CFA2BB00ED74C8 /* CommunityController.h */,
 				16D64BF120CFA2BB00ED74C8 /* CommunityController.m */,
-				168C1BBE210AB8BE00041958 /* ML_Button.h */,
-				168C1BBF210AB8BF00041958 /* ML_Button.m */,
 				1691DDFF20ECCA74008AF2BE /* CompanyDetailController.h */,
 				1691DE0020ECCA74008AF2BE /* CompanyDetailController.m */,
 				1691DE0220ECCA8A008AF2BE /* CompanySortController.h */,
@@ -3120,6 +3114,7 @@
 				16F887B42101C8E500136C7F /* WIWeatherInfo.h */,
 				16F887B52101C8E500136C7F /* WifiPanelTopView.h */,
 				16F887B62101C8E500136C7F /* WifiPanel.h */,
+				16F887C82101C8E500136C7F /* WifiPanel.m */,
 				16F887BA2101C8E500136C7F /* WifiPanelBottomView.m */,
 				16F887BD2101C8E500136C7F /* WifiPanel.xib */,
 				16F887BE2101C8E500136C7F /* WifiFlowView.m */,
@@ -3129,7 +3124,6 @@
 				16F887C42101C8E500136C7F /* WIWeatherService.m */,
 				16F887C52101C8E500136C7F /* WifiPanelTopView.m */,
 				16F887C62101C8E500136C7F /* WIWeatherInfo.m */,
-				16F887C82101C8E500136C7F /* WifiPanel.m */,
 				16F887CA2101C8E500136C7F /* WifiPanelBottomView.xib */,
 				16F887CB2101C8E500136C7F /* WifiPanelTopView.xib */,
 				16F887CC2101C8E500136C7F /* WifiFlowView.h */,
@@ -3425,7 +3419,6 @@
 				16CDD0382106B02C00DA619F /* panorama_default@2x.png in Resources */,
 				16F76F8120EDCB1F00950127 /* app@3x.png in Resources */,
 				16F76F9C20EDCB1F00950127 /* education_services@2x.png in Resources */,
-				1695B1BF20F5A29300DFFCCE /* LTwo@2x.png in Resources */,
 				16F76F7820EDCB1F00950127 /* collect_default@2x.png in Resources */,
 				165678AD20D368FC00EC3D5C /* expected_page.png in Resources */,
 				16F76F7C20EDCB1F00950127 /* big_data@2x.png in Resources */,
@@ -3551,7 +3544,6 @@
 				16F76FB320EDCB1F00950127 /* recruitment.png in Resources */,
 				169D8F0C21086348006776D8 /* qita_wifi@2x.png in Resources */,
 				1656789D20D3662A00EC3D5C /* location_default@2x.png in Resources */,
-				1695B1C120F5A29300DFFCCE /* LTwo@3x.png in Resources */,
 				16F888142102D5F800136C7F /* HomeNewsImageItemCell.xib in Resources */,
 				169D8EE021086222006776D8 /* position_wifi@2x.png in Resources */,
 				169D8F2B21086D90006776D8 /* wifi_four@3x.png in Resources */,

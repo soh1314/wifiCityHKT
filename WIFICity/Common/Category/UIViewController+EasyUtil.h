@@ -32,5 +32,6 @@
 
 - (void)goToHomeView;
 
++(UIViewController *)getCurrentVCWithCurrentView:(UIView *)currentView;
 
 @end

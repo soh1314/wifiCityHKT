@@ -51,20 +51,34 @@ static NSString *const WIGaoXinNewsListAPI = @"/ws/wifi/findNewsByTypeId.do";
     } else {
         self.page ++;
     }
+    NSString *url = nil;
+    NSDictionary *para = nil;
     WINewsPageModel *model = (WINewsPageModel*)self.pageModel;
-    NSDictionary *para = @{@"number":@(self.page),@"gxqType":@(model.gxqType)};
-    [MHNetworkManager getRequstWithURL:kAppUrl(@"http://192.168.1.188/wificity", WIGaoXinNewsListAPI) params:para successBlock:^(NSDictionary *returnData) {
+    if (model.gxqType == 21) {
+        url = kAppUrl(kUrlHost, WIFIHomeNewsAPI);
+        para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId,@"number":@(self.page)};
+    } else {
+        url = kAppUrl(@"http://192.168.1.188/wificity", WIGaoXinNewsListAPI);
+        para = @{@"number":@(self.page),@"gxqType":@(model.gxqType)};
+    }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MHNetworkManager getRequstWithURL:url params:para successBlock:^(NSDictionary *returnData) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
         if (refresh) {
             [self.dataArray removeAllObjects];
         }
         Class modelCls = NSClassFromString(self.pageModel.modelName);
-        NSArray *newsArray = [GaoXinNewS arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
-        [self.dataArray addObjectsFromArray:newsArray];
-        [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
-        [self.tableView.mj_footer endRefreshing];
+        NSArray *newsArray = [modelCls arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
+        if (newsArray && newsArray.count > 0) {
+            [self.dataArray addObjectsFromArray:newsArray];
+            [self.tableView reloadData];
+        }
         
     } failureBlock:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        kHudNetError;
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
     } showHUD:NO];
@@ -86,28 +100,46 @@ static NSString *const WIGaoXinNewsListAPI = @"/ws/wifi/findNewsByTypeId.do";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    GaoXinNewS *news = self.dataArray[indexPath.row];
-    if ([news.gxq_img_type isEqualToString:@"0"] || [news.gxq_img_type isEqualToString:@"1"] ) {
+    WINewsPageModel *model = (WINewsPageModel*)self.pageModel;
+    if (model.gxqType == 21) {
+        HomeNews *homeNews = self.dataArray[indexPath.row];
         HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
-        cell.news = news;
+        cell.news = homeNews;
         return cell;
     } else {
-        HomeNewsTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsTwoCellID" forIndexPath:indexPath];
-        cell.news = news;
-        if (news.gxq_img_type && news.gxq_image_array) {
-            cell.imageGroupArray = [news.gxq_image_array copy];
+        GaoXinNewS * news = self.dataArray[indexPath.row];
+        if ([news.gxq_img_type isEqualToString:@"0"] || [news.gxq_img_type isEqualToString:@"1"] ) {
+            HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
+            cell.news = news;
+            return cell;
+        } else {
+            HomeNewsTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsTwoCellID" forIndexPath:indexPath];
+            cell.news = news;
+            if (news.gxq_img_type && news.gxq_image_array) {
+                cell.imageGroupArray = [news.gxq_image_array copy];
+            }
+            return cell;
         }
-        
-        return cell;
     }
+    
+
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GaoXinNewS *news = self.dataArray[indexPath.row];
-    weakself;
-    [NavManager pushWebViewControllerWithHtmlWord:news.gxq_details title:news.gxq_title controller:wself];
+    WINewsPageModel *model = (WINewsPageModel*)self.pageModel;
+    if (model.gxqType != 21) {
+        GaoXinNewS *news = self.dataArray[indexPath.row];
+        weakself;
+        [NavManager pushWebViewControllerWithHtmlWord:news.gxq_details title:news.gxq_title controller:wself];
+    } else {
+        //    NSString *detailUrl = [NSString stringWithFormat:@"%@%@%@",@"http://192.168.1.188/wificity",@"/ws/wifi/findNewsById.do?id=",news.ID];
+        //    [NavManager pushWebViewControllerWithUrlString:detailUrl controller:wself];
+    }
+
+    
+
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {

@@ -67,18 +67,21 @@
      }
      NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":@(self.page)};
      [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCategoryListAPI) params:para successBlock:^(NSDictionary *returnData) {
+         [self.tableView.mj_header endRefreshing];
+         [self.tableView.mj_footer endRefreshing];
          WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
          if (refresh) {
              [self.dataArray removeAllObjects];
          }
          if (response && response.success) {
              NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
-             [self.dataArray addObjectsFromArray:dataArray];
-             [self.tableView reloadData];
+             if (dataArray && dataArray.count > 0) {
+                 [self.dataArray addObjectsFromArray:dataArray];
+                 [self.tableView reloadData];
+             } else {
+                 [Dialog simpleToast:@"没有更多数据"];
+             }
          }
-         [self.tableView.mj_header endRefreshing];
-         [self.tableView.mj_footer endRefreshing];
-         
      } failureBlock:^(NSError *error) {
          [self.tableView.mj_header endRefreshing];
          [self.tableView.mj_footer endRefreshing];

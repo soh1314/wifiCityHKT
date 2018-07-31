@@ -107,7 +107,8 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
         [self relocate:nil];
         
     } failureBlock:^(NSError *error) {
-         [Dialog hideToastView:self.view];
+        [Dialog hideToastView:self.view];
+        kHudNetError;
     } showHUD:NO];
 }
 

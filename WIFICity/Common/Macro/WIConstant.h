@@ -40,7 +40,8 @@ typedef NS_ENUM(NSInteger,WINetStatus) {
 static NSString *const LASTHKTWIFIMACKEY = @"LastHKTWifiMacKey";
 static NSString *const LASTHKTWIFIORGIDKEY = @"LastHKTWifiOrgIdKey";
 static NSString *const HOMEAPSERVICEKEY = @"HomeAPServiceKey";
-
+static NSString *const HKTWIFIARRAYKEY = @"HKTWIFIARRAYKEY";
+static NSString *const HKTWIFIMACPREFIX = @"dc:37";
 
 
 #endif /* WIConstant_h */

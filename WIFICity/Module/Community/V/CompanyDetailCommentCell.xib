@@ -32,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="公司制度完整规范，公司员工自觉遵守，员工面貌颖，穿着整齐干净，工作努力、积极主动。" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35u-Ir-zWw">
-                        <rect key="frame" x="60" y="49" width="300" height="43.5"/>
+                        <rect key="frame" x="60" y="49" width="306" height="48.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Yrk-mi-auk" secondAttribute="bottom" constant="12" id="2RJ-ZZ-7qe"/>
-                    <constraint firstItem="Yrk-mi-auk" firstAttribute="top" secondItem="35u-Ir-zWw" secondAttribute="bottom" constant="17" id="9pu-xV-3tg"/>
+                    <constraint firstItem="Yrk-mi-auk" firstAttribute="top" secondItem="35u-Ir-zWw" secondAttribute="bottom" constant="12" id="9pu-xV-3tg"/>
                     <constraint firstItem="s9h-SF-F6J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="BVY-Ey-ObE"/>
                     <constraint firstItem="squ-qt-6n3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="En6-CT-wCg"/>
                     <constraint firstAttribute="trailing" secondItem="s9h-SF-F6J" secondAttribute="trailing" constant="22" id="KpX-gt-RVk"/>
@@ -61,7 +61,7 @@
                     <constraint firstItem="wc0-b2-OAb" firstAttribute="top" secondItem="squ-qt-6n3" secondAttribute="top" id="X6s-6P-tiO"/>
                     <constraint firstItem="Yrk-mi-auk" firstAttribute="leading" secondItem="35u-Ir-zWw" secondAttribute="leading" id="bWm-Qw-VsX"/>
                     <constraint firstItem="35u-Ir-zWw" firstAttribute="leading" secondItem="wc0-b2-OAb" secondAttribute="leading" id="g03-QC-zld"/>
-                    <constraint firstAttribute="trailing" secondItem="35u-Ir-zWw" secondAttribute="trailing" constant="22" id="ms5-eb-4md"/>
+                    <constraint firstAttribute="trailing" secondItem="35u-Ir-zWw" secondAttribute="trailing" constant="16" id="ms5-eb-4md"/>
                     <constraint firstItem="35u-Ir-zWw" firstAttribute="top" secondItem="wc0-b2-OAb" secondAttribute="bottom" constant="18" id="pWh-a3-w6D"/>
                     <constraint firstItem="wc0-b2-OAb" firstAttribute="leading" secondItem="squ-qt-6n3" secondAttribute="trailing" constant="12" id="urr-sL-mgj"/>
                 </constraints>

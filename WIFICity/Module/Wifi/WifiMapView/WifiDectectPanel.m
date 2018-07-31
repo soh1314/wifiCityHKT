@@ -28,4 +28,22 @@
         self.wifiGuideBlock();
     }
 }
+
+- (void)setInfo:(WIFIInfo *)info {
+    _info = info;
+    if (!info || !info.sid) {
+        self.connectStatusLabel.text = @"当前没有连接WIFI";
+        self.wifiNameLabel.text = @"";
+        self.wifiSignalLabel.text = @"";
+        self.wifiDelayLabel.text = @"";
+    } else {
+        self.connectStatusLabel.text = @"连接成功，安全保护中";
+        self.wifiNameLabel.text = [info.sid copy];
+        self.wifiSignalLabel.text = @"优";
+        self.wifiDelayLabel.text = @"10ms";
+    }
+    
+    
+}
+
 @end

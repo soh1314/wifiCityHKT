@@ -7,6 +7,8 @@
 //
 
 #import "WifiPanel.h"
+#import "NavManager.h"
+#import "UIViewController+EasyUtil.h"
 
 @interface WifiPanel()
 
@@ -51,7 +53,6 @@
     [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.topBgView);
     }];
-    
     [self setNetStatus:[WIFISevice netStatus]];
 }
 
@@ -109,7 +110,7 @@
 
 - (IBAction)connectWifi:(id)sender {
     if (self.status == WINetFail || self.status == WINet4G ) {
-        [WifiUtil openWifiSetting];
+        [NavManager showWifiGuideController:[UIViewController getCurrentVCWithCurrentView:self] ];
     } else {
         [Dialog simpleToast:WIFIConnectToastWord];
     }

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WIFIInfo.h"
 
 typedef void(^JumpToWifiGuideBlock)(void);
-
 @interface WifiDectectPanel : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel *wifiSignalLabel;
@@ -18,6 +18,7 @@ typedef void(^JumpToWifiGuideBlock)(void);
 @property (weak, nonatomic) IBOutlet UILabel *wifiNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *connectStatusLabel;
 @property (nonatomic,copy) JumpToWifiGuideBlock wifiGuideBlock;
+@property (nonatomic,strong)WIFIInfo *info;
 
 - (IBAction)jumpToWifiGuide:(id)sender;
 
