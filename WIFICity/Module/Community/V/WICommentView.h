@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnterPriseDelegate.h"
 
-typedef void(^WICommentCommitBlock)(void);
+typedef void(^WICommentDismissBlock)(void);
 
 @interface WICommentView : UIView<UITextViewDelegate>
 
@@ -16,6 +17,10 @@ typedef void(^WICommentCommitBlock)(void);
 
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 
-@property (nonatomic,copy)WICommentCommitBlock commit;
+@property (nonatomic,copy)WICommentDismissBlock dismissBlock;
+
+@property (nonatomic,strong)WICompanyInfo *info;
+
+@property (nonatomic,weak)id <EnterPriseDelegate>delegate;
 
 @end

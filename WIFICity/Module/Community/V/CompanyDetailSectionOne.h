@@ -34,6 +34,7 @@ typedef void(^CompanyLocateBlock)(void);
 @property (weak, nonatomic) IBOutlet UILabel *phoneTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *quanjinTitleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *quanjinBtn;
 @property (nonatomic,copy)CompanyLocateBlock locateBlock;
 @property (nonatomic,copy)CompanyGotoWebSiteBlock webSiteBlock;
 @property (nonatomic,copy)CompanySeeQuanjinBlock SeeQuanjinBlock;

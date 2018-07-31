@@ -52,8 +52,12 @@
     [super viewWillAppear:animated];
     [self setWhiteTrasluntNavBar];
     [self setPanelData];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
 
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
 }
 
 - (void)getWifiListCach {

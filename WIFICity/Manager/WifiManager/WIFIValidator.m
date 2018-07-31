@@ -116,9 +116,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [WIFISevice shared].validating = NO;
-        });
+        [WIFISevice shared].validating = NO;
         if ([str containsString:@"go to internat ok!"]) {
             self.lastHktWifiMac = [WifiUtil getWifiMac];
             [[NSUserDefaults standardUserDefaults]setObject:self.lastHktWifiMac forKey:LASTHKTWIFIMACKEY];
@@ -130,10 +128,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"认证网络问题");
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [WIFISevice shared].validating = NO;
-        });
-        
+        [WIFISevice shared].validating = NO;
         [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
 
        

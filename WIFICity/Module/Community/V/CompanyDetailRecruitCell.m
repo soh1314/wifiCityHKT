@@ -23,6 +23,11 @@
     
 }
 
+- (void)setInfo:(WICompanyInfo *)info {
+    _info = info;
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

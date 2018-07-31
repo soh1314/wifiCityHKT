@@ -127,7 +127,9 @@ static NSInteger flowRequestNum = 0;
             [EasyCacheHelper saveResponseCache:[self.m_wifiArray copy] forKey:HKTWIFIARRAYKEY];
            
         } else if (cmd.commandType == 2) {
-            [WIFIPusher sendWIFINoti];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//               [WIFIPusher sendWIFINoti];
+//            });
             NSLog(@"-------华宽通wifi正在认证------");
         } else {
             NSLog(@"-------华宽通wifi其他状态------");
@@ -172,7 +174,7 @@ static NSInteger flowRequestNum = 0;
         } else if ( status == AFNetworkReachabilityStatusReachableViaWWAN ) {
             self.net_status = WINet4G;
         } else if ( status == AFNetworkReachabilityStatusUnknown) {
-            self.net_status = WINet4G;
+            self.net_status = WINetFail;
         } else {
             self.net_status = WINetWifi;
             self.wifiInfo.sid = [WifiUtil getWifiName];

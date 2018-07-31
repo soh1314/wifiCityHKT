@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WIComment.h"
 @interface CompanyDetailCommentCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *avartar;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentContentLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (nonatomic,strong)WIComment *comment;
+
+
 
 @end

@@ -8,6 +8,8 @@
 
 #import "CompanyDetailCommentCell.h"
 #import "UILabel+Util.h"
+#import "NSString+Additions.h"
+
 @implementation CompanyDetailCommentCell
 
 - (void)awakeFromNib {
@@ -26,6 +28,15 @@
     self.nameLabel.textColor = [UIColor colorWithHexString:@"#141414"];
     self.avartar.backgroundColor = randomColor;
     [UILabel changeLineSpaceForLabel:self.commentContentLabel WithSpace:1.5];
+}
+
+- (void)setComment:(WIComment *)comment {
+    _comment = comment;
+    self.commentContentLabel.text = [comment.disContent stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *time = [comment.disDate timeWithTimeIntervalString:comment.disDate];
+    self.timeLabel.text = [time copy];
+    NSString *shortId = [self.comment.useId substringToIndex:4];
+    self.nameLabel.text = [NSString stringWithFormat:@"用户%@",shortId];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

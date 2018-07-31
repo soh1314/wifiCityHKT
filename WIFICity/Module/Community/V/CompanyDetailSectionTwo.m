@@ -26,11 +26,15 @@
 - (void)setInfo:(WICompanyInfo *)info {
     _info = info;
     self.abstractLabel.text = [info.com_range copy];
-    NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString:self.abstractLabel.text];
-    NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle1 setLineSpacing:8];
-    [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [self.abstractLabel.text length])];
-    [self.abstractLabel setAttributedText:attributedString1];
+    if (self.abstractLabel.text) {
+        NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString:self.abstractLabel.text];
+        NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle1 setLineSpacing:8];
+        [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [self.abstractLabel.text length])];
+        [self.abstractLabel setAttributedText:attributedString1];
+
+    }
+
 
     
 }

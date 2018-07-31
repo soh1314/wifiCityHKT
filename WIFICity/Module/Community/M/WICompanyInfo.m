@@ -10,5 +10,13 @@
 
 @implementation WICompanyInfo
 
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
+
++(JSONKeyMapper *)keyMapper{
+    return [[JSONKeyMapper alloc]initWithDictionary:@{@"id":@"ID"}];
+}
 
 @end

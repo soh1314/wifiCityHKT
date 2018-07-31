@@ -18,6 +18,8 @@
 #import "WICommentBottomBar.h"
 #import "WIPopView.h"
 #import "WINormalCellHeader.h"
+#import "IEnterPrise.h"
+#import "WIComment.h"
 
 static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyById.do";
 
@@ -30,6 +32,8 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 @property (nonatomic,strong)NSMutableArray *commentArray;
 
 @property (nonatomic,assign)BOOL collected;
+
+@property (nonatomic,strong)IEnterPrise *dispatch;
 
 @end
 
@@ -46,20 +50,45 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
     [super viewDidLoad];
     self.title = @"企业详情";
     [self setBlackNavBar];
+    self.commentArray = [NSMutableArray array];
     [self initUI];
     [self loadCompanyDetailData];
-    self.commentArray = [NSMutableArray array];
+    [self loadData:YES];
+
     // Do any additional setup after loading the view.
 }
 
-- (void)loadCompanyDetailData {
+- (void)loadData:(BOOL)refresh {
+    if (refresh) {
+        [self.commentArray removeAllObjects];
+    }
     [Dialog showRingLoadingView:self.view];
-    NSDictionary *para = @{@"comId":self.info.ent_id,@"useId":[AccountManager shared].user.userId};
-    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, EnterPriseCompanyDetailAPI) params:para successBlock:^(NSDictionary *returnData) {
+    NSDictionary *para = @{@"disId":[self.info.ID copy],@"disType":@"1"};
+    [IEnterPrise enterpriseCommentList:^(WINetResponse *response) {
+        [Dialog hideToastView:self.view];
+        if (response) {
+            NSArray *commentArray = [WIComment arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
+            [self.commentArray addObjectsFromArray:commentArray];
+            [self updateView];
+        }
+    } par:para];
+}
+
+- (void)loadCompanyDetailData {
+    
+    NSDictionary *para = @{@"comId":self.info.ID,@"useId":[AccountManager shared].user.userId};
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, EnterPriseCompanyDetailAPI) params:para successBlock:^(NSDictionary *returnData) {
+        self.info = [[WICompanyInfo alloc]initWithDictionary:returnData[@"obj"][0] error:nil];
+        [self updateView];
         [Dialog hideToastView:self.view];
     } failureBlock:^(NSError *error) {
         [Dialog hideToastView:self.view];
     } showHUD:NO];
+}
+
+- (void)updateView {
+    self.commentBottomBar.info = self.info;
+    [self.tableView reloadData];
 }
 
 - (void)initUI {
@@ -78,7 +107,10 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
     }];
     __weak typeof(self)wself = self;
     self.commentBottomBar.tapBlock = ^{
-        [WIPopView popCommentView:wself];
+        WICommentView *commentView =  [WIPopView popCommentView:wself];
+        commentView.info = wself.info;
+        commentView.delegate = wself.dispatch;
+
     };
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionFour" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionFourID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyDetailSectionTwo" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyDetailSectionTwoID"];
@@ -91,6 +123,18 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
     UIBarButtonItem *collectItem = [[UIBarButtonItem alloc]initWithImage:[UIImage qsImageNamed:@"collect_default"] style:UIBarButtonItemStylePlain target:self action:@selector(collectCompanyInfo:)];
     self.navigationItem.rightBarButtonItem = collectItem;
     
+}
+
+- (IEnterPrise *)dispatch {
+    if (!_dispatch) {
+        _dispatch = [IEnterPrise new];
+        _dispatch.needReload = YES;
+        weakself;
+        _dispatch.reloadBlock = ^{
+            [wself loadData:YES];
+        };
+    }
+    return _dispatch;
 }
 
 - (void)collectCompanyInfo:(id)sender {
@@ -137,9 +181,9 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 3) {
         if (!self.commentArray.count) {
-            return 3;
-        } else {
             return 1;
+        } else {
+            return self.commentArray.count >= 3 ? 3 : self.commentArray.count;
         }
     }
     return 1;
@@ -182,12 +226,13 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
         return cell;
     } else {
         if (!self.commentArray.count) {
-            CompanyDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailCommentCellID" forIndexPath:indexPath];
+            CompanyDetailNoCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailNoCommentCellID" forIndexPath:indexPath];
             
             return cell;
         } else {
-            CompanyDetailNoCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailNoCommentCellID" forIndexPath:indexPath];
-            
+            WIComment *comment = self.commentArray[indexPath.row];
+            CompanyDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailCommentCellID" forIndexPath:indexPath];
+            [cell setComment:comment];
             return cell;
         }
 
@@ -212,6 +257,9 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 3) {
+        return CGFLOAT_MIN;
+    }
     return 12;
 }
 

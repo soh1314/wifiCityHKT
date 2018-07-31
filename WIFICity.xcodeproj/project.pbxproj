@@ -12,6 +12,8 @@
 		160118AC210AFCAF002B9058 /* search_noresults.png in Resources */ = {isa = PBXBuildFile; fileRef = 160118A9210AFCAF002B9058 /* search_noresults.png */; };
 		160118AF210B04F1002B9058 /* GaoXinNewS.m in Sources */ = {isa = PBXBuildFile; fileRef = 160118AE210B04F1002B9058 /* GaoXinNewS.m */; };
 		160118B2210B0A96002B9058 /* WINewsPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160118B1210B0A96002B9058 /* WINewsPageModel.m */; };
+		160118F821103845002B9058 /* IEnterPrise.m in Sources */ = {isa = PBXBuildFile; fileRef = 160118F721103845002B9058 /* IEnterPrise.m */; };
+		160118FB21103CCA002B9058 /* WIComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 160118FA21103CCA002B9058 /* WIComment.m */; };
 		1606142D21002B5A007A90A8 /* CompanyDeatailSectionThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 1606142B21002B5A007A90A8 /* CompanyDeatailSectionThree.m */; };
 		1606142E21002B5A007A90A8 /* CompanyDeatailSectionThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1606142C21002B5A007A90A8 /* CompanyDeatailSectionThree.xib */; };
 		1606143221002D3B007A90A8 /* CompanyGaoguanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1606143021002D3B007A90A8 /* CompanyGaoguanCell.m */; };
@@ -639,6 +641,11 @@
 		160118AE210B04F1002B9058 /* GaoXinNewS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaoXinNewS.m; sourceTree = "<group>"; };
 		160118B0210B0A96002B9058 /* WINewsPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WINewsPageModel.h; sourceTree = "<group>"; };
 		160118B1210B0A96002B9058 /* WINewsPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WINewsPageModel.m; sourceTree = "<group>"; };
+		160118F621103845002B9058 /* IEnterPrise.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IEnterPrise.h; sourceTree = "<group>"; };
+		160118F721103845002B9058 /* IEnterPrise.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IEnterPrise.m; sourceTree = "<group>"; };
+		160118F921103CCA002B9058 /* WIComment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIComment.h; sourceTree = "<group>"; };
+		160118FA21103CCA002B9058 /* WIComment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIComment.m; sourceTree = "<group>"; };
+		160118FC21105874002B9058 /* EnterPriseDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterPriseDelegate.h; sourceTree = "<group>"; };
 		1606142A21002B5A007A90A8 /* CompanyDeatailSectionThree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanyDeatailSectionThree.h; sourceTree = "<group>"; };
 		1606142B21002B5A007A90A8 /* CompanyDeatailSectionThree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanyDeatailSectionThree.m; sourceTree = "<group>"; };
 		1606142C21002B5A007A90A8 /* CompanyDeatailSectionThree.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyDeatailSectionThree.xib; sourceTree = "<group>"; };
@@ -1795,6 +1802,8 @@
 				166CA57D20F06E9000E4CBE3 /* WICompanyInfo.m */,
 				166CA57F20F06EA100E4CBE3 /* WICompanyCategory.h */,
 				166CA58020F06EA100E4CBE3 /* WICompanyCategory.m */,
+				160118F921103CCA002B9058 /* WIComment.h */,
+				160118FA21103CCA002B9058 /* WIComment.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -2456,6 +2465,9 @@
 				16CDD09D210821CC00DA619F /* CompanyRecommendController.m */,
 				16CDD09F210822AE00DA619F /* CompanyRecruitController.h */,
 				16CDD0A0210822AE00DA619F /* CompanyRecruitController.m */,
+				160118F621103845002B9058 /* IEnterPrise.h */,
+				160118F721103845002B9058 /* IEnterPrise.m */,
+				160118FC21105874002B9058 /* EnterPriseDelegate.h */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -3929,6 +3941,7 @@
 				16D64B4E20CF7BA500ED74C8 /* EasyCLLocationManager.m in Sources */,
 				16F888232102D88700136C7F /* EasePageSubViewController.m in Sources */,
 				16D64C2320D0AAB800ED74C8 /* TGNetManager.m in Sources */,
+				160118F821103845002B9058 /* IEnterPrise.m in Sources */,
 				16CDD0A1210822AE00DA619F /* CompanyRecruitController.m in Sources */,
 				1691DE0920ECCAFD008AF2BE /* CompanyDetailSectionOne.m in Sources */,
 				1606142D21002B5A007A90A8 /* CompanyDeatailSectionThree.m in Sources */,
@@ -3940,6 +3953,7 @@
 				169D8F4321087388006776D8 /* WIFIValidateInfo.m in Sources */,
 				169D83AC20D3C54C00AA590F /* HomeServiceData.m in Sources */,
 				16D64BF220CFA2BB00ED74C8 /* CommunityController.m in Sources */,
+				160118FB21103CCA002B9058 /* WIComment.m in Sources */,
 				16D64B8620CF7CE800ED74C8 /* UIView+borderLine.m in Sources */,
 				1695B1C820F5A9F300DFFCCE /* EasySpringRefreshHeader.m in Sources */,
 				1691DDC920ECA239008AF2BE /* SystemMessageCell.m in Sources */,

@@ -82,6 +82,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="arrowLabel" destination="NW6-9Y-zVf" id="L80-ga-jw7"/>
+                <outlet property="headIcon" destination="iVo-tq-lZe" id="MiZ-ZI-cX9"/>
                 <outlet property="seeAllNotiLabel" destination="0vY-5T-o7Q" id="FqO-TZ-cl2"/>
                 <outlet property="titleLabel" destination="HZG-10-viE" id="Dd2-5E-GGv"/>
             </connections>

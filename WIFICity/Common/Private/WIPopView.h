@@ -11,10 +11,11 @@
 #import "BindPhoneView.h"
 #import "WICommentView.h"
 
+typedef void(^WIPopViewCommitCompleteBlock)(void);
 @interface WIPopView : NSObject
 
 + (void)popBindPhoneView:(UIViewController *)context;
 
-+ (void)popCommentView:(UIViewController *)context;
++ (WICommentView *)popCommentView:(UIViewController *)context ;
 
 @end

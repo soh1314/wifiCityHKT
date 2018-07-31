@@ -44,6 +44,7 @@
         _collectionView.pagingEnabled = NO;
         _collectionView.scrollEnabled = YES;
         [_collectionView registerNib:[UINib nibWithNibName:@"WICompanyCategroyCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"WICompanyCategroyCellID"];
+        _collectionView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
         
     }
     return _collectionView;
@@ -65,8 +66,12 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     WICompanyCategroyCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"WICompanyCategroyCellID" forIndexPath:indexPath];
     WICompanyCategory *category = self.categoryArray[indexPath.row];
-    colCell.companyNameLabel.text = [category.entName copy];
-    
+    if (category.entName) {
+        colCell.companyNameLabel.text = [category.entName copy];
+    } else {
+        colCell.companyNameLabel.text = [category.industryName copy];
+    }
+
     return colCell;
 }
 

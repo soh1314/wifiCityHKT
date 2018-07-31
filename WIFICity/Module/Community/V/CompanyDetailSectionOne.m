@@ -47,12 +47,25 @@
 
 - (void)setInfo:(WICompanyInfo *)info {
     _info = info;
+
     self.companyNameLabel.text = [info.com_name copy];
     self.phoneValueLabel.text = [info.com_tel copy];
     self.addressValueLabel.text = [info.com_address copy];
     NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,self.info.com_logo];
     [self.companyIcon sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
     }];
+    self.registerMoneyLabel.text = [info.com_capital copy];
+    self.bossNameLabel.text = [info.com_legal copy];
+    self.websiteLabel.text = [info.com_website copy];
+    if (self.info.com_vr) {
+        self.quanjinTitleLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+        self.quanjingLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+        [self.quanjinBtn setImage:[UIImage qsImageNamed:@"panorama_detail"] forState:UIControlStateNormal];
+    } else {
+        self.quanjinTitleLabel.textColor = [UIColor colorWithHexString:@"#D0D0D0"];
+        self.quanjingLabel.textColor = [UIColor colorWithHexString:@"#D0D0D0"];
+        [self.quanjinBtn setImage:[UIImage qsImageNamed:@"panorama_default"] forState:UIControlStateNormal];
+    }
     
 }
 

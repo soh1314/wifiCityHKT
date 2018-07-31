@@ -45,10 +45,10 @@
 
 - (void)setCategoryModelArray:(NSArray *)categoryModelArray {
     _categoryModelArray = categoryModelArray;
-    if (self.cellType == 0) {
-        self.imageArray = @[@"advanced_equipment",@"biomedicine",@"electronic_information",@"modern_services",@"new_energy",@"new_material"];
-        self.titleArray = @[@"生物医药与健康产业",@"新材料产业",@"现代服务业",@"手机新新能源与节能",@"先进装备制造产业",@"电子信息及互联网技术"];
-    }
+//    if (self.cellType == 0) {
+//        self.imageArray = @[@"advanced_equipment",@"biomedicine",@"electronic_information",@"modern_services",@"new_energy",@"new_material"];
+//        self.titleArray = @[@"生物医药与健康产业",@"新材料产业",@"现代服务业",@"手机新新能源与节能",@"先进装备制造产业",@"电子信息及互联网技术"];
+//    }
     [self.collectionView reloadData];
 }
 
@@ -89,11 +89,9 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (self.cellType == SquareSortCellTextType) {
-        return self.categoryModelArray.count;
-    } else {
-        return self.imageArray.count;
-    }
+    
+    return self.categoryModelArray.count;
+
     
 }
 
@@ -101,8 +99,11 @@
     
     if (self.cellType == SquareSortCellImageTextType) {
         EnterPriseAreaColCell *itemCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EnterPriseAreaColCellID" forIndexPath:indexPath];
-        itemCell.areaIconView.image = [UIImage qsImageNamed:self.imageArray[indexPath.row]];
-        itemCell.areaNameLabel.text = self.titleArray[indexPath.row];
+//        itemCell.areaIconView.image = [UIImage qsImageNamed:self.imageArray[indexPath.row]];
+//        itemCell.areaNameLabel.text = self.titleArray[indexPath.row];
+        WICompanyCategory *category = self.categoryModelArray[indexPath.row];
+        [itemCell.areaIconView sd_setImageWithURL:[NSURL URLWithString:category.industryImgUrl]];
+        itemCell.areaNameLabel.text = [category.industryName copy];
         itemCell.areaNameLabel.textColor = [UIColor colorWithHexString:@"#141414"];
         return itemCell;
     } else {

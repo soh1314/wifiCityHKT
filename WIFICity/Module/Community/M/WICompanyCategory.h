@@ -25,4 +25,10 @@
 @property(nonatomic,copy)NSString *entName;
 @property(nonatomic,copy)NSString *entSort;
 @property(nonatomic,copy)NSString *ID;
+@property(nonatomic,copy)NSString *industryImg;
+@property(nonatomic,copy)NSString *industryName;
+@property(nonatomic,copy)NSString *industrySort;
+
+- (NSString *)industryImgUrl;
+
 @end

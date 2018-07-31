@@ -149,13 +149,13 @@
         WICompanyCategroyView *categoryView  = [[WICompanyCategroyView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, EaseDropItemContentViewHeight)];
         weakself;
         categoryView.pick = ^(NSInteger idx) {
-            WICompanyCategory *category = wself.categoryArray[idx];
+            WICompanyCategory *category = wself.productArray[idx];
             wself.categoryID = [category.ID copy];
-            wself.sortTopView.selectItemBlock(index, category.entName);
+            wself.sortTopView.selectItemBlock(index, category.industryName);
             [wself loadData:YES];
             [wself.sortTopView hideDropView];
         };
-        categoryView.categoryArray = [self.categoryArray copy];
+        categoryView.categoryArray = [self.productArray copy];
         categoryView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
         return categoryView;
     } else {

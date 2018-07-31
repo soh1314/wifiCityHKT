@@ -45,11 +45,17 @@
 @property (nonatomic,copy)NSString *like_id;
 @property (nonatomic,copy)NSString *org_id;
 @property (nonatomic,copy)NSString *org_name;
-@property (nonatomic,copy)NSString *update_date;
+@property (nonatomic,assign)long update_date;
 @property (nonatomic,copy)NSString *update_by;
 @property (nonatomic,copy)NSString *phoneNumber;
 @property (nonatomic,copy)NSString *ID;
 @property (nonatomic,assign)NSInteger likes;
 @property (nonatomic,assign)float ratio;
+@property (nonatomic,copy)NSString *com_legal;
+@property (nonatomic,copy)NSString *com_capital;
+@property (nonatomic,copy)NSString *com_contacts;
+@property (nonatomic,copy)NSString *com_vr;
+@property (nonatomic,assign)NSInteger dis;
+@property (nonatomic,assign)NSInteger com_found_date;
 
 @end

@@ -44,7 +44,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9h-SF-F6J">
-                        <rect key="frame" x="328" y="19" width="32" height="15"/>
+                        <rect key="frame" x="330" y="19" width="30" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <state key="normal" title=" 12" image="snap_default.png">
                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,6 +76,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="snap_default.png" width="16" height="15"/>
+        <image name="snap_default.png" width="14" height="13"/>
     </resources>
 </document>

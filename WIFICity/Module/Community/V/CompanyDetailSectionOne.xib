@@ -340,6 +340,7 @@
                 <outlet property="companyNameLabel" destination="bZx-cW-L6p" id="PZL-Xy-kKZ"/>
                 <outlet property="phoneTitleLabel" destination="s4c-ep-zk8" id="dXS-Tb-1y1"/>
                 <outlet property="phoneValueLabel" destination="6Qb-Cr-zhF" id="9bH-8E-zhM"/>
+                <outlet property="quanjinBtn" destination="rpn-cW-Nxa" id="GYo-6r-4gi"/>
                 <outlet property="quanjinTitleLabel" destination="rrp-aP-se1" id="w38-9r-8D5"/>
                 <outlet property="quanjingLabel" destination="T5W-W0-WtS" id="1m7-nf-LA1"/>
                 <outlet property="registerMoneyLabel" destination="kAc-mI-ZM4" id="mbV-pF-yzG"/>

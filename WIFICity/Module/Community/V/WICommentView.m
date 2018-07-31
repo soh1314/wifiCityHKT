@@ -28,8 +28,16 @@
 }
 
 - (void)commit:(id)sender {
-    if (self.commit) {
-        self.commit();
+    weakself;
+    if (self.commentTextView.text) {
+        NSString *commitText = [self.commentTextView.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(commentCompany:comment:complete:)]) {
+            WIComment *comment = [WIComment new];
+            comment.disContent = [commitText copy];
+            [self.delegate commentCompany:self.info comment:comment complete:^(WINetResponse *response) {
+                wself.dismissBlock();
+            }];
+        }
     }
 }
 

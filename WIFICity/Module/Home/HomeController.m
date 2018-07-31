@@ -40,6 +40,10 @@
 
 @implementation HomeController
 
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];

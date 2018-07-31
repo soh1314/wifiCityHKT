@@ -36,11 +36,16 @@ static int EnterPriseRecommentSection = 2;
 @property (nonatomic,strong)EaseTableView *tableView;
 @property (nonatomic,strong)NSMutableArray *dataArray;
 @property (nonatomic,strong)NSMutableArray *categoryArray;
+@property (nonatomic,strong)NSMutableArray *industryArray;
 @property (nonatomic,strong)EaseNavBar *navBar;
 
 @end
 
 @implementation CommunityController
+
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,6 +53,7 @@ static int EnterPriseRecommentSection = 2;
     [self loadData];
     self.categoryArray = [NSMutableArray array];
     self.dataArray = [NSMutableArray array];
+    self.industryArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
 }
 
@@ -93,12 +99,12 @@ static int EnterPriseRecommentSection = 2;
 
     [self requestCompanyCategoryInfo];
     [self requestCompanyList];
-
+    [self requestCompanyIndustryInfo];
 }
 
 - (void)requestCompanyList {
-    
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":@"0"};
+//    8a2bf9ef61d5dffd0161d634b3a30047 8a2bf9ef61d5dffd0161d60ca2290034
+    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":@"1"};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCategoryListAPI) params:para successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         if (response && response.success) {
@@ -115,6 +121,22 @@ static int EnterPriseRecommentSection = 2;
         
     } showHUD:NO];
     
+}
+
+- (void)requestCompanyIndustryInfo {
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, CompanyIndustryAPI) params:nil successBlock:^(NSDictionary *returnData) {
+        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+        if (response && response.success) {
+            NSArray *obj = (NSArray *)response.obj;
+            NSArray *categoryArray = [WICompanyCategory arrayOfModelsFromDictionaries:obj error:nil];
+            [self.industryArray removeAllObjects];
+            [self.industryArray addObjectsFromArray:categoryArray];
+            [self.tableView reloadData];
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:NO];
 }
 
 - (void)requestCompanyCategoryInfo {
@@ -181,6 +203,7 @@ static int EnterPriseRecommentSection = 2;
         WICompanyCategory *category = self.categoryArray[index];
         sortCtrl.categoryID = [category.ID copy];
         sortCtrl.categoryArray = [self.categoryArray copy];
+        sortCtrl.productArray = [self.industryArray copy];
         [self.navigationController pushViewController:sortCtrl animated:YES];
     } else {
         CompanySortController *sortCtrl = [CompanySortController new];
@@ -199,7 +222,7 @@ static int EnterPriseRecommentSection = 2;
         EnterpriseSquareSortCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterpriseSquareSortCellID" forIndexPath:indexPath];
         __weak typeof(self)wself = self;
         cell.cellType = SquareSortCellImageTextType;
-        [cell setCategoryModelArray: [self.categoryArray copy]];
+        [cell setCategoryModelArray: [self.industryArray copy]];
         cell.pick = ^(NSInteger idx ,WICompanyCategory *category) {
             [wself jumpToSortController:idx];
         };

@@ -32,6 +32,7 @@
 
 @implementation MyController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];

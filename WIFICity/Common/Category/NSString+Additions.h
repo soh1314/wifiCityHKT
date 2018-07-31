@@ -53,7 +53,7 @@
 + (NSString*)DataTOjsonString:(id)object;
 
 //时间戳
-
+- (NSString *)timeWithTimeIntervalString:(NSString *)timeString;
 + (NSString *)currentTimeStr;
 + (NSString *)unixTimeStamp;
 

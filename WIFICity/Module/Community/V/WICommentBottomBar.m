@@ -34,6 +34,11 @@
     self.likeBtn.selected = NO;
 }
 
+- (void)setInfo:(WICompanyInfo *)info {
+    _info = info;
+    [self.likeBtn setTitle:[NSString stringWithFormat:@"%ld",info.likes] forState:UIControlStateNormal];
+}
+
 - (void)tapCommentBgView:(UITapGestureRecognizer *)gesture {
     if (self.tapBlock) {
         self.tapBlock();
