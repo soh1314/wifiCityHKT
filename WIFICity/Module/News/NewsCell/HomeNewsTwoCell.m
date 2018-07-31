@@ -38,6 +38,7 @@
     [self.imageGroupCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.imageGroupView);
     }];
+    self.imageGroupCollectionView.userInteractionEnabled = NO;
     
     
 }

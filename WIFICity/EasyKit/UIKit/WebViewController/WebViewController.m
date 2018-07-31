@@ -3,7 +3,7 @@
 #import <WebKit/WebKit.h>
 #import "EaseWebViewProgressBar.h"
 
-@interface WebViewController ()
+@interface WebViewController ()<UIWebViewDelegate>
 
 @property(nonatomic,strong)WKWebView *webView;
 @property (nonatomic,strong)UIWebView *uiwebView;
@@ -31,12 +31,14 @@
         if (self.htmlWord) {
             CGFloat navHeight = kStatusBarHeight + 44;
             UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-navHeight)];
+            self.uiwebView = webView;
             webView.backgroundColor = [UIColor whiteColor];
             [self.view addSubview:webView];
             CGFloat width = [UIScreen mainScreen].bounds.size.width-16;
-            NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
-            NSString *html = [NSString stringWithFormat:@"%@%@",header,self.htmlWord];
-            [webView loadHTMLString:html baseURL:nil];
+//            NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
+//            NSString *html = [NSString stringWithFormat:@"%@%@",header,self.htmlWord];
+            [webView loadHTMLString:self.htmlWord baseURL:nil];
+            self.uiwebView.delegate = self;
         } else {
             return;
         }
@@ -63,6 +65,21 @@
             [self.progressBar setProgress:0.3];
         }
     }
+}
+
+- (void)modifyImageJs {
+    NSString *js = @"function imgAutoFit() { \
+    var imgs = document.getElementsByTagName('img'); \
+    for (var i = 0; i < imgs.length; ++i) {\
+    imgs[i].setAttribute('style','margin: 10px auto 0px; padding: 0px; display: block; max-width: 100%; height: auto;');   \
+    } \
+    }";
+    [self.uiwebView stringByEvaluatingJavaScriptFromString:js];
+    [self.uiwebView stringByEvaluatingJavaScriptFromString:@"imgAutoFit()"];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [self modifyImageJs];
 }
 
 -(void)back:(id)sender {
