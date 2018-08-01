@@ -16,6 +16,8 @@ static NSString *const CompanyCategoryAPI = @"/ws/company/getEntList.do";
 
 static NSString *const CompanyCategoryListAPI = @"/ws/company/getCompanyList.do";
 
+static NSString *const CompanyCategoryBriefListAPI = @"/ws/company/getBriefCompanyList.do";
+
 static NSString *const CompanySearchAPI = @"/ws/company/getCompanyList.do";
 
 static NSString *const CompanyCommentListAPI = @"/ws/company/findDiscussByDisId.do";
@@ -23,5 +25,8 @@ static NSString *const CompanyCommentListAPI = @"/ws/company/findDiscussByDisId.
 static NSString *const CompanyCommentSaveAPI = @"/ws/company/saveDiscuss.do";
 
 static NSString *const CompanyDetailAPI = @"/ws/company/findCompanyById.do";
+
+static NSString *const CompanyLikeAPI = @"/ws/company/saveLikes.do";
+
 
 #endif /* EnterpriseSquareNetAPI_h */

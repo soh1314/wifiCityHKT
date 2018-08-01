@@ -59,13 +59,13 @@
         self.page++;
     }
     NSDictionary *para = nil;
-    if (self.categoryID && ![self.categoryID isEqualToString:@""]) {
-        para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entId":[self.categoryID copy]};
-    } else {
-        para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page]};
-    }
-    
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCategoryListAPI) params:para successBlock:^(NSDictionary *returnData) {
+//    if (self.categoryID && ![self.categoryID isEqualToString:@""]) {
+    para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entId":[self.categoryID copy],@"industryId":[self.areaID copy]};
+//    }
+//    else {
+//        para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page]};
+//    }
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCategoryBriefListAPI) params:para successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         if (response && response.success) {
             NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
@@ -150,7 +150,7 @@
         weakself;
         categoryView.pick = ^(NSInteger idx) {
             WICompanyCategory *category = wself.productArray[idx];
-            wself.categoryID = [category.ID copy];
+            wself.areaID = [category.ID copy];
             wself.sortTopView.selectItemBlock(index, category.industryName);
             [wself loadData:YES];
             [wself.sortTopView hideDropView];

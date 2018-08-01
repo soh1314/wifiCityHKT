@@ -57,5 +57,6 @@
 @property (nonatomic,copy)NSString *com_vr;
 @property (nonatomic,assign)NSInteger dis;
 @property (nonatomic,assign)NSInteger com_found_date;
+@property (nonatomic,copy)NSString *likeId;
 
 @end

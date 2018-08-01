@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAo-Nk-AH4">
-                    <rect key="frame" x="16" y="21.5" width="347" height="28"/>
+                    <rect key="frame" x="16" y="21.5" width="357" height="28"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="写评论" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIO-oz-lw1">
                             <rect key="frame" x="52" y="6" width="40" height="16"/>
@@ -46,14 +46,17 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTe-aM-Oku" customClass="DGThumbUpButton">
-                    <rect key="frame" x="425" y="27.5" width="33" height="15"/>
+                    <rect key="frame" x="427" y="27.5" width="31" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title=" 12" image="snap_default.png">
                         <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="like:" destination="iN0-l3-epB" eventType="touchUpInside" id="afv-w4-i9t"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3x-Et-op8">
-                    <rect key="frame" x="382" y="27.5" width="33" height="15"/>
+                    <rect key="frame" x="384" y="27.5" width="33" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title=" 12" image="comment_default.png">
                         <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -81,7 +84,7 @@
                 <constraint firstItem="ywc-TQ-JDC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="qfc-4M-Cw6"/>
                 <constraint firstItem="jAo-Nk-AH4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qiA-Jd-hu8"/>
                 <constraint firstAttribute="trailingMargin" secondItem="dTe-aM-Oku" secondAttribute="trailing" constant="10" id="tDT-w8-1ce"/>
-                <constraint firstItem="ywc-TQ-JDC" firstAttribute="leading" secondItem="jAo-Nk-AH4" secondAttribute="trailing" constant="10" id="zS3-Em-Iwc"/>
+                <constraint firstItem="ywc-TQ-JDC" firstAttribute="leading" secondItem="jAo-Nk-AH4" secondAttribute="trailing" id="zS3-Em-Iwc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -95,7 +98,7 @@
     </objects>
     <resources>
         <image name="comment_default.png" width="16" height="14"/>
-        <image name="snap_default.png" width="16" height="15"/>
+        <image name="snap_default.png" width="14" height="13"/>
         <image name="write.png" width="16" height="16"/>
     </resources>
 </document>

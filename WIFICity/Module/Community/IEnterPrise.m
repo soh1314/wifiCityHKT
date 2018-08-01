@@ -24,7 +24,12 @@
 }
 
 - (void)likeCompany:(WICompanyInfo *)company complete:(IEnterPriseCompleteBlock)complete {
-    
+    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"likesId":company.ID,@"likesType":@"1"};
+    [IEnterPrise likeEnterprise:^(WINetResponse *response) {
+        if (response && response.success) {
+            complete(response);
+        }
+    } par:para];
 }
 
 + (void)saveComment:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {
@@ -38,7 +43,13 @@
 }
 
 + (void)likeEnterprise:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {
-    
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyLikeAPI) params:par successBlock:^(NSDictionary *returnData) {
+        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+        [Dialog simpleToast:response.msg];
+        complete(response);
+    } failureBlock:^(NSError *error) {
+        complete(nil);
+    } showHUD:NO];
 }
 
 + (void)collectEnterprise:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {

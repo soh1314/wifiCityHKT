@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DGThumbUpButton.h"
 #import "WICompanyInfo.h"
+#import "IEnterPrise.h"
 typedef void(^WICommentBottomBarTapAction)(void);
 @interface WICommentBottomBar : UIView
 
@@ -19,6 +20,9 @@ typedef void(^WICommentBottomBarTapAction)(void);
 @property (nonatomic,copy)WICommentBottomBarTapAction tapBlock;
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 @property (nonatomic,strong)WICompanyInfo *info;
+@property (nonatomic,strong)IEnterPrise *dispatch;
+@property (nonatomic,assign)BOOL like;
 
+- (IBAction)like:(id)sender;
 
 @end

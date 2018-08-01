@@ -43,7 +43,7 @@
                 <outlet property="lineView" destination="z5O-vf-BsG" id="Qse-U5-Q26"/>
                 <outlet property="titleLabel" destination="UmX-xY-bUY" id="79R-q4-Po0"/>
             </connections>
-            <point key="canvasLocation" x="-297.5" y="-24"/>
+            <point key="canvasLocation" x="-12" y="29"/>
         </view>
     </objects>
 </document>

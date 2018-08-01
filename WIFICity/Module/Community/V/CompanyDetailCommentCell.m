@@ -27,12 +27,13 @@
     self.avartar.layer.cornerRadius = 16;
     self.nameLabel.textColor = [UIColor colorWithHexString:@"#141414"];
     self.avartar.backgroundColor = randomColor;
-    [UILabel changeLineSpaceForLabel:self.commentContentLabel WithSpace:1.5];
+//    [UILabel changeLineSpaceForLabel:self.commentContentLabel WithSpace:1.5];
 }
 
 - (void)setComment:(WIComment *)comment {
     _comment = comment;
-    self.commentContentLabel.text = [comment.disContent stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *content = [comment.disContent stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    self.commentContentLabel.text = [content replace:@" " withString:@""];
     NSString *time = [comment.disDate timeWithTimeIntervalString:comment.disDate];
     self.timeLabel.text = [time copy];
     NSString *shortId = [self.comment.useId substringToIndex:4];

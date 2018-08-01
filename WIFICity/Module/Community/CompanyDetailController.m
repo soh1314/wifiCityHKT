@@ -154,7 +154,7 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 #pragma mark - get and set
 - (EaseTableView *)tableView {
     if (!_tableView) {
-        _tableView = [[EaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[EaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;

@@ -197,19 +197,20 @@ static int EnterPriseRecommentSection = 2;
     }
 }
 
-- (void)jumpToSortController:(NSInteger)index {
-    if (index != 444) {
-        CompanySortController *sortCtrl = [CompanySortController new];
+- (void)jumpToSortController:(NSInteger)index jumpType:(NSInteger)type{
+     CompanySortController *sortCtrl = [CompanySortController new];
+    if (type == 0) {
+        WICompanyCategory *category = self.industryArray[index];
+        sortCtrl.categoryID = @"";
+        sortCtrl.areaID = [category.ID copy];
+    } else {
         WICompanyCategory *category = self.categoryArray[index];
         sortCtrl.categoryID = [category.ID copy];
-        sortCtrl.categoryArray = [self.categoryArray copy];
-        sortCtrl.productArray = [self.industryArray copy];
-        [self.navigationController pushViewController:sortCtrl animated:YES];
-    } else {
-        CompanySortController *sortCtrl = [CompanySortController new];
-        [self.navigationController pushViewController:sortCtrl animated:YES];
-
+        sortCtrl.areaID = @"";
     }
+    sortCtrl.categoryArray = [self.categoryArray copy];
+    sortCtrl.productArray = [self.industryArray copy];
+    [self.navigationController pushViewController:sortCtrl animated:YES];
 
 }
 
@@ -224,7 +225,7 @@ static int EnterPriseRecommentSection = 2;
         cell.cellType = SquareSortCellImageTextType;
         [cell setCategoryModelArray: [self.industryArray copy]];
         cell.pick = ^(NSInteger idx ,WICompanyCategory *category) {
-            [wself jumpToSortController:idx];
+            [wself jumpToSortController:idx jumpType:0];
         };
         return cell;
     }  else if (indexPath.section == 1) {
@@ -233,7 +234,7 @@ static int EnterPriseRecommentSection = 2;
         __weak typeof(self)wself = self;
         [cell setCategoryModelArray: [self.categoryArray copy]];
         cell.pick = ^(NSInteger idx ,WICompanyCategory *category) {
-            [wself jumpToSortController:idx];
+            [wself jumpToSortController:idx jumpType:1];
         };
         return cell;
         

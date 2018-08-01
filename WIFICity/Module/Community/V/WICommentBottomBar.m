@@ -32,11 +32,19 @@
     [self.likeBtn setUnPressImageName:@"snap_default"];
     [self.likeBtn setPressImageName:@"snap"];
     self.likeBtn.selected = NO;
+    self.dispatch = [IEnterPrise new];
 }
 
 - (void)setInfo:(WICompanyInfo *)info {
     _info = info;
-    [self.likeBtn setTitle:[NSString stringWithFormat:@"%ld",info.likes] forState:UIControlStateNormal];
+    if (self.info.likeId) {
+        self.like = YES;
+        [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
+    } else {
+        self.like = NO;
+        [self.likeBtn setImage:[UIImage qsImageNamed:@"snap_default"] forState:UIControlStateNormal];
+    }
+    [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",info.likes] forState:UIControlStateNormal];
 }
 
 - (void)tapCommentBgView:(UITapGestureRecognizer *)gesture {
@@ -48,4 +56,17 @@
 
 
 
+- (IBAction)like:(id)sender {
+    if (!self.like) {
+        self.like = YES;
+        weakself;
+        [self.dispatch likeCompany:self.info complete:^(WINetResponse *response) {
+            wself.info.likes ++;
+            [wself.likeBtn setTitle:[NSString stringWithFormat:@" %ld",wself.info.likes] forState:UIControlStateNormal];
+        }];
+    } else {
+        [Dialog simpleToast:@"已点赞"];
+    }
+
+}
 @end
