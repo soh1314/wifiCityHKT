@@ -58,7 +58,7 @@ static Dialog *instance = nil;
 + (void)showRingLoadingView:(UIView *)view {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.removeFromSuperViewOnHide = YES;
-    hud.minShowTime = 0.5;
+//    hud.minShowTime = 0.5;
     hud.color  = [UIColor clearColor];
     hud.mode = MBProgressHUDModeCustomView;
     hud.yOffset = -80.f;
@@ -97,14 +97,14 @@ static Dialog *instance = nil;
 //    [SVProgressHUD dismissWithDelay:1.5];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     hud.mode = MBProgressHUDModeText;
-    hud.animationType = MBProgressHUDAnimationZoomOut;
+    hud.animationType = MBProgressHUDAnimationFade;
     hud.minShowTime = 0.5;
     hud.labelText = message;
     hud.labelFont = [UIFont systemFontOfSize:14];
     hud.margin = 10.f;
-    hud.yOffset = -20.f;
+    hud.yOffset = KSCREENW/2.0;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:2];
+    [hud hide:YES afterDelay:1.5];
 }
 
 + (void)hideSimpleToast
@@ -115,7 +115,8 @@ static Dialog *instance = nil;
 + (void)toastCenter:(NSString *)message {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
 	hud.mode = MBProgressHUDModeText;
-    hud.animationType = MBProgressHUDAnimationZoomOut;
+    hud.animationType = MBProgressHUDAnimationFade;
+    hud.minShowTime = 0.5;
 	hud.labelText = message;
 	hud.margin = 10.f;
 	hud.yOffset = -20.f;

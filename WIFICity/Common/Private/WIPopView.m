@@ -8,12 +8,12 @@
 
 #import "WIPopView.h"
 #import "IEnterPrise.h"
-
+#import <IQKeyboardManager/IQKeyboardManager.h>
 @implementation WIPopView
 
 + (void)popBindPhoneView:(UIViewController *)context {
     context.zh_popupController = [[zhPopupController alloc]init];
-    BindPhoneView *phoneView = [[BindPhoneView alloc]initWithFrame:CGRectMake(0, 0, 300, 210)];
+    BindPhoneView *phoneView = [[BindPhoneView alloc]initWithFrame:CGRectMake(0, 0, 300, 65)];
     [phoneView.inputPhoneView.phoneTtf becomeFirstResponder];
     __weak typeof(context)wself = context;
     phoneView.closeBlock = ^{
@@ -25,9 +25,10 @@
 }
 
 + (WICommentView *)popCommentView:(UIViewController *)context {
-    context.zh_popupController = [[zhPopupController alloc]init];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 160)];
-    WICommentView *commentView = [[WICommentView alloc]initWithFrame:CGRectZero];
+    context.zh_popupController = [zhPopupController popupControllerWithMaskType:zhPopupMaskTypeClear];
+    context.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 50)];
+    WICommentView *commentView = [[WICommentView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 160)];
     [view addSubview:commentView];
     [commentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(view);
@@ -36,8 +37,7 @@
     commentView.dismissBlock = ^{
         [wself.zh_popupController dismiss];
     };
-    context.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
-    [context.zh_popupController presentContentView:view duration:0.35 springAnimated:NO];
+    [context.zh_popupController presentContentView:view duration:0.35 springAnimated:YES];
     context.zh_popupController.willDismiss = ^(zhPopupController * _Nonnull popupController) {
         [commentView.commentTextView resignFirstResponder];
     };

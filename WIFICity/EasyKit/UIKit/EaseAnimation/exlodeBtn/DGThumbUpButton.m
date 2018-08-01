@@ -91,6 +91,9 @@
 
 #pragma mark - Methods
 - (void) clickButtonPress {
+    if (self.forbidden) {
+        return;
+    }
     if (isSelected) [self popInsideWithDuration: 0.5];
     else {
         [self popOutsideWithDuration: 0.5];

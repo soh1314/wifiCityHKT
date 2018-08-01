@@ -16,11 +16,11 @@
 //"useId" : "8a2bf9ef63fd1b0801642667a2ae0ec1"
 @interface WIComment : WIModel
 
-@property (nonatomic,copy)NSString *disId;
-@property (nonatomic,copy)NSString *disType;
-@property (nonatomic,copy)NSString *disContent;
+@property (nonatomic,copy)NSString *dis_id;
+@property (nonatomic,copy)NSString *dis_Type;
+@property (nonatomic,copy)NSString *dis_content;
 @property (nonatomic,copy)NSString *ID;
-@property (nonatomic,copy)NSString *useId;
-@property (nonatomic,copy)NSString *disDate;
+@property (nonatomic,copy)NSString *use_id;
+@property (nonatomic,copy)NSString *dis_date;
 
 @end

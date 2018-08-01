@@ -54,6 +54,24 @@
                         <constraint firstAttribute="height" constant="16" id="dnt-x9-WaN"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g78-Dw-L9v">
+                    <rect key="frame" x="369" y="33" width="16" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="search_sq.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="searchNews:" destination="iN0-l3-epB" eventType="touchUpInside" id="kRu-ZV-GZU"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sjw-fx-Wse">
+                    <rect key="frame" x="315" y="47" width="86" height="86"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="      今日红包" backgroundImage="sign_in.png">
+                        <color key="titleColor" red="1" green="0.98431372549019602" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -61,6 +79,8 @@
                 <constraint firstItem="tO5-DK-xyA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="6Vx-jr-DJG"/>
                 <constraint firstItem="gTd-16-Bn9" firstAttribute="leading" secondItem="KP6-CK-qpY" secondAttribute="leading" id="6rC-sT-l9l"/>
                 <constraint firstItem="fBJ-ri-Qfu" firstAttribute="leading" secondItem="gTd-16-Bn9" secondAttribute="trailing" constant="8" id="BVC-dm-cBZ"/>
+                <constraint firstItem="g78-Dw-L9v" firstAttribute="centerY" secondItem="FkG-Tl-jX9" secondAttribute="centerY" id="G7y-rj-j68"/>
+                <constraint firstAttribute="trailing" secondItem="g78-Dw-L9v" secondAttribute="trailing" constant="16" id="Gdc-QR-EnZ"/>
                 <constraint firstItem="tO5-DK-xyA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="34" id="LcI-P7-A4Z"/>
                 <constraint firstItem="KP6-CK-qpY" firstAttribute="top" secondItem="tO5-DK-xyA" secondAttribute="bottom" constant="8" id="MSQ-ix-le9"/>
                 <constraint firstItem="fBJ-ri-Qfu" firstAttribute="centerY" secondItem="gTd-16-Bn9" secondAttribute="centerY" id="N3m-mT-T45"/>
@@ -78,11 +98,13 @@
                 <outlet property="weatherImageView" destination="KP6-CK-qpY" id="tib-bo-rfu"/>
                 <outlet property="weatherLabel" destination="qia-Hh-wff" id="Ws2-3y-Sd5"/>
             </connections>
-            <point key="canvasLocation" x="54.5" y="130.5"/>
+            <point key="canvasLocation" x="12" y="99"/>
         </view>
     </objects>
     <resources>
         <image name="location_home.png" width="16" height="16"/>
         <image name="pm.png" width="16" height="16"/>
+        <image name="search_sq.png" width="16" height="16"/>
+        <image name="sign_in.png" width="86" height="86"/>
     </resources>
 </document>

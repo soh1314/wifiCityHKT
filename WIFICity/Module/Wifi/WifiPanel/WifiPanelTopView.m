@@ -7,7 +7,8 @@
 //
 
 #import "WifiPanelTopView.h"
-
+#import "UIViewController+EasyUtil.h"
+#import "NewsSearchController.h"
 @implementation WifiPanelTopView
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -19,4 +20,24 @@
     return self;
 }
 
+- (IBAction)searchNews:(id)sender {
+    UIViewController *ctrl = [UIViewController getCurrentVCWithCurrentView:self];
+    NewsSearchController *newsCtrl = [NewsSearchController new];
+    newsCtrl.bgImage = [WifiPanelTopView shotWithView:ctrl.view];
+    [ctrl.navigationController presentViewController:newsCtrl animated:YES completion:nil];
+    
+}
+
++ (UIImage *)shotWithView:(UIView *)view{
+    UIWindow *screenWindow = [[UIApplication sharedApplication] keyWindow];
+    UIGraphicsBeginImageContextWithOptions(screenWindow.frame.size, NO, [UIScreen mainScreen].scale);
+    [screenWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *screenImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return screenImage;
+}
+
+
 @end
+
+

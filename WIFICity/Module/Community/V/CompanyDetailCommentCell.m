@@ -32,11 +32,11 @@
 
 - (void)setComment:(WIComment *)comment {
     _comment = comment;
-    NSString *content = [comment.disContent stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *content = [comment.dis_content stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     self.commentContentLabel.text = [content replace:@" " withString:@""];
-    NSString *time = [comment.disDate timeWithTimeIntervalString:comment.disDate];
+    NSString *time = [comment.dis_date timeWithTimeIntervalString:comment.dis_date];
     self.timeLabel.text = [time copy];
-    NSString *shortId = [self.comment.useId substringToIndex:4];
+    NSString *shortId = [self.comment.use_id substringToIndex:4];
     self.nameLabel.text = [NSString stringWithFormat:@"用户%@",shortId];
 }
 

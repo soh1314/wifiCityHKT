@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *PMLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *weatherImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *pmImageView;
+- (IBAction)searchNews:(id)sender;
 
 @end

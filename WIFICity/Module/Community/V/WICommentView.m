@@ -20,11 +20,24 @@
 }
 
 - (void)initUI {
-    self.commentTextView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
+    self.inputViewMinHeight = 40;
+    self.inputViewMaxHeight = 160;
     [self.commentTextView becomeFirstResponder];
     [self unActiveBtn];
     self.commentTextView.delegate = self;
     [self.commentBtn addTarget:self action:@selector(commit:) forControlEvents:UIControlEventTouchUpInside];
+    _previousTextViewContentHeight = [self _getTextViewContentH:self.commentTextView];
+    UILabel *placeHolderLabel = [[UILabel alloc] init];
+    placeHolderLabel.text = @"发表您的观点...";
+    placeHolderLabel.numberOfLines = 0;
+    placeHolderLabel.textColor = [UIColor colorWithHexString:@"#999999"];
+    [placeHolderLabel sizeToFit];
+    [self.commentTextView addSubview:placeHolderLabel];
+    self.commentTextView.font = [UIFont systemFontOfSize:14.f];
+    placeHolderLabel.font = [UIFont systemFontOfSize:14.f];
+    [self.commentTextView setValue:placeHolderLabel forKey:@"_placeholderLabel"];
+    self.commentTextView.tintColor = [UIColor blackColor];
+
 }
 
 - (void)commit:(id)sender {
@@ -33,7 +46,7 @@
         NSString *commitText = [self.commentTextView.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         if (self.delegate && [self.delegate respondsToSelector:@selector(commentCompany:comment:complete:)]) {
             WIComment *comment = [WIComment new];
-            comment.disContent = [commitText copy];
+            comment.dis_content = [commitText copy];
             [self.delegate commentCompany:self.info comment:comment complete:^(WINetResponse *response) {
                 wself.dismissBlock();
             }];
@@ -45,7 +58,7 @@
     self.commentBtn.backgroundColor = [UIColor colorWithHexString:@"#0078FF"];
     [self.commentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.commentBtn.clipsToBounds = YES;
-    self.commentBtn.layer.cornerRadius = 4;
+    self.commentBtn.layer.cornerRadius = 6;
 }
 
 - (void)unActiveBtn {
@@ -59,6 +72,59 @@
         [self activeBtn];
     } else {
         [self unActiveBtn];
+    }
+}
+
+
+- (CGFloat)_getTextViewContentH:(UITextView *)textView
+{
+    
+    return ceilf([textView sizeThatFits:textView.frame.size].height);
+    
+}
+
+#pragma mark - textview delegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        
+        return NO;
+    }
+    
+    [self _willShowInputTextViewToHeight:[self _getTextViewContentH:self.commentTextView]];
+    return YES;
+}
+
+- (void)_willShowInputTextViewToHeight:(CGFloat)toHeight
+{
+    if (toHeight < self.inputViewMinHeight) {
+        toHeight = self.inputViewMinHeight;
+    }
+    if (toHeight > self.inputViewMaxHeight) {
+        toHeight = self.inputViewMaxHeight;
+    }
+    
+    if (toHeight == _previousTextViewContentHeight)
+    {
+        return;
+    }
+    else{
+        CGFloat changeHeight = toHeight - _previousTextViewContentHeight;
+        CGRect rect = self.frame;
+        rect.size.height += changeHeight;
+        [self.commentTextView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(rect.size.height - 16);
+            make.centerY.mas_equalTo(self);
+            make.left.mas_equalTo(self).mas_offset(10);
+            make.right.mas_equalTo(self.commentBtn.mas_left).mas_offset(-10);
+        }];
+        [self mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(self.superview);
+            make.height.mas_equalTo(rect.size.height);
+        }];
+        
+        _previousTextViewContentHeight = toHeight;
+        
     }
 }
 

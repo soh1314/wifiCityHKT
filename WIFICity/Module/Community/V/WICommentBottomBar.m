@@ -37,8 +37,9 @@
 
 - (void)setInfo:(WICompanyInfo *)info {
     _info = info;
-    if (self.info.likeId) {
+    if (self.info.like_id) {
         self.like = YES;
+        self.likeBtn.forbidden = YES;
         [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
     } else {
         self.like = NO;
@@ -52,8 +53,6 @@
         self.tapBlock();
     }
 }
-
-
 
 
 - (IBAction)like:(id)sender {

@@ -14,6 +14,11 @@
 		160118B2210B0A96002B9058 /* WINewsPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160118B1210B0A96002B9058 /* WINewsPageModel.m */; };
 		160118F821103845002B9058 /* IEnterPrise.m in Sources */ = {isa = PBXBuildFile; fileRef = 160118F721103845002B9058 /* IEnterPrise.m */; };
 		160118FB21103CCA002B9058 /* WIComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 160118FA21103CCA002B9058 /* WIComment.m */; };
+		1601190021115FD0002B9058 /* sign_in@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 160118FD21115FCF002B9058 /* sign_in@3x.png */; };
+		1601190121115FD0002B9058 /* sign_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 160118FE21115FCF002B9058 /* sign_in.png */; };
+		1601190221115FD0002B9058 /* sign_in@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 160118FF21115FCF002B9058 /* sign_in@2x.png */; };
+		16011905211162E9002B9058 /* NewsSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16011904211162E9002B9058 /* NewsSearchController.m */; };
+		1601190921118E57002B9058 /* EaseTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1601190821118E56002B9058 /* EaseTextView.m */; };
 		1606142D21002B5A007A90A8 /* CompanyDeatailSectionThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 1606142B21002B5A007A90A8 /* CompanyDeatailSectionThree.m */; };
 		1606142E21002B5A007A90A8 /* CompanyDeatailSectionThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1606142C21002B5A007A90A8 /* CompanyDeatailSectionThree.xib */; };
 		1606143221002D3B007A90A8 /* CompanyGaoguanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1606143021002D3B007A90A8 /* CompanyGaoguanCell.m */; };
@@ -646,6 +651,13 @@
 		160118F921103CCA002B9058 /* WIComment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WIComment.h; sourceTree = "<group>"; };
 		160118FA21103CCA002B9058 /* WIComment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WIComment.m; sourceTree = "<group>"; };
 		160118FC21105874002B9058 /* EnterPriseDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterPriseDelegate.h; sourceTree = "<group>"; };
+		160118FD21115FCF002B9058 /* sign_in@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign_in@3x.png"; sourceTree = "<group>"; };
+		160118FE21115FCF002B9058 /* sign_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign_in.png; sourceTree = "<group>"; };
+		160118FF21115FCF002B9058 /* sign_in@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign_in@2x.png"; sourceTree = "<group>"; };
+		16011903211162E9002B9058 /* NewsSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsSearchController.h; sourceTree = "<group>"; };
+		16011904211162E9002B9058 /* NewsSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSearchController.m; sourceTree = "<group>"; };
+		1601190721118E56002B9058 /* EaseTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseTextView.h; sourceTree = "<group>"; };
+		1601190821118E56002B9058 /* EaseTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseTextView.m; sourceTree = "<group>"; };
 		1606142A21002B5A007A90A8 /* CompanyDeatailSectionThree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanyDeatailSectionThree.h; sourceTree = "<group>"; };
 		1606142B21002B5A007A90A8 /* CompanyDeatailSectionThree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanyDeatailSectionThree.m; sourceTree = "<group>"; };
 		1606142C21002B5A007A90A8 /* CompanyDeatailSectionThree.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyDeatailSectionThree.xib; sourceTree = "<group>"; };
@@ -1563,6 +1575,15 @@
 				160118A9210AFCAF002B9058 /* search_noresults.png */,
 			);
 			path = "企业广场搜索";
+			sourceTree = "<group>";
+		};
+		1601190621118E56002B9058 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				1601190721118E56002B9058 /* EaseTextView.h */,
+				1601190821118E56002B9058 /* EaseTextView.m */,
+			);
+			path = TextView;
 			sourceTree = "<group>";
 		};
 		163A08A520E1D4E400DAC894 /* BindPhone */ = {
@@ -2643,6 +2664,7 @@
 		16D64B9E20CF9FCE00ED74C8 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				1601190621118E56002B9058 /* TextView */,
 				1695B1F820FEDC5A00DFFCCE /* DropView */,
 				1656642320EF701400063D0C /* EaseAnimation */,
 				16F76FE720EF4A7700950127 /* SearchView */,
@@ -3112,6 +3134,8 @@
 				16F887752100648D00136C7F /* WINewsInfoViewController.m */,
 				160118B0210B0A96002B9058 /* WINewsPageModel.h */,
 				160118B1210B0A96002B9058 /* WINewsPageModel.m */,
+				16011903211162E9002B9058 /* NewsSearchController.h */,
+				16011904211162E9002B9058 /* NewsSearchController.m */,
 				16F887E42102C9B300136C7F /* FsTableView.h */,
 				16F887E52102C9B300136C7F /* FsTableView.m */,
 			);
@@ -3190,6 +3214,9 @@
 		16FD290220E09DF50099A32B /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				160118FE21115FCF002B9058 /* sign_in.png */,
+				160118FF21115FCF002B9058 /* sign_in@2x.png */,
+				160118FD21115FCF002B9058 /* sign_in@3x.png */,
 				16FD290A20E09E7B0099A32B /* pm.png */,
 				16FD290920E09E7B0099A32B /* pm@2x.png */,
 				16FD290B20E09E7B0099A32B /* pm@3x.png */,
@@ -3386,6 +3413,7 @@
 				16CDD0832108101F00DA619F /* step_thr@2x.png in Resources */,
 				16CDD07E2108101F00DA619F /* step_one@2x.png in Resources */,
 				1691DDEA20ECB485008AF2BE /* wireless city@2x.png in Resources */,
+				1601190121115FD0002B9058 /* sign_in.png in Resources */,
 				169D8F2F21086D90006776D8 /* wifi_four.png in Resources */,
 				16F76F8B20EDCB1F00950127 /* phone_pay@3x.png in Resources */,
 				163A08E720E3707100DAC894 /* before@3x.png in Resources */,
@@ -3399,6 +3427,7 @@
 				16F76F5D20EDCB1F00950127 /* triangle_default@3x.png in Resources */,
 				16CDD04C2106C3EB00DA619F /* CompanyDetailCommentCell.xib in Resources */,
 				1656789B20D3662A00EC3D5C /* home@2x.png in Resources */,
+				1601190021115FD0002B9058 /* sign_in@3x.png in Resources */,
 				16CDD05D2106C9E300DA619F /* WINormalCellHeader.xib in Resources */,
 				16F76FE420EEFDAB00950127 /* square_lg.png in Resources */,
 				1691DDF420ECB485008AF2BE /* email@2x.png in Resources */,
@@ -3464,6 +3493,7 @@
 				16F887852100940400136C7F /* search_sq@3x.png in Resources */,
 				16F8879B21017F5400136C7F /* biomedicine@3x.png in Resources */,
 				1691DD9F20EC79A7008AF2BE /* share@3x.png in Resources */,
+				1601190221115FD0002B9058 /* sign_in@2x.png in Resources */,
 				1656789520D3662A00EC3D5C /* location@3x.png in Resources */,
 				16F76F7D20EDCB1F00950127 /* VR@3x.png in Resources */,
 				165678A820D3662A00EC3D5C /* square@3x.png in Resources */,
@@ -3927,6 +3957,7 @@
 				16D64B7C20CF7CE800ED74C8 /* UIButton+verifyBtn.m in Sources */,
 				16CDD06E2107FE4800DA619F /* UILabel+wordStyle.m in Sources */,
 				1656771620D119C900EC3D5C /* TPPasswordTextView.m in Sources */,
+				16011905211162E9002B9058 /* NewsSearchController.m in Sources */,
 				16D64BEC20CFA29A00ED74C8 /* MovieController.m in Sources */,
 				1691DDCD20ECA2D6008AF2BE /* WISystemNotice.m in Sources */,
 				169D8ED32108602C006776D8 /* WIFIListFunctionCell.m in Sources */,
@@ -3998,6 +4029,7 @@
 				16F887D52101C8E600136C7F /* WifiPanelBottomView.m in Sources */,
 				16F888222102D88700136C7F /* EasePageDelegateHelper.m in Sources */,
 				16F76FD120EE08E400950127 /* EnterPriseSquareHomeInfoCell.m in Sources */,
+				1601190921118E57002B9058 /* EaseTextView.m in Sources */,
 				1691DD7320EC60FF008AF2BE /* EaseStretchHeaderView.m in Sources */,
 				169D837B20D3ACAE00AA590F /* DHGuidePageHUD.m in Sources */,
 				1695B1FE20FEDC5A00DFFCCE /* EaseDropMenu.m in Sources */,

@@ -21,6 +21,6 @@ typedef NS_ENUM(NSUInteger, DGThumbUpButtonType) {
 @property (nonatomic,copy)DGThumbUpBtnTapActionBlock tapActionBlock;
 @property (nonatomic,copy)NSString *pressImageName;
 @property (nonatomic,copy)NSString *unPressImageName;
-
+@property (nonatomic,assign)BOOL forbidden;
 
 @end

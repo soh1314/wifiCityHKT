@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "EnterPriseDelegate.h"
+#import "EaseTextView.h"
 
 typedef void(^WICommentDismissBlock)(void);
 
 @interface WICommentView : UIView<UITextViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextView *commentTextView;
+@property (weak, nonatomic) IBOutlet EaseTextView *commentTextView;
 
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 
@@ -22,5 +23,11 @@ typedef void(^WICommentDismissBlock)(void);
 @property (nonatomic,strong)WICompanyInfo *info;
 
 @property (nonatomic,weak)id <EnterPriseDelegate>delegate;
+
+@property (nonatomic,assign)float inputViewMinHeight;
+
+@property (nonatomic,assign)float inputViewMaxHeight;
+
+@property (nonatomic,assign)float previousTextViewContentHeight;
 
 @end

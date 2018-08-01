@@ -12,42 +12,50 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WICommentView">
-            <rect key="frame" x="0.0" y="0.0" width="559" height="160"/>
+            <rect key="frame" x="0.0" y="0.0" width="583" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="  " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xvd-GP-X7z">
-                    <rect key="frame" x="15" y="15" width="529" height="80"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="Yj9-Ju-ulc"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlG-Ej-uNB">
-                    <rect key="frame" x="464" y="110" width="80" height="35"/>
+                    <rect key="frame" x="498" y="10" width="75" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="35" id="sWI-jr-GGB"/>
-                        <constraint firstAttribute="width" constant="80" id="sXy-5j-TbO"/>
+                        <constraint firstAttribute="height" constant="30" id="sWI-jr-GGB"/>
+                        <constraint firstAttribute="width" constant="75" id="sXy-5j-TbO"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="发表"/>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSZ-Y4-Iqz">
+                    <rect key="frame" x="0.0" y="0.0" width="583" height="1"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="ev2-jm-PGx"/>
+                    </constraints>
+                </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvd-GP-X7z" customClass="EaseTextView">
+                    <rect key="frame" x="10" y="8" width="473" height="34"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="ZlG-Ej-uNB" secondAttribute="trailing" constant="15" id="3ts-Cs-Lkb"/>
-                <constraint firstItem="ZlG-Ej-uNB" firstAttribute="top" secondItem="xvd-GP-X7z" secondAttribute="bottom" constant="15" id="4Rg-Bk-0sn"/>
-                <constraint firstItem="xvd-GP-X7z" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4fC-fK-S1V"/>
-                <constraint firstItem="xvd-GP-X7z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Erq-LE-Oi0"/>
-                <constraint firstItem="xvd-GP-X7z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="zDW-Rn-mvi"/>
+                <constraint firstAttribute="trailing" secondItem="ZlG-Ej-uNB" secondAttribute="trailing" constant="10" id="3ts-Cs-Lkb"/>
+                <constraint firstItem="ZlG-Ej-uNB" firstAttribute="leading" secondItem="xvd-GP-X7z" secondAttribute="trailing" constant="15" id="8mz-Gf-mRd"/>
+                <constraint firstItem="xvd-GP-X7z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="AkD-2H-K4z"/>
+                <constraint firstItem="qSZ-Y4-Iqz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NoI-dJ-PFQ"/>
+                <constraint firstAttribute="trailing" secondItem="qSZ-Y4-Iqz" secondAttribute="trailing" id="Tlt-fE-lgW"/>
+                <constraint firstItem="xvd-GP-X7z" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="bRJ-NZ-bN6"/>
+                <constraint firstItem="xvd-GP-X7z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="kXa-Ys-fxJ"/>
+                <constraint firstItem="qSZ-Y4-Iqz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="o2L-ct-5os"/>
+                <constraint firstItem="ZlG-Ej-uNB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="x30-Bp-xQb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="commentBtn" destination="ZlG-Ej-uNB" id="QCs-Bq-Der"/>
-                <outlet property="commentTextView" destination="xvd-GP-X7z" id="h3e-xm-5PH"/>
+                <outlet property="commentTextView" destination="xvd-GP-X7z" id="adA-bZ-86D"/>
             </connections>
-            <point key="canvasLocation" x="102" y="-57"/>
+            <point key="canvasLocation" x="-151.5" y="-95"/>
         </view>
     </objects>
 </document>

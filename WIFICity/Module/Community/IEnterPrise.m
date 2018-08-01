@@ -12,14 +12,18 @@
 
 - (void)commentCompany:(WICompanyInfo *)company comment:(WIComment *)comment complete:(IEnterPriseCompleteBlock)complete {
     weakself;
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"disId":company.ID,@"disType":@"1",@"disContent":comment.disContent};
+    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"disId":company.ID,@"disType":@"1",@"disContent":comment.dis_content};
     [IEnterPrise saveComment:^(WINetResponse *response) {
         if (response && response.success) {
             if (wself.reloadBlock && wself.needReload) {
                 wself.reloadBlock();
-                complete(nil);
             }
+            [Dialog simpleToast:@"评论成功"];
+        } else {
+            [Dialog simpleToast:@"评论失败"];
         }
+        complete(nil);
+        
     } par:para];
 }
 
@@ -29,13 +33,13 @@
         if (response && response.success) {
             complete(response);
         }
+        
     } par:para];
 }
 
 + (void)saveComment:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCommentSaveAPI) params:par successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
-        [Dialog simpleToast:response.msg];
         complete(response);
     } failureBlock:^(NSError *error) {
         complete(nil);
@@ -45,7 +49,6 @@
 + (void)likeEnterprise:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyLikeAPI) params:par successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
-        [Dialog simpleToast:response.msg];
         complete(response);
     } failureBlock:^(NSError *error) {
         complete(nil);

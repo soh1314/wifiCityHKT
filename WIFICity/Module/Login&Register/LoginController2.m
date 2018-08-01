@@ -56,6 +56,7 @@ static NSString *const LoginVerifySendFail = @"验证码发送失败";
             if (wself.timer) {
                 dispatch_cancel(wself.timer);
             }
+            [self.pwdView resignFirstResponder];
             [AccountManager shared].closeCountDown = YES;
             WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
             [[AccountManager shared]saveUserInfo:user];
