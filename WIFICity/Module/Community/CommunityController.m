@@ -217,9 +217,6 @@ static int EnterPriseRecommentSection = 2;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
-//        EnterPriseSquareAreaCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterPriseSquareAreaCellID" forIndexPath:indexPath];
-//
-//        return cell;
         EnterpriseSquareSortCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EnterpriseSquareSortCellID" forIndexPath:indexPath];
         __weak typeof(self)wself = self;
         cell.cellType = SquareSortCellImageTextType;

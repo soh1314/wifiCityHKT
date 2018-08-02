@@ -36,7 +36,7 @@
     self.commentContentLabel.text = [content replace:@" " withString:@""];
     NSString *time = [comment.dis_date timeWithTimeIntervalString:comment.dis_date];
     self.timeLabel.text = [time copy];
-    NSString *shortId = [self.comment.use_id substringToIndex:4];
+    NSString *shortId = [self.comment.ID substringToIndex:6];
     self.nameLabel.text = [NSString stringWithFormat:@"用户%@",shortId];
 }
 

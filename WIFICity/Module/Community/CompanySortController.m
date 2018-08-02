@@ -28,6 +28,8 @@
 @property (nonatomic,assign)NSInteger showType;
 @property (nonatomic,strong)EaseSearchBar *searchBar;
 @property (nonatomic,strong)EaseDropMenu *sortTopView;
+@property (nonatomic,strong)WICompanyCategory *selectCategory;
+@property (nonatomic,strong)WICompanyCategory *selectProductCategory;
 @property (nonatomic,assign)NSInteger page;
 
 @end
@@ -147,25 +149,31 @@
     UIView *view = [UIView new];
     if (index == 0) {
         WICompanyCategroyView *categoryView  = [[WICompanyCategroyView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, EaseDropItemContentViewHeight)];
+        [categoryView setSelectCategory:self.selectCategory];
         weakself;
         categoryView.pick = ^(NSInteger idx) {
             WICompanyCategory *category = wself.productArray[idx];
+            wself.selectCategory = category;
             wself.areaID = [category.ID copy];
-            wself.sortTopView.selectItemBlock(index, category.industryName);
+//            wself.sortTopView.selectItemBlock(index, category.industryName);
             [wself loadData:YES];
             [wself.sortTopView hideDropView];
         };
         categoryView.categoryArray = [self.productArray copy];
+        categoryView.flowLayoutType = 0;
         categoryView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
         return categoryView;
     } else {
         
         WICompanyCategroyView *categoryView  = [[WICompanyCategroyView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, EaseDropItemContentViewHeight)];
+        categoryView.flowLayoutType = 1;
+        [categoryView setSelectCategory:self.selectProductCategory];
         weakself;
         categoryView.pick = ^(NSInteger idx) {
             WICompanyCategory *category = wself.categoryArray[idx];
             wself.categoryID = [category.ID copy];
-            wself.sortTopView.selectItemBlock(index, category.entName);
+            wself.selectProductCategory = category;
+//            wself.sortTopView.selectItemBlock(index, category.entName);
             [wself loadData:YES];
             [wself.sortTopView hideDropView];
         };

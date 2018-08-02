@@ -52,7 +52,8 @@ static NSInteger flowRequestNum = 0;
         
         self.delegate = self;
         self.wifiInfo = [WIFIInfo new];
-        self.m_wifiArray = [NSMutableArray array];
+        self.hktWifiArray = [NSMutableArray array];
+        self.otherWifiArray = [NSMutableArray array];
         NSString *cachOrgId = [[NSUserDefaults standardUserDefaults]objectForKey:LASTHKTWIFIORGIDKEY];
         if (cachOrgId) {
              self.wifiInfo.orgId = [cachOrgId copy];
@@ -94,14 +95,36 @@ static NSInteger flowRequestNum = 0;
         
         NSLog(@"4.Finish");
         NEHotspotNetwork* network;
-        if ( cmd.commandType == kNEHotspotHelperCommandTypeFilterScanList) {
+        if ( cmd.commandType == kNEHotspotHelperCommandTypeFilterScanList || cmd.commandType == 2) {
             NSLog(@"-------华宽通wifi正在烧苗------");
             for (network in cmd.networkList) {
                 NSString* wifiInfoString = [[NSString alloc] initWithFormat: @"---------------------------\nSSID: %@\nMac地址: %@\n信号强度: %f\nCommandType:%ld\n---------------------------\n\n", network.SSID, network.BSSID, network.signalStrength, (long)cmd.commandType];
                 NSLog(@"附近wifi信息%@", wifiInfoString);
+
+                if (![network.BSSID  hasPrefix:HKTWIFIMACPREFIX]) {
+                    BOOL otherwifiAdded = NO;
+                    for (int i = 0; i < self.otherWifiArray.count;i++) {
+                        WIFIInfo *info = self.otherWifiArray[i];
+                        if ([info.sid isEqualToString:network.SSID]) {
+                            otherwifiAdded = YES;
+                            break;
+                        }
+                        
+                    }
+                    if (otherwifiAdded == YES) {
+                        continue;
+                    } else {
+                        WIFIInfo *info = [WIFIInfo new];
+                        info.bsid = [network.BSSID copy];
+                        info.signalStrength = [NSString stringWithFormat:@"%.2f",network.signalStrength];
+                        info.sid = [network.SSID copy];
+                        [self.otherWifiArray addObject:info];
+                        continue;
+                    }
+                }
                 BOOL wifiAdded = NO;
-                for (int i = 0; i < self.m_wifiArray.count; i++) {
-                    WIFIInfo *info = self.m_wifiArray[i];
+                for (int i = 0; i < self.hktWifiArray.count; i++) {
+                    WIFIInfo *info = self.hktWifiArray[i];
                     if ([info.sid isEqualToString:network.SSID]) {
                         wifiAdded = YES;
                         break;
@@ -115,7 +138,7 @@ static NSInteger flowRequestNum = 0;
                     info.bsid = [network.BSSID copy];
                     info.signalStrength = [NSString stringWithFormat:@"%.2f",network.signalStrength];
                     info.sid = [network.SSID copy];
-                    [self.m_wifiArray addObject:info];
+                    [self.hktWifiArray addObject:info];
                     [network setConfidence: kNEHotspotHelperConfidenceHigh];
                     [network setPassword: @""];
                     NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
@@ -124,7 +147,8 @@ static NSInteger flowRequestNum = 0;
                     [response deliver];
                 }
             }
-            [EasyCacheHelper saveResponseCache:[self.m_wifiArray copy] forKey:HKTWIFIARRAYKEY];
+            [EasyCacheHelper saveResponseCache:[self.hktWifiArray copy] forKey:HKTWIFIARRAYKEY];
+            [EasyCacheHelper saveResponseCache:[self.otherWifiArray copy] forKey:OHERWIFIARRAYKEY];
            
         } else if (cmd.commandType == 2) {
 //            dispatch_async(dispatch_get_main_queue(), ^{
@@ -143,9 +167,7 @@ static NSInteger flowRequestNum = 0;
 - (void)applicationConnectWifi:(WIFIInfo *)info {
     if (@available(iOS 11.0, *)) {
         NEHotspotConfiguration * hotspotConfig = [[NEHotspotConfiguration alloc] initWithSSID:info.sid];
-        [MBProgressHUD showHUDAddedTo:KWINDOW animated:YES];
         [[NEHotspotConfigurationManager sharedManager] applyConfiguration:hotspotConfig completionHandler:^(NSError * _Nullable error) {
-            [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
             if ([error.localizedDescription isEqualToString:@"failed to get user's approval."]) {
                 return ;
             }

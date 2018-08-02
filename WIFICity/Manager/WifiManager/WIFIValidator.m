@@ -66,15 +66,16 @@
 }
 
 - (void)validator {
+    
+    [MBProgressHUD showHUDAddedTo:KWINDOW animated:YES];
     [WIFISevice shared].validating = YES;
     WIFIValidateInfo *info = [WIFIValidateInfo new];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
-    info.expireTime = [[NSString unixTimeStamp]integerValue] + 10 * 60;
-//    if (![self needValidator:info]) {
-//
-//        return;
-//    }
-    
+    info.expireTime = [[NSString unixTimeStamp]integerValue] + 20 * 60;
+    if (![self needValidator:info]) {
+        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
+        return;
+    }
     NSString *wifiIp = [WifiUtil getLocalRoutIpForCurrentWiFi];
     if (!wifiIp || [wifiIp isEqualToString:@""] ) {
         NSLog(@"wifi ip 为空 无法认证");
@@ -115,6 +116,7 @@
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
         [WIFISevice shared].validating = NO;
         if ([str containsString:@"go to internat ok!"]) {

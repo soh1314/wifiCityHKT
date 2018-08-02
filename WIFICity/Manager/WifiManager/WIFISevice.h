@@ -22,7 +22,8 @@
 @property (nonatomic,weak)id <WifiPanelProtocol>panelDelegate;
 @property (nonatomic,copy)NSString *orgID;
 @property (nonatomic,assign)BOOL recoveryNet;
-@property (nonatomic,strong)NSMutableArray *m_wifiArray;
+@property (nonatomic,strong)NSMutableArray *hktWifiArray;
+@property (nonatomic,strong)NSMutableArray *otherWifiArray;
 @property (nonatomic,assign)BOOL validating;
 
 - (void)setNetMonitor;

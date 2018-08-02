@@ -23,6 +23,12 @@
 
 }
 
+- (void)setSelectCategory:(WICompanyCategory *)selectCategory {
+    if (selectCategory) {
+        _selectCategory  = selectCategory;
+    }
+}
+
 - (UICollectionView *)collectionView
 {
     if(!_collectionView)
@@ -66,9 +72,24 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     WICompanyCategroyCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"WICompanyCategroyCellID" forIndexPath:indexPath];
     WICompanyCategory *category = self.categoryArray[indexPath.row];
+    if (self.flowLayoutType == 0) {
+        colCell.companyNameLabel.textAlignment = NSTextAlignmentLeft;
+    } else {
+        colCell.companyNameLabel.textAlignment = NSTextAlignmentCenter;
+    }
     if (category.entName) {
+        if (self.selectCategory && self.selectCategory.entName && [self.selectCategory.entName isEqualToString:category.entName]) {
+            colCell.companyNameLabel.textColor = [UIColor themeColor];
+        } else {
+            colCell.companyNameLabel.textColor = [UIColor colorWithHexString:@"#666666"];;
+        }
         colCell.companyNameLabel.text = [category.entName copy];
     } else {
+        if (self.selectCategory && self.selectCategory.industryName && [self.selectCategory.industryName isEqualToString:category.industryName]) {
+            colCell.companyNameLabel.textColor = [UIColor themeColor];
+        } else {
+            colCell.companyNameLabel.textColor = [UIColor colorWithHexString:@"#666666"];;
+        }
         colCell.companyNameLabel.text = [category.industryName copy];
     }
 
@@ -80,7 +101,12 @@
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(KSCREENW/2.0f,40);
+    if (self.flowLayoutType == 0) {
+        return CGSizeMake(KSCREENW,40);
+    } else {
+       return CGSizeMake(KSCREENW/2.0,40);
+    }
+   
 }
 
 //调节每个item的edgeInsets代理方法

@@ -64,12 +64,11 @@
                         <action selector="searchNews:" destination="iN0-l3-epB" eventType="touchUpInside" id="kRu-ZV-GZU"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sjw-fx-Wse">
-                    <rect key="frame" x="315" y="47" width="86" height="86"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKK-D6-tiC">
+                    <rect key="frame" x="315" y="59" width="86" height="32"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <state key="normal" title="      今日红包" backgroundImage="sign_in.png">
-                        <color key="titleColor" red="1" green="0.98431372549019602" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="1" green="0.98431372549999996" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
             </subviews>
@@ -87,8 +86,10 @@
                 <constraint firstItem="FkG-Tl-jX9" firstAttribute="leading" secondItem="tO5-DK-xyA" secondAttribute="trailing" constant="8" id="VF0-SF-6KR"/>
                 <constraint firstItem="gTd-16-Bn9" firstAttribute="top" secondItem="KP6-CK-qpY" secondAttribute="bottom" constant="8" id="YHu-hn-Jgz"/>
                 <constraint firstItem="FkG-Tl-jX9" firstAttribute="centerY" secondItem="tO5-DK-xyA" secondAttribute="centerY" id="eQ4-Vb-M0V"/>
+                <constraint firstAttribute="trailing" secondItem="VKK-D6-tiC" secondAttribute="trailing" id="fPq-V5-zED"/>
                 <constraint firstItem="qia-Hh-wff" firstAttribute="leading" secondItem="KP6-CK-qpY" secondAttribute="trailing" constant="8" id="fyd-Op-Rez"/>
                 <constraint firstItem="qia-Hh-wff" firstAttribute="centerY" secondItem="KP6-CK-qpY" secondAttribute="centerY" id="iFQ-TP-bLg"/>
+                <constraint firstItem="VKK-D6-tiC" firstAttribute="top" secondItem="g78-Dw-L9v" secondAttribute="bottom" constant="8" id="umv-tE-oXe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -106,6 +107,6 @@
         <image name="location_home.png" width="16" height="16"/>
         <image name="pm.png" width="16" height="16"/>
         <image name="search_sq.png" width="16" height="16"/>
-        <image name="sign_in.png" width="86" height="86"/>
+        <image name="sign_in.png" width="86" height="32"/>
     </resources>
 </document>

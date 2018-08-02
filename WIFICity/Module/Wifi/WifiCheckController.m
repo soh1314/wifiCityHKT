@@ -15,6 +15,7 @@
 #import "WifiGuideController.h"
 #import "WIFISevice.h"
 #import "EasyCacheHelper.h"
+#import "WINormalCellHeader.h"
 
 @interface WifiCheckController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -22,7 +23,9 @@
 
 @property (nonatomic,strong)EaseTableView *tableView;
 
-@property (nonatomic,copy)NSArray *wifiArray;
+@property (nonatomic,copy)NSArray *hktWifiArray;
+
+@property (nonatomic,copy)NSArray *otherWifiArray;
 
 @end
 
@@ -62,10 +65,18 @@
 
 - (void)getWifiListCach {
     NSArray *wifiCachArray = [EasyCacheHelper getResponseCacheForKey:HKTWIFIARRAYKEY];
+    NSArray *otherWifiCachArray = [EasyCacheHelper getResponseCacheForKey:OHERWIFIARRAYKEY];
     if (wifiCachArray && wifiCachArray.count > 0) {
-        self.wifiArray = [wifiCachArray copy];
+        self.hktWifiArray = [wifiCachArray copy];
+        
+    }
+    if (otherWifiCachArray && otherWifiCachArray.count > 0) {
+        self.otherWifiArray = [otherWifiCachArray copy];
+    }
+    if (otherWifiCachArray || wifiCachArray) {
         [self.tableView reloadData];
     }
+    
 }
 
 - (void)setPanelData {
@@ -76,7 +87,8 @@
 #pragma  mark - noti
 - (void)applicationEnterForeground:(NSNotification *)noti {
     
-    self.wifiArray = [[WIFISevice shared].m_wifiArray copy];
+    self.hktWifiArray = [[WIFISevice shared].hktWifiArray copy];
+    self.otherWifiArray = [[WIFISevice shared].otherWifiArray copy];
     [self.tableView reloadData];
 }
 
@@ -121,6 +133,7 @@
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.tableFooterView = [[UIView alloc]init];
         _tableView.estimatedRowHeight = 200;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //        _tableView.contentInset  = UIEdgeInsetsMake(260, 0, 0, 0);
     }
     return _tableView;
@@ -135,14 +148,17 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return 1;
+    } else if (section == 1) {
+       return self.hktWifiArray.count;
+    } else {
+        return self.otherWifiArray.count;
     }
-    return self.wifiArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -157,19 +173,24 @@
         return cell;
     }
     WifiListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WifiListCellID" forIndexPath:indexPath];
-    WIFIInfo *info = self.wifiArray[indexPath.row];
-    [cell setInfo:info];
+    if (indexPath.section == 1) {
+        WIFIInfo *info = self.hktWifiArray[indexPath.row];
+        [cell setInfo:info];
+    } else {
+        WIFIInfo *info = self.otherWifiArray[indexPath.row];
+        [cell setInfo:info];
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 1) {
-        WIFIInfo *info = self.wifiArray[indexPath.row];
+        WIFIInfo *info = self.hktWifiArray[indexPath.row];
         [[WIFISevice shared]applicationConnectWifi:info];
+    } else if (indexPath.section == 2) {
+        [Dialog simpleToast:@"当前wifi无法连接,请稍后尝试"];
     }
-    
-    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -177,6 +198,15 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 1 || section == 2 ) {
+        WINormalCellHeader *header = [[WINormalCellHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 45)];
+        if (section == 1) {
+            header.titleLabel.text = @"华宽通WIFI";
+        } else {
+            header.titleLabel.text = @"其他WIFI";
+        }
+        return header;
+    }
     return [UIView new];
 }
 
@@ -185,6 +215,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 1 || section == 2) {
+        return 45;
+    }
     return CGFLOAT_MIN;
 }
 
