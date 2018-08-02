@@ -7,7 +7,7 @@
 //
 
 #import "WICommentView.h"
-
+#import "NSString+EaseEmoji.h"
 @implementation WICommentView
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -43,10 +43,15 @@
 - (void)commit:(id)sender {
     weakself;
     if (self.commentTextView.text) {
+        NSString *commitTextEncode = [self.commentTextView.text stringByReplacingEmojiUnicodeWithCheatCodes];
         NSString *commitText = [self.commentTextView.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        if (commitTextEncode.length >= 500) {
+            [Dialog simpleToast:@"评论字数超过限制"];
+            return;
+        }
         if (self.delegate && [self.delegate respondsToSelector:@selector(commentCompany:comment:complete:)]) {
             WIComment *comment = [WIComment new];
-            comment.dis_content = [commitText copy];
+            comment.dis_content = [commitTextEncode copy];
             [self.delegate commentCompany:self.info comment:comment complete:^(WINetResponse *response) {
                 wself.dismissBlock();
             }];

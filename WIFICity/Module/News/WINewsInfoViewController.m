@@ -58,7 +58,7 @@ static NSString *const WIGaoXinNewsListAPI = @"/ws/wifi/findNewsByTypeId.do";
         url = kAppUrl(kUrlHost, WIFIHomeNewsAPI);
         para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId,@"number":@(self.page)};
     } else {
-        url = kAppUrl(@"http://192.168.1.188/wificity", WIGaoXinNewsListAPI);
+        url = kAppUrl(kUrlHost, WIGaoXinNewsListAPI);
         para = @{@"number":@(self.page),@"gxqType":@(model.gxqType)};
     }
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];

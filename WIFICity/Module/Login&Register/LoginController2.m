@@ -48,6 +48,11 @@ static NSString *const LoginVerifySendFail = @"验证码发送失败";
     }];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.pwdView resignFirstResponder];
+}
+
 - (IBAction)login:(id)sender {
     self.user.verifyCode = [self.pwdView.password copy];
     __weak typeof(self)wself = self;
@@ -56,7 +61,6 @@ static NSString *const LoginVerifySendFail = @"验证码发送失败";
             if (wself.timer) {
                 dispatch_cancel(wself.timer);
             }
-            [self.pwdView resignFirstResponder];
             [AccountManager shared].closeCountDown = YES;
             WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
             [[AccountManager shared]saveUserInfo:user];

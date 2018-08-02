@@ -23,8 +23,9 @@
 - (IBAction)searchNews:(id)sender {
     UIViewController *ctrl = [UIViewController getCurrentVCWithCurrentView:self];
     NewsSearchController *newsCtrl = [NewsSearchController new];
+    UINavigationController *newsNav = [[UINavigationController alloc]initWithRootViewController:newsCtrl];
     newsCtrl.bgImage = [WifiPanelTopView shotWithView:ctrl.view];
-    [ctrl.navigationController presentViewController:newsCtrl animated:YES completion:nil];
+    [ctrl.navigationController presentViewController:newsNav animated:YES completion:nil];
     
 }
 

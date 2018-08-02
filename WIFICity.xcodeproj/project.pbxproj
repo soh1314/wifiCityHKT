@@ -19,6 +19,7 @@
 		1601190221115FD0002B9058 /* sign_in@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 160118FF21115FCF002B9058 /* sign_in@2x.png */; };
 		16011905211162E9002B9058 /* NewsSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16011904211162E9002B9058 /* NewsSearchController.m */; };
 		1601190921118E57002B9058 /* EaseTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1601190821118E56002B9058 /* EaseTextView.m */; };
+		1601190C2112D20F002B9058 /* NSString+EaseEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 1601190B2112D20F002B9058 /* NSString+EaseEmoji.m */; };
 		1606142D21002B5A007A90A8 /* CompanyDeatailSectionThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 1606142B21002B5A007A90A8 /* CompanyDeatailSectionThree.m */; };
 		1606142E21002B5A007A90A8 /* CompanyDeatailSectionThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1606142C21002B5A007A90A8 /* CompanyDeatailSectionThree.xib */; };
 		1606143221002D3B007A90A8 /* CompanyGaoguanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1606143021002D3B007A90A8 /* CompanyGaoguanCell.m */; };
@@ -658,6 +659,8 @@
 		16011904211162E9002B9058 /* NewsSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSearchController.m; sourceTree = "<group>"; };
 		1601190721118E56002B9058 /* EaseTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseTextView.h; sourceTree = "<group>"; };
 		1601190821118E56002B9058 /* EaseTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseTextView.m; sourceTree = "<group>"; };
+		1601190A2112D20E002B9058 /* NSString+EaseEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EaseEmoji.h"; sourceTree = "<group>"; };
+		1601190B2112D20F002B9058 /* NSString+EaseEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EaseEmoji.m"; sourceTree = "<group>"; };
 		1606142A21002B5A007A90A8 /* CompanyDeatailSectionThree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanyDeatailSectionThree.h; sourceTree = "<group>"; };
 		1606142B21002B5A007A90A8 /* CompanyDeatailSectionThree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanyDeatailSectionThree.m; sourceTree = "<group>"; };
 		1606142C21002B5A007A90A8 /* CompanyDeatailSectionThree.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyDeatailSectionThree.xib; sourceTree = "<group>"; };
@@ -2563,6 +2566,8 @@
 		16D64B1A20CF740200ED74C8 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1601190A2112D20E002B9058 /* NSString+EaseEmoji.h */,
+				1601190B2112D20F002B9058 /* NSString+EaseEmoji.m */,
 				16F8877D2100910000136C7F /* UIImage+ImageEffects.h */,
 				16F8877E2100910000136C7F /* UIImage+ImageEffects.m */,
 				163A08CF20E239E400DAC894 /* UIDevice+zhDeviceType.h */,
@@ -4041,6 +4046,7 @@
 				16F888262102D90000136C7F /* WMPageController.m in Sources */,
 				1691DDF820ECB610008AF2BE /* HKTProtocolController.m in Sources */,
 				1691DD5420EB4D8F008AF2BE /* CustomPinAnnotationView.m in Sources */,
+				1601190C2112D20F002B9058 /* NSString+EaseEmoji.m in Sources */,
 				16F88788210096EF00136C7F /* EnterPriseTagCell.m in Sources */,
 				16D64B8420CF7CE800ED74C8 /* UITextView+ZWPlaceHolder.m in Sources */,
 				169D83EA20DC933700AA590F /* HomeServiceItemCell.m in Sources */,
@@ -4279,8 +4285,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hkt.smartwifi.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "74480071-72bc-40ef-8900-703e05236b93";
-				PROVISIONING_PROFILE_SPECIFIER = ios_dev_hotspot;
+				PROVISIONING_PROFILE = "f513d662-9be1-4c4e-bc02-39cc55e3466f";
+				PROVISIONING_PROFILE_SPECIFIER = dev_cao;
 				TARGETED_DEVICE_FAMILY = 1;
 				"WARNING_CFLAGS[arch=*]" = "-Wno-documentation";
 			};
@@ -4370,8 +4376,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hkt.smartwifi.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "74ac70ad-5496-45a0-bdf2-f6d6eed9dabd";
-				PROVISIONING_PROFILE_SPECIFIER = ios_dis_hotspot;
+				PROVISIONING_PROFILE = "1752861f-c327-42d2-a269-b3270198668a";
+				PROVISIONING_PROFILE_SPECIFIER = dis_cao;
 				TARGETED_DEVICE_FAMILY = 1;
 				"WARNING_CFLAGS[arch=*]" = "-Wno-documentation";
 			};

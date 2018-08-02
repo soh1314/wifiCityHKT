@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WIButton.h"
 
 @interface WifiPanelTopView : UIView
 
@@ -16,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *weatherImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *pmImageView;
 - (IBAction)searchNews:(id)sender;
+@property (weak, nonatomic) IBOutlet WIButton *searchBtn;
 
 @end

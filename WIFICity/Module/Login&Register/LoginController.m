@@ -99,12 +99,14 @@
         [self.loginer requestVerifyCode:[self inputUser] complete:^(WINetResponse *response) {
             if (response.success) {
                 [[AccountManager shared]countDown:nil];
+                [self.phoneTtf resignFirstResponder];
                 [welf pushToLogin2Controller];
             } else {
                 [Dialog simpleToast:response.msg];
             }
         }];
     } else {
+        [self.phoneTtf resignFirstResponder];
         [self pushToLogin2Controller];
     }
 }

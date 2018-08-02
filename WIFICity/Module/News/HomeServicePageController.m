@@ -28,7 +28,8 @@
 
 - (id)init {
     if (self = [super init]) {
-        
+        self.titleColorNormal = [UIColor lightGrayColor];
+        self.titleColorSelected = [UIColor themeColor];
     }
     return self;
 }
