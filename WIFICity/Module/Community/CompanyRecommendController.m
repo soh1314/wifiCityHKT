@@ -106,7 +106,7 @@
 #pragma mark - tableview delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewAutomaticDimension;
+    return UITableViewAutomaticDimension < 90 ? 90 : UITableViewAutomaticDimension ;
 }
 
 

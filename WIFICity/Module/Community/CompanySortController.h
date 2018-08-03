@@ -7,9 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import "WICompanyCategory.h"
 
 @interface CompanySortController : BaseViewController
 
+@property (nonatomic,strong)WICompanyCategory *selectCategory;
+@property (nonatomic,strong)WICompanyCategory *selectProductCategory;
 @property (nonatomic,copy)NSString *categoryID;
 @property (nonatomic,copy)NSString *areaID;
 @property (nonatomic,copy)NSArray *categoryArray;

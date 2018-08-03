@@ -41,6 +41,7 @@ static NSString *const WIGaoXinNewsListAPI = @"/ws/wifi/findNewsByTypeId.do";
     self.tableView.mj_footer = [EaseRefreshFooter footerWithRefreshingBlock:^{
         [wself loadData:NO];
     }];
+    self.page = 1;
     [self loadData:YES];
     
 }

@@ -18,7 +18,7 @@
 #import "CompanySearchController.h"
 #import "EnterpriseSquareNetAPI.h"
 #import "WICompanyInfo.h"
-#import "WICompanyCategory.h"
+
 #import "WICompanyCategroyView.h"
 
 @interface CompanySortController ()<UICollectionViewDelegate,UICollectionViewDataSource,EaseDropMenuDelegate>
@@ -28,8 +28,7 @@
 @property (nonatomic,assign)NSInteger showType;
 @property (nonatomic,strong)EaseSearchBar *searchBar;
 @property (nonatomic,strong)EaseDropMenu *sortTopView;
-@property (nonatomic,strong)WICompanyCategory *selectCategory;
-@property (nonatomic,strong)WICompanyCategory *selectProductCategory;
+
 @property (nonatomic,assign)NSInteger page;
 
 @end
@@ -127,6 +126,13 @@
         CompanySearchController *searchCtrl = [CompanySearchController new];
         [wself.navigationController pushViewController:searchCtrl animated:YES];
     };
+    if (self.selectCategory) {
+        self.sortTopView.selectItemBlock(0, self.selectCategory.industryName);
+    }
+    if (self.selectProductCategory) {
+        self.sortTopView.selectItemBlock(1, self.selectProductCategory.entName);
+    }
+    
     
 }
 
@@ -155,7 +161,7 @@
             WICompanyCategory *category = wself.productArray[idx];
             wself.selectCategory = category;
             wself.areaID = [category.ID copy];
-//            wself.sortTopView.selectItemBlock(index, category.industryName);
+            wself.sortTopView.selectItemBlock(index, category.industryName);
             [wself loadData:YES];
             [wself.sortTopView hideDropView];
         };
@@ -173,7 +179,7 @@
             WICompanyCategory *category = wself.categoryArray[idx];
             wself.categoryID = [category.ID copy];
             wself.selectProductCategory = category;
-//            wself.sortTopView.selectItemBlock(index, category.entName);
+            wself.sortTopView.selectItemBlock(index, category.entName);
             [wself loadData:YES];
             [wself.sortTopView hideDropView];
         };

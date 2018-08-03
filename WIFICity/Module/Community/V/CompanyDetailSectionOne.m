@@ -71,7 +71,8 @@
     self.phoneValueLabel.text = [info.com_tel copy];
     self.addressValueLabel.text = [info.com_address copy];
     NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,self.info.com_logo];
-    [self.companyIcon sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.companyIcon sd_setImageWithURL:[NSURL URLWithString:urlEncode] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
     }];
     self.registerMoneyLabel.text = [info.com_capital copy];
     self.bossNameLabel.text = [info.com_legal copy];

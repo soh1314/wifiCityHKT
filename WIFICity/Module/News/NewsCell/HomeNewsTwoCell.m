@@ -20,6 +20,7 @@
 }
 
 - (void)initUI {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.titleLabel.textColor = [UIColor colorWithHexString:@"#111111"];
     self.agencyLabel.textColor = [UIColor colorWithHexString:@"#888888"];
     self.additionLabel.textColor = [UIColor colorWithHexString:@"#888888"];
@@ -138,7 +139,10 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HomeNewsImageItemCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeNewsImageItemCellID" forIndexPath:indexPath];
-    [colCell.HomeNewsImageView sd_setImageWithURL:[NSURL URLWithString:self.imageGroupArray[indexPath.row]]];
+    
+    NSString *url = self.imageGroupArray[indexPath.row];
+    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [colCell.HomeNewsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
     return colCell;
 }
 

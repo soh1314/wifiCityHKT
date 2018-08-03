@@ -34,8 +34,10 @@
     self.companyNameLabel.text = [info.com_name copy];
     self.companyDesLabel.text = [info.com_range copy];
     self.likeNumLabel.text  = [NSString stringWithFormat:@"%ld",info.likes];
+    
     NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,info.com_logo];
-    [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:urlEncode] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
     }];
 //    [UILabel changeLineSpaceForLabel:self.companyDesLabel WithSpace:1.5];

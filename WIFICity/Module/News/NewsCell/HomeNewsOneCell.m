@@ -17,6 +17,7 @@
 }
 
 - (void)initUI {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.titleLabel.textColor = [UIColor colorWithHexString:@"#111111"];
     self.agencyLabel.textColor = [UIColor colorWithHexString:@"#888888"];
     self.additionLabel.textColor = [UIColor colorWithHexString:@"#888888"];
@@ -25,7 +26,7 @@
     self.tagView.layer.borderWidth = 1.0f;
     self.tagView.layer.borderColor = [UIColor colorWithHexString:@"#F9595B"].CGColor;
     self.tagView.textColor = [UIColor colorWithHexString:@"#F9595B"];
-    
+    self.newsImageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 - (void)updateGaoXinNews:(GaoXinNewS *)news {
@@ -40,15 +41,17 @@
             urlString = [news.gxq_img_src copy];
         }
         NSString *url = [NSString stringWithFormat:@"%@",urlString];
-        [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:url]];
+        NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
     }
 }
 
 - (void)updateHomeNews:(HomeNews *)news {
     self.titleLabel.text = [NSString stringWithFormat:@"%@",news.title];
     self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.abstracts];
-    NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,self.news.img_src];
-    [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:url]];
+    NSString *url = [NSString stringWithFormat:@"%@/%@",@"http://wifi.hktfi.com",self.news.img_src];
+    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
 }
 
 
@@ -82,10 +85,12 @@
             make.top.mas_equalTo(self.contentView).mas_offset(12);
         }];
         [self.newsImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.titleLabel);
             make.width.mas_equalTo(self.newsImageView.mas_height).multipliedBy(38/25.0f).priorityHigh();
             make.left.mas_equalTo(self.titleLabel.mas_right).mas_offset(12);
             make.right.mas_equalTo(self.contentView).mas_offset(-16);
-            make.height.mas_equalTo(75);
+            make.bottom.mas_equalTo(self.agencyLabel);
+//            make.height.mas_equalTo(75);
         }];
     } else {
         [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -94,9 +99,11 @@
             make.left.mas_equalTo(self.contentView).mas_offset(16);
         }];
         [self.newsImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+             make.top.mas_equalTo(self.titleLabel);
             make.width.mas_equalTo(0).priorityHigh();
             make.right.mas_equalTo(self.contentView).mas_offset(-16);
-            make.height.mas_equalTo(75);
+            make.bottom.mas_equalTo(self.agencyLabel);
+//            make.height.mas_equalTo(75);
         }];
     }
     

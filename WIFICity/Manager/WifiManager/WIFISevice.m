@@ -167,9 +167,10 @@ static NSInteger flowRequestNum = 0;
 - (void)applicationConnectWifi:(WIFIInfo *)info {
     if (@available(iOS 11.0, *)) {
         NEHotspotConfiguration * hotspotConfig = [[NEHotspotConfiguration alloc] initWithSSID:info.sid];
-        [Dialog progressToast:@"系统正在连接"];
+//        [Dialog progressToast:@"系统正在连接"];
         [[NEHotspotConfigurationManager sharedManager] applyConfiguration:hotspotConfig completionHandler:^(NSError * _Nullable error) {
             if ([error.localizedDescription isEqualToString:@"failed to get user's approval."]) {
+//                [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
                 return ;
             }
             if ([error.localizedDescription isEqualToString:@"already associated."]) {
@@ -177,7 +178,7 @@ static NSInteger flowRequestNum = 0;
 //                [[WIFIValidator shared]validator];
             } else {
                 [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
-                [Dialog progressToast:@"正在认证"];
+//                [Dialog progressToast:@"正在认证"];
                 [[WIFIValidator shared]validator];
             }
             NSLog(@"%@", error.localizedDescription);

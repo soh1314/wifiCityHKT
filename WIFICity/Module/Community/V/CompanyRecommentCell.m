@@ -8,6 +8,7 @@
 
 #import "CompanyRecommentCell.h"
 #import "EasyCacheHelper.h"
+#import "NSString+Additions.h"
 
 @implementation CompanyRecommentCell
 
@@ -27,8 +28,9 @@
 - (void)setCompanyInfo:(WICompanyInfo *)companyInfo {
     _companyInfo = companyInfo;
     NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,_companyInfo.com_logo];
+    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //    [self.logoIcon sd_setImageWithURL:[NSURL URLWithString:url]];
-    [self.logoIcon sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.logoIcon sd_setImageWithURL:[NSURL URLWithString:urlEncode] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 //        float ratio = image.size.height/image.size.width;
 //        [EasyCacheHelper saveResponseCache:[NSNumber numberWithFloat:ratio] forKey:url];
     }];

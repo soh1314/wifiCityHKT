@@ -91,6 +91,7 @@
 
 #pragma mark - Methods
 - (void) clickButtonPress {
+    self.forbidden = YES;
     if (self.forbidden) {
         return;
     }

@@ -22,6 +22,7 @@ typedef void(^WICommentBottomBarTapAction)(void);
 @property (nonatomic,strong)WICompanyInfo *info;
 @property (nonatomic,strong)IEnterPrise *dispatch;
 @property (nonatomic,assign)BOOL like;
+@property (nonatomic,assign)NSInteger commentNum;
 
 - (IBAction)like:(id)sender;
 

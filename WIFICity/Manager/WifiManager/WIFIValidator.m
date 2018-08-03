@@ -11,7 +11,9 @@
 #import "WITabBarController.h"
 #import "NSString+Additions.h"
 #import "WIFISevice.h"
-
+#import "WebViewController.h"
+#import "WITabBarController.h"
+#import "AppDelegate.h"
 @interface WIFIValidator()
 
 @property (nonatomic,readwrite,copy)NSString *lastHktWifiMac;
@@ -101,8 +103,18 @@
     NSLog(@"验证wifi过期时间%@",expireStr);
     NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routIP,expireStr];
     NSLog(@"认证url%@",validatorUrl);
-    [self inerValidateRequest:validatorUrl];
     
+    [self inerValidateRequest:validatorUrl];
+//    [self webValidateRequest:validatorUrl];
+    
+}
+
+- (void)webValidateRequest:(NSString *)url {
+    WebViewController *viewController = [WebViewController new];
+    viewController.URLString = [url copy];
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    TGTabBarController *tab = delegate.tabBarController;
+    [tab presentViewController:viewController animated:YES completion:nil];
 }
 
 - (void)inerValidateRequest:(NSString *)validatorUrl {
@@ -125,6 +137,8 @@
             [[NSUserDefaults standardUserDefaults]setObject:self.lastHktWifiMac forKey:LASTHKTWIFIMACKEY];
             [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorSuccessNoti object:nil];
             NSLog(@"认证成功");
+        } else {
+            NSLog(@"认证失败");
         }
        
         

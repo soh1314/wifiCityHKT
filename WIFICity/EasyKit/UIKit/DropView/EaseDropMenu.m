@@ -107,7 +107,7 @@
     
     weakself;
     self.selectItemBlock = ^(NSInteger index,NSString *title) {
-        EaseSortItemView *itemView = wself.itemArray[wself.selectIndex];
+        EaseSortItemView *itemView = wself.itemArray[index];
         itemView.titleLabel.text = [title copy];
     };
 }

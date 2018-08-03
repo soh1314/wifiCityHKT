@@ -70,6 +70,7 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
             NSArray *commentArray = [WIComment arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
             [self.commentArray addObjectsFromArray:commentArray];
             [self updateView];
+            [self updateCommentNum];
         }
     } par:para];
 }
@@ -89,6 +90,10 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 - (void)updateView {
     self.commentBottomBar.info = self.info;
     [self.tableView reloadData];
+}
+
+- (void)updateCommentNum {
+    self.commentBottomBar.commentNum = self.commentArray.count;
 }
 
 - (void)initUI {
@@ -183,7 +188,7 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
         if (!self.commentArray.count) {
             return 1;
         } else {
-            return self.commentArray.count >= 3 ? 3 : self.commentArray.count;
+            return self.commentArray.count >= 3 ? 3 : self.commentArray.count ;
         }
     }
     return 1;
@@ -231,7 +236,7 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
             return cell;
         } else {
             NSInteger count = self.commentArray.count;
-            WIComment *comment = self.commentArray[count - indexPath.row - 1];
+            WIComment *comment = self.commentArray[indexPath.row];
             CompanyDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailCommentCellID" forIndexPath:indexPath];
             [cell setComment:comment];
             return cell;

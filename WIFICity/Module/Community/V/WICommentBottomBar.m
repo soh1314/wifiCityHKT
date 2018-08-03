@@ -39,13 +39,23 @@
     _info = info;
     if (self.info.like_id) {
         self.like = YES;
-        self.likeBtn.forbidden = YES;
         [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
     } else {
         self.like = NO;
         [self.likeBtn setImage:[UIImage qsImageNamed:@"snap_default"] forState:UIControlStateNormal];
     }
     [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",info.likes] forState:UIControlStateNormal];
+    
+    
+}
+
+- (void)setCommentNum:(NSInteger)commentNum {
+    _commentNum = commentNum;
+    if (_commentNum == 0) {
+        [self.collectBtn setTitle:@"" forState:UIControlStateNormal];
+        return;
+    }
+    [self.collectBtn setTitle:[NSString stringWithFormat:@" %ld",self.commentNum] forState:UIControlStateNormal];
 }
 
 - (void)tapCommentBgView:(UITapGestureRecognizer *)gesture {
@@ -60,8 +70,9 @@
         self.like = YES;
         weakself;
         [self.dispatch likeCompany:self.info complete:^(WINetResponse *response) {
-            wself.info.likes ++;
-            [wself.likeBtn setTitle:[NSString stringWithFormat:@" %ld",wself.info.likes] forState:UIControlStateNormal];
+            NSInteger likes = wself.info.likes + 1;
+            [wself.likeBtn setTitle:[NSString stringWithFormat:@" %ld",likes] forState:UIControlStateNormal];
+            [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
         }];
     } else {
         [Dialog simpleToast:@"已点赞"];

@@ -37,7 +37,8 @@
     self.desLabel.text = [info.com_range copy];
     [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",info.likes] forState:UIControlStateNormal];
     NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,info.com_logo];
-    [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:urlEncode] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
     }];
 //    [UILabel changeLineSpaceForLabel:self.desLabel WithSpace:1.5];

@@ -203,13 +203,26 @@ static int EnterPriseRecommentSection = 2;
         WICompanyCategory *category = self.industryArray[index];
         sortCtrl.categoryID = @"";
         sortCtrl.areaID = [category.ID copy];
+        sortCtrl.selectCategory = category;
     } else {
         WICompanyCategory *category = self.categoryArray[index];
         sortCtrl.categoryID = [category.ID copy];
+        sortCtrl.selectProductCategory = category;
         sortCtrl.areaID = @"";
     }
-    sortCtrl.categoryArray = [self.categoryArray copy];
-    sortCtrl.productArray = [self.industryArray copy];
+    NSMutableArray *m_cat = [NSMutableArray array];
+    NSMutableArray *m_pro = [NSMutableArray new];
+    WICompanyCategory *allCateGory = [WICompanyCategory new];
+    
+    allCateGory.ID = @"";
+    allCateGory.entName = @"所有";
+    allCateGory.industryName = @"所有";
+    [m_cat addObject:allCateGory];
+    [m_cat addObjectsFromArray:self.categoryArray];
+    [m_pro addObject:allCateGory];
+    [m_pro addObjectsFromArray:self.categoryArray];
+    sortCtrl.categoryArray = [m_cat copy];
+    sortCtrl.productArray = [m_pro copy];
     [self.navigationController pushViewController:sortCtrl animated:YES];
 
 }
