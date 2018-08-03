@@ -190,7 +190,7 @@ static int EnterPriseRecommentSection = 2;
         return 1;
     }  else {
         if (self.dataArray.count > 0) {
-            return 4;
+            return 10;
         }
         return self.dataArray.count;
         

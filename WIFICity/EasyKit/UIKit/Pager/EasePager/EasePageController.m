@@ -26,7 +26,7 @@
         self.showOnNavigationBar = NO;
         self.menuViewStyle = WMMenuViewStyleLine;
         self.titleColorNormal = [UIColor lightGrayColor];
-        self.titleColorSelected = [UIColor blackColor];
+        self.titleColorSelected = [UIColor themeColor];
         self.titleSizeSelected = [UIFont systemFontOfSize:14.0].pointSize;
         self.titleSizeNormal = [UIFont systemFontOfSize:14.0].pointSize;
         self.helper = [[EasePageDelegateHelper alloc]init];

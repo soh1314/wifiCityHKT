@@ -201,7 +201,7 @@
     if (section == 1 || section == 2 ) {
         WINormalCellHeader *header = [[WINormalCellHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 45)];
         if (section == 1) {
-            header.titleLabel.text = @"华宽通WIFI";
+            header.titleLabel.text = @"推荐WIFI";
         } else {
             header.titleLabel.text = @"其他WIFI";
         }

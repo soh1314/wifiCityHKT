@@ -95,8 +95,8 @@ static NSInteger flowRequestNum = 0;
         
         NSLog(@"4.Finish");
         NEHotspotNetwork* network;
-        if ( cmd.commandType == kNEHotspotHelperCommandTypeFilterScanList || cmd.commandType == 2) {
-            NSLog(@"-------华宽通wifi正在烧苗------");
+        if ( cmd.commandType == kNEHotspotHelperCommandTypeFilterScanList ) {
+            NSLog(@"-------华宽通wifi正在扫描------");
             for (network in cmd.networkList) {
                 NSString* wifiInfoString = [[NSString alloc] initWithFormat: @"---------------------------\nSSID: %@\nMac地址: %@\n信号强度: %f\nCommandType:%ld\n---------------------------\n\n", network.SSID, network.BSSID, network.signalStrength, (long)cmd.commandType];
                 NSLog(@"附近wifi信息%@", wifiInfoString);
@@ -167,14 +167,17 @@ static NSInteger flowRequestNum = 0;
 - (void)applicationConnectWifi:(WIFIInfo *)info {
     if (@available(iOS 11.0, *)) {
         NEHotspotConfiguration * hotspotConfig = [[NEHotspotConfiguration alloc] initWithSSID:info.sid];
+        [Dialog progressToast:@"系统正在连接"];
         [[NEHotspotConfigurationManager sharedManager] applyConfiguration:hotspotConfig completionHandler:^(NSError * _Nullable error) {
             if ([error.localizedDescription isEqualToString:@"failed to get user's approval."]) {
                 return ;
             }
             if ([error.localizedDescription isEqualToString:@"already associated."]) {
                 [Dialog simpleToast:@"当前wifi已连接"];
-                [[WIFIValidator shared]validator];
+//                [[WIFIValidator shared]validator];
             } else {
+                [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+                [Dialog progressToast:@"正在认证"];
                 [[WIFIValidator shared]validator];
             }
             NSLog(@"%@", error.localizedDescription);

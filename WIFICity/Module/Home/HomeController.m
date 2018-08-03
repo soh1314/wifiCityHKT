@@ -232,8 +232,6 @@
         HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
         [cell setNews:news];
         return cell;
-
-
     }
     return nil;
 }

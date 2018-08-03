@@ -132,7 +132,6 @@ static Dialog *instance = nil;
 	hud.margin = 10.f;
 	hud.yOffset = -20.f;
 	hud.removeFromSuperViewOnHide = YES;
-	[hud hide:YES afterDelay:2];
 }
 
 - (void)gradient:(UIViewController *)controller seletor:(SEL)method {

@@ -22,14 +22,15 @@
 - (id)initWithServiceData:(HomeServiceData *)data {
     if (self = [super init]) {
         self.serviceData = data;
+        self.titleColorNormal = [UIColor lightGrayColor];
+        self.titleColorSelected = [UIColor themeColor];
     }
     return self;
 }
 
 - (id)init {
     if (self = [super init]) {
-        self.titleColorNormal = [UIColor lightGrayColor];
-        self.titleColorSelected = [UIColor themeColor];
+
     }
     return self;
 }

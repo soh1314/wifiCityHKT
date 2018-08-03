@@ -72,12 +72,13 @@
     WIFIValidateInfo *info = [WIFIValidateInfo new];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
     info.expireTime = [[NSString unixTimeStamp]integerValue] + 20 * 60;
-    if (![self needValidator:info]) {
-        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
-        return;
-    }
+//    if (![self needValidator:info]) {
+//        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
+//        return;
+//    }
     NSString *wifiIp = [WifiUtil getLocalRoutIpForCurrentWiFi];
     if (!wifiIp || [wifiIp isEqualToString:@""] ) {
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
         NSLog(@"wifi ip 为空 无法认证");
         [WIFISevice shared].validating = NO;
         return;

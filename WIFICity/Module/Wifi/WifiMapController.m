@@ -13,7 +13,7 @@
 #import "CustomPinAnnotationView.h"
 #import "WIFIAnnotation.h"
 #import "WIMapBubbleView.h"
-
+#import "EasyCLLocationManager.h"
 
 //x +23.979 y -21.313 z -26.714
 static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap/getPosition";
@@ -27,6 +27,7 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 @property (nonatomic, strong) NSMutableArray * annotationArray;//标注数组
 @property (nonatomic,strong)UIButton *refreshBtn;
 @property (nonatomic,strong)UIButton *relocateBtn;
+@property (nonatomic,assign)NSInteger status;
 
 @end
 
@@ -50,9 +51,22 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 {
     [_mapView viewWillAppear];
 //    [self setWhiteTrasluntNavBar];
+    [self checkAuthorization];
+    if (self.status < 3) {
+        return;
+    }
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
     [_locService startUserLocationService];
+}
+
+- (void)checkAuthorization {
+    int status = [CLLocationManager authorizationStatus];
+    self.status = status;
+    if (status < 3) {
+        [Dialog simpleToast:@"请前往设置打开位置权限才能使用地图功能"];
+    }
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated

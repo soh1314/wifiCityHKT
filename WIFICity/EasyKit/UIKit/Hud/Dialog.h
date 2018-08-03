@@ -54,4 +54,7 @@
 + (void)hideWindowToast;
 + (void)hideSimpleToast;
 
+// toast某种状态
++ (void)showPogress:(NSString *)status;
+
 @end

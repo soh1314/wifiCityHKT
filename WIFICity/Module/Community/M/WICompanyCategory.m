@@ -15,7 +15,7 @@
 }
 
 - (NSString *)industryImgUrl {
-    NSString *url = [NSString stringWithFormat:@"%@%@",kUrlHost,self.industryImg];
+    NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,self.industryImg];
     NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     return [urlEncode copy];
 }
