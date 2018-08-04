@@ -344,6 +344,7 @@
                 <outlet property="bossNameNotiLabel" destination="Erp-3H-iJW" id="6r1-5i-bcd"/>
                 <outlet property="companyIcon" destination="JWS-Es-cfy" id="N5V-DI-3Ne"/>
                 <outlet property="companyNameLabel" destination="bZx-cW-L6p" id="PZL-Xy-kKZ"/>
+                <outlet property="locationBtn" destination="WvH-Ey-a7B" id="yk9-e8-sbU"/>
                 <outlet property="phoneTitleLabel" destination="s4c-ep-zk8" id="dXS-Tb-1y1"/>
                 <outlet property="phoneValueLabel" destination="6Qb-Cr-zhF" id="9bH-8E-zhM"/>
                 <outlet property="quanjinBtn" destination="rpn-cW-Nxa" id="GYo-6r-4gi"/>

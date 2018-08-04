@@ -12,4 +12,6 @@
 
 + (void)callPhone:(NSString *)phoneNumber;
 
++ (void)openThirdMap:(NSString *)locationName viewcontroller:(UIViewController *)contex;
+
 @end

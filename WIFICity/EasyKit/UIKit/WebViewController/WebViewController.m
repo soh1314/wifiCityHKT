@@ -47,13 +47,14 @@
         CGFloat navHeight = kStatusBarHeight + 44;
         self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-navHeight)];
         self.webView.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        [self.view addSubview:self.webView];
+        
         [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
          [self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]];
         [self.webView loadRequest:request];
+        
         self.webView.UIDelegate = self;
-       
+       [self.view addSubview:self.webView];
 //        self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 5)];
 //        self.progressView.progressViewStyle = UIProgressViewStyleBar;
 //        self.progressView.progressTintColor = [UIColor blackColor];

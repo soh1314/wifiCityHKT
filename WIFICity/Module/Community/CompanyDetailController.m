@@ -20,6 +20,8 @@
 #import "WINormalCellHeader.h"
 #import "IEnterPrise.h"
 #import "WIComment.h"
+#import "UIViewController+EasyUtil.h"
+#import "WIUtil.h"
 
 static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyById.do";
 
@@ -223,6 +225,7 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
             [wself jumpToWebViewController:@"https://720yun.com/t/946jezwnuv5?scene_id=17042939&from=groupmessage"];
         };
         cell.locateBlock = ^{
+            [WIUtil openThirdMap:cell.info.com_name viewcontroller:wself];
             
         };
         cell.info = self.info;
@@ -256,7 +259,8 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 2) {
-        [self jumpToWebViewController:@""];
+        [Dialog simpleToast:@"当前企业暂无招聘信息"];
+//        [self jumpToWebViewController:@""];
     }
 }
 

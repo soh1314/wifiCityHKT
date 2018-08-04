@@ -139,12 +139,12 @@ static NSInteger flowRequestNum = 0;
                     info.signalStrength = [NSString stringWithFormat:@"%.2f",network.signalStrength];
                     info.sid = [network.SSID copy];
                     [self.hktWifiArray addObject:info];
-                    [network setConfidence: kNEHotspotHelperConfidenceHigh];
-                    [network setPassword: @""];
-                    NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
-                    [response setNetworkList: @[network]];
-                    [response setNetwork: network];
-                    [response deliver];
+//                    [network setConfidence: kNEHotspotHelperConfidenceHigh];
+//                    [network setPassword: @""];
+//                    NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
+//                    [response setNetworkList: @[network]];
+//                    [response setNetwork: network];
+//                    [response deliver];
                 }
             }
             [EasyCacheHelper saveResponseCache:[self.hktWifiArray copy] forKey:HKTWIFIARRAYKEY];

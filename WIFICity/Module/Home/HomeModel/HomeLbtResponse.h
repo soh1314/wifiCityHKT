@@ -20,5 +20,6 @@
 @property (nonatomic,copy)NSString *pathUrl;
 @property (nonatomic,copy)NSString *ID;
 @property (nonatomic,copy)NSString *mark;
+@property (nonatomic,copy)NSString *newsImgUrl;
 
 @end

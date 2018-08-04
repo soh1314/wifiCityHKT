@@ -86,10 +86,16 @@
 
 #pragma  mark - noti
 - (void)applicationEnterForeground:(NSNotification *)noti {
+    if ([WIFISevice shared].hktWifiArray) {
+         self.hktWifiArray = [[WIFISevice shared].hktWifiArray copy];
+    }
+    if ([WIFISevice shared].otherWifiArray) {
+        self.otherWifiArray = [[WIFISevice shared].otherWifiArray copy];
+    }
+    if ([WIFISevice shared].hktWifiArray || [WIFISevice shared].otherWifiArray) {
+        [self.tableView reloadData];
+    }
     
-    self.hktWifiArray = [[WIFISevice shared].hktWifiArray copy];
-    self.otherWifiArray = [[WIFISevice shared].otherWifiArray copy];
-    [self.tableView reloadData];
 }
 
 - (void)wifiStatusChange:(NSNotification *)noti {

@@ -2308,6 +2308,8 @@
 		16CDD0582106C9C000DA619F /* WICommon */ = {
 			isa = PBXGroup;
 			children = (
+				166CA58220F0ADD500E4CBE3 /* WIUtil.h */,
+				166CA58320F0ADD500E4CBE3 /* WIUtil.m */,
 				16CDD0592106C9D600DA619F /* WINormalCellHeader.h */,
 				16CDD05A2106C9D600DA619F /* WINormalCellHeader.m */,
 				16CDD05C2106C9E300DA619F /* WINormalCellHeader.xib */,
@@ -2381,8 +2383,6 @@
 				163A08D920E342A600DAC894 /* Private */,
 				16D64B1A20CF740200ED74C8 /* Category */,
 				16D64B1920CF740200ED74C8 /* Macro */,
-				166CA58220F0ADD500E4CBE3 /* WIUtil.h */,
-				166CA58320F0ADD500E4CBE3 /* WIUtil.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";

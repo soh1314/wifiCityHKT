@@ -28,6 +28,8 @@ typedef void(^CompanyLocateBlock)(void);
 @property (weak, nonatomic) IBOutlet UILabel *startTimeNotiLabel;
 @property (weak, nonatomic) IBOutlet UILabel *websiteLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *locationBtn;
+
 @property (weak, nonatomic) IBOutlet UILabel *bossNameNotiLabel;
 @property (weak, nonatomic) IBOutlet UILabel *quanjingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *websiteTitleLabel;

@@ -174,7 +174,7 @@ static int EnterPriseRecommentSection = 2;
         return 73;
         
     }  else {
-        return UITableViewAutomaticDimension;
+         return UITableViewAutomaticDimension < 90 ? 90 : UITableViewAutomaticDimension ;
 
     }
 }
