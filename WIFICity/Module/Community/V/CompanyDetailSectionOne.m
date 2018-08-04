@@ -86,8 +86,8 @@
         self.quanjingLabel.textColor = [UIColor colorWithHexString:@"#D0D0D0"];
         [self.quanjinBtn setImage:[UIImage qsImageNamed:@"panorama_default"] forState:UIControlStateNormal];
     }
-    self.startTimeLabel.text = [self.startTimeLabel.text timeWithTimeIntervalString:[NSString stringWithFormat:@"%ld",self.info.com_found_date]];
-    self.updateTimeLabel.text = [NSString stringWithFormat:@"更新时间 %@",[self.startTimeLabel.text timeWithTimeIntervalString:[NSString stringWithFormat:@"%ld",self.info.update_date]]];
+    self.startTimeLabel.text = [self.startTimeLabel.text timeStringToDay:[NSString stringWithFormat:@"%ld",self.info.com_found_date]];
+    self.updateTimeLabel.text = [NSString stringWithFormat:@"更新时间 %@",[self.startTimeLabel.text timeStringToDay:[NSString stringWithFormat:@"%ld",self.info.update_date]]];
     
 }
 

@@ -28,5 +28,9 @@ static NSString *const CompanyDetailAPI = @"/ws/company/findCompanyById.do";
 
 static NSString *const CompanyLikeAPI = @"/ws/company/saveLikes.do";
 
+static NSString *const CompanyCollectAPI = @"/ws/company/saveMake.do";
+
+static NSString *const CompanyUnCollectAPI = @"/ws/company/cancelMake.do";
+
 
 #endif /* EnterpriseSquareNetAPI_h */

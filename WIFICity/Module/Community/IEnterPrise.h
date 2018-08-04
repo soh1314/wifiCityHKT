@@ -22,11 +22,17 @@ typedef void(^IEnterPriseReloadDataBlock)(void);
 
 - (void)likeCompanyComment:(WIComment *)comment complete:(IEnterPriseCompleteBlock)complete;
 
+- (void)collectCompany:(WICompanyInfo *)company complete:(IEnterPriseCompleteBlock)complete;
+
+- (void)unCollectCompany:(WICompanyInfo *)company complete:(IEnterPriseCompleteBlock)complete;
+
 + (void)saveComment:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par;
 
 + (void)likeEnterprise:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par;
 
 + (void)collectEnterprise:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par;
+
++ (void)unCollectEnterprise:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par;
 
 + (void)enterpriseCommentList:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par;
 

@@ -40,7 +40,6 @@
     if (self = [super init]) {
         self.hidesBottomBarWhenPushed = YES;
         self.disPatch = [IEnterPrise new];
-        self.disPatch.needReload;
     }
     return self;
 }

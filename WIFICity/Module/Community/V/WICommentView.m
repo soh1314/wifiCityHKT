@@ -42,6 +42,9 @@
 
 - (void)commit:(id)sender {
     weakself;
+    if ([self.commentTextView.text isEqualToString:@""] || !self.commentTextView.text) {
+        return;
+    }
     if (self.commentTextView.text) {
         NSString *commitTextEncode = [self.commentTextView.text stringByReplacingEmojiUnicodeWithCheatCodes];
         NSString *commitText = [self.commentTextView.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

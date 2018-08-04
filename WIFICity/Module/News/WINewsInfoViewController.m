@@ -132,11 +132,11 @@ static NSString *const WIGaoXinNewsListAPI = @"/ws/wifi/findNewsByTypeId.do";
     WINewsPageModel *model = (WINewsPageModel*)self.pageModel;
     if (model.gxqType != 21) {
         GaoXinNewS *news = self.dataArray[indexPath.row];
-        weakself;
-//        NSString *detailUrl = [NSString stringWithFormat:@"%@%@%@",kUrlHost,@"/ws/wifi/findNewsById.do?id=",news.ID];
-//        [NavManager pushWebViewControllerWithUrlString:detailUrl title:news.title controller:self];
-//    http://192.168.1.188/wificity/ws/wifi/findNewsById.do?id=4028813c64ea3d210164ea60945c015f
-        [NavManager pushWebViewControllerWithHtmlWord:news.gxq_details title:news.gxq_title controller:wself];
+//        weakself;
+        NSString *detailUrl = [NSString stringWithFormat:@"%@%@%@",kUrlHost,@"/hktGxqNewsController.do?findById&id=",news.ID];
+        [NavManager pushWebViewControllerWithUrlString:detailUrl title:news.title controller:self];
+//    /wificity/hktGxqNewsController.do?findById&id=
+//        [NavManager pushWebViewControllerWithHtmlWord:news.gxq_details title:news.gxq_title controller:wself];
     } else {
         HomeNews *news = self.dataArray[indexPath.row];
         NSString *detailUrl = [NSString stringWithFormat:@"%@%@%@",kUrlHost,WIFIHomeNewsDetailAPI,news.ID];

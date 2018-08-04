@@ -240,6 +240,14 @@
     return string;
 }
 
+- (NSMutableAttributedString *)setSubStringColor:(UIColor *)subStringColor subString:(NSString *)subString {
+    NSMutableAttributedString *attrDescribeStr = [[NSMutableAttributedString alloc] initWithString:self];
+    [attrDescribeStr addAttribute:NSForegroundColorAttributeName
+                            value:[UIColor themeColor]
+                            range:[self rangeOfString:subString]];
+    return attrDescribeStr;
+}
+
 - (NSString *)protocalHandle:(NSString *)origin {
     NSArray *tem = [origin componentsSeparatedByString:@"|"];
     NSMutableString *protocol = [NSMutableString string];
@@ -292,39 +300,24 @@
     return NO;
 }
 
-+(BOOL)kongzifu:(NSString *)str {
++(BOOL)isNil:(NSString *)str {
     if ([str isEqualToString:@""] || !str) {
         return YES;
     } else {
         return NO;
     }
 }
-+ (NSString*)changeTelephone:(NSString*)teleStr{
++ (NSString*)phoneString:(NSString*)phone{
     
-    if (!teleStr) {
+    if (!phone) {
         return @"";
     }
-    NSString *string=[teleStr stringByReplacingOccurrencesOfString:[teleStr substringWithRange:NSMakeRange(3,4)]withString:@"****"];
+    NSString *string=[phone stringByReplacingOccurrencesOfString:[phone substringWithRange:NSMakeRange(3,4)]withString:@"****"];
     
     return string;
     
 }
 
-- (NSString *)timeWithTimeIntervalString:(NSString *)timeString
-{
-    // 格式化时间
-    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
-    [formatter setDateStyle:NSDateFormatterMediumStyle];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setDateFormat:@"yyyy-MM-dd"];// yyyy-MM-dd HH:mm:ss
-    
-    // 毫秒值转化为秒
-    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[timeString doubleValue]/ 1000.0];
-    NSString* dateString = [formatter stringFromDate:date];
-    NSLog(@"时间 === %@",dateString);
-    return dateString;
-}
 + (NSString *)numberDecimal:(id)number
 {
     NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%@", number]];
@@ -332,7 +325,6 @@
     [formatter setPositiveFormat:@"###,##0.00;"];
     return [formatter stringFromNumber:[NSNumber numberWithDouble:[decimal floatValue]]];
 }
-
 
 + (BOOL)checkRegularPhone:(NSString *)phone
 {
@@ -347,7 +339,7 @@
     }
     return NO;
 }
-+ (NSString*)DataTOjsonString:(id)object
++ (NSString*)dataToJsonString:(id)object
 {
     NSString *jsonString = nil;
     NSError *error;
@@ -373,7 +365,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setDateFormat:(@"YYYY-MM-dd hh:mm:ss")];
+    [formatter setDateFormat:(@"YYYY-MM-dd HH:mm:ss")];
     NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
     [formatter setTimeZone:timeZone];
     NSDate *datenow = [NSDate date];//现在时间
@@ -381,5 +373,32 @@
     return [NSString stringWithFormat:@"%ld",timeSp];
 }
 
++ (NSString *)unixTimeStampMsecond {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:(@"YYYY-MM-dd HH:mm:ss")];
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+    [formatter setTimeZone:timeZone];
+    NSDate *datenow = [NSDate date];//现在时间
+    NSInteger timeSp = [[NSNumber numberWithDouble:[datenow timeIntervalSince1970]] integerValue];
+    return [NSString stringWithFormat:@"%ld",timeSp*1000];
+}
+
+// 转化时间错显示北京时间到日期 timeStamp ms 单位
+- (NSString *)timeStringToDay:(NSString *)timeStamp
+{
+    // 格式化时间
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"yyyy-MM-dd"];// yyyy-MM-dd HH:mm:ss
+    // 毫秒值转化为秒
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[timeStamp doubleValue]/ 1000.0];
+    NSString* dateString = [formatter stringFromDate:date];
+    NSLog(@"时间 === %@",dateString);
+    return dateString;
+}
 
 @end

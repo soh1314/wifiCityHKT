@@ -48,7 +48,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTe-aM-Oku" customClass="DGThumbUpButton">
                     <rect key="frame" x="427" y="27.5" width="31" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title=" 12" image="snap_default.png">
+                    <state key="normal" title="     " image="snap_default.png">
                         <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -58,7 +58,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3x-Et-op8">
                     <rect key="frame" x="384" y="27.5" width="33" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title=" 12" image="comment_default.png">
+                    <state key="normal" title="     " image="comment_default.png">
                         <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
@@ -93,7 +93,7 @@
                 <outlet property="likeBtn" destination="dTe-aM-Oku" id="oxc-pj-G53"/>
                 <outlet property="lineView" destination="M52-oy-w0l" id="FB7-gQ-518"/>
             </connections>
-            <point key="canvasLocation" x="-244" y="197"/>
+            <point key="canvasLocation" x="-244" y="196.5"/>
         </view>
     </objects>
     <resources>

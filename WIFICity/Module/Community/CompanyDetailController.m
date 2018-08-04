@@ -145,9 +145,18 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 - (void)collectCompanyInfo:(id)sender {
     self.collected = self.collected ? NO : YES ;
     if (self.collected) {
-        [self.navigationItem.rightBarButtonItem setImage:[UIImage qsImageNamed:@"collect"]];
+        [self.dispatch collectCompany:self.info complete:^(WINetResponse *response) {
+            if (response && response.success) {
+                [self.navigationItem.rightBarButtonItem setImage:[UIImage qsImageNamed:@"collect"]];
+            }
+            
+        }];
     } else {
-        [self.navigationItem.rightBarButtonItem setImage:[UIImage qsImageNamed:@"collect_default"]];
+        [self.dispatch unCollectCompany:self.info complete:^(WINetResponse *response) {
+            if (response && response.success) {
+                [self.navigationItem.rightBarButtonItem setImage:[UIImage qsImageNamed:@"collect_default"]];
+            }
+        }];
     }
 }
 

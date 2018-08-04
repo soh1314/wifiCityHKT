@@ -135,7 +135,7 @@ static int EnterPriseRecommentSection = 2;
         }
         
     } failureBlock:^(NSError *error) {
-        
+        kHudNetError;
     } showHUD:NO];
 }
 
@@ -169,7 +169,7 @@ static int EnterPriseRecommentSection = 2;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 194;
+        return 192;
     } else if (indexPath.section == 1) {
         return 73;
         

@@ -17,5 +17,6 @@ typedef void(^IEnterPriseCompleteBlock)(WINetResponse *response);
 - (void)commentCompany:(WICompanyInfo *)company comment:(WIComment *)comment complete:(IEnterPriseCompleteBlock)complete;
 - (void)likeCompany:(WICompanyInfo *)company complete:(IEnterPriseCompleteBlock)complete;
 - (void)likeCompanyComment:(WIComment *)comment complete:(IEnterPriseCompleteBlock)complete;
+- (void)collectCompany:(WICompanyInfo *)company complete:(IEnterPriseCompleteBlock)complete;
 
 @end

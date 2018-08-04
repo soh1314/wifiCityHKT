@@ -27,21 +27,14 @@
 }
 
 - (void)layoutSubviews {
-//    if (self.cellType == 0) {
-        [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(self.contentView);
-        }];
-//    }
-//    else {
-//        [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//            make.left.mas_equalTo(self.contentView).mas_offset(28);
-//            make.centerX.mas_equalTo(self);
-//            make.height.mas_equalTo(45.0f);
-//            make.top.mas_equalTo(self.contentView).mas_offset(12);
-//        }];
-//    }
+
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.contentView);
+    }];
+
 }
+
+
 
 - (void)setCategoryModelArray:(NSArray *)categoryModelArray {
     _categoryModelArray = categoryModelArray;
@@ -58,7 +51,7 @@
     {
         UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
         flowLayout.headerReferenceSize = CGSizeMake(0, 0);
-        [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+        [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
         _collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 85) collectionViewLayout:flowLayout];
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
@@ -68,14 +61,14 @@
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
-        _collectionView.bounces = YES;
-        _collectionView.pagingEnabled = YES;
-        _collectionView.scrollEnabled = YES;
+        _collectionView.scrollEnabled = NO;
         [_collectionView registerNib:[UINib nibWithNibName:@"EnterPriseAreaColCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"EnterPriseAreaColCellID"];
         [_collectionView registerClass:[EnterPriseTagCell class] forCellWithReuseIdentifier:@"EnterPriseTagCellID"];
     }
     return _collectionView;
 }
+
+
 
 #pragma mark -collect delegate
 
@@ -124,7 +117,7 @@
     if (self.cellType == 0) {
         return CGSizeMake((KSCREENW-2*12-2*15)/3.0f, 80);
     } else {
-        return CGSizeMake((KSCREENW-5*5 -2* 12)/6.0f,24);
+        return CGSizeMake((KSCREENW-5*8 -2* 12)/6.0f,24);
     }
     
 }

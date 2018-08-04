@@ -40,7 +40,7 @@
 
 //富文本
 - (NSMutableAttributedString *)priceStringsSetPriceColor:(UIColor *)pColor priceFont:(UIFont *)pfont fuhaoColor:(UIColor *)fhColor fuhaoFont:(UIFont *)fhFont;
-
+- (NSMutableAttributedString *)setSubStringColor:(UIColor *)subStringColor subString:(NSString *)subString;
 //协议字符串
 - (NSString *)protocalHandle:(NSString *)origin;
 
@@ -48,13 +48,15 @@
 + (BOOL)checkRegularPhone:(NSString *)phone;
 +(BOOL) isValidateMobile:(NSString *)mobile;
 
-
+// 金钱数字处理
 + (NSString *)numberDecimal:(id)number;
-+ (NSString*)DataTOjsonString:(id)object;
+// json字符串
++ (NSString*)dataToJsonString:(id)object;
 
 //时间戳
-- (NSString *)timeWithTimeIntervalString:(NSString *)timeString;
+- (NSString *)timeStringToDay:(NSString *)timeString;
 + (NSString *)currentTimeStr;
 + (NSString *)unixTimeStamp;
++ (NSString *)unixTimeStampMsecond;
 
 @end

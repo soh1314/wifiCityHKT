@@ -11,7 +11,8 @@
 #import "CompanyRecommentCell.h"
 #import "EnterpriseSquareNetAPI.h"
 #import "CompanyDetailController.h"
-
+#import "WINormalCellHeader.h"
+#import "NSString+Additions.h"
 NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
 
 @interface CompanySearchController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIGestureRecognizerDelegate>
@@ -21,7 +22,7 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
 @property (nonatomic,strong)NSMutableArray *searchHotArray;
 @property (nonatomic,strong)NSMutableArray *searchHistoryArray;
 @property (nonatomic,strong)EaseSearchBar *searchBar;
-
+@property (nonatomic,strong)WINormalCellHeader *headerView;
 @end
 
 @implementation CompanySearchController
@@ -46,7 +47,7 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
     self.nodataModel.verticalOffset = -60;
     self.nodataModel.titile = @"没有搜索到相关信息~";
     
-
+    
     // Do any additional setup after loading the view.
 }
 
@@ -74,9 +75,15 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
 - (void)initUI {
     [self setBlackNavBar];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.headerView = [WINormalCellHeader new];
+    self.headerView.frame = CGRectMake(0, 0, KSCREENW, 0);
+    [self.view addSubview:self.headerView];
+    self.headerView.hidden = YES;
+    self.headerView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.view);
+        make.left.right.bottom.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.headerView.mas_bottom);
     }];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyRecommentCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyRecommentCellID"];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelSearch:)];
@@ -102,6 +109,8 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
             make.centerX.mas_equalTo(self.navigationItem.titleView.mas_centerX);
         }];
     }
+    
+
 
 }
 
@@ -131,10 +140,13 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
         return;
     }
     NSString *searchWord = [self.searchBar.searchTtf.text copy];
-    if (!searchWord || [searchWord isEqualToString:@""]) {
+    if (!searchWord ) {
         [self.searchResultArray removeAllObjects];
         [self.tableView reloadData];
         return;
+    }
+    if ([searchWord isEqualToString:@""]) {
+        searchWord = @" ";
     }
     NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"comName":[searchWord copy]};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanySearchAPI) params:para successBlock:^(NSDictionary *returnData) {
@@ -144,6 +156,18 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
             NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
             [self.searchResultArray removeAllObjects];
             [self.searchResultArray addObjectsFromArray:dataArray];
+            if (dataArray && dataArray.count > 0) {
+                self.headerView.frame = CGRectMake(0, 0, KSCREENW, 36);
+                self.headerView.titleLabel.text = [NSString stringWithFormat:@"搜索到  %ld  个公司",dataArray.count];
+                NSString *numString = [NSString stringWithFormat:@"%ld",dataArray.count];
+                NSMutableAttributedString *attrDescribeStr = [self.headerView.titleLabel.text setSubStringColor:[UIColor themeColor] subString:numString];
+                self.headerView.titleLabel.attributedText = attrDescribeStr;
+                self.headerView.hidden = NO;
+            
+            } else {
+                self.headerView.hidden = YES;
+                self.headerView.frame = CGRectMake(0, 0, KSCREENW, 0);
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
             });
@@ -224,7 +248,7 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
+        _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.tableFooterView = [[UIView alloc]init];
         _tableView.estimatedRowHeight = 200;
     }
