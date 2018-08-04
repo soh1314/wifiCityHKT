@@ -13,11 +13,11 @@
 #endif
 #define minetype @"application/json"
 
-#define SavelikeAPI @"/ws/company/saveLikes.do?"
+#define SavelikeAPI @"/ws/company/saveLikes.do"
 #define CancellikeAPI @"ws/company/cancelLikes.do?"
-#define ComClassAPI @"/ws/company/getEntList.do?"
-#define ComListAPI @"/ws/company/getCompanyList.do?"
-#define FindUserByKeyAPI @"/ws/user/findUserByKey.do?"
+#define ComClassAPI @"/ws/company/getEntList.do"
+#define ComListAPI @"/ws/company/getCompanyList.do"
+#define FindUserByKeyAPI @"/ws/user/findUserByKey.do"
 #define GetGPSOrgIdImageAPI @"/ws/wifi/getOrgIdByGps.do?posx="
 #define GetCarouseDataAPI @"/ws/wifi/findLbtByOrgId.do?orgId="
 

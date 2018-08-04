@@ -25,7 +25,7 @@
 
 - (void)setInfo:(WICompanyInfo *)info {
     _info = info;
-    self.abstractLabel.text = [info.com_range copy];
+    self.abstractLabel.text = [info.com_introduction copy];
     if (self.abstractLabel.text) {
         NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString:self.abstractLabel.text];
         NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];

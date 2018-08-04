@@ -109,6 +109,12 @@
     self.selectItemBlock = ^(NSInteger index,NSString *title) {
         EaseSortItemView *itemView = wself.itemArray[index];
         itemView.titleLabel.text = [title copy];
+        for (int i = 0; i < wself.titleArray.count; i++) {
+            EaseSortItemView *iteView1 = wself.itemArray[i];
+            if (i != index) {
+                iteView1.titleLabel.text = wself.titleArray[i];
+            }
+        }
     };
 }
 

@@ -17,6 +17,7 @@
     // Initialization code
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self initUI];
+    self.dispatch = [IEnterPrise new];
 }
 
 - (void)initUI {
@@ -37,8 +38,22 @@
     self.commentContentLabel.text = [content replace:@" " withString:@""];
     NSString *time = [comment.dis_date timeWithTimeIntervalString:comment.dis_date];
     self.timeLabel.text = [time copy];
-    NSString *shortId = [self.comment.ID substringToIndex:6];
-    self.nameLabel.text = [NSString stringWithFormat:@"用户%@",shortId];
+//    NSString *shortId = [self.comment.use_id substringFromIndex:26];
+    self.nameLabel.text = [NSString stringWithFormat:@"%@",self.comment.nickname];
+    if (self.comment.wx_icon) {
+        [self.avartar sd_setImageWithURL:[NSURL URLWithString:self.comment.wx_icon]];
+    }
+    if (self.comment.qq_icon) {
+        [self.avartar sd_setImageWithURL:[NSURL URLWithString:self.comment.qq_icon]];
+    }
+    if (self.comment.dis_numbers) {
+        [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",self.comment.dis_numbers] forState:UIControlStateNormal];
+    } else {
+        [self.likeBtn setTitle:@"" forState:UIControlStateNormal];
+    }
+    
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -47,4 +62,14 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)likeComment:(id)sender {
+    __block WIComment *comment = self.comment;
+    __weak typeof(self)wself = self;
+    [self.dispatch likeCompanyComment:self.comment complete:^(WINetResponse *response) {
+        if (response && response.success) {
+            comment.dis_numbers ++;
+            [wself.likeBtn setTitle:[NSString stringWithFormat:@" %ld",self.comment.dis_numbers] forState:UIControlStateNormal];
+        }
+    }];
+}
 @end

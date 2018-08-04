@@ -279,7 +279,7 @@
     if (indexPath.section == 2) {
         HomeNews *news = [self.dataArray objectAtIndex:indexPath.row];
         NSString *detailUrl = [NSString stringWithFormat:@"%@%@%@",kUrlHost,WIFIHomeNewsDetailAPI,news.ID];
-        [NavManager pushWebViewControllerWithUrlString:detailUrl controller:self];
+        [NavManager pushWebViewControllerWithUrlString:detailUrl title:news.title controller:self];
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

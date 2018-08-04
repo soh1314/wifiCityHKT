@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "WIComment.h"
+#import "IEnterPrise.h"
+#import "WIButton.h"
 @interface CompanyDetailCommentCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *avartar;
@@ -15,7 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentContentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (nonatomic,strong)WIComment *comment;
-
+@property (nonatomic,strong)IEnterPrise *dispatch;
+@property (weak, nonatomic) IBOutlet WIButton *likeBtn;
+- (IBAction)likeComment:(id)sender;
 
 
 @end

@@ -18,7 +18,7 @@
 
 + (void)setWindowRootController:(UIViewController *)context;
 
-+ (void)pushWebViewControllerWithUrlString:(NSString *)pTag controller:(UIViewController *)context;
++ (void)pushWebViewControllerWithUrlString:(NSString *)pTag title:(NSString *)title controller:(UIViewController *)context;
 
 + (void)pushBlankViewController:(UIViewController *)context;
 

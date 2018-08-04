@@ -23,6 +23,17 @@
 
 }
 
+- (void)setFlowLayoutType:(NSInteger)flowLayoutType {
+    _flowLayoutType = flowLayoutType;
+//    if (_flowLayoutType == 1) {
+//        self.collectionView.frame = self.bounds;
+//    } else {
+//        CGRect rect = self.bounds;
+//        rect.size.width = self.bounds.size.width/2.0;
+//        self.collectionView.frame = rect;
+//    }
+}
+
 - (void)setSelectCategory:(WICompanyCategory *)selectCategory {
     if (selectCategory) {
         _selectCategory  = selectCategory;
@@ -73,11 +84,11 @@
     
     WICompanyCategroyCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"WICompanyCategroyCellID" forIndexPath:indexPath];
     WICompanyCategory *category = self.categoryArray[indexPath.row];
-    if (self.flowLayoutType == 0) {
-        colCell.companyNameLabel.textAlignment = NSTextAlignmentLeft;
-    } else {
+//    if (self.flowLayoutType == 0) {
+//        colCell.companyNameLabel.textAlignment = NSTextAlignmentLeft;
+//    } else {
         colCell.companyNameLabel.textAlignment = NSTextAlignmentCenter;
-    }
+//    }
     if (category.entName) {
         if (self.selectCategory && self.selectCategory.entName && [self.selectCategory.entName isEqualToString:category.entName]) {
             colCell.companyNameLabel.textColor = [UIColor themeColor];
@@ -104,7 +115,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     if (self.flowLayoutType == 0) {
-        return CGSizeMake(KSCREENW,40);
+        return CGSizeMake(KSCREENW/2.0,40);
     } else {
        return CGSizeMake(KSCREENW/2.0,40);
     }
@@ -114,6 +125,9 @@
 //调节每个item的edgeInsets代理方法
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
+    if (self.flowLayoutType == 0) {
+        return UIEdgeInsetsMake(0, 0, 0, KSCREENW/2.0);
+    }
     return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 

@@ -50,13 +50,15 @@
 @property (nonatomic,copy)NSString *phoneNumber;
 @property (nonatomic,copy)NSString *ID;
 @property (nonatomic,assign)NSInteger likes;
+@property (nonatomic,assign)NSInteger dis;
 @property (nonatomic,assign)float ratio;
 @property (nonatomic,copy)NSString *com_legal;
 @property (nonatomic,copy)NSString *com_capital;
 @property (nonatomic,copy)NSString *com_contacts;
 @property (nonatomic,copy)NSString *com_vr;
-@property (nonatomic,assign)NSInteger dis;
 @property (nonatomic,assign)NSInteger com_found_date;
 @property (nonatomic,copy)NSString *likeId;
+
+@property (nonatomic,copy)NSString *com_introduction;
 
 @end

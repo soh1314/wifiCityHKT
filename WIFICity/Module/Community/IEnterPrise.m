@@ -27,6 +27,19 @@
     } par:para];
 }
 
+- (void)likeCompanyComment:(WIComment *)comment complete:(IEnterPriseCompleteBlock)complete {
+    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"likesId":comment.ID,@"likesType":@"1"};
+    [IEnterPrise likeComment:^(WINetResponse *response) {
+        if (response && response.success) {
+            complete(response);
+        } else {
+            [Dialog simpleToast:@"点赞失败"];
+        }
+        
+    } par:para];
+}
+
+
 - (void)likeCompany:(WICompanyInfo *)company complete:(IEnterPriseCompleteBlock)complete {
     NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"likesId":company.ID,@"likesType":@"1"};
     [IEnterPrise likeEnterprise:^(WINetResponse *response) {
@@ -48,7 +61,31 @@
     } showHUD:NO];
 }
 
++ (void)likeComment:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {
+    [Dialog showRingLoadingView:KWINDOW];
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyLikeAPI) params:par successBlock:^(NSDictionary *returnData) {
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+        complete(response);
+    } failureBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+        complete(nil);
+    } showHUD:NO];
+}
+
 + (void)likeEnterprise:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {
+    [Dialog showRingLoadingView:KWINDOW];
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyLikeAPI) params:par successBlock:^(NSDictionary *returnData) {
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+        complete(response);
+    } failureBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+        complete(nil);
+    } showHUD:NO];
+}
+
++ (void)likeEnterpriseComment:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {
     [Dialog showRingLoadingView:KWINDOW];
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyLikeAPI) params:par successBlock:^(NSDictionary *returnData) {
         [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];

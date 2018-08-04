@@ -40,29 +40,35 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjs-8U-jdX">
                         <rect key="frame" x="0.0" y="129" width="480" height="30"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Nt-t9-iWG">
-                                <rect key="frame" x="291" y="7" width="16" height="16"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Nt-t9-iWG" customClass="WIButton">
+                                <rect key="frame" x="292" y="7" width="16" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" image="collect.png">
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDE-wg-W05">
-                                <rect key="frame" x="368" y="7.5" width="16" height="15"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDE-wg-W05" customClass="WIButton">
+                                <rect key="frame" x="369" y="7.5" width="16" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" image="comment_default.png">
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="comment:" destination="gTV-IL-0wX" eventType="touchUpInside" id="PHT-3C-alf"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIA-lc-HuX">
-                                <rect key="frame" x="426" y="7.5" width="16" height="15"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIA-lc-HuX" customClass="WIButton">
+                                <rect key="frame" x="428" y="7.5" width="14" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" image="snap_default.png">
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="like:" destination="gTV-IL-0wX" eventType="touchUpInside" id="WDY-3n-uc1"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="108" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA3-Q1-0gP">
-                                <rect key="frame" x="388" y="9.5" width="18" height="12"/>
+                                <rect key="frame" x="390" y="9.5" width="18" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -74,7 +80,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已收藏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18W-oG-Wv1">
-                                <rect key="frame" x="311" y="8" width="37" height="14.5"/>
+                                <rect key="frame" x="312" y="8" width="37" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -85,7 +91,7 @@
                             <constraint firstItem="kvY-lh-3q6" firstAttribute="centerY" secondItem="fjs-8U-jdX" secondAttribute="centerY" id="4bd-OG-oM7"/>
                             <constraint firstItem="kvY-lh-3q6" firstAttribute="leading" secondItem="UIA-lc-HuX" secondAttribute="trailing" constant="4" id="H1k-1h-M1V"/>
                             <constraint firstItem="18W-oG-Wv1" firstAttribute="leading" secondItem="2Nt-t9-iWG" secondAttribute="trailing" constant="4" id="H2k-5m-Fi5"/>
-                            <constraint firstItem="XA3-Q1-0gP" firstAttribute="leading" secondItem="WDE-wg-W05" secondAttribute="trailing" constant="4" id="O5I-ur-dQh"/>
+                            <constraint firstItem="XA3-Q1-0gP" firstAttribute="leading" secondItem="WDE-wg-W05" secondAttribute="trailing" constant="5" id="O5I-ur-dQh"/>
                             <constraint firstItem="UIA-lc-HuX" firstAttribute="leading" secondItem="XA3-Q1-0gP" secondAttribute="trailing" constant="20" id="PlU-1H-H2L"/>
                             <constraint firstItem="XA3-Q1-0gP" firstAttribute="centerY" secondItem="fjs-8U-jdX" secondAttribute="centerY" id="arw-Y5-x33"/>
                             <constraint firstItem="18W-oG-Wv1" firstAttribute="centerY" secondItem="fjs-8U-jdX" secondAttribute="centerY" id="gjN-kP-gS2"/>
@@ -147,15 +153,14 @@
             <size key="customSize" width="480" height="227"/>
             <connections>
                 <outlet property="bgIconView" destination="Uu5-WQ-QkK" id="aer-hG-QCq"/>
-                <outlet property="collectBtn" destination="2Nt-t9-iWG" id="76d-uz-KSi"/>
                 <outlet property="collectLabel" destination="18W-oG-Wv1" id="awD-zV-h6T"/>
-                <outlet property="commentBtn" destination="WDE-wg-W05" id="xlR-4u-0yJ"/>
+                <outlet property="commentBtn" destination="WDE-wg-W05" id="EO6-JG-rBV"/>
                 <outlet property="commentNumLabel" destination="XA3-Q1-0gP" id="1TC-eP-xt8"/>
                 <outlet property="companyDesLabel" destination="kC4-Hi-6kO" id="tyR-KC-YIZ"/>
                 <outlet property="companyLogo" destination="8K9-dp-rcZ" id="ane-N6-yDa"/>
                 <outlet property="companyNameLabel" destination="e9N-IU-gg8" id="CDL-rK-JnY"/>
                 <outlet property="edgeView" destination="Eqh-L6-0Dc" id="Uwd-90-Nur"/>
-                <outlet property="likeBtn" destination="UIA-lc-HuX" id="P8f-w7-1Gr"/>
+                <outlet property="likeBtn" destination="UIA-lc-HuX" id="0pv-hD-aIi"/>
                 <outlet property="likeNumLabel" destination="kvY-lh-3q6" id="JMu-2c-vGh"/>
                 <outlet property="topEdgeView" destination="S4z-Yu-NiH" id="DBR-Pe-eaR"/>
             </connections>
@@ -166,6 +171,6 @@
         <image name="collect.png" width="16" height="16"/>
         <image name="comment_default.png" width="16" height="14"/>
         <image name="default_img.png" width="105" height="60"/>
-        <image name="snap_default.png" width="16" height="15"/>
+        <image name="snap_default.png" width="14" height="13"/>
     </resources>
 </document>

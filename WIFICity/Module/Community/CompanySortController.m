@@ -18,8 +18,9 @@
 #import "CompanySearchController.h"
 #import "EnterpriseSquareNetAPI.h"
 #import "WICompanyInfo.h"
-
+#import "IEnterPrise.h"
 #import "WICompanyCategroyView.h"
+#import "WIPopView.h"
 
 @interface CompanySortController ()<UICollectionViewDelegate,UICollectionViewDataSource,EaseDropMenuDelegate>
 
@@ -28,7 +29,7 @@
 @property (nonatomic,assign)NSInteger showType;
 @property (nonatomic,strong)EaseSearchBar *searchBar;
 @property (nonatomic,strong)EaseDropMenu *sortTopView;
-
+@property (nonatomic,strong)IEnterPrise *disPatch;
 @property (nonatomic,assign)NSInteger page;
 
 @end
@@ -38,6 +39,8 @@
 - (id)init {
     if (self = [super init]) {
         self.hidesBottomBarWhenPushed = YES;
+        self.disPatch = [IEnterPrise new];
+        self.disPatch.needReload;
     }
     return self;
 }
@@ -60,8 +63,20 @@
         self.page++;
     }
     NSDictionary *para = nil;
+    NSString *entID = nil;
+    NSString *industryId = nil;
+    if (self.selectProductCategory) {
+        entID = [self.selectProductCategory.ID copy];
+    } else {
+        entID = @"";
+    }
+    if (self.selectCategory) {
+        industryId = [self.selectCategory.ID copy];
+    } else {
+        industryId = @"";
+    }
 //    if (self.categoryID && ![self.categoryID isEqualToString:@""]) {
-    para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entId":[self.categoryID copy],@"industryId":[self.areaID copy]};
+    para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entId":entID,@"industryId":industryId};
 //    }
 //    else {
 //        para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page]};
@@ -160,6 +175,7 @@
         categoryView.pick = ^(NSInteger idx) {
             WICompanyCategory *category = wself.productArray[idx];
             wself.selectCategory = category;
+            wself.selectProductCategory = wself.categoryArray[0];
             wself.areaID = [category.ID copy];
             wself.sortTopView.selectItemBlock(index, category.industryName);
             [wself loadData:YES];
@@ -178,6 +194,7 @@
         categoryView.pick = ^(NSInteger idx) {
             WICompanyCategory *category = wself.categoryArray[idx];
             wself.categoryID = [category.ID copy];
+            wself.selectCategory = wself.productArray[0];
             wself.selectProductCategory = category;
             wself.sortTopView.selectItemBlock(index, category.entName);
             [wself loadData:YES];
@@ -187,8 +204,6 @@
         categoryView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
         return categoryView;
     }
-   
-    
 }
 
 - (void)dropContentTapActionForItem:(NSInteger)index {
@@ -227,14 +242,55 @@
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    WICompanyInfo *info = self.dataArray[indexPath.row];
+    WICompanyInfo *companyInfo = self.dataArray[indexPath.row];
+    weakself;
     if (self.showType == 0) {
         CompanyInfoVerticalCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CompanyInfoVerticalCellID" forIndexPath:indexPath];
-        [cell setInfo:info];
+        [cell setInfo:companyInfo];
+        cell.commentBlock = ^(WICompanyInfo *info) {
+            WICommentView *commentView =  [WIPopView popCommentView:wself];
+            commentView.info = companyInfo;
+            commentView.delegate = wself.disPatch;
+            __block WICompanyInfo *blockInfo = companyInfo;
+            wself.disPatch.needReload = YES;
+            wself.disPatch.reloadBlock = ^{
+                blockInfo.dis ++;
+                [wself.collectionView reloadData];
+            };
+        };
+        cell.likeBlock = ^(WICompanyInfo *info) {
+            [wself.disPatch likeCompany:info complete:^(WINetResponse *response) {
+                if (response && response.success) {
+                    info.like_id = @"123";
+                    info.likes ++;
+                    [wself.collectionView reloadData];
+                }
+            }];
+        };
         return cell;
     } else {
         CompanyInfoHorizonCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CompanyInfoHorizonCellID" forIndexPath:indexPath];
-        [cell setInfo:info];
+        [cell setInfo:companyInfo];
+        cell.commentBlock = ^(WICompanyInfo *info) {
+            WICommentView *commentView =  [WIPopView popCommentView:wself];
+            commentView.info = companyInfo;
+            commentView.delegate = wself.disPatch;
+            __block WICompanyInfo *blockInfo = companyInfo;
+            wself.disPatch.needReload = YES;
+            wself.disPatch.reloadBlock = ^{
+                blockInfo.dis ++;
+                [wself.collectionView reloadData];
+            };
+        };
+        cell.likeBlock = ^(WICompanyInfo *info) {
+            [wself.disPatch likeCompany:info complete:^(WINetResponse *response) {
+                if (response && response.success) {
+                    info.like_id = @"123";
+                    info.likes ++;
+                    [wself.collectionView reloadData];
+                }
+            }];
+        };
         return cell;
     }
 

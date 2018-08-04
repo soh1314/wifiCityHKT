@@ -12,4 +12,6 @@
 @interface WebViewController : BaseViewController
 @property(nonatomic,copy)NSString *URLString;
 @property(nonatomic,copy)NSString *htmlWord;
+@property(nonatomic,copy)NSString *newsTitle;
+
 @end

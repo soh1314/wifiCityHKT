@@ -43,6 +43,9 @@
                                 <state key="normal" title="  20" image="comment_default.png">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="comment:" destination="gTV-IL-0wX" eventType="touchUpInside" id="JRI-NN-luo"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gxa-SI-UHH">
                                 <rect key="frame" x="158.5" y="7" width="1" height="21"/>
@@ -57,6 +60,9 @@
                                 <state key="normal" title="  108" image="snap_default.png">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="like:" destination="gTV-IL-0wX" eventType="touchUpInside" id="lmC-g5-jNq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -135,6 +141,6 @@
     <resources>
         <image name="comment_default.png" width="16" height="14"/>
         <image name="default_img.png" width="105" height="60"/>
-        <image name="snap_default.png" width="16" height="15"/>
+        <image name="snap_default.png" width="14" height="13"/>
     </resources>
 </document>

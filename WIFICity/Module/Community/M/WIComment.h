@@ -22,5 +22,8 @@
 @property (nonatomic,copy)NSString *ID;
 @property (nonatomic,copy)NSString *use_id;
 @property (nonatomic,copy)NSString *dis_date;
-
+@property (nonatomic,copy)NSString *nickname;
+@property (nonatomic,copy)NSString *qq_icon;
+@property (nonatomic,copy)NSString *wx_icon;
+@property (nonatomic,assign)NSInteger dis_numbers;
 @end

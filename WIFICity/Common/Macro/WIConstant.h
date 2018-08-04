@@ -13,7 +13,7 @@
 
 //tabbar
 #define tabbar_shouye           @"首页"
-#define tabbar_wifi             @"wifi检测"
+#define tabbar_wifi             @"WIFI检测"
 #define tabbar_square          @"企业广场"
 #define tabbar_promoteHelper    @"推广助手"
 #define tabbar_userCenter       @"个人中心"

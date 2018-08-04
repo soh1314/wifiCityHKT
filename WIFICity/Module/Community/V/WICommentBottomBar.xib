@@ -93,7 +93,7 @@
                 <outlet property="likeBtn" destination="dTe-aM-Oku" id="oxc-pj-G53"/>
                 <outlet property="lineView" destination="M52-oy-w0l" id="FB7-gQ-518"/>
             </connections>
-            <point key="canvasLocation" x="-173" y="197"/>
+            <point key="canvasLocation" x="-244" y="197"/>
         </view>
     </objects>
     <resources>

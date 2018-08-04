@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "WIComment.h"
 #import "WICompanyInfo.h"
+
 typedef void(^IEnterPriseCompleteBlock)(WINetResponse *response);
 
 @protocol EnterPriseDelegate <NSObject>
 
 - (void)commentCompany:(WICompanyInfo *)company comment:(WIComment *)comment complete:(IEnterPriseCompleteBlock)complete;
 - (void)likeCompany:(WICompanyInfo *)company complete:(IEnterPriseCompleteBlock)complete;
+- (void)likeCompanyComment:(WIComment *)comment complete:(IEnterPriseCompleteBlock)complete;
 
 @end

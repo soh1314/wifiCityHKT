@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WIButton.h"
 typedef void(^DGThumbUpBtnTapActionBlock)(BOOL selected);
 typedef NS_ENUM(NSUInteger, DGThumbUpButtonType) {
     DGThumbUpExplosionType = 0
 };
 
-@interface DGThumbUpButton : UIButton
+@interface DGThumbUpButton : WIButton
 
 - (instancetype) initWithFrame: (CGRect)frame isPress: (BOOL)press;
 - (void) clickButtonPress;

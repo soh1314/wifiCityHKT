@@ -28,6 +28,7 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
 - (id)init {
     if (self = [super init]) {
         self.hidesBottomBarWhenPushed = YES;
+
     }
     return self;
 }
@@ -52,7 +53,7 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
     [self.imageView addSubview:[self effectViewWithFrame:self.view.frame]];
     self.searchBar = [[EaseSearchBar alloc]initWithFrame:CGRectMake(16, 25, 278/375.0f*KSCREENW, 35)];
     self.searchBar.searchTtf.userInteractionEnabled = YES;
-    self.searchBar.textfieldPlaceHolderName = @"搜企业名、老板...";
+    self.searchBar.textfieldPlaceHolderName = @"搜新闻...";
     self.searchBar.searchTtf.delegate = self;
     __weak typeof(self)wself = self;
     self.searchBar.actionblock = ^{
@@ -89,6 +90,13 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
     
     self.dataArray = [NSMutableArray array];
     [self.searchBar.searchTtf becomeFirstResponder];
+    
+    self.nodataModel = [EaseNoDataModel new];
+    self.nodataModel.noDataImageName = @"search_noresults";
+    self.nodataModel.verticalOffset = -60;
+    self.nodataModel.titile = @"没有搜索到相关信息~";
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -128,9 +136,11 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
         [self.tableView reloadData];
         return;
     }
+    weakself;
     [self.dataArray removeAllObjects];
     NSDictionary *para = @{@"title":[searchWord copy],@"orgId":[WIFISevice shared].wifiInfo.orgId};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, HomeSearchNewsAPI) params:para successBlock:^(NSDictionary *returnData) {
+        [wself setNoDataViewWithBaseView:wself.tableView];
         NSArray *array = [HomeNews arrayOfModelsFromDictionaries:returnData[@"obj"] error:nil];
         [self.dataArray addObjectsFromArray:array];
         [self.tableView reloadData];

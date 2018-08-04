@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0p-W3-zrv">
-                        <rect key="frame" x="16" y="39" width="123.5" height="16"/>
+                        <rect key="frame" x="70.5" y="39" width="14.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -29,7 +29,6 @@
             <constraints>
                 <constraint firstItem="o0p-W3-zrv" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="UxE-EI-f6v"/>
                 <constraint firstItem="o0p-W3-zrv" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="W4r-Je-G1F"/>
-                <constraint firstItem="o0p-W3-zrv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="vpR-Wd-xcd"/>
             </constraints>
             <size key="customSize" width="154" height="94"/>
             <connections>

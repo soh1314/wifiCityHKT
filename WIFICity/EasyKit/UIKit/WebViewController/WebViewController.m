@@ -121,7 +121,7 @@
         if ([keyPath isEqualToString:@"title"]) {
             if (object == self.webView) {
                 if ([self.webView.title isEqualToString:@"信息发布表"]) {
-                    
+                    self.title = [self.newsTitle copy];
                 } else {
                     self.title = self.webView.title;
                 }

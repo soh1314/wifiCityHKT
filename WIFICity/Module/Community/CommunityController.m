@@ -220,7 +220,7 @@ static int EnterPriseRecommentSection = 2;
     [m_cat addObject:allCateGory];
     [m_cat addObjectsFromArray:self.categoryArray];
     [m_pro addObject:allCateGory];
-    [m_pro addObjectsFromArray:self.categoryArray];
+    [m_pro addObjectsFromArray:self.industryArray];
     sortCtrl.categoryArray = [m_cat copy];
     sortCtrl.productArray = [m_pro copy];
     [self.navigationController pushViewController:sortCtrl animated:YES];

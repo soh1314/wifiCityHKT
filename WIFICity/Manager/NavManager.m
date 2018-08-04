@@ -47,8 +47,9 @@
     [UIApplication sharedApplication].delegate.window.rootViewController = context;
 }
 
-+ (void)pushWebViewControllerWithUrlString:(NSString *)pTag controller:(UIViewController *)context {
++ (void)pushWebViewControllerWithUrlString:(NSString *)pTag title:(NSString *)title controller:(UIViewController *)context {
     WebViewController *web = [[WebViewController alloc]init];
+    web.newsTitle = [title copy];
     web.URLString = [pTag copy];
     if (context.navigationController) {
         UINavigationController *nav = context.navigationController;

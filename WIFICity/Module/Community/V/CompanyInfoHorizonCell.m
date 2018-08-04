@@ -40,8 +40,38 @@
     [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:urlEncode] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
     }];
+    if (self.info.dis) {
+        self.commentNumLabel.text = [NSString stringWithFormat:@"%ld",self.info.dis];
+    } else {
+        self.commentNumLabel.text = @"";
+    }
+    if (self.info.likes) {
+        self.likeNumLabel.text = [NSString stringWithFormat:@" %ld",info.likes] ;
+    } else {
+        self.likeNumLabel.text = @"";
+    }
+    if (self.info.like_id) {
+        [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
+    } else {
+        [self.likeBtn setImage:[UIImage qsImageNamed:@"snap_default"] forState:UIControlStateNormal];
+    }
 //    [UILabel changeLineSpaceForLabel:self.companyDesLabel WithSpace:1.5];
 }
 
 
+- (IBAction)comment:(id)sender {
+    if (self.commentBlock) {
+        self.commentBlock(self.info);
+    }
+}
+
+- (IBAction)like:(id)sender {
+    if (self.info.like_id) {
+        [Dialog simpleToast:@"无法重复点赞"];
+        return;
+    }
+    if (self.likeBlock) {
+        self.likeBlock(self.info);
+    }
+}
 @end

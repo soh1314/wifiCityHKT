@@ -20,6 +20,8 @@ typedef void(^IEnterPriseReloadDataBlock)(void);
 
 - (void)likeCompany:(WICompanyInfo *)company complete:(IEnterPriseCompleteBlock)complete;
 
+- (void)likeCompanyComment:(WIComment *)comment complete:(IEnterPriseCompleteBlock)complete;
+
 + (void)saveComment:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par;
 
 + (void)likeEnterprise:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par;

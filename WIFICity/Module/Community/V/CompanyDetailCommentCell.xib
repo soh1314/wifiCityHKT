@@ -43,12 +43,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9h-SF-F6J">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9h-SF-F6J" customClass="WIButton">
                         <rect key="frame" x="330" y="19" width="30" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <state key="normal" title=" 12" image="snap_default.png">
                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="likeComment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kSP-eA-Gli"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -69,10 +72,11 @@
             <connections>
                 <outlet property="avartar" destination="squ-qt-6n3" id="cZt-pl-209"/>
                 <outlet property="commentContentLabel" destination="35u-Ir-zWw" id="6d4-zU-454"/>
+                <outlet property="likeBtn" destination="s9h-SF-F6J" id="U8X-7Y-EGQ"/>
                 <outlet property="nameLabel" destination="wc0-b2-OAb" id="b19-un-NRd"/>
                 <outlet property="timeLabel" destination="Yrk-mi-auk" id="U8h-JM-0r1"/>
             </connections>
-            <point key="canvasLocation" x="-158" y="59"/>
+            <point key="canvasLocation" x="-610" y="76"/>
         </tableViewCell>
     </objects>
     <resources>

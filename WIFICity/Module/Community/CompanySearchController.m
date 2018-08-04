@@ -86,7 +86,6 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
    [rightBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} forState:UIControlStateSelected];
    [rightBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = rightBarItem;
-    
     self.searchBar = [[EaseSearchBar alloc]initWithFrame:CGRectMake(0, 0, 278/375.0f*KSCREENW, 36)];
     self.searchBar.searchTtf.userInteractionEnabled = YES;
     self.searchBar.textfieldPlaceHolderName = @"搜企业名、老板...";

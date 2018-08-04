@@ -26,7 +26,7 @@
     [self addSubview:self.icon];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self);
-        make.centerX.mas_equalTo(self).mas_offset(-5);
+        make.centerX.mas_equalTo(self);
     }];
     [self.icon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self);

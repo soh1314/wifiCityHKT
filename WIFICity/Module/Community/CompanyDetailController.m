@@ -235,7 +235,6 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
             
             return cell;
         } else {
-            NSInteger count = self.commentArray.count;
             WIComment *comment = self.commentArray[indexPath.row];
             CompanyDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailCommentCellID" forIndexPath:indexPath];
             [cell setComment:comment];
