@@ -108,7 +108,7 @@
 
 - (void)initUI {
     weakself;
-    self.sortTopView = [EaseDropMenu topViewWithTitleArray:@[@"产业分类",@"产品分类"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
+    self.sortTopView = [EaseDropMenu topViewWithTitleArray:@[@"产业分类",@"技术分类"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
     [self.sortTopView setHideArrow:YES];
     self.sortTopView.delegate = self;
     [self.view addSubview:self.sortTopView];

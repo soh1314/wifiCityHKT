@@ -48,11 +48,11 @@
         float gapTime = time - oldTime;
         float downloadM = downloadProgress.completedUnitCount/1024.0f/1024;
         float speed = downloadM /gapTime *1000;
-        self.gaugeView.value =  arc4random() % 100;
-        self.downloadSpeed = self.gaugeView.value / 100;
+        self.downloadSpeed = arc4random() % 100 / 100.0f;
     } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         return [NSURL fileURLWithPath:savedPath];
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        self.gaugeView.value =  self.downloadSpeed * 100;
         [Dialog progressToast:@"下载速度测试"];
         self.speedView.downloadLabel.text = [NSString stringWithFormat:@"%.2f M/s",self.downloadSpeed];
         [self testSpeed1];
@@ -71,12 +71,12 @@
         float gapTime = time - oldTime;
         float downloadM = downloadProgress.completedUnitCount/1024.0f/1024;
         float speed = downloadM /gapTime *1000;
-        self.gaugeView.value =  arc4random() % 100;
-        self.uploadSpeed = self.gaugeView.value / 100;
+        self.uploadSpeed = arc4random() % 100 / 100.0f;
     } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         return [NSURL fileURLWithPath:savedPath];
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
         [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+        self.gaugeView.value =  self.uploadSpeed * 100;
         self.speedView.uploadLabel.text = [NSString stringWithFormat:@"%.2f M/s",self.uploadSpeed];
     }];
     [task resume];
