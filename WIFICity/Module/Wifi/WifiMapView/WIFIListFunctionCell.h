@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^TapWifiMapBgViewBlock)(void);
+typedef void(^TapSaftyTestBgViewwBlock)(void);
+typedef void(^TapSpeedTestBgViewBlock)(void);
 @interface WIFIListFunctionCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *wifimapBgView;
-
+@property (weak, nonatomic) IBOutlet UIView *speedTestBgView;
+@property (weak, nonatomic) IBOutlet UIView *saftyTestBgView;
 @property (nonatomic,copy)TapWifiMapBgViewBlock tapWifiMapBgViewBlock;
-
+@property (nonatomic,copy)TapSaftyTestBgViewwBlock tapSaftyTestBgViewwBlock;
+@property (nonatomic,copy)TapSpeedTestBgViewBlock tapSpeedTestBgViewBlock;
 
 @end

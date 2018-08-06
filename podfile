@@ -17,6 +17,7 @@ pod 'MWPhotoBrowser' , '~> 2.1.2'
 pod 'ACAlertController'
 #pod 'MLeaksFinder'
 pod 'YYCache'
+pod 'MLLabel'
 
 use_frameworks!
     

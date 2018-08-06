@@ -115,9 +115,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="saftyTestBgView" destination="qse-x4-znm" id="2Z0-oD-tSQ"/>
+                <outlet property="speedTestBgView" destination="1eP-lz-VC0" id="5pM-fy-7V8"/>
                 <outlet property="wifimapBgView" destination="IeP-TT-DGZ" id="gRh-6v-RTa"/>
             </connections>
-            <point key="canvasLocation" x="27.5" y="59"/>
+            <point key="canvasLocation" x="104" y="56"/>
         </tableViewCell>
     </objects>
     <resources>

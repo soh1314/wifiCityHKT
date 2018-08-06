@@ -26,6 +26,7 @@ PODS:
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.15.3)
+  - MLLabel (1.10.5)
   - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - Masonry (~> 0.6.4)
   - MBProgressHUD (~> 0.9.2)
   - MJRefresh
+  - MLLabel
   - MWPhotoBrowser (~> 2.1.2)
   - SAMKeychain
   - SDWebImage
@@ -71,6 +73,7 @@ SPEC REPOS:
     - Masonry
     - MBProgressHUD
     - MJRefresh
+    - MLLabel
     - MWPhotoBrowser
     - SAMKeychain
     - SDWebImage
@@ -91,6 +94,7 @@ SPEC CHECKSUMS:
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  MLLabel: d76124055a2205e7f76878e62cd06ba925ba0c97
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
@@ -99,6 +103,6 @@ SPEC CHECKSUMS:
   XHLaunchAd: 0dc50c5af00ee5d9e734b9dce6eece7acaa71122
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 7f4db8cedc32534f8d2cc68ba134e3d30983034e
+PODFILE CHECKSUM: a875e9e4604fef2ec3e97abe2064e8eedeb9d8cd
 
 COCOAPODS: 1.5.3

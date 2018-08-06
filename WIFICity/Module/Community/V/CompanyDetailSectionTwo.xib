@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5NI-5d-yrr">
                         <rect key="frame" x="0.0" y="40.5" width="523" height="172"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agb-qR-ZQY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agb-qR-ZQY" customClass="MLLinkLabel">
                                 <rect key="frame" x="15" y="16" width="493" height="140"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -65,7 +65,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="abstractLabel" destination="agb-qR-ZQY" id="we0-rk-JUm"/>
+                <outlet property="abstractLabel" destination="agb-qR-ZQY" id="11m-SP-SSe"/>
                 <outlet property="notiLabel" destination="I06-le-4cE" id="qEy-ax-Qdz"/>
             </connections>
             <point key="canvasLocation" x="-193.5" y="-65.5"/>

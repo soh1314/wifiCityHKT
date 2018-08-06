@@ -158,10 +158,10 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.backgroundColor = [UIColor themeTableEdgeColor];
+        _tableView.backgroundColor = [UIColor clearColor];
         _tableView.tableFooterView = [[UIView alloc]init];
         _tableView.estimatedRowHeight = 200;
-        _tableView.backgroundColor = [UIColor clearColor];
+        
     }
     return _tableView;
 }

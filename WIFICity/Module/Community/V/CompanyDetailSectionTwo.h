@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "WICompanyInfo.h"
+#import <MLLabel/MLLinkLabel.h>
 @interface CompanyDetailSectionTwo : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *abstractLabel;
+@property (weak, nonatomic) IBOutlet MLLinkLabel *abstractLabel;
 @property (weak, nonatomic) IBOutlet UILabel *notiLabel;
 
 @property (nonatomic,strong)WICompanyInfo *info;

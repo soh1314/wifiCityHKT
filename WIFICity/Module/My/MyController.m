@@ -50,7 +50,7 @@
     UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 110)];
     infoView.backgroundColor = [UIColor themeColor];
     NSString *avatarString = [EasyCacheHelper getResponseCacheForKey:MobThirdLoginAvartarKey];
-    [infoView.avartar sd_setImageWithURL:[NSURL URLWithString:avatarString]];
+    [infoView.avartar sd_setImageWithURL:[NSURL URLWithString:avatarString] placeholderImage:[UIImage qsImageNamed:@"head"]];
     if ([AccountManager shared].user.nickname) {
         [infoView.nickNameLabel setText:[AccountManager shared].user.nickname];
     }

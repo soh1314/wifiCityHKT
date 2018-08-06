@@ -39,6 +39,9 @@
 }
 
 
+- (IBAction)hongbao:(id)sender {
+    [Dialog simpleToast:@"当日暂无红包发放"];
+}
 @end
 
 

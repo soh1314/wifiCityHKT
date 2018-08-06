@@ -70,8 +70,13 @@ static NSString *const WIGaoXinNewsListAPI = @"/ws/wifi/findNewsByTypeId.do";
         if (refresh) {
             [self.dataArray removeAllObjects];
         }
+
         Class modelCls = NSClassFromString(self.pageModel.modelName);
         NSArray *newsArray = [modelCls arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
+        if (!refresh && newsArray.count == 0 ) {
+            [Dialog toast:@"没有更多数据了"];
+            return ;
+        }
         if (newsArray && newsArray.count > 0) {
             [self.dataArray addObjectsFromArray:newsArray];
             [self.tableView reloadData];

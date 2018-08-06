@@ -70,13 +70,25 @@
     self.companyNameLabel.text = [info.com_name copy];
     self.phoneValueLabel.text = [info.com_tel copy];
     self.addressValueLabel.text = [info.com_address copy];
+    self.websiteLabel.text = [info.com_website copy];
+    if (info.com_website) {
+        NSMutableAttributedString *content = [[NSMutableAttributedString alloc]initWithString:[info.com_website copy]];
+        NSRange range = NSMakeRange(0, content.length);
+        [content addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:range];
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 2;
+        [content addAttribute:NSParagraphStyleAttributeName value:style range: NSMakeRange(0, content.length)];
+        self.websiteLabel.attributedText = content;
+    }
+
     NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,self.info.com_logo];
+    
     NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.companyIcon sd_setImageWithURL:[NSURL URLWithString:urlEncode] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
     }];
     self.registerMoneyLabel.text = [info.com_capital copy];
     self.bossNameLabel.text = [info.com_legal copy];
-    self.websiteLabel.text = [info.com_website copy];
+   
     if (self.info.com_vr) {
         self.quanjinTitleLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         self.quanjingLabel.textColor = [UIColor colorWithHexString:@"#666666"];

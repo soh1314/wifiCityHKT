@@ -37,7 +37,7 @@
     for (int i = 0 ; i < dataArray.count; i++) {
         HomeLbtResponse *lbtresponse = dataArray[i];
         NSString *encodeUrl = [lbtresponse.newsImgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSString *urlEncode = [NSString stringWithFormat:@"%@/%@",@"http://wifi.hktfi.com",encodeUrl];
+        NSString *urlEncode = [NSString stringWithFormat:@"%@/%@",kUrlHost,encodeUrl];
         [temArray addObject:urlEncode];
     }
     self.coursal.imageURLStringsGroup = [temArray copy];

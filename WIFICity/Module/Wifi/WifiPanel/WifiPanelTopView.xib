@@ -55,9 +55,9 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g78-Dw-L9v" customClass="WIButton">
-                    <rect key="frame" x="369" y="33" width="16" height="18"/>
+                    <rect key="frame" x="334" y="33" width="51" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="search_sq.png">
+                    <state key="normal" title=" 搜索" image="search_sq.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -70,6 +70,9 @@
                     <state key="normal" title="   今日红包" backgroundImage="sign_in.png">
                         <color key="titleColor" red="1" green="0.98431372549999996" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="hongbao:" destination="iN0-l3-epB" eventType="touchUpInside" id="JHD-Ca-D0x"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

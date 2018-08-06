@@ -13,6 +13,7 @@
 
 #import "WifiMapController.h"
 #import "WifiGuideController.h"
+#import "WifiSpeedTestController.h"
 #import "WIFISevice.h"
 #import "EasyCacheHelper.h"
 #import "WINormalCellHeader.h"
@@ -175,6 +176,15 @@
         cell.tapWifiMapBgViewBlock = ^{
             WifiMapController *wifiCtrl = [WifiMapController new];
             [wself.navigationController pushViewController:wifiCtrl animated:YES];
+        };
+        cell.tapSaftyTestBgViewwBlock = ^{
+            [Dialog simpleToast:@"当前wifi监测安全,可放心使用"];
+        };
+        
+        cell.tapSpeedTestBgViewBlock = ^{
+            
+            WifiSpeedTestController *ctrl  = [WifiSpeedTestController new];
+            [wself.navigationController pushViewController:ctrl animated:YES];
         };
         return cell;
     }

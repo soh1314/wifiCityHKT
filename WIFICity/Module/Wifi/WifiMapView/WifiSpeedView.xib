@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WifiSpeedView">
+            <rect key="frame" x="0.0" y="0.0" width="715" height="65"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3e-q8-oPa">
+                    <rect key="frame" x="0.0" y="0.0" width="357.5" height="65"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传速度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxv-wA-h0u">
+                            <rect key="frame" x="148" y="5" width="62" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1m/s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wec-DU-bmG">
+                            <rect key="frame" x="163.5" y="38" width="31" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Wec-DU-bmG" firstAttribute="centerX" secondItem="C3e-q8-oPa" secondAttribute="centerX" id="Fay-gW-WS7"/>
+                        <constraint firstItem="Wec-DU-bmG" firstAttribute="top" secondItem="dxv-wA-h0u" secondAttribute="bottom" constant="15" id="KTY-gI-mAl"/>
+                        <constraint firstAttribute="bottom" secondItem="Wec-DU-bmG" secondAttribute="bottom" constant="10" id="oIg-Rd-qwL"/>
+                        <constraint firstItem="dxv-wA-h0u" firstAttribute="centerX" secondItem="C3e-q8-oPa" secondAttribute="centerX" id="vOF-DI-2gX"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raZ-ux-YFJ">
+                    <rect key="frame" x="357.5" y="0.0" width="357.5" height="65"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1m/s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uH5-2c-mhB">
+                            <rect key="frame" x="163.5" y="38" width="31" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下载速度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJT-u5-ULG">
+                            <rect key="frame" x="148" y="5" width="62" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="uH5-2c-mhB" secondAttribute="bottom" constant="10" id="Gy5-in-yIC"/>
+                        <constraint firstItem="uH5-2c-mhB" firstAttribute="centerX" secondItem="raZ-ux-YFJ" secondAttribute="centerX" id="TYY-c0-4V2"/>
+                        <constraint firstItem="wJT-u5-ULG" firstAttribute="centerX" secondItem="raZ-ux-YFJ" secondAttribute="centerX" id="edO-yU-9RI"/>
+                        <constraint firstItem="uH5-2c-mhB" firstAttribute="top" secondItem="wJT-u5-ULG" secondAttribute="bottom" constant="15" id="wvc-M4-Yf3"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="raZ-ux-YFJ" firstAttribute="height" secondItem="C3e-q8-oPa" secondAttribute="height" id="017-oE-lhO"/>
+                <constraint firstItem="C3e-q8-oPa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="E52-cB-KfG"/>
+                <constraint firstItem="raZ-ux-YFJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Q6f-kF-1CT"/>
+                <constraint firstItem="raZ-ux-YFJ" firstAttribute="leading" secondItem="C3e-q8-oPa" secondAttribute="trailing" id="QzC-3H-Pfb"/>
+                <constraint firstItem="raZ-ux-YFJ" firstAttribute="width" secondItem="C3e-q8-oPa" secondAttribute="width" id="SYK-KB-23D"/>
+                <constraint firstAttribute="bottom" secondItem="C3e-q8-oPa" secondAttribute="bottom" id="UL4-dp-6L7"/>
+                <constraint firstAttribute="bottom" secondItem="raZ-ux-YFJ" secondAttribute="bottom" id="ZAt-y4-2Yz"/>
+                <constraint firstAttribute="trailing" secondItem="raZ-ux-YFJ" secondAttribute="trailing" id="oxQ-3N-TIv"/>
+                <constraint firstItem="C3e-q8-oPa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vq1-11-edE"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="downloadLabel" destination="uH5-2c-mhB" id="N8A-51-MOJ"/>
+                <outlet property="uploadLabel" destination="Wec-DU-bmG" id="qq6-Y5-QBU"/>
+            </connections>
+            <point key="canvasLocation" x="-107" y="106"/>
+        </view>
+    </objects>
+</document>

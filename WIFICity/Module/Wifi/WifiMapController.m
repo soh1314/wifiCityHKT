@@ -93,7 +93,7 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
     mapView.buildingsEnabled = YES;//设定地图是否现显示3D楼块效果
     mapView.userTrackingMode = BMKUserTrackingModeFollow;
     mapView.showsUserLocation = YES;
-    [mapView setZoomLevel:18];
+    [mapView setZoomLevel:17];
 //    mapView.minZoomLevel = 10;
     self.mapView = mapView;
     self.view = mapView;

@@ -79,7 +79,7 @@
                  [self.dataArray addObjectsFromArray:dataArray];
                  [self.tableView reloadData];
              } else {
-                 [Dialog simpleToast:@"没有更多数据"];
+                 [Dialog toast:@"没有更多数据了"];
              }
          }
      } failureBlock:^(NSError *error) {

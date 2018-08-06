@@ -112,9 +112,11 @@
 - (void)webValidateRequest:(NSString *)url {
     WebViewController *viewController = [WebViewController new];
     viewController.URLString = [url copy];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:viewController];
     AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     TGTabBarController *tab = delegate.tabBarController;
-    [tab presentViewController:viewController animated:YES completion:nil];
+    
+    [tab presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)inerValidateRequest:(NSString *)validatorUrl {

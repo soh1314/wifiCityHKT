@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *pmImageView;
 - (IBAction)searchNews:(id)sender;
 @property (weak, nonatomic) IBOutlet WIButton *searchBtn;
+- (IBAction)hongbao:(id)sender;
 
 @end

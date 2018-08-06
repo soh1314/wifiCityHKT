@@ -20,7 +20,23 @@
 - (void)initUI {
     UITapGestureRecognizer *tapWifiMap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapWifiMap:)];
     [self.wifimapBgView addGestureRecognizer:tapWifiMap];
+    UITapGestureRecognizer *tapSpeedTest = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapSpeedTest:)];
+    [self.speedTestBgView addGestureRecognizer:tapSpeedTest];
+    UITapGestureRecognizer *tapSaftyTest = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapSaftyTest:)];
+    [self.saftyTestBgView addGestureRecognizer:tapSaftyTest];
     
+}
+
+- (void)tapSpeedTest:(id)sender {
+    if (self.tapSpeedTestBgViewBlock) {
+        self.tapSpeedTestBgViewBlock();
+    }
+}
+
+- (void)tapSaftyTest:(id)sender {
+    if (self.tapSaftyTestBgViewwBlock) {
+        self.tapSaftyTestBgViewwBlock();
+    }
 }
 
 - (void)tapWifiMap:(id)sender {
