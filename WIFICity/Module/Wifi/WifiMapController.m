@@ -82,7 +82,7 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setBlackNavBar];
-    self.title = @"WIFI地图";
+    self.title = @"WiFi地图";
     _mapManager = [[BMKMapManager alloc]init];
     BOOL ret = [_mapManager start:@"NAjg8KLy6H3sotqy7Qa1UQRoVwvnXagz" generalDelegate:nil];
     if (!ret) {
