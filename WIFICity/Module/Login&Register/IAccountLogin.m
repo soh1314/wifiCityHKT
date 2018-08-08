@@ -11,9 +11,9 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "WXApi.h"
 #import "EasyCacheHelper.h"
-#define APPLoginAPI @"/ws/user/verifyLogin.do"
+#define APPLoginAPI @"/ws/user/login.do"
 #define RegisterVerifyCodeAPI @"/ws/user/verifyPhone.do"
-#define ThirdLoginAPI @"/ws/user/thirdLogin.do"
+#define ThirdLoginAPI @"/ws/user/login.do"
 
 
 
@@ -28,7 +28,7 @@
         [Dialog simpleToast:LoginVerfifyCodeNullError];
         return;
     }
-    NSDictionary *para = @{@"phone":[user.phone copy],@"verifyCode":[user.verifyCode copy]};
+    NSDictionary *para = @{@"phone":[user.phone copy],@"verifyCode":[user.verifyCode copy],@"loginType":@"sj"};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, APPLoginAPI) params:para successBlock:^(NSDictionary *returnData) {
         WIUser *user = [[WIUser alloc]initWithDictionary:returnData[@"obj"] error:nil];
         NSLog(@"注册用户: %@",user);
@@ -116,7 +116,7 @@
     } else {
         openid = user.qqOpenid;
     }
-    NSDictionary *para = @{@"type":user.loginType,@"openid":openid,@"nickname":user.nickname};
+    NSDictionary *para = @{@"loginType":user.loginType,@"openid":openid,@"nickname":user.nickname,@"icon":[user.avartar copy]};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, ThirdLoginAPI) params:para successBlock:^(NSDictionary *returnData) {
         WINetResponse *respone = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         complete([respone copy]);

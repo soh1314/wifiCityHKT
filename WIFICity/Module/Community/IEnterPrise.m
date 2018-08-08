@@ -28,7 +28,7 @@
 }
 
 - (void)likeCompanyComment:(WIComment *)comment complete:(IEnterPriseCompleteBlock)complete {
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"likesId":comment.ID,@"likesType":@"1"};
+    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"likesId":comment.ID,@"likesType":@"0"};
     [IEnterPrise likeComment:^(WINetResponse *response) {
         if (response && response.success) {
             complete(response);

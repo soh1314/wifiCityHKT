@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新评论" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmX-xY-bUY">
-                    <rect key="frame" x="16" y="14" width="53.5" height="101"/>
+                    <rect key="frame" x="16" y="56.5" width="53.5" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -28,24 +28,13 @@
                         <constraint firstAttribute="height" constant="1" id="PcT-s8-0b5"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOj-gS-Je4">
-                    <rect key="frame" x="0.0" y="127" width="461" height="1"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="rPy-h2-FJT"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="z5O-vf-BsG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BKw-F6-8hA"/>
                 <constraint firstItem="UmX-xY-bUY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Ffp-eZ-0hK"/>
-                <constraint firstAttribute="bottom" secondItem="OOj-gS-Je4" secondAttribute="bottom" id="O4R-OT-NKA"/>
                 <constraint firstItem="UmX-xY-bUY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="QXL-Kb-5P6"/>
-                <constraint firstAttribute="trailing" secondItem="OOj-gS-Je4" secondAttribute="trailing" id="XDj-0X-p16"/>
-                <constraint firstItem="UmX-xY-bUY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="gO0-4i-Slh"/>
                 <constraint firstAttribute="trailing" secondItem="z5O-vf-BsG" secondAttribute="trailing" id="mF4-4y-ZCT"/>
-                <constraint firstItem="OOj-gS-Je4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="set-Lu-jQZ"/>
                 <constraint firstAttribute="bottom" secondItem="z5O-vf-BsG" secondAttribute="bottom" id="vP6-9J-hvB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

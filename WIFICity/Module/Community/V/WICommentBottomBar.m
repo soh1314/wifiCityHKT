@@ -75,7 +75,7 @@
             [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
         }];
     } else {
-        [Dialog simpleToast:@"已点赞"];
+        [Dialog simpleToast:@"当前企业已点赞"];
     }
 
 }

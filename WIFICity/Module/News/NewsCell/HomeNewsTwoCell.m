@@ -141,8 +141,14 @@
     HomeNewsImageItemCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeNewsImageItemCellID" forIndexPath:indexPath];
     
     NSString *url = self.imageGroupArray[indexPath.row];
-    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [colCell.HomeNewsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
+    if ([url hasPrefix:@"http:"]) {
+        NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [colCell.HomeNewsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
+    } else {
+        NSString *urlEncode = [NSString stringWithFormat:@"%@/%@",kUrlHost,url];
+        [colCell.HomeNewsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
+    }
+
     return colCell;
 }
 

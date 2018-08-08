@@ -174,7 +174,7 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
         }
         
     } failureBlock:^(NSError *error) {
-        
+        kHudNetError;
     } showHUD:NO];
 }
 

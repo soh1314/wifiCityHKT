@@ -39,6 +39,7 @@
     NSString *time = [comment.dis_date timeStringToDay:comment.dis_date];
     self.timeLabel.text = [time copy];
 //    NSString *shortId = [self.comment.use_id substringFromIndex:26];
+    
     self.nameLabel.text = [NSString stringWithFormat:@"%@",self.comment.nickname];
     if (self.comment.wx_icon) {
         [self.avartar sd_setImageWithURL:[NSURL URLWithString:self.comment.wx_icon]];
@@ -46,10 +47,16 @@
     if (self.comment.qq_icon) {
         [self.avartar sd_setImageWithURL:[NSURL URLWithString:self.comment.qq_icon]];
     }
-    if (self.comment.dis_numbers) {
-        [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",self.comment.dis_numbers] forState:UIControlStateNormal];
+    if (self.comment.likes) {
+        [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",self.comment.likes] forState:UIControlStateNormal];
     } else {
-        [self.likeBtn setTitle:@"" forState:UIControlStateNormal];
+        [self.likeBtn setTitle:@" " forState:UIControlStateNormal];
+    }
+    
+    if (self.comment.like_id) {
+        [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
+    } else {
+        [self.likeBtn setImage:[UIImage qsImageNamed:@"snap_default"] forState:UIControlStateNormal];
     }
     
     
@@ -65,10 +72,16 @@
 - (IBAction)likeComment:(id)sender {
     __block WIComment *comment = self.comment;
     __weak typeof(self)wself = self;
+    if (self.comment.like_id) {
+        [Dialog simpleToast:@"当前评论已点赞"];
+        return;
+    }
     [self.dispatch likeCompanyComment:self.comment complete:^(WINetResponse *response) {
         if (response && response.success) {
-            comment.dis_numbers ++;
-            [wself.likeBtn setTitle:[NSString stringWithFormat:@" %ld",self.comment.dis_numbers] forState:UIControlStateNormal];
+            comment.likes ++;
+            comment.like_id =  [response.obj objectForKey:@"id"];
+            [wself.likeBtn setTitle:[NSString stringWithFormat:@" %ld",self.comment.likes] forState:UIControlStateNormal];
+            [wself.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
         }
     }];
 }

@@ -101,6 +101,7 @@
         [self.collectionView.mj_footer endRefreshing];
         [self.collectionView.mj_header endRefreshing];
     } failureBlock:^(NSError *error) {
+        kHudNetError;
        [self.collectionView.mj_footer endRefreshing];
        [self.collectionView.mj_header endRefreshing];
     } showHUD:NO];
@@ -108,7 +109,7 @@
 
 - (void)initUI {
     weakself;
-    self.sortTopView = [EaseDropMenu topViewWithTitleArray:@[@"产业分类",@"技术分类"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
+    self.sortTopView = [EaseDropMenu topViewWithTitleArray:@[@"产业布局",@"技术分类"] imageArray:@[@"triangle",@"triangle"] frame:CGRectMake(0, 0, KSCREENW, 40)];
     [self.sortTopView setHideArrow:YES];
     self.sortTopView.delegate = self;
     [self.view addSubview:self.sortTopView];

@@ -26,4 +26,7 @@
 @property (nonatomic,copy)NSString *qq_icon;
 @property (nonatomic,copy)NSString *wx_icon;
 @property (nonatomic,assign)NSInteger dis_numbers;
+@property (nonatomic,assign)NSInteger likes;
+@property (nonatomic,copy)NSString *like_id;
+
 @end

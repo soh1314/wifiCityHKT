@@ -14,4 +14,14 @@
     return [[JSONKeyMapper alloc]initWithDictionary:@{@"id":@"ID"}];
 }
 
+- (NSArray *)home_image_array {
+    if (self.src_list && self.src_list.length > 0) {
+        NSArray *imageArray = [self.src_list componentsSeparatedByString:@","];
+        return [imageArray copy];
+    } else {
+        return nil;
+    }
+
+}
+
 @end

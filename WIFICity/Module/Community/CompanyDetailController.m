@@ -65,7 +65,7 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
         [self.commentArray removeAllObjects];
     }
     [Dialog showRingLoadingView:self.view];
-    NSDictionary *para = @{@"disId":[self.info.ID copy],@"disType":@"1"};
+    NSDictionary *para = @{@"disId":[self.info.ID copy],@"disType":@"1",@"useId":[AccountManager shared].user.userId};
     [IEnterPrise enterpriseCommentList:^(WINetResponse *response) {
         [Dialog hideToastView:self.view];
         if (response) {
@@ -86,6 +86,7 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
         [Dialog hideToastView:self.view];
     } failureBlock:^(NSError *error) {
         [Dialog hideToastView:self.view];
+        kHudNetError;
     } showHUD:NO];
 }
 
@@ -260,7 +261,6 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 2) {
         [Dialog simpleToast:@"当前企业暂无招聘信息"];
-//        [self jumpToWebViewController:@""];
     }
 }
 
@@ -269,9 +269,13 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    WINormalCellHeader *header = [[WINormalCellHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 40)];
-    header.titleLabel.text = @"最新评论";
-    return header;
+    if (section == 3) {
+        WINormalCellHeader *header = [[WINormalCellHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 40)];
+        header.titleLabel.text = @"最新评论";
+        return header;
+    }
+    return [UIView new];
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

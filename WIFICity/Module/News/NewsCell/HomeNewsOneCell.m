@@ -49,9 +49,17 @@
 - (void)updateHomeNews:(HomeNews *)news {
     self.titleLabel.text = [NSString stringWithFormat:@"%@",news.title];
     self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.abstracts];
-    NSString *url = [NSString stringWithFormat:@"%@/%@",@"http://wifi.hktfi.com",self.news.img_src];
-    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
+    if (news.img_src) {
+        NSString *url = [NSString stringWithFormat:@"%@/%@",@"http://wifi.hktfi.com",self.news.img_src];
+        NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
+
+    } else {
+        NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,news.src_list];
+        NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
+    }
+
 }
 
 
@@ -78,11 +86,11 @@
             haveImage = NO;
         }
     }
-    if (self.news.img_src || haveImage) {
+    if (self.news.img_src || self.news.src_list || haveImage) {
         [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.newsImageView.mas_left).mas_offset(-12);
             make.left.mas_equalTo(self.contentView).mas_offset(16);
-            make.top.mas_equalTo(self.contentView).mas_offset(12);
+            make.top.mas_equalTo(self.contentView).mas_offset(12).priorityHigh();
         }];
         [self.newsImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.titleLabel);

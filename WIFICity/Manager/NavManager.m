@@ -64,7 +64,7 @@
     if (context.navigationController) {
         UINavigationController *nav = context.navigationController;
         [nav pushViewController:web animated:YES];
-    }
+    } 
 }
 
 + (void)pushBlankViewController:(UIViewController *)context {

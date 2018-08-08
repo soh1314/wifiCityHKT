@@ -93,6 +93,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeNewsOneCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HomeNewsOneCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeBannerCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HomeBannerCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeServiceCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HomeServiceCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeNewsTwoCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HomeNewsTwoCellID"];
     
     self.headerView.frame = CGRectMake(0, 0, KSCREENW, 325);
     self.tableView.tableHeaderView = self.headerView;
@@ -229,9 +230,21 @@
     }
     else {
         HomeNews *news = [self.dataArray objectAtIndex:indexPath.row];
-        HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
-        [cell setNews:news];
-        return cell;
+        if (news.information_type == 2001 && news.home_image_array && news.home_image_array.count >= 2) {
+            HomeNewsTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsTwoCellID" forIndexPath:indexPath];
+            [cell setNews:news];
+            cell.imageGroupArray = [news.home_image_array copy];
+            return cell;
+        } else {
+            HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
+            [cell setNews:news];
+            
+//            if (news.gxq_img_type && news.gxq_image_array) {
+//                cell.imageGroupArray = [news.gxq_image_array copy];
+//            }
+            return cell;
+        }
+
     }
     return nil;
 }

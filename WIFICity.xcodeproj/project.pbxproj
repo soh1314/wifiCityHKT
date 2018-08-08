@@ -454,6 +454,9 @@
 		16D651B520D108B100ED74C8 /* wechat_login@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D651B220D108B100ED74C8 /* wechat_login@3x.png */; };
 		16D651B620D108B100ED74C8 /* wechat_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D651B320D108B100ED74C8 /* wechat_login@2x.png */; };
 		16D651B720D108B100ED74C8 /* wechat_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D651B420D108B100ED74C8 /* wechat_login.png */; };
+		16D657A1211A804400711F08 /* NewsSearchNoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D6579F211A804400711F08 /* NewsSearchNoneCell.m */; };
+		16D657A2211A804400711F08 /* NewsSearchNoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D657A0211A804400711F08 /* NewsSearchNoneCell.xib */; };
+		16D657A5211A926100711F08 /* HomeSearchData.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D657A4211A926100711F08 /* HomeSearchData.m */; };
 		16F76F5D20EDCB1F00950127 /* triangle_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F76EFE20EDCB1E00950127 /* triangle_default@3x.png */; };
 		16F76F5E20EDCB1F00950127 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F76EFF20EDCB1E00950127 /* search@2x.png */; };
 		16F76F5F20EDCB1F00950127 /* collect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F76F0020EDCB1E00950127 /* collect@2x.png */; };
@@ -1313,6 +1316,11 @@
 		16D651B220D108B100ED74C8 /* wechat_login@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat_login@3x.png"; sourceTree = "<group>"; };
 		16D651B320D108B100ED74C8 /* wechat_login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat_login@2x.png"; sourceTree = "<group>"; };
 		16D651B420D108B100ED74C8 /* wechat_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechat_login.png; sourceTree = "<group>"; };
+		16D6579E211A804400711F08 /* NewsSearchNoneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsSearchNoneCell.h; sourceTree = "<group>"; };
+		16D6579F211A804400711F08 /* NewsSearchNoneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSearchNoneCell.m; sourceTree = "<group>"; };
+		16D657A0211A804400711F08 /* NewsSearchNoneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsSearchNoneCell.xib; sourceTree = "<group>"; };
+		16D657A3211A926100711F08 /* HomeSearchData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchData.h; sourceTree = "<group>"; };
+		16D657A4211A926100711F08 /* HomeSearchData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchData.m; sourceTree = "<group>"; };
 		16F76EFE20EDCB1E00950127 /* triangle_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "triangle_default@3x.png"; sourceTree = "<group>"; };
 		16F76EFF20EDCB1E00950127 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		16F76F0020EDCB1E00950127 /* collect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collect@2x.png"; sourceTree = "<group>"; };
@@ -3170,6 +3178,8 @@
 				160118AE210B04F1002B9058 /* GaoXinNewS.m */,
 				16F888172102D6D600136C7F /* HomeNews.h */,
 				16F888162102D6D500136C7F /* HomeNews.m */,
+				16D657A3211A926100711F08 /* HomeSearchData.h */,
+				16D657A4211A926100711F08 /* HomeSearchData.m */,
 				16F888062102D5F800136C7F /* NewsCell */,
 				16F887EA2102D2F500136C7F /* HomeServicePageController.h */,
 				16F887EB2102D2F500136C7F /* HomeServicePageController.m */,
@@ -3239,6 +3249,9 @@
 				16F888082102D5F800136C7F /* HomeNewsImageItemCell.h */,
 				16F8880C2102D5F800136C7F /* HomeNewsImageItemCell.m */,
 				16F8880D2102D5F800136C7F /* HomeNewsImageItemCell.xib */,
+				16D6579E211A804400711F08 /* NewsSearchNoneCell.h */,
+				16D6579F211A804400711F08 /* NewsSearchNoneCell.m */,
+				16D657A0211A804400711F08 /* NewsSearchNoneCell.xib */,
 			);
 			path = NewsCell;
 			sourceTree = "<group>";
@@ -3445,6 +3458,7 @@
 				1691DD9D20EC79A7008AF2BE /* message@2x.png in Resources */,
 				166CA58C20F33D9B00E4CBE3 /* WICompanyCategroyCell.xib in Resources */,
 				16CDD03B2106B02C00DA619F /* panorama_detail@2x.png in Resources */,
+				16D657A2211A804400711F08 /* NewsSearchNoneCell.xib in Resources */,
 				1691DDF120ECB485008AF2BE /* phone.png in Resources */,
 				16F8879C21017F5400136C7F /* modern_services@3x.png in Resources */,
 				165678A720D3662A00EC3D5C /* square_default@3x.png in Resources */,
@@ -3952,6 +3966,7 @@
 				169D83E420DC8CFD00AA590F /* TAPageControl.m in Sources */,
 				16CDD0402106B53B00DA619F /* CompanyDetailRecruitCell.m in Sources */,
 				16F76FBD20EDF8BD00950127 /* CompanyInfoHorizonCell.m in Sources */,
+				16D657A5211A926100711F08 /* HomeSearchData.m in Sources */,
 				166CA57E20F06E9000E4CBE3 /* WICompanyInfo.m in Sources */,
 				16626FD42118229D00B26922 /* WifiSpeedTestController.m in Sources */,
 				16CDD0892108112E00DA619F /* WifiGuideCell.m in Sources */,
@@ -4033,6 +4048,7 @@
 				16F76FD620EE091100950127 /* EnterpriseSquareSortCell.m in Sources */,
 				169D836E20D39D1000AA590F /* WIQQInfo.m in Sources */,
 				169D8F4321087388006776D8 /* WIFIValidateInfo.m in Sources */,
+				16D657A1211A804400711F08 /* NewsSearchNoneCell.m in Sources */,
 				169D83AC20D3C54C00AA590F /* HomeServiceData.m in Sources */,
 				16D64BF220CFA2BB00ED74C8 /* CommunityController.m in Sources */,
 				160118FB21103CCA002B9058 /* WIComment.m in Sources */,

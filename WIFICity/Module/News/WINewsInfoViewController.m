@@ -108,10 +108,18 @@ static NSString *const WIGaoXinNewsListAPI = @"/ws/wifi/findNewsByTypeId.do";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WINewsPageModel *model = (WINewsPageModel*)self.pageModel;
     if (model.gxqType == 21) {
-        HomeNews *homeNews = self.dataArray[indexPath.row];
-        HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
-        cell.news = homeNews;
-        return cell;
+        HomeNews *news = [self.dataArray objectAtIndex:indexPath.row];
+        if (news.information_type == 2001 && news.home_image_array && news.home_image_array.count >= 2) {
+            HomeNewsTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsTwoCellID" forIndexPath:indexPath];
+            [cell setNews:news];
+            cell.imageGroupArray = [news.home_image_array copy];
+            return cell;
+        } else {
+            HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
+            [cell setNews:news];
+
+            return cell;
+        }
     } else {
         GaoXinNewS * news = self.dataArray[indexPath.row];
         if ([news.gxq_img_type isEqualToString:@"0"] || [news.gxq_img_type isEqualToString:@"1"] ) {

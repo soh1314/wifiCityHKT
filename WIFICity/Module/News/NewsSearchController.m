@@ -12,15 +12,24 @@
 #import "HomeNewsOneCell.h"
 #import "WIFISevice.h"
 #import "WebViewController.h"
+#import "WINormalCellHeader.h"
+#import "NewsSearchNoneCell.h"
+#import "HomeServiceCell.h"
+#import "HomeServiceData.h"
+#import "HomeSearchData.h"
 
-static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTitle.do?";
+#import "HomeServicePageController.h"
+
+static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTitle.do";
+static NSString *const HomeSearchServiceAPI  = @"/ws/third/findAllThirdIconByName.do";
 
 @interface NewsSearchController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UIImageView  *imageView;
 @property (nonatomic,strong)EaseSearchBar *searchBar;
 @property (nonatomic,strong)UIButton *cancleBtn;
-@property (nonatomic,strong)NSMutableArray *dataArray;
+@property (nonatomic,strong)NSMutableArray *serachResultArray;
 @property (nonatomic,strong)EaseTableView *tableView;
+@property (nonatomic,strong)EaseTableView *searchBeforeView;
 @end
 
 @implementation NewsSearchController
@@ -44,6 +53,8 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    self.serachResultArray = [NSMutableArray array];
+    [self resetArray];
     self.imageView = [UIImageView new];
     [self.view addSubview:self.imageView];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -79,16 +90,17 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
         make.height.mas_equalTo(35);
     }];
     [self.cancleBtn addTarget:self action:@selector(cancleSearch:) forControlEvents:UIControlEventTouchUpInside];
-    self.dataArray = [NSMutableArray array];
-    
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.searchBar.mas_bottom).mas_offset(15);
-        make.left.right.bottom.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view);
+        make.left.mas_equalTo(self.view).mas_offset(@(0));
+        make.right.mas_equalTo(self.view).mas_offset(@(0));
     }];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeNewsOneCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HomeNewsOneCellID"];
-    
-    self.dataArray = [NSMutableArray array];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeServiceCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HomeServiceCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"NewsSearchNoneCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NewsSearchNoneCellID"];
+
     [self.searchBar.searchTtf becomeFirstResponder];
     
     self.nodataModel = [EaseNoDataModel new];
@@ -108,6 +120,7 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [self setBlackNavBar];
     [self.searchBar.searchTtf resignFirstResponder];
 }
 
@@ -132,23 +145,54 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
     }
     NSString *searchWord = [self.searchBar.searchTtf.text copy];
     if (!searchWord || [searchWord isEqualToString:@""]) {
-        [self.dataArray removeAllObjects];
+        [self resetArray];
         [self.tableView reloadData];
         return;
     }
-    weakself;
-    [self.dataArray removeAllObjects];
-    NSDictionary *para = @{@"title":[searchWord copy],@"orgId":[WIFISevice shared].wifiInfo.orgId};
+    [self serachService:word];;
+    [self resetArray];
+    
+}
+
+- (void)resetArray {
+    [self.serachResultArray removeAllObjects];
+}
+
+- (void)serachHomeNews:(NSString *)word {
+    NSDictionary *para = @{@"title":[word copy],@"orgId":[WIFISevice shared].wifiInfo.orgId};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, HomeSearchNewsAPI) params:para successBlock:^(NSDictionary *returnData) {
-        [wself setNoDataViewWithBaseView:wself.tableView];
         NSArray *array = [HomeNews arrayOfModelsFromDictionaries:returnData[@"obj"] error:nil];
-        [self.dataArray addObjectsFromArray:array];
+        if (array && array.count > 0) {
+            HomeSearchData *data = [HomeSearchData new];
+            data.typeString = @"新闻资讯";
+            data.dataArray = [array copy];
+            [self.serachResultArray addObject:data];
+        }
+        if (self.serachResultArray.count <= 0) {
+            [self setNoDataViewWithBaseView:self.tableView];
+//            [Dialog simpleToast:@"没有您想要的搜索结果"];
+        }
         [self.tableView reloadData];
+    } failureBlock:^(NSError *error) {
+        kHudNetError;
+    } showHUD:NO];
+}
+
+- (void)serachService:(NSString *)word {
+    NSDictionary *para = @{@"thirdName":[word copy]};
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, HomeSearchServiceAPI) params:para successBlock:^(NSDictionary *returnData) {
+        NSArray *array = [HomeServiceData arrayOfModelsFromDictionaries:returnData[@"obj"] error:nil];
+        if (array && array.count > 0) {
+            HomeSearchData *data = [HomeSearchData new];
+            data.typeString = @"服务功能";
+            data.dataArray = [array copy];
+            [self.serachResultArray addObject:data];
+        }
+        [self serachHomeNews:word];
         
     } failureBlock:^(NSError *error) {
         kHudNetError;
     } showHUD:NO];
-    
 }
 
 #pragma mark - get and set
@@ -161,6 +205,7 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.tableFooterView = [[UIView alloc]init];
         _tableView.estimatedRowHeight = 200;
+//        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
     }
     return _tableView;
@@ -170,30 +215,71 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
 #pragma mark - tableview delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewAutomaticDimension;
+    if (indexPath.section == 0) {
+        return 80;
+    } else {
+        return UITableViewAutomaticDimension;
+    }
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.serachResultArray.count;
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArray.count;
+    
+    HomeSearchData *data = self.serachResultArray[section];
+    if ([data.typeString isEqualToString:@"服务功能"]) {
+        return data.dataArray.count > 1 ? 1 : data.dataArray.count;
+    }
+    return data.dataArray.count;
+
+  
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    HomeNews *news = self.dataArray[indexPath.row];
-    HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
-    [cell setNews:news];
-    return cell;
+    HomeSearchData *data = self.serachResultArray[indexPath.section];
+    if ([data.typeString isEqualToString:@"服务功能"]) {
+        
+        HomeServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeServiceCellID" forIndexPath:indexPath];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.collectionView.backgroundColor = [UIColor clearColor];
+        [cell setDataArray:data.dataArray];
+        cell.pick = ^(NSInteger idx) {
+            [HomeServiceCell pickCellItem:idx dataArray:[data.dataArray copy]];
+            if (idx == 0) {
+                weakself;
+                [NavManager pushParoWebViewController:wself];
+            } else {
+                HomeServicePageController *pageController = [[HomeServicePageController alloc]initWithServiceData:data.dataArray[idx]];
+                [self.navigationController pushViewController:pageController animated:YES];
+            }
+        };
+        return cell;
+        
+    } else {
+        
+        HomeNews *news = data.dataArray[indexPath.row];
+        HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
+        cell.backgroundColor =  [UIColor whiteColor];
+        [cell setNews:news];
+        
+        return cell;
+    }
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    HomeNews *news = self.dataArray[indexPath.row];
-    [NavManager pushWebViewControllerWithHtmlWord:news.details title:news.title controller:self];
+    HomeSearchData *data = self.serachResultArray[indexPath.section];
+    if ([data.typeString isEqualToString:@"新闻资讯"]) {
+        HomeNews *news = data.dataArray[indexPath.row];
+        NSString *detailUrl = [NSString stringWithFormat:@"%@%@%@",kUrlHost,WIFIHomeNewsDetailAPI,news.ID];
+        [NavManager pushWebViewControllerWithUrlString:detailUrl title:news.title controller:self];
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -201,7 +287,18 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [UIView new];
+    
+    WINormalCellHeader *header = [[WINormalCellHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 35)];
+//    [header.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(header);
+//        make.centerY.mas_equalTo(header);
+//    }];
+    header.lineView.backgroundColor = [UIColor clearColor];
+    header.titleLabel.textColor = [UIColor whiteColor];
+    header.backgroundColor = [UIColor clearColor];
+    HomeSearchData *data = self.serachResultArray[section];
+    header.titleLabel.text = [data.typeString copy];
+    return header;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -209,7 +306,11 @@ static NSString *const HomeSearchNewsAPI = @"/ws/third/findDeliveryByOrgIdAndTit
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return CGFLOAT_MIN;
+    return 35;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+
 }
 
 - (void)cancleSearch:(id)sender {

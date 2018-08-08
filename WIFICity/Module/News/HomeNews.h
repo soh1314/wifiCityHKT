@@ -35,9 +35,10 @@
 @property (nonatomic,copy)NSString *title;
 @property (nonatomic,copy)NSString *abstracts;
 @property (nonatomic,copy)NSString *details;
-@property (nonatomic,copy)NSString *information_type;
+@property (nonatomic,assign)NSInteger information_type;
 @property (nonatomic,copy)NSString *img_src;
 @property (nonatomic,assign)BOOL is_hot;
 @property (nonatomic,assign)BOOL is_top;
-
+@property (nonatomic,copy)NSString *src_list;
+@property (nonatomic,copy)NSArray *home_image_array;
 @end
