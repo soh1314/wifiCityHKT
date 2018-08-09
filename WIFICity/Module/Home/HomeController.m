@@ -106,7 +106,6 @@
         make.edges.mas_equalTo(self.headerView);
     }];
     
-    
 }
 #pragma mark - panel delegate
 
@@ -119,16 +118,15 @@
 }
 
 - (void)wifiValidatingFinish:(NSNotification *)noti {
-//    self.panel.flowBgView.backgroundColor = [UIColor greenColor];
-    [self.panel.flowView.loadingView endAnimationWithResult:ALLoadingViewResultTypeSuccess];
-    self.panel.flowView.loadingView.hidden = YES;
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.panel.flowView.loadingView endAnimationWithResult:ALLoadingViewResultTypeSuccess];
+        self.panel.flowView.loadingView.hidden = YES;
+    });
 }
 
 - (void)wifiValidating:(NSNotification *)noti {
     [self.panel.flowView.loadingView start];
     self.panel.flowView.loadingView.hidden = NO;
-//    self.panel.flowBgView.backgroundColor = [UIColor redColor];
 }
 
 #pragma mark - load data

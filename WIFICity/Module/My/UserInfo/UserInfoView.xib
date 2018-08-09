@@ -12,27 +12,27 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UserInfoView">
-            <rect key="frame" x="0.0" y="0.0" width="472" height="130"/>
+            <rect key="frame" x="0.0" y="0.0" width="472" height="150"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head.png" translatesAutoresizingMaskIntoConstraints="NO" id="WzJ-Y8-xHm">
-                    <rect key="frame" x="26" y="51.5" width="48" height="47"/>
+                    <rect key="frame" x="26" y="55" width="60" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="48" id="Z9z-xu-QBK"/>
-                        <constraint firstAttribute="height" constant="47" id="to2-nA-7D1"/>
+                        <constraint firstAttribute="width" constant="60" id="Z9z-xu-QBK"/>
+                        <constraint firstAttribute="height" constant="60" id="to2-nA-7D1"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCG-HZ-zOl">
-                    <rect key="frame" x="95" y="66" width="12" height="18"/>
+                    <rect key="frame" x="107" y="76" width="12" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PwZ-7D-jh5">
-                    <rect key="frame" x="26" y="51" width="48" height="48"/>
+                    <rect key="frame" x="26" y="55" width="60" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="48" id="1mn-H0-UFc"/>
-                        <constraint firstAttribute="height" constant="48" id="ZW9-XW-gSc"/>
+                        <constraint firstAttribute="width" constant="60" id="1mn-H0-UFc"/>
+                        <constraint firstAttribute="height" constant="60" id="ZW9-XW-gSc"/>
                     </constraints>
                 </imageView>
             </subviews>

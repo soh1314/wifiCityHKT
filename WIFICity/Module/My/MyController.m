@@ -20,14 +20,14 @@
 #import "DeviceInfoController.h"
 #import "AboutUsController.h"
 #import "HKTProtocolController.h"
-
+#import "WXWaveView.h"
 
 @interface MyController ()<UITableViewDelegate,UIScrollViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)EaseTableView *tableView;
 @property (nonatomic,copy)NSArray *UserCenterItemTitleArray;
 @property (nonatomic,copy)NSArray *UserCenterItemImageNameArray;
-
+@property (nonatomic,strong)WXWaveView *waveView;
 @end
 
 @implementation MyController
@@ -43,11 +43,11 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
+    [self.waveView stop];
 }
 
 - (void)initUI {
-    UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 110)];
+    UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, KSCREENW/2.0f)];
     infoView.backgroundColor = [UIColor themeColor];
     NSString *avatarString = [EasyCacheHelper getResponseCacheForKey:MobThirdLoginAvartarKey];
     [infoView.avartar sd_setImageWithURL:[NSURL URLWithString:avatarString] placeholderImage:[UIImage qsImageNamed:@"head"]];
@@ -59,9 +59,18 @@
     [self.view addSubview:self.tableView];
     self.tableView.frame = self.view.bounds;
     [self.tableView setTableHeaderView:headerView];
+    self.waveView = [WXWaveView addToView:headerView withFrame:CGRectMake(0, CGRectGetHeight(headerView.frame) - 5, CGRectGetWidth(headerView.frame), 5)];
+    self.waveView.waveColor = [UIColor whiteColor];
+    self.waveView.waveTime = 0.f;
+    self.waveView.angularSpeed = 1.2f;
+    self.waveView.waveSpeed = 5.f;
     self.tableView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"UserCenterItemCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"UserCenterItemCellID"];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.waveView wave];
 }
 
 #pragma mark - tableview delegate
@@ -160,7 +169,7 @@
 #pragma mark - get and set
 - (EaseTableView *)tableView {
     if (!_tableView) {
-        _tableView = [[EaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[EaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;

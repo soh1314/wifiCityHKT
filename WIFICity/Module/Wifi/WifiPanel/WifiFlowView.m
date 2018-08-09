@@ -31,11 +31,11 @@
     self.loadingView.center = self.center;
 
     [self addSubview:self.loadingView];
-//    [self.loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.mas_equalTo(self);
-//
-//    }];
-    self.loadingView.radius = 80;
+    [self.loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(self);
+        make.width.height.mas_equalTo(self);
+
+    }];
     [self bringSubviewToFront:self.loadingView];
     self.loadingView.loadingColor = [UIColor themeColor];
     self.loadingView.hidden = YES;

@@ -110,6 +110,8 @@
 		16626FDF211823A400B26922 /* WMGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16626FDB211823A400B26922 /* WMGaugeView.m */; };
 		16626FE221182F7000B26922 /* WifiSpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16626FE121182F7000B26922 /* WifiSpeedView.m */; };
 		16626FE421182F7D00B26922 /* WifiSpeedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16626FE321182F7D00B26922 /* WifiSpeedView.xib */; };
+		1662C5BB211BE29800A2A100 /* WXWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1662C5B7211BE29700A2A100 /* WXWaveView.m */; };
+		1662C5BC211BE29800A2A100 /* WXWeakObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1662C5B8211BE29700A2A100 /* WXWeakObject.m */; };
 		166CA56C20F05C0600E4CBE3 /* CompanyHomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 166CA56B20F05C0600E4CBE3 /* CompanyHomeSearchBar.m */; };
 		166CA56E20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166CA56D20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib */; };
 		166CA57320F0644300E4CBE3 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA57020F0644300E4CBE3 /* back@2x.png */; };
@@ -795,6 +797,10 @@
 		16626FE021182F7000B26922 /* WifiSpeedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiSpeedView.h; sourceTree = "<group>"; };
 		16626FE121182F7000B26922 /* WifiSpeedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WifiSpeedView.m; sourceTree = "<group>"; };
 		16626FE321182F7D00B26922 /* WifiSpeedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiSpeedView.xib; sourceTree = "<group>"; };
+		1662C5B7211BE29700A2A100 /* WXWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXWaveView.m; sourceTree = "<group>"; };
+		1662C5B8211BE29700A2A100 /* WXWeakObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXWeakObject.m; sourceTree = "<group>"; };
+		1662C5B9211BE29700A2A100 /* WXWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXWaveView.h; sourceTree = "<group>"; };
+		1662C5BA211BE29700A2A100 /* WXWeakObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXWeakObject.h; sourceTree = "<group>"; };
 		166CA56A20F05C0600E4CBE3 /* CompanyHomeSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanyHomeSearchBar.h; sourceTree = "<group>"; };
 		166CA56B20F05C0600E4CBE3 /* CompanyHomeSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanyHomeSearchBar.m; sourceTree = "<group>"; };
 		166CA56D20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyHomeSearchBar.xib; sourceTree = "<group>"; };
@@ -1853,6 +1859,18 @@
 			path = WMGaugeView;
 			sourceTree = "<group>";
 		};
+		1662C5B6211BE29700A2A100 /* WXWaveView */ = {
+			isa = PBXGroup;
+			children = (
+				1662C5B7211BE29700A2A100 /* WXWaveView.m */,
+				1662C5B8211BE29700A2A100 /* WXWeakObject.m */,
+				1662C5B9211BE29700A2A100 /* WXWaveView.h */,
+				1662C5BA211BE29700A2A100 /* WXWeakObject.h */,
+			);
+			name = WXWaveView;
+			path = EaseAnimation/WXWaveView;
+			sourceTree = "<group>";
+		};
 		166CA56F20F0644300E4CBE3 /* 导航栏 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2719,6 +2737,7 @@
 		16D64B9E20CF9FCE00ED74C8 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				1662C5B6211BE29700A2A100 /* WXWaveView */,
 				16626FD5211823A400B26922 /* WMGaugeView */,
 				1601190621118E56002B9058 /* TextView */,
 				1695B1F820FEDC5A00DFFCCE /* DropView */,
@@ -4051,10 +4070,12 @@
 				1691DD3720EB10A4008AF2BE /* BaiduMapCjiajia.mm in Sources */,
 				16626FDD211823A400B26922 /* WMGaugeViewStyleFlatThin.m in Sources */,
 				16F76FD620EE091100950127 /* EnterpriseSquareSortCell.m in Sources */,
+				1662C5BC211BE29800A2A100 /* WXWeakObject.m in Sources */,
 				169D836E20D39D1000AA590F /* WIQQInfo.m in Sources */,
 				169D8F4321087388006776D8 /* WIFIValidateInfo.m in Sources */,
 				16D657A1211A804400711F08 /* NewsSearchNoneCell.m in Sources */,
 				169D83AC20D3C54C00AA590F /* HomeServiceData.m in Sources */,
+				1662C5BB211BE29800A2A100 /* WXWaveView.m in Sources */,
 				16D64BF220CFA2BB00ED74C8 /* CommunityController.m in Sources */,
 				160118FB21103CCA002B9058 /* WIComment.m in Sources */,
 				16D64B8620CF7CE800ED74C8 /* UIView+borderLine.m in Sources */,

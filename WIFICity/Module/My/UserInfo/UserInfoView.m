@@ -15,6 +15,7 @@
     
     if (self = [super initWithFrame:frame]) {
         self = [[[NSBundle mainBundle] loadNibNamed:@"UserInfoView" owner:self options:nil] lastObject];
+        self.frame = frame;
         [self initUI];
     }
     return self;

@@ -68,7 +68,7 @@
                   moduleName = "WIFICity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity/Module/Wifi/WifiMapController.m"
-                  timestampString = "555414957.516512"
+                  timestampString = "555476780.054855"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "123"
@@ -83,7 +83,7 @@
                   moduleName = "WIFICity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity/Module/Wifi/WifiMapController.m"
-                  timestampString = "555414957.519014"
+                  timestampString = "555476780.05846"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "123"
@@ -98,7 +98,7 @@
                   moduleName = "WIFICity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity/Module/Wifi/WifiMapController.m"
-                  timestampString = "555414957.522346"
+                  timestampString = "555476780.060487"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
@@ -113,7 +113,7 @@
                   moduleName = "WIFICity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity/Module/Wifi/WifiMapController.m"
-                  timestampString = "555414957.525116"
+                  timestampString = "555476780.063453"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "123"
@@ -128,7 +128,7 @@
                   moduleName = "WIFICity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity/Module/Wifi/WifiMapController.m"
-                  timestampString = "555414957.527853"
+                  timestampString = "555476780.066591"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "123"
@@ -193,7 +193,7 @@
                   moduleName = "WIFICity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity/Module/Login&amp;Register/IAccountLogin.m"
-                  timestampString = "555414957.549806"
+                  timestampString = "555476780.144275"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "120"
@@ -208,7 +208,7 @@
                   moduleName = "WIFICity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity/Module/Login&amp;Register/IAccountLogin.m"
-                  timestampString = "555414957.551766"
+                  timestampString = "555476780.1472239"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "120"
@@ -223,7 +223,7 @@
                   moduleName = "WIFICity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity/Module/Login&amp;Register/IAccountLogin.m"
-                  timestampString = "555414957.553756"
+                  timestampString = "555476780.150036"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "120"
@@ -240,11 +240,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WIFICity/Module/Home/HomeController.m"
-            timestampString = "555415360.924751"
+            timestampString = "555475228.34048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-requestHomeNews"
             landmarkType = "7">
          </BreakpointContent>
@@ -278,54 +278,6 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "-commit:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WIFICity/Module/Community/CompanyDetailController.m"
-            timestampString = "555415360.9249181"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-loadCompanyDetailData"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WIFICity/Module/Home/HomeController.m"
-            timestampString = "555415360.924962"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-wifiValidating:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WIFICity/Module/Home/HomeController.m"
-            timestampString = "555415360.9250031"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "-wifiValidatingFinish:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

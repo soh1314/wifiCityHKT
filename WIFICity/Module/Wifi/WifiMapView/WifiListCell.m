@@ -23,6 +23,13 @@
 - (void)setInfo:(WIFIInfo *)info {
     _info = info;
     self.wifiNameLabel.text = [self.info.sid copy];
+    if ([info.signalStrength floatValue] <= 0.3) {
+        self.wifiSignalImageView.image = [UIImage qsImageNamed:@"wifi_two"];
+    } else if ([info.signalStrength floatValue] < 0.6) {
+        self.wifiSignalImageView.image = [UIImage qsImageNamed:@"wifi_thr.png"];
+    } else {
+        self.wifiSignalImageView.image = [UIImage qsImageNamed:@"wifi_four.png"];
+    }
     
 }
 

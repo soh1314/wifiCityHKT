@@ -48,7 +48,7 @@
     BOOL existIp = NO;
     for ( int i = 0; i < self.validatArray.count; i++) {
         WIFIValidateInfo *m_info = self.validatArray[i];
-        if ([m_info.routIp isEqualToString:info.routIp]) {
+        if ([m_info.routIp isEqualToString:info.routIp] && [m_info.wfiiMac isEqualToString:info.wfiiMac]) {
             float timestr = [[NSString unixTimeStamp]floatValue];
             if (timestr > m_info.expireTime ) {
                 needValidator = YES;
@@ -72,8 +72,10 @@
     [MBProgressHUD showHUDAddedTo:KWINDOW animated:YES];
     [WIFISevice shared].validating = YES;
     WIFIValidateInfo *info = [WIFIValidateInfo new];
+    info.wfiiMac = [WifiUtil getWifiMac];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
-    info.expireTime = [[NSString unixTimeStamp]integerValue] + 1 * 60;
+    
+    info.expireTime = [[NSString unixTimeStamp]integerValue] + 30 * 60;
     if (![self needValidator:info]) {
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         return;

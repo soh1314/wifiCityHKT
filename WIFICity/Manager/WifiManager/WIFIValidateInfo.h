@@ -11,6 +11,7 @@
 @interface WIFIValidateInfo : WIModel
 
 @property (nonatomic,copy)NSString *routIp;
+@property (nonatomic,copy)NSString *wfiiMac;
 @property (nonatomic,assign)NSInteger expireTime;
 
 @end

@@ -42,7 +42,7 @@ static NSString * const kALAnimationKey = @"kALAnimationKey";
     self.errorColor = [UIColor colorWithRed:0xff/255.0 green:0x61/255.0 blue:0x51/255.0 alpha:1.0];
     self.exclamationColor = self.errorColor;
     self.lineWidth = 6;
-    self.radius  = 40;
+    self.radius  = 74;
 }
 
 
@@ -68,8 +68,8 @@ static NSString * const kALAnimationKey = @"kALAnimationKey";
             break;
             
         default:
-//            self.asmLayer.strokeColor = self.successColor.CGColor;
-//            [self success];
+            self.asmLayer.strokeColor = self.successColor.CGColor;
+            [self success];
             break;
     }
     if (result) {
