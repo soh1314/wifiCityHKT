@@ -20,8 +20,9 @@
 }
 
 - (void)initUI {
+    self.userInteractionEnabled = YES;
     self.inputViewMinHeight = 40;
-    self.inputViewMaxHeight = 160;
+    self.inputViewMaxHeight = 120;
     [self.commentTextView becomeFirstResponder];
     [self unActiveBtn];
     self.commentTextView.delegate = self;
@@ -38,6 +39,17 @@
     [self.commentTextView setValue:placeHolderLabel forKey:@"_placeholderLabel"];
     self.commentTextView.tintColor = [UIColor blackColor];
 
+}
+
+- (void)setSuperViewGesture:(UIView *)view {
+    UITapGestureRecognizer *tapSuperView = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissView:)];
+    [view addGestureRecognizer:tapSuperView];
+}
+
+- (void)dismissView:(UITapGestureRecognizer *)tap {
+    if (self.dismissBlock) {
+        self.dismissBlock();
+    }
 }
 
 - (void)commit:(id)sender {
@@ -129,6 +141,13 @@
         [self mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.mas_equalTo(self.superview);
             make.height.mas_equalTo(rect.size.height);
+        }];
+
+        [self.commentBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self).mas_offset(-10);
+            make.centerY.mas_equalTo(self);
+            make.width.mas_equalTo(75);
+            make.height.mas_equalTo(30);
         }];
         
         _previousTextViewContentHeight = toHeight;

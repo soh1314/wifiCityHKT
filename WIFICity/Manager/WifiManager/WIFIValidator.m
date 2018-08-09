@@ -50,7 +50,7 @@
         WIFIValidateInfo *m_info = self.validatArray[i];
         if ([m_info.routIp isEqualToString:info.routIp]) {
             float timestr = [[NSString unixTimeStamp]floatValue];
-            if (timestr > m_info.expireTime - 300) {
+            if (timestr > m_info.expireTime ) {
                 needValidator = YES;
                 [self.validatArray removeObject:m_info];
                 [self.validatArray addObject:info];
@@ -73,11 +73,11 @@
     [WIFISevice shared].validating = YES;
     WIFIValidateInfo *info = [WIFIValidateInfo new];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
-    info.expireTime = [[NSString unixTimeStamp]integerValue] + 20 * 60;
-//    if (![self needValidator:info]) {
-//        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
-//        return;
-//    }
+    info.expireTime = [[NSString unixTimeStamp]integerValue] + 1 * 60;
+    if (![self needValidator:info]) {
+        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
+        return;
+    }
     NSString *wifiIp = [WifiUtil getLocalRoutIpForCurrentWiFi];
     if (!wifiIp || [wifiIp isEqualToString:@""] ) {
         [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
@@ -103,8 +103,8 @@
     NSLog(@"验证wifi过期时间%@",expireStr);
     NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routIP,expireStr];
     NSLog(@"认证url%@",validatorUrl);
-    
     [self inerValidateRequest:validatorUrl];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingStatus" object:nil];
 //    [self webValidateRequest:validatorUrl];
     
 }
@@ -142,14 +142,13 @@
         } else {
             NSLog(@"认证失败");
         }
-       
-        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingFinish" object:nil];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"认证网络问题");
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         [WIFISevice shared].validating = NO;
         [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
-
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingFinish" object:nil];
        
     }];
    

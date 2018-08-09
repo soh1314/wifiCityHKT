@@ -27,11 +27,13 @@
 + (WICommentView *)popCommentView:(UIViewController *)context {
     context.zh_popupController = [zhPopupController popupControllerWithMaskType:zhPopupMaskTypeClear];
     context.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 50)];
-    WICommentView *commentView = [[WICommentView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 160)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 120)];
+    WICommentView *commentView = [[WICommentView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 120)];
     [view addSubview:commentView];
+    [commentView setSuperViewGesture:view];
     [commentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(view);
+        make.left.right.bottom.mas_equalTo(view);
+        make.height.mas_equalTo(50);
     }];
      __weak typeof(context)wself = context;;
     commentView.dismissBlock = ^{

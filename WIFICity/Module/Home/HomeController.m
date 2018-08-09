@@ -56,6 +56,8 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(orgIDChange:) name:WIOrgIDChangeNoti object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidateSuccess:) name:WIFIValidatorSuccessNoti object:nil];
     [[WIFISevice shared]setNetMonitor];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidatingFinish:) name:@"WifiValidateingFinish" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidating:) name:@"WifiValidateingStatus" object:nil];
 }
 
 - (void)wifiValidateSuccess:(NSNotification *)noti {
@@ -69,6 +71,8 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self name:WIOrgIDChangeNoti object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:WIFIValidatorSuccessNoti object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WifiValidateingStatus" object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WifiValidateingFinish" object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -112,6 +116,19 @@
 
 - (void)handleWhenNetChange:(WINetStatus)status wifiInfo:(WIFIInfo*)info {
     [self.panel netChange:status wifiInfo:info];
+}
+
+- (void)wifiValidatingFinish:(NSNotification *)noti {
+//    self.panel.flowBgView.backgroundColor = [UIColor greenColor];
+    [self.panel.flowView.loadingView endAnimationWithResult:ALLoadingViewResultTypeSuccess];
+    self.panel.flowView.loadingView.hidden = YES;
+    
+}
+
+- (void)wifiValidating:(NSNotification *)noti {
+    [self.panel.flowView.loadingView start];
+    self.panel.flowView.loadingView.hidden = NO;
+//    self.panel.flowBgView.backgroundColor = [UIColor redColor];
 }
 
 #pragma mark - load data

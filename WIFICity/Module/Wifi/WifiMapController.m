@@ -118,7 +118,7 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
         NSArray *data = (NSArray *)returnData;
         NSArray *wifiArray = [WIGeometryInfo arrayOfModelsFromDictionaries:data error:nil];
         [self getNearWifi:wifiArray];
-        [self relocate:nil];
+//        [self relocate:nil];
         
     } failureBlock:^(NSError *error) {
         [Dialog hideToastView:self.view];
@@ -151,6 +151,10 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 }
 
 - (void)relocate:(id)sender {
+    [self checkAuthorization];
+    if (self.status < 3) {
+        return;
+    }
    [_locService stopUserLocationService];
    [_locService startUserLocationService];
 }

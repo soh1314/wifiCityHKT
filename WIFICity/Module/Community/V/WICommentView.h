@@ -30,4 +30,6 @@ typedef void(^WICommentDismissBlock)(void);
 
 @property (nonatomic,assign)float previousTextViewContentHeight;
 
+- (void)setSuperViewGesture:(UIView *)view;
+
 @end

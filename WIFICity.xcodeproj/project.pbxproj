@@ -457,6 +457,7 @@
 		16D657A1211A804400711F08 /* NewsSearchNoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D6579F211A804400711F08 /* NewsSearchNoneCell.m */; };
 		16D657A2211A804400711F08 /* NewsSearchNoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D657A0211A804400711F08 /* NewsSearchNoneCell.xib */; };
 		16D657A5211A926100711F08 /* HomeSearchData.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D657A4211A926100711F08 /* HomeSearchData.m */; };
+		16D657A8211AEFFA00711F08 /* ALLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D657A6211AEFFA00711F08 /* ALLoadingView.m */; };
 		16F76F5D20EDCB1F00950127 /* triangle_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F76EFE20EDCB1E00950127 /* triangle_default@3x.png */; };
 		16F76F5E20EDCB1F00950127 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F76EFF20EDCB1E00950127 /* search@2x.png */; };
 		16F76F5F20EDCB1F00950127 /* collect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F76F0020EDCB1E00950127 /* collect@2x.png */; };
@@ -1321,6 +1322,8 @@
 		16D657A0211A804400711F08 /* NewsSearchNoneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsSearchNoneCell.xib; sourceTree = "<group>"; };
 		16D657A3211A926100711F08 /* HomeSearchData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchData.h; sourceTree = "<group>"; };
 		16D657A4211A926100711F08 /* HomeSearchData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchData.m; sourceTree = "<group>"; };
+		16D657A6211AEFFA00711F08 /* ALLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALLoadingView.m; sourceTree = "<group>"; };
+		16D657A7211AEFFA00711F08 /* ALLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALLoadingView.h; sourceTree = "<group>"; };
 		16F76EFE20EDCB1E00950127 /* triangle_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "triangle_default@3x.png"; sourceTree = "<group>"; };
 		16F76EFF20EDCB1E00950127 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		16F76F0020EDCB1E00950127 /* collect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collect@2x.png"; sourceTree = "<group>"; };
@@ -1703,6 +1706,8 @@
 				16CDD0612106FBB200DA619F /* exlodeBtn */,
 				1695B1A020F4ACC700DFFCCE /* XLLoadingHUD.h */,
 				1695B19F20F4ACC700DFFCCE /* XLLoadingHUD.m */,
+				16D657A7211AEFFA00711F08 /* ALLoadingView.h */,
+				16D657A6211AEFFA00711F08 /* ALLoadingView.m */,
 				1695B19E20F4A31C00DFFCCE /* BQActivityView.h */,
 				1695B19C20F4A30100DFFCCE /* BQActivityView.m */,
 				1640E44820F49B72007F7D0C /* AILoadingView.h */,
@@ -3206,7 +3211,6 @@
 				16F887C82101C8E500136C7F /* WifiPanel.m */,
 				16F887BA2101C8E500136C7F /* WifiPanelBottomView.m */,
 				16F887BD2101C8E500136C7F /* WifiPanel.xib */,
-				16F887BE2101C8E500136C7F /* WifiFlowView.m */,
 				16F887BF2101C8E500136C7F /* WifiPanelProtocol.h */,
 				16F887C02101C8E500136C7F /* WifiNetChangeProtocol.h */,
 				16F887C12101C8E500136C7F /* WifiValidatorController.h */,
@@ -3216,6 +3220,7 @@
 				16F887CA2101C8E500136C7F /* WifiPanelBottomView.xib */,
 				16F887CB2101C8E500136C7F /* WifiPanelTopView.xib */,
 				16F887CC2101C8E500136C7F /* WifiFlowView.h */,
+				16F887BE2101C8E500136C7F /* WifiFlowView.m */,
 				16F887CF2101C8E500136C7F /* WifiFlowView.xib */,
 				16F887D02101C8E500136C7F /* WifiPanelBottomView.h */,
 			);
@@ -4057,6 +4062,7 @@
 				1691DDC920ECA239008AF2BE /* SystemMessageCell.m in Sources */,
 				16C79BDD20CE6B6500A67DF6 /* main.m in Sources */,
 				166CA58120F06EA100E4CBE3 /* WICompanyCategory.m in Sources */,
+				16D657A8211AEFFA00711F08 /* ALLoadingView.m in Sources */,
 				16D64BDD20CF9FCE00ED74C8 /* SVProgressAnimatedView.m in Sources */,
 				16F888132102D5F800136C7F /* HomeNewsImageItemCell.m in Sources */,
 				16C79BCF20CE6B5E00A67DF6 /* AppDelegate.m in Sources */,

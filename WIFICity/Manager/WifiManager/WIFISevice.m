@@ -147,8 +147,14 @@ static NSInteger flowRequestNum = 0;
 //                    [response deliver];
                 }
             }
-            [EasyCacheHelper saveResponseCache:[self.hktWifiArray copy] forKey:HKTWIFIARRAYKEY];
-            [EasyCacheHelper saveResponseCache:[self.otherWifiArray copy] forKey:OHERWIFIARRAYKEY];
+            if (self.hktWifiArray && self.hktWifiArray.count > 0) {
+                [EasyCacheHelper saveResponseCache:[self.hktWifiArray copy] forKey:HKTWIFIARRAYKEY];
+            }
+            if (self.otherWifiArray && self.otherWifiArray.count > 0) {
+                [EasyCacheHelper saveResponseCache:[self.otherWifiArray copy] forKey:OHERWIFIARRAYKEY];
+            }
+            
+            
            
         } else if (cmd.commandType == 2) {
 //            dispatch_async(dispatch_get_main_queue(), ^{

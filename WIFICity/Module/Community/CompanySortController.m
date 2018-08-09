@@ -182,7 +182,7 @@
             [wself.sortTopView hideDropView];
         };
         categoryView.categoryArray = [self.productArray copy];
-        categoryView.flowLayoutType = 0;
+        categoryView.flowLayoutType = 1;
         categoryView.backgroundColor = [UIColor colorWithHexString:@"#F9F9F9"];
         return categoryView;
     } else {

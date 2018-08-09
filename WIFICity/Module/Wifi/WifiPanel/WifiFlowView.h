@@ -10,13 +10,14 @@
 #import "WIFIInfo.h"
 #import "WIFICloudInfo.h"
 #import "UILabel+wordStyle.h"
-
+#import "ALLoadingView.h"
 @interface WifiFlowView : UIView
 
 @property (nonatomic,strong)WIFIInfo *wifiInfo;
 @property (weak, nonatomic) IBOutlet UILabel *totalFlowLabel;
 @property (weak, nonatomic) IBOutlet UILabel *flowLevelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wifiStatusLabel;
+@property (nonatomic,strong)ALLoadingView *loadingView;
 
 
 @end

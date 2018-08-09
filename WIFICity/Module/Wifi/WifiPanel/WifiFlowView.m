@@ -25,6 +25,20 @@
     self.layer.cornerRadius = 80;
     self.layer.borderWidth = 1;
     self.layer.borderColor = [UIColor colorWithHexString:@"#0078FF"].CGColor;
+    
+    
+    self.loadingView = [[ALLoadingView alloc]initWithFrame:CGRectMake(0, 0, 160, 160)];
+    self.loadingView.center = self.center;
+
+    [self addSubview:self.loadingView];
+//    [self.loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.mas_equalTo(self);
+//
+//    }];
+    self.loadingView.radius = 80;
+    [self bringSubviewToFront:self.loadingView];
+    self.loadingView.loadingColor = [UIColor themeColor];
+    self.loadingView.hidden = YES;
 }
 
 - (void)setWifiInfo:(WIFIInfo *)wifiInfo {
