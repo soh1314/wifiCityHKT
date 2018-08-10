@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="316" height="182"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="湖南华宽通科技股份有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uut-bG-Icw">
-                        <rect key="frame" x="78.5" y="10" width="159.5" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="湖南华宽通科技股份有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uut-bG-Icw">
+                        <rect key="frame" x="5" y="10" width="306" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="Egt-xc-FRp"/>
                         </constraints>
@@ -111,6 +111,7 @@
                 <constraint firstItem="c9e-OZ-Ddl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="62O-A0-9Fv"/>
                 <constraint firstItem="0jM-Zr-ZcH" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="BzY-Bp-6au"/>
                 <constraint firstItem="ay3-mE-GWE" firstAttribute="top" secondItem="uut-bG-Icw" secondAttribute="bottom" constant="12" id="FUh-aY-c5n"/>
+                <constraint firstAttribute="trailing" secondItem="uut-bG-Icw" secondAttribute="trailing" constant="5" id="GUf-v6-88W"/>
                 <constraint firstItem="uut-bG-Icw" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Gh0-hO-Xaq"/>
                 <constraint firstItem="0jM-Zr-ZcH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Gko-Hb-Q1L"/>
                 <constraint firstAttribute="bottom" secondItem="c9e-OZ-Ddl" secondAttribute="bottom" id="Isr-1o-OzW"/>
@@ -123,6 +124,7 @@
                 <constraint firstItem="0jM-Zr-ZcH" firstAttribute="top" secondItem="ay3-mE-GWE" secondAttribute="bottom" constant="8" id="icC-ve-osj"/>
                 <constraint firstAttribute="trailing" secondItem="Z3f-ZS-U5E" secondAttribute="trailing" constant="8" id="qmP-kq-ZTR"/>
                 <constraint firstAttribute="trailing" secondItem="c9e-OZ-Ddl" secondAttribute="trailing" id="vAg-VT-Syo"/>
+                <constraint firstItem="uut-bG-Icw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="zMK-9i-7jN"/>
             </constraints>
             <size key="customSize" width="316" height="258"/>
             <connections>
