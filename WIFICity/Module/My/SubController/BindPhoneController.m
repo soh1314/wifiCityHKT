@@ -129,10 +129,10 @@
             [AccountManager shared].user.phone = [user.phone copy];
             [[AccountManager shared]saveUserInfo:[AccountManager shared].user];
             [self.navigationController popViewControllerAnimated:YES];
-            [Dialog simpleToast:response.msg];
+            [Dialog toastCenter:response.msg];
             
         } else {
-            [Dialog simpleToast:response.msg];
+            [Dialog toastCenter:response.msg];
         }
     }];
 }

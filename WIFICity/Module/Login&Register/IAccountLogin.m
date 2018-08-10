@@ -14,6 +14,7 @@
 #define APPLoginAPI @"/ws/user/login.do"
 #define RegisterVerifyCodeAPI @"/ws/user/verifyPhone.do"
 #define ThirdLoginAPI @"/ws/user/login.do"
+#define ThirdBindAPI @"/ws/user/bingUser.do"
 
 
 
@@ -83,7 +84,7 @@
              }];
          } else if (state == SSDKResponseStateCancel) {
              complete(nil);
-             [Dialog simpleToast:@"取消第三方登录"];
+             [Dialog simpleToast:@"取消第三方调用"];
          } else
          {
              complete(nil);
@@ -107,6 +108,60 @@
     user.qqOpenid = [sdkUser.uid copy];
     user.avartar = [sdkUser.icon copy];
     return user;
+}
+
+
+
+- (void)WIThirdBind:(WIUser *)user complete:(IAccountCompleteBlock)complete {
+    SSDKPlatformType platformType = 0;
+    if ([user.type isEqualToString:@"qq"]) {
+        platformType = SSDKPlatformTypeQQ;
+    }
+    if ([user.type isEqualToString:@"wx"]) {
+        platformType = SSDKPlatformTypeWechat;
+    }
+    [ShareSDK getUserInfo:platformType
+           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
+     {
+         if (state == SSDKResponseStateSuccess)
+         {
+             WIUser *newUser = [self associateThirdUser:user];
+             [EasyCacheHelper saveResponseCache:user.icon forKey:MobThirdLoginAvartarKey];
+             NSString *openid = nil;
+             if (platformType == SSDKPlatformTypeWechat) {
+                 openid = newUser.wxOpenid;
+                 newUser.loginType = @"wx";
+             } else {
+                 openid = newUser.qqOpenid;
+                  newUser.loginType = @"qq";
+             }
+             NSDictionary *para = @{@"bingType":newUser.loginType,@"openid":openid,@"nickname":newUser.nickname,@"icon":[newUser.avartar copy],@"id":[AccountManager shared].user.userId};
+             [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, ThirdBindAPI) params:para successBlock:^(NSDictionary *returnData) {
+                 WINetResponse *respone = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+                 complete([respone copy]);
+             } failureBlock:^(NSError *error) {
+                 kHudNetError;
+             } showHUD:NO];
+             
+         } else if (state == SSDKResponseStateCancel) {
+             complete(nil);
+             [Dialog simpleToast:@"取消第三方绑定"];
+         } else
+         {
+             complete(nil);
+             if (![QQApiInterface isQQInstalled] &&  platformType == SSDKPlatformTypeQQ) {
+                 [Dialog simpleToast:LoginQQUninstallError];
+                 return ;
+             }
+             if (![WXApi isWXAppInstalled] && platformType == SSDKPlatformTypeWechat) {
+                 [Dialog simpleToast:LoginWXUninstallError];
+                 return ;
+             }
+             kHudNetError;
+         }
+         
+     }];
+
 }
 
 - (void)WIThirdLogin:(WIUser *)user complete:(IAccountCompleteBlock)complete {

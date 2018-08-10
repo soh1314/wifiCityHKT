@@ -14,6 +14,7 @@
 #import "WebViewController.h"
 #import "WITabBarController.h"
 #import "AppDelegate.h"
+#import "CaptivePortalCheck.h"
 @interface WIFIValidator()
 
 @property (nonatomic,readwrite,copy)NSString *lastHktWifiMac;
@@ -105,6 +106,9 @@
     NSLog(@"验证wifi过期时间%@",expireStr);
     NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routIP,expireStr];
     NSLog(@"认证url%@",validatorUrl);
+    [[CaptivePortalCheck sharedInstance]checkIsWifiNeedAuthPasswordWithComplection:^(BOOL needAuthPassword) {
+        NSLog(@"%d",needAuthPassword);
+    } needAlert:YES];
     [self inerValidateRequest:validatorUrl];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingStatus" object:nil];
 //    [self webValidateRequest:validatorUrl];

@@ -17,5 +17,7 @@
 + (instancetype)shared;
 +(void)configMobShare;
 + (void)cancleThirdLoginAuthorize;
++ (void)cancleWXLoginAuthorize;
++ (void)cancleQQLoginAuthorize ;
 
 @end

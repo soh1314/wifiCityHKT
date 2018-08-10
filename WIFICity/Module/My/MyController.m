@@ -20,6 +20,7 @@
 #import "DeviceInfoController.h"
 #import "BindPhoneController.h"
 #import "AboutUsController.h"
+#import "BindAccountController.h"
 #import "HKTProtocolController.h"
 #import "WXWaveView.h"
 
@@ -132,7 +133,8 @@
     }
     
     if ( indexPath.row == 1) {
-        
+        BindAccountController *ctrl = [BindAccountController new];
+        [self.navigationController pushViewController:ctrl animated:YES];
     }
     
     if (indexPath.row == 2) {

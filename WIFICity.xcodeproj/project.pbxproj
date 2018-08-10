@@ -133,6 +133,8 @@
 		1662C5F2211D28C800A2A100 /* deal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C5E9211D28C800A2A100 /* deal.png */; };
 		1662C5F3211D28C800A2A100 /* deal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C5EA211D28C800A2A100 /* deal@3x.png */; };
 		1662C5F4211D28C800A2A100 /* phone_bind@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C5EB211D28C800A2A100 /* phone_bind@3x.png */; };
+		1662C5F8211D41F300A2A100 /* BindAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1662C5F6211D41F300A2A100 /* BindAccountController.m */; };
+		1662C5F9211D41F300A2A100 /* BindAccountController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1662C5F7211D41F300A2A100 /* BindAccountController.xib */; };
 		166CA56C20F05C0600E4CBE3 /* CompanyHomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 166CA56B20F05C0600E4CBE3 /* CompanyHomeSearchBar.m */; };
 		166CA56E20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166CA56D20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib */; };
 		166CA57320F0644300E4CBE3 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA57020F0644300E4CBE3 /* back@2x.png */; };
@@ -833,6 +835,9 @@
 		1662C5E9211D28C800A2A100 /* deal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deal.png; sourceTree = "<group>"; };
 		1662C5EA211D28C800A2A100 /* deal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deal@3x.png"; sourceTree = "<group>"; };
 		1662C5EB211D28C800A2A100 /* phone_bind@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_bind@3x.png"; sourceTree = "<group>"; };
+		1662C5F5211D41F300A2A100 /* BindAccountController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindAccountController.h; sourceTree = "<group>"; };
+		1662C5F6211D41F300A2A100 /* BindAccountController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindAccountController.m; sourceTree = "<group>"; };
+		1662C5F7211D41F300A2A100 /* BindAccountController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindAccountController.xib; sourceTree = "<group>"; };
 		166CA56A20F05C0600E4CBE3 /* CompanyHomeSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanyHomeSearchBar.h; sourceTree = "<group>"; };
 		166CA56B20F05C0600E4CBE3 /* CompanyHomeSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanyHomeSearchBar.m; sourceTree = "<group>"; };
 		166CA56D20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyHomeSearchBar.xib; sourceTree = "<group>"; };
@@ -2003,6 +2008,9 @@
 				1691DDCC20ECA2D6008AF2BE /* WISystemNotice.m */,
 				1691DDF520ECB610008AF2BE /* HKTProtocolController.h */,
 				1691DDF620ECB610008AF2BE /* HKTProtocolController.m */,
+				1662C5F5211D41F300A2A100 /* BindAccountController.h */,
+				1662C5F6211D41F300A2A100 /* BindAccountController.m */,
+				1662C5F7211D41F300A2A100 /* BindAccountController.xib */,
 			);
 			path = SubController;
 			sourceTree = "<group>";
@@ -3566,6 +3574,7 @@
 				169D8F5021087650006776D8 /* detection@3x.png in Resources */,
 				16D64B8D20CF85CC00ED74C8 /* EaseUIResource.bundle in Resources */,
 				1656789320D3662A00EC3D5C /* square_default.png in Resources */,
+				1662C5F9211D41F300A2A100 /* BindAccountController.xib in Resources */,
 				16CDD0382106B02C00DA619F /* panorama_default@2x.png in Resources */,
 				16F76F8120EDCB1F00950127 /* app@3x.png in Resources */,
 				16F76F9C20EDCB1F00950127 /* education_services@2x.png in Resources */,
@@ -4162,6 +4171,7 @@
 				1691DD4E20EB4683008AF2BE /* WIGeometryInfo.m in Sources */,
 				16F887D52101C8E600136C7F /* WifiPanelBottomView.m in Sources */,
 				16F888222102D88700136C7F /* EasePageDelegateHelper.m in Sources */,
+				1662C5F8211D41F300A2A100 /* BindAccountController.m in Sources */,
 				16F76FD120EE08E400950127 /* EnterPriseSquareHomeInfoCell.m in Sources */,
 				1601190921118E57002B9058 /* EaseTextView.m in Sources */,
 				1691DD7320EC60FF008AF2BE /* EaseStretchHeaderView.m in Sources */,

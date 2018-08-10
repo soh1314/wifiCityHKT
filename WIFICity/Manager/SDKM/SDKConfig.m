@@ -77,5 +77,14 @@
     [ShareSDK cancelAuthorize:SSDKPlatformTypeWechat];
 }
 
++ (void)cancleQQLoginAuthorize  {
+    [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ];
+}
+
++ (void)cancleWXLoginAuthorize  {
+    [ShareSDK cancelAuthorize:SSDKPlatformTypeWechat];
+    
+}
+
 
 @end
