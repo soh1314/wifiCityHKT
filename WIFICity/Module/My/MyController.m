@@ -70,7 +70,13 @@
     }
     
 
-    if ([AccountManager shared].user.nickname) {
+    if ([[AccountManager shared].user.type isEqualToString:@"wx"]) {
+        [infoView.nickNameLabel setText:[AccountManager shared].user.wxName];
+    }
+    if ([[AccountManager shared].user.type isEqualToString:@"qq"]) {
+        [infoView.nickNameLabel setText:[AccountManager shared].user.qqName];
+    }
+    if ([[AccountManager shared].user.type isEqualToString:@"sj"]) {
         [infoView.nickNameLabel setText:[AccountManager shared].user.nickname];
     }
     

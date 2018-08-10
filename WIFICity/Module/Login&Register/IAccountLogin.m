@@ -15,7 +15,7 @@
 #define RegisterVerifyCodeAPI @"/ws/user/verifyPhone.do"
 #define ThirdLoginAPI @"/ws/user/login.do"
 #define ThirdBindAPI @"/ws/user/bingUser.do"
-
+#define ThirdUnBindAPI @"/ws/user/untieUser.do"
 
 
 @implementation IAccountLogin
@@ -29,11 +29,11 @@
         [Dialog simpleToast:LoginVerfifyCodeNullError];
         return;
     }
-    NSDictionary *para = @{@"phone":[user.phone copy],@"verifyCode":[user.verifyCode copy],@"loginType":@"sj"};
+    NSDictionary *para = @{@"phone":[user.phone copy],@"verifyCode":[user.verifyCode copy],@"loginType":@"sj",@"type":@"sj"};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, APPLoginAPI) params:para successBlock:^(NSDictionary *returnData) {
         WIUser *user = [[WIUser alloc]initWithDictionary:returnData[@"obj"] error:nil];
         NSLog(@"注册用户: %@",user);
-        NSLog(@"登录%@",returnData);
+        NSLog(@"手机账号登录%@",returnData);
         WINetResponse *respone = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         [NetErrorHandle handleResponse:respone];
         complete([respone copy]);
@@ -110,7 +110,15 @@
     return user;
 }
 
-
+- (void)WIThirdUnBind:(WIUser *)user complete:(IAccountCompleteBlock)complete {
+    NSDictionary *par = @{@"id":user.userId,@"untieType":user.untieType};
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, ThirdUnBindAPI) params:par successBlock:^(NSDictionary *returnData) {
+        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+        complete(response);
+    } failureBlock:^(NSError *error) {
+        kHudNetError;
+    } showHUD:NO];
+}
 
 - (void)WIThirdBind:(WIUser *)user complete:(IAccountCompleteBlock)complete {
     SSDKPlatformType platformType = 0;
@@ -174,6 +182,7 @@
     NSDictionary *para = @{@"loginType":user.loginType,@"openid":openid,@"nickname":user.nickname,@"icon":[user.avartar copy]};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, ThirdLoginAPI) params:para successBlock:^(NSDictionary *returnData) {
         WINetResponse *respone = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+        NSLog(@"第三方登录%@",respone.obj);
         complete([respone copy]);
     } failureBlock:^(NSError *error) {
         kHudNetError;

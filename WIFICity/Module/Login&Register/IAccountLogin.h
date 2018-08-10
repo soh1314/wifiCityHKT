@@ -33,4 +33,6 @@ typedef NS_ENUM(NSInteger,WILoginType) {
 
 - (void)WIThirdBind:(WIUser *)user complete:(IAccountCompleteBlock)complete;
 
+- (void)WIThirdUnBind:(WIUser *)user complete:(IAccountCompleteBlock)complete;
+
 @end

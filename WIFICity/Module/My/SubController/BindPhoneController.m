@@ -126,10 +126,12 @@
     }
     [self.accountLogin bindPhone:user complete:^(WINetResponse *response) {
         if (response.success) {
-            [AccountManager shared].user.phone = [user.phone copy];
-            [[AccountManager shared]saveUserInfo:[AccountManager shared].user];
-            [self.navigationController popViewControllerAnimated:YES];
-            [Dialog toastCenter:response.msg];
+//            [AccountManager shared].user.phone = [user.phone copy];
+//            [[AccountManager shared]saveUserInfo:[AccountManager shared].user];
+//            [self.navigationController popViewControllerAnimated:YES];
+//            [Dialog toastCenter:response.msg];
+            [AccountManager logout];
+            [Dialog toastCenter:@"解绑成功,请重新登录"];
             
         } else {
             [Dialog toastCenter:response.msg];

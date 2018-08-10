@@ -51,5 +51,8 @@
 @property (nonatomic,copy)NSString *memberLevel;
 @property (nonatomic,copy)NSDictionary *wxinfo;
 @property (nonatomic,copy)NSDictionary *qqinfo;
+@property (nonatomic,copy)NSString *wxName;
+@property (nonatomic,copy)NSString *qqName;
+@property (nonatomic,copy)NSString *untieType;
 
 @end
