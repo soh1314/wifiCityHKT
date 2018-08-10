@@ -64,7 +64,7 @@
 
     infoView.backgroundColor = [UIColor themeColor];
     if ([[AccountManager shared].user.type isEqualToString:@"sj"]) {
-        infoView.avartar .image = [UIImage qsImageNamed:@"head"];
+        infoView.avartar .image = [UIImage qsImageNamed:@"avatars_default.png"];
     } else {
         NSString *avatarString = [EasyCacheHelper getResponseCacheForKey:MobThirdLoginAvartarKey];
         [infoView.avartar sd_setImageWithURL:[NSURL URLWithString:avatarString] placeholderImage:[UIImage qsImageNamed:@"head"]];

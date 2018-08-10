@@ -28,7 +28,7 @@
                         <constraint firstAttribute="height" constant="82" id="ZW9-XW-gSc"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head.png" translatesAutoresizingMaskIntoConstraints="NO" id="WzJ-Y8-xHm">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatars_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="WzJ-Y8-xHm">
                     <rect key="frame" x="195" y="24" width="82" height="82"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="82" id="Z9z-xu-QBK"/>
@@ -55,6 +55,6 @@
         </view>
     </objects>
     <resources>
-        <image name="head.png" width="47" height="47"/>
+        <image name="avatars_default.png" width="82" height="82"/>
     </resources>
 </document>
