@@ -227,6 +227,27 @@ static int EnterPriseRecommentSection = 2;
 
 }
 
+- (void)seeAllCompany {
+    CompanySortController *sortCtrl = [CompanySortController new];
+    NSMutableArray *m_cat = [NSMutableArray array];
+    NSMutableArray *m_pro = [NSMutableArray new];
+    WICompanyCategory *allCateGory = [WICompanyCategory new];
+    
+    allCateGory.ID = @"";
+    allCateGory.entName = @"所有";
+    allCateGory.industryName = @"所有";
+    sortCtrl.areaID = [allCateGory.ID copy];
+    sortCtrl.categoryID = [allCateGory.ID copy];
+    sortCtrl.selectCategory = allCateGory;
+    [m_cat addObject:allCateGory];
+    [m_cat addObjectsFromArray:self.categoryArray];
+    [m_pro addObject:allCateGory];
+    [m_pro addObjectsFromArray:self.industryArray];
+    sortCtrl.categoryArray = [m_cat copy];
+    sortCtrl.productArray = [m_pro copy];
+    [self.navigationController pushViewController:sortCtrl animated:YES];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
@@ -276,8 +297,9 @@ static int EnterPriseRecommentSection = 2;
         CompanyRecommentHeader *header = [[CompanyRecommentHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 41)];
         __weak typeof(self)wself = self;
         header.moreBlock = ^{
-            CompanyRecommendController *ctrl = [CompanyRecommendController new];
-            [wself.navigationController pushViewController:ctrl animated:YES];
+            [wself seeAllCompany];
+//            CompanyRecommendController *ctrl = [CompanyRecommendController new];
+//            [wself.navigationController pushViewController:ctrl animated:YES];
         };
         return header;
     } else {

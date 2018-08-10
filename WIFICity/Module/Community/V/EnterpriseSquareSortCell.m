@@ -103,6 +103,9 @@
         WICompanyCategory *category = self.categoryModelArray[indexPath.row];
         EnterPriseTagCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EnterPriseTagCellID" forIndexPath:indexPath];
         colCell.nameLabel.text = [category.entName copy];
+        if (IPHONE4OR4S || IPHONE5OR5S) {
+            colCell.nameLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:10];
+        }
         return colCell;
     }
 

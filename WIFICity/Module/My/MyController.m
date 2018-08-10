@@ -60,7 +60,8 @@
 }
 
 - (void)initUI {
-    UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, KSCREENW/2.5f)];
+    UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, KSCREENW/2.2f)];
+
     infoView.backgroundColor = [UIColor themeColor];
     if ([[AccountManager shared].user.type isEqualToString:@"sj"]) {
         infoView.avartar .image = [UIImage qsImageNamed:@"head"];

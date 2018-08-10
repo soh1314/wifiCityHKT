@@ -50,6 +50,9 @@
 
 // 金钱数字处理
 + (NSString *)numberDecimal:(id)number;
+// 昵称处理
+- (NSString *)nickNameAddStart;
++ (NSString *)phoneAddStar:(NSString*)number;
 // json字符串
 + (NSString*)dataToJsonString:(id)object;
 

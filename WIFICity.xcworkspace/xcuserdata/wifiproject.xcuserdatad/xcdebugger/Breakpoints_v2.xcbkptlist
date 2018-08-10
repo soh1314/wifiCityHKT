@@ -161,7 +161,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WIFICity/Module/Community/CompanyDetailController.m"
-            timestampString = "555582124.599666"
+            timestampString = "555586455.329193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -189,16 +189,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WIFICity/Module/My/SubController/BindAccountController.m"
-            timestampString = "555582124.5997519"
+            filePath = "WIFICity/Module/My/SubController/BindPhoneController.m"
+            timestampString = "555586455.329284"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "-switchQQbind:"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-bindBtn:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -208,13 +208,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WIFICity/Module/My/SubController/BindPhoneController.m"
-            timestampString = "555582124.599815"
+            filePath = "WIFICity/Module/My/SubController/BindAccountController.m"
+            timestampString = "555586455.329336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "-bindBtn:"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-switchWXbind:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WIFICity/Module/Login&amp;Register/IAccountLogin.m"
+            timestampString = "555586455.329383"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "-WIThirdBind:complete:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WIFICity/Common/Category/NSString+Additions.m"
+            timestampString = "555586455.329427"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "+numberSuitScanf:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WIFICity/Common/Category/NSString+Additions.m"
+            timestampString = "555586455.329469"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "+numberSuitScanf:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

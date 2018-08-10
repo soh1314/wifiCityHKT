@@ -40,7 +40,7 @@
     self.timeLabel.text = [time copy];
 //    NSString *shortId = [self.comment.use_id substringFromIndex:26];
     
-    self.nameLabel.text = [NSString stringWithFormat:@"%@",self.comment.nickname];
+    self.nameLabel.text = [NSString stringWithFormat:@"%@",[NSString phoneAddStar:self.comment.nickname]];
     if (self.comment.wx_icon) {
         [self.avartar sd_setImageWithURL:[NSURL URLWithString:self.comment.wx_icon]];
     }

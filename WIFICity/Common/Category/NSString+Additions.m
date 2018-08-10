@@ -262,11 +262,11 @@
 }
 
 //文本加*
-+ (NSString *)numberSuitScanf:(NSString*)number{
++ (NSString *)phoneAddStar:(NSString*)number{
     
     //首先验证是不是手机号码
     
-    NSString *MOBILE = @"^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[06-8])\\\\d{8}$";
+    NSString *MOBILE = @"[1][34578][0-9]{9}";
     
     NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
     
@@ -400,5 +400,9 @@
     NSLog(@"时间 === %@",dateString);
     return dateString;
 }
+
+//- (NSString *)nickNameAddStart {
+//
+//}
 
 @end

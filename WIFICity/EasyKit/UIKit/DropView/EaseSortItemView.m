@@ -23,6 +23,7 @@
     self.titleLabel.font = [UIFont systemFontOfSize:13];
     self.titleLabel.textColor = [UIColor colorWithHexString:@"#777777"];
     self.icon = [UIImageView new];
+    self.icon.image = [UIImage qsImageNamed:@"inverted_triangle"];
     [self addSubview:self.icon];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self);
