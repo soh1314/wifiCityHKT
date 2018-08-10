@@ -75,7 +75,7 @@
     info.wfiiMac = [WifiUtil getWifiMac];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
     
-    info.expireTime = [[NSString unixTimeStamp]integerValue] + 30 * 60;
+    info.expireTime = [[NSString unixTimeStamp]integerValue] + 10 * 60;
     if (![self needValidator:info]) {
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         return;
@@ -140,6 +140,7 @@
             self.lastHktWifiMac = [WifiUtil getWifiMac];
             [[NSUserDefaults standardUserDefaults]setObject:self.lastHktWifiMac forKey:LASTHKTWIFIMACKEY];
             [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorSuccessNoti object:nil];
+            [Dialog simpleToast:@"Wifi认证成功畅享网络"];
             NSLog(@"认证成功");
         } else {
             NSLog(@"认证失败");

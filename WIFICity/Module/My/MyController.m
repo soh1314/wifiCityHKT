@@ -18,6 +18,7 @@
 
 #import "SystemMessageController.h"
 #import "DeviceInfoController.h"
+#import "BindPhoneController.h"
 #import "AboutUsController.h"
 #import "HKTProtocolController.h"
 #import "WXWaveView.h"
@@ -36,21 +37,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    self.UserCenterItemTitleArray = @[@[@"系统消息",@"推荐给好友"],@[@"关于我们",@"服务协议"],@[@"设备管理",@"退出登录"]];
-    self.UserCenterItemImageNameArray = @[@[@"message",@"share"],@[@"about",@"deal"],@[@"equipment",@"quit"]];
+    self.UserCenterItemTitleArray = @[@"系统消息",@"推荐给好友",@"关于我们",@"服务协议",@"设备管理",@"退出登录"];
+    self.UserCenterItemImageNameArray = @[@"phone_bind",@"binding",@"share",@"deal",@"about",@"quit"];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //    [self.waveView wave];
+    if ([self phoneBinded]) {
+       self.UserCenterItemTitleArray = @[@"更换手机号",@"绑定账号",@"推荐给好友",@"服务协议",@"关于我们",@"退出登录"];
+    } else {
+       self.UserCenterItemTitleArray = @[@"绑定手机号",@"绑定账号",@"推荐给好友",@"服务协议",@"关于我们",@"退出登录"];
+    }
+    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.waveView stop];
+//    [self.waveView stop];
 }
 
 - (void)initUI {
-    UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, KSCREENW/2.0f)];
+    UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, KSCREENW/2.5f)];
     infoView.backgroundColor = [UIColor themeColor];
-    NSString *avatarString = [EasyCacheHelper getResponseCacheForKey:MobThirdLoginAvartarKey];
-    [infoView.avartar sd_setImageWithURL:[NSURL URLWithString:avatarString] placeholderImage:[UIImage qsImageNamed:@"head"]];
+    if ([[AccountManager shared].user.type isEqualToString:@"sj"]) {
+        infoView.avartar .image = [UIImage qsImageNamed:@"head"];
+    } else {
+        NSString *avatarString = [EasyCacheHelper getResponseCacheForKey:MobThirdLoginAvartarKey];
+        [infoView.avartar sd_setImageWithURL:[NSURL URLWithString:avatarString] placeholderImage:[UIImage qsImageNamed:@"head"]];
+    }
+    
+
     if ([AccountManager shared].user.nickname) {
         [infoView.nickNameLabel setText:[AccountManager shared].user.nickname];
     }
@@ -59,72 +77,83 @@
     [self.view addSubview:self.tableView];
     self.tableView.frame = self.view.bounds;
     [self.tableView setTableHeaderView:headerView];
-    self.waveView = [WXWaveView addToView:headerView withFrame:CGRectMake(0, CGRectGetHeight(headerView.frame) - 5, CGRectGetWidth(headerView.frame), 5)];
-    self.waveView.waveColor = [UIColor whiteColor];
-    self.waveView.waveTime = 0.f;
-    self.waveView.angularSpeed = 1.2f;
-    self.waveView.waveSpeed = 5.f;
+//    self.waveView = [WXWaveView addToView:headerView withFrame:CGRectMake(0, CGRectGetHeight(headerView.frame) - 5, CGRectGetWidth(headerView.frame), 5)];
+//    self.waveView.waveColor = [UIColor whiteColor];
+//    self.waveView.waveTime = 0.f;
+//    self.waveView.angularSpeed = 1.2f;
+//    self.waveView.waveSpeed = 5.f;
     self.tableView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"UserCenterItemCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"UserCenterItemCellID"];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.waveView wave];
+- (BOOL)phoneBinded {
+    if ( [AccountManager shared].user.phone && ![[AccountManager shared].user.phone isEqualToString:@""]) {
+        return YES;
+    } else {
+        return NO;
+    }
+   
 }
 
 #pragma mark - tableview delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 45;
+    return 56;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.UserCenterItemTitleArray.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *itemArray = self.UserCenterItemTitleArray[section];
-    return itemArray.count;
+    return self.UserCenterItemTitleArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UserCenterItemCell *itemCell = [tableView dequeueReusableCellWithIdentifier:@"UserCenterItemCellID" forIndexPath:indexPath];
-    NSArray *itemLabelArray = self.UserCenterItemTitleArray[indexPath.section];
-    NSArray *itemImageNameArray = self.UserCenterItemImageNameArray[indexPath.section];
-    itemCell.itemLabel.text =  itemLabelArray[indexPath.row];
-    itemCell.itemIcon.image = [UIImage qsImageNamed:itemImageNameArray[indexPath.row]];
+//    NSArray *itemLabelArray = self.UserCenterItemTitleArray[indexPath.section];
+//    NSArray *itemImageNameArray = self.UserCenterItemImageNameArray[indexPath.section];
+    itemCell.itemLabel.text =  self.UserCenterItemTitleArray[indexPath.row];
+    itemCell.itemIcon.image = [UIImage qsImageNamed:self.UserCenterItemImageNameArray[indexPath.row]];
     return itemCell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        SystemMessageController *msgCtrl = [SystemMessageController new];
-        [self.navigationController pushViewController:msgCtrl animated:YES];
+    if (indexPath.row == 0) {
+        BindPhoneController *ctrl = [BindPhoneController new];
+        ctrl.bindNewPhone = [self phoneBinded];
+        if ([self phoneBinded]) {
+            ctrl.title = @"更换手机号";
+        } else {
+            ctrl.title = @"绑定手机号";
+        }
+        [self.navigationController pushViewController:ctrl animated:YES];
     }
     
-    if (indexPath.section == 0 && indexPath.row == 1) {
-        [EaysShare shareApp];
-    }
-    
-    if (indexPath.section == 1 && indexPath.row == 0) {
-        AboutUsController *usCtrl = [AboutUsController new];
-        [self.navigationController pushViewController:usCtrl animated:YES];
+    if ( indexPath.row == 1) {
         
     }
     
-    if (indexPath.section == 1 && indexPath.row == 1) {
+    if (indexPath.row == 2) {
+        [EaysShare shareApp];
+
+        
+    }
+    
+    if (indexPath.row == 3) {
         HKTProtocolController *hktProtocolCtrl = [HKTProtocolController new];
         [self.navigationController pushViewController:hktProtocolCtrl animated:YES];
         
     }
     
-    if (indexPath.section == 2 && indexPath.row == 0) {
-        DeviceInfoController *deviceInfoCtrl = [DeviceInfoController new];
-        [self.navigationController pushViewController:deviceInfoCtrl animated:YES];
+    if ( indexPath.row == 4) {
+        AboutUsController *usCtrl = [AboutUsController new];
+        [self.navigationController pushViewController:usCtrl animated:YES];
+//        DeviceInfoController *deviceInfoCtrl = [DeviceInfoController new];
+//        [self.navigationController pushViewController:deviceInfoCtrl animated:YES];
     }
-    if (indexPath.section == 2 && indexPath.row == 1) {
+    if ( indexPath.row == 5) {
         [AccountManager logout];
     }
     
@@ -139,7 +168,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10;
+    return CGFLOAT_MIN;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -169,7 +198,7 @@
 #pragma mark - get and set
 - (EaseTableView *)tableView {
     if (!_tableView) {
-        _tableView = [[EaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView = [[EaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -185,14 +214,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -49,8 +49,8 @@
 
 - (void)loadData {
     self.cellHeaderTitleArray = @[@"官方网站",@"业务交流",@"联系方式"];
-    self.cellImageArray = @[@[@"link"],@[@"apply",@"wireless city"],@[@"phone",@"email"]];
-    self.cellContentArray = @[@[@"公司网站： http://www.hktchn.com/"],@[@"移动应用定制：0731-85229780",@"无线城市接入：0731-85229780"],@[@"电话：0731-85229780",@"Email：sales@hktchn.com"]];
+    self.cellImageArray = @[@[@"link"],@[@"apply",@"wireless city"],@[@"email"]];
+    self.cellContentArray = @[@[@"公司网站： http://www.hkttech.cn"],@[@"移动应用定制：18603062926",@"无线WiFi接入：18603062926"],@[@"tech@hktchn.com"]];
 }
 
 #pragma mark - tableview delegate
@@ -104,7 +104,7 @@
 #pragma mark - get and set
 - (EaseTableView *)tableView {
     if (!_tableView) {
-        _tableView = [[EaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[EaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;

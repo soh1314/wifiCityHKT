@@ -93,9 +93,9 @@ static NSString *const LoginVerifySendFail = @"验证码发送失败";
 }
 
 - (void)innerRequestVerifyCode {
-    if ([AccountManager shared].verifyCodeSecond > 10) {
-        [self openCountDown:[AccountManager shared].verifyCodeSecond];
-    }
+//    if ([AccountManager shared].verifyCodeSecond > 10) {
+        [self openCountDown:60];
+//    }
 }
 
 #pragma mark -- 验证码按钮倒计时逻辑

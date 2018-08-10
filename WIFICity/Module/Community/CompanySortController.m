@@ -126,7 +126,7 @@
     self.collectionView.mj_header = [EaseRefreshHeader headerWithRefreshingBlock:^{
         [wself loadData:YES];
     }];
-    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithImage:[UIImage qsImageNamed:@"heng"] style:UIBarButtonItemStylePlain target:self action:@selector(changeCollectionViewStyle:)];
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithImage:[UIImage qsImageNamed:@"shu"] style:UIBarButtonItemStylePlain target:self action:@selector(changeCollectionViewStyle:)];
     self.navigationItem.rightBarButtonItem = rightBarItem;
     self.searchBar = [[EaseSearchBar alloc]initWithFrame:CGRectMake(0, 0, 278/375.0f*KSCREENW, 36)];
     self.searchBar.textfieldPlaceHolderName = @"";

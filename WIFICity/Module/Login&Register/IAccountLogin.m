@@ -133,6 +133,7 @@
             NSInteger code = [[returnData objectForKey:@"obj"]integerValue];
             [AccountManager shared].bindCode = [NSString stringWithFormat:@"%ld",code];
             response.success = YES;
+            response.intObj = code;
             complete(response);
         } else {
             response.success = NO;

@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="384" height="84.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="equipment.png" translatesAutoresizingMaskIntoConstraints="NO" id="LFJ-gL-Jvr">
-                        <rect key="frame" x="24" y="31.5" width="22" height="22"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deal.png" translatesAutoresizingMaskIntoConstraints="NO" id="LFJ-gL-Jvr">
+                        <rect key="frame" x="24" y="30" width="22" height="25"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FuG-yu-NcJ">
                         <rect key="frame" x="58" y="43" width="0.0" height="0.0"/>
@@ -43,6 +43,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="equipment.png" width="22" height="22"/>
+        <image name="deal.png" width="22" height="25"/>
     </resources>
 </document>

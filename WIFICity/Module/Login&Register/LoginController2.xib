@@ -33,7 +33,7 @@
                         <constraint firstAttribute="width" constant="30" id="EvC-Ph-WJq"/>
                         <constraint firstAttribute="height" constant="22" id="ayy-B8-m7f"/>
                     </constraints>
-                    <state key="normal" title="&lt;"/>
+                    <state key="normal" image="back_login.png"/>
                     <connections>
                         <action selector="back:" destination="-1" eventType="touchUpInside" id="Qr1-8S-I3A"/>
                     </connections>
@@ -125,6 +125,7 @@
         </view>
     </objects>
     <resources>
+        <image name="back_login.png" width="10" height="11"/>
         <image name="login_bg.png" width="750" height="1334"/>
     </resources>
 </document>

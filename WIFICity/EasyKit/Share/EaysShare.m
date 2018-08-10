@@ -10,9 +10,9 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 
-static NSString *const ShareAPPText = @"一键获取你所想要的免费WIFI";
-static NSString *const ShareAPPUrl = @"http://www.hktchn.com";
-static NSString *const ShareAPPTitle = @"华宽通免费WifiAPP";
+static NSString *const ShareAPPText = @"一键获取你所想要的免费WiFi";
+static NSString *const ShareAPPUrl = @"https://itunes.apple.com/cn/app/%E5%9F%8E%E5%B8%82%E6%97%A0%E7%BA%BF/id1298467690?mt=8";
+static NSString *const ShareAPPTitle = @"华宽通免费WiFiAPP";
 static NSString *const ShareAPPImage = @"MobShrare";
 
 @implementation EaysShare

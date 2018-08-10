@@ -30,7 +30,7 @@ static NSString *const LoginWXUninstallError = @"您未安装微信，请先安�
 static NSString *const WIFIConnectToastWord = @"wifi已连接";
 static NSString *const MobThirdLoginAvartarKey = @"ThridLoginAvatarKey";
 
-static NSString *const WIPanoramaUrl = @"https://720yun.com/t/946jezwnuv5?scene_id=17042939&from=groupmessage";
+static NSString *const WIPanoramaUrl = @"https://720yun.com/t/78cjeOtwrw0?scene_id=17429214";
 
 typedef NS_ENUM(NSInteger,WINetStatus) {
     WINetWifi = 0,
