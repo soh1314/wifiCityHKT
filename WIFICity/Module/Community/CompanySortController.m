@@ -85,6 +85,9 @@
         if (response && response.success) {
             NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
             if (refresh) {
+                if (dataArray.count == 0) {
+                    [Dialog toast:@"暂未发现当前类型的企业"];
+                }
                 [self.dataArray removeAllObjects];
                 [self.dataArray addObjectsFromArray:dataArray];
             } else {
