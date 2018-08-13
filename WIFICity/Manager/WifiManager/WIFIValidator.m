@@ -76,7 +76,7 @@
     info.wfiiMac = [WifiUtil getWifiMac];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
     
-    info.expireTime = [[NSString unixTimeStamp]integerValue] + 10 * 60;
+    info.expireTime = [[NSString unixTimeStamp]integerValue] + 30 * 60;
     if (![self needValidator:info]) {
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         return;
@@ -101,14 +101,14 @@
             [routIP appendString:[NSString stringWithFormat:@"%@.",ipArray[i]]];
         }
     }
-    NSInteger expireTime = [[NSString unixTimeStamp]integerValue]+20*60;
+    NSInteger expireTime = [[NSString unixTimeStamp]integerValue]+30*60;
     NSString *expireStr = [NSString stringWithFormat:@"%ld",expireTime];
     NSLog(@"验证wifi过期时间%@",expireStr);
     NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routIP,expireStr];
     NSLog(@"认证url%@",validatorUrl);
-    [[CaptivePortalCheck sharedInstance]checkIsWifiNeedAuthPasswordWithComplection:^(BOOL needAuthPassword) {
-        NSLog(@"%d",needAuthPassword);
-    } needAlert:NO];
+//    [[CaptivePortalCheck sharedInstance]checkIsWifiNeedAuthPasswordWithComplection:^(BOOL needAuthPassword) {
+//        NSLog(@"%d",needAuthPassword);
+//    } needAlert:NO];
     [self inerValidateRequest:validatorUrl];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingStatus" object:nil];
 //    [self webValidateRequest:validatorUrl];

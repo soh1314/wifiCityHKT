@@ -54,5 +54,7 @@
 @property (nonatomic,copy)NSString *wxName;
 @property (nonatomic,copy)NSString *qqName;
 @property (nonatomic,copy)NSString *untieType;
+@property (nonatomic,copy)NSString *wxIcon;
+@property (nonatomic,copy)NSString *qqIcon;
 
 @end

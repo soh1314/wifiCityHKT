@@ -12,7 +12,7 @@
 #import "BlankViewController.h"
 #import "WifiGuideController.h"
 #import "WIPopView.h"
-
+#import "AppDelegate.h"
 @implementation NavManager
 
 + (BOOL)firstEnterApp {
@@ -45,6 +45,9 @@
 
 + (void)setWindowRootController:(UIViewController *)context {
     [UIApplication sharedApplication].delegate.window.rootViewController = context;
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.tabBarController = context;
+    
 }
 
 + (void)pushWebViewControllerWithUrlString:(NSString *)pTag title:(NSString *)title controller:(UIViewController *)context {

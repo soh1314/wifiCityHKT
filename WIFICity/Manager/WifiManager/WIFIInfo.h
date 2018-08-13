@@ -18,5 +18,6 @@
 @property (nonatomic,copy)NSString *signalStrength;
 @property (nonatomic,copy)NSString *orgId;
 @property (nonatomic,copy)NSString *endTime;
+@property (nonatomic,copy)NSString *hktMac;
 
 @end

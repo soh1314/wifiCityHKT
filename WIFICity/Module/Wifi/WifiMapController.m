@@ -155,8 +155,7 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
     if (self.status < 3) {
         return;
     }
-   [_locService stopUserLocationService];
-   [_locService startUserLocationService];
+    [self reLocation];
 }
 
 - (void)getNearWifi:(NSArray *)wifiArray {
@@ -214,6 +213,7 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 - (void)reLocation {
     if (self.userLocation) {
         [self.mapView updateLocationData:self.userLocation];
+        _mapView.centerCoordinate = self.userLocation.location.coordinate;
     }
 }
 
@@ -225,7 +225,7 @@ static NSString *const WIFIPositionAPI = @"http://www.hktfi.com/index.php/Api/ap
 
 - (void)didFailToLocateUserWithError:(NSError *)error
 {
-    NSLog(@"location error");
+    NSLog(@"%@",error.localizedDescription);
 }
 
 #pragma mark - 大头针代理

@@ -64,6 +64,23 @@
 
 - (void)wifiValidateSuccess:(NSNotification *)noti {
     [self loadHomeData];
+    
+}
+
+- (void)getAreaUserInfo {
+    WIFIInfo *info  = [WIFISevice shared].wifiInfo;
+    
+    NSString *mac = info.hktMac;
+    if (!mac) {
+        return;
+    }
+    NSString *url = [NSString stringWithFormat:@"%@%@",@"http://www.hktfi.com/index.php/api/ap/getOnlineNum/mac/",mac];
+    [MHNetworkManager getRequstWithURL:url params:nil                          successBlock:^(NSDictionary *returnData) {
+                              NSInteger totalUser = [[returnData objectForKey:@"total"]integerValue];
+                              self.panel.bottomView.districtUserNumLabel.text = [NSString stringWithFormat:@"%ld",totalUser+1];
+                          } failureBlock:^(NSError *error) {
+                              
+                          } showHUD:NO];
 }
 
 - (void)orgIDChange:(NSNotification *)noti {
@@ -141,6 +158,7 @@
     [self requestLbtData];
     [self requestHomeNews];
     [self requestServiceData];
+    [self getAreaUserInfo];
 }
 
 - (void)requestLbtData {

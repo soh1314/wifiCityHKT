@@ -30,6 +30,7 @@
 @property (nonatomic,copy)NSArray *UserCenterItemTitleArray;
 @property (nonatomic,copy)NSArray *UserCenterItemImageNameArray;
 @property (nonatomic,strong)WXWaveView *waveView;
+@property (nonatomic,strong)UserInfoView *infoView;
 @end
 
 @implementation MyController
@@ -52,6 +53,7 @@
        self.UserCenterItemTitleArray = @[@"绑定手机号",@"绑定账号",@"推荐给好友",@"服务协议",@"关于我们",@"退出登录"];
     }
     [self.tableView reloadData];
+    [self updateUserInfo];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -59,28 +61,37 @@
 //    [self.waveView stop];
 }
 
-- (void)initUI {
-    UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, KSCREENW/2.2f)];
-
-    infoView.backgroundColor = [UIColor themeColor];
+- (void)updateUserInfo {
     if ([[AccountManager shared].user.type isEqualToString:@"sj"]) {
-        infoView.avartar .image = [UIImage qsImageNamed:@"avatars_default.png"];
+        if ([AccountManager shared].user.qqIcon && ![[AccountManager shared].user.qqIcon isEqualToString:@""]) {
+            [self.infoView.avartar sd_setImageWithURL:[NSURL URLWithString:[AccountManager shared].user.qqIcon] placeholderImage:[UIImage qsImageNamed:@"avatars_default.png"]];
+        } else {
+            if ([AccountManager shared].user.wxIcon) {
+                [self.infoView.avartar sd_setImageWithURL:[NSURL URLWithString:[AccountManager shared].user.wxIcon] placeholderImage:[UIImage qsImageNamed:@"avatars_default.png"]];
+            }
+        }
     } else {
         NSString *avatarString = [EasyCacheHelper getResponseCacheForKey:MobThirdLoginAvartarKey];
-        [infoView.avartar sd_setImageWithURL:[NSURL URLWithString:avatarString] placeholderImage:[UIImage qsImageNamed:@"head"]];
+        [self.infoView.avartar sd_setImageWithURL:[NSURL URLWithString:avatarString] placeholderImage:[UIImage qsImageNamed:@"head"]];
     }
     
-
     if ([[AccountManager shared].user.type isEqualToString:@"wx"]) {
-        [infoView.nickNameLabel setText:[AccountManager shared].user.wxName];
+        
+        [self.infoView.nickNameLabel setText:[AccountManager shared].user.nickname];
     }
     if ([[AccountManager shared].user.type isEqualToString:@"qq"]) {
-        [infoView.nickNameLabel setText:[AccountManager shared].user.qqName];
+        [self.infoView.nickNameLabel setText:[AccountManager shared].user.nickname];
     }
     if ([[AccountManager shared].user.type isEqualToString:@"sj"]) {
-        [infoView.nickNameLabel setText:[AccountManager shared].user.nickname];
+        [self.infoView.nickNameLabel setText:[AccountManager shared].user.nickname];
     }
-    
+
+}
+
+- (void)initUI {
+    UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, KSCREENW/2.2f)];
+    self.infoView = infoView;
+    infoView.backgroundColor = [UIColor themeColor];
     ParallaxHeaderView *headerView = [ParallaxHeaderView parallaxHeaderViewWithSubView:infoView];
     [self.view addSubview:self.tableView];
     self.tableView.frame = self.view.bounds;
