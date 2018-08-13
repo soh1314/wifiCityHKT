@@ -22,6 +22,8 @@
 #import "EasePageController.h"
 #import "HomeServicePageController.h"
 #import "WebViewController.h"
+#import "WifiMapController.h"
+#import "AppDelegate.h"
 
 #define FindUserFLowAPI @"/ws/third/findBandByUserId.do"
 #define LbtInfoAPI  @"/ws/wifi/findLbtByOrgId.do"
@@ -250,10 +252,13 @@
                 [wself.navigationController pushViewController:ctrl animated:YES];
             }
             if ([data.mark hasPrefix:@"module"] && [data.pathUrl isEqualToString:@"wifiMapController"]) {
-
+                WifiMapController *mapCtrl = [WifiMapController new];
+                [wself.navigationController pushViewController:mapCtrl animated:YES];
             }
             if ([data.mark hasPrefix:@"module"] && [data.pathUrl isEqualToString:@"enterpriseController"]) {
-                
+                AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                UITabBarController *tabCtrl = delegate.tabBarController;
+                [tabCtrl setSelectedIndex:2];
             }
 
         };
