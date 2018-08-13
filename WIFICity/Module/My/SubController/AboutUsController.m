@@ -9,7 +9,8 @@
 #import "AboutUsController.h"
 #import "UserCenterItemCell.h"
 #import "TableViewCellHeader.h"
-
+#import "WebViewController.h"
+#import "WIUtil.h"
 @interface AboutUsController ()
 
 @property (nonatomic,strong)EaseTableView *tableView;
@@ -50,7 +51,7 @@
 - (void)loadData {
     self.cellHeaderTitleArray = @[@"官方网站",@"业务交流",@"联系方式"];
     self.cellImageArray = @[@[@"link"],@[@"apply",@"wireless city"],@[@"email"]];
-    self.cellContentArray = @[@[@"公司网站： http://www.hkttech.cn"],@[@"移动应用定制：18603062926",@"无线WiFi接入：18603062926"],@[@"tech@hktchn.com"]];
+    self.cellContentArray = @[@[@"公司网站： http://www.hkttech.cn"],@[@"移动应用定制：18603062966",@"无线WiFi接入：18603062966"],@[@"tech@hktchn.com"]];
 }
 
 #pragma mark - tableview delegate
@@ -80,6 +81,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0) {
+        WebViewController *ctrl = [WebViewController new];
+        ctrl.URLString = @"http://www.hkttech.cn";
+        [self.myNavigationController pushViewController:ctrl animated:YES];
+    }
+    
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        [WIUtil callPhone:@"18603062966"];
+    }
+    if (indexPath.section == 1 && indexPath.row == 1) {
+        [WIUtil callPhone:@"18603062966"];
+    }
     
 }
 
@@ -111,6 +124,7 @@
         _tableView.backgroundColor = [UIColor themeTableEdgeColor];
         _tableView.tableFooterView = [[UIView alloc]init];
         _tableView.estimatedRowHeight = 200;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
 }

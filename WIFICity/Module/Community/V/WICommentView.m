@@ -57,6 +57,11 @@
     if ([self.commentTextView.text isEqualToString:@""] || !self.commentTextView.text) {
         return;
     }
+    NSString *string = [self.commentTextView.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (!string || [string isEqualToString:@""]) {
+        [Dialog toastCenter:@"输入文字不能全是空格"];
+        return;
+    }
     if (self.commentTextView.text) {
         NSString *commitTextEncode = [self.commentTextView.text stringByReplacingEmojiUnicodeWithCheatCodes];
         NSString *commitText = [self.commentTextView.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -66,7 +71,7 @@
         }
         if (self.delegate && [self.delegate respondsToSelector:@selector(commentCompany:comment:complete:)]) {
             WIComment *comment = [WIComment new];
-            comment.dis_content = [commitTextEncode copy];
+            comment.dis_content = [commitText copy];
             [self.delegate commentCompany:self.info comment:comment complete:^(WINetResponse *response) {
                 wself.dismissBlock();
             }];

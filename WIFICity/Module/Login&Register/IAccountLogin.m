@@ -205,6 +205,7 @@
         }
         
     } failureBlock:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         kHudNetError;
     } showHUD:NO];
 }

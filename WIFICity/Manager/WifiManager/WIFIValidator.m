@@ -108,7 +108,7 @@
     NSLog(@"认证url%@",validatorUrl);
     [[CaptivePortalCheck sharedInstance]checkIsWifiNeedAuthPasswordWithComplection:^(BOOL needAuthPassword) {
         NSLog(@"%d",needAuthPassword);
-    } needAlert:YES];
+    } needAlert:NO];
     [self inerValidateRequest:validatorUrl];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingStatus" object:nil];
 //    [self webValidateRequest:validatorUrl];

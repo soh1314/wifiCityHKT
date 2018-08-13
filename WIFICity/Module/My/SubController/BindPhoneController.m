@@ -75,7 +75,9 @@
         [Dialog toastCenter:@"输入手机号为空"];
         return;
     }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.accountLogin requestBindPhoneVerifyCode:user complete:^(WINetResponse *response) {
+        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         if (response.success) {
             [Dialog toastCenter:@"验证码已发送"];
             self.code = response.intObj;
@@ -126,12 +128,12 @@
     }
     [self.accountLogin bindPhone:user complete:^(WINetResponse *response) {
         if (response.success) {
-//            [AccountManager shared].user.phone = [user.phone copy];
-//            [[AccountManager shared]saveUserInfo:[AccountManager shared].user];
-//            [self.navigationController popViewControllerAnimated:YES];
-//            [Dialog toastCenter:response.msg];
-            [AccountManager logout];
-            [Dialog toastCenter:@"解绑成功,请重新登录"];
+            [AccountManager shared].user.phone = [user.phone copy];
+            [[AccountManager shared]saveUserInfo:[AccountManager shared].user];
+            [self.navigationController popViewControllerAnimated:YES];
+            [Dialog toastCenter:response.msg];
+//            [AccountManager logout];
+//            [Dialog toastCenter:@"解绑成功,请重新登录"];
             
         } else {
             [Dialog toastCenter:response.msg];

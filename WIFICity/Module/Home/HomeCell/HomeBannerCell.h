@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "HomeLbtResponse.h"
 #import "SDCycleScrollView.h"
-
+typedef void(^itemPick)(NSInteger idx);
 @interface HomeBannerCell : UITableViewCell<SDCycleScrollViewDelegate>
 
 @property (nonatomic,copy)NSArray *imageUrlArray;
 @property (nonatomic,strong)SDCycleScrollView *coursal;
-
+@property (nonatomic, copy) itemPick pick;
 - (void)setCoursalImageDataArray:(NSArray *)dataArray;
 
 @end

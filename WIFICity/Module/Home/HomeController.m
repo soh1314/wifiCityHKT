@@ -241,6 +241,22 @@
     else if (indexPath.section == 1) {
         HomeBannerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeBannerCellID" forIndexPath:indexPath];
         [cell setCoursalImageDataArray:[self.lbtArray copy]];
+        weakself;
+        cell.pick = ^(NSInteger idx) {
+            HomeLbtResponse *data = self.lbtArray[idx];
+            WebViewController *ctrl = [WebViewController new];
+            if (data.pathUrl && ![data.pathUrl isEqualToString:@"<null>"] && [data.mark hasPrefix:@"http"]) {
+                ctrl.URLString = [data.pathUrl copy];
+                [wself.navigationController pushViewController:ctrl animated:YES];
+            }
+            if ([data.mark hasPrefix:@"module"] && [data.pathUrl isEqualToString:@"wifiMapController"]) {
+
+            }
+            if ([data.mark hasPrefix:@"module"] && [data.pathUrl isEqualToString:@"enterpriseController"]) {
+                
+            }
+
+        };
         return cell;
     }
     else {

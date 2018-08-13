@@ -48,7 +48,9 @@
 #pragma mark - cycleScroll delegate
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
-    
+    if (self.pick) {
+        self.pick(index);
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

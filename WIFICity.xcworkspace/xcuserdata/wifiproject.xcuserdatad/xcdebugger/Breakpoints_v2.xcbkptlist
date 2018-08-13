@@ -144,24 +144,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WIFICity/Module/Home/HomeController.m"
-            timestampString = "555577224.857969"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "-requestHomeNews"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WIFICity/Module/Community/CompanyDetailController.m"
-            timestampString = "555586729.206753"
+            timestampString = "555828251.381156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -176,28 +160,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WIFICity/Module/Community/V/WICommentView.m"
-            timestampString = "555415360.924861"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "-commit:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WIFICity/Module/My/SubController/BindPhoneController.m"
-            timestampString = "555586729.206843"
+            timestampString = "555828251.381228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "-bindBtn:"
             landmarkType = "7">
          </BreakpointContent>
@@ -209,7 +177,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WIFICity/Module/My/SubController/BindAccountController.m"
-            timestampString = "555586729.206897"
+            timestampString = "555828251.381292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
@@ -221,48 +189,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WIFICity/Module/Login&amp;Register/IAccountLogin.m"
-            timestampString = "555586729.206942"
+            filePath = "WIFICity/Module/Community/CompanyDetailController.m"
+            timestampString = "555828251.381341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "-WIThirdBind:complete:"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-loadCompanyDetailData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WIFICity/Common/Category/NSString+Additions.m"
-            timestampString = "555586729.206987"
+            filePath = "WIFICity/Module/Home/HomeController.m"
+            timestampString = "555828251.381387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
-            landmarkName = "+numberSuitScanf:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WIFICity/Common/Category/NSString+Additions.m"
-            timestampString = "555586729.207028"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
-            landmarkName = "+numberSuitScanf:"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-requestLbtData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -62,7 +62,7 @@
                 [Dialog toastCenter:@"绑定成功"];
                 self.qqLabel.text = [NSString stringWithFormat:@"QQ号 (%@)",[AccountManager shared].user.qqName];
             } else {
-                [Dialog toastCenter:@"绑定失败"];
+                [Dialog toastCenter:response.msg];
                 self.bindQQSwitch.on = NO;
             }
         }];
@@ -107,7 +107,7 @@
                 self.wxLabel.text = [NSString stringWithFormat:@"微信号 (%@)",[AccountManager shared].user.wxName];
                 [Dialog toastCenter:@"绑定成功"];
             } else {
-                [Dialog toastCenter:@"绑定失败"];
+                [Dialog toastCenter:response.msg];
                 self.bindWxSwitch.on = NO;
             }
         }];
