@@ -27,22 +27,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tiaozhuan.png" translatesAutoresizingMaskIntoConstraints="NO" id="eas-J3-gpT">
+                        <rect key="frame" x="360" y="34.5" width="8" height="16"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="FuG-yu-NcJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1qd-qW-8HN"/>
                     <constraint firstItem="FuG-yu-NcJ" firstAttribute="leading" secondItem="LFJ-gL-Jvr" secondAttribute="trailing" constant="12" id="AdQ-Jl-nS1"/>
+                    <constraint firstItem="eas-J3-gpT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KOj-fP-eTZ"/>
                     <constraint firstItem="LFJ-gL-Jvr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="O5c-6J-l2h"/>
                     <constraint firstItem="LFJ-gL-Jvr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="oMu-IQ-kKN"/>
+                    <constraint firstAttribute="trailing" secondItem="eas-J3-gpT" secondAttribute="trailing" constant="16" id="wrk-nT-d8G"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="itemIcon" destination="LFJ-gL-Jvr" id="QUc-ro-buH"/>
                 <outlet property="itemLabel" destination="FuG-yu-NcJ" id="brb-qJ-szZ"/>
             </connections>
-            <point key="canvasLocation" x="-84" y="94.5"/>
+            <point key="canvasLocation" x="-194" y="84.5"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="deal.png" width="22" height="25"/>
+        <image name="tiaozhuan.png" width="8" height="16"/>
     </resources>
 </document>

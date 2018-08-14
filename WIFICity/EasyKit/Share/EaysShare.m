@@ -10,7 +10,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 
-static NSString *const ShareAPPText = @"长沙地区公益性免费WiFi上网工具，安全可靠，公安认证";
+static NSString *const ShareAPPText = @"长沙地区公益性免费WiFi上网工具,安全可靠,公安认证,高新区抢先试用,等你来";
 static NSString *const ShareAPPUrl = @"http://www.hktfi.com/UI/Api/default/Login_index$3001.html";
 static NSString *const ShareAPPTitle = @"极速免费WiFi上网！";
 static NSString *const ShareAPPImage = @"MobShrare";

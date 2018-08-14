@@ -115,9 +115,17 @@
         }];
     }
     
-    if (news.is_hot) {
+    if (news.is_hot || news.information_type == 3001) {
         self.tagView.hidden = NO;
-        self.tagView.text = @"热点";
+        if (news.is_hot) {
+            self.tagView.text = @"热点";
+            self.tagView.layer.borderColor = [UIColor colorWithHexString:@"#F9595B"].CGColor;
+            self.tagView.textColor = [UIColor colorWithHexString:@"#F9595B"];
+        } else {
+            self.tagView.text = @"广告";
+            self.tagView.textColor = [UIColor themeColor];
+            self.tagView.layer.borderColor = [UIColor themeColor].CGColor;
+        }
         [self.tagView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(25.0f);
         }];

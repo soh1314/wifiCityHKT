@@ -39,18 +39,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    self.UserCenterItemTitleArray = @[@"系统消息",@"推荐给好友",@"关于我们",@"服务协议",@"设备管理",@"退出登录"];
-    self.UserCenterItemImageNameArray = @[@"phone_bind",@"binding",@"share",@"deal",@"about",@"quit"];
+    self.UserCenterItemTitleArray = @[@"系统消息",@"推荐给好友",@"关于我们",@"服务协议",@"设备管理",@"检查更新",@"退出登录"];
+    self.UserCenterItemImageNameArray = @[@"phone_bind",@"binding",@"updates",@"share",@"deal",@"about",@"quit"];
     // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //    [self.waveView wave];
+    NSString *version = [NSString stringWithFormat:@"当前版本 %@",[WIUtil appVersion]];
+    
     if ([self phoneBinded]) {
-       self.UserCenterItemTitleArray = @[@"更换手机号",@"绑定账号",@"推荐给好友",@"服务协议",@"关于我们",@"退出登录"];
+       self.UserCenterItemTitleArray = @[@"更换手机号",@"绑定账号",version,@"推荐给好友",@"服务协议",@"关于我们",@"退出登录"];
     } else {
-       self.UserCenterItemTitleArray = @[@"绑定手机号",@"绑定账号",@"推荐给好友",@"服务协议",@"关于我们",@"退出登录"];
+       self.UserCenterItemTitleArray = @[@"绑定手机号",@"绑定账号",version,@"推荐给好友",@"服务协议",@"关于我们",@"退出登录"];
     }
     [self.tableView reloadData];
     [self updateUserInfo];
@@ -164,26 +166,36 @@
         BindAccountController *ctrl = [BindAccountController new];
         [self.navigationController pushViewController:ctrl animated:YES];
     }
-    
-    if (indexPath.row == 2) {
+    if ( indexPath.row == 2) {
+        [MHNetworkManager getRequstWithURL:@"http://192.168.1.103:8080/wificity/ws/version/findVersionByappname.do?appname=smartwifi" params:nil successBlock:^(NSDictionary *returnData) {
+            NSDictionary *attr = [returnData objectForKey:@"attributes"];
+            NSString *version = [attr objectForKey:@"versionname"];
+            [Dialog simpleToast:[NSString stringWithFormat:@"最新版本 %@",version]];
+        } failureBlock:^(NSError *error) {
+            
+        } showHUD:NO];
+        //        [AccountManager logout];
+    }
+    if (indexPath.row == 3) {
         [EaysShare shareApp];
-
+        
         
     }
     
-    if (indexPath.row == 3) {
+    if (indexPath.row == 4) {
         HKTProtocolController *hktProtocolCtrl = [HKTProtocolController new];
         [self.navigationController pushViewController:hktProtocolCtrl animated:YES];
         
     }
     
-    if ( indexPath.row == 4) {
+    if ( indexPath.row == 5) {
         AboutUsController *usCtrl = [AboutUsController new];
         [self.navigationController pushViewController:usCtrl animated:YES];
 //        DeviceInfoController *deviceInfoCtrl = [DeviceInfoController new];
 //        [self.navigationController pushViewController:deviceInfoCtrl animated:YES];
     }
-    if ( indexPath.row == 5) {
+
+    if ( indexPath.row == 6) {
         [AccountManager logout];
     }
     

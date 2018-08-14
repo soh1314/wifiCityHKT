@@ -141,6 +141,12 @@
 		1662C605211D947600A2A100 /* avatars_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C602211D947500A2A100 /* avatars_default@2x.png */; };
 		1662C606211D947600A2A100 /* avatars_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C603211D947600A2A100 /* avatars_default.png */; };
 		1662C607211D947600A2A100 /* avatars_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C604211D947600A2A100 /* avatars_default@3x.png */; };
+		1662C60B2122A73600A2A100 /* updates@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C6082122A73500A2A100 /* updates@2x.png */; };
+		1662C60C2122A73600A2A100 /* updates@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C6092122A73600A2A100 /* updates@3x.png */; };
+		1662C60D2122A73600A2A100 /* updates.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C60A2122A73600A2A100 /* updates.png */; };
+		1662C6112122AF6A00A2A100 /* tiaozhuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C60E2122AF6900A2A100 /* tiaozhuan@2x.png */; };
+		1662C6122122AF6A00A2A100 /* tiaozhuan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C60F2122AF6A00A2A100 /* tiaozhuan@3x.png */; };
+		1662C6132122AF6A00A2A100 /* tiaozhuan.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C6102122AF6A00A2A100 /* tiaozhuan.png */; };
 		166CA56C20F05C0600E4CBE3 /* CompanyHomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 166CA56B20F05C0600E4CBE3 /* CompanyHomeSearchBar.m */; };
 		166CA56E20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166CA56D20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib */; };
 		166CA57320F0644300E4CBE3 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA57020F0644300E4CBE3 /* back@2x.png */; };
@@ -850,6 +856,12 @@
 		1662C602211D947500A2A100 /* avatars_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatars_default@2x.png"; sourceTree = "<group>"; };
 		1662C603211D947600A2A100 /* avatars_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatars_default.png; sourceTree = "<group>"; };
 		1662C604211D947600A2A100 /* avatars_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatars_default@3x.png"; sourceTree = "<group>"; };
+		1662C6082122A73500A2A100 /* updates@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "updates@2x.png"; sourceTree = "<group>"; };
+		1662C6092122A73600A2A100 /* updates@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "updates@3x.png"; sourceTree = "<group>"; };
+		1662C60A2122A73600A2A100 /* updates.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = updates.png; sourceTree = "<group>"; };
+		1662C60E2122AF6900A2A100 /* tiaozhuan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiaozhuan@2x.png"; sourceTree = "<group>"; };
+		1662C60F2122AF6A00A2A100 /* tiaozhuan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiaozhuan@3x.png"; sourceTree = "<group>"; };
+		1662C6102122AF6A00A2A100 /* tiaozhuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiaozhuan.png; sourceTree = "<group>"; };
 		166CA56A20F05C0600E4CBE3 /* CompanyHomeSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanyHomeSearchBar.h; sourceTree = "<group>"; };
 		166CA56B20F05C0600E4CBE3 /* CompanyHomeSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanyHomeSearchBar.m; sourceTree = "<group>"; };
 		166CA56D20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyHomeSearchBar.xib; sourceTree = "<group>"; };
@@ -1973,6 +1985,12 @@
 		1691DD7720EC6FC2008AF2BE /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				1662C6102122AF6A00A2A100 /* tiaozhuan.png */,
+				1662C60E2122AF6900A2A100 /* tiaozhuan@2x.png */,
+				1662C60F2122AF6A00A2A100 /* tiaozhuan@3x.png */,
+				1662C60A2122A73600A2A100 /* updates.png */,
+				1662C6082122A73500A2A100 /* updates@2x.png */,
+				1662C6092122A73600A2A100 /* updates@3x.png */,
 				1662C603211D947600A2A100 /* avatars_default.png */,
 				1662C602211D947500A2A100 /* avatars_default@2x.png */,
 				1662C604211D947600A2A100 /* avatars_default@3x.png */,
@@ -3539,6 +3557,7 @@
 				16F76FA220EDCB1F00950127 /* manufacturing.png in Resources */,
 				16CDD0412106B53B00DA619F /* CompanyDetailRecruitCell.xib in Resources */,
 				16F888102102D5F800136C7F /* HomeNewsTwoCell.xib in Resources */,
+				1662C60D2122A73600A2A100 /* updates.png in Resources */,
 				166CA58C20F33D9B00E4CBE3 /* WICompanyCategroyCell.xib in Resources */,
 				16CDD03B2106B02C00DA619F /* panorama_detail@2x.png in Resources */,
 				16D657A2211A804400711F08 /* NewsSearchNoneCell.xib in Resources */,
@@ -3685,6 +3704,8 @@
 				16F76FCD20EE063C00950127 /* CompanyRecommentHeader.xib in Resources */,
 				16F76F5F20EDCB1F00950127 /* collect@2x.png in Resources */,
 				16F76F8E20EDCB1F00950127 /* small_program@2x.png in Resources */,
+				1662C6132122AF6A00A2A100 /* tiaozhuan.png in Resources */,
+				1662C6112122AF6A00A2A100 /* tiaozhuan@2x.png in Resources */,
 				16CDD0A721084F7C00DA619F /* WifiListCell.xib in Resources */,
 				16F76F8420EDCB1F00950127 /* app@2x.png in Resources */,
 				169D8F0421086348006776D8 /* popup_box_location@3x.png in Resources */,
@@ -3746,6 +3767,7 @@
 				1656781D20D35AF700EC3D5C /* ShareSDK.bundle in Resources */,
 				1662C5F0211D28C800A2A100 /* about@3x.png in Resources */,
 				1691DDF320ECB485008AF2BE /* email@3x.png in Resources */,
+				1662C6122122AF6A00A2A100 /* tiaozhuan@3x.png in Resources */,
 				169D8F5321087650006776D8 /* detection.png in Resources */,
 				169D83CE20DC8C4A00AA590F /* HomeServiceCell.xib in Resources */,
 				16CDD0822108101F00DA619F /* step_two.png in Resources */,
@@ -3816,6 +3838,7 @@
 				16CDD0452106B6A300DA619F /* recruitment_default@2x.png in Resources */,
 				16CDD0392106B02C00DA619F /* panorama_default@3x.png in Resources */,
 				1691DDF220ECB485008AF2BE /* top_bg.png in Resources */,
+				1662C60B2122A73600A2A100 /* updates@2x.png in Resources */,
 				16F76F8520EDCB1F00950127 /* manufacturing@2x.png in Resources */,
 				1662C5F2211D28C800A2A100 /* deal.png in Resources */,
 				1691DDE720ECB485008AF2BE /* apply@3x.png in Resources */,
@@ -3887,6 +3910,7 @@
 				169D8F1621086349006776D8 /* top_wifi@3x.png in Resources */,
 				169D8F1721086349006776D8 /* hkt_wifi@3x.png in Resources */,
 				169D8F5221087650006776D8 /* detection_default@3x.png in Resources */,
+				1662C60C2122A73600A2A100 /* updates@3x.png in Resources */,
 				16D651B520D108B100ED74C8 /* wechat_login@3x.png in Resources */,
 				169D8EE621086222006776D8 /* speed_measurement@2x.png in Resources */,
 				169D8F2D21086D90006776D8 /* wifi_four@2x.png in Resources */,
