@@ -24,7 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setBlackNavBar];
-
+    if (self.hideNavBar) {
+        [self setWhiteTrasluntNavBar];
+    }
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"←" style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
   
     if(!self.URLString ){

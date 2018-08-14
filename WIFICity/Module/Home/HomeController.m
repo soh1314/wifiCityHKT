@@ -267,11 +267,14 @@
             WebViewController *ctrl = [WebViewController new];
             if (data.pathUrl && ![data.pathUrl isEqualToString:@"<null>"] && [data.mark hasPrefix:@"http"]) {
                 ctrl.URLString = [data.pathUrl copy];
-                [wself.navigationController pushViewController:ctrl animated:YES];
+                
             }
             if ([data.mark hasPrefix:@"module"] && [data.pathUrl isEqualToString:@"wifiMapController"]) {
-                WifiMapController *mapCtrl = [WifiMapController new];
-                [wself.navigationController pushViewController:mapCtrl animated:YES];
+                ctrl.URLString = @"http://wifi.hktfi.com/hktInformationDeliveryController.do?findById&id=8a2bf9ef6536207001653736f9d202d1";
+                ctrl.newsTitle = @"无线高新,即将到来";
+                [wself.navigationController pushViewController:ctrl animated:YES];
+//                WifiMapController *mapCtrl = [WifiMapController new];
+//                [wself.navigationController pushViewController:mapCtrl animated:YES];
             }
             if ([data.mark hasPrefix:@"module"] && [data.pathUrl isEqualToString:@"enterpriseController"]) {
                 AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

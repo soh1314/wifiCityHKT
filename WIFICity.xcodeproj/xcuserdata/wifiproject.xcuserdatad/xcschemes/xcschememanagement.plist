@@ -4,14 +4,24 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>WIFICity -NeiWang.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
 		<key>WIFICity.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>20</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1662C6142122B3C700A2A100</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>16C79BC920CE6B5E00A67DF6</key>
 		<dict>
 			<key>primary</key>

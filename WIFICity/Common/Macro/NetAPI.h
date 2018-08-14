@@ -7,9 +7,9 @@
 #ifndef NetAPI_h
 #define NetAPI_h
 #if NEIWANG
-#define	kUrlHost @"http://wifi.hktfi.com" //测试服务器
+#define	kUrlHost @"http://192.168.1.103:8080/wificity" //测试服务器
 #else
-#define kUrlHost  @"http://192.168.1.103:8080/wificity"  //阿里云服务器 @"http://wifi.hktfi.com"  http://192.168.1.103:8080/wificity http://192.168.1.103:8080/wificity
+#define kUrlHost  @"http://wifi.hktfi.com"  //阿里云服务器 @"http://wifi.hktfi.com"  http://192.168.1.103:8080/wificity http://192.168.1.103:8080/wificity
 #endif
 #define minetype @"application/json"
 

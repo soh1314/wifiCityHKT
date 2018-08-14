@@ -167,7 +167,7 @@
         [self.navigationController pushViewController:ctrl animated:YES];
     }
     if ( indexPath.row == 2) {
-        [MHNetworkManager getRequstWithURL:@"http://192.168.1.103:8080/wificity/ws/version/findVersionByappname.do?appname=smartwifi" params:nil successBlock:^(NSDictionary *returnData) {
+        [MHNetworkManager getRequstWithURL:@"http://wifi.hktfi.com/ws/version/findVersionByappname.do?appname=iosApp" params:nil successBlock:^(NSDictionary *returnData) {
             NSDictionary *attr = [returnData objectForKey:@"attributes"];
             NSString *version = [attr objectForKey:@"versionname"];
             [Dialog simpleToast:[NSString stringWithFormat:@"最新版本 %@",version]];

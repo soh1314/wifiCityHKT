@@ -27,7 +27,7 @@
 
 - (void)setInfo:(WIGeometryInfo *)info {
     _info = info;
-    self.wifiNameLabel.text = [NSString stringWithFormat:@"HKT%@",self.info.gw_id ];
+    self.wifiNameLabel.text = [NSString stringWithFormat:@"%@",self.info.routename ];
     if (self.location) {
         self.distanceLabel.text = [NSString stringWithFormat:@"距您%.fm",[self calulateDistance:info]];
     } else {

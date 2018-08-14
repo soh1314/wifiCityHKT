@@ -80,6 +80,7 @@
 
 + (void)pushParoWebViewController:(UIViewController *)context {
     WebViewController *webview = [[WebViewController alloc]init];
+//    webview.hideNavBar = YES;
     webview.URLString = WIPanoramaUrl;
     [context.navigationController pushViewController:webview animated:YES];
 }
