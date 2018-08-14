@@ -14,4 +14,6 @@
 
 + (void)openThirdMap:(NSString *)locationName viewcontroller:(UIViewController *)contex;
 
++ (NSString *)appVersion;
+
 @end

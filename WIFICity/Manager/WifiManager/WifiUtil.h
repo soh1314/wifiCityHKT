@@ -21,4 +21,6 @@
 + (WIFIFlow *)checkNetworkflow;
 + (NSString *)getLocalRoutIpForCurrentWiFi;
 + (void)registerNetwork:(NSString *)ssid;
+
+
 @end

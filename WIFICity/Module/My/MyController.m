@@ -23,7 +23,7 @@
 #import "BindAccountController.h"
 #import "HKTProtocolController.h"
 #import "WXWaveView.h"
-
+#import "WIUtil.h"
 @interface MyController ()<UITableViewDelegate,UIScrollViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)EaseTableView *tableView;
@@ -62,6 +62,7 @@
 }
 
 - (void)updateUserInfo {
+    
     if ([[AccountManager shared].user.type isEqualToString:@"sj"]) {
         if ([AccountManager shared].user.qqIcon && ![[AccountManager shared].user.qqIcon isEqualToString:@""]) {
             [self.infoView.avartar sd_setImageWithURL:[NSURL URLWithString:[AccountManager shared].user.qqIcon] placeholderImage:[UIImage qsImageNamed:@"avatars_default.png"]];
@@ -103,6 +104,15 @@
 //    self.waveView.waveSpeed = 5.f;
     self.tableView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"UserCenterItemCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"UserCenterItemCellID"];
+    
+    
+//    UILabel *versionLabel = [UILabel new];
+//    versionLabel.frame = CGRectMake(0, 0, KSCREENW, 60);
+//    versionLabel.text = [WIUtil appVersion];
+//    versionLabel.font = [UIFont systemFontOfSize:12];
+//    versionLabel.textColor = [UIColor lightGrayColor];
+//    versionLabel.textAlignment = NSTextAlignmentCenter;
+//    self.tableView.tableFooterView = versionLabel;
 }
 
 - (BOOL)phoneBinded {

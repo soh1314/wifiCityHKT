@@ -75,7 +75,7 @@
         [Dialog toastCenter:@"输入手机号为空"];
         return;
     }
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:KWINDOW animated:YES];
     [self.accountLogin requestBindPhoneVerifyCode:user complete:^(WINetResponse *response) {
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         if (response.success) {
