@@ -95,6 +95,7 @@ static NSInteger flowRequestNum = 0;
         
         NSLog(@"4.Finish");
         NEHotspotNetwork* network;
+        NSMutableArray *networkList = [NSMutableArray array];
         if ( cmd.commandType == kNEHotspotHelperCommandTypeFilterScanList ) {
             NSLog(@"-------华宽通wifi正在扫描------");
             for (network in cmd.networkList) {
@@ -141,8 +142,9 @@ static NSInteger flowRequestNum = 0;
                     [self.hktWifiArray addObject:info];
 //                    [network setConfidence: kNEHotspotHelperConfidenceHigh];
 //                    [network setPassword: @""];
+//                    [networkList addObject:network];
 //                    NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
-//                    [response setNetworkList: @[network]];
+//                    [response setNetworkList: [networkList copy]];
 //                    [response setNetwork: network];
 //                    [response deliver];
                 }
@@ -198,6 +200,7 @@ static NSInteger flowRequestNum = 0;
                 [[WIFIValidator shared]validator];
             }
             NSLog(@"%@", error.localizedDescription);
+
         }];
     }
 
@@ -239,9 +242,6 @@ static NSInteger flowRequestNum = 0;
 #pragma mark - 上传下载用户最新流量
 - (void)findUserFLow {
     NSDictionary *para = @{@"userId":[AccountManager shared].user.userId};
-    if (![WIFISevice isHKTWifi]) {
-        return;
-    }
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, FindUserFLowAPI) params:para successBlock:^(NSDictionary *returnData) {
         self.wifiCloudInfo = [[WIFICloudInfo alloc]initWithDictionary:[returnData objectForKey:@"obj"] error:nil];
         if (self.panelDelegate && [self.panelDelegate respondsToSelector:@selector(wifiPanelRefreshWifiInfo:)]) {

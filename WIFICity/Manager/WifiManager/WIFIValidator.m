@@ -71,12 +71,11 @@
 - (void)validator {
     
     [MBProgressHUD showHUDAddedTo:KWINDOW animated:YES];
-    [WIFISevice shared].validating = YES;
     WIFIValidateInfo *info = [WIFIValidateInfo new];
     info.wfiiMac = [WifiUtil getWifiMac];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
     
-    info.expireTime = [[NSString unixTimeStamp]integerValue] + 30 * 60;
+    info.expireTime = [[NSString unixTimeStamp]integerValue] + 5 * 60;
     if (![self needValidator:info] && !self.reconnect)  {
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         return;
@@ -102,7 +101,7 @@
             [routIP appendString:[NSString stringWithFormat:@"%@.",ipArray[i]]];
         }
     }
-    NSInteger expireTime = [[NSString unixTimeStamp]integerValue]+30*60;
+    NSInteger expireTime = [[NSString unixTimeStamp]integerValue]+5*60;
     NSString *expireStr = [NSString stringWithFormat:@"%ld",expireTime];
     NSLog(@"验证wifi过期时间%@",expireStr);
     NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routIP,expireStr];
@@ -140,7 +139,6 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-        [WIFISevice shared].validating = NO;
         if ([str containsString:@"go to internat ok!"]) {
             self.lastHktWifiMac = [WifiUtil getWifiMac];
             [[NSUserDefaults standardUserDefaults]setObject:self.lastHktWifiMac forKey:LASTHKTWIFIMACKEY];
@@ -156,7 +154,6 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"认证网络问题");
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
-        [WIFISevice shared].validating = NO;
         [self checkAppleConnect];
         [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingFinish" object:nil];

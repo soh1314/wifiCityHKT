@@ -68,6 +68,11 @@
             self.wifiNameLabel.text = [NSString stringWithFormat:@"WIFI: %@",wifiName];
         }
     }
+    if (![WIFISevice isHKTWifi]) {
+        self.bottomView.bandWidthLabel.text = @"10MB";
+        self.flowView.totalFlowLabel.text = @"";
+    }
+    
 }
 
 - (void)setLocation:(WILocation *)location {
