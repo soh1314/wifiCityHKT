@@ -146,20 +146,29 @@
             [[NSUserDefaults standardUserDefaults]setObject:self.lastHktWifiMac forKey:LASTHKTWIFIMACKEY];
             [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorSuccessNoti object:nil];
             [Dialog simpleToast:@"Wifi认证成功畅享网络"];
+
             NSLog(@"认证成功");
         } else {
             NSLog(@"认证失败");
         }
+        [self checkAppleConnect];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingFinish" object:nil];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"认证网络问题");
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         [WIFISevice shared].validating = NO;
+        [self checkAppleConnect];
         [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingFinish" object:nil];
        
     }];
    
+}
+
+- (void)checkAppleConnect {
+    [[CaptivePortalCheck sharedInstance]checkIsWifiNeedAuthPasswordWithComplection:^(BOOL needAuthPassword) {
+        NSLog(@"%d",needAuthPassword);
+    } needAlert:NO];
 }
 
 - (void)validatorWhenAppTerminate {
