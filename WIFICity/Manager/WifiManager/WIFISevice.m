@@ -161,6 +161,10 @@ static NSInteger flowRequestNum = 0;
 //               [WIFIPusher sendWIFINoti];
 //            });
             NSLog(@"-------华宽通wifi正在认证------");
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//               [[WIFIValidator shared]validator];
+//            });
+            
         } else {
             NSLog(@"-------华宽通wifi其他状态------");
         }
@@ -183,6 +187,7 @@ static NSInteger flowRequestNum = 0;
                 [MBProgressHUD hideAllHUDsForView:KWINDOW animated:NO];
                 if ([WIFISevice netStatus] == WINetFail) {
                     [Dialog simpleToast:@"正在帮你重新认证"];
+                    [WIFIValidator shared].reconnect = YES;
                     [[WIFIValidator shared]validator];
                 } else {
                     [Dialog simpleToast:@"当前wifi已连接"];
@@ -234,6 +239,9 @@ static NSInteger flowRequestNum = 0;
 #pragma mark - 上传下载用户最新流量
 - (void)findUserFLow {
     NSDictionary *para = @{@"userId":[AccountManager shared].user.userId};
+    if (![WIFISevice isHKTWifi]) {
+        return;
+    }
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, FindUserFLowAPI) params:para successBlock:^(NSDictionary *returnData) {
         self.wifiCloudInfo = [[WIFICloudInfo alloc]initWithDictionary:[returnData objectForKey:@"obj"] error:nil];
         if (self.panelDelegate && [self.panelDelegate respondsToSelector:@selector(wifiPanelRefreshWifiInfo:)]) {
@@ -252,6 +260,9 @@ static NSInteger flowRequestNum = 0;
 }
 
 - (void)saveUserFlow {
+    if (![WIFISevice isHKTWifi]) {
+        return;
+    }
     WIFIFlow *flow =  [WifiUtil checkNetworkflow];
     if (flowRequestNum == 0) {
         self.lastWifiSentFlow = [flow.wifiSent floatValue];

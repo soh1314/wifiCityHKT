@@ -71,13 +71,14 @@
     WIFIInfo *info  = [WIFISevice shared].wifiInfo;
     
     NSString *mac = info.hktMac;
-    if (!mac) {
+    if (!mac || ![WIFISevice isHKTWifi]) {
+        self.panel.bottomView.flowScoreLabel.text = @"0";
         return;
     }
     NSString *url = [NSString stringWithFormat:@"%@%@",@"http://www.hktfi.com/index.php/api/ap/getOnlineNum/mac/",mac];
     [MHNetworkManager getRequstWithURL:url params:nil                          successBlock:^(NSDictionary *returnData) {
                               NSInteger totalUser = [[returnData objectForKey:@"total"]integerValue];
-                              self.panel.bottomView.districtUserNumLabel.text = [NSString stringWithFormat:@"%ld",totalUser+1];
+                              self.panel.bottomView.flowScoreLabel.text = [NSString stringWithFormat:@"%ld",totalUser+1];
                           } failureBlock:^(NSError *error) {
                               
                           } showHUD:NO];
@@ -267,14 +268,12 @@
             WebViewController *ctrl = [WebViewController new];
             if (data.pathUrl && ![data.pathUrl isEqualToString:@"<null>"] && [data.mark hasPrefix:@"http"]) {
                 ctrl.URLString = [data.pathUrl copy];
-                
+                [wself.navigationController pushViewController:ctrl animated:YES];
             }
             if ([data.mark hasPrefix:@"module"] && [data.pathUrl isEqualToString:@"wifiMapController"]) {
                 ctrl.URLString = @"http://wifi.hktfi.com/hktInformationDeliveryController.do?findById&id=8a2bf9ef6536207001653736f9d202d1";
                 ctrl.newsTitle = @"无线高新,即将到来";
                 [wself.navigationController pushViewController:ctrl animated:YES];
-//                WifiMapController *mapCtrl = [WifiMapController new];
-//                [wself.navigationController pushViewController:mapCtrl animated:YES];
             }
             if ([data.mark hasPrefix:@"module"] && [data.pathUrl isEqualToString:@"enterpriseController"]) {
                 AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

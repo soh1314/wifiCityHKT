@@ -18,6 +18,7 @@
 
 - (void)initUI {
     self.itemLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+    self.valueLabel.textColor = [UIColor colorWithHexString:@"#666666"];
 }
 
 - (void)setUIStyle:(NSString *)className {

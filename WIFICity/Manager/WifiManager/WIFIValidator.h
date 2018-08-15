@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger,WIFIValidateStatus){
 
 @property (nonatomic,copy,readonly)NSString *lastHktWifiMac;
 @property (nonatomic,assign)WIFIValidateStatus validateStatus;
+@property (nonatomic,assign)BOOL reconnect;
 
 - (BOOL)needValidator:(WIFIValidateInfo *)info;
 - (void)validator;

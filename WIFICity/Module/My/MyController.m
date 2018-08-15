@@ -47,12 +47,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //    [self.waveView wave];
-    NSString *version = [NSString stringWithFormat:@"当前版本 %@",[WIUtil appVersion]];
+    
     
     if ([self phoneBinded]) {
-       self.UserCenterItemTitleArray = @[@"更换手机号",@"绑定账号",version,@"推荐给好友",@"服务协议",@"关于我们",@"退出登录"];
+       self.UserCenterItemTitleArray = @[@"更换手机号",@"绑定账号",@"当前版本",@"推荐给好友",@"服务协议",@"关于我们",@"退出登录"];
     } else {
-       self.UserCenterItemTitleArray = @[@"绑定手机号",@"绑定账号",version,@"推荐给好友",@"服务协议",@"关于我们",@"退出登录"];
+       self.UserCenterItemTitleArray = @[@"绑定手机号",@"绑定账号",@"当前版本",@"推荐给好友",@"服务协议",@"关于我们",@"退出登录"];
     }
     [self.tableView reloadData];
     [self updateUserInfo];
@@ -92,12 +92,12 @@
 }
 
 - (void)initUI {
-    UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, KSCREENW/2.2f)];
+    UserInfoView *infoView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, KSCREENW/2.0f)];
     self.infoView = infoView;
     infoView.backgroundColor = [UIColor themeColor];
     ParallaxHeaderView *headerView = [ParallaxHeaderView parallaxHeaderViewWithSubView:infoView];
     [self.view addSubview:self.tableView];
-    self.tableView.frame = self.view.bounds;
+    self.tableView.frame = CGRectMake(0, 0, KSCREENW, KSCREENH-KTabbarHeight);
     [self.tableView setTableHeaderView:headerView];
 //    self.waveView = [WXWaveView addToView:headerView withFrame:CGRectMake(0, CGRectGetHeight(headerView.frame) - 5, CGRectGetWidth(headerView.frame), 5)];
 //    self.waveView.waveColor = [UIColor whiteColor];
@@ -146,6 +146,11 @@
 //    NSArray *itemImageNameArray = self.UserCenterItemImageNameArray[indexPath.section];
     itemCell.itemLabel.text =  self.UserCenterItemTitleArray[indexPath.row];
     itemCell.itemIcon.image = [UIImage qsImageNamed:self.UserCenterItemImageNameArray[indexPath.row]];
+    if ([itemCell.itemLabel.text isEqualToString:@"当前版本"]) {
+        itemCell.valueLabel.text = [NSString stringWithFormat:@"%@",[WIUtil appVersion]];
+    } else {
+         itemCell.valueLabel.text = @"";
+    }
     return itemCell;
 }
 

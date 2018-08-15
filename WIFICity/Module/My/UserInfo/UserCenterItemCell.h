@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *itemIcon;
 @property (weak, nonatomic) IBOutlet UILabel *itemLabel;
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+
 
 - (void)setUIStyle:(NSString *)className;
 
