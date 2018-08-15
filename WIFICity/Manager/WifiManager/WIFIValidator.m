@@ -75,7 +75,7 @@
     info.wfiiMac = [WifiUtil getWifiMac];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
     
-    info.expireTime = [[NSString unixTimeStamp]integerValue] + 5 * 60;
+    info.expireTime = [[NSString unixTimeStamp]integerValue] + 30 * 60;
     if (![self needValidator:info] && !self.reconnect)  {
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         return;
@@ -101,7 +101,7 @@
             [routIP appendString:[NSString stringWithFormat:@"%@.",ipArray[i]]];
         }
     }
-    NSInteger expireTime = [[NSString unixTimeStamp]integerValue]+5*60;
+    NSInteger expireTime = [[NSString unixTimeStamp]integerValue]+30*60;
     NSString *expireStr = [NSString stringWithFormat:@"%ld",expireTime];
     NSLog(@"验证wifi过期时间%@",expireStr);
     NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routIP,expireStr];
