@@ -33,5 +33,6 @@
 - (void)stopWifi;
 - (void)scanWifiList;
 - (void)applicationConnectWifi:(WIFIInfo *)info;
+- (void)requestOrgId:(NSString *)mac;
 
 @end

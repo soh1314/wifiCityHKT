@@ -66,12 +66,11 @@
 - (void)updateUserInfo {
     
     if ([[AccountManager shared].user.type isEqualToString:@"sj"]) {
-        if ([AccountManager shared].user.qqIcon && ![[AccountManager shared].user.qqIcon isEqualToString:@""]) {
-            [self.infoView.avartar sd_setImageWithURL:[NSURL URLWithString:[AccountManager shared].user.qqIcon] placeholderImage:[UIImage qsImageNamed:@"avatars_default.png"]];
+        if ([AccountManager shared].user.wxIcon && ![[AccountManager shared].user.wxIcon isEqualToString:@""]) {
+            [self.infoView.avartar sd_setImageWithURL:[NSURL URLWithString:[AccountManager shared].user.wxIcon] placeholderImage:[UIImage qsImageNamed:@"avatars_default.png"]];
+
         } else {
-            if ([AccountManager shared].user.wxIcon) {
-                [self.infoView.avartar sd_setImageWithURL:[NSURL URLWithString:[AccountManager shared].user.wxIcon] placeholderImage:[UIImage qsImageNamed:@"avatars_default.png"]];
-            }
+           [self.infoView.avartar sd_setImageWithURL:[NSURL URLWithString:[AccountManager shared].user.qqIcon] placeholderImage:[UIImage qsImageNamed:@"avatars_default.png"]];
         }
     } else {
         NSString *avatarString = [EasyCacheHelper getResponseCacheForKey:MobThirdLoginAvartarKey];
@@ -148,6 +147,13 @@
     itemCell.itemIcon.image = [UIImage qsImageNamed:self.UserCenterItemImageNameArray[indexPath.row]];
     if ([itemCell.itemLabel.text isEqualToString:@"当前版本"]) {
         itemCell.valueLabel.text = [NSString stringWithFormat:@"%@",[WIUtil appVersion]];
+    } else if ([itemCell.itemLabel.text isEqualToString:@"更换手机号"] || [itemCell.itemLabel.text isEqualToString:@"绑定手机号"]) {
+        if ([AccountManager shared].user.phone) {
+            itemCell.valueLabel.text = [[AccountManager shared].user.phone copy];
+        } else {
+            itemCell.valueLabel.text = @"";
+        }
+        
     } else {
          itemCell.valueLabel.text = @"";
     }

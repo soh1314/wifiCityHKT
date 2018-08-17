@@ -18,7 +18,7 @@
 #import "EasyCacheHelper.h"
 
 static NSInteger flowRequestNum = 0;
-
+static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
 @interface WIFISevice()
 
 @property (nonatomic,assign)WINetStatus net_status;
@@ -100,7 +100,7 @@ static NSInteger flowRequestNum = 0;
             NSLog(@"-------华宽通wifi正在扫描------");
             for (network in cmd.networkList) {
                 NSString* wifiInfoString = [[NSString alloc] initWithFormat: @"---------------------------\nSSID: %@\nMac地址: %@\n信号强度: %f\nCommandType:%ld\n---------------------------\n\n", network.SSID, network.BSSID, network.signalStrength, (long)cmd.commandType];
-                NSLog(@"附近wifi信息%@", wifiInfoString);
+//                NSLog(@"附近wifi信息%@", wifiInfoString);
 
                 if (![network.BSSID  hasPrefix:HKTWIFIMACPREFIX]) {
                     BOOL otherwifiAdded = NO;
@@ -162,10 +162,15 @@ static NSInteger flowRequestNum = 0;
 //            dispatch_async(dispatch_get_main_queue(), ^{
 //               [WIFIPusher sendWIFINoti];
 //            });
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground || [UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
+                    [[WIFIValidator shared]validator];
+                }
+            });
+  
             NSLog(@"-------华宽通wifi正在认证------");
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//               [[WIFIValidator shared]validator];
-//            });
+
+//            [[WIFIValidator shared]validator];
             
         } else {
             NSLog(@"-------华宽通wifi其他状态------");
@@ -174,6 +179,27 @@ static NSInteger flowRequestNum = 0;
         
     }];
     NSLog(@"3.Result: %@", returnType == YES ? @"Yes" : @"No");
+}
+
+- (void)getOtTime {
+    NSDictionary *par = @{@"id":[WIFISevice shared].wifiInfo.orgId};
+    NSLog(@"网络超时参数%@",par);
+    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, FindOTByOrgId) params:par successBlock:^(NSDictionary *returnData) {
+        NSDictionary *atr = [returnData objectForKey:@"attributes"];
+        if (atr) {
+            NSInteger ot = [[atr objectForKey:@"endTime"]integerValue];
+            NSInteger otNum =  [[atr objectForKey:@"endTimeNumber"]integerValue];
+            if (ot > 0) {
+                [WIFISevice shared].wifiInfo.shijiancuo = ot;
+                [WIFISevice shared].wifiInfo.otNum = otNum;
+                [WIFIValidator shared].reconnect = YES;
+                [[WIFIValidator shared]validator];
+                [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%ld",otNum] forKey:LASTHKTWIFIORGIDOTTIMEKEY];
+            }
+        }
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:NO];
 }
 
 - (void)applicationConnectWifi:(WIFIInfo *)info {
@@ -215,6 +241,7 @@ static NSInteger flowRequestNum = 0;
             if (!self.validating && [WIFISevice netStatus] == WINetFail) {
                 [Dialog simpleToast:kNetError];
             }
+            [[WIFIValidator shared]validator];
 
         } else if ( status == AFNetworkReachabilityStatusReachableViaWWAN ) {
             self.net_status = WINet4G;
@@ -224,6 +251,7 @@ static NSInteger flowRequestNum = 0;
             self.net_status = WINetWifi;
             self.wifiInfo.sid = [WifiUtil getWifiName];
             self.wifiInfo.bsid = [WifiUtil getWifiMac];
+            [self requestOrgId:nil];
             if ([WIFISevice isHKTWifi] ) {
                 [[WIFIValidator shared]validator];
             }
@@ -285,33 +313,62 @@ static NSInteger flowRequestNum = 0;
 
 #pragma mark - 更新orgid
 - (void)requestOrgId:(NSString *)mac {
-    NSString *regular = [WifiUtil getRegularMac];
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, GetMacOrgId) params:@{@"mac":regular} successBlock:^(NSDictionary *returnData) {
-        NSString *msg = [returnData objectForKey:@"msg"];
-        NSLog(@"机构id获取:%@",msg);
-        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
-        if (response.success) {
-            NSString *orgId = [response.attributes objectForKey:@"orgId"];
-            if (orgId && ![orgId isEqualToString:self.wifiInfo.orgId]) {
-                if (orgId.length > 1) {
-                    [[NSUserDefaults standardUserDefaults]setObject:orgId forKey:LASTHKTWIFIORGIDKEY];
-                }
-                [[NSNotificationCenter defaultCenter]postNotificationName:WIOrgIDChangeNoti object:nil];
-                self.wifiInfo.orgId = [response.attributes objectForKey:@"orgId"];
-                self.wifiInfo.endTime = [response.attributes objectForKey:@"endTime"];
+//    NSString *regular = [WifiUtil getRegularMac];
+    
+//    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, GetMacOrgId) params:@{@"mac":regular} successBlock:^(NSDictionary *returnData) {
+//        NSString *msg = [returnData objectForKey:@"msg"];
+//        NSLog(@"机构id获取:%@",msg);
+//        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+//        if (response.success) {
+//            NSString *orgId = [response.attributes objectForKey:@"orgId"];
+//            if (orgId && ![orgId isEqualToString:self.wifiInfo.orgId]) {
+//                if (orgId.length > 1) {
+//                    [[NSUserDefaults standardUserDefaults]setObject:orgId forKey:LASTHKTWIFIORGIDKEY];
+//                }
+//                [[NSNotificationCenter defaultCenter]postNotificationName:WIOrgIDChangeNoti object:nil];
+//                self.wifiInfo.orgId = [response.attributes objectForKey:@"orgId"];
+//                self.wifiInfo.endTime = [response.attributes objectForKey:@"endTime"];
+//            }
+//
+//        }
+//    } failureBlock:^(NSError *error) {
+//
+//    } showHUD:NO];
+//    http://www.hktfi.com/index.php/Api/ap/getshopinfoBymac/mac/DC37D20CC38F
+    WIFIInfo *info  = [WIFISevice shared].wifiInfo;
+    info.bsid = [WifiUtil getWifiMac];
+    NSString *mac1 = info.hktMac;
+    if (!mac1 || [mac1 isEqualToString:@""] || ![WIFISevice isHKTWifi]) {
+        self.wifiInfo.orgId = defaultOrgId;
+        return;
+    }
+    [MHNetworkManager getRequstWithURL:[NSString stringWithFormat:@"http://www.hktfi.com/index.php/Api/ap/getshopinfoBymac/mac/%@",mac1] params:nil successBlock:^(NSDictionary *returnData) {
+        NSString *orgId = [returnData objectForKey:@"id"];
+        if (orgId && ![orgId isKindOfClass:[NSNull class]] && ![orgId isEqualToString:self.wifiInfo.orgId] ) {
+            if (orgId.length > 1) {
+                [[NSUserDefaults standardUserDefaults]setObject:orgId forKey:LASTHKTWIFIORGIDKEY];
             }
             
+            [WIFISevice shared].wifiInfo.orgId = defaultOrgId;
+            
+        } else {
+            self.wifiInfo.orgId = defaultOrgId;
         }
+        [self getOtTime];
+        [[NSNotificationCenter defaultCenter]postNotificationName:WIOrgIDChangeNoti object:nil];
+  
     } failureBlock:^(NSError *error) {
-        
+
     } showHUD:NO];
+    
+    
     
 }
 
 #pragma mark - notification
 
 - (void)validateSuccess:(NSNotification *)noti {
-    [self requestOrgId:[WifiUtil getWifiMac]];
+//    [self requestOrgId:[WifiUtil getWifiMac]];
 }
 
 - (void)validateFail:(NSNotification *)noti {
@@ -369,12 +426,10 @@ static NSInteger flowRequestNum = 0;
 #pragma mark - get
 + (WINetStatus)netStatus {
     if ( [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusUnknown || [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
-        NSLog(@"网络连接失败");
         return WINetFail;
     } else if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusReachableViaWWAN) {
         return WINet4G;
     } else {
-        NSLog(@"网络连接wifi");
         return WINetWifi;
     }
     

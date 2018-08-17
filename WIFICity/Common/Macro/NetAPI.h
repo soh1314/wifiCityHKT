@@ -28,6 +28,7 @@ static NSString *const SaveUserFlowAPI = @"/ws/third/saveFlow.do";
 static NSString *const FindUserFLowAPI = @"/ws/third/findBandByUserId.do";
 static NSString *const BindUserAPI = @"/ws/user/bingUser.do";
 static NSString *const BindUserVerifyCodeAPI = @"/ws/user/bingPhone.do";
+static NSString *const FindOTByOrgId = @"/ws/wifi/findOrgById.do";
 
 #define kNetError @"网络正忙请检查手机网络"
 #define kNetErrorCode 404

@@ -142,7 +142,8 @@
     
     NSString *url = self.imageGroupArray[indexPath.row];
     if ([url hasPrefix:@"http:"]) {
-        NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *url1 = [url stringByReplacingOccurrencesOfString:@"./" withString:@""];
+        NSString *urlEncode = [url1 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [colCell.HomeNewsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
     } else {
         NSString *urlEncode = [NSString stringWithFormat:@"%@/%@",kUrlHost,url];

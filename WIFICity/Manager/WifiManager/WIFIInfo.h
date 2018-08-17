@@ -19,5 +19,7 @@
 @property (nonatomic,copy)NSString *orgId;
 @property (nonatomic,copy)NSString *endTime;
 @property (nonatomic,copy)NSString *hktMac;
-
+@property (nonatomic,assign) NSInteger otNum;
+@property (nonatomic,assign)NSInteger shijiancuo;
+@property (nonatomic,assign)BOOL validated;
 @end

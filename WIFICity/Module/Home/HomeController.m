@@ -24,7 +24,7 @@
 #import "WebViewController.h"
 #import "WifiMapController.h"
 #import "AppDelegate.h"
-
+#import "WIFIValidator.h"
 #define FindUserFLowAPI @"/ws/third/findBandByUserId.do"
 #define LbtInfoAPI  @"/ws/wifi/findLbtByOrgId.do"
 #define HomeThirdAPI @"/ws/third/findAllThirdIcon.do"
@@ -78,7 +78,7 @@
     NSString *url = [NSString stringWithFormat:@"%@%@",@"http://www.hktfi.com/index.php/api/ap/getOnlineNum/mac/",mac];
     [MHNetworkManager getRequstWithURL:url params:nil                          successBlock:^(NSDictionary *returnData) {
                               NSInteger totalUser = [[returnData objectForKey:@"total"]integerValue];
-                              self.panel.bottomView.flowScoreLabel.text = [NSString stringWithFormat:@"%ld",totalUser+1];
+                              self.panel.bottomView.flowScoreLabel.text = [NSString stringWithFormat:@"%ld",totalUser];
                           } failureBlock:^(NSError *error) {
                               
                           } showHUD:NO];
@@ -160,7 +160,10 @@
     [self requestHomeNews];
     [self requestServiceData];
     [self getAreaUserInfo];
+
 }
+
+
 
 - (void)requestLbtData {
     NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};

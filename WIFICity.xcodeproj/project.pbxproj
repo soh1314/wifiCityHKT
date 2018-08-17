@@ -791,6 +791,7 @@
 		1662C89E2122B3C700A2A100 /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F76F0520EDCB1E00950127 /* search@3x.png */; };
 		1662C8A72122D44C00A2A100 /* phone_bind@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C8A52122D44B00A2A100 /* phone_bind@3x.png */; };
 		1662C8A82122D44C00A2A100 /* phone_bind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1662C8A62122D44B00A2A100 /* phone_bind@2x.png */; };
+		1662C8AD2126598E00A2A100 /* getgateway.c in Sources */ = {isa = PBXBuildFile; fileRef = 1662C8AC2126598E00A2A100 /* getgateway.c */; };
 		166CA56C20F05C0600E4CBE3 /* CompanyHomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 166CA56B20F05C0600E4CBE3 /* CompanyHomeSearchBar.m */; };
 		166CA56E20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166CA56D20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib */; };
 		166CA57320F0644300E4CBE3 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166CA57020F0644300E4CBE3 /* back@2x.png */; };
@@ -1508,6 +1509,9 @@
 		1662C8A42122B3C800A2A100 /* WIFICity copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "WIFICity copy-Info.plist"; path = "/Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity copy-Info.plist"; sourceTree = "<absolute>"; };
 		1662C8A52122D44B00A2A100 /* phone_bind@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_bind@3x.png"; sourceTree = "<group>"; };
 		1662C8A62122D44B00A2A100 /* phone_bind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_bind@2x.png"; sourceTree = "<group>"; };
+		1662C8AA2126598E00A2A100 /* route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
+		1662C8AB2126598E00A2A100 /* getgateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getgateway.h; sourceTree = "<group>"; };
+		1662C8AC2126598E00A2A100 /* getgateway.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = getgateway.c; sourceTree = "<group>"; };
 		166CA56A20F05C0600E4CBE3 /* CompanyHomeSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanyHomeSearchBar.h; sourceTree = "<group>"; };
 		166CA56B20F05C0600E4CBE3 /* CompanyHomeSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanyHomeSearchBar.m; sourceTree = "<group>"; };
 		166CA56D20F05C1700E4CBE3 /* CompanyHomeSearchBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyHomeSearchBar.xib; sourceTree = "<group>"; };
@@ -2615,6 +2619,16 @@
 			path = EaseAnimation/WXWaveView;
 			sourceTree = "<group>";
 		};
+		1662C8A92126598E00A2A100 /* RouteAddress */ = {
+			isa = PBXGroup;
+			children = (
+				1662C8AA2126598E00A2A100 /* route.h */,
+				1662C8AB2126598E00A2A100 /* getgateway.h */,
+				1662C8AC2126598E00A2A100 /* getgateway.c */,
+			);
+			path = RouteAddress;
+			sourceTree = "<group>";
+		};
 		166CA56F20F0644300E4CBE3 /* 导航栏 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3698,6 +3712,7 @@
 		16D64C2220D0AAB800ED74C8 /* WifiManager */ = {
 			isa = PBXGroup;
 			children = (
+				1662C8A92126598E00A2A100 /* RouteAddress */,
 				1662C5C3211D19B800A2A100 /* CaptivePortalCheck.h */,
 				1662C5C4211D19B800A2A100 /* CaptivePortalCheck.m */,
 				169D8F4621087538006776D8 /* WIFIInfo.h */,
@@ -5517,6 +5532,7 @@
 				169D83E120DC8CFD00AA590F /* UIView+SDExtension.m in Sources */,
 				16D64BD920CF9FCE00ED74C8 /* WMMenuView.m in Sources */,
 				16CDD04B2106C3EB00DA619F /* CompanyDetailCommentCell.m in Sources */,
+				1662C8AD2126598E00A2A100 /* getgateway.c in Sources */,
 				16D64B7A20CF7CE800ED74C8 /* NSString+Additions.m in Sources */,
 				1691DDC420ECA03F008AF2BE /* DeviceInfoController.m in Sources */,
 				16D64BDC20CF9FCE00ED74C8 /* SVRadialGradientLayer.m in Sources */,

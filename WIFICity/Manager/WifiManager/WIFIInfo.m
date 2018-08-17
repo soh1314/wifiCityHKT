@@ -28,7 +28,7 @@
             [macString appendString:str3];
         } else {
             if (str.length == 1) {
-                NSString *str1 = [NSString stringWithFormat:@"%@",str];
+                NSString *str1 = [NSString stringWithFormat:@"0%@",str];
                 [macString appendString:str1];
             } else {
                 [macString appendString:str];
@@ -36,7 +36,7 @@
         }
 
     }
-    _hktMac = [macString lowercaseString];
+    _hktMac = [macString uppercaseString];
     return _hktMac;
 }
 

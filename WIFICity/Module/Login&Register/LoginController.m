@@ -95,20 +95,17 @@
         return;
     }
     __weak typeof(self)welf = self;
-    if ([AccountManager shared].verifyCodeSecond <= 0) {
-        [self.loginer requestVerifyCode:[self inputUser] complete:^(WINetResponse *response) {
-            if (response.success) {
-                [[AccountManager shared]countDown:nil];
-                [self.phoneTtf resignFirstResponder];
-                [welf pushToLogin2Controller];
-            } else {
-                [Dialog simpleToast:response.msg];
-            }
-        }];
-    } else {
-        [self.phoneTtf resignFirstResponder];
-        [self pushToLogin2Controller];
-    }
+
+    [self.loginer requestVerifyCode:[self inputUser] complete:^(WINetResponse *response) {
+        if (response.success) {
+            [[AccountManager shared]countDown:nil];
+            [self.phoneTtf resignFirstResponder];
+            [welf pushToLogin2Controller];
+        } else {
+            [Dialog simpleToast:response.msg];
+        }
+    }];
+
 }
 
 - (void)pushToLogin2Controller {

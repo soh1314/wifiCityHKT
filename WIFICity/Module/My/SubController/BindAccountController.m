@@ -68,26 +68,27 @@
         }];
 
     } else {
-
-        WIUser *user = [WIUser new];
-        user.userId = [[AccountManager shared].user.userId copy];
-        user.untieType = @"qq";
-        [self.dispatch WIThirdUnBind:user complete:^(WINetResponse *response) {
-            if (response && response.success) {
-                [SDKConfig cancleQQLoginAuthorize];
-                WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
-                NSString *loginType = [[AccountManager shared].user.type copy];
-                user.type = [loginType copy];
-                [[AccountManager shared]saveUserInfo:user];
-                [AccountManager shared].user = user;
-                self.qqLabel.text = @"QQ号";
-                [Dialog toastCenter:@"解绑成功"];
-                
-            } else {
-                [Dialog toastCenter:@"解绑失败"];
-                self.bindQQSwitch.on = YES;
-            }
-        }];
+        [Dialog toastCenter:@"暂时不能解绑"];
+        self.bindQQSwitch.on = YES;
+//        WIUser *user = [WIUser new];
+//        user.userId = [[AccountManager shared].user.userId copy];
+//        user.untieType = @"qq";
+//        [self.dispatch WIThirdUnBind:user complete:^(WINetResponse *response) {
+//            if (response && response.success) {
+//                [SDKConfig cancleQQLoginAuthorize];
+//                WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
+//                NSString *loginType = [[AccountManager shared].user.type copy];
+//                user.type = [loginType copy];
+//                [[AccountManager shared]saveUserInfo:user];
+//                [AccountManager shared].user = user;
+//                self.qqLabel.text = @"QQ号";
+//                [Dialog toastCenter:@"解绑成功"];
+//
+//            } else {
+//                [Dialog toastCenter:@"解绑失败"];
+//                self.bindQQSwitch.on = YES;
+//            }
+//        }];
         
     }
 
@@ -112,25 +113,27 @@
             }
         }];
     } else {
-        WIUser *user = [WIUser new];
-        user.userId = [[AccountManager shared].user.userId copy];
-        user.untieType = @"wx";
-        [self.dispatch WIThirdUnBind:user complete:^(WINetResponse *response) {
-            if (response && response.success) {
-                [SDKConfig cancleWXLoginAuthorize];
-                WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
-                NSString *loginType = [[AccountManager shared].user.type copy];
-                user.type = [loginType copy];
-                [[AccountManager shared]saveUserInfo:user];
-                [AccountManager shared].user = user;
-                self.wxLabel.text = @"微信号";
-                [Dialog toastCenter:@"解绑成功"];
-
-            } else {
-                [Dialog toastCenter:@"解绑失败"];
-                self.bindWxSwitch.on = YES;
-            }
-        }];
+         [Dialog toastCenter:@"暂时不能解绑"];
+        self.bindWxSwitch.on = YES;
+//        WIUser *user = [WIUser new];
+//        user.userId = [[AccountManager shared].user.userId copy];
+//        user.untieType = @"wx";
+//        [self.dispatch WIThirdUnBind:user complete:^(WINetResponse *response) {
+//            if (response && response.success) {
+//                [SDKConfig cancleWXLoginAuthorize];
+//                WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
+//                NSString *loginType = [[AccountManager shared].user.type copy];
+//                user.type = [loginType copy];
+//                [[AccountManager shared]saveUserInfo:user];
+//                [AccountManager shared].user = user;
+//                self.wxLabel.text = @"微信号";
+//                [Dialog toastCenter:@"解绑成功"];
+//
+//            } else {
+//                [Dialog toastCenter:@"解绑失败"];
+//                self.bindWxSwitch.on = YES;
+//            }
+//        }];
     }
 
 }
