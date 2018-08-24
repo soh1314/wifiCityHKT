@@ -89,11 +89,7 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
     NSMutableDictionary* options = [[NSMutableDictionary alloc] init];
     [options setObject:@"华宽通无线城市😄wifi" forKey: kNEHotspotHelperOptionDisplayName];
     dispatch_queue_t queue = dispatch_queue_create("WIHKTWIFISEARCHQUEUE", NULL);
-    
-    NSLog(@"2.Try");
     BOOL returnType = [NEHotspotHelper registerWithOptions: options queue: queue handler: ^(NEHotspotHelperCommand * cmd) {
-        
-        NSLog(@"4.Finish");
         NEHotspotNetwork* network;
         NSMutableArray *networkList = [NSMutableArray array];
         if ( cmd.commandType == kNEHotspotHelperCommandTypeFilterScanList ) {
@@ -101,7 +97,6 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
             for (network in cmd.networkList) {
                 NSString* wifiInfoString = [[NSString alloc] initWithFormat: @"---------------------------\nSSID: %@\nMac地址: %@\n信号强度: %f\nCommandType:%ld\n---------------------------\n\n", network.SSID, network.BSSID, network.signalStrength, (long)cmd.commandType];
 //                NSLog(@"附近wifi信息%@", wifiInfoString);
-
                 if (![network.BSSID  hasPrefix:HKTWIFIMACPREFIX]) {
                     BOOL otherwifiAdded = NO;
                     for (int i = 0; i < self.otherWifiArray.count;i++) {
@@ -159,18 +154,8 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
             
            
         } else if (cmd.commandType == 2) {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//               [WIFIPusher sendWIFINoti];
-//            });
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground || [UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
-                    [[WIFIValidator shared]validator];
-                }
-            });
-  
-            NSLog(@"-------华宽通wifi正在认证------");
 
-//            [[WIFIValidator shared]validator];
+            NSLog(@"-------华宽通wifi正在认证------");
             
         } else {
             NSLog(@"-------华宽通wifi其他状态------");
@@ -181,8 +166,8 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
     NSLog(@"3.Result: %@", returnType == YES ? @"Yes" : @"No");
 }
 
-- (void)getOtTime {
-    NSDictionary *par = @{@"id":[WIFISevice shared].wifiInfo.orgId};
+- (void)getOtTime:(NSString *)orgid {
+    NSDictionary *par = @{@"id":orgid};
     NSLog(@"网络超时参数%@",par);
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, FindOTByOrgId) params:par successBlock:^(NSDictionary *returnData) {
         NSDictionary *atr = [returnData objectForKey:@"attributes"];
@@ -207,12 +192,11 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
         NEHotspotConfiguration * hotspotConfig = [[NEHotspotConfiguration alloc] initWithSSID:info.sid];
         [Dialog progressToast:@"正在准备切换网络"];
         [[NEHotspotConfigurationManager sharedManager] applyConfiguration:hotspotConfig completionHandler:^(NSError * _Nullable error) {
+            [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
             if (error.code == 7) {
-                [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
                 return ;
             }
             if (error.code == 13) {
-                [MBProgressHUD hideAllHUDsForView:KWINDOW animated:NO];
                 if ([WIFISevice netStatus] == WINetFail) {
                     [Dialog simpleToast:@"正在帮你重新认证"];
                     [WIFIValidator shared].reconnect = YES;
@@ -222,7 +206,6 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
                 }
                 
             } else {
-                [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
                 [[WIFIValidator shared]validator];
             }
             NSLog(@"%@", error.localizedDescription);
@@ -241,7 +224,7 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
             if (!self.validating && [WIFISevice netStatus] == WINetFail) {
                 [Dialog simpleToast:kNetError];
             }
-            [[WIFIValidator shared]validator];
+//            [[WIFIValidator shared]validator];
 
         } else if ( status == AFNetworkReachabilityStatusReachableViaWWAN ) {
             self.net_status = WINet4G;
@@ -313,28 +296,6 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
 
 #pragma mark - 更新orgid
 - (void)requestOrgId:(NSString *)mac {
-//    NSString *regular = [WifiUtil getRegularMac];
-    
-//    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, GetMacOrgId) params:@{@"mac":regular} successBlock:^(NSDictionary *returnData) {
-//        NSString *msg = [returnData objectForKey:@"msg"];
-//        NSLog(@"机构id获取:%@",msg);
-//        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
-//        if (response.success) {
-//            NSString *orgId = [response.attributes objectForKey:@"orgId"];
-//            if (orgId && ![orgId isEqualToString:self.wifiInfo.orgId]) {
-//                if (orgId.length > 1) {
-//                    [[NSUserDefaults standardUserDefaults]setObject:orgId forKey:LASTHKTWIFIORGIDKEY];
-//                }
-//                [[NSNotificationCenter defaultCenter]postNotificationName:WIOrgIDChangeNoti object:nil];
-//                self.wifiInfo.orgId = [response.attributes objectForKey:@"orgId"];
-//                self.wifiInfo.endTime = [response.attributes objectForKey:@"endTime"];
-//            }
-//
-//        }
-//    } failureBlock:^(NSError *error) {
-//
-//    } showHUD:NO];
-//    http://www.hktfi.com/index.php/Api/ap/getshopinfoBymac/mac/DC37D20CC38F
     WIFIInfo *info  = [WIFISevice shared].wifiInfo;
     info.bsid = [WifiUtil getWifiMac];
     NSString *mac1 = info.hktMac;
@@ -354,14 +315,16 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
         } else {
             self.wifiInfo.orgId = defaultOrgId;
         }
-        [self getOtTime];
+        if (orgId && ![orgId isKindOfClass:[NSNull class]]) {
+            [self getOtTime:orgId];
+        } else {
+            [self getOtTime:self.wifiInfo.orgId];
+        }
         [[NSNotificationCenter defaultCenter]postNotificationName:WIOrgIDChangeNoti object:nil];
   
     } failureBlock:^(NSError *error) {
 
     } showHUD:NO];
-    
-    
     
 }
 
@@ -373,17 +336,13 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
 
 - (void)validateFail:(NSNotification *)noti {
 
-
 }
 
 - (void)wiApplicationWillEnterForeground:(NSNotification *)noti {
     NSString *wifiMac = [WifiUtil getWifiMac];
     self.wifiInfo.sid = [WifiUtil getWifiName];
     self.wifiInfo.bsid = [wifiMac copy];
-    if (wifiMac && [WIFISevice isHKTWifi]) {
-        [[WIFIValidator shared]validator];
-    }
-
+    [[WIFIValidator shared]validator];
     if (self.panelDelegate && [self.panelDelegate respondsToSelector:@selector(handleWhenNetChange:wifiInfo:)]) {
         [self.panelDelegate handleWhenNetChange:[WIFISevice netStatus] wifiInfo:self.wifiCloudInfo];
     }

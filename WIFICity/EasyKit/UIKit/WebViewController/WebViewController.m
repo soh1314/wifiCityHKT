@@ -86,7 +86,20 @@
 }
 
 -(void)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.webView && [self.webView canGoBack]) {
+        [self.webView goBack];
+    } else {
+       [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+}
+
+- (void)popAction {
+    if (self.webView && [self.webView canGoBack]) {
+        [self.webView goBack];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated

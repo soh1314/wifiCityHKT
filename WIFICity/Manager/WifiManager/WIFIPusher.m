@@ -9,6 +9,9 @@
 #import "WIFIPusher.h"
 #import "NSString+Additions.h"
 #import "WebViewController.h"
+
+static NSInteger otTime;
+
 @implementation WIFIPusher
 
 + (void)requestAuthor
@@ -33,14 +36,26 @@
 }
 
 + (void)sendWIFINoti {
+    NSString *otNumStr = [[NSUserDefaults standardUserDefaults]objectForKey:LASTHKTWIFIORGIDOTTIMEKEY];
+    NSInteger otNum ;
+    if (otNumStr) {
+        otNum = [otNumStr integerValue];
+    } else {
+        otNum = 30;
+    }
+    NSInteger nowtime = [[NSString unixTimeStamp]integerValue];
+    if (nowtime - otTime < 800) {
+        otTime = nowtime;
+        return;
+    }
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     // 2.设置通知的必选参数
     // 设置通知显示的内容
-    localNotification.alertBody = @"华宽通wifi已经帮你验证";
+    localNotification.alertBody = @"华宽通WiFi提醒您的WiFi时间即将过期,请重新登录app认证";
     // 设置通知的发送时间,单位秒
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:otNum*59];
     //解锁滑动时的事件
-    localNotification.alertAction = @"您的wifi发生了变化!";
+    localNotification.alertAction = @"您的WiFi时间即将过期,请重新登录app认证";
     //收到通知时App icon的角标
     localNotification.applicationIconBadgeNumber = 1;
     //推送是带的声音提醒，设置默认的字段为UILocalNotificationDefaultSoundName

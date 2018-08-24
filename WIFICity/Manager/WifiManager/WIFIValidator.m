@@ -15,6 +15,10 @@
 #import "WITabBarController.h"
 #import "AppDelegate.h"
 #import "CaptivePortalCheck.h"
+#import <WebKit/WebKit.h>
+#import "WIFIPusher.h"
+#import "EasyAllertUtil.h"
+static NSInteger defaultOt = 30 * 60;
 @interface WIFIValidator()
 
 @property (nonatomic,readwrite,copy)NSString *lastHktWifiMac;
@@ -22,6 +26,7 @@
 @property (nonatomic,assign)NSInteger validateTime;
 @property (nonatomic,strong)NSLock *lock;
 @property (nonatomic,strong)WIFIValidateInfo *wifi;
+@property (nonatomic,strong)WKWebView *webview;
 
 @end
 
@@ -51,8 +56,8 @@
     for ( int i = 0; i < self.validatArray.count; i++) {
         WIFIValidateInfo *m_info = self.validatArray[i];
         if ([m_info.routIp isEqualToString:info.routIp] && [m_info.wfiiMac isEqualToString:info.wfiiMac]) {
-            float timestr = [[NSString unixTimeStamp]floatValue];
-            if (timestr > m_info.expireTime ) {
+             NSInteger timestr = [[NSString unixTimeStamp]integerValue];
+            if (timestr > m_info.expireTime - 300) {
                 needValidator = YES;
                 [self.validatArray removeObject:m_info];
                 [self.validatArray addObject:info];
@@ -75,6 +80,10 @@
     info.wfiiMac = [WifiUtil getWifiMac];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
     self.wifi = info;
+    if (![WIFISevice isHKTWifi]) {
+        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
+        return;
+    }
     NSLog(@"当前wifi mac 地址 %@",[WIFISevice shared].wifiInfo.bsid);
     NSString *otNumStr = [[NSUserDefaults standardUserDefaults]objectForKey:LASTHKTWIFIORGIDOTTIMEKEY];
     NSInteger otNum;
@@ -84,7 +93,7 @@
     if (otNum > 0) {
          info.expireTime = [[NSString unixTimeStamp]integerValue] + otNum * 60;
     } else {
-         info.expireTime = [[NSString unixTimeStamp]integerValue] + 30 * 60;
+         info.expireTime = [[NSString unixTimeStamp]integerValue] + defaultOt;
     }
    
     if (![self needValidator:info] && !self.reconnect )  {
@@ -104,24 +113,44 @@
     if (otNum > 0) {
         expireTime = [[NSString unixTimeStamp]integerValue]+otNum*60;
     } else {
-        expireTime = [[NSString unixTimeStamp]integerValue]+30*60;
+        expireTime = [[NSString unixTimeStamp]integerValue]+defaultOt*60;
     }
     
     NSString *expireStr = [NSString stringWithFormat:@"%ld",expireTime];
-    NSLog(@"验证wifi过期时间%@",expireStr);
+//    if (![routerIp contains:@"192"] ) {
+        routerIp = @"192.168.99.254";
+//    }
     NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routerIp,expireStr];
-    if (![validatorUrl contains:@"192"]) {
-        return;
-    }
+
     NSLog(@"认证url%@",validatorUrl);
-//    [[CaptivePortalCheck sharedInstance]checkIsWifiNeedAuthPasswordWithComplection:^(BOOL needAuthPassword) {
-//        NSLog(@"%d",needAuthPassword);
-//    } needAlert:NO];
-    [self inerValidateRequest:validatorUrl];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingStatus" object:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([WIFISevice netStatus] == WINetWifi) {
+            sleep(1);
+            [self inerValidateRequest:validatorUrl];
+        }
+    });
+    
+//    [self loadwebview:validatorUrl];
 //    [self webValidateRequest:validatorUrl];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingStatus" object:nil];
     
 }
+
+- (void)loadwebview:(NSString *)urlstr {
+    WKWebView *webview = [WKWebView new];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstr]];
+    webview.frame = CGRectZero;
+    self.webview = webview;
+     [webview loadRequest:request];
+    webview.navigationDelegate = self;
+
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    decisionHandler(WKNavigationActionPolicyAllow);
+    NSLog(@"%@",navigationAction.request.URL);
+}
+
 
 - (void)webValidateRequest:(NSString *)url {
     WebViewController *viewController = [WebViewController new];
@@ -152,14 +181,22 @@
             [[NSUserDefaults standardUserDefaults]setObject:self.lastHktWifiMac forKey:LASTHKTWIFIMACKEY];
             [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorSuccessNoti object:nil];
 //            [Dialog simpleToast:@"Wifi认证成功畅享网络"];
+//            [WIFIPusher sendWIFINoti];
             NSLog(@"认证成功");
+            [Dialog simpleToast:@"认证成功"];
         } else {
+            [Dialog simpleToast:@"认证失败"];
             NSLog(@"认证失败");
         }
-        [self checkAppleConnect];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingFinish" object:nil];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"认证网络问题");
+        [EasyAllertUtil presentAlertViewWithTitle:@"华宽通WiFi" message:@"当前网络繁忙认证失败,是否重新认证" cancelTitle:@"取消" defaultTitle:@"确定" distinct:YES cancel:^{
+            
+        } confirm:^{
+            [self validator];
+        }];
+        [Dialog simpleToast:@"认证失败"];
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingFinish" object:nil];

@@ -179,11 +179,11 @@
 - (void)requestHomeNews {
     NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, WIFIHomeNewsAPI) params:para successBlock:^(NSDictionary *returnData) {
+        [self.tableView.mj_header endRefreshing];
         NSArray *newsArray = [HomeNews arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         [self.dataArray removeAllObjects];
         [self.dataArray addObjectsFromArray:newsArray];
         [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
     } failureBlock:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
         kHudNetError;
