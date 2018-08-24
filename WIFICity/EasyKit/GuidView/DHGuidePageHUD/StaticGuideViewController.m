@@ -8,6 +8,7 @@
 
 #import "StaticGuideViewController.h"
 #import "DHGuidePageHUD.h"
+#import "WIFIValidator.h"
 @interface StaticGuideViewController ()
 
 @end
@@ -16,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[WIFIValidator shared]validator];
     // Do any additional setup after loading the view.
     [self setStaticGuidePage];
     self.view.backgroundColor = [UIColor whiteColor];

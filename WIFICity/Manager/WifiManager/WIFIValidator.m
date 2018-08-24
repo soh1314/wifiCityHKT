@@ -81,8 +81,8 @@ static NSInteger defaultOt = 30 * 60;
     info.wfiiMac = [WifiUtil getWifiMac];
     info.routIp = [WifiUtil getLocalIPAddressForCurrentWiFi];
     self.wifi = info;
-    if (![WIFISevice isHKTWifi]) {
-        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
+    if (![WIFISevice isHKTWifi] && !self.reconnect) {
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
         return;
     }
     NSLog(@"当前wifi mac 地址 %@",[WIFISevice shared].wifiInfo.bsid);
@@ -98,7 +98,7 @@ static NSInteger defaultOt = 30 * 60;
     }
    
     if (![self needValidator:info] && !self.reconnect && [WIFISevice shared].wifiInfo.validated)  {
-        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
         return;
     }
     self.reconnect = NO;
@@ -118,17 +118,13 @@ static NSInteger defaultOt = 30 * 60;
     }
     
     NSString *expireStr = [NSString stringWithFormat:@"%ld",expireTime];
-//    if (![routerIp contains:@"192"] ) {
         routerIp = @"192.168.99.254";
-//    }
-    NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routerIp,expireStr];
+//    routerIp = [WifiUtil routerIp];
 
+    NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@",routerIp,expireStr];
     NSLog(@"认证url%@",validatorUrl);
     dispatch_async(dispatch_get_main_queue(), ^{
-        if ([WIFISevice netStatus] == WINetWifi) {
-            sleep(1);
-            [self inerValidateRequest:validatorUrl];
-        }
+        [self inerValidateRequest:validatorUrl];
     });
     
 //    [self loadwebview:validatorUrl];
@@ -171,10 +167,14 @@ static NSInteger defaultOt = 30 * 60;
     [policy setAllowInvalidCertificates:YES];
     manager.securityPolicy = policy;
     NSString *url = [validatorUrl copy];
+    if (![url contains:@"192"]) {
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+        return;
+    }
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
         NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
         if ([str containsString:@"go to internat ok!"] ) {
             self.lastHktWifiMac = [WifiUtil getWifiMac];
@@ -190,7 +190,7 @@ static NSInteger defaultOt = 30 * 60;
             }
             [Dialog simpleToast:@"认证成功"];
         } else {
-            [Dialog simpleToast:@"认证失败"];
+//            [Dialog simpleToast:@"认证失败"];
             NSLog(@"认证失败");
         }
         
@@ -206,8 +206,7 @@ static NSInteger defaultOt = 30 * 60;
         }];
         self.allertCtrl = allert;
         
-        [Dialog simpleToast:@"认证失败"];
-        [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingFinish" object:nil];
     }];

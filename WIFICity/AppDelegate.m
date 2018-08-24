@@ -14,6 +14,7 @@
 #import "WIFIPusher.h"
 #import "NSString+Additions.h"
 #import "WebViewController.h"
+#import "WIFIValidator.h"
 @interface AppDelegate ()
 
 @end
