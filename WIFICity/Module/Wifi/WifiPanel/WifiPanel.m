@@ -9,7 +9,7 @@
 #import "WifiPanel.h"
 #import "NavManager.h"
 #import "UIViewController+EasyUtil.h"
-
+#import "WIFIValidator.h"
 @interface WifiPanel()
 
 @property (nonatomic,assign)WINetStatus status;
@@ -62,11 +62,20 @@
         [self.connectWifiBtn setTitle:@"无线连接" forState:UIControlStateNormal];
         self.wifiNameLabel.text = @"";
     } else {
-        [self.connectWifiBtn setTitle:@"已连接" forState:UIControlStateNormal];
-        NSString *wifiName = [WifiUtil getWifiName];
-        if (wifiName) {
-            self.wifiNameLabel.text = [NSString stringWithFormat:@"WIFI: %@",wifiName];
+        if (([WIFISevice shared].wifiInfo &&[WIFISevice shared].wifiInfo.validated) || ![WIFISevice isHKTWifi]) {
+            [self.connectWifiBtn setTitle:@"已连接" forState:UIControlStateNormal];
+            NSString *wifiName = [WifiUtil getWifiName];
+            if (wifiName) {
+                self.wifiNameLabel.text = [NSString stringWithFormat:@"WIFI: %@",wifiName];
+            }
+        } else {
+            [self.connectWifiBtn setTitle:@"认证" forState:UIControlStateNormal];
+            NSString *wifiName = [WifiUtil getWifiName];
+            if (wifiName) {
+                self.wifiNameLabel.text = [NSString stringWithFormat:@"WIFI: %@",wifiName];
+            }
         }
+
     }
     if (![WIFISevice isHKTWifi]) {
         self.bottomView.bandWidthLabel.text = @"10MB";
@@ -115,7 +124,13 @@
 
 - (IBAction)connectWifi:(id)sender {
     if (self.status == WINetFail || self.status == WINet4G ) {
-        [NavManager showWifiGuideController:[UIViewController getCurrentVCWithCurrentView:self] ];
+        if ([self.connectWifiBtn.titleLabel.text isEqualToString:@"认证"]) {
+            [WIFIValidator shared].reconnect = YES;
+            [[WIFIValidator shared]validator];
+        } else {
+            [NavManager showWifiGuideController:[UIViewController getCurrentVCWithCurrentView:self] ];
+
+        }
     } else {
         [Dialog simpleToast:WIFIConnectToastWord];
     }

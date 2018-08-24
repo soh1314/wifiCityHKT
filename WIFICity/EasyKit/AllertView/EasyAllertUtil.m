@@ -28,7 +28,7 @@
 }
 
 /** 双按键的 alertView */
-+ (void)presentAlertViewWithTitle:(NSString *)title message:(NSString *)message cancelTitle:(NSString *)cancelTitle defaultTitle:(NSString *)defaultTitle distinct:(BOOL)distinct cancel:(void(^)())cancel confirm:(void(^)())confirm {
++ (UIAlertController *)presentAlertViewWithTitle:(NSString *)title message:(NSString *)message cancelTitle:(NSString *)cancelTitle defaultTitle:(NSString *)defaultTitle distinct:(BOOL)distinct cancel:(void(^)())cancel confirm:(void(^)())confirm {
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
@@ -47,6 +47,7 @@
             }
         }];
         [alert addAction:cancelAction];
+        return alert;
     }
     
     
@@ -59,7 +60,8 @@
     [alert addAction:defaultAction];
     
     
-    [kRootViewController presentViewController:alert animated:YES completion:nil];    
+    [kRootViewController presentViewController:alert animated:YES completion:nil];
+    return alert;
 }
 
 /** Alert  任意多个按键 返回选中的 buttonIndex 和 buttonTitle */

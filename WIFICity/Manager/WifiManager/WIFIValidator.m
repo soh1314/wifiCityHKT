@@ -27,6 +27,7 @@ static NSInteger defaultOt = 30 * 60;
 @property (nonatomic,strong)NSLock *lock;
 @property (nonatomic,strong)WIFIValidateInfo *wifi;
 @property (nonatomic,strong)WKWebView *webview;
+@property (nonatomic,strong)UIAlertController *allertCtrl;
 
 @end
 
@@ -96,7 +97,7 @@ static NSInteger defaultOt = 30 * 60;
          info.expireTime = [[NSString unixTimeStamp]integerValue] + defaultOt;
     }
    
-    if (![self needValidator:info] && !self.reconnect )  {
+    if (![self needValidator:info] && !self.reconnect && [WIFISevice shared].wifiInfo.validated)  {
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         return;
     }
@@ -180,29 +181,36 @@ static NSInteger defaultOt = 30 * 60;
             self.wifi.validated = YES;
             [[NSUserDefaults standardUserDefaults]setObject:self.lastHktWifiMac forKey:LASTHKTWIFIMACKEY];
             [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorSuccessNoti object:nil];
+            [WIFISevice shared].wifiInfo.validated = YES;
 //            [Dialog simpleToast:@"Wifi认证成功畅享网络"];
 //            [WIFIPusher sendWIFINoti];
             NSLog(@"认证成功");
+            if (self.allertCtrl) {
+                [self.allertCtrl dismissViewControllerAnimated:YES completion:nil];
+            }
             [Dialog simpleToast:@"认证成功"];
         } else {
             [Dialog simpleToast:@"认证失败"];
             NSLog(@"认证失败");
         }
+        
         [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingFinish" object:nil];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"认证网络问题");
-        [EasyAllertUtil presentAlertViewWithTitle:@"华宽通WiFi" message:@"当前网络繁忙认证失败,是否重新认证" cancelTitle:@"取消" defaultTitle:@"确定" distinct:YES cancel:^{
+        [WIFISevice shared].wifiInfo.validated = NO;
+       UIAlertController *allert =  [EasyAllertUtil presentAlertViewWithTitle:@"华宽通WiFi" message:@"当前网络繁忙认证失败,是否重新认证" cancelTitle:@"取消" defaultTitle:@"确定" distinct:YES cancel:^{
             
         } confirm:^{
             [self validator];
+            self.reconnect = YES;
         }];
+        self.allertCtrl = allert;
+        
         [Dialog simpleToast:@"认证失败"];
         [MBProgressHUD hideHUDForView:KWINDOW animated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:WIFIValidatorFailNoti object:nil];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingFinish" object:nil];
-       
     }];
-   
 }
 
 - (void)checkAppleConnect {

@@ -219,6 +219,7 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         NSLog(@"%ld",status);
+        [WIFISevice shared].wifiInfo.validated = NO;
         if (status == AFNetworkReachabilityStatusNotReachable) {
             self.net_status = WINetFail;
             if (!self.validating && [WIFISevice netStatus] == WINetFail) {
