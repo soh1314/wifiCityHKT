@@ -177,9 +177,14 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
             if (ot > 0) {
                 [WIFISevice shared].wifiInfo.shijiancuo = ot;
                 [WIFISevice shared].wifiInfo.otNum = otNum;
-                [WIFIValidator shared].reconnect = YES;
-                [[WIFIValidator shared]validator];
-                [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%ld",otNum] forKey:LASTHKTWIFIORGIDOTTIMEKEY];
+                
+                NSInteger cachOtnum = [[[NSUserDefaults standardUserDefaults]objectForKey:LASTHKTWIFIORGIDOTTIMEKEY]integerValue];
+                if (cachOtnum != otNum) {
+                    [[WIFIValidator shared]validator];
+                    [WIFIValidator shared].reconnect = YES;
+                    [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%ld",otNum] forKey:LASTHKTWIFIORGIDOTTIMEKEY];
+
+                }
             }
         }
     } failureBlock:^(NSError *error) {
@@ -219,14 +224,9 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         NSLog(@"%ld",status);
-        [WIFISevice shared].wifiInfo.validated = NO;
         if (status == AFNetworkReachabilityStatusNotReachable) {
             self.net_status = WINetFail;
-            if (!self.validating && [WIFISevice netStatus] == WINetFail) {
-                [Dialog simpleToast:kNetError];
-            }
-//            [[WIFIValidator shared]validator];
-
+            [Dialog simpleToast:kNetError];
         } else if ( status == AFNetworkReachabilityStatusReachableViaWWAN ) {
             self.net_status = WINet4G;
         } else if ( status == AFNetworkReachabilityStatusUnknown) {
@@ -235,7 +235,6 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
             self.net_status = WINetWifi;
             self.wifiInfo.sid = [WifiUtil getWifiName];
             self.wifiInfo.bsid = [WifiUtil getWifiMac];
-            [self requestOrgId:nil];
             if ([WIFISevice isHKTWifi] ) {
                 [[WIFIValidator shared]validator];
             }
@@ -332,7 +331,7 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
 #pragma mark - notification
 
 - (void)validateSuccess:(NSNotification *)noti {
-//    [self requestOrgId:[WifiUtil getWifiMac]];
+    [self requestOrgId:[WifiUtil getWifiMac]];
 }
 
 - (void)validateFail:(NSNotification *)noti {

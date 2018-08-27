@@ -5,7 +5,7 @@
 #import "AILoadingView.h"
 #import "BQActivityView.h"
 #import "XLLoadingHUD.h"
-
+#import "WIFISevice.h"
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 @implementation Dialog
@@ -95,16 +95,21 @@ static Dialog *instance = nil;
 //    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
 //    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
 //    [SVProgressHUD dismissWithDelay:1.5];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.animationType = MBProgressHUDAnimationFade;
-    hud.minShowTime = 0.5;
-    hud.labelText = message;
-    hud.labelFont = [UIFont systemFontOfSize:14];
-    hud.margin = 10.f;
-    hud.yOffset = KSCREENW/2.0;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.5];
+    if ([WIFISevice shared].wifiInfo && [WIFISevice shared].wifiInfo.validated) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.animationType = MBProgressHUDAnimationFade;
+        hud.minShowTime = 1.0f;
+        hud.labelText = message;
+        hud.labelFont = [UIFont systemFontOfSize:14];
+        hud.margin = 10.f;
+        hud.yOffset = KSCREENW/2.0;
+        hud.removeFromSuperViewOnHide = YES;
+        [hud hide:YES afterDelay:1.5];
+    } else {
+        return ;
+    }
+
 }
 
 + (void)hideSimpleToast
