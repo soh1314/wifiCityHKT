@@ -18,7 +18,8 @@
 #import <WebKit/WebKit.h>
 #import "WIFIPusher.h"
 #import "EasyAllertUtil.h"
-static NSInteger defaultOt = 30 * 60;
+#import "NSString+Additions.h"
+static NSInteger defaultOt = 60*60*24*7;
 @interface WIFIValidator()
 
 @property (nonatomic,readwrite,copy)NSString *lastHktWifiMac;
@@ -119,12 +120,12 @@ static NSInteger defaultOt = 30 * 60;
     NSString *expireStr = [NSString stringWithFormat:@"%ld",expireTime];
     routerIp = @"192.168.99.254";
 
-    NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&mod=1&authway=app&ot=%@&appmanufacture=%@&appname=%@&appversion=appversion&appid=appid&apptoken=apptoken",routerIp,expireStr,@"HKT",@"WifiCity"];
+    NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&authway=app&ot=%@&appmanufacture=%@&appname=%@&appversion=%@&appid=%@&apptoken=%@",routerIp,expireStr,@"HKT",@"WirelessCity",@"1.2.8",@"hkt.smartwifi.com",@"hktfi"];
+    NSString *validatorUrlEncode = [validatorUrl hanziURLEncode];
     NSLog(@"认证url%@",validatorUrl);
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self inerValidateRequest:validatorUrl];
+        [self inerValidateRequest:validatorUrlEncode];
     });
-    
     [[NSNotificationCenter defaultCenter]postNotificationName:@"WifiValidateingStatus" object:nil];
     
 }

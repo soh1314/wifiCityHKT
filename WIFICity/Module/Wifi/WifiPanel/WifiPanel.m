@@ -132,6 +132,10 @@
 
         }
     } else {
+        if ([self.connectWifiBtn.titleLabel.text isEqualToString:@"认证"]) {
+            [WIFIValidator shared].reconnect = YES;
+            [[WIFIValidator shared]validator];
+        }
         [Dialog simpleToast:WIFIConnectToastWord];
     }
 }
