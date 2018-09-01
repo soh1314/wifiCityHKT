@@ -100,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WIFICity/Module/Home/HomeController.m"
-            timestampString = "557057060.371347"
+            timestampString = "557374431.672986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "355"
@@ -147,71 +147,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WIFICity/Module/Home/HomeController.m"
-            timestampString = "557057060.371446"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "-requestHomeNews"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[HomeController requestHomeNews]"
-                  moduleName = "WIFICity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity/Module/Home/HomeController.m"
-                  timestampString = "556767901.509943"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "308">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__33-[HomeController requestHomeNews]_block_invoke"
-                  moduleName = "WIFICity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity/Module/Home/HomeController.m"
-                  timestampString = "556767901.5118051"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.256"
-                  moduleName = "WIFICity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wifiproject/Desktop/SmartWiFi-New/WIFICity/WIFICity/Module/Home/HomeController.m"
-                  timestampString = "556767901.513834"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WIFICity/Manager/WifiManager/WIFISevice.m"
-            timestampString = "557137057.93769"
+            timestampString = "557374431.6730731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "184"

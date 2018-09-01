@@ -10,6 +10,7 @@
 #import "WIFIFlow.h"
 @interface WifiUtil : NSObject
 
++ (NSString *)macaddress;
 +(NSString *)getWifiName;
 +(NSString *)getWifiMac;
 +(NSString *)getRegularMac;

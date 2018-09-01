@@ -13,16 +13,9 @@
 #endif
 #define minetype @"application/json"
 
-#define SavelikeAPI @"/ws/company/saveLikes.do"
-#define CancellikeAPI @"ws/company/cancelLikes.do?"
-#define ComClassAPI @"/ws/company/getEntList.do"
-#define ComListAPI @"/ws/company/getCompanyList.do"
-#define FindUserByKeyAPI @"/ws/user/findUserByKey.do"
-#define GetGPSOrgIdImageAPI @"/ws/wifi/getOrgIdByGps.do?posx="
-#define GetCarouseDataAPI @"/ws/wifi/findLbtByOrgId.do?orgId="
-
 static NSString *const WIFIHomeNewsAPI = @"/ws/wifi/findDeliveryByOrgId.do";
 static NSString *const WIFIHomeNewsDetailAPI = @"/hktInformationDeliveryController.do?findById&id=";
+
 static NSString *const GetMacOrgId = @"/ws/wifi/getOrgId.do";
 static NSString *const SaveUserFlowAPI = @"/ws/third/saveFlow.do";
 static NSString *const FindUserFLowAPI = @"/ws/third/findBandByUserId.do";

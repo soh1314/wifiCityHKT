@@ -19,7 +19,7 @@
 #import "WIFIPusher.h"
 #import "EasyAllertUtil.h"
 #import "NSString+Additions.h"
-static NSInteger defaultOt = 60*60*24*7;
+static NSInteger defaultOt = 60*60*24;
 @interface WIFIValidator()
 
 @property (nonatomic,readwrite,copy)NSString *lastHktWifiMac;
@@ -119,8 +119,10 @@ static NSInteger defaultOt = 60*60*24*7;
     }
     NSString *expireStr = [NSString stringWithFormat:@"%ld",expireTime];
     routerIp = @"192.168.99.254";
-
-    NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&authway=app&ot=%@&appmanufacture=%@&appname=%@&appversion=%@&appid=%@&apptoken=%@",routerIp,expireStr,@"HKT",@"WirelessCity",@"1.2.8",@"hkt.smartwifi.com",@"hktfi"];
+//    NSString *deviceMac = [WifiUtil macaddress];
+//    NSLog(@"设备mac地址%@",deviceMac);
+//    NSString *validatorUrl = [NSString stringWithFormat:@"http://%@:2060/wifidog/auth?token=123&authway=app&ot=%@&appmanufacture=%@&appname=%@&appversion=%@&appid=%@&apptoken=%@",routerIp,expireStr,@"HKT",@"WirelessCity",@"1.2.8",@"hkt.smartwifi.com",@"hktfi"];
+    NSString *validatorUrl = [NSString stringWithFormat:@"http://192.168.99.254:2060/wifidog/auth?token=123&authway=temp&ot=%@",expireStr];
     NSString *validatorUrlEncode = [validatorUrl hanziURLEncode];
     NSLog(@"认证url%@",validatorUrl);
     dispatch_async(dispatch_get_main_queue(), ^{

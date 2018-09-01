@@ -24,6 +24,7 @@
 		1606142E21002B5A007A90A8 /* CompanyDeatailSectionThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1606142C21002B5A007A90A8 /* CompanyDeatailSectionThree.xib */; };
 		1606143221002D3B007A90A8 /* CompanyGaoguanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1606143021002D3B007A90A8 /* CompanyGaoguanCell.m */; };
 		1606143321002D3B007A90A8 /* CompanyGaoguanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1606143121002D3B007A90A8 /* CompanyGaoguanCell.xib */; };
+		161C1A7A2137986800EBE9B3 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 161C1A792137986800EBE9B3 /* libresolv.9.tbd */; };
 		163A08A820E1D51800DAC894 /* BindPhoneInputPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08A720E1D51800DAC894 /* BindPhoneInputPhoneView.m */; };
 		163A08AB20E1D53300DAC894 /* BindPhoneInputPwdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08AA20E1D53300DAC894 /* BindPhoneInputPwdView.m */; };
 		163A08AD20E1D54700DAC894 /* BindPhoneInputPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 163A08AC20E1D54700DAC894 /* BindPhoneInputPhoneView.xib */; };
@@ -1347,6 +1348,7 @@
 		1606142F21002D3B007A90A8 /* CompanyGaoguanCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompanyGaoguanCell.h; sourceTree = "<group>"; };
 		1606143021002D3B007A90A8 /* CompanyGaoguanCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanyGaoguanCell.m; sourceTree = "<group>"; };
 		1606143121002D3B007A90A8 /* CompanyGaoguanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyGaoguanCell.xib; sourceTree = "<group>"; };
+		161C1A792137986800EBE9B3 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
 		163A08A620E1D51800DAC894 /* BindPhoneInputPhoneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneInputPhoneView.h; sourceTree = "<group>"; };
 		163A08A720E1D51800DAC894 /* BindPhoneInputPhoneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindPhoneInputPhoneView.m; sourceTree = "<group>"; };
 		163A08A920E1D53300DAC894 /* BindPhoneInputPwdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneInputPwdView.h; sourceTree = "<group>"; };
@@ -2291,6 +2293,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161C1A7A2137986800EBE9B3 /* libresolv.9.tbd in Frameworks */,
 				1695B1DB20FC2DCA00DFFCCE /* WebKit.framework in Frameworks */,
 				169D8F5D210960A9006776D8 /* NetworkExtension.framework in Frameworks */,
 				16D64B1E20CF74B400ED74C8 /* libsqlite3.0.tbd in Frameworks */,
@@ -4094,6 +4097,7 @@
 		D84E87834D0D16919591016A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				161C1A792137986800EBE9B3 /* libresolv.9.tbd */,
 				169D8F5C210960A9006776D8 /* NetworkExtension.framework */,
 				1695B1E320FC76EC00DFFCCE /* ExternalAccessory.framework */,
 				1695B1DA20FC2DC900DFFCCE /* WebKit.framework */,

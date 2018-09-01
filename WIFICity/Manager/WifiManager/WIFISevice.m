@@ -54,12 +54,12 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
         self.wifiInfo = [WIFIInfo new];
         self.hktWifiArray = [NSMutableArray array];
         self.otherWifiArray = [NSMutableArray array];
-        NSString *cachOrgId = [[NSUserDefaults standardUserDefaults]objectForKey:LASTHKTWIFIORGIDKEY];
-        if (cachOrgId) {
-             self.wifiInfo.orgId = [cachOrgId copy];
-        } else {
+//        NSString *cachOrgId = [[NSUserDefaults standardUserDefaults]objectForKey:LASTHKTWIFIORGIDKEY];
+//        if (cachOrgId) {
+//             self.wifiInfo.orgId = [cachOrgId copy];
+//        } else {
             self.wifiInfo.orgId = @"8a8ab0b246dc81120146dc8180ba0017";
-        }
+//        }
         [WIFIPusher requestAuthor];
         [self scanWifiList];
        
