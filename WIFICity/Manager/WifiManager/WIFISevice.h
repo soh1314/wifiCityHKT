@@ -24,7 +24,7 @@
 @property (nonatomic,assign)BOOL recoveryNet;
 @property (nonatomic,strong)NSMutableArray *hktWifiArray;
 @property (nonatomic,strong)NSMutableArray *otherWifiArray;
-@property (nonatomic,assign)BOOL validating;
+
 
 - (void)setNetMonitor;
 +(WINetStatus)netStatus;

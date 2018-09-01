@@ -13,6 +13,14 @@
 
 #pragma mark - java api
 
+- (BOOL)isNilString {
+    if (!self || [self isEqualToString:@""]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 - (NSUInteger) compareTo: (NSString*) comp {
     NSComparisonResult result = [self compare:comp];
     if (result == NSOrderedSame) {

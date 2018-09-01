@@ -11,6 +11,7 @@
 @interface NSString (Additions)
 
 #pragma mark - 字符串操作方法
+- (BOOL)isNilString;
 - (NSUInteger) compareTo: (NSString*) comp;
 - (NSUInteger) compareToIgnoreCase: (NSString*) comp;
 - (bool) contains: (NSString*) substring;

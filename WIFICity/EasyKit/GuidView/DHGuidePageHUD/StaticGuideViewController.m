@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[WIFIValidator shared]validator];
     // Do any additional setup after loading the view.
     [self setStaticGuidePage];
     self.view.backgroundColor = [UIColor whiteColor];

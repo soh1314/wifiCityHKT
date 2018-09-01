@@ -11,6 +11,6 @@
 @interface WIFIPusher : NSObject
 
 + (void)requestAuthor;
-+ (void)sendWIFINoti;
++ (void)sendWifiExpiredPush:(NSString *)wifiMac;
 
 @end

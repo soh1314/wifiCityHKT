@@ -135,13 +135,13 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
                     info.signalStrength = [NSString stringWithFormat:@"%.2f",network.signalStrength];
                     info.sid = [network.SSID copy];
                     [self.hktWifiArray addObject:info];
-//                    [network setConfidence: kNEHotspotHelperConfidenceHigh];
-//                    [network setPassword: @""];
-//                    [networkList addObject:network];
-//                    NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
-//                    [response setNetworkList: [networkList copy]];
-//                    [response setNetwork: network];
-//                    [response deliver];
+                    [network setConfidence: kNEHotspotHelperConfidenceHigh];
+                    [network setPassword: @""];
+                    [networkList addObject:network];
+                    NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
+                    [response setNetworkList: [networkList copy]];
+                    [response setNetwork: network];
+                    [response deliver];
                 }
             }
             if (self.hktWifiArray && self.hktWifiArray.count > 0) {
@@ -178,12 +178,12 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
                 [WIFISevice shared].wifiInfo.shijiancuo = ot;
                 [WIFISevice shared].wifiInfo.otNum = otNum;
                 
-                NSInteger cachOtnum = [[[NSUserDefaults standardUserDefaults]objectForKey:LASTHKTWIFIORGIDOTTIMEKEY]integerValue];
+                NSInteger cachOtnum = [[[NSUserDefaults standardUserDefaults]objectForKey:LastWiFiOrgID_OutTime_Key]integerValue];
                 if (cachOtnum != otNum) {
                     [[WIFIValidator shared]validator];
                     [WIFIValidator shared].reconnect = YES;
-                    [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%ld",otNum] forKey:LASTHKTWIFIORGIDOTTIMEKEY];
-
+                    [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%ld",otNum] forKey:LastWiFiOrgID_OutTime_Key];
+                    NSLog(@"再次认证上网超时时间: %ld",otNum);
                 }
             }
         }
@@ -204,7 +204,7 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
             if (error.code == 13) {
                 if ([WIFISevice netStatus] == WINetFail) {
                     [Dialog simpleToast:@"正在帮你重新认证"];
-                    [WIFIValidator shared].reconnect = YES;
+                    [WIFIValidator shared].resetExpireTime = YES;
                     [[WIFIValidator shared]validator];
                 } else {
                     [Dialog simpleToast:@"当前wifi已连接"];
@@ -265,9 +265,7 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
 }
 
 - (void)handleWhenNetChange:(WINetStatus)status wifiInfo:(WIFIInfo*)info {
-    if (status == WINetFail && !self.validating) {
-        [Dialog simpleToast:@"网络连接失败"];
-    }
+
 }
 
 - (void)saveUserFlow {

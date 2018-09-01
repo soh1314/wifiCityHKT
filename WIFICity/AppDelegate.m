@@ -29,8 +29,9 @@
     [[AccountManager shared]loadUserAccount];
     [SDKConfig configMobShare];
     [self setMainView];
+     [WIFISevice shared];
     [self.window makeKeyAndVisible];
-    [WIFISevice shared];
+   
     
     return YES;
 }

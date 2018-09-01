@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger,WIFIValidateStatus){
 @property (nonatomic,assign)WIFIValidateStatus validateStatus;
 @property (nonatomic,assign)BOOL reconnect;
 @property (nonatomic,assign)BOOL sendValidateNoti;
+@property (nonatomic,assign)BOOL resetExpireTime;
 
 - (BOOL)needValidator:(WIFIValidateInfo *)info;
 - (void)validator;
