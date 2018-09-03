@@ -77,7 +77,7 @@
 
 
 - (void)easySetAutoInsets:(BOOL)autoInsets {
-    if (!KSys11Up) {
+    if (!KSysVersionUP11) {
         self.automaticallyAdjustsScrollViewInsets = autoInsets;
     }  else {
        

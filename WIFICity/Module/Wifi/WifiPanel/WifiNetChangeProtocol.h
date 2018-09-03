@@ -10,6 +10,7 @@
 #import "WIFIInfo.h"
 @protocol WifiNetChangeProtocol <NSObject>
 
+@optional
 - (void)handleWhenNetChange:(WINetStatus)status wifiInfo:(WIFIInfo*)info;
 
 

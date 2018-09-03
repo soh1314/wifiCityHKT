@@ -42,11 +42,9 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
         [self.searchBar invokeSearch];
         
     });
-    self.nodataModel = [EaseNoDataModel new];
     self.nodataModel.noDataImageName = @"search_noresults";
     self.nodataModel.verticalOffset = -60;
     self.nodataModel.titile = @"没有搜索到相关信息~";
-    
     
     // Do any additional setup after loading the view.
 }
@@ -87,7 +85,7 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
     }];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompanyRecommentCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CompanyRecommentCellID"];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelSearch:)];
-    if (KSys11Up) {
+    if (KSysVersionUP11) {
         [rightBarItem setTitlePositionAdjustment:UIOffsetMake(5, 0) forBarMetrics:UIBarMetricsDefault];
     }
    [rightBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} forState:UIControlStateSelected];
@@ -102,7 +100,7 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
         [wself.searchBar.searchTtf becomeFirstResponder];
     };
     self.navigationItem.titleView = self.searchBar;
-    if (KSys11Up) {
+    if (KSysVersionUP11) {
         [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(270/375.0f*KSCREENW);
             make.height.mas_equalTo(36);
@@ -110,8 +108,6 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
         }];
     }
     
-
-
 }
 
 

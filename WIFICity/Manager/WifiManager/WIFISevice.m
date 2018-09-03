@@ -244,7 +244,7 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
         if (self.panelDelegate && [self.panelDelegate respondsToSelector:@selector(handleWhenNetChange:wifiInfo:)]) {
             [self.panelDelegate handleWhenNetChange:self.net_status wifiInfo:self.wifiCloudInfo];
         }
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"WINETSTATUSCHANGE" object:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"WINetStatus_Change_Noti" object:nil];
     }];
     
     [manager startMonitoring];

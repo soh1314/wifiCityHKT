@@ -23,18 +23,17 @@
 //    self.title = [self easyTittle:kBundleId];
     [self addBackItem];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    if (!KSys11Up) {
+    if (!KSysVersionUP11) {
         self.automaticallyAdjustsScrollViewInsets = NO;
-    }  else {
-        
     }
     [[IQKeyboardManager sharedManager]setEnableAutoToolbar:NO];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(netStatuschange:) name:@"WINETSTATUSCHANGE" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(netStatuschange:) name:@"WINetStatus_Change_Noti" object:nil];
     self.nodataModel = [EaseNoDataModel new];
+    self.nodataModel.noNetImageName = @"disconnect";
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WINETSTATUSCHANGE" object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WINetStatus_Change_Noti" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -117,6 +116,10 @@
 }
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button {
+    if ([WIFISevice netStatus] == WINetFail) {
+        [self loadData:YES];
+        return;
+    }
     if (self.nodataModel) {
         self.nodataModel.btnActionBlock();
     }
@@ -128,7 +131,7 @@
         return [[NSAttributedString alloc]initWithString:self.nodataModel.titile attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
     }
     if ([WIFISevice netStatus] == WINetFail) {
-           return [[NSAttributedString alloc]initWithString:@"当前网络无法连接" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
+           return [[NSAttributedString alloc]initWithString:@"暂无网络连接~" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
     } else {
             return [[NSAttributedString alloc]initWithString:@"当前视图无数据" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
     }
@@ -137,6 +140,9 @@
 
 - (nullable NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
     
+    if ([WIFISevice netStatus] == WINetFail) {
+        return [[NSAttributedString alloc]initWithString:@"重试" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
+    }
     if (self.nodataModel && self.nodataModel.buttonTitle) {
         return [[NSAttributedString alloc]initWithString:self.nodataModel.buttonTitle attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
     } else {
@@ -146,17 +152,15 @@
 }
 
 - (nullable UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    if ([WIFISevice netStatus] == WINetFail) {
+         return [UIImage qsImageNamed:self.nodataModel.noNetImageName];
+    }
     if (self.nodataModel && self.nodataModel.noDataImageName) {
-        if (!self.nodataModel.noNet) {
-            return [UIImage qsImageNamed:self.nodataModel.noDataImageName];
-        } else {
-            return [UIImage qsImageNamed:self.nodataModel.noNetImageName];
-        }
+        return [UIImage qsImageNamed:self.nodataModel.noDataImageName];
         
     } else {
         return nil;
     }
-
 }
 
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView

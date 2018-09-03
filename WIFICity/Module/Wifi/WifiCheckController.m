@@ -44,13 +44,13 @@
     [self setWhiteTrasluntNavBar];
     [self initUI];
     [self getWifiListCach];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiStatusChange:) name:@"WINETSTATUSCHANGE" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiStatusChange:) name:@"WINetStatus_Change_Noti" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidatingFinish:) name:@"WifiValidateingFinish" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidating:) name:@"WifiValidateingStatus" object:nil];
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WINETSTATUSCHANGE" object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WINetStatus_Change_Noti" object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WifiValidateingStatus" object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"WifiValidateingFinish" object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];

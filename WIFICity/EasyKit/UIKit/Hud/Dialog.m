@@ -95,7 +95,7 @@ static Dialog *instance = nil;
 //    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
 //    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
 //    [SVProgressHUD dismissWithDelay:1.5];
-    if ([WIFISevice shared].wifiInfo && [WIFISevice shared].wifiInfo.validated) {
+    if ( ( [WIFISevice shared].wifiInfo && [WIFISevice shared].wifiInfo.validated ) || ![WIFISevice isHKTWifi]) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
         hud.mode = MBProgressHUDModeText;
         hud.animationType = MBProgressHUDAnimationFade;

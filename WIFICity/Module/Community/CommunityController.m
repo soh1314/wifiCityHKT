@@ -95,11 +95,14 @@ static int EnterPriseRecommentSection = 2;
     [super viewWillDisappear:animated];
 }
 
-- (void)loadData {
-
+- (void)loadData:(BOOL)refresh {
     [self requestCompanyCategoryInfo];
     [self requestCompanyList];
     [self requestCompanyIndustryInfo];
+}
+
+- (void)loadData {
+    [self loadData:YES];
 }
 
 - (void)requestCompanyList {

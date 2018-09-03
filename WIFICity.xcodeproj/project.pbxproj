@@ -25,6 +25,12 @@
 		1606143221002D3B007A90A8 /* CompanyGaoguanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1606143021002D3B007A90A8 /* CompanyGaoguanCell.m */; };
 		1606143321002D3B007A90A8 /* CompanyGaoguanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1606143121002D3B007A90A8 /* CompanyGaoguanCell.xib */; };
 		161C1A7A2137986800EBE9B3 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 161C1A792137986800EBE9B3 /* libresolv.9.tbd */; };
+		16201EA2213D0DB500714DD0 /* disconnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16201E9F213D0DB400714DD0 /* disconnect@2x.png */; };
+		16201EA3213D0DB500714DD0 /* disconnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16201E9F213D0DB400714DD0 /* disconnect@2x.png */; };
+		16201EA4213D0DB500714DD0 /* disconnect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16201EA0213D0DB400714DD0 /* disconnect@3x.png */; };
+		16201EA5213D0DB500714DD0 /* disconnect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16201EA0213D0DB400714DD0 /* disconnect@3x.png */; };
+		16201EA6213D0DB500714DD0 /* disconnect.png in Resources */ = {isa = PBXBuildFile; fileRef = 16201EA1213D0DB400714DD0 /* disconnect.png */; };
+		16201EA7213D0DB500714DD0 /* disconnect.png in Resources */ = {isa = PBXBuildFile; fileRef = 16201EA1213D0DB400714DD0 /* disconnect.png */; };
 		163A08A820E1D51800DAC894 /* BindPhoneInputPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08A720E1D51800DAC894 /* BindPhoneInputPhoneView.m */; };
 		163A08AB20E1D53300DAC894 /* BindPhoneInputPwdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08AA20E1D53300DAC894 /* BindPhoneInputPwdView.m */; };
 		163A08AD20E1D54700DAC894 /* BindPhoneInputPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 163A08AC20E1D54700DAC894 /* BindPhoneInputPhoneView.xib */; };
@@ -1349,6 +1355,9 @@
 		1606143021002D3B007A90A8 /* CompanyGaoguanCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompanyGaoguanCell.m; sourceTree = "<group>"; };
 		1606143121002D3B007A90A8 /* CompanyGaoguanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyGaoguanCell.xib; sourceTree = "<group>"; };
 		161C1A792137986800EBE9B3 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
+		16201E9F213D0DB400714DD0 /* disconnect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disconnect@2x.png"; sourceTree = "<group>"; };
+		16201EA0213D0DB400714DD0 /* disconnect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disconnect@3x.png"; sourceTree = "<group>"; };
+		16201EA1213D0DB400714DD0 /* disconnect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disconnect.png; sourceTree = "<group>"; };
 		163A08A620E1D51800DAC894 /* BindPhoneInputPhoneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneInputPhoneView.h; sourceTree = "<group>"; };
 		163A08A720E1D51800DAC894 /* BindPhoneInputPhoneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindPhoneInputPhoneView.m; sourceTree = "<group>"; };
 		163A08A920E1D53300DAC894 /* BindPhoneInputPwdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneInputPwdView.h; sourceTree = "<group>"; };
@@ -2373,6 +2382,16 @@
 				1601190821118E56002B9058 /* EaseTextView.m */,
 			);
 			path = TextView;
+			sourceTree = "<group>";
+		};
+		16201E9E213D0DB400714DD0 /* 通用 */ = {
+			isa = PBXGroup;
+			children = (
+				16201E9F213D0DB400714DD0 /* disconnect@2x.png */,
+				16201EA0213D0DB400714DD0 /* disconnect@3x.png */,
+				16201EA1213D0DB400714DD0 /* disconnect.png */,
+			);
+			path = "通用";
 			sourceTree = "<group>";
 		};
 		163A08A520E1D4E400DAC894 /* BindPhone */ = {
@@ -3741,6 +3760,7 @@
 		16D64C5620D0CAC500ED74C8 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				16201E9E213D0DB400714DD0 /* 通用 */,
 				166CA58D20F3633A00E4CBE3 /* wifi地图 */,
 				166CA56F20F0644300E4CBE3 /* 导航栏 */,
 				16F76EFC20EDCB1E00950127 /* 企业广场 */,
@@ -4383,6 +4403,7 @@
 				1662C7912122B3C700A2A100 /* search_sq@3x.png in Resources */,
 				1662C7922122B3C700A2A100 /* biomedicine@3x.png in Resources */,
 				1662C7932122B3C700A2A100 /* share@3x.png in Resources */,
+				16201EA7213D0DB500714DD0 /* disconnect.png in Resources */,
 				1662C7942122B3C700A2A100 /* sign_in@2x.png in Resources */,
 				1662C7952122B3C700A2A100 /* location@3x.png in Resources */,
 				1662C7962122B3C700A2A100 /* VR@3x.png in Resources */,
@@ -4454,6 +4475,7 @@
 				1662C7D82122B3C700A2A100 /* LOne.png in Resources */,
 				1662C7D92122B3C700A2A100 /* step_two@3x.png in Resources */,
 				1662C7DA2122B3C700A2A100 /* new_energy.png in Resources */,
+				16201EA5213D0DB500714DD0 /* disconnect@3x.png in Resources */,
 				1662C7DB2122B3C700A2A100 /* help@3x.png in Resources */,
 				1662C7DC2122B3C700A2A100 /* sweep.png in Resources */,
 				1662C7DD2122B3C700A2A100 /* about@2x.png in Resources */,
@@ -4642,6 +4664,7 @@
 				1662C8952122B3C700A2A100 /* hkt_wifi@3x.png in Resources */,
 				1662C8962122B3C700A2A100 /* detection_default@3x.png in Resources */,
 				1662C8972122B3C700A2A100 /* updates@3x.png in Resources */,
+				16201EA3213D0DB500714DD0 /* disconnect@2x.png in Resources */,
 				1662C8982122B3C700A2A100 /* wechat_login@3x.png in Resources */,
 				1662C8992122B3C700A2A100 /* speed_measurement@2x.png in Resources */,
 				1662C89A2122B3C700A2A100 /* wifi_four@2x.png in Resources */,
@@ -4815,6 +4838,7 @@
 				1695B20B20FEF14500DFFCCE /* new_material@2x.png in Resources */,
 				16D64C5020D0C18000ED74C8 /* LoginController.xib in Resources */,
 				163A08E420E3707100DAC894 /* before.png in Resources */,
+				16201EA6213D0DB500714DD0 /* disconnect.png in Resources */,
 				16F76F8A20EDCB1F00950127 /* medical.png in Resources */,
 				16F76FCD20EE063C00950127 /* CompanyRecommentHeader.xib in Resources */,
 				16F76F5F20EDCB1F00950127 /* collect@2x.png in Resources */,
@@ -4890,6 +4914,7 @@
 				16F76F8720EDCB1F00950127 /* VR@2x.png in Resources */,
 				16F76F7720EDCB1F00950127 /* collect_default@3x.png in Resources */,
 				1656781E20D35AF700EC3D5C /* ShareSDKUI.bundle in Resources */,
+				16201EA2213D0DB500714DD0 /* disconnect@2x.png in Resources */,
 				16F76FBE20EDF8BD00950127 /* CompanyInfoHorizonCell.xib in Resources */,
 				169D8F0A21086348006776D8 /* popup_box_location@2x.png in Resources */,
 				1662C607211D947600A2A100 /* avatars_default@3x.png in Resources */,
@@ -4897,6 +4922,7 @@
 				163A08EB20E3707100DAC894 /* after@3x.png in Resources */,
 				165678A620D3662A00EC3D5C /* home_default@2x.png in Resources */,
 				16F76FC320EDFEF400950127 /* CompanyInfoVerticalCell.xib in Resources */,
+				16201EA4213D0DB500714DD0 /* disconnect@3x.png in Resources */,
 				16F76FC820EE03BD00950127 /* CompanyRecommentCell.xib in Resources */,
 				1662C5C0211C483200A2A100 /* back_login.png in Resources */,
 				169D8F1421086349006776D8 /* popup_box_location.png in Resources */,

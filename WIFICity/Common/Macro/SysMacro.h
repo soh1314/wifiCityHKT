@@ -15,8 +15,8 @@
 #define kAPPBuildNO [[[NSBundle mainBundle]infoDictionary] objectForKey:@"CFBundleVersion"]
 #define kAPPDisplayName [[[NSBundle mainBundle]infoDictionary] objectForKey:@"CFBundleDisplayName"];
 
-#define kSysVersion [[UIDevice currentDevice].systemVersion floatValue]
-#define KSys11Up    ([[UIDevice currentDevice].systemVersion floatValue] >= 11.0)
+#define KSysVersion [[UIDevice currentDevice].systemVersion floatValue]
+#define KSysVersionUP11    ([[UIDevice currentDevice].systemVersion floatValue] >= 11.0)
 #define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
 #define KWINDOW [UIApplication sharedApplication].delegate.window
