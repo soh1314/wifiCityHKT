@@ -10,7 +10,7 @@
 
 #import "UIScrollView+EmptyDataSet.h"
 #import <objc/runtime.h>
-#import "WIFISevice.h"
+
 @interface UIView (DZNConstraintBasedLayoutExtensions)
 
 - (NSLayoutConstraint *)equallyRelatedConstraintWithView:(UIView *)view attribute:(NSLayoutAttribute)attribute;
@@ -116,9 +116,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
 - (NSInteger)dzn_itemsCount
 {
     NSInteger items = 0;
-    if ([WIFISevice netStatus] == WINetFail) {
-        return 0;
-    }
+
     // UIScollView doesn't respond to 'dataSource' so let's exit
     if (![self respondsToSelector:@selector(dataSource)]) {
         return items;

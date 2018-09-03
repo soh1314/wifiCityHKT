@@ -52,6 +52,7 @@
     [self initUI];
     [self loadData:YES];
     self.dataArray = [NSMutableArray array];
+    [self setNoDataViewWithBaseView:self.collectionView];
     // Do any additional setup after loading the view.
 }
 

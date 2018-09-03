@@ -96,7 +96,7 @@
     _noNet = noNet;
     if (self.nodataModel) {
         self.nodataModel.noNet = noNet;
-        [self.noDataSuperView reloadEmptyDataSet];
+//        [self.noDataSuperView reloadEmptyDataSet];
     }
 }
 

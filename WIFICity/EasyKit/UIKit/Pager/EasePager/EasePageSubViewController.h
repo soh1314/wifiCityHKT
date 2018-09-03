@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "EasePageModel.h"
+#import "BaseViewController.h"
 
-
-@interface EasePageSubViewController : UIViewController
+@interface EasePageSubViewController : BaseViewController
 
 
 @property (nonatomic,strong)EasePageModel *pageModel;

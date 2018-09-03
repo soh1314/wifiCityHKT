@@ -49,19 +49,14 @@
         CGFloat navHeight = kStatusBarHeight + 44;
         self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-navHeight)];
         self.webView.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        
         [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
          [self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]];
         [self.webView loadRequest:request];
         
         self.webView.UIDelegate = self;
-       [self.view addSubview:self.webView];
-//        self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 5)];
-//        self.progressView.progressViewStyle = UIProgressViewStyleBar;
-//        self.progressView.progressTintColor = [UIColor blackColor];
-//        [self.navigationController.view addSubview:self.progressView];
-        
+        self.webView.navigationDelegate = self;
+        [self.view addSubview:self.webView];
         self.progressBar = [[EaseWebViewProgressBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 4) lineWidth:4];
         if (!self.progressBar.superview) {
             [self.view addSubview:self.progressBar];
@@ -117,22 +112,17 @@
         [self.progressBar setProgress:progress];
         if (progress < 0.3) {
             [self.progressBar setProgress:0.3];
-//            [self.progressView setProgress:0.3 animated:YES];
         } else {
             if(progress == 1.0)
             {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [self.progressBar setProgress:0];
-                    //                [self.progressView setProgress:0.0 animated:NO];
                 });
             } else {
                 [self.progressBar setProgress:progress];
             }
             
-//            [self.progressView setProgress:progress animated:YES];
         }
-
-        
     } else if ([keyPath isEqualToString:@"title"]) {
         if ([keyPath isEqualToString:@"title"]) {
             if (object == self.webView) {
@@ -151,6 +141,59 @@
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 
+}
+
+#pragma mark - WKWebViewDelegate
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    NSLog(@"是否允许这个导航");
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
+    //    Decides whether to allow or cancel a navigation after its response is known.
+    if (navigationResponse && [navigationResponse.response.URL.path containsString:@"download"]) {
+        decisionHandler(WKNavigationResponsePolicyCancel);
+        return;
+    }
+    NSLog(@"知道返回内容之后，是否允许加载，允许加载");
+    decisionHandler(WKNavigationResponsePolicyAllow);
+}
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
+    NSLog(@"开始加载");
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
+    NSLog(@"跳转到其他的服务器");
+    
+}
+
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
+    NSLog(@"网页由于某些原因加载失败");
+    if (error) {
+        
+    }
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
+    NSLog(@"网页开始接收网页内容");
+    
+}
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
+    NSLog(@"网页导航加载完毕");
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
+    NSLog(@"加载失败,失败原因:%@",[error description]);
+}
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
+    NSLog(@"网页加载内容进程终止");
+}
+
+- (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
+    return self.webView;
 }
 
 - (void)dealloc{

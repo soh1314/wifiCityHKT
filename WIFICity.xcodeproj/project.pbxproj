@@ -2394,6 +2394,13 @@
 			path = "通用";
 			sourceTree = "<group>";
 		};
+		16201EA8213D244A00714DD0 /* NetFailView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetFailView;
+			sourceTree = "<group>";
+		};
 		163A08A520E1D4E400DAC894 /* BindPhone */ = {
 			isa = PBXGroup;
 			children = (
@@ -3537,6 +3544,7 @@
 		16D64B9E20CF9FCE00ED74C8 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				16201EA8213D244A00714DD0 /* NetFailView */,
 				1662C5B6211BE29700A2A100 /* WXWaveView */,
 				16626FD5211823A400B26922 /* WMGaugeView */,
 				1601190621118E56002B9058 /* TextView */,

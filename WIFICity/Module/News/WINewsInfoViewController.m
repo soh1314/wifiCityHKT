@@ -30,6 +30,7 @@ static NSString *const WIGaoXinNewsListAPI = @"/ws/wifi/findNewsByTypeId.do";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNoDataViewWithBaseView:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeNewsTwoCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HomeNewsTwoCellID"];

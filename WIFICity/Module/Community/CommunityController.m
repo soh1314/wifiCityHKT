@@ -54,6 +54,7 @@ static int EnterPriseRecommentSection = 2;
     self.categoryArray = [NSMutableArray array];
     self.dataArray = [NSMutableArray array];
     self.industryArray = [NSMutableArray array];
+    [self setNoDataViewWithBaseView:self.tableView];
     // Do any additional setup after loading the view.
 }
 
@@ -70,7 +71,7 @@ static int EnterPriseRecommentSection = 2;
     ParallaxHeaderView *headerView = [ParallaxHeaderView parallaxHeaderViewWithSubView:header];
     [self.tableView setTableHeaderView:headerView];
     
-    [self.view addSubview:self.navBar];
+    [headerView addSubview:self.navBar];
     weakself;
     CompanyHomeSearchBar *searchBar = [[CompanyHomeSearchBar alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 100)];
     searchBar.tapBlock = ^{
@@ -184,7 +185,11 @@ static int EnterPriseRecommentSection = 2;
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    if (self.dataArray.count) {
+        return 3;
+    } else {
+        return 0;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -299,6 +304,7 @@ static int EnterPriseRecommentSection = 2;
     if (section == EnterPriseRecommentSection) {
         CompanyRecommentHeader *header = [[CompanyRecommentHeader alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, 41)];
         __weak typeof(self)wself = self;
+        header.edgeView.hidden = YES;
         header.moreBlock = ^{
             [wself seeAllCompany];
 //            CompanyRecommendController *ctrl = [CompanyRecommendController new];
@@ -327,7 +333,7 @@ static int EnterPriseRecommentSection = 2;
 #pragma mark - get and set
 - (EaseTableView *)tableView {
     if (!_tableView) {
-        _tableView = [[EaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView = [[EaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;
