@@ -141,7 +141,7 @@
 - (nullable NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
     
     if ([WIFISevice netStatus] == WINetFail) {
-        return [[NSAttributedString alloc]initWithString:@"重试" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
+        return [[NSAttributedString alloc]initWithString:@"重试" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0],NSForegroundColorAttributeName:[UIColor themeColor]}];
     }
     if (self.nodataModel && self.nodataModel.buttonTitle) {
         return [[NSAttributedString alloc]initWithString:self.nodataModel.buttonTitle attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
@@ -178,6 +178,9 @@
 }
 
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView{
+    if ([WIFISevice netStatus] == WINetFail) {
+        return -50;
+    }
     if (self.nodataModel.verticalOffset) {
         return self.nodataModel.verticalOffset;
     }

@@ -77,7 +77,7 @@
         }
 
     }
-    if (![WIFISevice isHKTWifi]) {
+    if (![WIFISevice isHKTWifi] && ( [WIFISevice netStatus] == WINetFail) ) {
         self.bottomView.bandWidthLabel.text = @"10MB";
         self.flowView.totalFlowLabel.text = @"";
     }

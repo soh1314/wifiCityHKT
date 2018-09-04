@@ -15,16 +15,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无网络连接~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWT-Fj-sJM">
-                    <rect key="frame" x="179" y="217.5" width="88" height="16"/>
+                    <rect key="frame" x="179" y="192.5" width="88" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disconnect.png" translatesAutoresizingMaskIntoConstraints="NO" id="45e-Sj-36z">
-                    <rect key="frame" x="182" y="126.5" width="80" height="75"/>
+                    <rect key="frame" x="182" y="101.5" width="80" height="75"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mtp-YX-OKU">
-                    <rect key="frame" x="184.5" y="265.5" width="76" height="32"/>
+                    <rect key="frame" x="184.5" y="240.5" width="76" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="76" id="4Wc-v5-eUa"/>
                         <constraint firstAttribute="height" constant="32" id="G0x-Pc-QM6"/>
@@ -40,7 +40,7 @@
                 <constraint firstItem="hWT-Fj-sJM" firstAttribute="top" secondItem="45e-Sj-36z" secondAttribute="bottom" constant="16" id="0jz-bj-Vi3"/>
                 <constraint firstItem="45e-Sj-36z" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="607-gq-T1U"/>
                 <constraint firstItem="Mtp-YX-OKU" firstAttribute="top" secondItem="hWT-Fj-sJM" secondAttribute="bottom" constant="32" id="8gS-KK-zfZ"/>
-                <constraint firstItem="45e-Sj-36z" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-75" id="s0Q-1l-X9C"/>
+                <constraint firstItem="45e-Sj-36z" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-100" id="s0Q-1l-X9C"/>
                 <constraint firstItem="hWT-Fj-sJM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="v9g-yw-rbL"/>
                 <constraint firstItem="Mtp-YX-OKU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wQ4-v4-beY"/>
             </constraints>
@@ -48,7 +48,7 @@
             <connections>
                 <outlet property="reTryBtn" destination="Mtp-YX-OKU" id="u0N-DY-odU"/>
             </connections>
-            <point key="canvasLocation" x="54" y="51"/>
+            <point key="canvasLocation" x="-182" y="50"/>
         </view>
     </objects>
     <resources>

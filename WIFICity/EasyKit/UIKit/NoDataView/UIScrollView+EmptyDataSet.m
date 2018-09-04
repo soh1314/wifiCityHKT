@@ -280,7 +280,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(spaceHeightForEmptyDataSet:)]) {
         return [self.emptyDataSetSource spaceHeightForEmptyDataSet:self];
     }
-    return 0.0;
+    return 16;
 }
 
 
@@ -837,7 +837,7 @@ Class dzn_baseClassToSwizzleForTarget(id target)
         [_button addTarget:self action:@selector(didTapButton:) forControlEvents:UIControlEventTouchUpInside];
         _button.layer.masksToBounds = YES;
         _button.layer.cornerRadius = 2.0f;
-        _button.layer.borderColor = UIColorFromHexadecimalRGB(0x000000).CGColor;
+        _button.layer.borderColor = [UIColor themeColor].CGColor;
         _button.layer.borderWidth = 0.5f;
         [_contentView addSubview:_button];
     }
@@ -967,10 +967,7 @@ Class dzn_baseClassToSwizzleForTarget(id target)
             
             [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(padding@750)-[titleLabel(>=0)]-(padding@750)-|"
                                                                                      options:0 metrics:metrics views:views]];
-            [self.button mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.width.mas_equalTo(150);
-                make.centerX.mas_equalTo(self.contentView);
-            }];
+            
         }
         // or removes from its superview
         else {
@@ -1001,8 +998,13 @@ Class dzn_baseClassToSwizzleForTarget(id target)
             
 //            [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(padding@750)-[button(>=0)]-(padding@750)-|"
 //                                                                                     options:0 metrics:metrics views:views]];
-            [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-100-[button(>=0)]-100-|"
-                                                                                     options:0 metrics:metrics views:views]];
+//            [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-100-[button(>=0)]-100-|"
+//                                                                                     options:0 metrics:metrics views:views]];
+            [self.button mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(100);
+                make.centerX.mas_equalTo(self.contentView);
+                make.height.mas_equalTo(32);
+            }];
         }
         // or removes from its superview
         else {
