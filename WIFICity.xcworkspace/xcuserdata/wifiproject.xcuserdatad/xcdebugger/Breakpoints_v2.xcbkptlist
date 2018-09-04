@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WIFICity/Module/Home/HomeController.m"
-            timestampString = "557484834.944912"
+            timestampString = "557720574.768119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WIFICity/EasyKit/UIKit/WebViewController/WebViewController.m"
-            timestampString = "557661800.411305"
+            timestampString = "557720574.768218"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-webViewWebContentProcessDidTerminate:"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WIFICity/EasyKit/UIKit/WebViewController/WebViewController.m"
-            timestampString = "557661800.411679"
+            timestampString = "557720574.768268"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "WebViewController"
             landmarkType = "3">
          </BreakpointContent>

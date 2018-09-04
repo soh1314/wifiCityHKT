@@ -37,6 +37,7 @@
 @property (nonatomic,copy)NSArray *serviceArray;
 @property (nonatomic,strong)WifiPanel *panel;
 @property (nonatomic,strong)UIView *headerView;
+@property (nonatomic,strong)dispatch_group_t group;
 
 @end
 
@@ -49,6 +50,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
+    self.group = dispatch_group_create();
+    [self loadHomeData];
     [[EasyCLLocationManager shared]requestLocateService];
     [[EasyCLLocationManager shared]startLocate:^(NSString *province, NSString *city, NSString *area, NSString *detailAddress) {
         [self.panel setLocation:[EasyCLLocationManager shared].location];
@@ -60,6 +63,7 @@
     [[WIFISevice shared]setNetMonitor];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidatingFinish:) name:@"WifiValidateingFinish" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wifiValidating:) name:@"WifiValidateingStatus" object:nil];
+    
 }
 
 - (void)wifiValidateSuccess:(NSNotification *)noti {
@@ -67,22 +71,6 @@
     
 }
 
-- (void)getAreaUserInfo {
-    WIFIInfo *info  = [WIFISevice shared].wifiInfo;
-    
-    NSString *mac = info.hktMac;
-    if (!mac || ![WIFISevice isHKTWifi]) {
-        self.panel.bottomView.flowScoreLabel.text = @"0";
-        return;
-    }
-    NSString *url = [NSString stringWithFormat:@"%@%@",@"http://www.hktfi.com/index.php/api/ap/getOnlineNum/mac/",mac];
-    [MHNetworkManager getRequstWithURL:url params:nil                          successBlock:^(NSDictionary *returnData) {
-                              NSInteger totalUser = [[returnData objectForKey:@"total"]integerValue];
-                              self.panel.bottomView.flowScoreLabel.text = [NSString stringWithFormat:@"%ld",totalUser];
-                          } failureBlock:^(NSError *error) {
-                              
-                          } showHUD:NO];
-}
 
 - (void)orgIDChange:(NSNotification *)noti {
     [self loadHomeData];
@@ -103,7 +91,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setWhiteTrasluntNavBar];
-//    [self loadHomeData];
+
    
     
 }
@@ -161,44 +149,71 @@
     [self requestHomeNews];
     [self requestServiceData];
     [self getAreaUserInfo];
+    dispatch_group_notify(self.group, dispatch_get_main_queue(), ^{
+        [self setNoDataViewWithBaseView:self.tableView];
+        [self.tableView reloadData];
 
+    });
+}
+
+- (void)getAreaUserInfo {
+    WIFIInfo *info  = [WIFISevice shared].wifiInfo;
+    NSString *mac = info.hktMac;
+    if (!mac || ![WIFISevice isHKTWifi]) {
+        self.panel.bottomView.flowScoreLabel.text = @"0";
+        return;
+    }
+    dispatch_group_enter(self.group);
+    NSString *url = [NSString stringWithFormat:@"%@%@",@"http://www.hktfi.com/index.php/api/ap/getOnlineNum/mac/",mac];
+    [MHNetworkManager getRequstWithURL:url params:nil                          successBlock:^(NSDictionary *returnData) {
+        NSInteger totalUser = [[returnData objectForKey:@"total"]integerValue];
+        self.panel.bottomView.flowScoreLabel.text = [NSString stringWithFormat:@"%ld",totalUser];
+        dispatch_group_leave(self.group);
+    } failureBlock:^(NSError *error) {
+        dispatch_group_leave(self.group);
+
+    } showHUD:NO];
 }
 
 
-
 - (void)requestLbtData {
+    dispatch_group_enter(self.group);
     NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, LbtInfoAPI) params:para successBlock:^(NSDictionary *returnData) {
         NSArray *lbtArray = [HomeLbtResponse arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         self.lbtArray = [lbtArray copy];
-        [self.tableView reloadData];
+        dispatch_group_leave(self.group);
     } failureBlock:^(NSError *error) {
-        
+        dispatch_group_leave(self.group);
     } showHUD:NO];
 }
 
 - (void)requestHomeNews {
+    dispatch_group_enter(self.group);
     NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, WIFIHomeNewsAPI) params:para successBlock:^(NSDictionary *returnData) {
         [self.tableView.mj_header endRefreshing];
         NSArray *newsArray = [HomeNews arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         [self.dataArray removeAllObjects];
         [self.dataArray addObjectsFromArray:newsArray];
-        [self.tableView reloadData];
+        dispatch_group_leave(self.group);
     } failureBlock:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
+        dispatch_group_leave(self.group);
         kHudNetError;
     } showHUD:NO];
 }
 
 - (void)requestServiceData {
+    dispatch_group_enter(self.group);
     NSDictionary *para = @{@"number":@"1"};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, HomeThirdAPI) params:para successBlock:^(NSDictionary *returnData) {
         NSArray *serviceArray = [HomeServiceData arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         self.serviceArray = [serviceArray copy];
-        [self.tableView reloadData];
+        dispatch_group_leave(self.group);
     } failureBlock:^(NSError *error) {
-        
+        dispatch_group_leave(self.group);
+
     } showHUD:NO];
 }
 
@@ -326,7 +341,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (self.dataArray.count == 0 && !self.lbtArray.count &&!self.serviceArray.count ) {
+    if (!self.serviceArray.count ) {
         return 0;
     }
     return 3;

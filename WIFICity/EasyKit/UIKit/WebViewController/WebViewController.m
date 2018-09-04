@@ -2,13 +2,14 @@
 #import "WebViewController.h"
 #import <WebKit/WebKit.h>
 #import "EaseWebViewProgressBar.h"
-
-@interface WebViewController ()<UIWebViewDelegate>
+#import "WebLoadFaliView.h"
+@interface WebViewController ()<UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate>
 
 @property(nonatomic,strong)WKWebView *webView;
 @property (nonatomic,strong)UIWebView *uiwebView;
 @property (nonatomic,strong) UIProgressView *progressView;
 @property (nonatomic,strong)EaseWebViewProgressBar *progressBar;
+@property (nonatomic,strong)WebLoadFaliView *failView;
 
 @end
 
@@ -36,7 +37,7 @@
             self.uiwebView = webView;
             webView.backgroundColor = [UIColor whiteColor];
             [self.view addSubview:webView];
-            CGFloat width = [UIScreen mainScreen].bounds.size.width-16;
+//            CGFloat width = [UIScreen mainScreen].bounds.size.width-16;
 //            NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
 //            NSString *html = [NSString stringWithFormat:@"%@%@",header,self.htmlWord];
             [webView loadHTMLString:self.htmlWord baseURL:nil];
@@ -51,9 +52,7 @@
         self.webView.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
          [self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]];
-        [self.webView loadRequest:request];
-        
+        [self loadUrlRequest];
         self.webView.UIDelegate = self;
         self.webView.navigationDelegate = self;
         [self.view addSubview:self.webView];
@@ -63,6 +62,11 @@
             [self.progressBar setProgress:0.3];
         }
     }
+}
+
+- (void)loadUrlRequest {
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]];
+    [self.webView loadRequest:request];
 }
 
 - (void)modifyImageJs {
@@ -172,7 +176,11 @@
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
     NSLog(@"网页由于某些原因加载失败");
     if (error) {
-        
+        if (!self.failView.superview) {
+            [self.webView addSubview:self.failView];
+        }
+    } else {
+
     }
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
@@ -182,6 +190,9 @@
 }
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"网页导航加载完毕");
+    if (self.failView.superview) {
+        [self.failView  removeFromSuperview];
+    }
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
@@ -207,5 +218,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - get
+
+- (WebLoadFaliView *)failView {
+    if (!_failView) {
+        _failView = [WebLoadFaliView new];
+        _failView.frame = self.view.bounds;
+        weakself;
+        _failView.reloadBlock = ^{
+            [wself loadUrlRequest];
+        };
+    }
+    return _failView;
+}
 
 @end

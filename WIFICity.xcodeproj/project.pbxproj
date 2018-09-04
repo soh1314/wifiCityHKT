@@ -31,6 +31,10 @@
 		16201EA5213D0DB500714DD0 /* disconnect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16201EA0213D0DB400714DD0 /* disconnect@3x.png */; };
 		16201EA6213D0DB500714DD0 /* disconnect.png in Resources */ = {isa = PBXBuildFile; fileRef = 16201EA1213D0DB400714DD0 /* disconnect.png */; };
 		16201EA7213D0DB500714DD0 /* disconnect.png in Resources */ = {isa = PBXBuildFile; fileRef = 16201EA1213D0DB400714DD0 /* disconnect.png */; };
+		16201EAE213E1E0000714DD0 /* WebLoadFaliView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16201EAD213E1E0000714DD0 /* WebLoadFaliView.m */; };
+		16201EAF213E1E0000714DD0 /* WebLoadFaliView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16201EAD213E1E0000714DD0 /* WebLoadFaliView.m */; };
+		16201EB1213E1E9400714DD0 /* WebLoadFaliView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16201EB0213E1E9400714DD0 /* WebLoadFaliView.xib */; };
+		16201EB2213E1E9400714DD0 /* WebLoadFaliView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16201EB0213E1E9400714DD0 /* WebLoadFaliView.xib */; };
 		163A08A820E1D51800DAC894 /* BindPhoneInputPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08A720E1D51800DAC894 /* BindPhoneInputPhoneView.m */; };
 		163A08AB20E1D53300DAC894 /* BindPhoneInputPwdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163A08AA20E1D53300DAC894 /* BindPhoneInputPwdView.m */; };
 		163A08AD20E1D54700DAC894 /* BindPhoneInputPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 163A08AC20E1D54700DAC894 /* BindPhoneInputPhoneView.xib */; };
@@ -1358,6 +1362,9 @@
 		16201E9F213D0DB400714DD0 /* disconnect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disconnect@2x.png"; sourceTree = "<group>"; };
 		16201EA0213D0DB400714DD0 /* disconnect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disconnect@3x.png"; sourceTree = "<group>"; };
 		16201EA1213D0DB400714DD0 /* disconnect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disconnect.png; sourceTree = "<group>"; };
+		16201EAC213E1E0000714DD0 /* WebLoadFaliView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebLoadFaliView.h; sourceTree = "<group>"; };
+		16201EAD213E1E0000714DD0 /* WebLoadFaliView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebLoadFaliView.m; sourceTree = "<group>"; };
+		16201EB0213E1E9400714DD0 /* WebLoadFaliView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebLoadFaliView.xib; sourceTree = "<group>"; };
 		163A08A620E1D51800DAC894 /* BindPhoneInputPhoneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneInputPhoneView.h; sourceTree = "<group>"; };
 		163A08A720E1D51800DAC894 /* BindPhoneInputPhoneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindPhoneInputPhoneView.m; sourceTree = "<group>"; };
 		163A08A920E1D53300DAC894 /* BindPhoneInputPwdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneInputPwdView.h; sourceTree = "<group>"; };
@@ -3573,6 +3580,9 @@
 				1654A6ED20DE2EB200AFC322 /* WebViewController.m */,
 				1695B1CC20F5E10600DFFCCE /* EaseWebViewProgressBar.h */,
 				1695B1CD20F5E10600DFFCCE /* EaseWebViewProgressBar.m */,
+				16201EAC213E1E0000714DD0 /* WebLoadFaliView.h */,
+				16201EAD213E1E0000714DD0 /* WebLoadFaliView.m */,
+				16201EB0213E1E9400714DD0 /* WebLoadFaliView.xib */,
 			);
 			path = WebViewController;
 			sourceTree = "<group>";
@@ -4520,6 +4530,7 @@
 				1662C7FD2122B3C700A2A100 /* WifiDectectPanel.xib in Resources */,
 				1662C7FE2122B3C700A2A100 /* search_sq.png in Resources */,
 				1662C7FF2122B3C700A2A100 /* close@2x.png in Resources */,
+				16201EB2213E1E9400714DD0 /* WebLoadFaliView.xib in Resources */,
 				1662C8002122B3C700A2A100 /* HomeNewsOneCell.xib in Resources */,
 				1662C8012122B3C700A2A100 /* step_one@3x.png in Resources */,
 				1662C8022122B3C700A2A100 /* CompanyDetailSectionTwo.xib in Resources */,
@@ -4742,6 +4753,7 @@
 				169D8EDF21086222006776D8 /* position_wifi.png in Resources */,
 				1691DDE920ECB485008AF2BE /* phone@3x.png in Resources */,
 				16F76F6E20EDCB1F00950127 /* search.png in Resources */,
+				16201EB1213E1E9400714DD0 /* WebLoadFaliView.xib in Resources */,
 				1656789F20D3662A00EC3D5C /* mine_default@2x.png in Resources */,
 				16F76FDB20EE22FD00950127 /* default_img.png in Resources */,
 				16F76F6220EDCB1F00950127 /* snap_default@2x.png in Resources */,
@@ -5425,6 +5437,7 @@
 				1662C6CF2122B3C700A2A100 /* GTMBase64.m in Sources */,
 				1662C6D02122B3C700A2A100 /* WINormalCellHeader.m in Sources */,
 				1662C6D12122B3C700A2A100 /* RNDecryptor.m in Sources */,
+				16201EAF213E1E0000714DD0 /* WebLoadFaliView.m in Sources */,
 				1662C6D22122B3C700A2A100 /* WIWXInfo.m in Sources */,
 				1662C6D32122B3C700A2A100 /* RNCryptor.m in Sources */,
 				1662C6D42122B3C700A2A100 /* WIWeatherInfo.m in Sources */,
@@ -5612,6 +5625,7 @@
 				16D64C2620D0AAB800ED74C8 /* MHAsiNetworkItem.m in Sources */,
 				16D64BE320CF9FCE00ED74C8 /* UIViewController+MBProgressHUD.m in Sources */,
 				16F8877F2100910000136C7F /* UIImage+ImageEffects.m in Sources */,
+				16201EAE213E1E0000714DD0 /* WebLoadFaliView.m in Sources */,
 				16F887EC2102D2F500136C7F /* HomeServicePageController.m in Sources */,
 				16D64BF520CFA9BF00ED74C8 /* NavManager.m in Sources */,
 				16D64B4E20CF7BA500ED74C8 /* EasyCLLocationManager.m in Sources */,
