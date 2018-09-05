@@ -12,7 +12,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVKit/AVKit.h>
 #import "AppDelegate.h"
-#define DDHidden_TIME   3.0
+#define DDHidden_TIME   2.0
 #define DDScreenW   [UIScreen mainScreen].bounds.size.width
 #define DDScreenH   [UIScreen mainScreen].bounds.size.height
 
@@ -32,7 +32,6 @@
 //        if (isHidden == YES) {
 //            
 //        }
-        
         // 设置引导视图的scrollview
         UIScrollView *guidePageView = [[UIScrollView alloc]initWithFrame:frame];
         [guidePageView setBackgroundColor:[UIColor lightGrayColor]];
@@ -138,21 +137,21 @@
 }
 
 - (void)buttonClick:(UIButton *)button {
+    
 //    [UIView animateWithDuration:DDHidden_TIME animations:^{
 //        self.alpha = 0;
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DDHidden_TIME * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [self performSelector:@selector(removeGuidePageHUD) withObject:nil afterDelay:0];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//
 //        });
 //    }];
     [self removeGuidePageHUD];
-//    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-//    [delegate updateView];
+
 }
 
 - (void)removeGuidePageHUD {
     AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     [delegate showTabController];
-    [self removeFromSuperview];
 }
 
 /**< APP视频新特性页面(新增测试模块内容) */

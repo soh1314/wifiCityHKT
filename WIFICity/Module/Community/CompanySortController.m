@@ -171,7 +171,6 @@
 #pragma mark - dropmenu delegate
 
 -(UIView *)dropContentViewForItem:(NSInteger)index {
-    UIView *view = [UIView new];
     if (index == 0) {
         WICompanyCategroyView *categoryView  = [[WICompanyCategroyView alloc]initWithFrame:CGRectMake(0, 0, KSCREENW, EaseDropItemContentViewHeight)];
         [categoryView setSelectCategory:self.selectCategory];

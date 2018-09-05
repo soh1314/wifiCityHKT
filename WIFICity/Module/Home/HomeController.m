@@ -152,7 +152,6 @@
     dispatch_group_notify(self.group, dispatch_get_main_queue(), ^{
         [self setNoDataViewWithBaseView:self.tableView];
         [self.tableView reloadData];
-
     });
 }
 
@@ -182,6 +181,7 @@
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, LbtInfoAPI) params:para successBlock:^(NSDictionary *returnData) {
         NSArray *lbtArray = [HomeLbtResponse arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         self.lbtArray = [lbtArray copy];
+        [self.tableView reloadData];
         dispatch_group_leave(self.group);
     } failureBlock:^(NSError *error) {
         dispatch_group_leave(self.group);
@@ -196,6 +196,7 @@
         NSArray *newsArray = [HomeNews arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         [self.dataArray removeAllObjects];
         [self.dataArray addObjectsFromArray:newsArray];
+        [self.tableView reloadData];
         dispatch_group_leave(self.group);
     } failureBlock:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
@@ -210,6 +211,7 @@
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, HomeThirdAPI) params:para successBlock:^(NSDictionary *returnData) {
         NSArray *serviceArray = [HomeServiceData arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
         self.serviceArray = [serviceArray copy];
+        [self.tableView reloadData];
         dispatch_group_leave(self.group);
     } failureBlock:^(NSError *error) {
         dispatch_group_leave(self.group);

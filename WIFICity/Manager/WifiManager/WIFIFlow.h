@@ -15,5 +15,6 @@
 @property (nonatomic,copy)NSString* wifiReceived;
 @property (nonatomic,copy)NSString* wwanSent;
 @property (nonatomic,copy)NSString* wifiLastSent;
+@property (nonatomic,assign)float wifiSentFlowValue;
 
 @end

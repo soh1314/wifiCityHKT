@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SDKConfig.h"
-#import "StaticGuideViewController.h"
+#import "WelcomViewController.h"
 #import "WIFISevice.h"
 #import "WIFIValidator.h"
 #import "WIFIPusher.h"
@@ -31,20 +31,14 @@
     [self setMainView];
      [WIFISevice shared];
     [self.window makeKeyAndVisible];
-   
-    
+    [[UIApplication sharedApplication]setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
 
 - (void)setMainView {
-    if ([NavManager firstEnterApp]) {
-        StaticGuideViewController *staticGuide = [[StaticGuideViewController alloc]init];
-        UINavigationController *staticNavi = [[UINavigationController alloc]initWithRootViewController:staticGuide];
-        self.window.rootViewController = staticNavi;
-    } else {
-        [self showTabController];
-    }
-    
+    WelcomViewController *staticGuide = [[WelcomViewController alloc]init];
+    UINavigationController *staticNavi = [[UINavigationController alloc]initWithRootViewController:staticGuide];
+    self.window.rootViewController = staticNavi;
 }
 
 - (void)showTabController {
@@ -69,6 +63,14 @@
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 }
 
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"后台请求数据");
+    [self refereshBackGroundFetch];
+}
+
+- (void)refereshBackGroundFetch {
+    
+}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
@@ -76,7 +78,6 @@
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [[WIFIValidator shared]validator];
     NSLog(@"应用退出后台");
     
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

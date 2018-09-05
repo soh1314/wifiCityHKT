@@ -67,6 +67,16 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
     return self;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:WILogoutSuccessNoti object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:WILoginSuccessNoti object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:WIFIValidatorSuccessNoti object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:WIFIValidatorFailNoti object:nil];
+
+
+}
+
 
 //定时流量监测
 - (void)startFlowMonitor {
@@ -95,7 +105,7 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
         if ( cmd.commandType == kNEHotspotHelperCommandTypeFilterScanList ) {
             NSLog(@"-------华宽通wifi正在扫描------");
             for (network in cmd.networkList) {
-                NSString* wifiInfoString = [[NSString alloc] initWithFormat: @"---------------------------\nSSID: %@\nMac地址: %@\n信号强度: %f\nCommandType:%ld\n---------------------------\n\n", network.SSID, network.BSSID, network.signalStrength, (long)cmd.commandType];
+//                NSString* wifiInfoString = [[NSString alloc] initWithFormat: @"---------------------------\nSSID: %@\nMac地址: %@\n信号强度: %f\nCommandType:%ld\n---------------------------\n\n", network.SSID, network.BSSID, network.signalStrength, (long)cmd.commandType];
 //                NSLog(@"附近wifi信息%@", wifiInfoString);
                 if (![network.BSSID  hasPrefix:HKTWIFIMACPREFIX]) {
                     BOOL otherwifiAdded = NO;
@@ -135,13 +145,13 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
                     info.signalStrength = [NSString stringWithFormat:@"%.2f",network.signalStrength];
                     info.sid = [network.SSID copy];
                     [self.hktWifiArray addObject:info];
-                    [network setConfidence: kNEHotspotHelperConfidenceHigh];
-                    [network setPassword: @""];
-                    [networkList addObject:network];
-                    NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
-                    [response setNetworkList: [networkList copy]];
-                    [response setNetwork: network];
-                    [response deliver];
+//                    [network setConfidence: kNEHotspotHelperConfidenceHigh];
+//                    [network setPassword: @""];
+//                    [networkList addObject:network];
+//                    NEHotspotHelperResponse *response = [cmd createResponse: kNEHotspotHelperResultSuccess];
+//                    [response setNetworkList: [networkList copy]];
+//                    [response setNetwork: network];
+//                    [response deliver];
                 }
             }
             if (self.hktWifiArray && self.hktWifiArray.count > 0) {
@@ -224,6 +234,7 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         NSLog(@"%ld",status);
+        flowRequestNum = 0;
         if (status == AFNetworkReachabilityStatusNotReachable) {
             self.net_status = WINetFail;
             [Dialog simpleToast:kNetError];
@@ -269,23 +280,26 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
 }
 
 - (void)saveUserFlow {
-    if (![WIFISevice isHKTWifi]) {
+    if (![WIFISevice isHKTWifi] || [WIFISevice netStatus] == WINet4G || [WIFISevice netStatus] == WINetFail) {
         return;
     }
     WIFIFlow *flow =  [WifiUtil checkNetworkflow];
     if (flowRequestNum == 0) {
-        self.lastWifiSentFlow = [flow.wifiSent floatValue];
+        self.lastWifiSentFlow = flow.wifiSentFlowValue;
         flowRequestNum++;
+        NSLog(@"第一次流量:%.2f",self.lastWifiSentFlow);
         return;
     }
-    float addFlowNumber = [flow.wifiSent floatValue] - self.lastWifiSentFlow;
-    if (addFlowNumber <= 0 ) {
+    float addFlowNumber = flow.wifiSentFlowValue - self.lastWifiSentFlow;
+    float addFlowNumberMb = addFlowNumber /1024/1024;
+    if (addFlowNumberMb <= 0 ) {
         return;
     }
-    NSDictionary *para = @{@"flowNumber":[NSString stringWithFormat:@"%.2f",addFlowNumber],@"userId":[AccountManager shared].user.userId};
+    NSLog(@"新增流量%.2f",addFlowNumberMb);
+    NSDictionary *para = @{@"flowNumber":[NSString stringWithFormat:@"%.2f",addFlowNumberMb],@"userId":[AccountManager shared].user.userId};
     [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, SaveUserFlowAPI) params:para successBlock:^(NSDictionary *returnData) {
         WIFIFlow *flow =  [WifiUtil checkNetworkflow];
-        self.lastWifiSentFlow = [flow.wifiSent floatValue];
+        self.lastWifiSentFlow = flow.wifiSentFlowValue;
     } failureBlock:^(NSError *error) {
         
     } showHUD:NO];
@@ -352,7 +366,9 @@ static NSString *const defaultOrgId = @"8a8ab0b246dc81120146dc8180ba0017";
 }
 
 - (void)handleWhenUserLogout:(NSNotification *)noti {
-    dispatch_cancel(self.timer);
+    if (self.timer) {
+        dispatch_cancel(self.timer);
+    }
 }
 
 #pragma mark - wifi connect

@@ -391,6 +391,7 @@
     flow.wifiReceived = [wifiReceived copy];
     flow.wwanSent = [wwanSent copy];
     flow.wwanReceived = [wwanReceived copy];
+    flow.wifiSentFlowValue = wifiOBytes+wifiIBytes;
     return flow;
 }
 

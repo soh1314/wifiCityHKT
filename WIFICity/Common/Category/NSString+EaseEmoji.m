@@ -891,7 +891,7 @@ static NSDictionary * s_cheatCodesToUnicode = nil;
     if (self.length) {
         __block NSMutableString *newText = [NSMutableString stringWithString:self];
         [s_unicodeToCheatCodes enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            NSString *string = ([obj isKindOfClass:[NSArray class]] ? [obj firstObject] : obj);
+//            NSString *string = ([obj isKindOfClass:[NSArray class]] ? [obj firstObject] : obj);
             NSString *keyEncode = [key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             if ([newText contains:(NSString *)key]) {
                 [newText replaceOccurrencesOfString:key withString:keyEncode options:NSLiteralSearch range:NSMakeRange(0, newText.length)];

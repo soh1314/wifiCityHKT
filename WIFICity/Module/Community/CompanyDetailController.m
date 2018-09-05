@@ -228,8 +228,9 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
         cell.SeeQuanjinBlock = ^{
             [wself jumpToWebViewController:@"https://720yun.com/t/78cjeOtwrw0?scene_id=17429214"];
         };
+        __weak typeof(cell)wscell = cell;
         cell.locateBlock = ^{
-            [WIUtil openThirdMap:cell.info.com_name viewcontroller:wself];
+            [WIUtil openThirdMap:wscell.info.com_name viewcontroller:wself];
             
         };
         cell.info = self.info;
