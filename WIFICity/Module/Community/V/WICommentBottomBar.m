@@ -37,14 +37,14 @@
 
 - (void)setInfo:(WICompanyInfo *)info {
     _info = info;
-    if (self.info.like_id) {
+    if (self.info.liked) {
         self.like = YES;
         [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
     } else {
         self.like = NO;
         [self.likeBtn setImage:[UIImage qsImageNamed:@"snap_default"] forState:UIControlStateNormal];
     }
-    [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",info.likes] forState:UIControlStateNormal];
+    [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",info.likesQuantity] forState:UIControlStateNormal];
     
     
 }
@@ -70,7 +70,7 @@
         self.like = YES;
         weakself;
         [self.dispatch likeCompany:self.info complete:^(WINetResponse *response) {
-            NSInteger likes = wself.info.likes + 1;
+            NSInteger likes = wself.info.likesQuantity + 1;
             [wself.likeBtn setTitle:[NSString stringWithFormat:@" %ld",likes] forState:UIControlStateNormal];
             [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
         }];

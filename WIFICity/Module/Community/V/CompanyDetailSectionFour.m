@@ -35,19 +35,19 @@
 
 - (void)tapRecruitMent:(id)sender {
     if (self.actionBlock) {
-        self.actionBlock(self.info.com_website);
+        self.actionBlock(self.info.website);
     }
 }
 
 - (void)tapProductInfo:(id)sender {
     if (self.actionBlock) {
-        self.actionBlock(self.info.com_website);
+        self.actionBlock(self.info.website);
     }
 }
 
 - (void)tapWebsite:(id)sender {
     if (self.actionBlock) {
-        self.actionBlock(self.info.com_website);
+        self.actionBlock(self.info.website);
     }
 }
 

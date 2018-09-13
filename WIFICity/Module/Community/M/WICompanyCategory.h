@@ -28,6 +28,8 @@
 @property(nonatomic,copy)NSString *industryImg;
 @property(nonatomic,copy)NSString *industryName;
 @property(nonatomic,copy)NSString *industrySort;
+@property(nonatomic,copy)NSString *imageUrl;
+@property(nonatomic,copy)NSString *name;
 
 - (NSString *)industryImgUrl;
 

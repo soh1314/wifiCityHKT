@@ -33,17 +33,16 @@ static AFHTTPSessionManager *manager ;
 
 + (AFHTTPSessionManager *)httpManager {
     AFHTTPSessionManager *manager = [self sharedHTTPSession];
-    if ([TGNetConfig shared].type == 0) {
+    manager.requestSerializer.timeoutInterval = 10;
+    if ([TGNetConfig shared].type == 1) {
         manager.requestSerializer=[AFJSONRequestSerializer serializer];
         manager.responseSerializer = [AFJSONResponseSerializer serializer];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html",@"text/javascript",nil];
 //        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-         manager.requestSerializer.timeoutInterval = 10;
     } else  {
          manager.requestSerializer=[AFHTTPRequestSerializer serializer];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        manager.responseSerializer = [AFJSONResponseSerializer serializer];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html",@"text/javascript",nil];
-         manager.requestSerializer.timeoutInterval = 10;
         
     }
     return manager;

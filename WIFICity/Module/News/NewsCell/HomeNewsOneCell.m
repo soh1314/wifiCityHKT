@@ -32,32 +32,21 @@
 - (void)updateGaoXinNews:(GaoXinNewS *)news {
     self.titleLabel.text = [NSString stringWithFormat:@"%@",news.gxq_title];
     self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.gxq_agency];
-    if (news.danTu) {
-        NSString *urlString = nil;
-        if ([news.gxq_img_src hasPrefix:@"["]) {
-            urlString = [news.gxq_img_src stringByReplacingOccurrencesOfString:@"[" withString:@""];
-            urlString = [urlString stringByReplacingOccurrencesOfString:@"]" withString:@""];
-        } else {
-            urlString = [news.gxq_img_src copy];
-        }
-        NSString *url = [NSString stringWithFormat:@"%@",urlString];
-        NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
+    if (self.news.images && self.news.images.count > 0) {
+        NSDictionary *imageDic = self.news.images[0];
+        [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:imageDic[@"imgUrl"]]];
     }
 }
 
 - (void)updateHomeNews:(HomeNews *)news {
     self.titleLabel.text = [NSString stringWithFormat:@"%@",news.title];
-    self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.abstracts];
-    if (news.img_src) {
-        NSString *url = [NSString stringWithFormat:@"%@/%@",@"http://wifi.hktfi.com",self.news.img_src];
-        NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
+    if (news.source) {
+        self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.source];
 
-    } else {
-        NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,news.src_list];
-        NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
+    }
+    if (self.news.images && self.news.images.count > 0) {
+        NSDictionary *imageDic = self.news.images[0];
+        [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:imageDic[@"imgUrl"]]];
     }
 
 }
@@ -77,16 +66,7 @@
 }
 
 - (void)updateLayout:(HomeNews *)news {
-    BOOL haveImage;
-    if ([news isKindOfClass:[GaoXinNewS class]]) {
-        GaoXinNewS *gaoxinNews = (GaoXinNewS *)news;
-        if (gaoxinNews.gxq_img_src && ![gaoxinNews.gxq_img_src isEqualToString:@"<null>"]) {
-             haveImage = YES;
-        } else {
-            haveImage = NO;
-        }
-    }
-    if (self.news.img_src || self.news.src_list || haveImage) {
+    if (self.news.imgType == 2) {
         [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.newsImageView.mas_left).mas_offset(-12);
             make.left.mas_equalTo(self.contentView).mas_offset(16);
@@ -115,9 +95,9 @@
         }];
     }
     
-    if (news.is_hot || news.information_type == 3001) {
+    if (news.hot || news.information_type == 3001) {
         self.tagView.hidden = NO;
-        if (news.is_hot) {
+        if (news.hot) {
             self.tagView.text = @"热点";
             self.tagView.layer.borderColor = [UIColor colorWithHexString:@"#F9595B"].CGColor;
             self.tagView.textColor = [UIColor colorWithHexString:@"#F9595B"];

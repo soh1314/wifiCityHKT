@@ -33,10 +33,10 @@
 
 - (void)setComment:(WIComment *)comment {
     _comment = comment;
-    NSString *content1 = [comment.dis_content replace:@" " withString:@"%"];
+    NSString *content1 = [comment.content replace:@" " withString:@"%"];
     NSString *content = [content1 stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     self.commentContentLabel.text = [content replace:@" " withString:@""];
-    NSString *time = [comment.dis_date timeStringToDay:comment.dis_date];
+    NSString *time = comment.createDate;
     self.timeLabel.text = [time copy];
 //    NSString *shortId = [self.comment.use_id substringFromIndex:26];
     
@@ -47,13 +47,13 @@
     if (self.comment.qq_icon) {
         [self.avartar sd_setImageWithURL:[NSURL URLWithString:self.comment.qq_icon]];
     }
-    if (self.comment.likes) {
-        [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",self.comment.likes] forState:UIControlStateNormal];
+    if (self.comment.likedQuantity) {
+        [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",self.comment.likedQuantity] forState:UIControlStateNormal];
     } else {
         [self.likeBtn setTitle:@" " forState:UIControlStateNormal];
     }
     
-    if (self.comment.like_id) {
+    if (self.comment.liked) {
         [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
     } else {
         [self.likeBtn setImage:[UIImage qsImageNamed:@"snap_default"] forState:UIControlStateNormal];
@@ -78,9 +78,9 @@
     }
     [self.dispatch likeCompanyComment:self.comment complete:^(WINetResponse *response) {
         if (response && response.success) {
-            comment.likes ++;
+            comment.likedQuantity ++;
             comment.like_id =  [response.obj objectForKey:@"id"];
-            [wself.likeBtn setTitle:[NSString stringWithFormat:@" %ld",self.comment.likes] forState:UIControlStateNormal];
+            [wself.likeBtn setTitle:[NSString stringWithFormat:@" %ld",self.comment.likedQuantity] forState:UIControlStateNormal];
             [wself.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
         }
     }];

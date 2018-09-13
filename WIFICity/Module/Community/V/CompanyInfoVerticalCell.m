@@ -33,25 +33,24 @@
 
 - (void)setInfo:(WICompanyInfo *)info {
     _info = info;
-    self.nameLabel.text = [info.com_name copy];
-    self.desLabel.text = [info.com_range copy];
-    if (self.info.likes) {
-        [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",info.likes] forState:UIControlStateNormal];
+    self.nameLabel.text = [info.name copy];
+    self.desLabel.text = [info.businessScope copy];
+    if (self.info.likesQuantity) {
+        [self.likeBtn setTitle:[NSString stringWithFormat:@" %ld",info.likesQuantity] forState:UIControlStateNormal];
     } else {
         [self.likeBtn setTitle:@"" forState:UIControlStateNormal];
     }
-    if (self.info.like_id) {
+    if (self.info.liked) {
         [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
     } else {
         [self.likeBtn setImage:[UIImage qsImageNamed:@"snap_default"] forState:UIControlStateNormal];
     }
-    NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,info.com_logo];
-    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *urlEncode = [info.logoImgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:urlEncode] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
     }];
-    if (self.info.dis) {
-        [self.commentBtn setTitle:[NSString stringWithFormat:@" %ld",self.info.dis] forState:UIControlStateNormal];
+    if (self.info.commentsQuantity) {
+        [self.commentBtn setTitle:[NSString stringWithFormat:@" %ld",self.info.commentsQuantity] forState:UIControlStateNormal];
     } else {
         [self.commentBtn setTitle:@"" forState:UIControlStateNormal];
     }
@@ -63,7 +62,7 @@
 
 
 - (IBAction)like:(id)sender {
-    if (self.info.like_id) {
+    if (self.info.liked) {
         [Dialog simpleToast:@"无法重复点赞"];
         return;
     }

@@ -7,13 +7,13 @@
 #ifndef NetAPI_h
 #define NetAPI_h
 #if NEIWANG
-#define	kUrlHost @"http://192.168.1.103:8080/wificity" //测试服务器
+#define	kUrlHost @"http://192.168.1.103:9090/wifi-city-api" //测试服务器
 #else
-#define kUrlHost  @"http://wifi.hktfi.com"  //阿里云服务器 @"http://wifi.hktfi.com"  http://192.168.1.103:8080/wificity http://192.168.1.103:8080/wificity
+#define kUrlHost  @"http://192.168.1.103:9090/wifi-city-api"  //阿里云服务器 @"http://wifi.hktfi.com"  http://192.168.1.103:8080/wificity http://192.168.1.103:8080/wificity
 #endif
 #define minetype @"application/json"
 
-static NSString *const WIFIHomeNewsAPI = @"/ws/wifi/findDeliveryByOrgId.do";
+static NSString *const WIFIHomeNewsAPI = @"/v1/news/homepage/list.do";
 static NSString *const WIFIHomeNewsDetailAPI = @"/hktInformationDeliveryController.do?findById&id=";
 
 static NSString *const GetMacOrgId = @"/ws/wifi/getOrgId.do";

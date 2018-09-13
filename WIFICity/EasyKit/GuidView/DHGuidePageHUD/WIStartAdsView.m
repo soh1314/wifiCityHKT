@@ -19,7 +19,11 @@
 
 - (void)initUI {
     self.bgView = [UIImageView new];
-    [self.bgView sd_setImageWithURL:[NSURL URLWithString:@"http://wifi.hktfi.com/upload/plug-in/accordion/hktorgimg/20180810143551LmgccbQK.png"] placeholderImage:nil];
+    NSString *imageUrl = [[NSUserDefaults standardUserDefaults]objectForKey:@"HKT_WelcomeImageUrl_key"];
+    if (!imageUrl) {
+        imageUrl = @"http://wifi.hktfi.com/upload/plug-in/accordion/hktorgimg/20180810143551LmgccbQK.png";
+    }
+    [self.bgView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:nil];
     self.bgView.frame = self.bounds;
     [self addSubview:self.bgView];
     

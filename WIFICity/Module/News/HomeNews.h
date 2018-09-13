@@ -41,4 +41,12 @@
 @property (nonatomic,assign)BOOL is_top;
 @property (nonatomic,copy)NSString *src_list;
 @property (nonatomic,copy)NSArray *home_image_array;
+@property (nonatomic,copy)NSArray *images;
+@property (nonatomic,assign)NSInteger imgType;
+@property (nonatomic,assign)BOOL hot;
+@property (nonatomic,copy)NSString *source;
+@property (nonatomic,assign)BOOL top;
+@property (nonatomic,copy)NSString *url;
+
+
 @end

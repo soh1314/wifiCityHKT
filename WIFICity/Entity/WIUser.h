@@ -31,6 +31,7 @@
 @interface WIUser : WIModel
 
 @property (nonatomic,copy)NSString *userId;
+@property (nonatomic,assign)NSInteger ID;
 @property (nonatomic,copy)NSString *nickname;
 @property (nonatomic,copy)NSString *createName;
 @property (nonatomic,copy)NSString *createBy;
@@ -43,10 +44,11 @@
 @property (nonatomic,copy)NSString *qqOpenid;
 @property (nonatomic,copy)NSString *wxOpenid;
 @property (nonatomic,copy)NSString *phone;
+@property (nonatomic,copy)NSString *phoneNumber;
 @property (nonatomic,copy)NSString *veriycode;
-@property (nonatomic,copy)NSString *type;
+@property (nonatomic,assign)NSInteger type;
 @property (nonatomic,assign)int loginState;
-@property (nonatomic,copy)NSString *loginType; // 0 wx 1 qq 2 其他
+@property (nonatomic,assign)NSInteger loginType; // 0 wx 1 qq 2 其他
 @property (nonatomic,copy)NSString *avartar;
 @property (nonatomic,copy)NSString *memberLevel;
 @property (nonatomic,copy)NSDictionary *wxinfo;

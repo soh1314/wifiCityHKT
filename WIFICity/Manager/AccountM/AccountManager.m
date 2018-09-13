@@ -70,7 +70,7 @@
 
 - (void)handleWhenAppStart {
 
-    if (!self.user || [self.user.userId isEqualToString:@""]) {
+    if (!self.user || [self.user.userId isEqualToString:@"0"] || [self.user.userId isEqualToString:@""]) {
         [self showLoginView];
     } else {
         [[NSNotificationCenter defaultCenter]postNotificationName:WILoginSuccessNoti object:nil];

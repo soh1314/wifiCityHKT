@@ -46,7 +46,10 @@
 
 - (void)updateGaoXinNews:(GaoXinNewS *)news {
     self.titleLabel.text = [NSString stringWithFormat:@"%@",news.gxq_title];
-    self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.gxq_agency];
+    if (news.source) {
+        self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.source];
+    }
+    
     if (news.gxq_create_date) {
         self.additionLabel.text = [NSString stringWithFormat:@"%@",news.gxq_create_date];
     } else {
@@ -58,8 +61,9 @@
 
 - (void)updateHomeNews:(HomeNews *)news {
     self.titleLabel.text = [NSString stringWithFormat:@"%@",news.title];
-    self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.abstracts];
-
+    if (news.source) {
+        self.agencyLabel.text = [NSString stringWithFormat:@"%@",news.source];
+    }
 }
 
 
@@ -74,7 +78,7 @@
         [self updateHomeNews:news];
     }
     
-    if (news.is_hot) {
+    if (news.hot) {
         self.tabLabel.hidden = NO;
         self.tabLabel.text = @"热点";
         [self.tabLabel mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -140,16 +144,9 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HomeNewsImageItemCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeNewsImageItemCellID" forIndexPath:indexPath];
     
-    NSString *url = self.imageGroupArray[indexPath.row];
-    if ([url hasPrefix:@"http:"]) {
-        NSString *url1 = [url stringByReplacingOccurrencesOfString:@"./" withString:@""];
-        NSString *urlEncode = [url1 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [colCell.HomeNewsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
-    } else {
-        NSString *urlEncode = [NSString stringWithFormat:@"%@/%@",kUrlHost,url];
-        [colCell.HomeNewsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
-    }
-
+    NSDictionary *dic = self.imageGroupArray[indexPath.row];
+    NSString *urlEncode = [dic[@"imgUrl"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [colCell.HomeNewsImageView sd_setImageWithURL:[NSURL URLWithString:urlEncode]];
     return colCell;
 }
 

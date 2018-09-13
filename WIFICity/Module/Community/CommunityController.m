@@ -108,11 +108,11 @@ static int EnterPriseRecommentSection = 2;
 
 - (void)requestCompanyList {
 //    8a2bf9ef61d5dffd0161d634b3a30047 8a2bf9ef61d5dffd0161d60ca2290034
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":@"1"};
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCategoryListAPI) params:para successBlock:^(NSDictionary *returnData) {
+    NSDictionary *para = @{@"techCategoryIds":@"",@"industryCategoryId":@"",@"appUserId":[AccountManager shared].user.userId,@"pageSize":@"10",@"currentPage":@"1"};
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, CompanyCategoryListAPI) params:para successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         if (response && response.success) {
-            NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
+            NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:response.obj[@"rows"]  error:nil];
             [self.dataArray addObjectsFromArray:dataArray];
             [self.tableView reloadData];
 //            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
@@ -198,7 +198,7 @@ static int EnterPriseRecommentSection = 2;
         return 1;
     }  else {
         if (self.dataArray.count > 0) {
-            return 10;
+            return self.dataArray.count;
         }
         return self.dataArray.count;
         
@@ -223,6 +223,7 @@ static int EnterPriseRecommentSection = 2;
     WICompanyCategory *allCateGory = [WICompanyCategory new];
     
     allCateGory.ID = @"";
+    allCateGory.name = @"所有";
     allCateGory.entName = @"所有";
     allCateGory.industryName = @"所有";
     [m_cat addObject:allCateGory];
@@ -242,6 +243,7 @@ static int EnterPriseRecommentSection = 2;
     WICompanyCategory *allCateGory = [WICompanyCategory new];
     
     allCateGory.ID = @"";
+    allCateGory.name = @"所有";
     allCateGory.entName = @"所有";
     allCateGory.industryName = @"所有";
 //    sortCtrl.areaID = [allCateGory.ID copy];

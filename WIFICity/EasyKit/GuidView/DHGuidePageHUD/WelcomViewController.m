@@ -11,6 +11,7 @@
 #import "WIStartAdsView.h"
 #import "WIFIValidator.h"
 #import "AppDelegate.h"
+#import "WIFISevice.h"
 @interface WelcomViewController ()
 
 @end
@@ -36,6 +37,7 @@
 }
 
 - (void)disPlayAdvertismentPage {
+    
     WIStartAdsView *adsView = [[WIStartAdsView alloc]initWithFrame:self.view.frame];
     weakself;
     [adsView.skipBtn startWithDuration:4 block:^(CGFloat time) {
@@ -47,6 +49,18 @@
         [wself showTabController];
     };
     [self.navigationController.view addSubview:adsView];
+}
+
+- (void)requestWelcomeImage {
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, @"/v1/welcome.do") params:@{@"mac":[WIFISevice shared].wifiInfo.hktMac} successBlock:^(NSDictionary *returnData) {
+        NSDictionary *data = [returnData objectForKey:@"data"];
+        if (data) {
+            NSString *welcomeImageUrl = [data objectForKey:@"imgUrl"];
+            [[NSUserDefaults standardUserDefaults]setObject:welcomeImageUrl forKey:@"HKT_WelcomeImageUrl_key"];
+        }
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:NO];
 }
 
 - (void)showTabController {

@@ -27,8 +27,8 @@
 
 - (void)setCompanyInfo:(WICompanyInfo *)companyInfo {
     _companyInfo = companyInfo;
-    NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,_companyInfo.com_logo];
-    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,_companyInfo.logoImgUrl];
+    NSString *urlEncode = [_companyInfo.logoImgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //    [self.logoIcon sd_setImageWithURL:[NSURL URLWithString:url]];
     [self.logoIcon sd_setImageWithURL:[NSURL URLWithString:urlEncode] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 //        float ratio = image.size.height/image.size.width;
@@ -42,8 +42,8 @@
 //            make.left.mas_equalTo(self.bgIconView).mas_offset(5);
 //        }];
 //    }
-    self.nameLabel.text = [_companyInfo.com_name copy];
-    self.desLabel.text = [_companyInfo.com_range copy];
+    self.nameLabel.text = [_companyInfo.name copy];
+    self.desLabel.text = [_companyInfo.businessScope copy];
     self.logoIcon.contentMode = UIViewContentModeScaleAspectFit;
 //    [UILabel changeLineSpaceForLabel:self.desLabel WithSpace:2];
 }

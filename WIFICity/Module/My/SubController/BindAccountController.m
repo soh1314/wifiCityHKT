@@ -51,12 +51,11 @@
 - (void)switchQQbind:(id)sender {
     if (self.bindQQSwitch.isOn) {
         WIUser *user = [WIUser new];
-        user.type = @"qq";
+        user.type = 3;
         [self.dispatch WIThirdBind:user complete:^(WINetResponse *response) {
             if (response && response.success) {
                 WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
-                NSString *loginType = [[AccountManager shared].user.type copy];
-                user.type = [loginType copy];
+                user.type = [AccountManager shared].user.type;
                 [[AccountManager shared]saveUserInfo:user];
                 [AccountManager shared].user = user;
                 [Dialog toastCenter:@"绑定成功"];
@@ -97,12 +96,11 @@
 - (void)switchWXbind:(id)sender {
     if (self.bindWxSwitch.isOn) {
         WIUser *user = [WIUser new];
-        user.type = @"wx";
+        user.type = 2;
         [self.dispatch WIThirdBind:user complete:^(WINetResponse *response) {
             if (response && response.success) {
                 WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
-                NSString *loginType = [[AccountManager shared].user.type copy];
-                user.type = [loginType copy];
+                user.type = [AccountManager shared].user.type;
                 [[AccountManager shared]saveUserInfo:user];
                 [AccountManager shared].user = user;
                 self.wxLabel.text = [NSString stringWithFormat:@"微信号 (%@)",[AccountManager shared].user.wxName];

@@ -23,7 +23,7 @@
 #import "UIViewController+EasyUtil.h"
 #import "WIUtil.h"
 
-static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyById.do";
+static NSString *const EnterPriseCompanyDetailAPI = @"/v1/corporate/detail.do";
 
 @interface CompanyDetailController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -65,23 +65,27 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
         [self.commentArray removeAllObjects];
     }
     [Dialog showRingLoadingView:self.view];
-    NSDictionary *para = @{@"disId":[self.info.ID copy],@"disType":@"1",@"useId":[AccountManager shared].user.userId};
+    NSDictionary *para = @{@"corporateId":@(self.info.ID),@"appUserId":[AccountManager shared].user.userId,@"pageSize":@"10",@"currentPage":@"1"};
     [IEnterPrise enterpriseCommentList:^(WINetResponse *response) {
         [Dialog hideToastView:self.view];
         if (response) {
-            NSArray *commentArray = [WIComment arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
-            [self.commentArray addObjectsFromArray:commentArray];
-            [self updateView];
-            [self updateCommentNum];
+            NSDictionary *dic = response.data;
+            if (dic) {
+                NSArray *commentArray = [WIComment arrayOfModelsFromDictionaries:dic[@"rows"] error:nil];
+                [self.commentArray addObjectsFromArray:commentArray];
+                [self updateView];
+                [self updateCommentNum];
+            }
+
         }
     } par:para];
 }
 
 - (void)loadCompanyDetailData {
     
-    NSDictionary *para = @{@"comId":self.info.ID,@"useId":[AccountManager shared].user.userId};
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, EnterPriseCompanyDetailAPI) params:para successBlock:^(NSDictionary *returnData) {
-        self.info = [[WICompanyInfo alloc]initWithDictionary:returnData[@"obj"][0] error:nil];
+    NSDictionary *para = @{@"id":@(self.info.ID),@"appUserId":[AccountManager shared].user.userId};
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, EnterPriseCompanyDetailAPI) params:para successBlock:^(NSDictionary *returnData) {
+        self.info = [[WICompanyInfo alloc]initWithDictionary:returnData[@"data"] error:nil];
         [self updateView];
         [Dialog hideToastView:self.view];
     } failureBlock:^(NSError *error) {
@@ -96,7 +100,7 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
 }
 
 - (void)updateCommentNum {
-    self.commentBottomBar.commentNum = self.commentArray.count;
+    self.commentBottomBar.commentNum = self.info.commentsQuantity;
 }
 
 - (void)initUI {
@@ -221,16 +225,15 @@ static NSString *const EnterPriseCompanyDetailAPI = @"/ws/company/findCompanyByI
     if (section == 0) {
         CompanyDetailSectionOne *cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyDetailSectionOneID" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
         cell.webSiteBlock = ^{
-            [wself jumpToWebViewController:wself.info.com_website];
+            [wself jumpToWebViewController:wself.info.website];
         };
         cell.SeeQuanjinBlock = ^{
             [wself jumpToWebViewController:@"https://720yun.com/t/78cjeOtwrw0?scene_id=17429214"];
         };
         __weak typeof(cell)wscell = cell;
         cell.locateBlock = ^{
-            [WIUtil openThirdMap:wscell.info.com_name viewcontroller:wself];
+            [WIUtil openThirdMap:wscell.info.name viewcontroller:wself];
             
         };
         cell.info = self.info;

@@ -31,26 +31,25 @@
 
 - (void)setInfo:(WICompanyInfo *)info {
     _info = info;
-    self.companyNameLabel.text = [info.com_name copy];
-    self.companyDesLabel.text = [info.com_range copy];
-    self.likeNumLabel.text  = [NSString stringWithFormat:@"%ld",info.likes];
+    self.companyNameLabel.text = [info.name copy];
+    self.companyDesLabel.text = [info.businessScope copy];
+    self.likeNumLabel.text  = [NSString stringWithFormat:@"%ld",info.likesQuantity];
     
-    NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,info.com_logo];
-    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *urlEncode = [info.logoImgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.companyLogo sd_setImageWithURL:[NSURL URLWithString:urlEncode] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
     }];
-    if (self.info.dis) {
-        self.commentNumLabel.text = [NSString stringWithFormat:@"%ld",self.info.dis];
+    if (self.info.commentsQuantity) {
+        self.commentNumLabel.text = [NSString stringWithFormat:@"%ld",self.info.commentsQuantity];
     } else {
         self.commentNumLabel.text = @"";
     }
-    if (self.info.likes) {
-        self.likeNumLabel.text = [NSString stringWithFormat:@" %ld",info.likes] ;
+    if (self.info.likesQuantity) {
+        self.likeNumLabel.text = [NSString stringWithFormat:@" %ld",info.likesQuantity] ;
     } else {
         self.likeNumLabel.text = @"";
     }
-    if (self.info.like_id) {
+    if (self.info.liked) {
         [self.likeBtn setImage:[UIImage qsImageNamed:@"snap"] forState:UIControlStateNormal];
     } else {
         [self.likeBtn setImage:[UIImage qsImageNamed:@"snap_default"] forState:UIControlStateNormal];
@@ -66,7 +65,7 @@
 }
 
 - (IBAction)like:(id)sender {
-    if (self.info.like_id) {
+    if (self.info.liked) {
         [Dialog simpleToast:@"无法重复点赞"];
         return;
     }

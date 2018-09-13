@@ -36,9 +36,9 @@
     NSMutableArray *temArray = [NSMutableArray array];
     for (int i = 0 ; i < dataArray.count; i++) {
         HomeLbtResponse *lbtresponse = dataArray[i];
-        NSString *encodeUrl = [lbtresponse.newsImgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSString *urlEncode = [NSString stringWithFormat:@"%@/%@",kUrlHost,encodeUrl];
-        [temArray addObject:urlEncode];
+        NSString *encodeUrl = [lbtresponse.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        NSString *urlEncode = [NSString stringWithFormat:@"%@/%@",kUrlHost,encodeUrl];
+        [temArray addObject:encodeUrl];
     }
     self.coursal.imageURLStringsGroup = [temArray copy];
     self.coursal.autoScroll = YES;

@@ -62,9 +62,8 @@ static NSString *const LoginVerifySendFail = @"验证码发送失败";
                 dispatch_cancel(wself.timer);
             }
             [AccountManager shared].closeCountDown = YES;
-            WIUser *user = [[WIUser alloc]initWithDictionary:response.obj error:nil];
-            user.type = @"sj";
-            user.loginType = @"sj";
+            WIUser *user = [[WIUser alloc]initWithDictionary:response.data error:nil];
+            user.loginType = user.type;
             [[AccountManager shared]saveUserInfo:user];
             [AccountManager shared].user = user;
             [[NSNotificationCenter defaultCenter]postNotificationName:WILoginSuccessNoti object:nil];

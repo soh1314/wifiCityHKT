@@ -71,7 +71,7 @@
         }
         if (self.delegate && [self.delegate respondsToSelector:@selector(commentCompany:comment:complete:)]) {
             WIComment *comment = [WIComment new];
-            comment.dis_content = [commitText copy];
+            comment.content = [commitText copy];
             [self.delegate commentCompany:self.info comment:comment complete:^(WINetResponse *response) {
                 wself.dismissBlock();
             }];

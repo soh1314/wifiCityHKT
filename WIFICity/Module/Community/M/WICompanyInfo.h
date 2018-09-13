@@ -8,38 +8,34 @@
 
 #import "WIModel.h"
 
-//"com_address" : "长沙市岳麓区高新开发区青山路以南50米华宽通科技园",
-//"com_contacts" : null,
-//"com_logo" : "upload/plug-in/accordion/images/HKT.jpg",
-//"com_name" : "湖南华宽通科技股份有限公司",
-//"com_range" : "经营范围：计算机技术开发、技术服务；计算机网络平台的建设与开发;电子产品生产；物联网技术的研发。",
-//"com_show" : "1",
-//"com_tel" : null,
-//"com_website" : "http://www.hktchn.com/",
-//"create_by" : null,
-//"create_date" : null,
-//"create_name" : null,
-//"ent_id" : "402883b260d36c5f0160d4c0d7f70017",
-//"ent_name" : "互联网",
-//"id" : "8a2bf9ef61d5dffd0161d634b3a30047",
-//"like_id" : null,
-//"likes" : 30,
-//"org_id" : "8a8ab0b246dc81120146dc8180ba0017",
-//"org_name" : "默认机构",
-//"rew_num" : null,
-//"update_by" : "admin",
-//"update_date" : 1519882345000,
-//"update_name" : "管理员"
+//"address" : "湖南长沙",
+//"businessScope" : "经营范围：智能制造智能制造智能制造智能制造智能制造智能制造，智能制造智能制造智能制造智能制造智能制造智能制造。",
+//"commentsQuantity" : 0,
+//"foundingDate" : "2018-09-10",
+//"id" : 4,
+//"industryCategory" : "先进装备制造",
+//"introduction" : "简介：智能制造智能制造智能制造智能制造智能制造智能制造，智能制造智能制造智能制造智能制造智能制造智能制造。智能制造智能制造智能制造智能制造智能制造智能制造，智能制造智能制造智能制造智能制造智能制造智能制造。",
+//"lastUpdateTime" : "2018-09-11",
+//"legalPerson" : "鸠摩智",
+//"liked" : false,
+//"likesQuantity" : 0,
+//"logoImgUrl" : "http://192.168.1.103:9091/wifi-city-static/corporate/20180911/1536651838723.jpg",
+//"name" : "五八到家",
+//"registeredCapital" : 1,
+//"techCategories" : "智能制造",
+//"telephone" : "123456",
+//"vrUrl" : "http://www.baidu.com",
+//"website" : "http://www.baidu.com"
 
 @interface WICompanyInfo : WIModel
 
-@property (nonatomic,copy)NSString *com_address;
-@property (nonatomic,copy)NSString *com_logo;
-@property (nonatomic,copy)NSString *com_name;
+@property (nonatomic,copy)NSString *address;
+@property (nonatomic,copy)NSString *logoImgUrl;
+@property (nonatomic,copy)NSString *name;
 @property (nonatomic,copy)NSString *com_range;
 @property (nonatomic,copy)NSString *com_show;
-@property (nonatomic,copy)NSString *com_tel;
-@property (nonatomic,copy)NSString *com_website;
+@property (nonatomic,copy)NSString *telephone;
+@property (nonatomic,copy)NSString *website;
 @property (nonatomic,copy)NSString *ent_id;
 @property (nonatomic,copy)NSString *ent_name;
 @property (nonatomic,copy)NSString *like_id;
@@ -48,17 +44,24 @@
 @property (nonatomic,assign)long update_date;
 @property (nonatomic,copy)NSString *update_by;
 @property (nonatomic,copy)NSString *phoneNumber;
-@property (nonatomic,copy)NSString *ID;
-@property (nonatomic,assign)NSInteger likes;
+@property (nonatomic,assign)NSInteger ID;
+@property (nonatomic,assign)NSInteger likesQuantity;
 @property (nonatomic,assign)NSInteger dis;
 @property (nonatomic,assign)float ratio;
-@property (nonatomic,copy)NSString *com_legal;
+@property (nonatomic,copy)NSString *legalPerson;
 @property (nonatomic,copy)NSString *com_capital;
 @property (nonatomic,copy)NSString *com_contacts;
-@property (nonatomic,copy)NSString *com_vr;
+@property (nonatomic,copy)NSString *vrUrl;
 @property (nonatomic,assign)NSInteger com_found_date;
 @property (nonatomic,copy)NSString *likeId;
+@property (nonatomic,copy)NSString *introduction;
 
-@property (nonatomic,copy)NSString *com_introduction;
+@property (nonatomic,copy)NSString *businessScope;
+@property (nonatomic,copy)NSString *foundingDate;
+@property (nonatomic,copy)NSString *lastUpdateTime;
+@property (nonatomic,assign)BOOL liked;
+@property (nonatomic,assign)NSInteger registeredCapital;
+@property (nonatomic,assign)NSInteger commentsQuantity;
+
 
 @end

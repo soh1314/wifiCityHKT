@@ -12,7 +12,7 @@
 
 - (void)commentCompany:(WICompanyInfo *)company comment:(WIComment *)comment complete:(IEnterPriseCompleteBlock)complete {
     weakself;
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"disId":company.ID,@"disType":@"1",@"disContent":comment.dis_content};
+    NSDictionary *para = @{@"appUserId":[AccountManager shared].user.userId,@"corporateId":@(company.ID),@"content":comment.content};
     [IEnterPrise saveComment:^(WINetResponse *response) {
         if (response && response.success) {
             if (wself.reloadBlock && wself.needReload) {
@@ -28,8 +28,8 @@
 }
 
 - (void)likeCompanyComment:(WIComment *)comment complete:(IEnterPriseCompleteBlock)complete {
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"likesId":comment.ID,@"likesType":@"0"};
-    [IEnterPrise likeComment:^(WINetResponse *response) {
+    NSDictionary *para = @{@"appUserId":[AccountManager shared].user.userId,@"commentId":comment.ID};
+    [IEnterPrise likeCompanyComment:^(WINetResponse *response) {
         if (response && response.success) {
             complete(response);
         } else {
@@ -41,7 +41,7 @@
 
 
 - (void)likeCompany:(WICompanyInfo *)company complete:(IEnterPriseCompleteBlock)complete {
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"likesId":company.ID,@"likesType":@"1"};
+    NSDictionary *para = @{@"appUserId":[AccountManager shared].user.userId,@"id":@(company.ID)};
     [IEnterPrise likeEnterprise:^(WINetResponse *response) {
         if (response && response.success) {
             complete(response);
@@ -56,7 +56,7 @@
     if (!company) {
         return;
     }
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"makeId":company.ID,@"makeType":@"1"};
+    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"makeId":@(company.ID),@"makeType":@"1"};
     [IEnterPrise collectEnterprise:^(WINetResponse *response) {
         if (response && response.success) {
             complete(response);
@@ -69,7 +69,7 @@
 }
 
 - (void)unCollectCompany:(WICompanyInfo *)company complete:(IEnterPriseCompleteBlock)complete {
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"id":company.ID};
+    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"id":@(company.ID)};
     [IEnterPrise collectEnterprise:^(WINetResponse *response) {
         if (response && response.success) {
             complete(response);
@@ -82,7 +82,7 @@
 }
 
 + (void)saveComment:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCommentSaveAPI) params:par successBlock:^(NSDictionary *returnData) {
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, CompanyCommentSaveAPI) params:par successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         complete(response);
     } failureBlock:^(NSError *error) {
@@ -92,7 +92,19 @@
 
 + (void)likeComment:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {
     [Dialog showRingLoadingView:KWINDOW];
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyLikeAPI) params:par successBlock:^(NSDictionary *returnData) {
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, CompanyLikeAPI) params:par successBlock:^(NSDictionary *returnData) {
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+        WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
+        complete(response);
+    } failureBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
+        complete(nil);
+    } showHUD:NO];
+}
+
++ (void)likeCompanyComment:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {
+    [Dialog showRingLoadingView:KWINDOW];
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, CompanyCommentLikeAPI) params:par successBlock:^(NSDictionary *returnData) {
         [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         complete(response);
@@ -104,7 +116,7 @@
 
 + (void)likeEnterprise:(IEnterPriseCompleteBlock)complete par:(NSDictionary *)par {
     [Dialog showRingLoadingView:KWINDOW];
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyLikeAPI) params:par successBlock:^(NSDictionary *returnData) {
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, CompanyLikeAPI) params:par successBlock:^(NSDictionary *returnData) {
         [MBProgressHUD hideAllHUDsForView:KWINDOW animated:YES];
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         complete(response);

@@ -10,8 +10,12 @@
 
 @implementation HomeServiceData
 
-+(JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc]initWithDictionary:@{@"id":@"ID"}];
+//+(JSONKeyMapper *)keyMapper{
+//    return [[JSONKeyMapper alloc]initWithDictionary:@{@"id":@"ID"}];
+//}
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
 }
 
 @end

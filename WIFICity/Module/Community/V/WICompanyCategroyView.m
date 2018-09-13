@@ -95,14 +95,14 @@
         } else {
             colCell.companyNameLabel.textColor = [UIColor colorWithHexString:@"#666666"];;
         }
-        colCell.companyNameLabel.text = [category.entName copy];
+        colCell.companyNameLabel.text = [category.name copy];
     } else {
         if (self.selectCategory && self.selectCategory.industryName && [self.selectCategory.industryName isEqualToString:category.industryName]) {
             colCell.companyNameLabel.textColor = [UIColor themeColor];
         } else {
             colCell.companyNameLabel.textColor = [UIColor colorWithHexString:@"#666666"];;
         }
-        colCell.companyNameLabel.text = [category.industryName copy];
+        colCell.companyNameLabel.text = [category.name copy];
     }
 
     return colCell;

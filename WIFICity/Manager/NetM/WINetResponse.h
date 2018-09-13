@@ -16,6 +16,7 @@
 @property (nonatomic,assign)BOOL success;
 @property (nonatomic,copy)NSString *msg;
 @property (nonatomic,copy)NSDictionary *obj;
+@property (nonatomic,copy)NSDictionary *data;
 @property (nonatomic,copy)NSString *strObj;
 @property (nonatomic,assign)NSInteger intObj;
 @property (nonatomic,copy)NSDictionary *attributes;

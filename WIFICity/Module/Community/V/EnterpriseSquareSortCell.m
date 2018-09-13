@@ -95,14 +95,14 @@
 //        itemCell.areaIconView.image = [UIImage qsImageNamed:self.imageArray[indexPath.row]];
 //        itemCell.areaNameLabel.text = self.titleArray[indexPath.row];
         WICompanyCategory *category = self.categoryModelArray[indexPath.row];
-        [itemCell.areaIconView sd_setImageWithURL:[NSURL URLWithString:category.industryImgUrl]];
-        itemCell.areaNameLabel.text = [category.industryName copy];
+        [itemCell.areaIconView sd_setImageWithURL:[NSURL URLWithString:category.imageUrl]];
+        itemCell.areaNameLabel.text = [category.name copy];
         itemCell.areaNameLabel.textColor = [UIColor colorWithHexString:@"#141414"];
         return itemCell;
     } else {
         WICompanyCategory *category = self.categoryModelArray[indexPath.row];
         EnterPriseTagCell *colCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EnterPriseTagCellID" forIndexPath:indexPath];
-        colCell.nameLabel.text = [category.entName copy];
+        colCell.nameLabel.text = [category.name copy];
         if (IPHONE4OR4S || IPHONE5OR5S) {
             colCell.nameLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:10];
         }

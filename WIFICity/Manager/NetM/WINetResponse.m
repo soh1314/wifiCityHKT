@@ -15,4 +15,8 @@
     return YES;
 }
 
++(JSONKeyMapper *)keyMapper{
+    return [[JSONKeyMapper alloc]initWithDictionary:@{@"data":@"obj"}];
+}
+
 @end

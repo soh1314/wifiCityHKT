@@ -28,8 +28,8 @@
 #import "WIFIPusher.h"
 
 #define FindUserFLowAPI @"/ws/third/findBandByUserId.do"
-#define LbtInfoAPI  @"/ws/wifi/findLbtByOrgId.do"
-#define HomeThirdAPI @"/ws/third/findAllThirdIcon.do"
+#define LbtInfoAPI  @"/v1/homepage/banner/list.do"
+#define HomeThirdAPI @"/v1/homepage/module/list.do"
 
 @interface HomeController ()<UITableViewDelegate,UITableViewDataSource,WifiPanelProtocol>
 
@@ -40,6 +40,7 @@
 @property (nonatomic,strong)WifiPanel *panel;
 @property (nonatomic,strong)UIView *headerView;
 @property (nonatomic,strong)dispatch_group_t group;
+@property (nonatomic,assign)NSInteger page;
 
 @end
 
@@ -57,6 +58,7 @@
     [[EasyCLLocationManager shared]startLocate:^(NSString *province, NSString *city, NSString *area, NSString *detailAddress) {
         [self.panel setLocation:[EasyCLLocationManager shared].location];
         [[EasyCLLocationManager shared]stopLocate];
+//        [WIFIPusher sendRegionPush];
         
     }];
     [WIFISevice shared].panelDelegate = self;
@@ -166,7 +168,7 @@
     }
     dispatch_group_enter(self.group);
     NSString *url = [NSString stringWithFormat:@"%@%@",@"http://www.hktfi.com/index.php/api/ap/getOnlineNum/mac/",mac];
-    [MHNetworkManager getRequstWithURL:url params:nil                          successBlock:^(NSDictionary *returnData) {
+    [MHNetworkManager getRequstWithURL:url params:nil  successBlock:^(NSDictionary *returnData) {
         NSInteger totalUser = [[returnData objectForKey:@"total"]integerValue];
         self.panel.bottomView.flowScoreLabel.text = [NSString stringWithFormat:@"%ld",totalUser];
         dispatch_group_leave(self.group);
@@ -179,10 +181,12 @@
 
 - (void)requestLbtData {
     dispatch_group_enter(self.group);
-    NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, LbtInfoAPI) params:para successBlock:^(NSDictionary *returnData) {
-        NSArray *lbtArray = [HomeLbtResponse arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
-        self.lbtArray = [lbtArray copy];
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, LbtInfoAPI) params:nil successBlock:^(NSDictionary *returnData) {
+        NSDictionary *data = [returnData objectForKey:@"data"];
+        if (data) {
+            NSArray *lbtArray = [HomeLbtResponse arrayOfModelsFromDictionaries:[returnData objectForKey:@"data"] error:nil];
+            self.lbtArray = [lbtArray copy];
+        }
         [self.tableView reloadData];
         dispatch_group_leave(self.group);
     } failureBlock:^(NSError *error) {
@@ -192,12 +196,16 @@
 
 - (void)requestHomeNews {
     dispatch_group_enter(self.group);
-    NSDictionary *para = @{@"orgId":[WIFISevice shared].wifiInfo.orgId};
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, WIFIHomeNewsAPI) params:para successBlock:^(NSDictionary *returnData) {
+    self.page = 1;
+    NSDictionary *para = @{@"mac":[WIFISevice shared].wifiInfo.hktMac,@"currentPage":@(self.page),@"pageSize":@"10"};
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, WIFIHomeNewsAPI) params:para successBlock:^(NSDictionary *returnData) {
         [self.tableView.mj_header endRefreshing];
-        NSArray *newsArray = [HomeNews arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
-        [self.dataArray removeAllObjects];
-        [self.dataArray addObjectsFromArray:newsArray];
+        NSDictionary *data = [returnData objectForKey:@"data"];
+        if (data) {
+            NSArray *newsArray = [HomeNews arrayOfModelsFromDictionaries:[data objectForKey:@"rows"] error:nil];
+            [self.dataArray removeAllObjects];
+            [self.dataArray addObjectsFromArray:newsArray];
+        }
         [self.tableView reloadData];
         dispatch_group_leave(self.group);
     } failureBlock:^(NSError *error) {
@@ -209,15 +217,18 @@
 
 - (void)requestServiceData {
     dispatch_group_enter(self.group);
-    NSDictionary *para = @{@"number":@"1"};
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, HomeThirdAPI) params:para successBlock:^(NSDictionary *returnData) {
-        NSArray *serviceArray = [HomeServiceData arrayOfModelsFromDictionaries:[returnData objectForKey:@"obj"] error:nil];
-        self.serviceArray = [serviceArray copy];
+    NSString *mac = [WIFISevice shared].wifiInfo.hktMac;
+    NSDictionary *para = @{@"mac":mac};
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, HomeThirdAPI) params:para successBlock:^(NSDictionary *returnData) {
+        NSDictionary *data = [returnData objectForKey:@"data"];
+        if (data) {
+            NSArray *serviceArray = [HomeServiceData arrayOfModelsFromDictionaries:(NSArray *)data error:nil];
+            self.serviceArray = [serviceArray copy];
+        }
         [self.tableView reloadData];
         dispatch_group_leave(self.group);
     } failureBlock:^(NSError *error) {
         dispatch_group_leave(self.group);
-
     } showHUD:NO];
 }
 
@@ -289,38 +300,34 @@
         cell.pick = ^(NSInteger idx) {
             HomeLbtResponse *data = self.lbtArray[idx];
             WebViewController *ctrl = [WebViewController new];
-            if (data.pathUrl && ![data.pathUrl isEqualToString:@"<null>"] && [data.mark hasPrefix:@"http"]) {
-                ctrl.URLString = [data.pathUrl copy];
+            if (data.link && ![data.link isEqualToString:@"<null>"] && [data.mark hasPrefix:@"http"]) {
+                ctrl.URLString = [data.link copy];
                 [wself.navigationController pushViewController:ctrl animated:YES];
             }
-            if ([data.mark hasPrefix:@"module"] && [data.pathUrl isEqualToString:@"wifiMapController"]) {
+            if ([data.mark hasPrefix:@"module"] && [data.link isEqualToString:@"wifiMapController"]) {
                 ctrl.URLString = @"http://wifi.hktfi.com/hktInformationDeliveryController.do?findById&id=8a2bf9ef6536207001653736f9d202d1";
                 ctrl.newsTitle = @"无线高新,即将到来";
                 [wself.navigationController pushViewController:ctrl animated:YES];
             }
-            if ([data.mark hasPrefix:@"module"] && [data.pathUrl isEqualToString:@"enterpriseController"]) {
+            if ([data.mark hasPrefix:@"module"] && [data.link isEqualToString:@"enterpriseController"]) {
                 AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 UITabBarController *tabCtrl = delegate.tabBarController;
                 [tabCtrl setSelectedIndex:2];
             }
-
         };
         return cell;
     }
     else {
         HomeNews *news = [self.dataArray objectAtIndex:indexPath.row];
-        if (news.information_type == 2001 && news.home_image_array && news.home_image_array.count >= 2) {
+        if (news.imgType == 3 && news.images && news.images.count >= 2) {
             HomeNewsTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsTwoCellID" forIndexPath:indexPath];
             [cell setNews:news];
-            cell.imageGroupArray = [news.home_image_array copy];
+            cell.imageGroupArray = [news.images copy];
             return cell;
         } else {
             HomeNewsOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsOneCellID" forIndexPath:indexPath];
             [cell setNews:news];
-            
-//            if (news.gxq_img_type && news.gxq_image_array) {
-//                cell.imageGroupArray = [news.gxq_image_array copy];
-//            }
+
             return cell;
         }
 
@@ -370,7 +377,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 2) {
         HomeNews *news = [self.dataArray objectAtIndex:indexPath.row];
-        NSString *detailUrl = [NSString stringWithFormat:@"%@%@%@",kUrlHost,WIFIHomeNewsDetailAPI,news.ID];
+        NSString *detailUrl =  news.url;
         [NavManager pushWebViewControllerWithUrlString:detailUrl title:news.title controller:self];
     }
 }

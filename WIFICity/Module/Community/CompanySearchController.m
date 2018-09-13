@@ -144,8 +144,8 @@ NSString *const CompanySearchUnFoundWaring = @"您搜索的内容不存在";
     if ([searchWord isEqualToString:@""]) {
         searchWord = @" ";
     }
-    NSDictionary *para = @{@"useId":[AccountManager shared].user.userId,@"comName":[searchWord copy]};
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanySearchAPI) params:para successBlock:^(NSDictionary *returnData) {
+    NSDictionary *para = @{@"techCategoryIds":@"",@"industryCategoryId":@"",@"appUserId":[AccountManager shared].user.userId,@"pageSize":@"10",@"currentPage":@"1",@"name":searchWord};
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, CompanySearchAPI) params:para successBlock:^(NSDictionary *returnData) {
         [self setNoDataViewWithBaseView:self.tableView];
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         if (response && response.success) {

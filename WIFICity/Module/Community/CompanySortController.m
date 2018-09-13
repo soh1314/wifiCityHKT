@@ -75,16 +75,13 @@
     } else {
         industryId = @"";
     }
-//    if (self.categoryID && ![self.categoryID isEqualToString:@""]) {
-    para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entId":entID,@"industryId":industryId};
-//    }
-//    else {
-//        para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page]};
-//    }
-    [MHNetworkManager getRequstWithURL:kAppUrl(kUrlHost, CompanyCategoryBriefListAPI) params:para successBlock:^(NSDictionary *returnData) {
+//    para = @{@"useId":[AccountManager shared].user.userId,@"pageNum":[NSString stringWithFormat:@"%ld",self.page],@"entId":entID,@"industryId":industryId};
+   para = @{@"techCategoryIds":entID,@"industryCategoryId":industryId,@"appUserId":[AccountManager shared].user.userId,@"pageSize":@"10",@"currentPage":@(self.page)};
+
+    [MHNetworkManager postReqeustWithURL:kAppUrl(kUrlHost, CompanyCategoryBriefListAPI) params:para successBlock:^(NSDictionary *returnData) {
         WINetResponse *response = [[WINetResponse alloc]initWithDictionary:returnData error:nil];
         if (response && response.success) {
-            NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:(NSArray *)response.obj error:nil];
+            NSArray *dataArray = [WICompanyInfo arrayOfModelsFromDictionaries:response.obj[@"rows"] error:nil];
             if (refresh) {
                 if (dataArray.count == 0) {
                     [Dialog toast:@"暂未发现当前类型的企业"];
@@ -146,10 +143,10 @@
         [wself.navigationController pushViewController:searchCtrl animated:YES];
     };
     if (self.selectCategory) {
-        self.sortTopView.selectItemBlock(0, self.selectCategory.industryName);
+        self.sortTopView.selectItemBlock(0, self.selectCategory.name);
     }
     if (self.selectProductCategory) {
-        self.sortTopView.selectItemBlock(1, self.selectProductCategory.entName);
+        self.sortTopView.selectItemBlock(1, self.selectProductCategory.name);
     }
     
     
@@ -180,7 +177,7 @@
             wself.selectCategory = category;
             wself.selectProductCategory = wself.categoryArray[0];
             wself.areaID = [category.ID copy];
-            wself.sortTopView.selectItemBlock(index, category.industryName);
+            wself.sortTopView.selectItemBlock(index, category.name);
             [wself loadData:YES];
             [wself.sortTopView hideDropView];
         };
@@ -199,7 +196,7 @@
             wself.categoryID = [category.ID copy];
             wself.selectCategory = wself.productArray[0];
             wself.selectProductCategory = category;
-            wself.sortTopView.selectItemBlock(index, category.entName);
+            wself.sortTopView.selectItemBlock(index, category.name);
             [wself loadData:YES];
             [wself.sortTopView hideDropView];
         };
@@ -257,7 +254,7 @@
             __block WICompanyInfo *blockInfo = companyInfo;
             wself.disPatch.needReload = YES;
             wself.disPatch.reloadBlock = ^{
-                blockInfo.dis ++;
+                blockInfo.commentsQuantity ++;
                 [wself.collectionView reloadData];
             };
         };
@@ -265,7 +262,8 @@
             [wself.disPatch likeCompany:info complete:^(WINetResponse *response) {
                 if (response && response.success) {
                     info.like_id = @"123";
-                    info.likes ++;
+                    info.likesQuantity ++;
+                    info.liked = YES;
                     [wself.collectionView reloadData];
                 }
             }];
@@ -281,7 +279,7 @@
             __block WICompanyInfo *blockInfo = companyInfo;
             wself.disPatch.needReload = YES;
             wself.disPatch.reloadBlock = ^{
-                blockInfo.dis ++;
+                blockInfo.commentsQuantity ++;
                 [wself.collectionView reloadData];
             };
         };
@@ -289,7 +287,8 @@
             [wself.disPatch likeCompany:info complete:^(WINetResponse *response) {
                 if (response && response.success) {
                     info.like_id = @"123";
-                    info.likes ++;
+                    info.likesQuantity ++;
+                    info.liked = YES;
                     [wself.collectionView reloadData];
                 }
             }];

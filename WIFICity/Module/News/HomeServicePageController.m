@@ -44,43 +44,44 @@
 
 - (void)setServiceData:(HomeServiceData *)serviceData {
     _serviceData = serviceData;
-    self.title = [self.serviceData.thirdName copy];
+    self.title = [self.serviceData.name copy];
     self.count = 2;
     NSArray *titleArray = nil;
     NSArray *gqxType = nil;
-    if ([serviceData.thirdName isEqualToString:@"高新头条"]) {
+
+    if ([serviceData.name isEqualToString:@"高新头条"]) {
         titleArray = @[@"高新头条"];
         self.gxqTypeArray = @[@(21)];
     }
-    if ([serviceData.thirdName isEqualToString:@"麓谷新闻"]) {
+    if ([serviceData.name isEqualToString:@"麓谷新闻"]) {
         titleArray = @[@"麓谷新闻"];
         self.gxqTypeArray  = @[@(19)];
     }
-    if ([serviceData.thirdName isEqualToString:@"媒体聚焦"]) {
+    if ([serviceData.name isEqualToString:@"媒体聚焦"]) {
         titleArray = @[@"媒体聚焦"];
         self.gxqTypeArray  = @[@(20)];
     }
-    if ([serviceData.thirdName isEqualToString:@"通知公告"]) {
+    if ([serviceData.name isEqualToString:@"通知公告"]) {
         titleArray = @[@"通知公告"];
         self.gxqTypeArray  = @[@(1)];
     }
-    if ([serviceData.thirdName isEqualToString:@"部门动态"]) {
+    if ([serviceData.name isEqualToString:@"部门动态"]) {
         titleArray = @[@"部门动态"];
         self.gxqTypeArray  = @[@(2)];
     }
-    if ([serviceData.thirdName isEqualToString:@"政府采购"]) {
+    if ([serviceData.name isEqualToString:@"政府采购"]) {
         titleArray = @[@"采购目录",@"采购公告",@"中标公告",@"废标公告"];
         self.gxqTypeArray  = @[@(9),@(10),@(11),@(12)];
     }
-    if ([serviceData.thirdName isEqualToString:@"党风廉政"]) {
+    if ([serviceData.name isEqualToString:@"党风廉政"]) {
         titleArray = @[@"党风廉政"];
         self.gxqTypeArray  = @[@(4)];
     }
-    if ([serviceData.thirdName isEqualToString:@"法规公文"]) {
+    if ([serviceData.name isEqualToString:@"法规公文"]) {
         titleArray = @[@"国家政策",@"省市政策"];
         self.gxqTypeArray  = @[@(6),@(7)];
     }
-    if ([serviceData.thirdName isEqualToString:@"征地拆迁"]) {
+    if ([serviceData.name isEqualToString:@"征地拆迁"]) {
         titleArray = @[@"征地公告",@"拆迁补偿"];
         self.gxqTypeArray = @[@(17),@(18)];
     }

@@ -65,7 +65,7 @@
 
 - (void)updateUserInfo {
     
-    if ([[AccountManager shared].user.type isEqualToString:@"sj"]) {
+    if ([AccountManager shared].user.type  == 1) {
         if ([AccountManager shared].user.wxIcon && ![[AccountManager shared].user.wxIcon isEqualToString:@""]) {
             [self.infoView.avartar sd_setImageWithURL:[NSURL URLWithString:[AccountManager shared].user.wxIcon] placeholderImage:[UIImage qsImageNamed:@"avatars_default.png"]];
 
@@ -77,14 +77,14 @@
         [self.infoView.avartar sd_setImageWithURL:[NSURL URLWithString:avatarString] placeholderImage:[UIImage qsImageNamed:@"head"]];
     }
     
-    if ([[AccountManager shared].user.type isEqualToString:@"wx"]) {
+    if ([AccountManager shared].user.type == 2) {
         
         [self.infoView.nickNameLabel setText:[AccountManager shared].user.nickname];
     }
-    if ([[AccountManager shared].user.type isEqualToString:@"qq"]) {
+    if ([AccountManager shared].user.type == 3) {
         [self.infoView.nickNameLabel setText:[AccountManager shared].user.nickname];
     }
-    if ([[AccountManager shared].user.type isEqualToString:@"sj"]) {
+    if ([AccountManager shared].user.type == 1) {
         [self.infoView.nickNameLabel setText:[AccountManager shared].user.nickname];
     }
 

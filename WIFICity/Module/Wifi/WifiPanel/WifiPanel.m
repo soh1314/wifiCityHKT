@@ -91,11 +91,11 @@
     }
     self.topView.locationLabel.text = [NSString stringWithFormat:@"%@%@",location.city,location.area];
     if (location.city) {
-        [WIWeatherService getWeatherInfoWithLocation:location.city complete:^(WIWeatherInfo *weatherInfo) {
-            if (weatherInfo) {
-                [self setWeatherInfo:weatherInfo];
-            }
-        }];
+//        [WIWeatherService getWeatherInfoWithLocation:location.city complete:^(WIWeatherInfo *weatherInfo) {
+//            if (weatherInfo) {
+//                [self setWeatherInfo:weatherInfo];
+//            }
+//        }];
     }
 }
 

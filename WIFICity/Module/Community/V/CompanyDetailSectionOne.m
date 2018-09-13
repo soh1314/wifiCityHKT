@@ -52,7 +52,7 @@
 }
 
 - (void)tapWebSite:(UIGestureRecognizer *)gesture {
-    if (self.info.com_website &&self.webSiteBlock) {
+    if (self.info.website &&self.webSiteBlock) {
         self.webSiteBlock();
     }
 }
@@ -67,12 +67,12 @@
 
 - (void)setInfo:(WICompanyInfo *)info {
     _info = info;
-    self.companyNameLabel.text = [info.com_name copy];
-    self.phoneValueLabel.text = [info.com_tel copy];
-    self.addressValueLabel.text = [info.com_address copy];
-    self.websiteLabel.text = [info.com_website copy];
-    if (info.com_website) {
-        NSMutableAttributedString *content = [[NSMutableAttributedString alloc]initWithString:[info.com_website copy]];
+    self.companyNameLabel.text = [info.name copy];
+    self.phoneValueLabel.text = [info.telephone copy];
+    self.addressValueLabel.text = [info.address copy];
+    self.websiteLabel.text = [info.website copy];
+    if (info.website) {
+        NSMutableAttributedString *content = [[NSMutableAttributedString alloc]initWithString:[info.website copy]];
         NSRange range = NSMakeRange(0, content.length);
         [content addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:range];
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
@@ -80,16 +80,13 @@
         [content addAttribute:NSParagraphStyleAttributeName value:style range: NSMakeRange(0, content.length)];
         self.websiteLabel.attributedText = content;
     }
-
-    NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,self.info.com_logo];
     
-    NSString *urlEncode = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *urlEncode = [self.info.logoImgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.companyIcon sd_setImageWithURL:[NSURL URLWithString:urlEncode] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
     }];
-    self.registerMoneyLabel.text = [info.com_capital copy];
-    self.bossNameLabel.text = [info.com_legal copy];
-   
-    if (self.info.com_vr) {
+    self.registerMoneyLabel.text = [NSString stringWithFormat:@"%ld",info.registeredCapital];
+    self.bossNameLabel.text = [info.legalPerson copy];
+    if (self.info.vrUrl) {
         self.quanjinTitleLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         self.quanjingLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         [self.quanjinBtn setImage:[UIImage qsImageNamed:@"panorama_detail"] forState:UIControlStateNormal];
@@ -98,17 +95,17 @@
         self.quanjingLabel.textColor = [UIColor colorWithHexString:@"#D0D0D0"];
         [self.quanjinBtn setImage:[UIImage qsImageNamed:@"panorama_default"] forState:UIControlStateNormal];
     }
-    self.startTimeLabel.text = [self.startTimeLabel.text timeStringToDay:[NSString stringWithFormat:@"%ld",self.info.com_found_date]];
-    self.updateTimeLabel.text = [NSString stringWithFormat:@"更新时间 %@",[self.startTimeLabel.text timeStringToDay:[NSString stringWithFormat:@"%ld",self.info.update_date]]];
+    self.startTimeLabel.text = [self.info.foundingDate copy];
+    self.updateTimeLabel.text = [self.info.lastUpdateTime copy];
     
 }
 
 - (IBAction)callCompany:(id)sender {
-    if (!self.info.com_tel) {
+    if (!self.info.telephone) {
         [Dialog simpleToast:@"该公司暂无电话信息"];
         return;
     }
-    [WIUtil callPhone:self.info.com_tel];
+    [WIUtil callPhone:self.info.telephone];
 }
 
 - (IBAction)locateCompany:(id)sender {
@@ -118,13 +115,13 @@
 }
 
 - (IBAction)seeQuanJin:(id)sender {
-    if (self.info.com_vr && self.SeeQuanjinBlock) {
+    if (self.info.vrUrl && self.SeeQuanjinBlock) {
         self.SeeQuanjinBlock();
     }
 }
 
 - (IBAction)goToHomeWebSite:(id)sender {
-    if (self.info.com_website && self.webSiteBlock) {
+    if (self.info.website && self.webSiteBlock) {
         self.webSiteBlock();
     }
 }

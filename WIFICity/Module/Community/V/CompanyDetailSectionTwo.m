@@ -26,7 +26,7 @@
 
 - (void)setInfo:(WICompanyInfo *)info {
     _info = info;
-    self.abstractLabel.text = [info.com_introduction copy];
+    self.abstractLabel.text = [info.introduction copy];
 //    NSMutableString *m_str = [NSMutableString stringWithString:self.abstractLabel.text];
 //    [m_str appendString:@"查看全部"];
 //    NSMutableString *m_str1 = [NSMutableString stringWithString:info.com_introduction];

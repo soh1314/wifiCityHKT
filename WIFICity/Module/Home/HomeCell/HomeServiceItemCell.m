@@ -14,12 +14,11 @@
 
 - (void)setServiceData:(HomeServiceData *)serviceData {
     _serviceData = serviceData;
-    NSString *url = [NSString stringWithFormat:@"%@/%@",kUrlHost,serviceData.thirdImg];
-    NSString *encodeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *encodeUrl = [serviceData.icon stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.serviceImageView sd_setImageWithURL:[NSURL URLWithString:encodeUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
        
     }];
-    self.serviceNameLabel.text = [self.serviceData.thirdName copy];
+    self.serviceNameLabel.text = [self.serviceData.name copy];
 }
 
 - (void)awakeFromNib {
