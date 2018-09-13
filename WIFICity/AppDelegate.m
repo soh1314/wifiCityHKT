@@ -15,6 +15,7 @@
 #import "NSString+Additions.h"
 #import "WebViewController.h"
 #import "WIFIValidator.h"
+#import "EasyCLLocationManager.h"
 @interface AppDelegate ()
 
 @end
@@ -29,7 +30,8 @@
     [[AccountManager shared]loadUserAccount];
     [SDKConfig configMobShare];
     [self setMainView];
-     [WIFISevice shared];
+    [WIFISevice shared];
+    [[EasyCLLocationManager shared]requestLocateService];
     [self.window makeKeyAndVisible];
     [[UIApplication sharedApplication]setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
@@ -69,7 +71,7 @@
 }
 
 - (void)refereshBackGroundFetch {
-    
+    [WIFIPusher availabel8SendExpireValidatePush:1];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

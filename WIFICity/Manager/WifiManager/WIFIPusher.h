@@ -12,5 +12,7 @@
 
 + (void)requestAuthor;
 + (void)sendWifiExpiredPush:(NSString *)wifiMac;
++ (void)sendRegionPush;
++ (void)availabel8SendExpireValidatePush:(NSInteger)outTimeNumber;
 
 @end

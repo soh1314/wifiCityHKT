@@ -29,23 +29,13 @@
 
 - (void)requestLocateService {
     int status = [CLLocationManager authorizationStatus];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     if (status < 3) {
-        if ([[UIDevice currentDevice].systemVersion floatValue] >= 8)
-        {
-            self.locationManager = [[CLLocationManager alloc] init];
-            self.locationManager.delegate = self;
-            self.locationManager.distanceFilter = kCLDistanceFilterNone;
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-            [self.locationManager requestWhenInUseAuthorization];
-        }
-
-    } else {
-        self.locationManager = [[CLLocationManager alloc] init];
-        self.locationManager.delegate = self;
-        self.locationManager.distanceFilter = kCLDistanceFilterNone;
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        [self.locationManager requestWhenInUseAuthorization];
     }
-
 }
 
 - (void)requestLoateServiceTimeOutLocate:(NSInteger)timeOut complete:(EasyCLLocateComplete)complete {

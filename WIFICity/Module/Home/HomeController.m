@@ -25,6 +25,8 @@
 #import "WifiMapController.h"
 #import "AppDelegate.h"
 #import "WIFIValidator.h"
+#import "WIFIPusher.h"
+
 #define FindUserFLowAPI @"/ws/third/findBandByUserId.do"
 #define LbtInfoAPI  @"/ws/wifi/findLbtByOrgId.do"
 #define HomeThirdAPI @"/ws/third/findAllThirdIcon.do"
@@ -52,10 +54,10 @@
     [self initUI];
     self.group = dispatch_group_create();
     [self loadHomeData];
-    [[EasyCLLocationManager shared]requestLocateService];
     [[EasyCLLocationManager shared]startLocate:^(NSString *province, NSString *city, NSString *area, NSString *detailAddress) {
         [self.panel setLocation:[EasyCLLocationManager shared].location];
         [[EasyCLLocationManager shared]stopLocate];
+        
     }];
     [WIFISevice shared].panelDelegate = self;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(orgIDChange:) name:WIOrgIDChangeNoti object:nil];
